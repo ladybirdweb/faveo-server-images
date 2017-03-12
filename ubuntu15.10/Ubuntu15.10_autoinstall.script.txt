@@ -1,0 +1,8 @@
+http://ladybirdweb.com/support/uploads/ubuntu15.10/autoinstall
+
+to be run in the command-line like so:
+
+bash <(curl -s http://ladybirdweb.com/support/uploads/ubuntu15.10/autoinstall)
+
+*note on Ubuntu 15.10 Wily, you might have to install curl before proceeding.
+sudo apt-get install curl -y

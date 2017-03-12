@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# edit the value to match
+# No spaces BEFORE or AFTER, be smart.
+
+DB_NAME=faveo
+DB_USER=faveouser
+DB_PASS=faveouserpass
+MYSQL_ROOT_PASS=123
+
+#### stop editing here 
+
+printf "CREATE DATABASE %s;" $DB_NAME > /tmp/faveo-blank.sql;
+printf "GRANT ALL PRIVILEGES ON %s.* TO '%s'@'localhost' IDENTIFIED BY '%s';" $DB_NAME $DB_USER $DB_PASS >> /tmp/faveo-blank.sql;
+printf "FLUSH PRIVILEGES;" >> /tmp/faveo-blank.sql;
+
+/usr/bin/mysql -u root -p"$MYSQL_ROOT_PASS" < /tmp/faveo-blank.sql;
+echo "Mysql Database for Faveo-Helpdesk should have been created..."

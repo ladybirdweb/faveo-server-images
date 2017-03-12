@@ -1,0 +1,3 @@
+requirements for Ubuntu 15.10 Wily install - guideline-type
+
+http://ladybirdweb.com/support/uploads/ubuntu15.10/install

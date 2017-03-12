@@ -1,0 +1,5 @@
+# Nginx stable apt repository for Ubuntu 16.04 Xenial
+# Added by Faveo-Helpdesk automatic installation
+# Author: Mathieu Aubin 
+deb http://nginx.org/packages/ubuntu/ xenial nginx
+#deb-src http://nginx.org/packages/ubuntu/ xenial nginx

@@ -1,0 +1,18 @@
+
+ Faveo-Helpdesk Ubuntu 16.04 Xenial Nginx server_name quick-help
+
+    To edit Nginx's server block:
+        - Lines must end with ; delimiter
+        - server_name can either be a domain name, a ip address, a catch-all
+
+    Various examples of valid server names:
+
+    server_name mydomain.com www.mydomain.com;
+    server_name 159.203.41.223;
+    server_name 159.203.41.223 mydomain.com www.mydomain.com;
+    server_name mydomain.com *.mydomain.com;
+    server_name _; # this is a catch-all server name.
+
+    For more informations on Nginx's server_name, please visit
+
+    http://nginx.org/en/docs/http/server_names.html

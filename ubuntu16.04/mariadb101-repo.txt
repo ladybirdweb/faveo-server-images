@@ -1,0 +1,5 @@
+# MariaDB 10.1 stable apt repository for Ubuntu 16.04 Xenial
+# Added by Faveo-Helpdesk automatic installation
+# Author: Mathieu Aubin 
+deb [arch=amd64,ppc64el,i386] http://mariadb.mirror.iweb.com/repo/10.1/ubuntu xenial main
+# deb-src [arch=amd64,ppc64el,i386] http://mariadb.mirror.iweb.com/repo/10.1/ubuntu xenial main
