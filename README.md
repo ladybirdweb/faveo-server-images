@@ -7,7 +7,7 @@ Create your own fork of Faveo master repositoray and use <a href="https://github
 
 Help
 --------------------------
-Visit the <a href="https://github.com/ladybirdweb/faveo-helpdesk/issues">issue</a> page. And if you'd like professional help commercial support is available, email us through the <a href="http://www.faveohelpdesk.com/contact-us/">contact form</a>.
+Visit the <a href="https://github.com/ladybirdweb/faveo-server-images/issues">issue</a> page. And if you'd like professional help commercial support is available, email us through the <a href="http://www.faveohelpdesk.com/contact-us/">contact form</a>.
 
 References
 --------------------------
