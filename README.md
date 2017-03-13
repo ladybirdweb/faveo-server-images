@@ -19,3 +19,4 @@ References
 --------------------------
 - **Faveo Helpdesk** https://github.com/ladybirdweb/faveo-helpdesk
 - **Faveo Docker** https://github.com/ladybirdweb/faveo-docker
+- **Faveo Probe** https://github.com/ladybirdweb/faveo-probe
