@@ -8,8 +8,8 @@ Create your own fork of Faveo master repositoray and use <a href="https://github
 One click installers 
 --------------------------
 Faveo can be installed using following installers
-- Softaculous https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
-- Fantastico https://www.netenberg.com/fantastico.php
+- **Softaculous** https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
+- **Fantastico** https://www.netenberg.com/fantastico.php
 
 Help
 --------------------------
@@ -17,5 +17,5 @@ Visit the <a href="https://github.com/ladybirdweb/faveo-server-images/issues">is
 
 References
 --------------------------
-- Faveo Helpdesk https://github.com/ladybirdweb/faveo-helpdesk
-- Faveo Docker https://github.com/ladybirdweb/faveo-docker
+- **Faveo Helpdesk** https://github.com/ladybirdweb/faveo-helpdesk
+- **Faveo Docker** https://github.com/ladybirdweb/faveo-docker
