@@ -1,0 +1,45 @@
+# Faveo Helpdesk - Basic, Quick-Start NGINX Server Block
+# 16.06.14 Ladybird Web Solution Pvt Ltd
+# Author: Mathieu Aubin 
+
+upstream faveo_php {
+    server unix://opt/faveo/run/faveo_php.socket;
+}
+
+server {
+    listen 80;
+    listen 127.0.0.1:80;
+        # Edit the following line with the correct information.
+    server_name %(SERVERNAME)s;
+    error_log /opt/faveo/log/faveo_error_log;
+    access_log /opt/faveo/log/faveo_access_log;
+    root /opt/faveo/faveo-helpdesk/public;
+    index index.php index.html index.htm;
+
+    error_page 403 404 405 500 501 502 503 504 @error;
+
+    try_files $uri $uri/ /index.php?$args;
+
+    location @error {
+        rewrite ^/(.*)$ /index.php?$1;
+    }
+
+    location ~ /\. {
+        deny all;
+    }
+
+    location ~ /(artisan|composer.json|composer.lock|gulpfile.js|LICENSE|package.json|phpspec.yml|phpunit.xml|README.md|readme.txt|release-notes.txt|server.php) {
+        deny all;
+    }
+
+    location ~ [^/]\.php(/|$) {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+        include /etc/nginx/fastcgi_params;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass faveo_php;
+    }
+}

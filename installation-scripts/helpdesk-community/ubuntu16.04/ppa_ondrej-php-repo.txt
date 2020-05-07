@@ -1,0 +1,5 @@
+# ondrej/php apt repository for Ubuntu 14.04 Trusty
+# Added by Faveo-Helpdesk automatic installation
+# Author: Mathieu Aubin <mathieu@zeroserieux.com>
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main

@@ -1,0 +1,5 @@
+https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall
+
+to be run in the command-line like so:
+
+bash <(curl -s https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall)

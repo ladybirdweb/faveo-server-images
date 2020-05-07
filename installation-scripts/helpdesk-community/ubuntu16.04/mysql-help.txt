@@ -1,0 +1,14 @@
+
+    Faveo-Helpdesk Ubuntu 16.04 Xenial MySQL configuration quick-help.
+
+    You should have set MySQL root password while installing.
+
+    Make sure you remember your root password as it's very hard for the
+    common user to change. Ensure your password is a secure one, too.
+
+    If you want to change your root password, for some reason, answer Y
+    to the first question. Otherwise answer by the negative.
+
+    Unless you know what you are doing, answers to the questions after
+    the root password question should most likely ALL be answered by YES
+    or "y" for a typical, secure installation.

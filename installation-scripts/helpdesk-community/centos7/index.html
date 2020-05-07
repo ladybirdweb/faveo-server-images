@@ -1,0 +1,104 @@
+
+<!-- saved from url=(0063)http://linux.speedinternet.ca/files/faveo/install/docs/centos7/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body><h3><mark>FAVEO HELPDESK COMMUNITY CENTOS 7 INSTALLATION REQUIREMENTS</mark></h3>
+<pre>Author: Mathieu Aubin 
+
+<mark>####### install remi repo #######</mark>
+
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+enable remi.repo and select the right php version
+
+<mark>####### install epel repo #######</mark>
+
+yum install epel-release
+
+<mark>####### MariaDB 5.5 stable repo #######</mark>
+
+[mariadb]
+name=MariaDB
+baseurl=http://yum.mariadb.org/5.5/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+<mark>####### Nginx stable repo #######</mark>
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+
+<mark>####### Mandatory webuser creation #######</mark>
+
+sudo useradd www-data -r
+sudo usermod -G www-data www-data
+
+<mark>####### Mandatory directory creation #######</mark>
+
+sudo mkdir -p /opt/faveo/run
+sudo mkdir -p /opt/faveo/log
+sudo chown www-data:www-data /opt/faveo -R
+
+<mark>####### Mandatory package installation #######</mark>
+
+## PHP PACKAGES ##
+sudo yum install php-cli php-fpm php-mysql php-mcrypt php-gd php-json php-curl php-imap php-mbstring
+sudo systemctl enable php-fpm
+
+## MYSQL PACKAGE ##
+sudo yum install mariadb-server
+sudo systemctl enable mysql
+
+## NGINX PACKAGE ##
+sudo yum install nginx
+sudo systemctl enable nginx
+
+## GIT PACKAGE ##
+sudo yum install git
+
+<mark>####### Faveo custom php-fpm pool definition #######</mark>
+
+wget -O /etc/php-fpm.d/faveo_php.conf http://linux.speedinternet.ca/faveo_php
+edit the file to enable the suggested socket
+
+<mark>####### Faveo Nginx basic "QuickStart" server block #######</mark>
+
+wget -O /etc/nginx/conf.d/faveo-helpdesk.conf http://linux.speedinternet.ca/faveo-helpdesk
+edit the file, changing the server name to your domain name
+edit /etc/nginx/nginx.conf and change the user to www-data
+remove or rename /etc/nginx/conf.d/default.conf default server
+
+<mark>####### Mandatory Faveo git repository clone #######</mark>
+
+sudo git clone https://github.com/ladybirdweb/faveo-helpdesk.git /opt/faveo/faveo-helpdesk
+sudo chown www-data:www-data /opt/faveo/faveo-helpdesk -R
+
+<mark>####### Mandatory Faveo MySQL blank database #######</mark>
+
+sudo systemctl start mysql
+sudo mysql_secure_installation
+
+sudo mysql -u root -p
+CREATE DATABASE faveo;
+GRANT ALL PRIVILEGES ON faveo.* TO 'faveouser'@'localhost' IDENTIFIED BY 'faveouserpass';
+FLUSH PRIVILEGES;
+
+<mark>####### Mandatory Faveo Cronjob #######</mark>
+
+export EDITOR="/usr/bin/nano"
+sudo crontab -e
+
+# Read emails every 5 minutes, change to suit your needs.
+*/5 * * * * /usr/bin/curl http://yourdomain.com/readmails
+# Perform the notification action, once a day, at 23:55. Change if you would like another time
+55 23 * * * /usr/bin/curl http://yourdomain.com/notification
+
+<mark>############ FOR EXPERIENCED USERS ONLY ############</mark>
+
+Automatic-installation script is available for FRESH CentOS 7 installs at
+https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall
+
+To run, copy/paste this into the command-line
+bash &lt;(curl -s https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall)
+</pre>
+</body></html>

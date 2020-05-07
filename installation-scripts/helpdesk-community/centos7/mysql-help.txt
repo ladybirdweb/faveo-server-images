@@ -1,0 +1,11 @@
+
+    Faveo-Helpdesk CentOS 7 MySQL configuration quick-help.
+
+    Default MySQL root password after installation is not set, thus empty.
+
+    Make sure you set a root password and remember it as it's very hard for
+    the common user to change. Ensure your password is a secure one, too.
+
+    Unless you know what you are doing, the answers to the questions after
+    you've set up the root password should most likely be answered by YES
+    or "y" for a typical, secure installation.

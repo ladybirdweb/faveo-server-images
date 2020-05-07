@@ -1,0 +1,4 @@
+Requirements for CentOS 7 install - guideline-type
+
+https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/index.html
+
