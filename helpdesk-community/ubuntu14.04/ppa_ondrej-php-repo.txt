@@ -1,5 +1,0 @@
-# ondrej/php apt repository for Ubuntu 14.04 Trusty
-# Added by Faveo-Helpdesk automatic installation
-# Created by Mathieu Aubin <mathieu@zeroserieux.com>
-deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main
-#deb-src http://ppa.launchpad.net/ondrej/php/ubuntu trusty main

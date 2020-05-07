@@ -1,5 +1,0 @@
-# MariaDB 5.5 stable apt repository for Ubuntu 14.04 Trusty
-# Added by Faveo-Helpdesk automatic installation
-# Created by Mathieu Aubin <mathieu@zeroserieux.com>
-deb [arch=amd64,i386,ppc64el] http://mariadb.mirror.iweb.com/repo/5.5/ubuntu trusty main
-# deb-src [arch=amd64,i386,ppc64el] http://mariadb.mirror.iweb.com/repo/5.5/ubuntu trusty main

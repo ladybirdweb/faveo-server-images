@@ -1,3 +1,0 @@
-requirements for Ubuntu 14.04 Trusty LTS install - guideline-type
-
-http://linux.speedinternet.ca/faveo/ubuntu-trusty/install

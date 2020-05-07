@@ -1,6 +1,0 @@
-http://linux.speedinternet.ca/faveo/ubuntu-trusty/autoinstall
-
-to be run in the command-line like so:
-
-bash <(curl -s http://linux.speedinternet.ca/faveo/ubuntu-trusty/autoinstall)
-

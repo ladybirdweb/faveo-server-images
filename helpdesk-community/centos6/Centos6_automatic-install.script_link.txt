@@ -1,5 +1,0 @@
-http://ladybirdweb.com/support/uploads/centos6/autoinstall
-
-to be run in the command-line like so:
-
-bash <(curl -s http://ladybirdweb.com/support/uploads/centos6/autoinstall)

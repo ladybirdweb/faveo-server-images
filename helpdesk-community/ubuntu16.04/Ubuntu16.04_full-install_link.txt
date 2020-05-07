@@ -1,3 +1,0 @@
-requirements for Ubuntu 16.04 Xenial LTS install - guideline-type
-
-https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/ubuntu16/
