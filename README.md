@@ -7,7 +7,7 @@ Create your own fork of Faveo master repositoray and use [git-flow](https://gith
 
 One click installers 
 --------------------------
-Faveo can be installed using following installers
+Faveo Community version can be installed using following installers
 - **Softaculous** https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
 - **Fantastico** https://www.netenberg.com/fantastico.php
 
