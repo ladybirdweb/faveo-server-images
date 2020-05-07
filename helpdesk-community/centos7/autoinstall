@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-#  Faveo-Helpdesk CentOS 7 Auto Installation Script
+#  Faveo Helpdesk Community CentOS 7 Auto Installation Script
 #  Tested on 7.0, 7.2
 #
-#  Copyright (C) 2016 Ladybird Web Solution Pvt ltd
+#  Copyright (C) 2020 Ladybird Web Solution Pvt ltd
 #
 #  Author Mathieu Aubin
 #
@@ -47,7 +47,7 @@ showHeader() {
     printf '\n\E[1;37;42m Faveo-Helpdesk CE Ticketing System - LEMP Install CentOS 7 \E[0m\n'
     printf ' Copyright 2016 Ladybird Web Solution Pvt Ltd\n'
     printf ' Author Mathieu Aubin \n'
-    printf ' Visit us online at - \E[1mhttp://www.faveohelpdesk.com\E[0m\n'
+    printf ' Visit us online at - \E[1mhttps://www.faveohelpdesk.com\E[0m\n'
     printf ' Fork it on GitHub  - \E[1mhttps://github.com/ladybirdweb/faveo-helpdesk.git\E[0m\n\n'
     printf ' If you make an error while running this script, you can re-run it anytime.\E[0m\n\n'
 }
@@ -60,18 +60,18 @@ displayWarning;
 /usr/sbin/useradd -r www-data && /usr/sbin/usermod -G www-data www-data;
 
 # remi repository
-/usr/bin/wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 http://ladybirdweb.com/support/centos7/epel-gpg-key.txt && \
-/usr/bin/wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-remi http://ladybirdweb.com/support/centos7/remi-gpg-key.txt && \
-/usr/bin/wget -O /etc/yum.repos.d/remi-php56-safe.repo http://ladybirdweb.com/support/centos7/remi-php56-safe-repo.txt && \
+/usr/bin/wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/epel-gpg-key.txt && \
+/usr/bin/wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-remi https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/remi-gpg-key.txt && \
+/usr/bin/wget -O /etc/yum.repos.d/remi-php56-safe.repo https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/remi-php56-safe-repo.txt && \
 
 # epel repository
-/usr/bin/wget -O /etc/yum.repos.d/epel.repo http://ladybirdweb.com/support/centos7/epel-repo.txt && \
+/usr/bin/wget -O /etc/yum.repos.d/epel.repo https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/epel-repo.txt && \
 
 # mariadb 5.5 repository
-/usr/bin/wget -O /etc/yum.repos.d/MariaDB.repo http://ladybirdweb.com/support/centos7/mariadb55-repo.txt && \
+/usr/bin/wget -O /etc/yum.repos.d/MariaDB.repo https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/mariadb55-repo.txt && \
 
 # nginx stable repository
-/usr/bin/wget -O /etc/yum.repos.d/Nginx-stable.repo http://ladybirdweb.com/support/centos7/nginx-stable-repo.txt && \
+/usr/bin/wget -O /etc/yum.repos.d/Nginx-stable.repo https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/nginx-stable-repo.txt && \
 
 # update the system
 /usr/bin/yum update -y && \
@@ -86,12 +86,12 @@ sleep 1;
 
 # getting files for nginx configuration
 /usr/bin/mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back;
-/usr/bin/wget -O /etc/nginx/nginx.conf http://ladybirdweb.com/support/centos7/faveo-nginx-conf.txt && \
-/usr/bin/wget -O /etc/nginx/conf.d/faveo-helpdesk.conf http://ladybirdweb.com/support/centos7/faveo-helpdesk-conf.txt && \
+/usr/bin/wget -O /etc/nginx/nginx.conf https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/faveo-nginx-conf.txt && \
+/usr/bin/wget -O /etc/nginx/conf.d/faveo-helpdesk.conf https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/faveo-helpdesk-conf.txt && \
 /usr/bin/rm -rf /etc/nginx/conf.d/default.conf;
 
 # creating our own php-fpm pool
-/usr/bin/wget -O /etc/php-fpm.d/faveo_php.conf http://ladybirdweb.com/support/centos7/faveo_php-conf.txt && \
+/usr/bin/wget -O /etc/php-fpm.d/faveo_php.conf https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/faveo_php-conf.txt && \
 
 # creating directories and cloning repository
 /usr/bin/mkdir -p /opt/faveo/log && /usr/bin/mkdir -p /opt/faveo/run;
@@ -100,7 +100,7 @@ chown www-data:www-data /opt/faveo -R && /usr/bin/updatedb && \
 
 # poping up nano for the user to edit server_name value
 printf "\n\E[1m I will open up a text editor, you need to change the server_name value to match your server \E[0m\n";
-/usr/bin/curl http://ladybirdweb.com/support/centos7/nginx-help.txt;
+/usr/bin/curl https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/nginx-help.txt;
 printf "\n\E[1m Using nano editor, CTRL+O saves the file. CTRL+X to exit. \E[0m\n";
 getAttention;
 /usr/bin/nano /etc/nginx/conf.d/faveo-helpdesk.conf && \
@@ -110,12 +110,12 @@ getAttention;
 
 # starting mysql and securing installation
 printf "\n\E[1m I will now secure your MySQL installation, read the following \E[0m\n";
-/usr/bin/curl http://ladybirdweb.com/support/centos7/mysql-help.txt;
+/usr/bin/curl https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/mysql-help.txt;
 getAttention;
 /usr/bin/mysql_secure_installation && \
 
 # getting blank sql db template and popping up nno for the user to edit values according to his/her install
-/usr/bin/wget -O /tmp/faveo-createdb.sh http://ladybirdweb.com/support/centos7/createdb.txt && /usr/bin/chmod +x /tmp/faveo-createdb.sh && \
+/usr/bin/wget -O /tmp/faveo-createdb.sh https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/createdb.txt && /usr/bin/chmod +x /tmp/faveo-createdb.sh && \
 /usr/bin/clear;
 printf "\n\E[1m I will open up a text editor, you need to change the values to match your MySQL installation \E[0m";
 printf "\n\E[1m Using nano editor, CTRL+O saves the file. CTRL+X to exit. \E[0m\n";

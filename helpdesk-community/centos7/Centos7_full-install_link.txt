@@ -1,4 +1,4 @@
-requirements for CentOS 7 install - guideline-type
+Requirements for CentOS 7 install - guideline-type
 
-http://ladybirdweb.com/support/uploads/centos7/install
+https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/index.html
 
