@@ -25,13 +25,13 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Generic Linux instructions For Community version
-* [Generic Instructions](/docs/installation/providers/generic.md)
-* [Ubuntu](/docs/installation/providers/ubuntu.md)
-* [Debian](/docs/installation/providers/debian.md)
+* [Generic Instructions](/docs/installation/providers/community/generic.md)
+* [Ubuntu](/docs/installation/providers/community/ubuntu.md)
+* [Debian](/docs/installation/providers/community/debian.md)
 
 ### Generic Linux instructions For Freelancer, paid and Enterprise version
-* [Generic Instructions](/docs/installation/providers/generic.md)
-* [Ubuntu](/docs/installation/providers/ubuntu.md)
-* [Debian](/docs/installation/providers/debian.md)
+* [Generic Instructions](/docs/installation/providers/enterprise/generic.md)
+* [Ubuntu](/docs/installation/providers/enterprise/ubuntu.md)
+* [Debian](/docs/installation/providers/enterprise/debian.md)
 
 
