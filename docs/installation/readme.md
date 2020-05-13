@@ -17,7 +17,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
--   * Optional: Redis or Beanstalk
+-   Optional: Redis or Beanstalk
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
