@@ -14,9 +14,9 @@ If you don't want to use Docker, the best way to setup the project is to use the
 
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
 -   **Git**
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.3.x** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
--   **MySQL 5.7+** or MariaDB **10.3+**
+-   **MySQL 5.7.x** or MariaDB **10.3+**
 -   Optional: Redis or Beanstalk
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
