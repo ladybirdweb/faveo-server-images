@@ -57,7 +57,7 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Freelancer, enterprise**
 * [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
-* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/debian.md)
+* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/readme.md)
 
 <a id="markdown-contributing" name="markdown-contributing"></a>
 ## Contributing
