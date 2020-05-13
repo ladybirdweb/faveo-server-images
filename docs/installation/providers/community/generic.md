@@ -21,7 +21,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
 
-**LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
+**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 **Git:** Git should come pre-installed with your server. If it doesn't please install

@@ -21,7 +21,7 @@ Faveo can run on Debian Buster.
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
 
-**LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
+**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 An editor like vim or nano should be useful too.

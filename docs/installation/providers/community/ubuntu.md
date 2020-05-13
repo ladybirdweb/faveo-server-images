@@ -24,7 +24,7 @@ Faveo depends on the following:
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
 
-**LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
+**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 **Apache:** If it doesn't come pre-installed with your server, follow the [instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04#step-1-install-apache-and-allow-in-firewall) to setup Apache and config the firewall.
