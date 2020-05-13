@@ -18,11 +18,11 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 
 Faveo depends on the following:
 
--   [Apache httpd webserver](https://httpd.apache.org/)
--   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   PHP 7.3+
--   [Composer](https://getcomposer.org/)
--   [MySQL 5.7+](https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/)
+-   **Apache** (with mod_rewrite enabled) or **Nginx** or IIS
+-   **[Git]**(https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   **PHP 7.3+* with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **[Composer]**(https://getcomposer.org/)
+-   **MySQL 5.7+* or MariaDB **10.3+*
 
 **LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
