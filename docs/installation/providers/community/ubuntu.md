@@ -9,7 +9,7 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 -   [Installation steps](#installation-steps)
     -   [1. Clone the repository](#1-clone-the-repository)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Monica](#3-configure-monica)
+    -   [3. Configure Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [Final step](#final-step)
@@ -113,7 +113,7 @@ CREATE DATABASE faveo;
 Create a user called 'faveo' and its password 'strongpassword'.
 
 ```sql
-CREATE USER 'monica'@'localhost' IDENTIFIED BY 'strongpassword';
+CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
 ```
 
 We have to authorize the new user on the faveo db so that he is allowed to change the database.
@@ -131,16 +131,16 @@ exit
 
 ### 3. GUI Faveo Installer
 
-Follow the final installation steps [here] (https://support.faveohelpdesk.com/show/web-gui-installer)
+Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
 
 
 ### 4. Configure cron job
 
-Faveo requires some background processes to continuously run. The list of things Monica does in the background is described [here](https://github.com/monicahq/monica/blob/master/app/Console/Kernel.php#L33).
+Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/monicahq/monica/blob/master/app/Console/Kernel.php#L33).
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-Create a new `/etc/cron.d/monica` file with:
+Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
 echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
@@ -152,7 +152,7 @@ echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo
 
 ```sh
 sudo chown -R www-data:www-data /var/www/faveo
-sudo chmod -R 775 /var/www/monica/storage
+sudo chmod -R 775 /var/www/faveo/storage
 ```
 
 2. Enable the rewrite module of the Apache webserver:
@@ -191,7 +191,7 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 
 ```sh
 sudo a2dissite 000-default.conf
-sudo a2ensite monica.conf
+sudo a2ensite faveo.conf
 
 # Enable php7.3 fpm, and restart apache
 sudo a2enmod proxy_fcgi setenvif
