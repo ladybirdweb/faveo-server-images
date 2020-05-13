@@ -6,14 +6,14 @@ https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/auto
 # Run the script
 
 To run, copy/paste this into the command-line
-apt-get install wget -y
 
-wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/autoinstall.sh
+`apt-get install wget -y`
+`wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/autoinstall.sh`
 
 Change execution permission for file.
 
-chmod +x Faveo-ubuntu-apache.sh
+`chmod +x Faveo-ubuntu-apache.sh`
 
 Execute the script
 
-./Faveo-ubuntu-apache.sh
+`./Faveo-ubuntu-apache.sh`
