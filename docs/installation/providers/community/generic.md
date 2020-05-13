@@ -9,10 +9,6 @@
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [6. Optional: Setup the queues with Redis, Beanstalk or Amazon SQS](#6-optional-setup-the-queues-with-redis-beanstalk-or-amazon-sqs)
-    -   [7. Optional: Setup the access tokens to use the API](#7-optional-setup-the-access-tokens-to-use-the-api)
-        -   [Generate the encryption keys](#generate-the-encryption-keys)
-        -   [Optional: Save the encryption keys as variable](#optional-save-the-encryption-keys-as-variable)
-        -   [Optional: Generate a Password grant client](#optional-generate-a-password-grant-client)
     -   [Final step](#final-step)
 
 ## Prerequisites
