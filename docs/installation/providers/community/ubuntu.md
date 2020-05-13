@@ -9,7 +9,7 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 -   [Installation steps](#installation-steps)
     -   [1. Clone the repository](#1-clone-the-repository)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Faveo](#3-gui-faveo-installer)
+    -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [Final step](#final-step)
@@ -25,7 +25,7 @@ Faveo depends on the following:
 -   [MySQL 5.7+](https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/)
 
 **LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely 
+If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 **Apache:** If it doesn't come pre-installed with your server, follow the [instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04#step-1-install-apache-and-allow-in-firewall) to setup Apache and config the firewall.
 
