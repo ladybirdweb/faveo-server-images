@@ -14,8 +14,12 @@ wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/
 
 Change execution permission for file.
 
-`chmod +x Faveo-Centos-apache.sh`
+```sh
+chmod +x Faveo-Centos-apache.sh
+```
 
 Execute the script
 
-`./Faveo-Centos-apache.sh`
+```sh
+./Faveo-Centos-apache.sh
+```

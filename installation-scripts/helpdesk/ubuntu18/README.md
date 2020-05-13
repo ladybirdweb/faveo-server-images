@@ -14,8 +14,12 @@ wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18
 
 Change execution permission for file.
 
-`chmod +x Faveo-ubuntu-apache.sh`
+```sh
+chmod +x Faveo-ubuntu-apache.sh
+```
 
 Execute the script
 
-`./Faveo-ubuntu-apache.sh`
+```sh
+./Faveo-ubuntu-apache.sh
+```
