@@ -1,11 +1,11 @@
-# Installing Monica (Generic) <!-- omit in toc -->
+# Installing Faveo Helpdesk Community (Generic) <!-- omit in toc -->
 
 -   [Prerequisites](#prerequisites)
     -   [Types of databases](#types-of-databases)
 -   [Installation steps](#installation-steps)
     -   [1. Clone the repository](#1-clone-the-repository)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Monica](#3-configure-monica)
+    -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [6. Optional: Setup the queues with Redis, Beanstalk or Amazon SQS](#6-optional-setup-the-queues-with-redis-beanstalk-or-amazon-sqs)
@@ -17,17 +17,17 @@
 
 ## Prerequisites
 
-If you don't want to use Docker, the best way to setup the project is to use the same configuration that [Homestead](https://laravel.com/docs/homestead) uses. Basically, Monica depends on the following:
+If you don't want to use Docker, the best way to setup the project is to use the same configuration that [Homestead](https://laravel.com/docs/homestead) uses. Basically, Faveo depends on the following:
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   PHP 7.2+
+-   PHP 7.3+
 -   [Composer](https://getcomposer.org/)
 -   [MySQL](https://www.mysql.com/)
 -   Optional: Redis or Beanstalk
 
 **Git:** Git should come pre-installed with your server. If it doesn't - use the installation instructions in the link.
 
-**PHP:** Install php7.2 minimum, with these extensions:
+**PHP:** Install php7.3 minimum, with these extensions:
 
 -   curl
 -   bcmath
@@ -45,7 +45,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   xml
 -   zip
 
-**Composer:** After you're done installing PHP, you'll need the Composer dependency manager. It is not enough to just install Composer, you also need to make sure it is installed globally for Monica's installation to run smoothly:
+**Composer:** After you're done installing PHP, you'll need the Composer dependency manager. It is not enough to just install Composer, you also need to make sure it is installed globally for Faveo's installation to run smoothly:
 
 ```sh
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -57,7 +57,7 @@ php -r "unlink('composer-setup.php');"
 
 ### Types of databases
 
-The official Monica installation uses mySQL as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Monica as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses mySQL as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 ## Installation steps
 
@@ -65,18 +65,19 @@ Once the softwares above are installed:
 
 ### 1. Clone the repository
 
-You may install Monica by simply cloning the repository. In order for this to work with Apache, which is often pre-packaged with many common linux instances ([DigitalOcean](https://www.digitalocean.com/) droplets are one example), you need to clone the repository in a specific folder:
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, which is often pre-packaged with many common linux instances ([DigitalOcean](https://www.digitalocean.com/) droplets are one example), you need to clone the repository in a specific folder:
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, which is often pre-packaged with many common linux instances ([DigitalOcean](https://www.digitalocean.com/) droplets are one example), you need to clone the repository in a specific folder:
 
 ```sh
 cd /var/www
-git clone https://github.com/monicahq/monica.git
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git
 ```
 
-You should check out a tagged version of Monica since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/monicahq/monica/releases).
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases).
 
 ```sh
-cd /var/www/monica
-git checkout tags/v2.2.1
+cd /var/www/faveo
+git checkout tags/v1.10.7
 ```
 
 ### 2. Setup the database
@@ -87,28 +88,28 @@ Log in with the root account to configure the database.
 mysql -u root -p
 ```
 
-Create a database called 'monica'.
+Create a database called 'faveo'.
 
 ```sql
-CREATE DATABASE monica;
+CREATE DATABASE faveo;
 ```
 
 or if you want to support all character (like emojis):
 
 ```sql
-CREATE DATABASE monica CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE faveo CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
-Create a user called 'monica' and its password 'strongpassword'.
+Create a user called 'faveo' and its password 'strongpassword'.
 
 ```sql
-CREATE USER 'monica'@'localhost' IDENTIFIED BY 'strongpassword';
+CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
 ```
 
-We have to authorize the new user on the monica db so that he is allowed to change the database.
+We have to authorize the new user on the faveo db so that he is allowed to change the database.
 
 ```sql
-GRANT ALL ON monica.* TO 'monica'@'localhost';
+GRANT ALL ON faveo.* TO 'faveo'@'localhost';
 ```
 
 And finally we apply the changes and exit the database.
@@ -118,26 +119,15 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-### 3. Configure Monica
+### 3. GUI Faveo Installer
 
-`cd /var/www/monica` then run these steps:
+Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
 
-1. `cp .env.example .env` to create your own version of all the environment variables needed for the project to work.
-2. Update `.env` to your specific needs
-    - set `DB_USERNAME` and `DB_PASSWORD` with the settings used behind.
-    - configure a [mailserver](/docs/installation/mail.md) for registration & reminders to work correctly.
-    - set the `APP_ENV` variable to `production`, `local` is only used for the development version. Beware: setting `APP_ENV` to `production` will force HTTPS. Skip this if you're running Monica locally.
-3. Run `composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs` to install all packages.
-4. Run `php artisan key:generate` to generate an application key. This will set `APP_KEY` with the right value automatically.
-5. Run `php artisan setup:production -v` to run the migrations, seed the database and symlink folders.
-
-The `setup:production` command will run migrations scripts for database, and flush all cache for config, route, and view, as an optimization process.
-As the configuration of the application is cached, any update on the `.env` file will not be detected after that. You may have to run `php artisan config:cache` manually after every update of `.env` file.
 
 ### 4. Configure cron job
 
-Monica requires some background processes to continuously run. The list of things Monica does in the background is described [here](https://github.com/monicahq/monica/blob/master/app/Console/Kernel.php#L63).
-Basically those crons are needed to send reminder emails and check if a new version is available.
+Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
+Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
 1. Open crontab edit for the apache user:
@@ -149,7 +139,7 @@ crontab -u www-data -e
 2. Then, in the text editor window you just opened, copy the following:
 
 ```
-* * * * *   /usr/bin/php /var/www/monica/artisan schedule:run
+* * * * *   /usr/bin/php /var/www/faveo/artisan schedule:run
 ```
 
 ### 5. Configure Apache webserver
@@ -157,8 +147,8 @@ crontab -u www-data -e
 1. Give proper permissions to the project directory by running:
 
 ```sh
-chgrp -R www-data /var/www/monica
-chmod -R 775 /var/www/monica/storage
+chgrp -R www-data /var/www/faveo
+chmod -R 775 /var/www/faveo/storage
 ```
 
 2. Enable the rewrite module of the Apache webserver:
@@ -167,10 +157,10 @@ chmod -R 775 /var/www/monica/storage
 a2enmod rewrite
 ```
 
-2. Configure a new monica site in apache by doing:
+2. Configure a new faveo site in apache by doing:
 
 ```sh
-nano /etc/apache2/sites-available/monica.conf
+nano /etc/apache2/sites-available/faveo.conf
 ```
 
 3. Then, in the `nano` text editor window you just opened, copy the following - swapping the `YOUR IP ADDRESS/DOMAIN` with your server's IP address/associated domain:
@@ -180,9 +170,9 @@ nano /etc/apache2/sites-available/monica.conf
     ServerName YOUR IP ADDRESS/DOMAIN
 
     ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/monica/public
+    DocumentRoot /var/www/faveo/public
 
-    <Directory /var/www/monica/public>
+    <Directory /var/www/faveo/public>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
@@ -197,7 +187,7 @@ nano /etc/apache2/sites-available/monica.conf
 
 ```sh
 a2dissite 000-default.conf
-a2ensite monica.conf
+a2ensite faveo.conf
 service apache2 restart
 ```
 
@@ -205,7 +195,7 @@ service apache2 restart
 
 ### 6. Optional: Setup the queues with Redis, Beanstalk or Amazon SQS
 
-Monica can work with a queue mechanism to handle different events, so we don't block the main thread while processing stuff that can be run asynchronously, like sending emails. By default, Monica does not use a queue mechanism but can be setup to do so.
+Faveo can work with a queue mechanism to handle different events, so we don't block the main thread while processing stuff that can be run asynchronously, like sending emails. By default, Faveo does not use a queue mechanism but can be setup to do so.
 
 We recommend that you do not use a queue mechanism as it complexifies the overall system and can make debugging harder when things go wrong.
 
@@ -236,7 +226,7 @@ Some process monitor such as [Supervisor](https://laravel.com/docs/master/queues
 
 ### 7. Optional: Setup the access tokens to use the API
 
-In order to use the Monica API for your instance, you will have to instanciate encryption keys first.
+In order to use the Faveo API for your instance, you will have to instanciate encryption keys first.
 
 #### Generate the encryption keys
 
