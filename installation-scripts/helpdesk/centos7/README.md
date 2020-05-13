@@ -7,8 +7,8 @@ https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoi
 
 To run, copy/paste this into the command-line
     
-`yum -y install wget`
-`wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoinstall.sh`
+```yum -y install wget
+wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoinstall.sh```
 
 Change execution permission for file.
 
