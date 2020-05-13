@@ -1,6 +1,6 @@
 # Faveo Helpdesk Freelancer, Enterprise auto install script
 
-Automatic-installation script is available for FRESH CentOS 7 installs at
+Automatic-installation script is available for <b>FRESH CentOS 7</b>b> installs at
 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoinstall.sh
 
 # Run the script
@@ -23,3 +23,5 @@ Execute the script
 ```sh
 ./Faveo-Centos-apache.sh
 ```
+
+Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
