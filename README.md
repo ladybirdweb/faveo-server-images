@@ -60,6 +60,10 @@ We have created script for simple, one click installtion of Faveo.
 * [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
 * [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/readme.md)
 
+**For Faveo Helpdesk Community**
+* [Cent OS 7](/installation-scripts/helpdesk-community/centos7/readme.md)
+* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18-community/readme.md)
+
 <a id="markdown-contributing" name="markdown-contributing"></a>
 ## Contributing
 
