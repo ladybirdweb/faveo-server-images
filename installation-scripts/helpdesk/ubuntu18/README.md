@@ -8,7 +8,9 @@ https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/auto
 To run, copy/paste this into the command-line
 
 ```apt-get install wget -y
-wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/autoinstall.sh```
+
+wget https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/ubuntu18/autoinstall.sh
+```
 
 Change execution permission for file.
 
