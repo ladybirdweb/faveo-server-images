@@ -1,8 +1,8 @@
-# Installing Monica on Ubuntu <!-- omit in toc -->
+# Installing Faveo Helpdesk Community on Ubuntu <!-- omit in toc -->
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
-Monica can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
+Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
 
 -   [Prerequisites](#prerequisites)
     -   [Types of databases](#types-of-databases)
@@ -16,13 +16,16 @@ Monica can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.0
 
 ## Prerequisites
 
-Monica depends on the following:
+Faveo depends on the following:
 
 -   [Apache httpd webserver](https://httpd.apache.org/)
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   PHP 7.2+
+-   PHP 7.3+
 -   [Composer](https://getcomposer.org/)
--   [MySQL](https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/)
+-   [MySQL 5.7+](https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/)
+
+**LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
+If you follow this step, no need to install Apache, PHP, MySQL separetely 
 
 **Apache:** If it doesn't come pre-installed with your server, follow the [instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04#step-1-install-apache-and-allow-in-firewall) to setup Apache and config the firewall.
 
@@ -71,7 +74,7 @@ sudo apt install -y mysql-server
 
 ### Types of databases
 
-The official Monica installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Monica as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 ## Installation steps
 
@@ -79,18 +82,18 @@ Once the softwares above are installed:
 
 ### 1. Clone the repository
 
-You may install Monica by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
 
 ```sh
 cd /var/www
-git clone https://github.com/monicahq/monica.git
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git
 ```
 
-You should check out a tagged version of Monica since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/monicahq/monica/releases):
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases):
 
 ```sh
-cd /var/www/monica
-git checkout tags/v2.2.1
+cd /var/www/faveo
+git checkout tags/v1.10.7
 ```
 
 ### 2. Setup the database
@@ -101,22 +104,22 @@ Log in with the root account to configure the database.
 mysql -u root -p
 ```
 
-Create a database called 'monica'.
+Create a database called 'faveo'.
 
 ```sql
-CREATE DATABASE monica;
+CREATE DATABASE faveo;
 ```
 
-Create a user called 'monica' and its password 'strongpassword'.
+Create a user called 'faveo' and its password 'strongpassword'.
 
 ```sql
 CREATE USER 'monica'@'localhost' IDENTIFIED BY 'strongpassword';
 ```
 
-We have to authorize the new user on the monica db so that he is allowed to change the database.
+We have to authorize the new user on the faveo db so that he is allowed to change the database.
 
 ```sql
-GRANT ALL ON monica.* TO 'monica'@'localhost';
+GRANT ALL ON faveo.* TO 'faveo'@'localhost';
 ```
 
 And finally we apply the changes and exit the database.
@@ -126,32 +129,21 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-### 3. Configure Monica
+### 3. GUI Faveo Installer
 
-`cd /var/www/monica` then run these steps:
+Follow the final installation steps [here] (https://support.faveohelpdesk.com/show/web-gui-installer)
 
-1. `cp .env.example .env` to create your own version of all the environment variables needed for the project to work.
-1. Update `.env` to your specific needs
-    - set `DB_USERNAME` and `DB_PASSWORD` with the settings used behind.
-    - configure a [mailserver](/docs/installation/mail.md) for registration & reminders to work correctly.
-    - set the `APP_ENV` variable to `production`, `local` is only used for the development version. Beware: setting `APP_ENV` to `production` will force HTTPS. Skip this if you're running Monica locally.
-1. Run `composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs` to install all packages.
-1. Run `php artisan key:generate` to generate an application key. This will set `APP_KEY` with the right value automatically.
-1. Run `php artisan setup:production -v` to run the migrations, seed the database and symlink folders.
-    - You can use `email` and `password` parameter to setup a first account directly: `php artisan setup:production --email=your@email.com --password=yourpassword -v`
-1. _Optional_: Setup the queues with Redis, Beanstalk or Amazon SQS: see optional instruction of [generic installation](generic.md#setup-queues)
-1. _Optional_: Setup the access tokens to use the API follow optional instruction of [generic installation](generic.md#setup-access-tokens)
 
 ### 4. Configure cron job
 
-Monica requires some background processes to continuously run. The list of things Monica does in the background is described [here](https://github.com/monicahq/monica/blob/master/app/Console/Kernel.php#L33).
-Basically those crons are needed to send reminder emails and check if a new version is available.
+Faveo requires some background processes to continuously run. The list of things Monica does in the background is described [here](https://github.com/monicahq/monica/blob/master/app/Console/Kernel.php#L33).
+Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
 Create a new `/etc/cron.d/monica` file with:
 
 ```sh
-echo "* * * * * sudo -u www-data php /var/www/monica/artisan schedule:run" | sudo tee /etc/cron.d/monica
+echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
 ```
 
 ### 5. Configure Apache webserver
@@ -159,7 +151,7 @@ echo "* * * * * sudo -u www-data php /var/www/monica/artisan schedule:run" | sud
 1. Give proper permissions to the project directory by running:
 
 ```sh
-sudo chown -R www-data:www-data /var/www/monica
+sudo chown -R www-data:www-data /var/www/faveo
 sudo chmod -R 775 /var/www/monica/storage
 ```
 
@@ -169,10 +161,10 @@ sudo chmod -R 775 /var/www/monica/storage
 sudo a2enmod rewrite
 ```
 
-3. Configure a new monica site in apache by doing:
+3. Configure a new faveo site in apache by doing:
 
 ```sh
-sudo nano /etc/apache2/sites-available/monica.conf
+sudo nano /etc/apache2/sites-available/faveo.conf
 ```
 
 Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
@@ -182,9 +174,9 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
     ServerName **YOUR IP ADDRESS/DOMAIN**
 
     ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/monica/public
+    DocumentRoot /var/www/faveo/public
 
-    <Directory /var/www/monica/public>
+    <Directory /var/www/faveo/public>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
