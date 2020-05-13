@@ -11,6 +11,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
   - [Linux installation instructions for Community version](#markdown-generic-linux-instructions)
   - [Linux installation instructions for Freelancer, paid and Enterprise version](#markdown-generic-linux-instructions-enterprise)
   - [One Click Installer](#markdown-one-click-installer)
+  - [Installation via scripts](#markdown-script-installer)
 - [Contributing](#markdown-contributing)
 - [Help](#markdown-help)
 - [References](#markdown-references)
@@ -51,7 +52,7 @@ Faveo Helpdesk Community can be installed using following installers
 - **Softaculous** https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
 - **Fantastico** https://www.netenberg.com/fantastico.php
 
-<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
+<a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
 We have created script for simple, one click installtion of Faveo.
 
