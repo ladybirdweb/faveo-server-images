@@ -28,6 +28,8 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **MySQL 5.7.x** or MariaDB **10.3+**
 -   Optional: Redis or Beanstalk
 
+Fo complete minimum requirement list check here [https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist](https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist)
+
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
 
