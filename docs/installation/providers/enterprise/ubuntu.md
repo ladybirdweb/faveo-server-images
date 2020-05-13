@@ -1,5 +1,6 @@
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Ubuntu <!-- omit in toc -->
 
+
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
 Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
@@ -13,6 +14,7 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [Final step](#final-step)
+
 
 <a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
@@ -72,15 +74,18 @@ rm -f composer-setup.php
 sudo apt update
 sudo apt install -y mysql-server
 ```
+
 <a id="types-of-databases" name="types-of-databases"></a>
 ### Types of databases
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
+
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
 
 Once the softwares above are installed:
+
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
 ### 1. Upload Faveo
@@ -88,6 +93,23 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 
 ```sh
 /var/www/faveo
+```
+
+<a id="2-setup-the-database" name="2-setup-the-database"></a>
+### 1. Clone the repository
+
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
+
+```sh
+cd /var/www
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git
+```
+
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases):
+
+```sh
+cd /var/www/faveo
+git checkout tags/v1.10.7
 ```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
@@ -123,10 +145,12 @@ And finally we apply the changes and exit the database.
 FLUSH PRIVILEGES;
 exit
 ```
+
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 3. GUI Faveo Installer
 
 Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
+
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 4. Configure cron job
@@ -140,6 +164,7 @@ Create a new `/etc/cron.d/faveo` file with:
 ```sh
 echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
 ```
+
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 5. Configure Apache webserver
 
@@ -194,6 +219,7 @@ sudo a2enconf php7.3-fpm
 sudo service php7.3-fpm restart
 sudo service apache2 restart
 ```
+
 <a id="final-step" name="final-step"></a>
 ### Final step
 
