@@ -31,7 +31,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
 
-The preferred OS distribution is Cent OS 8, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
+The preferred OS distribution is Cent OS 7, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Linux installation instructions for Community version
@@ -56,7 +56,7 @@ Faveo Helpdesk Community can be installed using following installers
 ### Installation via scripts 
 We have created script for simple, one click installtion of Faveo.
 
-**For Faveo Helpdesk Freelancer, enterprise**
+**For Faveo Helpdesk Freelancer & Enterprise**
 * [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
 * [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/readme.md)
 
