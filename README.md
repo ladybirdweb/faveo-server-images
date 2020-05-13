@@ -8,8 +8,8 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 - [Requirements](#requirements)
 - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
-  - [Generic Linux Faveo Community instructions](#markdown-generic-linux-instructions)
-  - [Generic Linux Faveo Freelancer, Enterprise instructions](#markdown-generic-linux-instructions-enterprise)
+  - [Linux installation instructions for Community version](#markdown-generic-linux-instructions)
+  - [Linux installation instructions for Freelancer, paid and Enterprise version](#markdown-generic-linux-instructions-enterprise)
   - [One Click Installer](#markdown-one-click-installer)
 - [Contributing](#markdown-contributing)
 - [Help](#markdown-help)
@@ -33,13 +33,13 @@ If you don't want to use Docker, the best way to setup the project is to use the
 The preferred OS distribution is Cent OS 8, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
-### Generic Linux instructions For Community version
+### Linux installation instructions for Community version
 * [Generic Instructions](/docs/installation/providers/community/generic.md)
 * [Ubuntu](/docs/installation/providers/community/ubuntu.md)
 * [Debian](/docs/installation/providers/community/debian.md)
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
-### Generic Linux instructions For Freelancer, paid and Enterprise version
+### Linux installation instructions for Freelancer, paid and Enterprise version
 * [Generic Instructions](/docs/installation/providers/enterprise/generic.md)
 * [Ubuntu](/docs/installation/providers/enterprise/ubuntu.md)
 * [Debian](/docs/installation/providers/enterprise/debian.md)
@@ -50,6 +50,14 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 Faveo Helpdesk Community can be installed using following installers
 - **Softaculous** https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
 - **Fantastico** https://www.netenberg.com/fantastico.php
+
+<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
+### Installation via scripts 
+We have created script for simple, one click installtion of Faveo.
+
+**For Faveo Helpdesk Freelancer, enterprise**
+* [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
+* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/debian.md)
 
 <a id="markdown-contributing" name="markdown-contributing"></a>
 ## Contributing
