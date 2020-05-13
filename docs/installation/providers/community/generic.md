@@ -19,13 +19,16 @@
 
 If you don't want to use Docker, the best way to setup the project is to use the same configuration that [Homestead](https://laravel.com/docs/homestead) uses. Basically, Faveo depends on the following:
 
--   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   PHP 7.3+
--   [Composer](https://getcomposer.org/)
--   [MySQL](https://www.mysql.com/)
--   Optional: Redis or Beanstalk
+-   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
+-   **Git**
+-   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **Composer**
+-   **MySQL 5.7+** or MariaDB **10.3+**
 
-**Git:** Git should come pre-installed with your server. If it doesn't - use the installation instructions in the link.
+**LAMP Installtion** follow the [instructions here](https://github.com/teddysun/lamp)
+If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+
+**Git:** Git should come pre-installed with your server. If it doesn't please install
 
 **PHP:** Install php7.3 minimum, with these extensions:
 
@@ -224,74 +227,6 @@ Some process monitor such as [Supervisor](https://laravel.com/docs/master/queues
 
 <a id="setup-access-tokens"></a>
 
-### 7. Optional: Setup the access tokens to use the API
-
-In order to use the Faveo API for your instance, you will have to instanciate encryption keys first.
-
-#### Generate the encryption keys
-
-Run this command:
-
-```sh
-php artisan passport:keys
-php artisan passport:client --personal --no-interaction
-```
-
-This command will generate encryption keys in the `storage` directory.
-Be sure to backup the `oauth-private.key` and `oauth-public.key` files to maintain futur access.
-
-#### Optional: Save the encryption keys as variable
-
-Instead of keeping the encryption keys as files, you can add them as environment variable. This is very useful for any environment where you cannot deploy these file in each server (heroku, fortrabbit, etc.).
-
--   Output the private key:
-
-```sh
-sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' storage/oauth-private.key
-```
-
-Copy the output to an environment variable called `PASSPORT_PRIVATE_KEY` in your `.env` file.
-
-```
-PASSPORT_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nMIIJKAIBAAKCAgEAsC..."
-```
-
--   Do the same thing with the contents of the public key:
-
-```sh
-sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' storage/oauth-public.key
-```
-
-Copy the output to an environment variable called `PASSPORT_PUBLIC_KEY` in your `.env` file.
-
-```
-PASSPORT_PUBLIC_KEY="-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhki..."
-```
-
-#### Optional: Generate a Password grant client
-
-A [password grant client](https://laravel.com/docs/master/passport#creating-a-password-grant-client) can be generated in order to use the OAuth access (used in the mobile application for instance).
-
--   Run this command to generate a password grant client:
-
-```sh
-php artisan passport:client --password --no-interaction
-```
-
--   This will display a client ID and secret:
-
-```
-Password grant client created successfully.
-Client ID: 5
-Client secret: zsfOHGnEbadlBP8kLsjOV8hMpHAxb0oAhenfmSqq
-```
-
--   Copy the two values into two new environment variables of your `.env` file:
-
-    -   The value of `Client ID` in a `MOBILE_CLIENT_ID` variable
-    -   The value of `Client secret` in a `MOBILE_CLIENT_SECRET` variable
-
--   OAuth login can be access on `http://localhost/oauth/login`.
 
 ### Final step
 
