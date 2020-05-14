@@ -37,16 +37,17 @@ For complete minimum requirement list check here [https://support.faveohelpdesk.
 The preferred OS distribution is Cent OS 7, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
-### Linux installation instructions for Community version
-* [Generic Instructions](/docs/installation/providers/community/generic.md)
+### Installation instructions for Community version
+* [Generic Instructions Linux](/docs/installation/providers/community/generic.md)
 * [Ubuntu](/docs/installation/providers/community/ubuntu.md)
 * [Debian](/docs/installation/providers/community/debian.md)
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
-### Linux installation instructions for Freelancer, paid and Enterprise version
-* [Generic Instructions](/docs/installation/providers/enterprise/generic.md)
+### Installation instructions for Freelancer, paid and Enterprise version
+* [Generic Instructions Linux](/docs/installation/providers/enterprise/generic.md)
 * [Ubuntu](/docs/installation/providers/enterprise/ubuntu.md)
 * [Debian](/docs/installation/providers/enterprise/debian.md)
+* [Windows 2012 R2](https://support.faveohelpdesk.com/show/faveo-helpdesk-installation-on-windows-server-2012-r2)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
