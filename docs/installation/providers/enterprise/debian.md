@@ -77,25 +77,6 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 ```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
-### 1. Clone the repository
-
-You may install Faveo by simply cloning the repository. Consider cloning the repository into any folder, example here in `/var/www/faveo` directory:
-
-```sh
-cd /var/www/
-sudo git clone https://github.com/ladybirdweb/faveo-helpdesk.git
-```
-
-You should check out a tagged version of Faveo since `master` branch may not always be stable.
-Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
-
-```sh
-cd /var/www/faveo
-# Clone the desired version
-sudo git checkout tags/v1.10.7
-```
-
-<a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
 
 First make the database a bit more secure.
