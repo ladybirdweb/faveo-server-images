@@ -12,6 +12,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
   - [Linux installation instructions for Freelancer, paid and Enterprise version](#markdown-generic-linux-instructions-enterprise)
   - [One Click Installer](#markdown-one-click-installer)
   - [Installation via scripts](#markdown-script-installer)
+  - [Installation on a shared server](#markdown-shared-sever)
 - [Contributing](#markdown-contributing)
 - [Help](#markdown-help)
 - [References](#markdown-references)
@@ -68,6 +69,12 @@ We have created script for simple, one click installtion of Faveo.
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7/readme.md)
 * [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18-community/readme.md)
+
+<a id="markdown-shared-sever" name="markdown-shared-sever"></a>
+### Installation on a shared server
+
+Faveo can also be installed on a shared server, though we highly recommend cloud, VPS or dedicated server for best performance and more control
+* [cPanel](https://support.faveohelpdesk.com/show/faveo-installation-in-cpanel)
 
 <a id="markdown-contributing" name="markdown-contributing"></a>
 ## Contributing
