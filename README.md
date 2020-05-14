@@ -28,7 +28,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **MySQL 5.7.x** or MariaDB **10.3+**
 -   Optional: Redis or Beanstalk
 
-Fo complete minimum requirement list check here [https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist](https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist)
+For complete minimum requirement list check here [https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist](https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist)
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
@@ -58,7 +58,7 @@ Faveo Helpdesk Community can be installed using following installers
 ### Installation via scripts 
 We have created script for simple, one click installtion of Faveo.
 
-**For Faveo Helpdesk Freelancer & Enterprise**
+**For Faveo Helpdesk Freelancer, paid and Enterprise version**
 * [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
 * [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/readme.md)
 

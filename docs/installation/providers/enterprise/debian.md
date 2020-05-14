@@ -1,4 +1,4 @@
-# Installing Faveo Helpdesk Community on Debian <!-- omit in toc -->
+# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Debian <!-- omit in toc -->
 
 <img alt="Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="96" height="127" />
 
@@ -6,13 +6,14 @@ Faveo can run on Debian Buster.
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
-    -   [1. Clone the repository](#1-clone-the-repository)
+    -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
     -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [Final step](#final-step)
 
+<a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
 
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
@@ -59,29 +60,20 @@ sudo apt install -y composer
 ```sh
 sudo apt install -y mariadb-server
 ```
-
+<a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
 
 Once the softwares above are installed:
 
-### 1. Clone the repository
-
-You may install Faveo by simply cloning the repository. Consider cloning the repository into any folder, example here in `/var/www/faveo` directory:
-
-```sh
-cd /var/www/
-sudo git clone https://github.com/ladybirdweb/faveo-helpdesk.git
-```
-
-You should check out a tagged version of Faveo since `master` branch may not always be stable.
-Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
+<a id="1-upload-faveo" name="1-upload-faveo"></a>
+### 1. Upload Faveo
+Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-cd /var/www/faveo
-# Clone the desired version
-sudo git checkout tags/v1.10.7
+/var/www/faveo
 ```
 
+<a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
 
 First make the database a bit more secure.
@@ -121,11 +113,13 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 3. GUI Faveo Installer
 
 Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
 
 
+<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 4. Configure cron job
 
 Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
@@ -144,6 +138,7 @@ Then, in the `crontab` editor window you just opened, paste the following at the
 * * * * * php /var/www/faveo/artisan schedule:run
 ```
 
+<a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 5. Configure Apache webserver
 
 1. Give proper permissions to the project directory by running:
@@ -193,6 +188,7 @@ sudo a2ensite faveo.conf
 sudo systemctl reload apache2
 ```
 
+<a id="final-step" name="final-step"></a>
 ### Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
