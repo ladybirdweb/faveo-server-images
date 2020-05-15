@@ -30,7 +30,13 @@ Faveo depends on the following:
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Apache:** If it doesn't come pre-installed with your server, follow the [instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04#step-1-install-apache-and-allow-in-firewall) to setup Apache and config the firewall.
+**Apache:** Apache should come pre-installed with your server. If it's not, install it with:
+
+```sh
+sudo apt install apache2
+systemctl start apache2
+systemctl enable apache2
+```
 
 **Git:** Git should come pre-installed with your server. If it's not, install it with:
 
@@ -73,6 +79,18 @@ rm -f composer-setup.php
 ```sh
 sudo apt update
 sudo apt install -y mysql-server
+```
+
+After installtion secure your mysql installation. Set a Password for mysql
+
+```sh
+mysql_secure_installation 
+```
+
+**phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+
+```sh
+sudo apt install phpmyadmin
 ```
 
 <a id="types-of-databases" name="types-of-databases"></a>
