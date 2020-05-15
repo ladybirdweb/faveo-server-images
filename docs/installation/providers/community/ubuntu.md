@@ -13,7 +13,8 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [6. Redis Installation](#redis-installation)
-    -   [7. Final step](#final-step)
+    -   [7. SSL Installation](#ssl-installation)
+    -   [8. Final step](#final-step)
 
 <a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
@@ -224,13 +225,22 @@ sudo service php7.3-fpm restart
 sudo service apache2 restart
 ```
 <a id="redis-installation" name="redis-installation"></a>
-### 7. Redis Installation
+### 6. Redis Installation
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
 This is an optional step and will improve system performance and is highly recommended.
 
 [Redis installation documentation](https://support.faveohelpdesk.com/show/install-and-configure-redis-supervisor-and-worker-for-faveo-on-ubuntu-1604)
+
+<a id="ssl-installation" name="ssl-installation"></a>
+### 7. SSL Installation
+
+Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
+
+This is an optional step and will improve system security and is highly recommended.
+
+[Let’s Encrypt SSL installation documentation](https://support.faveohelpdesk.com/show/install-lets-encrypt-ssl-on-ubuntu-18-running-apache-web-server)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
