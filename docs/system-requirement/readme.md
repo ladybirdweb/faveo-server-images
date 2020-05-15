@@ -132,12 +132,12 @@ On IIS, please create a web.config file in the root of your installation directo
 
 ```
 Required Extension(s)
-The URL Rewrite extension is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting SupportPal (see Understanding HTTP Error 500.19).
+The URL Rewrite extension is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
 ```
 
 ```
 Please replace the follow constants in the below code snippet:
-<supportpal_base_url> with your installation base URL
+<faveo_base_url> with your installation base URL
 <absolute_path_to_php_cgi.exe> with the absolute path to your PHP cgi executable
 ```
 
