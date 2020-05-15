@@ -67,6 +67,21 @@ sudo apt install -y php7.3 lib-apache2-mod-php php7.3-mysql \
     php7.3-imap php7.3-ldap php7.3-gmp \
 ```
 
+<b>Setting Up ionCube</b>
+```sh
+wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
+tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
+php -i | grep extension_dir
+```
+Copy ion cube loader to Directory.
+
+```sh
+cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/20190902
+sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+systemctl restart apache2.service
+```
+
 **Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
