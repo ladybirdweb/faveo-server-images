@@ -46,14 +46,14 @@ PHP extensions differ depending on your server, your host and other system varia
 Your PHP configuration must adhere to the following settings:
 
 - ``` ! allow_url_fopen``` **Enabled**
-To use Gravatar and other Faveo features, allow_url_fopen must be enabled in your PHP configuration.
-- IPv6 Support
-If your server has IPv6 networking support, this should be enabled by default. However if not please ensure you have the php-sockets extension enabled and PHP has been compiled with the --enable-ipv6 flag.
-- PNG & JPG Support
-If the PHP GD extension has been manually compiled, please ensure the --with-png-dir and --with-jpeg-dir flags are provided.
-- Disabled functions
-If you're running under a particularly strict environment, please ensure that the following functions are not listed under the disable_functions directive: ini_set
-- Memory Limit
+To use Gravatar and other Faveo features, ```allow_url_fopen``` must be enabled in your PHP configuration.
+- **IPv6 Support**
+If your server has IPv6 networking support, this should be enabled by default. However if not please ensure you have the php-sockets extension enabled and PHP has been compiled with the ```--enable-ipv6``` flag.
+- **PNG & JPG Support**
+If the PHP GD extension has been manually compiled, please ensure the ```--with-png-dir``` and ```--with-jpeg-dir``` flags are provided.
+- **Disabled functions**
+If you're running under a particularly strict environment, please ensure that the following functions are not listed under the ```disable_functions``` directive: ```ini_set```
+- **Memory Limit**
 A minimum of 128MB addressable memory is required to install and use Faveo. We recommend at least 256 MB.
 For assistance on modifying your PHP configuration, please contact your hosting provider or server administrator.
 
@@ -72,8 +72,10 @@ We recommend setting the above directories to 755 permissions. You may also need
 chmod -R 755 /path/to/directory
 chown -R www-data:www-data /path/to/directory
 
+```
 If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories:
 chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory
+```
 
 <a id="iis" name="iis"></a>
 ### IIS (Windows)
@@ -115,8 +117,10 @@ Faveo supports Apache, nginx and IIS web server, in all cases you must enable th
 
 Apache works out of the box, however for nginx and IIS you will need to install the rewrite rules.
 
-HTTP Request Verbs
+```
+**HTTP Request Verbs**
 Please ensure your web server is configured to allow HTTP DELETE, GET, OPTIONS, POST and PUT requests. If using Apache and have mod_allow methods enabled you may need to update your web server configuration to permit the verbs.
+```
 
 <a id="firewall-requirements" name="firewall-requirements"></a>
 ## Firewall Requirements
