@@ -45,7 +45,7 @@ PHP extensions differ depending on your server, your host and other system varia
 ## PHP Settings
 Your PHP configuration must adhere to the following settings:
 
-- ``` ! allow_url_fopen``` *Enabled*
+- ``` ! allow_url_fopen``` **Enabled**
 To use Gravatar and other Faveo features, allow_url_fopen must be enabled in your PHP configuration.
 - IPv6 Support
 If your server has IPv6 networking support, this should be enabled by default. However if not please ensure you have the php-sockets extension enabled and PHP has been compiled with the --enable-ipv6 flag.
