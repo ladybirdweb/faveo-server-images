@@ -77,6 +77,19 @@ sudo apt update
 sudo apt install -y mysql-server
 ```
 
+Secure your mysql installation. Set a Password for mysql by running the command below
+
+```sh
+mysql_secure_installation 
+```
+
+**phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+
+```sh
+sudo apt install phpmyadmin
+```
+
+
 ### Types of databases
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.

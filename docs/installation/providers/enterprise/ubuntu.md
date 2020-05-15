@@ -81,7 +81,7 @@ sudo apt update
 sudo apt install -y mysql-server
 ```
 
-After installtion secure your mysql installation. Set a Password for mysql
+Secure your mysql installation. Set a Password for mysql by running the command below
 
 ```sh
 mysql_secure_installation 
