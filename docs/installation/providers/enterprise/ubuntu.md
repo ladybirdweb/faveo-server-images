@@ -58,9 +58,11 @@ Then install php 7.3 with these extensions:
 
 ```sh
 sudo apt update
-sudo apt install -y php7.3 php7.3-cli php7.3-common php7.3-fpm \
-    php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip \
-    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl php7.3-gd php7.3-gmp
+sudo apt install -y php7.3 lib-apache2-mod-php php7.3-mysql \
+    php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
+    php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
+    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
+    php7.3-imap php7.3-ldap php7.3-gmp \
 ```
 
 **Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
@@ -148,10 +150,9 @@ exit
 ```
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. GUI Faveo Installer
+### 3. Install Faveo
 
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
-
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 4. Configure cron job
@@ -220,8 +221,16 @@ sudo a2enconf php7.3-fpm
 sudo service php7.3-fpm restart
 sudo service apache2 restart
 ```
+<a id="redis-installation" name="redis-installation"></a>
+### 7. Redis Installation
+
+Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+This is an optional step and will improve system performance and is highly recommended.
+
+[Redis installation documentation](https://support.faveohelpdesk.com/show/install-and-configure-redis-supervisor-and-worker-for-faveo-on-ubuntu-1604)
 
 <a id="final-step" name="final-step"></a>
-### Final step
+### 8. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
