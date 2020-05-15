@@ -117,10 +117,30 @@ Faveo supports Apache, nginx and IIS web server, in all cases you must enable th
 
 Apache works out of the box, however for nginx and IIS you will need to install the rewrite rules.
 
+Depending on the web server you are running, you may need to configure it further to run SupportPal correctly - for example, ensuring all the HTTP request verbs (DELETE, GET, OPTIONS, POST and PUT) are enabled. Below is a list of common web servers and steps required for them.
+
+### Apache
+Apache is supported out of the box.
+
+### nginx
+On nginx, please create a new virtual host for Faveo. The below is an example virtual host but will need editing for your specific environment (paths may vary):
+[faveo.conf](installation-scripts/web-server/nginx/faveo.conf)
+
+IIS
+On IIS, please create a web.config file in the root of your installation directory with the below contents:
+[web.config](installation-scripts/web-server/iis/web.config)
+
 ```
-**HTTP Request Verbs**
-Please ensure your web server is configured to allow HTTP DELETE, GET, OPTIONS, POST and PUT requests. If using Apache and have mod_allow methods enabled you may need to update your web server configuration to permit the verbs.
+Required Extension(s)
+The URL Rewrite extension is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting SupportPal (see Understanding HTTP Error 500.19).
 ```
+
+```
+Please replace the follow constants in the below code snippet:
+<supportpal_base_url> with your installation base URL
+<absolute_path_to_php_cgi.exe> with the absolute path to your PHP cgi executable
+```
+
 
 <a id="firewall-requirements" name="firewall-requirements"></a>
 ## Firewall Requirements
