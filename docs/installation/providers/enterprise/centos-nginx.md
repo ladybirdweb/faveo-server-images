@@ -10,9 +10,9 @@ Faveo can run on [Cent OS 8](http://releases.ubuntu.com/18.04/).
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure cron job](#4-configure-cron-job)
-    -   [5. Configure Nginx webserver](#5-configure-apache-webserver)
+    -   [3. Configure Nginx webserver](#5-configure-apache-webserver)
+    -   [4. Install Faveo](#3-gui-faveo-installer)
+    -   [5. Configure cron job](#4-configure-cron-job)
     -   [6. Redis Installation](#redis-installation)
     -   [7. SSL Installation](#ssl-installation)
     -   [8. Final step](#final-step)
@@ -175,30 +175,9 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. Install Faveo
-
-Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
-
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 4. Configure cron job
-
-Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
-Basically those crons are needed to receive emails
-To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
-
-```
-crontab -u www-data -e
-```
-
-Add the below cron line
-
-```
-* * * * * /usr/bin/php /opt/faveo/faveo-helpdesk/artisan schedule:run >> /dev/null 2>&amp;amp;1
-```
 
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure Nginx webserver
+### 3. Configure Nginx webserver
 
 1. Give proper permissions to the project directory by running:
 
@@ -291,6 +270,29 @@ pm.min_spare_servers = 1
 pm.max_spare_servers = 3
 chdir = /
 ```
+
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+### 4. Install Faveo
+
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
+
+<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
+### 5. Configure cron job
+
+Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
+Basically those crons are needed to receive emails
+To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
+
+```
+crontab -u www-data -e
+```
+
+Add the below cron line
+
+```
+* * * * * /usr/bin/php /opt/faveo/faveo-helpdesk/artisan schedule:run >> /dev/null 2>&amp;amp;1
+```
+
 <a id="redis-installation" name="redis-installation"></a>
 ### 6. Redis Installation
 
