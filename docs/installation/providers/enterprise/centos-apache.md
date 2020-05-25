@@ -12,7 +12,9 @@ Faveo can run on [Cent OS 8](http://releases.ubuntu.com/18.04/).
     -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [6. Final step](#final-step)
+    -   [6. Redis Installation](#redis-installation)
+    -   [7. SSL Installation](#ssl-installation)
+    -   [8. Final step](#final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
