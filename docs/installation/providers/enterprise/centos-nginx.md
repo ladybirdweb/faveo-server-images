@@ -186,7 +186,7 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Nginx webserver
 
-1. Give proper permissions to the project directory by running:
+**a.** Give proper permissions to the project directory by running:
 
 ```sh
 chown -R www-data:www-data /opt/faveo 
@@ -196,14 +196,14 @@ chmod -R 755 /opt/faveo/storage
 chmod -R 755 /opt/faveo/bootstrap 
 ```
 
-2. Create a copy of Nginx default config file
+**b.** Create a copy of Nginx default config file
 
 ```
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 wget -O /etc/nginx/nginx.conf https://www.faveohelpdesk.com/user-manual/code/centos7/nginx-conf.txt
 ```
 
-3. Edit domain & create Nginx conf using Nano editor
+**c.** Edit domain & create Nginx conf using Nano editor
 
 ```sh
 nano /etc/nginx/conf.d/faveo-helpdesk.conf
@@ -250,13 +250,13 @@ upstream faveo_php {
 }
 ```
 
-4. Remove default config file
+**d.** Remove default config file
 
 ```sh
 rm -rf /etc/nginx/conf.d/default.conf
 ```
 
-5. Create config file for PHP FPM using vim editor
+**e.** Create config file for PHP FPM using vim editor
 
 ```sh
 nano  /etc/php-fpm.d/faveo_php.conf
