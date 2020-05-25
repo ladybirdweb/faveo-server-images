@@ -28,17 +28,19 @@ Faveo depends on the following:
 -   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation
+
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Update your package list:**
+### b. Update your package list
 
 ```sh
 yum update -y
 ```
 
 
-### Install and enable Remi repository
+### c. Install and enable Remi repository
 
 ```sh
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
@@ -46,7 +48,9 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 sudo yum install yum-utils
 ```
-**Nginx:** Use the below steps to install and start Nginx
+### d. Nginx
+
+Use the below steps to install and start Nginx
 
 ```sh
 yum install nginx
@@ -55,7 +59,7 @@ systemctl enable nginx
 ```
 
 
-**PHP 7.3+:**
+### e. PHP 7.3+
 
 First add this PPA repository:
 
@@ -76,7 +80,8 @@ yum install redis -y
 yum install -y php-pecl-redis.x86_64
 ```
 
-<b>Setting Up ionCube</b>
+**Setting Up ionCube**
+
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -91,7 +96,8 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+### f. Composer(Optional)
+After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 curl -sS https://getcomposer.org/installer | php 
@@ -101,7 +107,7 @@ chmod +x /usr/bin/composer
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** 
+### g. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -120,7 +126,8 @@ Secure your mysql installation. Set a Password for mysql by running the command 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+**phpMyAdmin(Optional):** 
+Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
 yum install phpmyadmin
