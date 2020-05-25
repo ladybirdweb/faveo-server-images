@@ -24,7 +24,6 @@ Faveo can run on [Cent OS 8](http://releases.ubuntu.com/18.04/).
 Faveo depends on the following:
 
 -   **Nginx** 
--   **Git**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
@@ -92,7 +91,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-**Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 curl -sS https://getcomposer.org/installer | php 
@@ -121,7 +120,7 @@ Secure your mysql installation. Set a Password for mysql by running the command 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
 yum install phpmyadmin

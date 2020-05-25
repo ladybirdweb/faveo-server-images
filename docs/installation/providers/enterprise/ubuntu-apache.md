@@ -9,9 +9,9 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure cron job](#4-configure-cron-job)
-    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [4. Install Faveo](#3-gui-faveo-installer)
+    -   [5. Configure cron job](#4-configure-cron-job)
     -   [6. Redis Installation](#redis-installation)
     -   [7. SSL Installation](#ssl-installation)
     -   [8. Final step](#final-step)
@@ -23,7 +23,6 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
--   **Git**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
@@ -44,13 +43,6 @@ apt upgrade -y
 sudo apt install apache2
 systemctl start apache2
 systemctl enable apache2
-```
-
-**Git:** Git should come pre-installed with your server. If it's not, install it with:
-
-```sh
-sudo apt update
-sudo apt install -y git
 ```
 
 **PHP 7.3+:**
@@ -88,7 +80,7 @@ sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' 
 systemctl restart apache2.service
 ```
 
-**Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 cd /tmp
@@ -116,7 +108,7 @@ Secure your mysql installation. Set a Password for mysql by running the command 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
 sudo apt install phpmyadmin
@@ -171,26 +163,8 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. Install Faveo
-
-Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
-
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 4. Configure cron job
-
-Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
-Basically those crons are needed to receive emails
-To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
-
-Create a new `/etc/cron.d/faveo` file with:
-
-```sh
-echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
-```
-
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure Apache webserver
+### 3. Configure Apache webserver
 
 1. Give proper permissions to the project directory by running:
 
@@ -243,6 +217,26 @@ sudo a2enconf php7.3-fpm
 sudo service php7.3-fpm restart
 sudo service apache2 restart
 ```
+
+
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+### 4. Install Faveo
+
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
+
+<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
+### 5. Configure cron job
+
+Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
+Basically those crons are needed to receive emails
+To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
+
+Create a new `/etc/cron.d/faveo` file with:
+
+```sh
+echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
+```
+
 <a id="redis-installation" name="redis-installation"></a>
 ### 6. Redis Installation
 
