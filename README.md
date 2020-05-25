@@ -46,11 +46,11 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise version
 * [Generic Instructions Linux](/docs/installation/providers/enterprise/generic.md)
-* [Cent OS with Apache](/docs/installation/providers/enterprise/centos.md)
+* [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache.md)
 * [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx.md)
-* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu.md)
+* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache.md)
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx.md)
-* [Debian with Apache](/docs/installation/providers/enterprise/debian.md)
+* [Debian with Apache](/docs/installation/providers/enterprise/debian-apache.md)
 * [Windows 2019](/docs/installation/providers/enterprise/windows.md)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
