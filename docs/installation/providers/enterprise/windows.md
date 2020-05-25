@@ -75,7 +75,8 @@ Click on install. It will ask you to set password for mysql ‘root’ user. Ent
 The installation should take few minutes to complete
 
 **Step 4: Enable Cacert.pem file in php.ini file** 
-Step 4(a): Download and extract the pem file save it inside your php directory
+
+**Step 4(a):** Download and extract the pem file save it inside your php directory
 
 (C:\Program Files\iis express\PHP\v7.3)
 
@@ -91,9 +92,9 @@ Note: The location of PHP 7.3 in IIS Server is following. You will need this loc
 
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806641php.png" alt="" />
 
-Step 5: Install Ioncube Loader
+**Step 5: Install Ioncube Loader**
 
-Step 5(a): Download the Ioncube loader from the below link and extract
+**Step 5(a):** Download the Ioncube loader from the below link and extract
 
 [Alternative Link For Downloading IonCube](http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc14_x86-64.zip0)
 
@@ -103,7 +104,7 @@ Step 5(b): Copy the ioncube folder contents and paste it in your document root a
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806754php1.png" alt="" />
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806764php2.png" alt="" />
 
-Step 5(c): Add the below line in your php.ini file
+**Step 5(c):** Add the below line in your php.ini file
 
 ```
 zend_extension = "C:\Program Files\iis express\PHP\v7.3\ext\ioncube/ioncube_loader_win_7.3.dll"
@@ -116,14 +117,15 @@ extension=php_mysqli.dll
 extension=php_pdo_mysql.dll 
 ```
 
-Step 5(d): Run the below URL
+**Step 5(d):** Run the below URL
 
 ```
 your_domain_name/loader-wizard.php
 ```
 
 <img src="https://camo.githubusercontent.com/b41798cb16af8fd8a4c3fde2f7c2121ecb874777/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f6164657275726c2e6a7067" alt="" />
-Step 6: Create Database
+
+**Step 6: Create Database**
 
 Open MySQL 5.5 Command Line Client and run the below commands.
 
@@ -137,7 +139,7 @@ FLUSH PRIVILEGES;
 quit 
 ```
 
-Step 7: Downloading Faveo
+**Step 7: Downloading Faveo**
 
 You need to download Faveo Helpdesk from Faveo billing account. Extract the Faveo content to some folder.
 
