@@ -231,7 +231,7 @@ Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-g
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 5. Configure cron job
 
-Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
+Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
