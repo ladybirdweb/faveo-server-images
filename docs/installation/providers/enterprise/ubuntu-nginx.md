@@ -209,7 +209,7 @@ nano /etc/nginx/conf.d/faveo-helpdesk.conf
 
 Then, in the `nano` text editor window you just opened, copy the following 
 
-```html
+```nginx
 
 upstream faveo_php {
     server unix://opt/faveo/faveo-helpdesk/faveo_php.socket;
