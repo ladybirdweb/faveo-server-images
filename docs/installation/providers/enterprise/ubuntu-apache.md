@@ -213,7 +213,7 @@ sudo nano /etc/apache2/sites-available/faveo.conf
 
 Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
 
-```html
+```apache
 <VirtualHost *:80>
     ServerName **YOUR IP ADDRESS/DOMAIN**
 
