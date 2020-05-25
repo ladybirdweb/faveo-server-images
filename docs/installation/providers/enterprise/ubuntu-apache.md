@@ -22,7 +22,7 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 
 Faveo depends on the following:
 
--   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
+-   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
