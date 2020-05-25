@@ -24,8 +24,8 @@ Faveo depends on the following:
 
 -   **Nginx** 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer**
--   **MySQL 5.7+** or MariaDB **10.3+**
+-   **Composer(Optional)**
+-   **MySQL 5.7+** or **MariaDB 10.3+**
 
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
