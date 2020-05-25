@@ -124,7 +124,7 @@ mysql_secure_installation
 **phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
-sudo apt install phpmyadmin
+yum install phpmyadmin
 ```
 
 
