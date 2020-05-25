@@ -30,6 +30,13 @@ Faveo depends on the following:
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
+**Update your package list:**
+
+```sh
+apt update
+apt upgrade -y
+```
+
 **Nginx:** Use the below steps to install and start Nginx
 
 ```sh
