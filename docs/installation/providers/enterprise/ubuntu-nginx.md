@@ -6,7 +6,6 @@
 Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
 
 -   [Prerequisites](#prerequisites)
-    -   [Types of databases](#types-of-databases)
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
@@ -23,7 +22,7 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 
 Faveo depends on the following:
 
--   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
+-   **Nginx** 
 -   **Git**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
@@ -32,12 +31,12 @@ Faveo depends on the following:
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Apache:** Apache should come pre-installed with your server. If it's not, install it with:
+**Nginx:** Use the below steps to install and start Nginx
 
 ```sh
-sudo apt install apache2
-systemctl start apache2
-systemctl enable apache2
+sudo apt install nginx
+systemctl start nginx
+systemctl enable nginx
 ```
 
 **Git:** Git should come pre-installed with your server. If it's not, install it with:
@@ -93,7 +92,12 @@ rm -f composer-setup.php
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+**Mysql:** 
+
+The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+
+
+Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
 sudo apt update
@@ -111,12 +115,6 @@ mysql_secure_installation
 ```sh
 sudo apt install phpmyadmin
 ```
-
-<a id="types-of-databases" name="types-of-databases"></a>
-### Types of databases
-
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
-
 
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
@@ -184,60 +182,101 @@ Create a new `/etc/cron.d/faveo` file with:
 echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
 ```
 
-<a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure Apache webserver
+### 5. Configure Nginx webserver
 
 1. Give proper permissions to the project directory by running:
 
 ```sh
-sudo chown -R www-data:www-data /var/www/faveo
-sudo chmod -R 775 /var/www/faveo/storage
+chown -R www-data:www-data /opt/faveo 
+chmod -R 755 /opt/faveo 
+chmod -R 755 /opt/faveo/
+chmod -R 755 /opt/faveo/storage 
+chmod -R 755 /opt/faveo/bootstrap 
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+2. Create a copy of Nginx default config file
+
+```
+mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
+wget -O /etc/nginx/nginx.conf https://support.faveohelpdesk.com/uploads/ubuntu16.04/faveo-nginx-conf.txt
+```
+
+3. Edit domain & create Nginx conf using Nano editor
 
 ```sh
-sudo a2enmod rewrite
+nano /etc/nginx/conf.d/faveo-helpdesk.conf
 ```
 
-3. Configure a new faveo site in apache by doing:
-
-```sh
-sudo nano /etc/apache2/sites-available/faveo.conf
-```
-
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
+Then, in the `nano` text editor window you just opened, copy the following 
 
 ```html
-<VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
 
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/faveo/public
-
-    <Directory /var/www/faveo/public>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+upstream faveo_php {
+    server unix://opt/faveo/faveo-helpdesk/faveo_php.socket;
+ }
+      server {
+      listen 80;
+     listen 127.0.0.1:80;        
+     # Edit the following line with the correct information.
+     server_name %(SERVERNAME)s;
+    error_log /var/log/nginx/faveo_error_log;
+    access_log /var/log/nginx/faveo_access_log;
+    root /opt/faveo/faveo-helpdesk/public;
+    index index.php index.html index.htm;
+    error_page 403 404 405 500 501 502 503 504 @error;
+    try_files $uri $uri/ /index.php?$args;
+    location @error {
+           rewrite ^/(.*)$ /index.php?$1;
+    }
+            location ~ /\. { 
+                    deny all;
+    }
+    location ~ /(artisan|composer.json|composer.lock|gulpfile.js|LICENSE|package.json|phpspec.yml|phpunit.xml|README.md|readme.txt|release-notes.txt|server.php)
+ {
+            deny all;
+    }
+    location ~ [^/]\.php(/|$) {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+       include /etc/nginx/fastcgi_params;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass faveo_php; 
+   }
+ }
 ```
 
-4. Apply the new `.conf` file and restart Apache. You can do that by running:
+4. Remove default config file
 
 ```sh
-sudo a2dissite 000-default.conf
-sudo a2ensite faveo.conf
-
-# Enable php7.3 fpm, and restart apache
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.3-fpm
-sudo service php7.3-fpm restart
-sudo service apache2 restart
+rm -rf /etc/nginx/conf.d/default.conf
 ```
+
+5. Create config file for PHP FPM using vim editor
+
+```sh
+nano /etc/php/7.3/fpm/pool.d/faveo_php.conf
+```
+Paste the below content in the conf file.
+
+```
+[faveo_php] 
+user = www-data 
+group = www-data 
+listen = /opt/faveo/faveo-helpdesk/faveo_php.socket 
+listen.owner = www-data listen.group = www-data 
+pm = dynamic pm.max_children = 5 
+pm.start_servers = 2 
+pm.min_spare_servers = 1 
+pm.max_spare_servers = 3 
+chdir = / 
+service mysql restart 
+service nginx restart 
+service php7.3-fpm restart 
+```
+
 <a id="redis-installation" name="redis-installation"></a>
 ### 6. Redis Installation
 
@@ -245,7 +284,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](https://support.faveohelpdesk.com/show/install-and-configure-redis-supervisor-and-worker-for-faveo-on-ubuntu-1604)
+[Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis.md)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### 7. SSL Installation
@@ -254,7 +293,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](https://support.faveohelpdesk.com/show/install-lets-encrypt-ssl-on-ubuntu-18-running-apache-web-server)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl.md)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step

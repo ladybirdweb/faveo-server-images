@@ -6,7 +6,6 @@
 Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
 
 -   [Prerequisites](#prerequisites)
-    -   [Types of databases](#types-of-databases)
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
@@ -31,6 +30,13 @@ Faveo depends on the following:
 
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+
+**Update your package list:**
+
+```sh
+apt update
+apt upgrade -y
+```
 
 **Apache:** Apache should come pre-installed with your server. If it's not, install it with:
 
@@ -93,7 +99,11 @@ rm -f composer-setup.php
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+**Mysql:** 
+
+The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+
+Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
 sudo apt update
@@ -111,11 +121,6 @@ mysql_secure_installation
 ```sh
 sudo apt install phpmyadmin
 ```
-
-<a id="types-of-databases" name="types-of-databases"></a>
-### Types of databases
-
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 
 <a id="installation-steps" name="installation-steps"></a>
@@ -245,7 +250,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](https://support.faveohelpdesk.com/show/install-and-configure-redis-supervisor-and-worker-for-faveo-on-ubuntu-1604)
+[Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis.md)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### 7. SSL Installation
@@ -254,7 +259,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](https://support.faveohelpdesk.com/show/install-lets-encrypt-ssl-on-ubuntu-18-running-apache-web-server)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl.md)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step

@@ -1,9 +1,9 @@
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Windows <!-- omit in toc -->
 
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="120" height="120" />
+<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="65"  />
 
-Faveo can run on [  crosoft.com/en-gb/windows-server).
+Faveo can run on [Windows Server 2019](https://www.microsoft.com/en-au/windows-server).
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
@@ -12,7 +12,7 @@ Faveo can run on [  crosoft.com/en-gb/windows-server).
     -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure Task Scheduler](#4-configure-cron-job)
     -   [5. Configure IIS webserver](#5-configure-apache-webserver)
-    -   [Final step](#final-step)
+    -   [6. Final step](#final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -278,6 +278,6 @@ Now you can open the browser and enter the IP or Domain Name to open Faveo
 
 
 <a id="final-step" name="final-step"></a>
-### Final step
+### 6. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
