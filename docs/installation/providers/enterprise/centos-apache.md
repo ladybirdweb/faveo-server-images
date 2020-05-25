@@ -27,16 +27,17 @@ Faveo depends on the following:
 -   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Update your package list:**
+### b. Update your package list
 
 ```sh
 yum update -y
 ```
 
-**Install and enable Remi repository**
+###  c. Install and enable Remi repository
 
 ```sh
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
@@ -44,7 +45,8 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 sudo yum install yum-utils
 ```
-**Apache:** Apache should come pre-installed with your server. If it's not, install it with:
+###  d. Apache
+Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
 yum install httpd
@@ -53,7 +55,7 @@ systemctl enable httpd
 ```
 
 
-**PHP 7.3+:**
+### e. PHP 7.3+
 
 First add this PPA repository:
 
@@ -89,7 +91,8 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+f. Composer(Optional)
+After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 curl -sS https://getcomposer.org/installer | php 
@@ -99,7 +102,7 @@ chmod +x /usr/bin/composer
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** 
+### g. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -178,7 +181,7 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-1. Give proper permissions to the project directory by running:
+**a.** Give proper permissions to the project directory by running:
 
 ```sh
 chown -R apache:apache /var/www/ 
@@ -189,13 +192,13 @@ chmod -R 755 /var/www/faveo/storage/
 chmod -R 755 /var/www/faveo/bootstrap/ 
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+**b.** Enable the rewrite module of the Apache webserver:
 
 ```sh
 sudo a2enmod rewrite
 ```
 
-3. Configure a new faveo site in apache by doing:
+**c.** Configure a new faveo site in apache by doing:
 
 ```sh
 nano /etc/httpd/conf.d/faveo-helpdesk.conf
@@ -216,7 +219,7 @@ ErrorLog /var/log/httpd/faveo-error.log
 </VirtualHost>
 ```
 
-4. Apply the new `.conf` file and restart Apache. You can do that by running:
+**d.** Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
 systemctl restart httpd.service
