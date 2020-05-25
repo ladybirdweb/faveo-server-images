@@ -6,13 +6,12 @@
 Faveo can run on [  crosoft.com/en-gb/windows-server).
 
 -   [Prerequisites](#prerequisites)
-    -   [Types of databases](#types-of-databases)
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
     -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure cron job](#4-configure-cron-job)
-    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [4. Configure Task Scheduler](#4-configure-cron-job)
+    -   [5. Configure IIS webserver](#5-configure-apache-webserver)
     -   [Final step](#final-step)
 
 
@@ -125,29 +124,9 @@ your_domain_name/loader-wizard.php
 
 <img src="https://camo.githubusercontent.com/b41798cb16af8fd8a4c3fde2f7c2121ecb874777/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f6164657275726c2e6a7067" alt="" />
 
-**Step 6: Create Database**
 
-Open MySQL 5.5 Command Line Client and run the below commands.
 
-```sql
-CREATE DATABASE faveo;
 
-GRANT ALL PRIVILEGES ON faveo.* TO 'faveouser'@'localhost' IDENTIFIED BY 'faveouserpass';
-
-FLUSH PRIVILEGES;
-
-quit 
-```
-
-**Step 7: Downloading Faveo**
-
-You need to download Faveo Helpdesk from Faveo billing account. Extract the Faveo content to some folder.
-
-Copy the Faveo folder to
-
-```
-c:/inetpub/wwwroot/
-```
 
 
 
@@ -161,6 +140,25 @@ Once the softwares above are installed:
 ### 1. Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
+
+```
+c:/inetpub/wwwroot/
+```
+
+<a id="2-setup-the-database" name="2-setup-the-database"></a>
+### 2. Setup the database
+
+Open MySQL 5.5 Command Line Client and run the below commands.
+
+```sql
+CREATE DATABASE faveo;
+
+GRANT ALL PRIVILEGES ON faveo.* TO 'faveouser'@'localhost' IDENTIFIED BY 'faveouserpass';
+
+FLUSH PRIVILEGES;
+
+quit 
+```
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 3. Install Faveo
