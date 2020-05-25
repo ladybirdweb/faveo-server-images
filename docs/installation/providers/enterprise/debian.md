@@ -7,12 +7,11 @@ Faveo can run on Debian Buster.
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
-    -   [1. Clone the repository](#1-clone-the-repository)
     -   [2. Setup the database](#2-setup-the-database)
     -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
     -   [5. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [Final step](#final-step)
+    -   [6. Final step](#final-step)
 
 <a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
@@ -56,7 +55,11 @@ sudo apt install -y php php-bcmath php-gd php-gmp php-curl php-intl \
 sudo apt install -y composer
 ```
 
-**MariaDB:** Install MariaDB. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+**MariaDB:** 
+
+The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+
+Install MariaDB. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
 sudo apt install -y mariadb-server
@@ -117,11 +120,9 @@ exit
 ```
 
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. GUI Faveo Installer
+### 3. Install Faveo
 
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
-
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
 
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
@@ -195,6 +196,6 @@ sudo systemctl reload apache2
 
 
 <a id="final-step" name="final-step"></a>
-### Final step
+### 6. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
