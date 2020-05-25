@@ -38,7 +38,7 @@ yum update -y
 ```
 
 
-**Install and enable Remi repository **
+### Install and enable Remi repository
 
 ```sh
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
