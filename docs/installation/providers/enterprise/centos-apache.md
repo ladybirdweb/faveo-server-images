@@ -37,8 +37,7 @@ If you follow this step, no need to install Apache, PHP, MySQL separetely as lis
 yum update -y
 ```
 
-
-**Install and enable Remi repository **
+**Install and enable Remi repository**
 
 ```sh
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
@@ -123,7 +122,7 @@ mysql_secure_installation
 **phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
-sudo apt install phpmyadmin
+yum install phpmyadmin
 ```
 
 
