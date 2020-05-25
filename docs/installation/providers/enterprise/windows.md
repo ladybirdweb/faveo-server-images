@@ -1,9 +1,9 @@
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Windows <!-- omit in toc -->
 
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
+<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="120" height="120" />
 
-Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
+Faveo can run on [  crosoft.com/en-gb/windows-server).
 
 -   [Prerequisites](#prerequisites)
     -   [Types of databases](#types-of-databases)
@@ -21,64 +21,132 @@ Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04
 
 Faveo depends on the following:
 
--   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
--   **Git**
+-   **IIS**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**
 -   **MySQL 5.7+** or MariaDB **10.3+**
+-   **Task Scheduler+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+**Step 1: Install IIS server** 
+To install IIS, open windows manager and go to Manage button on top. Click add/remover role and select IIS in server Roles and click next..
 
-**Apache:** If it doesn't come pre-installed with your server, follow the [instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04#step-1-install-apache-and-allow-in-firewall) to setup Apache and config the firewall.
+Select the Server Roles
 
-**Git:** Git should come pre-installed with your server. If it's not, install it with:
+-   File and Storage Services
+-   Web Server(IIS)
 
-```sh
-sudo apt update
-sudo apt install -y git
+<img src="https://camo.githubusercontent.com/9419f38c09fee84514e6e8c8e118cd5fe1e7a822/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f312e6a7067" alt="" />
+Select the Features
+
+-   .NET Framework 3.5 (Full package)
+-   .NET Framework 4.5 (Full Package)
+    
+    <img src="https://camo.githubusercontent.com/067c8e6308a463f326fbbaaaa35d43c6c51a730c/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f322e6a7067" alt="" />
+
+Click Next and confirm the settings. It will get the IIS installed on the server. To verify the installation, you can type the following url in the browser
+
+```
+http://localhost
 ```
 
-**PHP 7.3+:**
+**Step 2: Download & install Web platform installer**
 
-First add this PPA repository:
+To make the installation easy and smooth, we will be using Web platform Installer. It is a special tool provided by Microsoft for quick installation of most of our requirement. You can download it from following link
 
-```sh
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ondrej/php
+[Click here to download Web platform installer](https://www.microsoft.com/web/downloads/platform.aspx)
+
+
+**Step 3: Installation of Packages** 
+
+Open the Web Platform Installer and search the following Extensions to add
+
+-   PHP 7.3
+-   PHP Manager for IIS
+-   URLRewrite
+-   MySQL for Windows 5.7
+-   MySQL Connector/Net
+
+<img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806536webplatform.png" alt="" />
+
+-   [Alternative Link For Downloading PHP Manager](https://www.faveohelpdesk.com/user-manual/windows_installation/phpmanager.zip)
+
+Click on install. It will ask you to set password for mysql ‘root’ user. Enter some strong password and remember it for later use.
+
+The installation should take few minutes to complete
+
+**Step 4: Enable Cacert.pem file in php.ini file** 
+Step 4(a): Download and extract the pem file save it inside your php directory
+
+(C:\Program Files\iis express\PHP\v7.3)
+
+[Alternative Link For Downloading pem file](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)
+
+**Step 4(b):** Uncomment the below line and add the directory of the file in your php.ini file
+
+```
+curl.cainfo = "C:\Program Files\iis express\PHP\v7.3\cacert.pem"
 ```
 
-Then install php 7.3 with these extensions:
+Note: The location of PHP 7.3 in IIS Server is following. You will need this location to add extensions in your websites.
 
-```sh
-sudo apt update
-sudo apt install -y php7.3 php7.3-cli php7.3-common php7.3-fpm \
-    php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip \
-    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl php7.3-gd php7.3-gmp
+<img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806641php.png" alt="" />
+
+Step 5: Install Ioncube Loader
+
+Step 5(a): Download the Ioncube loader from the below link and extract
+
+[Alternative Link For Downloading IonCube](http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc14_x86-64.zip0)
+
+Step 5(b): Copy the ioncube folder contents and paste it in your document root and ext folderinside your php folder
+
+<img src="https://camo.githubusercontent.com/7b51511f7442ea3ee1171a17756fc0f5d035b849/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f616465726c6f6164657277697a617264646f63756d656e74726f6f742e6a7067" alt="" />
+<img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806754php1.png" alt="" />
+<img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806764php2.png" alt="" />
+
+Step 5(c): Add the below line in your php.ini file
+
+```
+zend_extension = "C:\Program Files\iis express\PHP\v7.3\ext\ioncube/ioncube_loader_win_7.3.dll"
 ```
 
-**Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+Uncomment the below MySQL extension's in php.ini file
 
-```sh
-cd /tmp
-curl -s https://getcomposer.org/installer -o composer-setup.php
-sudo php composer-setup.php --install-dir=/usr/local/bin/ --filename=composer
-rm -f composer-setup.php
+```
+extension=php_mysqli.dll
+extension=php_pdo_mysql.dll 
 ```
 
-(or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
+Step 5(d): Run the below URL
 
-**Mysql:** Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
-
-```sh
-sudo apt update
-sudo apt install -y mysql-server
+```
+your_domain_name/loader-wizard.php
 ```
 
-<a id="types-of-databases" name="types-of-databases"></a>
-### Types of databases
+<img src="https://camo.githubusercontent.com/b41798cb16af8fd8a4c3fde2f7c2121ecb874777/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f6164657275726c2e6a7067" alt="" />
+Step 6: Create Database
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+Open MySQL 5.5 Command Line Client and run the below commands.
+
+```sql
+CREATE DATABASE faveo;
+
+GRANT ALL PRIVILEGES ON faveo.* TO 'faveouser'@'localhost' IDENTIFIED BY 'faveouserpass';
+
+FLUSH PRIVILEGES;
+
+quit 
+```
+
+Step 7: Downloading Faveo
+
+You need to download Faveo Helpdesk from Faveo billing account. Extract the Faveo content to some folder.
+
+Copy the Faveo folder to
+
+```
+c:/inetpub/wwwroot/
+```
+
 
 
 <a id="installation-steps" name="installation-steps"></a>
@@ -91,117 +159,123 @@ Once the softwares above are installed:
 ### 1. Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
-```sh
-/var/www/faveo
-```
-
-<a id="2-setup-the-database" name="2-setup-the-database"></a>
-### 2. Setup the database
-
-Log in with the root account to configure the database.
-
-```sh
-mysql -u root -p
-```
-
-Create a database called 'faveo'.
-
-```sql
-CREATE DATABASE faveo;
-```
-
-Create a user called 'faveo' and its password 'strongpassword'.
-
-```sql
-CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
-```
-
-We have to authorize the new user on the faveo db so that he is allowed to change the database.
-
-```sql
-GRANT ALL ON faveo.* TO 'faveo'@'localhost';
-```
-
-And finally we apply the changes and exit the database.
-
-```sql
-FLUSH PRIVILEGES;
-exit
-```
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. GUI Faveo Installer
+### 3. Install Faveo
 
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
+
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
 
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 4. Configure cron job
+### 4. Configure Task Scheduler
 
-Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
-Basically those crons are needed to receive emails
-To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
+In Windows there is a task scheduler. You open it by pressing 
 
-Create a new `/etc/cron.d/faveo` file with:
+<img src="" alt="" />
+ + R and Type "taskschd.msc".
 
-```sh
-echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
+To Setup Schedule task for Faveo. Open Task scheduler on server and follow this steps
+
+Right click Task scheduler and select “create basic task” and enter a name
+
+ 
+
+Select the Task Running options Daily
+
+In program/script field enter the following value:
+
 ```
+C:\Windows\System32\cmd.exe
+```
+
+Add following value in Argument :
+
+```
+/c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+```
+
+<img src="https://camo.githubusercontent.com/a203455406db5105822688c8a495d5aec323c454/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f77696e646f77732e706e67" alt="" />
+After that, the schedule task would appear on the list. Right click the task and go to properties -> Triggers
+
+Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
+<img src="" alt="" />
+
 
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure Apache webserver
+### 5. Configure IIS webserver
 
-1. Give proper permissions to the project directory by running:
+1. Configure web.config file for IIS
 
-```sh
-sudo chown -R www-data:www-data /var/www/faveo
-sudo chmod -R 775 /var/www/faveo/storage
+Copy the Contents Below and save the file under /faveo/public/ as web.config.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <system.webServer>
+
+        <rewrite>
+
+            <rules>
+
+                <rule name="Imported Rule 1" stopProcessing="true">
+
+                    <match url="^" ignoreCase="false" />
+
+                    <conditions logicalGrouping="MatchAll">
+
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+
+                    </conditions>
+
+                    <action type="Rewrite" url="index.php" />
+
+                </rule>
+
+            </rules>
+
+        </rewrite>
+
+    </system.webServer>
+
+</configuration>
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+2. Give Permissions to the Faveo folder
 
-```sh
-sudo a2enmod rewrite
+We need to give full write permission to following folders
+
+```
+/storage
+
+/public
+
+/bootstrap/cache
 ```
 
-3. Configure a new faveo site in apache by doing:
+<img src="https://camo.githubusercontent.com/f133d3f80548c359f3b4f54b109422bfd428b406/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f31312e6a7067" alt="" />
 
-```sh
-sudo nano /etc/apache2/sites-available/faveo.conf
+
+Open IIS and go to default website.
+
+Click on Basic Setting on the right pane. And set the path of root folder to following
+
 ```
-
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
-
-```html
-<VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
-
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/faveo/public
-
-    <Directory /var/www/faveo/public>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+C:\inetpub\wwwroot\faveo\public
 ```
+<img src="https://camo.githubusercontent.com/37530a227e367268afd3106b89f1e1dd343e1fdf/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f362e6a7067" alt="" />
+To Open the Faveo on your your domain , you must set the binding.
 
-4. Apply the new `.conf` file and restart Apache. You can do that by running:
+Go to Bindings option on right pane and select “HTTP” and edit the hostname to your concern.
 
-```sh
-sudo a2dissite 000-default.conf
-sudo a2ensite faveo.conf
+ 
 
-# Enable php7.3 fpm, and restart apache
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.3-fpm
-sudo service php7.3-fpm restart
-sudo service apache2 restart
-```
+Now you can open the browser and enter the IP or Domain Name to open Faveo
+
 
 <a id="final-step" name="final-step"></a>
 ### Final step
