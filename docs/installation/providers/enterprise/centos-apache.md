@@ -3,7 +3,7 @@
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [Cent OS 8](http://releases.ubuntu.com/18.04/).
+Faveo can run on [Cent OS 8](https://www.centos.org/download/).
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
