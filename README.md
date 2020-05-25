@@ -29,7 +29,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **MySQL 5.7.x** or MariaDB **10.3+**
 -   Optional: Redis or Beanstalk
 
-For complete minimum requirement list check here [https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist](https://support.faveohelpdesk.com/show/preinstallation-and-preupgradation-checklist)
+For complete minimum requirement list check here [/system-requirement/readme.md](/system-requirement/readme.md)
 
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
@@ -46,9 +46,12 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise version
 * [Generic Instructions Linux](/docs/installation/providers/enterprise/generic.md)
-* [Ubuntu](/docs/installation/providers/enterprise/ubuntu.md)
-* [Debian](/docs/installation/providers/enterprise/debian.md)
-* [Windows 2012 R2](https://support.faveohelpdesk.com/show/faveo-helpdesk-installation-on-windows-server-2012-r2)
+* [Cent OS with Apache](/docs/installation/providers/enterprise/centos.md)
+* [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx.md)
+* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu.md)
+* [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx.md)
+* [Debian with Apache](/docs/installation/providers/enterprise/debian.md)
+* [Windows 2019](/docs/installation/providers/enterprise/windows.md)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 

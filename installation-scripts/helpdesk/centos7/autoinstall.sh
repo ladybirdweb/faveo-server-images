@@ -43,6 +43,7 @@ FWZONE=$(firewall-cmd --get-default-zone)
 firewall-cmd --zone=$FWZONE --add-service=http --permanent
 firewall-cmd --zone=$FWZONE --add-service=https --permanent
 firewall-cmd --reload
+
 yum -y install epel-release
 yum -y install https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
