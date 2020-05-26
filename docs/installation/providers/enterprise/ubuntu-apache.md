@@ -80,6 +80,7 @@ tar xvfz ioncube_loaders_lin_x86-64.tar.gz
 php -i | grep extension_dir
 ```
 Make the note of path and directory from the above command.
+
 Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
 
 ```sh
