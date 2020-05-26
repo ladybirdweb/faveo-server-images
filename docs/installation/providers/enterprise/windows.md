@@ -22,7 +22,7 @@ Faveo depends on the following:
 
 -   **IIS**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer**
+-   **Composer(optional)**
 -   **MySQL 5.7+** or MariaDB **10.3+**
 -   **Task Scheduler+**
 
