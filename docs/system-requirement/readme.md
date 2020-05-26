@@ -126,11 +126,11 @@ Apache is supported out of the box.
 
 ### nginx
 On nginx, please create a new virtual host for Faveo. The below is an example virtual host but will need editing for your specific environment (paths may vary):
-[faveo.conf](/docs/installation-scripts/web-server/nginx/faveo.conf)
+[faveo.conf](/installation-scripts/web-server/nginx/faveo.conf)
 
 ### IIS
 On IIS, please create a web.config file in the root of your installation directory with the below contents:
-[web.config](/docs/installation-scripts/web-server/iis/web.config)
+[web.config](/installation-scripts/web-server/iis/web.config)
 
 
 **Required Extension(s)**
