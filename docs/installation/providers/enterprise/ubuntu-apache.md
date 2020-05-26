@@ -27,31 +27,39 @@ Faveo depends on the following:
 -   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Update your package list:**
+Login as root user by typing the command below
+
+```sh
+sudo su
+```
+
+### b. Update your package list
 
 ```sh
 apt update
 apt upgrade -y
 ```
 
-**Apache:** Apache should come pre-installed with your server. If it's not, install it with:
+### c. Apache
+Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
-sudo apt install apache2
+apt install apache2
 systemctl start apache2
 systemctl enable apache2
 ```
 
-**PHP 7.3+:**
+### d. PHP 7.3+
 
 First add this PPA repository:
 
 ```sh
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ondrej/php
+apt-get install -y software-properties-common
+add-apt-repository ppa:ondrej/php
 ```
 
 Then install php 7.3 with these extensions:
@@ -80,7 +88,8 @@ sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' 
 systemctl restart apache2 
 ```
 
-**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+### e. Composer(Optional)
+After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 cd /tmp
@@ -91,7 +100,7 @@ rm -f composer-setup.php
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** 
+### f. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -166,20 +175,20 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-1. Give proper permissions to the project directory by running:
+#### a. Give proper permissions to the project directory by running:
 
 ```sh
 sudo chown -R www-data:www-data /var/www/faveo
 sudo chmod -R 775 /var/www/faveo/storage
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+#### b. Enable the rewrite module of the Apache webserver:
 
 ```sh
 sudo a2enmod rewrite
 ```
 
-3. Configure a new faveo site in apache by doing:
+#### c. Configure a new faveo site in apache by doing:
 
 ```sh
 sudo nano /etc/apache2/sites-available/faveo.conf
@@ -205,7 +214,7 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 </VirtualHost>
 ```
 
-4. Apply the new `.conf` file and restart Apache. You can do that by running:
+#### d. Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
 sudo a2dissite 000-default.conf
