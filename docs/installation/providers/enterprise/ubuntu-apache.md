@@ -79,12 +79,13 @@ wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.t
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 php -i | grep extension_dir
 ```
-Copy ion cube loader to Directory.
+Make the note of path and directory from the above command.
+Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
 
 ```sh
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/20190902
-sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/yourpath
+sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
 systemctl restart apache2 
 ```
 
