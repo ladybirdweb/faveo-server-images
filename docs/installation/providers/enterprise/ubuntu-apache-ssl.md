@@ -42,12 +42,12 @@ certbot --apache -d example.com -d www.example.com
 
 ## Setting up auto renewal of the certificate
 
-Create new cron job for automatic renewal
+Create new cron job for automatic renewal of SSL
 
 This job can be safely scheduled to run every Monday at midnight:
 
+Create a new `/etc/cron.d/faveo-ssl` file with:
+
 ```sh
-crontab -e
- 
-45 2 * * 6 cd /etc/letsencrypt/ && ./certbot-auto renew && /etc/init.d/apache2 restart 
+echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot-auto renew && /etc/init.d/apache2 restart " | sudo tee /etc/cron.d/faveo-ssl
 ```

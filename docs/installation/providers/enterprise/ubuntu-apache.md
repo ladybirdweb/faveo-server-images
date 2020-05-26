@@ -62,7 +62,7 @@ sudo apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp \
+    php7.3-imap php7.3-ldap php7.3-gmp 
 ```
 
 <b>Setting Up ionCube</b>
@@ -77,7 +77,7 @@ Copy ion cube loader to Directory.
 cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/20190902
 sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
-systemctl restart apache2.service
+systemctl restart apache2 
 ```
 
 **Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
@@ -234,7 +234,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
+echo "* * * * * www-data /usr/bin/php7.3 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
