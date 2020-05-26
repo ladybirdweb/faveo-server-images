@@ -43,13 +43,14 @@ sudo apt install -y php php-bcmath php-gd php-gmp php-curl php-intl \
     php-mbstring php-mysql php-xml php-zip
 ```
 
-**Composer(Optional):** After you're done installing PHP, you'll need the Composer dependency manager.
+### d. Composer(Optional)
+After you're done installing PHP, you'll need the Composer dependency manager.
 
 ```sh
 sudo apt install -y composer
 ```
 
-### d. MariaDB:
+### e. MariaDB:
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
