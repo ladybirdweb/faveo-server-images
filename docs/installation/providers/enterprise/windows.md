@@ -9,9 +9,9 @@ Faveo can run on [Windows Server 2019](https://www.microsoft.com/en-au/windows-s
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure Task Scheduler](#4-configure-cron-job)
-    -   [5. Configure IIS webserver](#5-configure-apache-webserver)
+    -   [3. Configure IIS webserver](#5-configure-apache-webserver)
+    -   [4. Install Faveo](#3-gui-faveo-installer)
+    -   [5. Configure Task Scheduler](#4-configure-cron-job)
     -   [6. Final step](#final-step)
 
 
@@ -136,6 +136,7 @@ your_domain_name/loader-wizard.php
 Once the softwares above are installed:
 
 
+
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
 ### 1. Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
@@ -160,50 +161,8 @@ FLUSH PRIVILEGES;
 quit 
 ```
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 3. Install Faveo
-
-
-Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
-
-
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 4. Configure Task Scheduler
-
-In Windows there is a task scheduler. You open it by pressing 
-
-<img src="" alt="" />
- + R and Type "taskschd.msc".
-
-To Setup Schedule task for Faveo. Open Task scheduler on server and follow this steps
-
-Right click Task scheduler and select “create basic task” and enter a name
-
- 
-
-Select the Task Running options Daily
-
-In program/script field enter the following value:
-
-```
-C:\Windows\System32\cmd.exe
-```
-
-Add following value in Argument :
-
-```
-/c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
-```
-
-<img src="https://camo.githubusercontent.com/a203455406db5105822688c8a495d5aec323c454/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f77696e646f77732e706e67" alt="" />
-After that, the schedule task would appear on the list. Right click the task and go to properties -> Triggers
-
-Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
-<img src="" alt="" />
-
-
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure IIS webserver
+### 3. Configure IIS webserver
 
 1. Configure web.config file for IIS
 
@@ -275,6 +234,49 @@ Go to Bindings option on right pane and select “HTTP” and edit the hostname 
  
 
 Now you can open the browser and enter the IP or Domain Name to open Faveo
+
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+### 4. Install Faveo
+
+
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
+
+
+<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
+### 5. Configure Task Scheduler
+
+In Windows there is a task scheduler. You open it by pressing 
+
+<img src="" alt="" />
+ + R and Type "taskschd.msc".
+
+To Setup Schedule task for Faveo. Open Task scheduler on server and follow this steps
+
+Right click Task scheduler and select “create basic task” and enter a name
+
+ 
+
+Select the Task Running options Daily
+
+In program/script field enter the following value:
+
+```
+C:\Windows\System32\cmd.exe
+```
+
+Add following value in Argument :
+
+```
+/c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+```
+
+<img src="https://camo.githubusercontent.com/a203455406db5105822688c8a495d5aec323c454/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f77696e646f77732e706e67" alt="" />
+After that, the schedule task would appear on the list. Right click the task and go to properties -> Triggers
+
+Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
+<img src="" alt="" />
+
+
 
 
 <a id="final-step" name="final-step"></a>
