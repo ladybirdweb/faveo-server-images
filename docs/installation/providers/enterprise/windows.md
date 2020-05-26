@@ -25,7 +25,7 @@ Faveo depends on the following:
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 -   **Task Scheduler+**
 
-**Step 1: Install IIS server** 
+### Step 1: Install IIS server
 To install IIS, open windows manager and go to Manage button on top. Click add/remover role and select IIS in server Roles and click next..
 
 Select the Server Roles
@@ -47,14 +47,14 @@ Click Next and confirm the settings. It will get the IIS installed on the server
 http://localhost
 ```
 
-**Step 2: Download & install Web platform installer**
+### Step 2: Download & install Web platform installer
 
 To make the installation easy and smooth, we will be using Web platform Installer. It is a special tool provided by Microsoft for quick installation of most of our requirement. You can download it from following link
 
 [Click here to download Web platform installer](https://www.microsoft.com/web/downloads/platform.aspx)
 
 
-**Step 3: Installation of Packages** 
+### Step 3: Installation of Packages
 
 Open the Web Platform Installer and search the following Extensions to add
 
@@ -72,15 +72,17 @@ Click on install. It will ask you to set password for mysql ‘root’ user. Ent
 
 The installation should take few minutes to complete
 
-**Step 4: Enable Cacert.pem file in php.ini file** 
+### Step 4: Enable Cacert.pem file in php.ini file
 
-**Step 4(a):** Download and extract the pem file save it inside your php directory
+#### Step 4(a)
+Download and extract the pem file save it inside your php directory
 
 (C:\Program Files\iis express\PHP\v7.3)
 
 [Alternative Link For Downloading pem file](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)
 
-**Step 4(b):** Uncomment the below line and add the directory of the file in your php.ini file
+#### Step 4(b)
+Uncomment the below line and add the directory of the file in your php.ini file
 
 ```
 curl.cainfo = "C:\Program Files\iis express\PHP\v7.3\cacert.pem"
@@ -90,19 +92,22 @@ Note: The location of PHP 7.3 in IIS Server is following. You will need this loc
 
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806641php.png" alt="" />
 
-**Step 5: Install Ioncube Loader**
+### Step 5: Install Ioncube Loader
 
-**Step 5(a):** Download the Ioncube loader from the below link and extract
+#### Step 5(a)
+Download the Ioncube loader from the below link and extract
 
 [Alternative Link For Downloading IonCube](http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc14_x86-64.zip0)
 
-Step 5(b): Copy the ioncube folder contents and paste it in your document root and ext folderinside your php folder
+#### Step 5(b)
+Copy the ioncube folder contents and paste it in your document root and ext folderinside your php folder
 
 <img src="https://camo.githubusercontent.com/7b51511f7442ea3ee1171a17756fc0f5d035b849/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f616465726c6f6164657277697a617264646f63756d656e74726f6f742e6a7067" alt="" />
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806754php1.png" alt="" />
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806764php2.png" alt="" />
 
-**Step 5(c):** Add the below line in your php.ini file
+#### Step 5(c)
+Add the below line in your php.ini file
 
 ```
 zend_extension = "C:\Program Files\iis express\PHP\v7.3\ext\ioncube/ioncube_loader_win_7.3.dll"
@@ -115,7 +120,8 @@ extension=php_mysqli.dll
 extension=php_pdo_mysql.dll 
 ```
 
-**Step 5(d):** Run the below URL
+#### Step 5(d)
+Run the below URL
 
 ```
 your_domain_name/loader-wizard.php
@@ -124,22 +130,14 @@ your_domain_name/loader-wizard.php
 <img src="https://camo.githubusercontent.com/b41798cb16af8fd8a4c3fde2f7c2121ecb874777/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f6164657275726c2e6a7067" alt="" />
 
 
-
-
-
-
-
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
 
 Once the softwares above are installed:
 
-
-
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
 ### 1. Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
-
 
 ```
 c:/inetpub/wwwroot/
@@ -237,7 +235,6 @@ Now you can open the browser and enter the IP or Domain Name to open Faveo
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 4. Install Faveo
 
-
 Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
 
 
@@ -251,9 +248,7 @@ In Windows there is a task scheduler. You open it by pressing
 
 To Setup Schedule task for Faveo. Open Task scheduler on server and follow this steps
 
-Right click Task scheduler and select “create basic task” and enter a name
-
- 
+Right click Task scheduler and select “create basic task” and enter a name 
 
 Select the Task Running options Daily
 
@@ -274,9 +269,6 @@ After that, the schedule task would appear on the list. Right click the task and
 
 Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
 <img src="" alt="" />
-
-
-
 
 <a id="final-step" name="final-step"></a>
 ### 6. Final step
