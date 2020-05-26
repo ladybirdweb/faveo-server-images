@@ -8,9 +8,9 @@ Faveo can run on Debian Buster.
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure cron job](#4-configure-cron-job)
+    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [4. Install Faveo](#3-gui-faveo-installer)
+    -   [5. Configure cron job](#4-configure-cron-job)
     -   [6. Final step](#final-step)
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -18,23 +18,24 @@ Faveo can run on Debian Buster.
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer(optional)**
+-   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 An editor like vim or nano should be useful too.
 
-**Apache:** Install Apache with:
+### b. Apache
+Install Apache with:
 
 ```sh
 sudo apt update
 sudo apt install -y apache2
 ```
 
-**PHP:**
-
+### c. PHP
 Install PHP 7.3 with these extensions:
 
 ```sh
@@ -42,13 +43,13 @@ sudo apt install -y php php-bcmath php-gd php-gmp php-curl php-intl \
     php-mbstring php-mysql php-xml php-zip
 ```
 
-**Composer(optional):** After you're done installing PHP, you'll need the Composer dependency manager.
+**Composer(Optional):** After you're done installing PHP, you'll need the Composer dependency manager.
 
 ```sh
 sudo apt install -y composer
 ```
 
-**MariaDB:** 
+### d. MariaDB:
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -112,33 +113,8 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-
-### 3. Install Faveo
-
-Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
-
-
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 4. Configure cron job
-
-Faveo requires some background processes to continuously run. 
-Basically those crons are needed to receive emails
-To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
-
-Run the crontab command:
-
-```sh
-crontab -u www-data -e
-```
-
-Then, in the `crontab` editor window you just opened, paste the following at the end of the document:
-
-```sh
-* * * * * php /var/www/faveo/artisan schedule:run
-```
-
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 5. Configure Apache webserver
+### 3. Configure Apache webserver
 
 1. Give proper permissions to the project directory by running:
 
@@ -187,6 +163,29 @@ sudo a2ensite faveo.conf
 sudo systemctl reload apache2
 ```
 
+### 4. Install Faveo
+
+Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
+
+
+<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
+### 5. Configure cron job
+
+Faveo requires some background processes to continuously run. 
+Basically those crons are needed to receive emails
+To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
+
+Run the crontab command:
+
+```sh
+crontab -u www-data -e
+```
+
+Then, in the `crontab` editor window you just opened, paste the following at the end of the document:
+
+```sh
+* * * * * php /var/www/faveo/artisan schedule:run
+```
 
 <a id="final-step" name="final-step"></a>
 ### 6. Final step
