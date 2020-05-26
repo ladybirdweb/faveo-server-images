@@ -8,19 +8,18 @@ Faveo can run on Debian Buster.
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)
+    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [3. Install Faveo](#3-gui-faveo-installer)
     -   [4. Configure cron job](#4-configure-cron-job)
-    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
     -   [6. Final step](#final-step)
 
 <a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
 
--   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
--   **Git**
+-   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer**
--   **MySQL 5.7+** or MariaDB **10.3+**
+-   **Composer(optional)**
+-   **MySQL 5.7+** or **MariaDB 10.3+**
 
 **LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
@@ -34,12 +33,6 @@ sudo apt update
 sudo apt install -y apache2
 ```
 
-**Git:** Install Git with:
-
-```sh
-sudo apt install -y git
-```
-
 **PHP:**
 
 Install PHP 7.3 with these extensions:
@@ -49,7 +42,7 @@ sudo apt install -y php php-bcmath php-gd php-gmp php-curl php-intl \
     php-mbstring php-mysql php-xml php-zip
 ```
 
-**Composer:** After you're done installing PHP, you'll need the Composer dependency manager.
+**Composer(optional):** After you're done installing PHP, you'll need the Composer dependency manager.
 
 ```sh
 sudo apt install -y composer
@@ -128,7 +121,7 @@ Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-g
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 4. Configure cron job
 
-Faveo requires some background processes to continuously run. The list of things Faveo does in the background is described [here](https://github.com/ladybirdweb/faveo-helpdesk/blob/master/app/Console/Kernel.php#L9).
+Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
