@@ -27,17 +27,19 @@ Faveo depends on the following:
 -   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-**Update your package list:**
+### b. Update your package list
 
 ```sh
 apt update
 apt upgrade -y
 ```
 
-**Nginx:** Use the below steps to install and start Nginx
+### c. Nginx
+Use the below steps to install and start Nginx
 
 ```sh
 sudo apt install nginx
@@ -45,7 +47,7 @@ systemctl start nginx
 systemctl enable nginx
 ```
 
-**PHP 7.3+:**
+### d. PHP 7.3+
 
 First add this PPA repository:
 
@@ -80,7 +82,8 @@ sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' 
 systemctl restart apache2.service
 ```
 
-**Composer(Optional):** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+### e. Composer(Optional)
+After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 cd /tmp
@@ -91,7 +94,7 @@ rm -f composer-setup.php
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** 
+### f. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -165,7 +168,7 @@ exit
 
 ### 3. Configure Nginx webserver
 
-1. Give proper permissions to the project directory by running:
+#### a. Give proper permissions to the project directory by running:
 
 ```sh
 chown -R www-data:www-data /opt/faveo 
@@ -175,14 +178,14 @@ chmod -R 755 /opt/faveo/storage
 chmod -R 755 /opt/faveo/bootstrap 
 ```
 
-2. Create a copy of Nginx default config file
+#### b. Create a copy of Nginx default config file
 
 ```
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 wget -O /etc/nginx/nginx.conf https://support.faveohelpdesk.com/uploads/ubuntu16.04/faveo-nginx-conf.txt
 ```
 
-3. Edit domain & create Nginx conf using Nano editor
+#### c. Edit domain & create Nginx conf using Nano editor
 
 ```sh
 nano /etc/nginx/conf.d/faveo-helpdesk.conf
@@ -229,13 +232,13 @@ upstream faveo_php {
  }
 ```
 
-4. Remove default config file
+#### d. Remove default config file
 
 ```sh
 rm -rf /etc/nginx/conf.d/default.conf
 ```
 
-5. Create config file for PHP FPM using vim editor
+#### e. Create config file for PHP FPM using vim editor
 
 ```sh
 nano /etc/php/7.3/fpm/pool.d/faveo_php.conf
@@ -273,7 +276,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo tee /etc/cron.d/faveo
+echo "* * * * * www-data /usr/bin/php7.3 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
