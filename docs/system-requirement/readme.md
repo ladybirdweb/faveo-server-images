@@ -21,7 +21,7 @@ PHP versions 7.3.x are supported.
 For assistance installing a new version of PHP please contact your hosting provider or server administrator.
 
 <a id="php-extensions" name="php-extensions"></a>
-## PHP Extensions
+### PHP Extensions
 - BCMath
 - Ctype
 - cURL
@@ -42,7 +42,7 @@ For assistance installing a new version of PHP please contact your hosting provi
 PHP extensions differ depending on your server, your host and other system variable. For assistance installing missing extensions, please contact your hosting provider or server administrator.
 
 <a id="php-settings" name="php-settings"></a>
-## PHP Settings
+### PHP Settings
 Your PHP configuration must adhere to the following settings:
 
 - ``` ! allow_url_fopen``` **Enabled**
@@ -69,8 +69,10 @@ The following directories (and directories within recursively) must be writable 
 ### Linux
 We recommend setting the above directories to 755 permissions. You may also need to adjust the owner and group of the directories.
 
+```sh
 chmod -R 755 /path/to/directory
 chown -R www-data:www-data /path/to/directory
+```
 
 ```
 If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories:
@@ -124,22 +126,21 @@ Apache is supported out of the box.
 
 ### nginx
 On nginx, please create a new virtual host for Faveo. The below is an example virtual host but will need editing for your specific environment (paths may vary):
-[faveo.conf](/installation-scripts/web-server/nginx/faveo.conf)
+[faveo.conf](/docs/installation-scripts/web-server/nginx/faveo.conf)
 
 ### IIS
 On IIS, please create a web.config file in the root of your installation directory with the below contents:
-[web.config](/installation-scripts/web-server/iis/web.config)
+[web.config](/docs/installation-scripts/web-server/iis/web.config)
 
-```
-Required Extension(s)
-The URL Rewrite extension is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
-```
 
-```
+**Required Extension(s)**
+The [URL Rewrite extension](https://www.iis.net/downloads/microsoft/url-rewrite) is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
+
+
+
 Please replace the follow constants in the below code snippet:
-<faveo_base_url> with your installation base URL
-<absolute_path_to_php_cgi.exe> with the absolute path to your PHP cgi executable
-```
+**<faveo_base_url>** with your installation base URL
+**<absolute_path_to_php_cgi.exe>** with the absolute path to your PHP cgi executable
 
 
 <a id="firewall-requirements" name="firewall-requirements"></a>
