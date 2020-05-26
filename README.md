@@ -25,9 +25,9 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
 -   **Git**
 -   **PHP 7.3.x** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer**
--   **MySQL 5.7.x** or MariaDB **10.3+**
--   Optional: Redis or Beanstalk
+-   **Composer**(Optional)
+-   **MySQL 5.7.x** or **MariaDB 10.3+**
+-   **Redis** or **Beanstalk**(Optional)
 
 For complete minimum requirement list [check here](/docs/system-requirement/readme.md)
 
