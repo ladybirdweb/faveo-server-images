@@ -5,13 +5,12 @@
 Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
 
 -   [Prerequisites](#prerequisites)
-    -   [Types of databases](#types-of-databases)
 -   [Installation steps](#installation-steps)
     -   [1. Clone the repository](#1-clone-the-repository)
     -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Install Faveo](#3-gui-faveo-installer)
-    -   [4. Configure cron job](#4-configure-cron-job)
-    -   [5. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
+    -   [4. Install Faveo](#3-gui-faveo-installer)
+    -   [5. Configure cron job](#4-configure-cron-job)
     -   [6. Redis Installation](#redis-installation)
     -   [7. SSL Installation](#ssl-installation)
     -   [8. Final step](#final-step)
@@ -24,10 +23,11 @@ Faveo depends on the following:
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
 -   **Git**
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer**
+-   **Composer(Optional)**
 -   **MySQL 5.7+** or MariaDB **10.3+**
 
-**LAMP Installation** follow the [instructions here](https://github.com/teddysun/lamp)
+### a. LAMP Installation 
+Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 **Apache:** Apache should come pre-installed with your server. If it's not, install it with:
@@ -37,15 +37,15 @@ sudo apt install apache2
 systemctl start apache2
 systemctl enable apache2
 ```
-**Git:** Git should come pre-installed with your server. If it's not, install it with:
+### b. Git
+Git should come pre-installed with your server. If it's not, install it with:
 
 ```sh
 sudo apt update
 sudo apt install -y git
 ```
 
-**PHP 7.3+:**
-
+### c. PHP 7.3+
 First add this PPA repository:
 
 ```sh
@@ -79,7 +79,8 @@ sed -i '2 a zend_extension = "/usr/lib/php/20190902/ioncube_loader_lin_7.3.so"' 
 systemctl restart apache2.service
 ```
 
-**Composer:** After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
+### d. Composer(Optional)
+After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 
 ```sh
 cd /tmp
@@ -90,7 +91,10 @@ rm -f composer-setup.php
 
 (or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
 
-**Mysql:** Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+### e. Mysql
+The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+
+Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
 sudo apt update
@@ -103,16 +107,11 @@ Secure your mysql installation. Set a Password for mysql by running the command 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin:** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
 sudo apt install phpmyadmin
 ```
-
-<a id="types-of-databases" name="types-of-databases"></a>
-### Types of databases
-
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
@@ -188,20 +187,20 @@ echo "* * * * * sudo -u www-data php /var/www/faveo/artisan schedule:run" | sudo
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 5. Configure Apache webserver
 
-1. Give proper permissions to the project directory by running:
+**a.** Give proper permissions to the project directory by running:
 
 ```sh
 sudo chown -R www-data:www-data /var/www/faveo
 sudo chmod -R 775 /var/www/faveo/storage
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+**b.** Enable the rewrite module of the Apache webserver:
 
 ```sh
 sudo a2enmod rewrite
 ```
 
-3. Configure a new faveo site in apache by doing:
+**c.** Configure a new faveo site in apache by doing:
 
 ```sh
 sudo nano /etc/apache2/sites-available/faveo.conf
@@ -209,7 +208,7 @@ sudo nano /etc/apache2/sites-available/faveo.conf
 
 Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
 
-```html
+```apache
 <VirtualHost *:80>
     ServerName **YOUR IP ADDRESS/DOMAIN**
 
