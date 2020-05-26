@@ -1,27 +1,27 @@
 # Faveo Helpdesk System Requirements 
 
--   [Php Versions](#php-versions)
+-   [1. Php Versions](#php-versions)
     -   [PHP Extensions](#php-extensions)
     -   [PHP Settings](#php-settings)
--   [File Permissions](#file-permissions)
+-   [2. File Permissions](#file-permissions)
     -   [Linux](#linux)
     -   [IIS - Windows](#iis)
--   [Database](#database)
+-   [3. Database](#database)
     -   [Version](#version)
     -   [User Privileges](#user-privileges)
--   [Web Server](#web-server)
--   [Firewall Requirements](#firewall-requirements)
+-   [4. Web Server](#web-server)
+-   [5. Firewall Requirements](#firewall-requirements)
 
 Faveo requires a fairly standard PHP & MySQL server setup in order to be installed and function correctly. If you require any assistance with setting up Faveo or determining if your system can support Faveo, please contact us.
 
 <a id="php-versions" name="php-versions"></a>
-## PHP Version
+## 1. PHP Version
 PHP versions 7.3.x are supported.
 
 For assistance installing a new version of PHP please contact your hosting provider or server administrator.
 
 <a id="php-extensions" name="php-extensions"></a>
-### PHP Extensions
+### a. PHP Extensions
 - BCMath
 - Ctype
 - cURL
@@ -42,7 +42,7 @@ For assistance installing a new version of PHP please contact your hosting provi
 PHP extensions differ depending on your server, your host and other system variable. For assistance installing missing extensions, please contact your hosting provider or server administrator.
 
 <a id="php-settings" name="php-settings"></a>
-### PHP Settings
+### b. PHP Settings
 Your PHP configuration must adhere to the following settings:
 
 - ``` ! allow_url_fopen``` **Enabled**
@@ -58,7 +58,7 @@ A minimum of 128MB addressable memory is required to install and use Faveo. We r
 For assistance on modifying your PHP configuration, please contact your hosting provider or server administrator.
 
 <a id="file-permissions" name="file-permissions"></a>
-## File Permissions
+## 2. File Permissions
 The following directories (and directories within recursively) must be writable by the PHP/Web Server process.
 
 - storage/
@@ -66,7 +66,7 @@ The following directories (and directories within recursively) must be writable 
 - bootstrap/cache/
 
 <a id="linux" name="linux"></a>
-### Linux
+### a. Linux
 We recommend setting the above directories to 755 permissions. You may also need to adjust the owner and group of the directories.
 
 ```sh
@@ -74,23 +74,23 @@ chmod -R 755 /path/to/directory
 chown -R www-data:www-data /path/to/directory
 ```
 
-```
 If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories:
+```sh
 chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory
 ```
 
 <a id="iis" name="iis"></a>
-### IIS (Windows)
+### b. IIS (Windows)
 Right click on the folder containing the Faveo files, click Properties and then the Security tab. Click Edit... and then Add..., enter IUSRS and click Check Names. Click OK, and check the Full Control checkbox in the permissions. Do the same for the IIS_IUSRS group too.
 
 <a id="database" name="database"></a>
-## Database
+## 3. Database
 <a id="version" name="version"></a>
-### Version
+### a. Version
 MySQL Server <b>5.7.x, 8.0.x</b> supported. <b>MariaDB 10.3 - 10.4</b> also supported.
 
 <a id="user-privileges" name="user-privileges"></a>
-### User Privileges
+### b. User Privileges
 For day to day use, the following database privileges are required.
 
 - DELETE
@@ -107,42 +107,38 @@ For installing and upgrading the system, as well as activation and deactivation 
 - INDEX
 
 <a id="settings" name="settings"></a>
-### Settings
+### c. Settings
 We recommend the following MySQL configuration directives are changed:
 
 - max_allowed_packet - we recommend greater than 20MB to ensure large emails and embedded images are correctly handled.
 For assistance on modifying your MySQL configuration, please contact your hosting provider or server administrator.
 
 <a id="web-server" name="web-server"></a>
-## Web Server
+## 4. Web Server
 Faveo supports Apache, nginx and IIS web server, in all cases you must enable the mod_rewrite module for SEO friendly URLs.
 
 Apache works out of the box, however for nginx and IIS you will need to install the rewrite rules.
 
 Depending on the web server you are running, you may need to configure it further to run SupportPal correctly - for example, ensuring all the HTTP request verbs (DELETE, GET, OPTIONS, POST and PUT) are enabled. Below is a list of common web servers and steps required for them.
 
-### Apache
+### a. Apache
 Apache is supported out of the box.
 
-### nginx
+### b. Nginx
 On nginx, please create a new virtual host for Faveo. The below is an example virtual host but will need editing for your specific environment (paths may vary):
 [faveo.conf](/installation-scripts/web-server/nginx/faveo.conf)
 
-### IIS
+### c. IIS
 On IIS, please create a web.config file in the root of your installation directory with the below contents:
 [web.config](/installation-scripts/web-server/iis/web.config)
 
-
 **Required Extension(s)**
 The [URL Rewrite extension](https://www.iis.net/downloads/microsoft/url-rewrite) is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
-
-
 
 Please replace the follow constants in the below code snippet:
 **<faveo_base_url>** with your installation base URL
 **<absolute_path_to_php_cgi.exe>** with the absolute path to your PHP cgi executable
 
-
 <a id="firewall-requirements" name="firewall-requirements"></a>
-## Firewall Requirements
-Outbound access to billing.faveohelpdesk.com
+## 5. Firewall Requirements
+Please open outbound access to billing.faveohelpdesk.com
