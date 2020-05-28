@@ -93,6 +93,7 @@ date.timezone = America/Chicago
 <b>Setting Up ionCube</b>
 ```
 
+<b>Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
