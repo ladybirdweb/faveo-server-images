@@ -21,7 +21,8 @@ sudo yum install redis -y
 ## Install PHP extension
 
 ```sh
-install -y php73-php-pecl-redis.x86_64 php73-php-phpiredis.x86_64
+yum install redis -y
+yum install -y php-pecl-redis.x86_64
 ```
 
 ## Start Redis
