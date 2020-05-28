@@ -196,7 +196,7 @@ Then copy and paste the content below into the file and save it. Replace the hig
 server {
     listen 80;
     listen [::]:80;
-    root /var/www/html/invoiceninja/public;
+    root /var/www/faveo/public;
     index  index.php index.html index.htm;
     server_name  example.com www.example.com;
 
@@ -208,7 +208,7 @@ server {
 
     location ~ \.php$ {
                include snippets/fastcgi-php.conf;
-               fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+               fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                include fastcgi_params;
     }
