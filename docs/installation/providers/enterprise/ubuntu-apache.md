@@ -90,6 +90,24 @@ sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' 
 systemctl restart apache2 
 ```
 
+<b>PHP.INI Changes</b>
+After install PHP, run the commands below to open PHP-FPM default file.
+
+```sh
+sudo nano /etc/php/7.3/fpm/php.ini             
+```
+
+Then make the change the following lines below in the file and save.
+
+```sh
+file_uploads = On
+allow_url_fopen = On
+memory_limit = 256M
+upload_max_filesize = 64M
+max_execution_time = 360
+date.timezone = America/Chicago
+```
+
 ### e. Composer(Optional)
 After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
 

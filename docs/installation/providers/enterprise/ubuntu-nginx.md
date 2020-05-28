@@ -85,9 +85,9 @@ Copy ion cube loader to Directory. Replace your *yourpath* below with actual pat
 
 ```sh
 cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/yourpath
-sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/fpm/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
-systemctl restart apache2.service
+systemctl restart nginx
 ```
 
 ### e. Composer(Optional)
@@ -179,93 +179,49 @@ exit
 #### a. Give proper permissions to the project directory by running:
 
 ```sh
-chown -R www-data:www-data /opt/faveo 
-chmod -R 755 /opt/faveo 
-chmod -R 755 /opt/faveo/storage 
-chmod -R 755 /opt/faveo/bootstrap 
+chown -R www-data:www-data /var/www/faveo 
+chmod -R 755 /var/www/faveo 
+chmod -R 755 /var/www/faveo/storage 
+chmod -R 755 /var/www/faveo/bootstrap 
 ```
 
 #### b. Create a copy of Nginx default config file
+Finally, configure Nginx site configuration file for Faveo. This file will control how users access Faveo content. Run the commands below to create a new configuration file called faveo
 
 ```
-mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
-wget -O /etc/nginx/nginx.conf https://support.faveohelpdesk.com/uploads/ubuntu16.04/faveo-nginx-conf.txt
+sudo nano /etc/nginx/sites-available/faveo
 ```
+Then copy and paste the content below into the file and save it. Replace the highlighted line with your own domain name and directory root location.
+```
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/html/invoiceninja/public;
+    index  index.php index.html index.htm;
+    server_name  example.com www.example.com;
 
-#### c. Edit domain & create Nginx conf using Nano editor
+     client_max_body_size 100M;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;       
+    }
+
+    location ~ \.php$ {
+               include snippets/fastcgi-php.conf;
+               fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+               include fastcgi_params;
+    }
+}
+```
+Save the file and exit.
+
+#### c. Enable the Faveo and Rewrite Module
+After configuring the VirtualHost above, enable it by running the commands below
 
 ```sh
-nano /etc/nginx/conf.d/faveo-helpdesk.conf
-```
-
-Then, in the `nano` text editor window you just opened, copy the following 
-
-```nginx
-
-upstream faveo_php {
-    server unix://opt/faveo/faveo-helpdesk/faveo_php.socket;
- }
-      server {
-      listen 80;
-     listen 127.0.0.1:80;        
-     # Edit the following line with the correct information.
-     server_name %(SERVERNAME)s;
-    error_log /var/log/nginx/faveo_error_log;
-    access_log /var/log/nginx/faveo_access_log;
-    root /opt/faveo/faveo-helpdesk/public;
-    index index.php index.html index.htm;
-    error_page 403 404 405 500 501 502 503 504 @error;
-    try_files $uri $uri/ /index.php?$args;
-    location @error {
-           rewrite ^/(.*)$ /index.php?$1;
-    }
-            location ~ /\. { 
-                    deny all;
-    }
-    location ~ /(artisan|composer.json|composer.lock|gulpfile.js|LICENSE|package.json|phpspec.yml|phpunit.xml|README.md|readme.txt|release-notes.txt|server.php)
- {
-            deny all;
-    }
-    location ~ [^/]\.php(/|$) {
-        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        if (!-f $document_root$fastcgi_script_name) {
-            return 404;
-        }
-       include /etc/nginx/fastcgi_params;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass faveo_php; 
-   }
- }
-```
-
-#### d. Remove default config file
-
-```sh
-rm -rf /etc/nginx/conf.d/default.conf
-```
-
-#### e. Create config file for PHP FPM using vim editor
-
-```sh
-nano /etc/php/7.3/fpm/pool.d/faveo_php.conf
-```
-Paste the below content in the conf file.
-
-```
-[faveo_php] 
-user = www-data 
-group = www-data 
-listen = /opt/faveo/faveo-helpdesk/faveo_php.socket 
-listen.owner = www-data listen.group = www-data 
-pm = dynamic pm.max_children = 5 
-pm.start_servers = 2 
-pm.min_spare_servers = 1 
-pm.max_spare_servers = 3 
-chdir = / 
-service mysql restart 
-service nginx restart 
-service php7.3-fpm restart 
+sudo ln -s /etc/nginx/sites-available/faveo /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
 ```
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
