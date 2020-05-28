@@ -31,6 +31,12 @@ Faveo depends on the following:
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
+Login as root user by typing the command below
+
+```sh
+sudo su
+```
+
 ### b. Update your package list
 
 ```sh
@@ -71,9 +77,6 @@ yum install -y curl openssl
 yum-config-manager --enable remi-php73
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
 yum remove php-mysql
-yum install php73w-mysqlnd
-yum install redis -y
-yum install -y php-pecl-redis.x86_64
 ```
 
 <b>Setting Up ionCube</b>
@@ -201,7 +204,7 @@ sudo a2enmod rewrite
 **c.** Configure a new faveo site in apache by doing:
 
 ```sh
-nano /etc/httpd/conf.d/faveo-helpdesk.conf
+nano /etc/httpd/conf.d/faveo.conf
 ```
 
 Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
@@ -211,8 +214,8 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 <VirtualHost *:80> 
 ServerName **YOUR IP ADDRESS/DOMAIN** 
 ServerAdmin webmaster@localhost 
-DocumentRoot /var/www/faveo/faveo-helpdesk/public 
-<Directory /var/www/faveo/faveo-helpdesk> 
+DocumentRoot /var/www/faveo/public 
+<Directory /var/www/faveo> 
 AllowOverride All 
 </Directory> 
 ErrorLog /var/log/httpd/faveo-error.log 
