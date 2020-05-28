@@ -188,14 +188,7 @@ chmod -R 755 /var/www/faveo/storage
 chmod -R 755 /var/www/faveo/bootstrap 
 ```
 
-**b.** Create a copy of Nginx default config file
-
-```
-mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
-wget -O /etc/nginx/nginx.conf https://www.faveohelpdesk.com/user-manual/code/centos7/nginx-conf.txt
-```
-
-**c.** Edit domain & create Nginx conf using Nano editor
+**b.** Edit domain & create Nginx conf using Nano editor
 
 ```sh
 nano /etc/nginx/conf.d/faveo.conf
@@ -227,13 +220,7 @@ server {
 }
 ```
 
-**d.** Remove default config file
-
-```sh
-rm -rf /etc/nginx/conf.d/default.conf
-```
-
-**e.** Create config file for PHP FPM using vim editor
+**c.** Create config file for PHP FPM using vim editor
 
 ```sh
 nano  /etc/php-fpm.d/faveo.conf
