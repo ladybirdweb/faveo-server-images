@@ -184,7 +184,6 @@ exit
 ```sh
 chown -R www-data:www-data /var/www/faveo 
 chmod -R 755 /var/www/faveo 
-chmod -R 755 /var/www/faveo/
 chmod -R 755 /var/www/faveo/storage 
 chmod -R 755 /var/www/faveo/bootstrap 
 ```
