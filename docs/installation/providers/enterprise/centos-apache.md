@@ -264,7 +264,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl.md)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl.md)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
