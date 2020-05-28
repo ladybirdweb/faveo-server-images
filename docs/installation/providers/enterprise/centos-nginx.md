@@ -33,13 +33,16 @@ Faveo depends on the following:
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
+Login as root user by typing the command below
+
+```sh
+sudo su
+```
 ### b. Update your package list
 
 ```sh
 yum update -y
 ```
-
-
 ### c. Install and enable Remi repository
 
 ```sh
@@ -61,23 +64,13 @@ systemctl enable nginx
 
 ### e. PHP 7.3+
 
-First add this PPA repository:
-
-```sh
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ondrej/php
-```
-
-Then install php 7.3 with these extensions:
+Install php 7.3 with these extensions:
 
 ```sh
 yum install -y curl openssl  
 yum-config-manager --enable remi-php73
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
 yum remove php-mysql
-yum install php73w-mysqlnd
-yum install redis -y
-yum install -y php-pecl-redis.x86_64
 ```
 
 **Setting Up ionCube**
@@ -189,11 +182,11 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R www-data:www-data /opt/faveo 
-chmod -R 755 /opt/faveo 
-chmod -R 755 /opt/faveo/
-chmod -R 755 /opt/faveo/storage 
-chmod -R 755 /opt/faveo/bootstrap 
+chown -R www-data:www-data /var/www/faveo 
+chmod -R 755 /var/www/faveo 
+chmod -R 755 /var/www/faveo/
+chmod -R 755 /var/www/faveo/storage 
+chmod -R 755 /var/www/faveo/bootstrap 
 ```
 
 **b.** Create a copy of Nginx default config file
