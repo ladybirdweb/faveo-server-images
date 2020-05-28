@@ -182,7 +182,7 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R www-data:www-data /var/www/faveo 
+chown -R apache:apache/var/www/faveo 
 chmod -R 755 /var/www/faveo 
 chmod -R 755 /var/www/faveo/storage 
 chmod -R 755 /var/www/faveo/bootstrap 
@@ -198,7 +198,7 @@ wget -O /etc/nginx/nginx.conf https://www.faveohelpdesk.com/user-manual/code/cen
 **c.** Edit domain & create Nginx conf using Nano editor
 
 ```sh
-nano /etc/nginx/conf.d/faveo-helpdesk.conf
+nano /etc/nginx/conf.d/faveo.conf
 ```
 
 Then, in the `nano` text editor window you just opened, copy the following 
@@ -206,7 +206,7 @@ Then, in the `nano` text editor window you just opened, copy the following
 ```nginx
 
 upstream faveo_php {
-    server unix://opt/faveo/faveo_php.socket;
+    server unix://var/www/faveo/faveo_php.socket;
 }
  server {
     listen 80;
@@ -257,11 +257,11 @@ Paste the below content in the conf file.
 
 ```
 [faveo_php]
-user = www-data
-group = www-data
-listen = /opt/faveo/faveo_php.socket
-listen.owner = www-data
-listen.group = www-data
+user = apache
+group = apache
+listen = /var/www/faveo/faveo_php.socket
+listen.owner = apache
+listen.group = apache
 pm = dynamic
 pm.max_children = 5
 pm.start_servers = 2
