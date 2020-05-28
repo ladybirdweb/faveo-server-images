@@ -72,6 +72,25 @@ sudo apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
     php7.3-imap php7.3-ldap php7.3-gmp 
 ```
+After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
+
+```sh
+sudo nano /etc/php/7.3/fpm/php.ini
+```
+
+Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
+
+```
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 256M
+cgi.fix_pathinfo = 0
+upload_max_filesize = 100M
+max_execution_time = 360
+date.timezone = America/Chicago
+<b>Setting Up ionCube</b>
+```
 
 <b>Setting Up ionCube</b>
 ```sh
