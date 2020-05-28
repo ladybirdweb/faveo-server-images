@@ -90,7 +90,6 @@ cgi.fix_pathinfo = 0
 upload_max_filesize = 100M
 max_execution_time = 360
 date.timezone = America/Chicago
-<b>Setting Up ionCube</b>
 ```
 
 <b>Setting Up ionCube</b>
