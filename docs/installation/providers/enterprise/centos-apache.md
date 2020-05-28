@@ -60,17 +60,9 @@ systemctl start httpd
 systemctl enable httpd
 ```
 
-
 ### e. PHP 7.3+
 
-First add this PPA repository:
-
-```sh
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ondrej/php
-```
-
-Then install php 7.3 with these extensions:
+Install php 7.3 with these extensions:
 
 ```sh
 yum install -y curl openssl  
@@ -129,9 +121,6 @@ mysql_secure_installation
 ```sh
 yum install phpmyadmin
 ```
-
-
-
 
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
