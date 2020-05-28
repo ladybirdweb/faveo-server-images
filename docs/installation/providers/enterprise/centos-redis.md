@@ -71,7 +71,7 @@ systemctl start supervisord
 Copy paste the below content in supervisor configuration.
 
 ```sh
-nano /etc/supervisord.conf
+nano /etc/supervisord.d/faveo-worker.ini
 ```
 
 Change the directories according to your faveo configuration.
