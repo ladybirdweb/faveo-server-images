@@ -73,7 +73,26 @@ sudo apt install -y php7.3 php7.3-mysql \
     php7.3-imap php7.3-ldap php7.3-gmp 
 ```
 
+After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
+
+```sh
+sudo nano /etc/php/7.3/fpm/php.ini
+```
+
+Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
+
+```
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 256M
+cgi.fix_pathinfo = 0
+upload_max_filesize = 100M
+max_execution_time = 360
+date.timezone = America/Chicago
 <b>Setting Up ionCube</b>
+```
+
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
@@ -258,7 +277,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl.md)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-nginx-ssl.md)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
