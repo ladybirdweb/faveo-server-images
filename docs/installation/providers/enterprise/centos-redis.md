@@ -21,7 +21,7 @@ sudo yum install redis -y
 ## Install PHP extension
 
 ```sh
-yum install -y php73w-pecl-redis.x86_64
+install -y php73-php-pecl-redis.x86_64 php73-php-phpiredis.x86_64
 ```
 
 ## Start Redis
@@ -76,7 +76,7 @@ nano /etc/supervisord.conf
 Change the directories according to your faveo configuration.
 
 ```sh
-[program:faveo-Worker]
+[program:faveo-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
 autostart=true
