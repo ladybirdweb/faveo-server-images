@@ -78,40 +78,40 @@ Change the directories according to your faveo configuration.
 ```sh
 [program:faveo-Worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/faveo-helpdesk/artisan queue:work redis --sleep=3 --tries=3
+command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
 autostart=true
 autorestart=true
 numprocs=8
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/faveo-helpdesk/storage/logs/worker.log
+stdout_logfile=/var/www/faveo/storage/logs/worker.log
 
 [program:faveo-Recur]
 process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/faveo-helpdesk/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
+command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
 autostart=true
 autorestart=true
 numprocs=1
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/faveo-helpdesk/storage/logs/recur-worker.log
+stdout_logfile=/var/www/faveo/storage/logs/recur-worker.log
 
 [program:faveo-Reports]
 process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/faveo-helpdesk/artisan queue:work redis --queue=reports --sleep=3 --tries=3
+command=php  /var/www/faveo/artisan queue:work redis --queue=reports --sleep=3 --tries=3
 autostart=true
 autorestart=true
 numprocs=1
 user=apache
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/faveo-helpdesk/storage/logs/reports-worker.log
+stdout_logfile=/var/www/faveo/storage/logs/reports-worker.log
 
 [program:faveo-Horizon]
 process_name=%(program_name)s
-command=php /var/www/faveo/faveo-helpdesk/artisan horizon
+command=php /var/www/faveo/artisan horizon
 autostart=true
 autorestart=true
 user=apache
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/faveo-helpdesk/storage/logs/horizon-worker.log
+stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 ```
 ## Restart the Supervisor to reread configuration
 
