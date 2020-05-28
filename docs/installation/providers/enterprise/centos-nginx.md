@@ -182,7 +182,7 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R apache:apache/var/www/faveo 
+chown -R apache:apache /var/www/faveo 
 chmod -R 755 /var/www/faveo 
 chmod -R 755 /var/www/faveo/storage 
 chmod -R 755 /var/www/faveo/bootstrap 
@@ -205,39 +205,24 @@ Then, in the `nano` text editor window you just opened, copy the following
 
 ```nginx
 
-upstream faveo_php {
-    server unix://var/www/faveo/faveo_php.socket;
-}
- server {
+server {
     listen 80;
-    listen 127.0.0.1:80;
-        # Edit the following line with the correct information.
-    server_name %(SERVERNAME)s;
-    error_log /var/log/nginx/faveo_error_log;
-    access_log /var/log/nginx/faveo_access_log;
-    root /opt/faveo/public;
-    index index.php index.html index.htm;
-    error_page 403 404 405 500 501 502 503 504 @error;
-  try_files $uri $uri/ /index.php?$args;
-    location @error {
-        rewrite ^/(.*)$ /index.php?$1;
-}
- 
-    location ~ /\. {
-        deny all;
+    listen [::]:80;
+    root /var/www/faveo/public;
+    index  index.php index.html index.htm;
+    server_name  example.com www.example.com;
+
+     client_max_body_size 100M;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;       
     }
-     location ~ /(artisan|composer.json|composer.lock|gulpfile.js|LICENSE|package.json|phpspec.yml|phpunit.xml|README.md|readme.txt|release-notes.txt|server.php) {
-        deny all;
-    }
-    location ~ [^/]\.php(/|$) {
-        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        if (!-f $document_root$fastcgi_script_name) {
-        	return 404;
-        }
-        include /etc/nginx/fastcgi_params;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass faveo_php;
+
+    location ~ \.php$ {
+              
+               fastcgi_pass unix:/run/php-fpm/www.sock;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+               include fastcgi_params;
     }
 }
 ```
@@ -251,15 +236,15 @@ rm -rf /etc/nginx/conf.d/default.conf
 **e.** Create config file for PHP FPM using vim editor
 
 ```sh
-nano  /etc/php-fpm.d/faveo_php.conf
+nano  /etc/php-fpm.d/faveo.conf
 ```
 Paste the below content in the conf file.
 
 ```
-[faveo_php]
+[faveo]
 user = apache
 group = apache
-listen = /var/www/faveo/faveo_php.socket
+listen = /var/www/faveo/faveo.socket
 listen.owner = apache
 listen.group = apache
 pm = dynamic
@@ -282,14 +267,10 @@ Faveo requires some background processes to continuously run.
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-```
-crontab -u www-data -e
-```
+Create a new `/etc/cron.d/faveo` file with:
 
-Add the below cron line
-
-```
-* * * * * /usr/bin/php /opt/faveo/faveo-helpdesk/artisan schedule:run >> /dev/null 2>&amp;amp;1
+```sh
+echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
