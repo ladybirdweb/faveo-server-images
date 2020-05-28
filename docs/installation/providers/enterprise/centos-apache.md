@@ -241,15 +241,12 @@ Faveo requires some background processes to continuously run.
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-```
-crontab -u www-data -e
+Create a new `/etc/cron.d/faveo` file with:
+
+```sh
+echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
-Add the below cron line
-
-```
-* * * * * /usr/bin/php /opt/faveo/faveo-helpdesk/artisan schedule:run >> /dev/null 2>&amp;amp;1
-```
 
 <a id="redis-installation" name="redis-installation"></a>
 ### 6. Redis Installation
