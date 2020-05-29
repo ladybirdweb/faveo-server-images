@@ -18,7 +18,6 @@ Faveo can run on Debian Buster.
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 ### a. LAMP Installation
@@ -43,14 +42,7 @@ sudo apt install -y php php-bcmath php-gd php-gmp php-curl php-intl \
     php-mbstring php-mysql php-xml php-zip
 ```
 
-### d. Composer(Optional)
-After you're done installing PHP, you'll need the Composer dependency manager.
-
-```sh
-sudo apt install -y composer
-```
-
-### e. MariaDB:
+### d. MariaDB:
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -176,16 +168,10 @@ Faveo requires some background processes to continuously run.
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-Run the crontab command:
+Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-crontab -u www-data -e
-```
-
-Then, in the `crontab` editor window you just opened, paste the following at the end of the document:
-
-```sh
-* * * * * php /var/www/faveo/artisan schedule:run
+echo "* * * * * www-data /usr/bin/php7.3 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="final-step" name="final-step"></a>

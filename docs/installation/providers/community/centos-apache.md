@@ -1,9 +1,9 @@
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Ubuntu <!-- omit in toc -->
+# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS <!-- omit in toc -->
 
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
+<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
+Faveo can run on [Cent OS 8](https://www.centos.org/download/).
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
@@ -40,108 +40,69 @@ sudo su
 ### b. Update your package list
 
 ```sh
-apt update
-apt upgrade -y
+yum update -y
 ```
 
-### c. Apache
+###  c. Install and enable Remi repository
+
+```sh
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+sudo yum install yum-utils
+```
+###  d. Apache
 Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
-apt install apache2
-systemctl start apache2
-systemctl enable apache2
+yum install httpd
+systemctl start httpd
+systemctl enable httpd
 ```
-
-### d. Git
+### e. Git
 Git should come pre-installed with your server. If it's not, install it with:
 
 ```sh
-sudo apt update
-sudo apt install -y git
+sudo yum install -y git
 ```
 
-### e. PHP 7.3+
+### f. PHP 7.3+
 
-First add this PPA repository:
+Install php 7.3 with these extensions:
 
 ```sh
-apt-get install -y software-properties-common
-add-apt-repository ppa:ondrej/php
-```
-
-Then install php 7.3 with these extensions:
-
-```sh
-sudo apt update
-sudo apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
-    php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
-    php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
-    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp 
-```
-After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
-
-```sh
-sudo nano /etc/php/7.3/fpm/php.ini
-```
-
-Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
-
-```
-file_uploads = On
-allow_url_fopen = On
-short_open_tag = On
-memory_limit = 256M
-cgi.fix_pathinfo = 0
-upload_max_filesize = 100M
-max_execution_time = 360
-date.timezone = America/Chicago
+yum install -y curl openssl  
+yum-config-manager --enable remi-php73
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
+yum remove php-mysql
 ```
 
 <b>Setting Up ionCube</b>
 ```sh
-wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
-tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
+wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+tar xfz ioncube_loaders_lin_x86-64.tar.gz
+ls ioncube 
 php -i | grep extension_dir
 ```
-Make the note of path and directory from the above command.
-
-Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
+Copy ion cube loader to Directory.
 
 ```sh
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/yourpath
-sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
-systemctl restart apache2 
+cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
+sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b>PHP.INI Changes</b>
-After install PHP, run the commands below to open PHP-FPM default file.
-
-```sh
-sudo nano /etc/php/7.3/fpm/php.ini             
-```
-
-Then make the change the following lines below in the file and save.
-
-```sh
-file_uploads = On
-allow_url_fopen = On
-memory_limit = 256M
-upload_max_filesize = 64M
-max_execution_time = 360
-date.timezone = America/Chicago
-```
-### f. Mysql
+### g. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
-sudo apt update
-sudo apt install -y mysql-server
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+rpm -ivh mysql-community-release-el7-5.noarch.rpm 
+yum install mysql-server
+systemctl start mysqld
 ```
 
 Secure your mysql installation. Set a Password for mysql by running the command below
@@ -153,9 +114,8 @@ mysql_secure_installation
 **phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
-sudo apt install phpmyadmin
+yum install phpmyadmin
 ```
-
 
 <a id="installation-steps" name="installation-steps"></a>
 ## Installation steps
@@ -213,56 +173,48 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-#### a. Give proper permissions to the project directory by running:
+**a.** Give proper permissions to the project directory by running:
 
 ```sh
-sudo chown -R www-data:www-data /var/www/faveo
-sudo chmod -R 775 /var/www/faveo/storage
+chown -R apache:apache /var/www/ 
+chown -R apache:apache /var/www/faveo/ 
+chmod -R 755 /var/www/
+chmod -R 755 /var/www/faveo/
+chmod -R 755 /var/www/faveo/storage/ 
+chmod -R 755 /var/www/faveo/bootstrap/ 
 ```
 
-#### b. Enable the rewrite module of the Apache webserver:
+**b.** Enable the rewrite module of the Apache webserver:
 
 ```sh
 sudo a2enmod rewrite
 ```
 
-#### c. Configure a new faveo site in apache by doing:
+**c.** Configure a new faveo site in apache by doing:
 
 ```sh
-sudo nano /etc/apache2/sites-available/faveo.conf
+nano /etc/httpd/conf.d/faveo.conf
 ```
 
 Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
 
 ```apache
-<VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
 
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/faveo/public
-
-    <Directory /var/www/faveo/public>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+<VirtualHost *:80> 
+ServerName **YOUR IP ADDRESS/DOMAIN** 
+ServerAdmin webmaster@localhost 
+DocumentRoot /var/www/faveo/public 
+<Directory /var/www/faveo> 
+AllowOverride All 
+</Directory> 
+ErrorLog /var/log/httpd/faveo-error.log 
 </VirtualHost>
 ```
 
-#### d. Apply the new `.conf` file and restart Apache. You can do that by running:
+**d.** Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
-sudo a2dissite 000-default.conf
-sudo a2ensite faveo.conf
-
-# Enable php7.3 fpm, and restart apache
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.3-fpm
-sudo service php7.3-fpm restart
-sudo service apache2 restart
+systemctl restart httpd.service
 ```
 
 
@@ -281,8 +233,9 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * www-data /usr/bin/php7.3 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
+
 
 <a id="redis-installation" name="redis-installation"></a>
 ### 6. Redis Installation
@@ -291,7 +244,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis.md)
+[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis.md)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### 7. SSL Installation
@@ -300,7 +253,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl.md)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl.md)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
