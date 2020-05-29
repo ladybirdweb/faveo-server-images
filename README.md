@@ -40,7 +40,7 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community version
 * [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache.md)
-* [Debian with Apache](/docs/installation/providers/community/debian-apache.md)
+* [CentOS with Apache](/docs/installation/providers/community/centos-apache.md)
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise version
@@ -48,7 +48,6 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 * [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx.md)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache.md)
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx.md)
-* [Debian with Apache](/docs/installation/providers/enterprise/debian-apache.md)
 * [Windows 2019](/docs/installation/providers/enterprise/windows.md)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
