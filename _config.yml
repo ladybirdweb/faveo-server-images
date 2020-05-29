@@ -1,1 +1,6 @@
 remote_theme: pmarsceill/just-the-docs
+title: "Installing Faveo"
+search_enabled: true
+logo: "/assets/images/logo.png"
+footer_content: "Copyright &copy; 2015-2020 Ladybird Web Solution Pvt Ltd. </a>"
+ga_tracking: UA-65420739-1
