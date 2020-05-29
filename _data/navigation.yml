@@ -3,22 +3,22 @@ docs:
   - title: Community version
     subfolderitems:
       - page: Ubuntu with Apache
-        url: /docs/installation/providers/community/ubuntu-apache.md
+        url: /docs/installation/providers/community/ubuntu-apache
       - page: CentOS with Apache
-        url: /docs/installation/providers/community/centos-apache.md
+        url: /docs/installation/providers/community/centos-apache
      
   - title: Freelancer, paid and Enterprise version
     subfolderitems:
       - page: Cent OS with Apache
-        url: /docs/installation/providers/enterprise/centos-apache.md
+        url: /docs/installation/providers/enterprise/centos-apache
       - page: Cent OS with NGINX
-        url: /docs/installation/providers/enterprise/centos-nginx.md
+        url: /docs/installation/providers/enterprise/centos-nginx
       - page: Ubuntu with Apache
-        url: /docs/installation/providers/enterprise/ubuntu-apache.md
+        url: /docs/installation/providers/enterprise/ubuntu-apache
       - page: Ubuntu with NGINX
-        url: /docs/installation/providers/enterprise/ubuntu-nginx.md
+        url: /docs/installation/providers/enterprise/ubuntu-nginx
       - page: Windows Server 2019
-        url: /docs/installation/providers/enterprise/windows.md
+        url: /docs/installation/providers/enterprise/windows
 
 # main links
 main:
