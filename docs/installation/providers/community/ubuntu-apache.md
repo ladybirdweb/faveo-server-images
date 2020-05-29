@@ -173,7 +173,7 @@ cd /var/www/faveo
 git clone https://github.com/ladybirdweb/faveo-helpdesk.git
 ```
 
-You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases):
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
