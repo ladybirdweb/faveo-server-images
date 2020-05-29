@@ -182,7 +182,7 @@ chmod -R 755 /var/www/faveo/bootstrap
 nano /etc/nginx/conf.d/faveo.conf
 ```
 
-Then, in the `nano` text editor window you just opened, copy the following 
+Then, in the `nano` text editor window you just open, copy the following 
 
 ```nginx
 server {
@@ -249,11 +249,13 @@ nano /etc/php-fpm.d/www.conf
 ```
 You will need replace these lines
 
+```
 listen.owner = nobody to listen.owner = apache
 
 listen.group = nobody to listen.group = apache
 
-Finally check if ;listen = 127.0.0.1:9000 is without ; = /
+Finally check if ;listen = 127.0.0.1:9000 is without ;
+```
 
 Restart PFM and NGINX
 ```sh
