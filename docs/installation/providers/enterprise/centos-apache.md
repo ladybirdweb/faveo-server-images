@@ -24,7 +24,6 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 ### a. LAMP Installation
@@ -86,18 +85,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### f. Composer(Optional)
-After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
-
-```sh
-curl -sS https://getcomposer.org/installer | php 
-mv composer.phar /usr/bin/composer 
-chmod +x /usr/bin/composer
-```
-
-(or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
-
-### g. Mysql
+### f. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 

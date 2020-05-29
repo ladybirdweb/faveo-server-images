@@ -25,7 +25,6 @@ Faveo depends on the following:
 
 -   **Nginx** 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **Composer(Optional)**
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 ### a. LAMP Installation
@@ -89,18 +88,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### f. Composer(Optional)
-After you're done installing PHP, you'll need the [Composer](https://getcomposer.org/download/) dependency manager.
-
-```sh
-curl -sS https://getcomposer.org/installer | php 
-mv composer.phar /usr/bin/composer 
-chmod +x /usr/bin/composer
-```
-
-(or you can follow instruction on [getcomposer.org](https://getcomposer.org/download/) page)
-
-### g. Mysql
+### f. Mysql
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -197,49 +185,81 @@ nano /etc/nginx/conf.d/faveo.conf
 Then, in the `nano` text editor window you just opened, copy the following 
 
 ```nginx
-
-server {
-    listen 80;
-    listen [::]:80;
-    root /var/www/faveo/public;
-    index  index.php index.html index.htm;
+erver {
+    listen   80;
     server_name  example.com www.example.com;
 
-     client_max_body_size 100M;
+# note that these lines are originally from the "location /" block
+root   /var/www/faveo/public;
+index index.php index.html index.htm;
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;       
-    }
 
-    location ~ \.php$ {
-              
-               fastcgi_pass unix:/run/php-fpm/www.sock;
-               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-               include fastcgi_params;
-    }
+location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
 }
+
+location / {
+            	try_files $uri $uri/ /index.php?$query_string;
+}
+
+location ~* \.html$ {
+    expires -1;
+}
+
+location ~* \.(css|gif|jpe?g|png)$ {
+    expires 1M;
+    add_header Pragma public;
+    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+}
+
+gzip on;
+gzip_http_version 1.1;
+gzip_vary on;
+gzip_comp_level 6;
+gzip_proxied any;
+gzip_types application/atom+xml
+           application/javascript
+           application/json
+           application/vnd.ms-fontobject
+           application/x-font-ttf
+           application/x-web-app-manifest+json
+           application/xhtml+xml
+           application/xml
+           font/opentype
+           image/svg+xml
+           image/x-icon
+           text/css
+           #text/html -- text/html is gzipped by default by nginx
+           text/plain
+           text/xml;
+gzip_buffers 16 8k;
+gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+   }
+
 ```
 
-**c.** Create config file for PHP FPM using vim editor
+**c.** Edit config file for PHP FPM using vim editor
 
 ```sh
-nano  /etc/php-fpm.d/faveo.conf
+/etc/php-fpm.d/www.conf
 ```
-Paste the below content in the conf file.
+You will need replace these lines
 
-```
-[faveo]
-user = apache
-group = apache
-listen = /var/www/faveo/faveo.socket
-listen.owner = apache
-listen.group = apache
-pm = dynamic
-pm.max_children = 5
-pm.start_servers = 2
-pm.min_spare_servers = 1
-pm.max_spare_servers = 3
-chdir = /
+listen.owner = nobody to listen.owner = apache
+
+listen.group = nobody to listen.group = apache
+
+Finally check if ;listen = 127.0.0.1:9000 is without ; = /
+
+Restart PFM and NGINX
+```sh
+systemctl start php-fpm.service
+systemctl enable php-fpm.service
+systemctl restart nginx
 ```
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
