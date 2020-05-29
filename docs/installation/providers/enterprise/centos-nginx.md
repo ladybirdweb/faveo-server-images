@@ -185,7 +185,7 @@ nano /etc/nginx/conf.d/faveo.conf
 Then, in the `nano` text editor window you just opened, copy the following 
 
 ```nginx
-erver {
+server {
     listen   80;
     server_name  example.com www.example.com;
 
@@ -245,7 +245,7 @@ gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 **c.** Edit config file for PHP FPM using vim editor
 
 ```sh
-/etc/php-fpm.d/www.conf
+nano /etc/php-fpm.d/www.conf
 ```
 You will need replace these lines
 
