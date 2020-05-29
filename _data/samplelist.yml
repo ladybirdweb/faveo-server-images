@@ -1,12 +1,12 @@
 toc:
-  - title: Installation instructions for Community version
+  - title: Community version
     subfolderitems:
       - page: Ubuntu with Apache
         url: /docs/installation/providers/community/ubuntu-apache.md
       - page: CentOS with Apache
         url: /docs/installation/providers/community/centos-apache.md
      
-  - title: Installation instructions for Freelancer, paid and Enterprise version
+  - title: Freelancer, paid and Enterprise version
     subfolderitems:
       - page: Cent OS with Apache
         url: /docs/installation/providers/enterprise/centos-apache.md
