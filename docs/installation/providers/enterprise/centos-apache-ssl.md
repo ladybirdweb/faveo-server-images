@@ -1,4 +1,4 @@
-# Install Let’s Encrypt SSL for Faveo on Cent OS 8 Running Apache Web Server <!-- omit in toc -->
+# Install Let’s Encrypt SSL for Faveo on Cent OS 7 Running Apache Web Server <!-- omit in toc -->
 
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
