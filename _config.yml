@@ -1,9 +1,18 @@
 remote_theme: pmarsceill/just-the-docs
 title: "Installing Faveo"
+description: "This website list down ways to install Faveo Helpdesk on different platforms"
 search_enabled: true
+lang: en
+
 logo: "/assets/images/logo.png"
-footer_content: "Copyright &copy; 2015-2020 Ladybird Web Solution Pvt Ltd. </a>"
+footer_content: "Copyright &copy; 2015-2020 Ladybird Web Solution Pvt Ltd."
+
+# Permalink URLs structure, for permalink style options see: https://jekyllrb.com/docs/permalinks/
+permalink:          /:title/
+
 ga_tracking: UA-65420739-1
+
+
 defaults:
   # _docs
   - scope:
