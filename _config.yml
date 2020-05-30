@@ -1,5 +1,5 @@
-# remote_theme: pmarsceill/just-the-docs
-remote_theme: "mmistakes/minimal-mistakes@4.19.2"
+remote_theme: pmarsceill/just-the-docs
+# remote_theme: "mmistakes/minimal-mistakes@4.19.2"
 title: "Installing Faveo"
 description: "This website list down ways to install Faveo Helpdesk on different platforms"
 search_enabled: true
