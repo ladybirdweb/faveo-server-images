@@ -15,8 +15,8 @@ title                    : "Faveo Installation Guide"
 title_separator          : "-"
 subtitle                 : "Ladybird Web Solution"
 name                     : &name "Ladybird Web Solution Pvt Ltd" # &name is a YAML anchor which can be *referenced later
-description              : &description "A flexible Jekyll theme for your blog or site with a minimalist aesthetic."
-url                      : https://ladybirdweb.github.io/faveo-server-images/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : &description "Install faveo in minutes with our awesome documentation"
+#url                      : https://ladybirdweb.github.io/faveo-server-images/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 #baseurl                  : "/minimal-mistakes" # the subpath of your site, e.g. "/blog"
 repository               : "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -76,8 +76,8 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/mmistakes"
-    - "https://www.facebook.com/michaelrose"
+    - "https://twitter.com/faveohelpdesk"
+    - "https://www.facebook.com/faveohelpdesk"
 
 # Analytics
 analytics:
