@@ -14,7 +14,7 @@ locale                   : "en-US"
 title                    : "Faveo Installation Guide"
 title_separator          : "-"
 subtitle                 : "Ladybird Web Solution"
-name                     : &name "Ladybird Web Solution Pvt Ltd" # &name is a YAML anchor which can be *referenced later
+name                     : &name "By Ladybird Web Solution Pvt Ltd" # &name is a YAML anchor which can be *referenced later
 description              : &description "Install faveo in minutes with our awesome documentation"
 #url                      : https://ladybirdweb.github.io/faveo-server-images/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 #baseurl                  : "/minimal-mistakes" # the subpath of your site, e.g. "/blog"
@@ -206,6 +206,8 @@ defaults:
       comments: true
       share: true
       related: true
+       sidebar:
+        nav: "docs"
   # _pages
   - scope:
       path: "_pages"
