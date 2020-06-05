@@ -1,3 +1,13 @@
+---
+title: "Faveo installation"
+permalink: /readme/
+excerpt: "How to quickly install and setup Faveo."
+last_modified_at: 2020-06-05
+redirect_from:
+  - /theme-setup/
+toc: true
+---
+
 # Faveo Server Images
 This repository contains various scripts &amp; images to install Faveo Helpdesk on various platforms(OS)
 
