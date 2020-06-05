@@ -207,7 +207,7 @@ defaults:
       share: true
       related: true
        sidebar:
-        nav: "main"
+        nav: "docs"
   # _pages
   - scope:
       path: "_pages"
