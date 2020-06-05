@@ -64,12 +64,12 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : &twitter "mmistakes"
+  username               : &twitter "faveohelpdesk"
 facebook:
-  username               : &facebook "michaelrose"
+  username               : &facebook "faveohelpdesk"
   app_id                 :
   publisher              :
-og_image                 : "assets/images/site-logo.png" # Open Graph/Twitter default site image
+og_image                 : "assets/images/logo.png" # Open Graph/Twitter default site image
 # For specifying social profiles, used in _includes/seo.html
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -113,13 +113,13 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/mmistakes"
+      url: "https://twitter.com/faveohelpdesk"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/mmistakes"
+      url: "https://github.com/ladybirdweb"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/mmistakes"
+      url: "https://instagram.com/faveohelpdesk"
 
 
 # Reading Files
