@@ -1,3 +1,7 @@
+---
+layout: single
+---
+
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Ubuntu <!-- omit in toc -->
 
 
