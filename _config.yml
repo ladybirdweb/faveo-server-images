@@ -20,7 +20,7 @@ url                      : https://ladybirdweb.github.io/ # the base hostname & 
 baseurl                  : "/faveo-server-images" # the subpath of your site, e.g. "/blog"
 repository               : "ladybirdweb/faveo-server-images"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : /assets/images/logo.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -51,7 +51,7 @@ search_provider          : algolia # lunr (default), algolia
 algolia:
   application_id         : 1NY9XBIZD2 # YOUR_APPLICATION_ID
   index_name             : minimal_mistakes # YOUR_INDEX_NAME
-  search_only_api_key    : 9eae1b7a913622a97e3d42d371bb508f # YOUR_SEARCH_ONLY_API_KEY
+  search_only_api_key    : b26b6dc47ac28cb47eebc94f72d3644a # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : false # true (default), false
   files_to_exclude:
     - _posts/2017-11-28-post-exclude-search.md
