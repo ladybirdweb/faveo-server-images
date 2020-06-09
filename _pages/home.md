@@ -1,6 +1,8 @@
 ---
 layout: single
 permalink: /
+type: docs
+author_profile: false
 ---
 
 # Faveo Server Images
