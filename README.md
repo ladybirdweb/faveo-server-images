@@ -40,7 +40,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **MySQL 5.7.x** or **MariaDB 10.3+**
 -   **Redis** or **Beanstalk**(Optional)
 
-For complete minimum requirement list [check here](/docs/system-requirement/readme.md)
+For complete minimum requirement list [check here](/docs/system-requirement/)
 
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
@@ -50,16 +50,16 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community version
-* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache.md)
-* [CentOS with Apache](/docs/installation/providers/community/centos-apache.md)
+* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
+* [CentOS with Apache](/docs/installation/providers/community/centos-apache)
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise version
-* [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache.md)
-* [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx.md)
-* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache.md)
-* [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx.md)
-* [Windows 2019](/docs/installation/providers/enterprise/windows.md)
+* [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache)
+* [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
+* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)
+* [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
+* [Windows 2019](/docs/installation/providers/enterprise/windows)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
@@ -74,12 +74,12 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Freelancer, paid and Enterprise version**
 
-* [Cent OS 7](/installation-scripts/helpdesk/centos7/readme.md)
-* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18/readme.md)
+* [Cent OS 7](/faveo-server-images/installation-scripts/helpdesk/centos7/readme.md)
+* [Ubuntu 18](/faveo-server-images/installation-scripts/helpdesk/ubuntu18/readme.md)
 
 **For Faveo Helpdesk Community**
-* [Cent OS 7](/installation-scripts/helpdesk-community/centos7/readme.md)
-* [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18-community/readme.md)
+* [Cent OS 7](/faveo-server-images/installation-scripts/helpdesk-community/centos7/readme.md)
+* [Ubuntu 18](/faveo-server-images/installation-scripts/helpdesk/ubuntu18-community/readme.md)
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server

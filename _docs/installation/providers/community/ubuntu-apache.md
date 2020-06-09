@@ -1,3 +1,13 @@
+---
+layout: single
+type: docs
+permalink: /docs/installation/providers/community/ubuntu-apache/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
+---
+
 # Installing Faveo Helpdesk Community on Ubuntu <!-- omit in toc -->
 
 

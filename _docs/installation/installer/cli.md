@@ -1,3 +1,14 @@
+---
+layout: single
+type: docs
+permalink: /docs/installation/installer/cli/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
+---
+
+
 # Installing Faveo (Generic) <!-- omit in toc -->
 
 Faveo can be installed on a variety of platforms. The choice of the platform is yours.
