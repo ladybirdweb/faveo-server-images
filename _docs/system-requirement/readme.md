@@ -2,7 +2,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/system-requirement/
+permalink: /docs/system-requirement/readme
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09

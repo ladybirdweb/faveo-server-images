@@ -6,7 +6,8 @@ author_profile: false
 toc: true
 ---
 
-This repository contains various scripts &amp; images to install Faveo Helpdesk on various platforms(OS)
+Welcome to the Faveo insallation documentation.
+This documentation show how to install Faveo Helpdesk on various platforms(OS)
 
 
 # Installing Faveo (Generic) <!-- omit in toc -->
