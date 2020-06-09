@@ -7,7 +7,7 @@ docs:
       - title: CentOS with Apache
         url: /docs/installation/providers/community/centos-apache
      
-  - title: Freelancer, paid and Enterprise version
+  - title: Enterprise version
     children:
       - title: Cent OS with Apache
         url: /docs/installation/providers/enterprise/centos-apache
