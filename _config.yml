@@ -18,7 +18,7 @@ name                     : &name "By Ladybird Web Solution Pvt Ltd" # &name is a
 description              : &description "Install faveo in minutes with our awesome documentation"
 #url                      : https://ladybirdweb.github.io/faveo-server-images/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 #baseurl                  : "/minimal-mistakes" # the subpath of your site, e.g. "/blog"
-#repository               : "mmistakes/minimal-mistakes"
+repository               : "ladybirdweb/faveo-server-images"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title

@@ -6,6 +6,7 @@ last_modified_at: 2020-06-05
 redirect_from:
   - /theme-setup/
 toc: true
+layout: single
 ---
 
 # Faveo Server Images
