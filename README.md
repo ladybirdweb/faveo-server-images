@@ -1,6 +1,6 @@
 ---
 title: "Faveo installation"
-permalink: /readme/
+permalink: /
 excerpt: "How to quickly install and setup Faveo."
 last_modified_at: 2020-06-05
 redirect_from:
