@@ -79,7 +79,7 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7)
-* [Ubuntu 18](/installation-scripts/helpdesk-community/ubuntu18)
+* [Ubuntu 18](/installation-scripts/helpdesk-c/ubuntu18)
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server
@@ -95,7 +95,7 @@ Create your own fork of Faveo master repositoray and use [git-flow](https://gith
 <a id="markdown-help" name="markdown-help"></a>
 ## Help
 
-Visit the [issue](https://github.com/ladybirdweb/faveo-server-images/issues) page. And if you'd like professional help commercial support is available, email us through the [contact form](https://www.faveohelpdesk.com/contact-us/).
+Visit the [issue](https://github.com/ladybirdweb/faveo-server-images/issues) page. And if you'd like professional help commercial support is available, email us through the [contact form](http://www.faveohelpdesk.com/contact-us/).
 
 <a id="markdown-references" name="markdown-references"></a>
 ## References
