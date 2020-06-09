@@ -299,7 +299,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis.md)
+[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### 7. SSL Installation
@@ -308,7 +308,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-nginx-ssl.md)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-nginx-ssl)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step

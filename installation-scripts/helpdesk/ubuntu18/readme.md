@@ -1,3 +1,14 @@
+---
+layout: single
+type: docs
+permalink: /installation-scripts/helpdesk/ubuntu18/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
+---
+
+
 # Faveo Helpdesk Freelancer, Enterprise auto install script
 
 Automatic-installation script is available for <b>FRESH Ubuntu 18.04.4 </b> installs at
