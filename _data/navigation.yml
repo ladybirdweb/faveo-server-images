@@ -1,23 +1,23 @@
 # example navigation
 docs:
   - title: Community version
-    subfolderitems:
-      - page: Ubuntu with Apache
+    children:
+      - title: Ubuntu with Apache
         url: /docs/installation/providers/community/ubuntu-apache
-      - page: CentOS with Apache
+      - title: CentOS with Apache
         url: /docs/installation/providers/community/centos-apache
      
   - title: Freelancer, paid and Enterprise version
-    subfolderitems:
-      - page: Cent OS with Apache
+    children:
+      - title: Cent OS with Apache
         url: /docs/installation/providers/enterprise/centos-apache
-      - page: Cent OS with NGINX
+      - title: Cent OS with NGINX
         url: /docs/installation/providers/enterprise/centos-nginx
-      - page: Ubuntu with Apache
+      - title: Ubuntu with Apache
         url: /docs/installation/providers/enterprise/ubuntu-apache
-      - page: Ubuntu with NGINX
+      - title: Ubuntu with NGINX
         url: /docs/installation/providers/enterprise/ubuntu-nginx
-      - page: Windows Server 2019
+      - title: Windows Server 2019
         url: /docs/installation/providers/enterprise/windows
 
 # main links
