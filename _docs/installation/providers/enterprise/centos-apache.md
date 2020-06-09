@@ -7,9 +7,6 @@ redirect_from:
 last_modified_at: 2020-06-09
 ---
 
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS <!-- omit in toc -->
-
-
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
 Faveo can run on [Cent OS 7](https://www.centos.org/download/).
