@@ -20,15 +20,3 @@ docs:
       - title: Windows Server 2019
         url: /docs/installation/providers/enterprise/windows
 
-# main links
-main:
-  - title: "Quick-Start Guide"
-    url: /docs/quick-start-guide/
-  - title: "About"
-    url: /about/
-  - title: "Sample Posts"
-    url: /year-archive/
-  - title: "Sample Collections"
-    url: /collection-archive/
-  - title: "Terms &amp; Privacy Policy"
-    url: /terms/
