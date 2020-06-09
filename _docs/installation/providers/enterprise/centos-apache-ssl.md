@@ -1,3 +1,13 @@
+---
+layout: single
+type: docs
+permalink: /docs/installation/providers/enterprise/centos-apache-ssl/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
+---
+
 # Install Let’s Encrypt SSL for Faveo on Cent OS 7 Running Apache Web Server <!-- omit in toc -->
 
 

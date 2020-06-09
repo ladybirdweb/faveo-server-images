@@ -1,3 +1,13 @@
+---
+layout: single
+type: docs
+permalink: /docs/installation/providers/enterprise/centos-redis/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
+---
+
 # Install and configure Redis, Supervisor and Worker for Faveo on Cent OS 7 <!-- omit in toc -->
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />

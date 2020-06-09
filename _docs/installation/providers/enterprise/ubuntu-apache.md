@@ -1,5 +1,11 @@
 ---
 layout: single
+type: docs
+permalink: /docs/installation/providers/enterprise/ubuntu-apache/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2020-06-09
+toc: true
 ---
 
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Ubuntu <!-- omit in toc -->
