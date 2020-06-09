@@ -1,5 +1,8 @@
 ---
+title: "Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS"
 layout: single
+permalink: /docs/centos-apache/
+last_modified_at: 2020-06-09
 ---
 
 # Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS <!-- omit in toc -->

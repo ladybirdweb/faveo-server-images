@@ -13,7 +13,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "en-US"
 title                    : "Faveo Installation Guide"
 title_separator          : "-"
-subtitle                 : "Ladybird Web Solution"
+subtitle                 : "By Ladybird Web Solution"
 name                     : &name "By Ladybird Web Solution Pvt Ltd" # &name is a YAML anchor which can be *referenced later
 description              : &description "Install faveo in minutes with our awesome documentation"
 #url                      : https://ladybirdweb.github.io/faveo-server-images/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -215,6 +215,8 @@ defaults:
     values:
       layout: single
       author_profile: true
+      sidebar:
+        nav: "docs"
   # _docs
   - scope:
       path: ""
@@ -236,6 +238,8 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      sidebar:
+        nav: "docs"
   # _pets
   - scope:
       path: ""
@@ -245,6 +249,8 @@ defaults:
       author_profile: true
       share: true
       comment: true
+      sidebar:
+        nav: "docs"
   # _portfolio
   - scope:
       path: ""
@@ -253,6 +259,8 @@ defaults:
       layout: single
       author_profile: false
       share: true
+      sidebar:
+        nav: "docs"
 
 
 # Sass/SCSS
