@@ -138,11 +138,11 @@ Apache is supported out of the box.
 
 ### b. Nginx
 On nginx, please create a new virtual host for Faveo. The below is an example virtual host but will need editing for your specific environment (paths may vary):
-[faveo.conf](/installation-scripts/web-server/nginx/faveo.conf)
+[faveo.conf](/faveo-server-images/installation-scripts/web-server/nginx/faveo.conf)
 
 ### c. IIS
 On IIS, please create a web.config file in the root of your installation directory with the below contents:
-[web.config](/installation-scripts/web-server/iis/web.config)
+[web.config](/faveo-server-images/installation-scripts/web-server/iis/web.config)
 
 **Required Extension(s)**
 The [URL Rewrite extension](https://www.iis.net/downloads/microsoft/url-rewrite) is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
