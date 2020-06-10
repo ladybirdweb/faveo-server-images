@@ -46,7 +46,7 @@ For complete minimum requirement list [check here](/docs/system-requirement/requ
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
 
-The preferred OS distribution is Cent OS 8, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
+The preferred OS distribution is Cent OS 7, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community version
