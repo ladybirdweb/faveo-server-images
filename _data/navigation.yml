@@ -19,6 +19,8 @@ docs:
         url: /docs/installation/providers/enterprise/ubuntu-nginx
       - title: Windows Server 2019
         url: /docs/installation/providers/enterprise/windows
+      - title: CentOS Web Panel
+        url: /docs/installation/providers/enterprise/centos-web-panel/
 
 # Top bar Menu/Navigation
 main:
