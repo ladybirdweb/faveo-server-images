@@ -35,4 +35,4 @@ Execute the script
 ./Faveo-ubuntu-apache.sh
 ```
 
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
+Follow the final installation steps [here](/docs/installation/installer/gui)

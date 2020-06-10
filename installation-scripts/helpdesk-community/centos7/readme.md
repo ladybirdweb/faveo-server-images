@@ -14,12 +14,9 @@ https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/cen
 
 # Run the script
 
-
-
 To run, copy/paste this into the command-line
 ```sh
 bash (curl -s https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall)
 ```
 
-
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
+Follow the final installation steps [here](/docs/installation/installer/gui)

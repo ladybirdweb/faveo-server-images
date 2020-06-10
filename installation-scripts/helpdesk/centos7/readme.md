@@ -9,8 +9,6 @@ toc: true
 title: "Faveo Helpdesk Freelancer, Enterprise auto install script"
 ---
 
-# 
-
 Automatic-installation script is available for <b>FRESH CentOS 7</b> installs at
 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoinstall.sh
 
@@ -35,4 +33,4 @@ Execute the script
 ./Faveo-Centos-apache.sh
 ```
 
-Follow the final installation steps [here](https://support.faveohelpdesk.com/show/web-gui-installer)
+Follow the final installation steps [here](/docs/installation/installer/gui)
