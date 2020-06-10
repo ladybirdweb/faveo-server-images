@@ -7,6 +7,8 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 title: "Faveo Helpdesk Community auto install script for Ubuntu 16.04"
+sidebar:
+  nav: "docs"
 ---
 
 Faveo automatic installation script is available for <b>Ubuntu 16.04</b> 
