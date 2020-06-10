@@ -55,17 +55,17 @@ Now log in to your CentOS Web Panel server using the link provided by the instal
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591248805cwp2.png"  />
 
-## Point A record of the domain to CentOS Web Panel server
+## 3. Point domain to CentOS Web Panel server
 As the Centos Web panel is now installed. You can host Faveo in this Centos Web Panel.
 
 **Note:** You should have Domain pointing to this server.
 
-## Create user account  on CentOS Web Panel
+## 4. Create user account  on CentOS Web Panel
 Create user account under User Accounts > New account.
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591272040cwp4.png"  />
 
-## Change PHP version and install PHP extension
+## 5. Change PHP version and install PHP extension
 
 CWP by default PHP 5.6 will be installed. You can install different PHP versions and their extensions in the panel.
 
@@ -81,7 +81,7 @@ PHP Settings> php_addons
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591357359Screenshot%20from%202020-06-05%2017-12-23.png"  />
 
-## Database configuration    
+## 6. Database configuration    
 After Account created, You can login to user panel throigh the url https://SERVER-IP:2083/
 
 Faveo needs empty Database, Please create Database Name and User for Faveo.
@@ -92,21 +92,21 @@ SQL Services> Mysql Manager
 
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
-## Upload Faveo
+## 7. Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to the server
 
-Click on File Management> File manager and upload Faveo files 
+Click on File Management > File manager and upload Faveo files 
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278035Screenshot%20from%202020-06-04%2019-10-18.png"  />
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278060Screenshot%20from%202020-06-04%2019-10-48.png"  />
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-## Install Faveo
+## 8. Install Faveo
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
-## Cron Job configuration
+## 9. Cron Job configuration
 
 Please set cron for Faveo to fetch mails
 
@@ -114,19 +114,19 @@ Please set cron for Faveo to fetch mails
 
 In Addition to that please Enable server Backup, Firewall and SSL Configuration.
 
-## Backup configuration 
+## 10. Backup configuration 
 
 CWP settings > Backup configuration
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591279511Screenshot%20from%202020-06-04%2019-34-55.png"  />
     
-## SSL Configuration.
+## 11. SSL Configuration.
 
 Webserver Settings > SSL Certificates
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591336632Screenshot%20from%202020-06-05%2011-23-56.png"  />
     
-## Firewall Configuration
+## 12. Firewall Configuration
 
 Security > CSF firewall
     
