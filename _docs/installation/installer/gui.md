@@ -11,12 +11,13 @@ title: "Faveo Web GUI Installer"
 
 Faveo comes with a web-based installer to help and guide you through the installation process. While the installer provides step by step guide during the installation, it's important and helpful to have general knowledge about Web servers, PHP and MySQL.
 
-Before getting started make sure your server meets following minimum requirement required to install and use Faveo as listed here
+Before getting started make sure your server meets following [minimum requirement](/docs/system-requirement/requirement/) required to install and use Faveo
 
 <a id="getting-started" name="getting-started"></a>
 ## Getting Started
 
 Download the latest version of Faveo from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload the .zip files in the folder on your server.
+Faveo Community version can also be downloaded directly from [Github](https://github.com/ladybirdweb/faveo-helpdesk)
 
 For example /faveo/, /helpdesk/ or /support/ depending on your preference. Basic knowledge of using FTP is an added advantage at this stage. If you don't know how to use FTP, we would recommend you read the documentation supplied with your FTP client and learn the basics of uploading and setting permissions on files. 
 
