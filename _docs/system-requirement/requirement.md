@@ -1,4 +1,3 @@
-
 ---
 layout: single
 type: docs
@@ -8,7 +7,6 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 ---
-
 
 # Faveo Helpdesk System Requirements 
 
