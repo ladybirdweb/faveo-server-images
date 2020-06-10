@@ -48,7 +48,6 @@ Alternative Link For Downloading pem file
 
 Repalce the curl.cainfo  path in the specified .ini.file = "C:\wamp64\bin\php v7.2/v7.3\php.ini and phpforApache.ini"
 
-1579169127PHP Replace file.jpg
 
 <a id="step4" name="step4"></a>
 ## Step 4: Setup the database
@@ -88,11 +87,15 @@ You can specify the necessary details and click Next.
      
 **In program/script field enter the following value:**
 
-C:\Windows\System32\cmd.ex 
+```
+C:\Windows\System32\cmd.exe 
+```
 
 **Add the following value in Argument:**
 
+```
 /c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+```
 
 <img alt="" src="https://lh3.googleusercontent.com/936E97noHmbaP3hbXWj460h-d9-6QAZ0MqFNpoAwTnKh1gKKaBqSsFyWeCDQ9FxfWSbSMwAgXcy3NljUptity3w7IHbXAfz5OFEGpAixLbcZ5gvrLKcN5yV_lqeg5MOrK0eMPLh8"  />
 
