@@ -59,7 +59,7 @@ Provide the system locale information as system login details and system languag
 <a id="step5" name="step5"></a>
 ### Step 5: License Key
 
-Product License Key: Provide the license key received for the purchased product and click on the Continue button. Refer the link [how to get the product license key?](/docs/helpers/license-key)
+Product License Key: Provide the license key received for the purchased product and click on the Continue button. Refer the link [How to get the product license key?](/docs/helpers/license-key)
 
 <img src="https://lh3.googleusercontent.com/RDCZNHxE_VOwCmbhYM_3SFdt4gGkMNTVdZAFzXZYp0FWRtPkaTgIJnDG333OnLagBSPHMS6RzgH_ALIaBOLWB9HBY1oaUD0DB2kpH2Q65PE57ny5EVY9gsc-BqfJVNI-O3h0zMHU" alt="" />
     
