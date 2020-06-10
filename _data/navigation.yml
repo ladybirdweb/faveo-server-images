@@ -1,4 +1,4 @@
-# example navigation
+# Sidebar Menu/Navigation
 docs:
   - title: Community version
     children:
@@ -20,3 +20,10 @@ docs:
       - title: Windows Server 2019
         url: /docs/installation/providers/enterprise/windows
 
+# Top bar Menu/Navigation
+main:
+  - title: "User Manual"
+    url: https://support.faveohelpdesk.com/knowledgebase
+  - title: "Installation Guide"
+    url: https://docs.faveohelpdesk.com/
+  
