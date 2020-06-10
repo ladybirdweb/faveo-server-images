@@ -14,7 +14,7 @@ Faveo automatic installation script is available for <b>Ubuntu 16.04</b>
 The installation script will install following 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **MySQL 5.7+** 
 
 This script should be used only on fresh/new copy of Ubuntu 16.04
 
