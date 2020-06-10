@@ -18,7 +18,7 @@ The installation script will install following
 
 This script should be used only on fresh/new copy of Ubuntu 18.04.4
 
-# Run the script
+## Run the script
 
 To run, copy/paste this into the command-line
 
@@ -39,4 +39,6 @@ Execute the script
 ./Faveo-ubuntu-apache.sh
 ```
 
-Follow the final installation steps [here](/docs/installation/installer/gui)
+## Install Faveo
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
