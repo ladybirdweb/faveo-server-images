@@ -1,13 +1,13 @@
 # Sidebar Menu/Navigation
 docs:
-  - title: Community version
+  - title: Community edition
     children:
       - title: Ubuntu with Apache
         url: /docs/installation/providers/community/ubuntu-apache
       - title: CentOS with Apache
         url: /docs/installation/providers/community/centos-apache
      
-  - title: Enterprise version
+  - title: Freelancer & paid editions
     children:
       - title: Cent OS with Apache
         url: /docs/installation/providers/enterprise/centos-apache
