@@ -7,7 +7,8 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 title: "Faveo Helpdesk Freelancer, Enterprise auto install script for CentOS 7"
-nav: "docs"
+sidebar:
+  nav: "docs"
 ---
 
 Faveo automatic installation script is available for <b>CentOS 7</b> 
