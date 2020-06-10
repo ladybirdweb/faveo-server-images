@@ -33,14 +33,14 @@ php artisan install:faveo
 <a id="step1" name="step1"></a>
 ### Step 1: Server Requirements
 
-The installer will perform the system requirement test and if it spots any errors it will report. When all your server checklists are configured correctly it displays as “Enabled”. You can Continue to next installtion step once all the server requirment are meet.
+The installer will perform the system requirement test and if it spots any errors it will report. When all your server checklists are configured correctly it displays as “Loading”. You can Continue to next installation step once all the server requirment are meet.
 
 <img src="https://lh5.googleusercontent.com/Pmf71TrKPH-cHr2fBOUyJxusRodK0V56EAcGRh51z_7KXJkwdQfpbgK-EC72XlGVnpLW98Mx7FWN2bOc0WA0Zex-LxKFnWGLZxQXJRIpckE05ZFJshKtOvCDS3ksVUJsgcoJbBdL" alt="" />
     
 <a id="step2" name="step2"></a>
 ### Step 2: License Key
 
-Product License Key: Provide the license key received for the purchased product. Refer the link [how to get the product license key?](/docs/helpers/license-key)
+Enter the license key received for the purchased product. Refer the link [How to get the product license key?](/docs/helpers/license-key)
 
 <img src="https://lh3.googleusercontent.com/hvtKHjaJN_ZHGiblc2Wzm0oQz-TnchDeNHZPQ8WA6YNd8s6Ub8queeUieYZqQbBV-wb9p8BQDjf-rS7xYuLCUsTdbl_iFnbb8w4fBKZfGOWztomUzOmrfLqLPpvy03tzGy0-ruby" alt="" />
 
@@ -57,7 +57,7 @@ Fill the Database Name, Database username, and password. The installer will crea
 <a id="step4" name="step4"></a>
 ### Step 4: Install Database
 
-Once faveo has completed the initial checking, you can run command for Migrating and seeding database. 
+Once installer has created .env file, you can run command for migrating and seeding database. 
 
 ```sh
 php artisan install:db
@@ -67,7 +67,7 @@ php artisan install:db
 
 <img src="https://lh6.googleusercontent.com/-Gh5codKaHw00G2a3IHezQaGl0r8KrvHpxl8hnAlbe5zn24P1ow3AQ89Q3AYCdtZmP74EUfi3LPFcAgZ3I6VnxV5KTYbwyYO1S0nrfblnl9z9xDhTLVrMiCgkLkvE-izwh2R-ppP" alt="" />
     
-On installation user_name, email and password are displayed on the screen.
+On completion user_name, email and password are displayed on the screen. You can use this to login to Faveo
     
 Congratulations! Faveo is installed and operational!
 
