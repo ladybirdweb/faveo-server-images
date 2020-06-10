@@ -201,7 +201,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
@@ -214,7 +214,7 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       sidebar:
         nav: "docs"
   # _docs
@@ -235,7 +235,7 @@ defaults:
       type: recipes
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
       sidebar:
@@ -246,7 +246,7 @@ defaults:
       type: pets
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comment: true
       sidebar:
