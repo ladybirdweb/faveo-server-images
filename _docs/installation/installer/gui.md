@@ -16,11 +16,11 @@ Before getting started make sure your server meets following [minimum requiremen
 <a id="getting-started" name="getting-started"></a>
 ## Getting Started
 
-Download the latest version of Faveo from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload the .zip files in the folder on your server.
+Download the latest version of Faveo from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload the .zip files in the folder/directory on your server.
 
 Faveo Community version can also be downloaded directly from [Github](https://github.com/ladybirdweb/faveo-helpdesk)
 
-For example /faveo/, /helpdesk/ or /support/ depending on your preference. Basic knowledge of using FTP is an added advantage at this stage. If you don't know how to use FTP, we would recommend you read the documentation supplied with your FTP client and learn the basics of uploading and setting permissions on files. 
+Basic knowledge of using FTP is an added advantage at this stage. If you don't know how to use FTP, we would recommend you read the documentation supplied with your FTP client and learn the basics of uploading and setting permissions on files. 
 
 You can get the installer by simply browsing the Faveo URL (Faveo Hosted URL). Faveo installation script will attempt to auto-detect paths and any permission issues. By following the given instructions, you can complete the installation and basic setup in a web browser. If the installation spots any configuration errors then it will not allow you to continue until the errors are corrected.
 
