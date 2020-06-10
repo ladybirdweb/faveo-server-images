@@ -61,6 +61,7 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Windows 2019](/docs/installation/providers/enterprise/windows)
 * [CentOS Web Panel](/docs/installation/providers/enterprise/centos-web-panel)
+* [WampServer](/docs/installation/providers/enterprise/wamp)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
