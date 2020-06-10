@@ -65,8 +65,8 @@ The preferred OS distribution is Cent OS 8, simply because all the development i
 ### One click installers 
 
 Faveo Helpdesk Community can be installed using following installers
-- **Softaculous** https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk
-- **Fantastico** https://www.netenberg.com/fantastico.php
+- **Softaculous** [https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk](https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk)
+- **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php)
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
@@ -79,13 +79,13 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7)
-* [Ubuntu 18](/installation-scripts/helpdesk-cummunity/ubuntu18)
+* [Ubuntu 18](/installation-scripts/helpdesk-cummunity/ubuntu16)
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server
 
 Faveo can also be installed on a shared server, though we highly recommend cloud, VPS or dedicated server for best performance and more control
-* [cPanel](https://support.faveohelpdesk.com/show/faveo-installation-in-cpanel)
+* [cPanel](/docs/installation/providers/community/cpanel)
 
 <a id="markdown-contributing" name="markdown-contributing"></a>
 ## Contributing
@@ -100,7 +100,7 @@ Visit the [issue](https://github.com/ladybirdweb/issues) page. And if you'd like
 <a id="markdown-references" name="markdown-references"></a>
 ## References
 
-- **Faveo Helpdesk** https://github.com/ladybirdweb/faveo-helpdesk
-- **Faveo Docker** https://github.com/ladybirdweb/faveo-docker
-- **Faveo Probe** https://github.com/ladybirdweb/faveo-probe
+- **Faveo Helpdesk** [https://github.com/ladybirdweb/faveo-helpdesk](https://github.com/ladybirdweb/faveo-helpdesk)
+- **Faveo Docker** [https://github.com/ladybirdweb/faveo-docker](https://github.com/ladybirdweb/faveo-docker)
+- **Faveo Probe** [https://github.com/ladybirdweb/faveo-probe](https://github.com/ladybirdweb/faveo-probe)
 
