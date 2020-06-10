@@ -283,4 +283,4 @@ Select the schedule and click Edit and set the cron to run every 10 minutes. You
 <a id="final-step" name="final-step"></a>
 ### 6. Final step
 
-The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
+The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

@@ -313,4 +313,4 @@ This is an optional step and will improve system security and is highly recommen
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
 
-The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.
+The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
