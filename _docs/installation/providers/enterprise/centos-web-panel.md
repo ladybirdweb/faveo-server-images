@@ -29,7 +29,7 @@ hostnamectl set-hostname hostname.domain.com
 yum -y update
 yum -y install wget
 cd /usr/local/src
-wget https://faveohelpdesk.com/user-manual/faveohelpdesk-scripts/cwp.sh
+wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/helpdesk/cwp.sh
 chmod +x cwp.sh
 ./cwp.sh
 ```
@@ -38,7 +38,6 @@ chmod +x cwp.sh
 Please be patient as the installation progress can take between 10 and 20 minutes to complete. Once the install has finished you should see a screen saying “CWP” installed and list of credentials required to access the panel. Make sure to copy or write down the information and keep it safe:
 
 Once ready, press “ENTER” for server reboot. If the system does not reboot automatically simply type “reboot” to reboot the server.
-
  
 ```sh
 reboot
@@ -48,30 +47,31 @@ After server reboot, login into server as root, once login you will see differen
 
 Now log in to your CentOS Web Panel server using the link provided by the installer on your server.
 
-- **CentOS WebPanel Admin GUI:** https://SERVER-IP:2031/
+- **CentOS Web Panel Admin GUI:** https://SERVER-IP:2031/
 - **Username:** root
 - **Password:** your-root-password
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591248703Screenshot%20from%202020-06-04%2011-01-07.png"  />
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591248805cwp2.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591248805cwp2.png"  />
 
-Now, your installed Centos Web panel
+## Point A record of the domain to CentOS Web Panel server
+As the Centos Web panel is now installed. You can host Faveo in this Centos Web Panel.
 
-Now, you installed Centos Web panel. You can host Faveo in this Centos Web Panel.
+**Note:** You should have Domain pointing to this server.
 
-Note- You should have Domain name its pointing to the same server.
-
-Create user account under User Accounts> New account.
-
+## Create user account  on CentOS Web Panel
+Create user account under User Accounts > New account.
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591272040cwp4.png"  />
+
+## Change PHP version and install PHP extension
 
 CWP by default PHP 5.6 will be installed. You can install different PHP versions and their extensions in the panel.
 
 Faveo needs PHP 7.3,and some extensions.
 
-    PHP Settings> php_switch_v2
+PHP Settings > php_switch_v2
     
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591357225Screenshot%20from%202020-06-05%2017-09-43.png"  />
     
@@ -81,8 +81,8 @@ PHP Settings> php_addons
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591357359Screenshot%20from%202020-06-05%2017-12-23.png"  />
 
-    
-After Account created, You can login to user panel by https://SERVER-IP:2083/
+## Database configuration    
+After Account created, You can login to user panel throigh the url https://SERVER-IP:2083/
 
 Faveo needs empty Database, Please create Database Name and User for Faveo.
 
@@ -90,15 +90,21 @@ SQL Services> Mysql Manager
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591272884cwp6.png"  />
 
+
+<a id="1-upload-faveo" name="1-upload-faveo"></a>
+## Upload Faveo
+Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to the server
+
 Click on File Management> File manager and upload Faveo file downloaded from https://billing.faveohelpdesk.com 
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278035Screenshot%20from%202020-06-04%2019-10-18.png"  />
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278060Screenshot%20from%202020-06-04%2019-10-48.png"  />
 
-After uploading Zip file, please extract it.
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+## Install Faveo
 
-Please hit domain name in the browser and follow the web GUI guide https://support.faveohelpdesk.com/show/web-gui-installer
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 ## Cron Job configuration
 
