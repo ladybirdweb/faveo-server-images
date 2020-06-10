@@ -243,7 +243,7 @@ sudo systemctl restart nginx
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 4. Install Faveo
 
-Now you can install Faveo via [GUI](/installation/installer/gui) Wizard or [CLI](/installation/installer/cli)
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
 ### 5. Configure cron job
