@@ -19,8 +19,8 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 - [Requirements](#requirements)
 - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
-  - [Linux installation instructions for Community version](#markdown-generic-linux-instructions)
-  - [Linux installation instructions for Freelancer, paid and Enterprise version](#markdown-generic-linux-instructions-enterprise)
+  - [Installation instructions for Community version](#markdown-generic-linux-instructions)
+  - [Installation instructions for Freelancer, paid and Enterprise version](#markdown-generic-linux-instructions-enterprise)
   - [One Click Installer](#markdown-one-click-installer)
   - [Installation via scripts](#markdown-script-installer)
   - [Installation on a shared server](#markdown-shared-sever)

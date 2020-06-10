@@ -22,7 +22,13 @@ Faveo Community version can also be downloaded directly from [Github](https://gi
 
 For example /faveo/, /helpdesk/ or /support/ depending on your preference. Basic knowledge of using FTP is an added advantage at this stage. If you don't know how to use FTP, we would recommend you read the documentation supplied with your FTP client and learn the basics of uploading and setting permissions on files. 
 
-You can get the installer by simply browsing the Faveo URL (Faveo Hosted URL). Faveo installation script will attempt to auto-detect paths and any permission issues. By following the given instructions, you can complete the installation and basic setup in a web browser. If the installation spots any configuration errors then it will not allow you to continue until the errors are corrected.
+Type the command below to start the Faveo CLI installer
+
+```sh
+php artisan install:faveo
+```
+
+<img src="https://lh5.googleusercontent.com/Pmf71TrKPH-cHr2fBOUyJxusRodK0V56EAcGRh51z_7KXJkwdQfpbgK-EC72XlGVnpLW98Mx7FWN2bOc0WA0Zex-LxKFnWGLZxQXJRIpckE05ZFJshKtOvCDS3ksVUJsgcoJbBdL" alt="" />
 
 <a id="step1" name="step1"></a>
 ### Step 1: Server Requirements
