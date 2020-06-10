@@ -40,7 +40,7 @@ If you don't want to use Docker, the best way to setup the project is to use the
 -   **MySQL 5.7.x** or **MariaDB 10.3+**
 -   **Redis** or **Beanstalk**(Optional)
 
-For complete minimum requirement list [check here](/docs/system-requirement)
+For complete minimum requirement list [check here](/docs/system-requirement/requirement)
 
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
