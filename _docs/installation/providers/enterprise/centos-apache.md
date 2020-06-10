@@ -240,7 +240,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/faveo-server-images/docs/installation/providers/enterprise/centos-redis)
+[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### 7. SSL Installation
