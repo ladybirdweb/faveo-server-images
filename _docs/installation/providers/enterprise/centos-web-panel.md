@@ -95,7 +95,7 @@ SQL Services> Mysql Manager
 ## Upload Faveo
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to the server
 
-Click on File Management> File manager and upload Faveo file downloaded from https://billing.faveohelpdesk.com 
+Click on File Management> File manager and upload Faveo files 
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278035Screenshot%20from%202020-06-04%2019-10-18.png"  />
 
