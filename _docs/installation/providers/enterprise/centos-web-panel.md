@@ -97,9 +97,9 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 
 Click on File Management> File manager and upload Faveo file downloaded from https://billing.faveohelpdesk.com 
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278035Screenshot%20from%202020-06-04%2019-10-18.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278035Screenshot%20from%202020-06-04%2019-10-18.png"  />
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278060Screenshot%20from%202020-06-04%2019-10-48.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278060Screenshot%20from%202020-06-04%2019-10-48.png"  />
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ## Install Faveo
@@ -110,7 +110,7 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 Please set cron for Faveo to fetch mails
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591279511Screenshot%20from%202020-06-04%2019-34-55.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591279511Screenshot%20from%202020-06-04%2019-34-55.png"  />
 
 In Addition to that please Enable server Backup, Firewall and SSL Configuration.
 
@@ -118,16 +118,16 @@ In Addition to that please Enable server Backup, Firewall and SSL Configuration.
 
 CWP settings > Backup configuration
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591279511Screenshot%20from%202020-06-04%2019-34-55.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591279511Screenshot%20from%202020-06-04%2019-34-55.png"  />
     
 ## SSL Configuration.
 
 Webserver Settings > SSL Certificates
 
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591336632Screenshot%20from%202020-06-05%2011-23-56.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591336632Screenshot%20from%202020-06-05%2011-23-56.png"  />
     
 ## Firewall Configuration
 
 Security > CSF firewall
     
-<img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591323259Screenshot%20from%202020-06-04%2019-36-20.png"  />
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591323259Screenshot%20from%202020-06-04%2019-36-20.png"  />
