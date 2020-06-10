@@ -17,6 +17,7 @@ Before getting started make sure your server meets following [minimum requiremen
 ## Getting Started
 
 Download the latest version of Faveo from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload the .zip files in the folder on your server.
+
 Faveo Community version can also be downloaded directly from [Github](https://github.com/ladybirdweb/faveo-helpdesk)
 
 For example /faveo/, /helpdesk/ or /support/ depending on your preference. Basic knowledge of using FTP is an added advantage at this stage. If you don't know how to use FTP, we would recommend you read the documentation supplied with your FTP client and learn the basics of uploading and setting permissions on files. 
@@ -55,7 +56,7 @@ Fill the Database Name, Database username, and password in the specified boxes. 
 Provide the system locale information as system login details and system language, system time and click on Continue.
 <img src="https://lh5.googleusercontent.com/s80NnEB2vEezRJ0lBBApn7TA21UvJbvvYuwyx48lZZOpPGiRh-VDL-QcBGo6k85XnjC_qaQOdn79A1Mczep7N2934mt5MVj_DPGv4kh-c6lRtc95Qy0_z1YqdMrj_6UPyTRYTau2" alt="" />
     
-<a id="step4" name="step4"></a>
+<a id="step5" name="step5"></a>
 ### Step 5: License Key
 
 Product License Key: Provide the license key received for the purchased product and click on the Continue button. Refer the link [how to get the product license key?](https://support.faveohelpdesk.com/show/how-to-get-license-code-while-installing-faveo-in-your-system)
@@ -64,7 +65,8 @@ Product License Key: Provide the license key received for the purchased product 
     
 Congratulations! Faveo is installed and operational!
 
-### Step 5: Open Faveo URL in the browser
+<a id="step6" name="step6"></a>
+### Step 6: Start using Faveo
 
 Go to the browser and hit the Faveo URL to login and start using faveo
 <img src="https://lh3.googleusercontent.com/4OXyz8qOcKKrxCOz7vEhnmQz7udSeJMlXNfwnVZ12zdlYKPHr_oozdhn6AGtwazdcmqfx-BdxE6Jj4ZHS3iLY4XtRmbH7RxjdB8l2vJZ4uWaIRwIdQNZILD2TcIzkn5hUzp6J7F2" alt="" />
