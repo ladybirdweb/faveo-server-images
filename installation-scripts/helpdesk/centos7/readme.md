@@ -6,9 +6,10 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: "Faveo Helpdesk Freelancer, Enterprise auto install script"
 ---
 
-# Faveo Helpdesk Freelancer, Enterprise auto install script
+# 
 
 Automatic-installation script is available for <b>FRESH CentOS 7</b> installs at
 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk/centos7/autoinstall.sh

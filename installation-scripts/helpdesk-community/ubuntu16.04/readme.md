@@ -6,11 +6,10 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: "Faveo Helpdesk Community auto install script"
 ---
 
-# Faveo Helpdesk Community auto install script
-
-Automatic-installation script is available for <b>FRESH Ubuntu 18.04.4 </b> installs at
+Automatic-installation script is available for <b>FRESH Ubuntu 16.04</b> installs at
 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/ubuntu16/autoinstall
 
 # Run the script

@@ -79,7 +79,7 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7)
-* [Ubuntu 18](/installation-scripts/helpdesk-cummunity/ubuntu16)
+* [Ubuntu 16](/installation-scripts/helpdesk-cummunity/ubuntu16)
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server

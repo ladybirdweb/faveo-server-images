@@ -6,13 +6,10 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: "Faveo Helpdesk Community auto install script"
 ---
 
-
-
-# Faveo Helpdesk Community auto install script
-
-Automatic-installation script is available for <b>FRESH CentOS 7</b>b> installs at
+Automatic-installation script is available for <b>FRESH CentOS 7</b> installs at
 https://support.faveohelpdesk.com/uploads/install-scripts/helpdesk-community/centos7/autoinstall
 
 # Run the script
