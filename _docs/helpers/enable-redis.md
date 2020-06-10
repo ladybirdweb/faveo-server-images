@@ -17,11 +17,11 @@ Faveo can also be configured with Redis. This will help improve system performan
 
 ### Step 1: Open Admin panel and go to Queues icon
 
-<img alt="Ubuntu" src="https://camo.githubusercontent.com/916cff00e405944d97932ccf87ab39c7c4e040c7/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f72656469732f696d67312e706e67" width="120" height="120" />
+<img alt="Ubuntu" src="https://camo.githubusercontent.com/916cff00e405944d97932ccf87ab39c7c4e040c7/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f72656469732f696d67312e706e67" />
 
 ### Step 2: Open Queues, You will see Redis option in last. Click on Activate
 
-<img alt="Ubuntu" src="https://camo.githubusercontent.com/71e0e53ac0683de2fd02ba938b6d1ed0a0ceec95/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f72656469732f696d67322e706e67" width="120" height="120" />
+<img alt="Ubuntu" src="https://camo.githubusercontent.com/71e0e53ac0683de2fd02ba938b6d1ed0a0ceec95/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f72656469732f696d67322e706e67"  />
 
 These steps will configure Faveo with Redis
 Advance Configuration
