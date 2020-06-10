@@ -8,9 +8,6 @@ last_modified_at: 2020-06-09
 toc: true
 title: "Enable Redis in Faveo"
 ---
-
-## Introduction
-
 Faveo can also be configured with Redis. This will help improve system performance as emails can be qued. We will go through the steps to configure Redis for Faveo.
 
 ## Faveo Redis configuration
