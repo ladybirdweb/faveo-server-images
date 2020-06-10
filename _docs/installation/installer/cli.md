@@ -81,4 +81,4 @@ Go to the browser and hit the Faveo URL to login and start using faveo
 - Email configuration
 - Setting Cron Job URL
 
-Faveo can be also installed via a [CLI](/docs/installation/installer/cli) installer. 
+Faveo can be also installed via a [GUI](/docs/installation/installer/gui) installer. 
