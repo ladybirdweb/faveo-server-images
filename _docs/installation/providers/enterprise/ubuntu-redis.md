@@ -112,4 +112,4 @@ systemctl status supervisor.service
 ```
 
 ## Enable Redis in Faveo
-After Redis installation is complete, follow these instruction to configure Redis with Faveo. [Configuration of Redis with Faveo](https://support.faveohelpdesk.com/show/enable-redis-in-faveo)
+After Redis installation is complete, follow these instruction to configure Redis with Faveo. [Configuration of Redis with Faveo](/docs/helper/enable-redis)
