@@ -186,7 +186,7 @@ sudo systemctl reload apache2
 ```
 ### 4. Install Faveo
 
-Now you can install Faveo via [GUI](https://support.faveohelpdesk.com/show/web-gui-installer) Wizard or [CLI](https://support.faveohelpdesk.com/show/cli-installer).
+Now you can install Faveo via [GUI](/installation/installer/gui) Wizard or [CLI](/installation/installer/cli)
 
 
 ### 5. Configure cron job
