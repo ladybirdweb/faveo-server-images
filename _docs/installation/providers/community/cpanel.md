@@ -37,27 +37,16 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 
 <img alt="" src="https://lh6.googleusercontent.com/Tix0BlPoyjxHnYHEnNnen6bYjA1MByWDrLa_wvDZn3Kvgy2O564JzXwoNLZG9ZbOazgCSspzx61OwchYdyVBWl1GIE_tPohKfeSWnB4ZIMbbRkAe-QUawpBdmSYFCRryag0-ZZ1C"  />
 
-Once you land to the File Manager > Public-HTML, Click on the Folder icon at the top left of CPanel, to create a new folder where your faveo need to be hosted.
+Open cPanel File Manager and navigate to public_html directory/folder, You can directly upload Faveo files here or create a sub directory to host Faveo
  
 <img alt="" src="https://lh4.googleusercontent.com/K6s9RwFFuKwf_xJxh27op-I8yZVauLZckirVkeP0UBFbVpz9qIVUO6WM3x5OBKjePGDWo0LZERLK4xDKE5nMu6iccF92c_mmBEk7gDv14-MkM4aiO_Z0JPJCtmLtgpGzsrgtOPai"  />
 
-Click on Folder which you have created and upload the software .zip file. (Or) You can also create a subdomain to upload the file.
-
-You can click on the Upload button in CPanel. (Or) You can also upload the file from FTP. (File Zilla)
- 
-<img alt="" src="https://lh4.googleusercontent.com/KtwiXeXp0U5ps9-wBBsdfLPzQ_6bBEpifNBT-tUkYcYF0LVLey7G0AOZ6xcZ-RMBV0GQ9Tf0_6rMpob6fDzXBiiwAl4rErmNAszxSNJ7qRz7CNqS8WPs8fe_HP9FCsPy3_nSUFo4"  />
-
-Select the .zip file of the software from your local system. Once it is uploaded click on the “Go back to home/….” and Right-click on the .zip file and extract it.
+unzip and exctract the content of .zip file
 
 <img alt="" src="https://lh3.googleusercontent.com/-G70yy2sOPWNWW8e9mVqA1vSs0xRIrxr9AeWipZtoMtig9403C_JiJNChrfUiTjCRdDf1cTLnVLSYphV5d4HvSDBYMaYI3jkmfgtf0JkuGgdlw3PaaOWTjXGG2YKmQU-NLJkYuis"  />
 
-<img alt="" src="https://lh3.googleusercontent.com/lS7h_sWqffJV9hHM7gFDaKN_rvoNNkxsKmIcylVfqIyEhm2KLbmR5srjo2EqCuCB1f920XPLt62QUdKZJN6oSbXZK8ASq4m2ZwIkZzRQQG43F_-2qqhbhyJh5TIYLk1dxGmUz_m0"  />
+Once the file is extracted within the folder delete the .zip file.
 
-Once the file is extracted with the folder delete the .zip file.
-
-<img alt="" src="https://lh6.googleusercontent.com/aakdQj86xOzfvi9wgGaRFN71TkpMIQRfAYCRx4I68XssU9fkkcvH9OJvzvd8tkIScnhkZONtedAFo6UWSTUY8nYCtI_YuNsjcW2kBjbadyKAj3kSVz2LExid9_XY_4xz7lpLkND4"  />
-
-Double click on the extracted folder and select all the files, Right-click on it and you will get an option “Move” click on the option and move the files to the main folder. 
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
@@ -66,11 +55,11 @@ Navigate to CPanel > MySQL and Database and click on it.
 
 <img alt="" src="https://lh4.googleusercontent.com/aLfs9EGYVnk3m2iPALGwmK_bOqns5mJSD2AQE-LOQDLioZWCBzx_dDsWWE2cuqjfLIspPj52U6QHHJ31AMfS_vkCIkjufhjEb_4LMN1vBYXUR1EJ4BXhyv5hhHsHOOVzEGXN9Lc-"  />
 
-Once you land to the page Create a New Database.
+Create a New Database on this page
 
 <img alt="" src="https://lh5.googleusercontent.com/Wi-ZYJObYIE0LnjSx-tzu113Ze-J6raxZCNLPgK2Kbh5hrkMNjaLb9nhUSzS61ldK697OeBudr_ZcYKYMwIRjRzDgXHhlCqzMrS-OqqoyF5EWHz7uyHSU-W_9XzUjsd65SDlpFmI"  />
 
-Create a new user for the database by registering the user name in the specified box.
+Create a new user for the database by registering the user name.
 
 <img alt="" src="https://lh6.googleusercontent.com/ZAAs160phqKUZReeOoUKoHgoArdebNwxMait4rAn5eFEXn1AsyOU29w2l8igfBHBTcLAjQS7hHCVIbPb6KjQP2dSb7VgCe5Z6HG9PXFyMFTz-6rhjR3EZF6s6XsM7Yu2oGZa8QMg"  />
 
