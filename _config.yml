@@ -11,11 +11,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Installation Guide"
+title                    : "Faveo Installation Guide"
 title_separator          : "-"
 subtitle                 : "By Ladybird Web Solution"
 name                     : &name "Ladybird Web Solution Pvt Ltd" # &name is a YAML anchor which can be *referenced later
-description              : &description "Install faveo in minutes with our awesome documentation"
+description              : &description "Install Faveo in minutes with our awesome documentation"
 url                      : https://docs.faveohelpdesk.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/faveo-server-images" # the subpath of your site, e.g. "/blog"
 repository               : "ladybirdweb/faveo-server-images"

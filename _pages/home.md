@@ -6,32 +6,33 @@ author_profile: false
 toc: true
 ---
 
-Welcome to the Faveo insallation documentation.
-This documentation show how to install Faveo Helpdesk on various platforms(OS)
+Welcome to the Faveo installation documentation.
+This documentation shows how to install Faveo Helpdesk on various platforms(OS)
 
 # About Faveo
 Faveo is a leading open source, self-hosted, on-premise help desk software. 
 
 
-# Installing Faveo (Generic) <!-- omit in toc -->
+# Installing Faveo <!-- omit in toc -->
 
 Faveo can be installed on a variety of platforms. The choice of the platform is yours.
 
 - [Requirements](#requirements)
 - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
+  - [Freelancer, paid and Enterprise editions](#markdown-generic-linux-instructions-enterprise)
   - [Community edition](#markdown-generic-linux-instructions)
-  - [Freelancer, paid and Enterprise edition](#markdown-generic-linux-instructions-enterprise)
   - [One Click Installer](#markdown-one-click-installer)
   - [Installation via scripts](#markdown-script-installer)
   - [Installation on a shared server](#markdown-shared-sever)
-- [Contributing](#markdown-contributing)
 - [Help](#markdown-help)
-- [References](#markdown-references)
+
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
 
-The best way to setup the project is to use the same configuration that [Homestead](https://laravel.com/docs/homestead) uses. Basically, Faveo depends on the following:
+The best way to setup the project is to use the same configuration that [Homestead](https://laravel.com/docs/homestead) uses. 
+
+Basically, Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
 -   **Git**
@@ -48,13 +49,8 @@ For complete minimum requirement list [check here](/docs/system-requirement/requ
 
 The preferred OS distribution is Cent OS 7, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
 
-<a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
-### Installation instructions for Community version
-* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
-* [CentOS with Apache](/docs/installation/providers/community/centos-apache)
-
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
-### Installation instructions for Freelancer, paid and Enterprise version
+### Installation instructions for Freelancer, paid and Enterprise editions
 * [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache)
 * [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)
@@ -62,6 +58,11 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Windows 2019](/docs/installation/providers/enterprise/windows)
 * [CentOS Web Panel](/docs/installation/providers/enterprise/centos-web-panel)
 * [WampServer](/docs/installation/providers/enterprise/wamp)
+
+<a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
+### Installation instructions for Community edition
+* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
+* [CentOS with Apache](/docs/installation/providers/community/centos-apache)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
@@ -89,20 +90,7 @@ We have created script for simple, one click installtion of Faveo.
 Faveo can also be installed on a shared server, though we highly recommend cloud, VPS or dedicated server for best performance and more control
 * [cPanel](/docs/installation/providers/community/cpanel)
 
-<a id="markdown-contributing" name="markdown-contributing"></a>
-## Contributing
-
-Create your own fork of Faveo master repositoray and use [git-flow](https://github.com/nvie/gitflow) to create a new feature. Once the feature is published in your fork, send a pull request to begin the conversation of integrating your new feature into Faveo.
-
 <a id="markdown-help" name="markdown-help"></a>
 ## Help
 
-Visit the [issue](https://github.com/ladybirdweb/issues) page. And if you'd like professional help commercial support is available, email us through the [contact form](http://www.faveohelpdesk.com/contact-us/).
-
-<a id="markdown-references" name="markdown-references"></a>
-## References
-
-- **Faveo Helpdesk** [https://github.com/ladybirdweb/faveo-helpdesk](https://github.com/ladybirdweb/faveo-helpdesk)
-- **Faveo Docker** [https://github.com/ladybirdweb/faveo-docker](https://github.com/ladybirdweb/faveo-docker)
-- **Faveo Probe** [https://github.com/ladybirdweb/faveo-probe](https://github.com/ladybirdweb/faveo-probe)
-
+If you'd like professional help commercial support is available, email us through the [contact form](https://www.faveohelpdesk.com/contact-us/).
