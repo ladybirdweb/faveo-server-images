@@ -63,13 +63,15 @@ Create a new user for the database by registering the user name.
 
 <img alt="" src="https://lh6.googleusercontent.com/ZAAs160phqKUZReeOoUKoHgoArdebNwxMait4rAn5eFEXn1AsyOU29w2l8igfBHBTcLAjQS7hHCVIbPb6KjQP2dSb7VgCe5Z6HG9PXFyMFTz-6rhjR3EZF6s6XsM7Yu2oGZa8QMg"  />
 
-<img alt="" src="https://lh6.googleusercontent.com/HFGhvCd3mWw8LlKhi2R8bQik4ZhL9K6Ui_8-FIxEd5sdDSlUiH3zhiwR_pp7kOBpjAEE4W9phbFu6DzV3B4JfQP3DvWvZsW5lFyRq1rKlM0cAbpLuazcwN7x8cqtoRZjscdXrM6M"  />
-
 Now link the newly created user with the Database you have created, under Add New User to Database. Select the Database name from the list for which the user needs to be added and select the user name to add with the DB.
 
 In Manage User Privileges, you can give access privileges (Choose All Privileges checkbox) ) to the newly created user and click on the Make Changes button save the details. Click on “Go back” to get the database page.
 
+
 <img alt="" src="https://lh5.googleusercontent.com/IZIPudyrGRC92QQXVAQiIpTozEuJeseyj9r4q-23AvDu_etpKkp3tVzFgatr1D7NPqmVW_q1tPo9Hw_oh4d6lpJo9KhOp60Ba-nH-198LyIKEUxskkl1FjeajVS90vUS9HqUCg6x"  />
+
+<img alt="" src="https://lh6.googleusercontent.com/HFGhvCd3mWw8LlKhi2R8bQik4ZhL9K6Ui_8-FIxEd5sdDSlUiH3zhiwR_pp7kOBpjAEE4W9phbFu6DzV3B4JfQP3DvWvZsW5lFyRq1rKlM0cAbpLuazcwN7x8cqtoRZjscdXrM6M"  />
+
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 3. Install Faveo
