@@ -82,9 +82,8 @@ We recommend setting the above directories to 755 permissions. You may also need
 chmod -R 755 /path/to/directory
 chown -R www-data:www-data /path/to/directory
 ```
-{: 
-If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories: ```chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory```
-.notice--warning}
+
+If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories: ```chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory``` {: .notice--warning}
 
 <a id="iis" name="iis"></a>
 ### b. IIS (Windows)
