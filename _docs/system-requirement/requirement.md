@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: "Faveo Helpdesk System Requirements"
 ---
-
-# Faveo Helpdesk System Requirements 
 
 -   [1. Php Versions](#php-versions)
     -   [PHP Extensions](#php-extensions)
@@ -26,7 +25,7 @@ Faveo requires a fairly standard PHP & MySQL server setup in order to be install
 
 <a id="php-versions" name="php-versions"></a>
 ## 1. PHP Version
-PHP versions 7.3.x are supported.
+PHP versions **7.3.x** are supported.
 
 For assistance installing a new version of PHP please contact your hosting provider or server administrator.
 
@@ -83,11 +82,9 @@ We recommend setting the above directories to 755 permissions. You may also need
 chmod -R 755 /path/to/directory
 chown -R www-data:www-data /path/to/directory
 ```
-
-If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories:
-```sh
-chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory
-```
+{: 
+If you're using CentOS, it has SELinux enabled by default which has measures in place to prevent httpd from writing to files, beyond the normal file permissions. You need to apply httpd_sys_rw_content_t to the directories: ```chcon -Rv --type=httpd_sys_rw_content_t /path/to/directory```
+.notice--warning}
 
 <a id="iis" name="iis"></a>
 ### b. IIS (Windows)

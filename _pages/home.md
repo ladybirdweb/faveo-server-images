@@ -12,6 +12,7 @@ This documentation shows how to install Faveo Helpdesk on various platforms(OS)
 # About Faveo
 Faveo is a leading open source, self-hosted, on-premise help desk software. 
 
+[Find our more >>](https://www.faveohelpdesk.com){: .btn .btn--info}
 
 # Installing Faveo <!-- omit in toc -->
 
