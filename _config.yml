@@ -83,7 +83,7 @@ social:
 analytics:
   provider               : "google-universal" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "UA-2011187-3" # Replace this with your ID, or delete
+    tracking_id          : "UA-65420739-1" # Replace this with your ID, or delete
     anonymize_ip         : true
 
 
@@ -96,16 +96,16 @@ author:
   links:
     - label: "Made Mistakes"
       icon: "fas fa-fw fa-link"
-      url: "https://mademistakes.com"
+      url: "https://faveohelpdesk.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/mmistakes"
+      url: "https://twitter.com/faveohelpdesk"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/mmistakes"
+      url: "https://github.com/ladybirdweb"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/mmistakes"
+      url: "https://instagram.com/faveohelpdesk"
 
 
 # Site Footer
