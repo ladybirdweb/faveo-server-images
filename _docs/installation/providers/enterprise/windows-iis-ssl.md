@@ -6,10 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: Install Let’s Encrypt SSL for Faveo on Windows Server Running IIS Web Server
 ---
-
-# Install Let’s Encrypt SSL for Faveo on Windows Server Running IIS Web Server <!-- omit in toc -->
-
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="65"  />
 
