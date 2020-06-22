@@ -34,7 +34,7 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **Git**
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.2+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 ### a. LAMP Installation
@@ -76,13 +76,13 @@ Git should come pre-installed with your server. If it's not, install it with:
 sudo yum install -y git
 ```
 
-### f. PHP 7.3+
+### f. PHP 7.2+
 
-Install php 7.3 with these extensions:
+Install php 7.2 with these extensions:
 
 ```sh
 yum install -y curl openssl  
-yum-config-manager --enable remi-php73
+yum-config-manager --enable remi-php72
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
 yum remove php-mysql
 ```
@@ -97,8 +97,8 @@ php -i | grep extension_dir
 Copy ion cube loader to Directory.
 
 ```sh
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
-sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
+cp ioncube/ioncube_loader_lin_7.2.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.2.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 

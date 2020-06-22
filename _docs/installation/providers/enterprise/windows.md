@@ -22,7 +22,8 @@ Faveo can run on [Windows Server 2019](https://www.microsoft.com/en-au/windows-s
     -   [3. Configure IIS webserver](#5-configure-apache-webserver)
     -   [4. Install Faveo](#3-gui-faveo-installer)
     -   [5. Configure Task Scheduler](#4-configure-cron-job)
-    -   [6. Final step](#final-step)
+    -   [6. SSL Installation](#ssl-installation)
+    -   [7. Final step](#final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -280,7 +281,16 @@ After that, the schedule task would appear on the list. Right click the task and
 Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
 <img src="" alt="" />
 
+<a id="ssl-installation" name="ssl-installation"></a>
+### 6. SSL Installation
+
+Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
+
+This is an optional step and will improve system security and is highly recommended.
+
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/windows-iis-ssl)
+
 <a id="final-step" name="final-step"></a>
-### 6. Final step
+### 7. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

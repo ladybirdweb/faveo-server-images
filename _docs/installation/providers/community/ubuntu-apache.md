@@ -34,7 +34,7 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **Git**
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.2+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 ### a. LAMP Installation
@@ -71,7 +71,7 @@ sudo apt update
 sudo apt install -y git
 ```
 
-### e. PHP 7.3+
+### e. PHP 7.2+
 
 First add this PPA repository:
 
@@ -80,20 +80,20 @@ apt-get install -y software-properties-common
 add-apt-repository ppa:ondrej/php
 ```
 
-Then install php 7.3 with these extensions:
+Then install php 7.2 with these extensions:
 
 ```sh
 sudo apt update
-sudo apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
-    php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
-    php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
-    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp 
+sudo apt install -y php7.2 libapache2-mod-php7.2 php7.2-mysql \
+    php7.2-cli php7.2-common php7.2-fpm php7.2-soap php7.2-gd \
+    php7.2-json php7.2-opcache  php7.2-mbstring php7.2-zip \
+    php7.2-bcmath php7.2-intl php7.2-xml php7.2-curl  \
+    php7.2-imap php7.2-ldap php7.2-gmp 
 ```
-After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
+After installing PHP 7.2, run the commands below to open PHP default config file for Nginx…
 
 ```sh
-sudo nano /etc/php/7.3/fpm/php.ini
+sudo nano /etc/php/7.2/fpm/php.ini
 ```
 
 Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
@@ -120,9 +120,9 @@ Make the note of path and directory from the above command.
 Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
 
 ```sh
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/yourpath
-sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+cp ioncube/ioncube_loader_lin_7.2.so /usr/lib/php/yourpath
+sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.2.so"' /etc/php/7.2/apache2/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/yourpath/ioncube_loader_lin_7.2.so"' /etc/php/7.2/cli/php.ini
 systemctl restart apache2 
 ```
 
@@ -130,7 +130,7 @@ systemctl restart apache2
 After install PHP, run the commands below to open PHP-FPM default file.
 
 ```sh
-sudo nano /etc/php/7.3/fpm/php.ini             
+sudo nano /etc/php/7.2/fpm/php.ini             
 ```
 
 Then make the change the following lines below in the file and save.
@@ -268,10 +268,10 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 sudo a2dissite 000-default.conf
 sudo a2ensite faveo.conf
 
-# Enable php7.3 fpm, and restart apache
+# Enable php7.2 fpm, and restart apache
 sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.3-fpm
-sudo service php7.3-fpm restart
+sudo a2enconf php7.2-fpm
+sudo service php7.2-fpm restart
 sudo service apache2 restart
 ```
 
@@ -291,7 +291,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * www-data /usr/bin/php7.3 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+echo "* * * * * www-data /usr/bin/php7.2 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
