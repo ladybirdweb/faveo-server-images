@@ -16,7 +16,7 @@ toc: true
 ## Introduction
 This document will lists down how to install Let’s Encrypt SSL on Windows Server Running IIS Web Server
 
-**PS:** Please replace faeveohelpdesk.tk with your valid domain name which is mapped with your server
+**PS:** Please replace faveohelpdesk.tk with your valid domain name which is mapped with your server
 
 
 ## Download the Let’s Encrypt client
