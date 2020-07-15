@@ -136,7 +136,7 @@ Once the softwares above are installed:
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-/var/www/faveo/
+/opt/faveo/faveo-helpdesk
 ```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
@@ -180,10 +180,12 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R apache:apache /var/www/faveo 
-chmod -R 755 /var/www/faveo 
-chmod -R 755 /var/www/faveo/storage 
-chmod -R 755 /var/www/faveo/bootstrap 
+chown -R www-data:www-data /opt
+chown -R www-data:www-data /opt/faveo
+chmod -R 755 /opt 
+chmod -R 755 /opt/faveo/faveo-helpdesk
+chmod -R 755 /opt/faveo/faveo-helpdesk/storage 
+chmod -R 755 /opt/faveo/faveo-helpdesk/bootstrap
 ```
 
 **b.** Edit domain & create Nginx conf using Nano editor
