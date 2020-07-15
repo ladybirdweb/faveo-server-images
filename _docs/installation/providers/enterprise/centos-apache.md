@@ -178,6 +178,7 @@ chmod -R 755 /var/www/
 chmod -R 755 /var/www/faveo/
 chmod -R 755 /var/www/faveo/storage/ 
 chmod -R 755 /var/www/faveo/bootstrap/ 
+chcon -R -t httpd_sys_rw_content_t /var/www/faveo/faveo-helpdesk
 ```
 
 **b.** Enable the rewrite module of the Apache webserver:
