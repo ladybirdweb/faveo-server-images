@@ -186,6 +186,7 @@ chmod -R 755 /opt
 chmod -R 755 /opt/faveo/faveo-helpdesk
 chmod -R 755 /opt/faveo/faveo-helpdesk/storage 
 chmod -R 755 /opt/faveo/faveo-helpdesk/bootstrap
+setenforce 0
 ```
 
 **b.** Edit domain & create Nginx conf using Nano editor
