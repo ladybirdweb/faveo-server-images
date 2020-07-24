@@ -92,6 +92,8 @@ cd /var/www/faveo/faveo-helpdesk
 unzip faveo.zip
 chown -R apache:apache /var/www/
 chmod -R 755 /var/www
+chcon -R -t httpd_sys_rw_content_t /var/www/faveo/faveo-helpdesk
+
 
 cat <<EOF > /etc/httpd/conf.d/faveo-helpdesk.conf
 <VirtualHost *:80>
