@@ -195,10 +195,10 @@ exit
 #### a. Give proper permissions to the project directory by running:
 
 ```sh
-chown -R www-data:www-data /var/www/faveo 
-chmod -R 755 /var/www/faveo 
-chmod -R 755 /var/www/faveo/storage 
-chmod -R 755 /var/www/faveo/bootstrap 
+chown -R www-data:www-data /opt/faveo 
+chmod -R 755 /opt/faveo 
+chmod -R 755 /opt/faveo/storage 
+chmod -R 755 /opt/faveo/bootstrap 
 ```
 
 #### b. Create a copy of Nginx default config file
@@ -212,7 +212,7 @@ Then copy and paste the content below into the file and save it. Replace the hig
 server {
     listen 80;
     listen [::]:80;
-    root /var/www/faveo/public;
+    root /opt/faveo/public;
     index  index.php index.html index.htm;
     server_name  example.com www.example.com;
 
