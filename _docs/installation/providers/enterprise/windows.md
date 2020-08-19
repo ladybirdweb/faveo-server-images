@@ -106,7 +106,7 @@ Note: The location of PHP 7.3 in IIS Server is following. You will need this loc
 #### Step 5(a)
 Download the Ioncube loader from the below link and extract
 
-[Alternative Link For Downloading IonCube](http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc14_x86-64.zip0)
+[Alternative Link For Downloading IonCube](https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)
 
 #### Step 5(b)
 Copy the ioncube folder contents and paste it in your document root and ext folderinside your php folder
