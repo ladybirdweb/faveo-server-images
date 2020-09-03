@@ -15,7 +15,7 @@ toc: true
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on CentOS 7 Running Apache Web Server
+This document will list on how to install Let’s Encrypt SSL on CentOS 7 and 8 Running Apache Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
