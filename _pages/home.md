@@ -56,14 +56,18 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
-* [Windows 2019](/docs/installation/providers/enterprise/windows)
+* [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
+* [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
+* [Windows](/docs/installation/providers/enterprise/windows)
 * [CentOS Web Panel](/docs/installation/providers/enterprise/centos-web-panel)
 * [WampServer](/docs/installation/providers/enterprise/wamp)
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community edition
-* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
+
 * [CentOS with Apache](/docs/installation/providers/community/centos-apache)
+* [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
+* [Debian with Apache](/docs/installation/providers/community/debian-apache)
 
 <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
