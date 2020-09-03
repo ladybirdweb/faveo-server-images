@@ -186,9 +186,10 @@ cd /var/www/faveo
 find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
-If SELinux is in Enforcing mode the run the below command to update the context.
-```sql
-semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/faveo(/.*)?"
+By default SELINUX will be Enforcing run the follwing comand to switch it to Permissive mode and restart the machine once in order to take effect.
+```sh
+sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+reboot -f
 ```
 
 
