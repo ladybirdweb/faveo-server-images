@@ -1,19 +1,19 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/ubuntu-nginx-ssl/
+permalink: /docs/installation/providers/enterprise/debian-nginx-ssl/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install Let’s Encrypt SSL for Faveo on Ubuntu 18.04 Running Nginx Web Server <!-- omit in toc -->
+# Install Let’s Encrypt SSL for Faveo on Debian 10 (Buster) Running Nginx Web Server <!-- omit in toc -->
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
+<img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
 ## Introduction
-This document will list on how to install LetsEncrypt SSL on Ubuntu Running Nginx Web Server
+This document will list on how to install LetsEncrypt SSL on Debian Running Nginx Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
@@ -22,16 +22,10 @@ We will install following dependencies in order to make LetsEncrypt SSL work:
 - python-certbot-nginx
 
 
-## Downloading the LetsEncrypt client for Ubuntu 16.04 and 18.04.
+## Downloading the LetsEncrypt client for Debian 10 (Buster)
 
 ```sh
-apt install python-certbot-nginx
-```
-
-## Downloading the LetsEncrypt client for Ubuntu 20.04
-
-```sh
-apt install python3-certbot-nginx
+apt install -y python-certbot-nginx
 ```
 ## Setting up the SSL certificate
 

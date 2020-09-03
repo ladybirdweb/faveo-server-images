@@ -31,10 +31,16 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 yum install epel-release mod_ssl
 ```
 
-## Downloading the Let’s Encrypt client
+## Downloading the LetsEncrypt client for Cent-OS 7
 
 ```sh
 yum install python-certbot-nginx
+```
+
+## Downloading the LetsEncrypt client for Cent-OS 8
+
+```sh
+yum install python3-certbot-nginx
 ```
 
 ## Setting up the SSL certificate
@@ -64,5 +70,5 @@ This job can be safely scheduled to run every Monday at midnight:
 Create a new `/etc/cron.d/faveo-ssl` file with:
 
 ```sh
-echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot-auto renew && /etc/init.d/nginx restart " | sudo tee /etc/cron.d/faveo-ssl
+echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot-auto renew && /bin/systemctl restart nginx.service" | sudo tee /etc/cron.d/faveo-ssl
 ```

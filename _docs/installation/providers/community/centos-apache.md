@@ -33,7 +33,6 @@ Faveo can run on [Cent OS 7](https://www.centos.org/download/).
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **Git**
 -   **PHP 7.2+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
@@ -47,33 +46,26 @@ Login as root user by typing the command below
 sudo su
 ```
 
-### b. Update your package list
+### b. Update your Packages and install some utility tools
 
 ```sh
-yum update -y
+yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  c. Install and enable Remi repository
+###  c. Install and enable additional repositories that contains packages required for Faveo.
 
 ```sh
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
-sudo yum install yum-utils
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 ```
 ###  d. Apache
-Apache should come pre-installed with your server. If it's not, install it with:
+Install and Enable Apache server.
 
 ```sh
-yum install httpd
+yum install httpd -y
 systemctl start httpd
 systemctl enable httpd
-```
-### e. Git
-Git should come pre-installed with your server. If it's not, install it with:
-
-```sh
-sudo yum install -y git
 ```
 
 ### f. PHP 7.2+
@@ -81,22 +73,19 @@ sudo yum install -y git
 Install php 7.2 with these extensions:
 
 ```sh
-yum install -y curl openssl  
 yum-config-manager --enable remi-php72
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
-yum remove php-mysql
 ```
 
 <b>Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
-ls ioncube 
-php -i | grep extension_dir
 ```
-Copy ion cube loader to Directory.
+Copy Ioncube loader to PHP Modules Directory.
 
 ```sh
+php -i | grep extension_dir
 cp ioncube/ioncube_loader_lin_7.2.so /usr/lib64/php/modules 
 sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.2.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
@@ -111,11 +100,12 @@ Install Mysql 5.7. Note that this only installs the package, but does not setup 
 ```sh
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 rpm -ivh mysql-community-release-el7-5.noarch.rpm 
-yum install mysql-server
+yum install mysql-server -y
 systemctl start mysqld
+systemctl enable mysqld
 ```
 
-Secure your mysql installation. Set a Password for mysql by running the command below
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
 mysql_secure_installation 
@@ -126,9 +116,13 @@ mysql_secure_installation
 ```sh
 yum install phpmyadmin
 ```
+At this point run the belove command to clear the yum cache.
+```sh
+yum clean all
+```
 
 <a id="installation-steps" name="installation-steps"></a>
-## Installation steps
+## Faveo Installation steps
 
 Once the softwares above are installed:
 
@@ -139,6 +133,7 @@ Once the softwares above are installed:
 You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
 
 ```sh
+mkdir -p /var/www/faveo/
 cd /var/www/faveo
 git clone https://github.com/ladybirdweb/faveo-helpdesk.git
 ```
@@ -186,19 +181,43 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R apache:apache /var/www/ 
-chown -R apache:apache /var/www/faveo/ 
-chmod -R 755 /var/www/
-chmod -R 755 /var/www/faveo/
-chmod -R 755 /var/www/faveo/storage/ 
-chmod -R 755 /var/www/faveo/bootstrap/ 
+chown -R apache:apache /var/www/faveo
+cd /var/www/faveo
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
 ```
+If SELinux is in Enforcing mode the run the below command to update the context.
+```sql
+semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/faveo(/.*)?"
+```
+
 
 **b.** Enable the rewrite module of the Apache webserver:
 
+Check whether the Module exists in Apache modules directory.
+
 ```sh
-sudo a2enmod rewrite
+ls /etc/httpd/modules | grep mod_rewrite
 ```
+Check if the module is loaded
+```sh
+grep -i LoadModule /etc/httpd/conf/httpd.conf | grep rewrite
+```
+If the output af the above command is blank then add the below line in /etc/httpd/conf/httpd.conf
+
+```sh
+LoadModule rewrite_module modules/mod_rewrite.so
+```
+
+Finally change the httpd.conf AllowOverride value to none to All under <Directory /var/www/> section.
+```sh
+<Directory "/var/www">
+    AllowOverride All 
+    # Allow open access:
+    Require all granted
+</Directory>
+```
+
 
 **c.** Configure a new faveo site in apache by doing:
 
@@ -213,11 +232,12 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 <VirtualHost *:80> 
 ServerName **YOUR IP ADDRESS/DOMAIN** 
 ServerAdmin webmaster@localhost 
-DocumentRoot /var/www/faveo/public 
+DocumentRoot /var/www/faveo/
 <Directory /var/www/faveo> 
 AllowOverride All 
 </Directory> 
 ErrorLog /var/log/httpd/faveo-error.log 
+CustomLog /var/log/httpd/faveo-access.log combined
 </VirtualHost>
 ```
 

@@ -21,29 +21,27 @@ We will install following dependencies in order to make Redis work:
 - PHP extension for Redis
 - supervisor
 
-##  Install Redis
-```
-sudo apt-get install redis-server
+Switch to root user or run the following commands as sudoers.
+
+```sh
+sudo su
 ```
 
-## Install PHP extension for Redis
+##  Install Redis and PHP redis extension.
 ```
-sudo apt-get install php-redis
-
+apt-get install redis-server
 ```
 
 ## Start, Enable and restart the Redis-service
 ```
-sudo systemctl start redis-server.service
+systemctl start redis-server
 
-sudo systemctl restart redis-server.service
-
-sudo systemctl enable redis-server.service
+systemctl enable redis-server
 ```
 
 ## Install and Configure Supervisor
 ```
-sudo apt-get install supervisor
+apt-get install supervisor
 
 ```
 ## Copy paste the below configuration.( Change the directories according to your configuration)
@@ -90,25 +88,16 @@ redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 
 ```
-## Restart the Supervisor
+## Restart the Supervisor to reread configuration
 
+```sh
+systemctl restart supervisord 
 ```
-service supervisor restart
 
-sudo supervisorctl reread
 
-sudo supervisorctl update
-
-```
-## Start your worker
-Replace the worker name according to your configuration
-
-```
-sudo supervisorctl start faveo-worker:*
-```
-To Check Supervisor status use the below command
-```
-systemctl status supervisor.service
+To check the Status of workers use the below command
+```sh
+supervisorctl
 ```
 
 ## Enable Redis in Faveo

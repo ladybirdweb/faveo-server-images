@@ -1,20 +1,19 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/centos-redis/
+permalink: /docs/installation/providers/enterprise/debian-redis/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install and configure Redis, Supervisor and Worker for Faveo on Cent OS 7 <!-- omit in toc -->
+# Install and configure Redis, Supervisor and Worker for Faveo on Debian 10 (Buster) <!-- omit in toc -->
 
-<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
+<img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
 ## Introduction
-
-This document will list steps on how to install Redis for faveo.
+This document will list steps on how to install Redis, Supervisor and Worker for faveo.
 
 We will install following dependencies in order to make Redis work:
 
@@ -22,67 +21,34 @@ We will install following dependencies in order to make Redis work:
 - PHP extension for Redis
 - supervisor
 
-## Install Redis
+Switch to root user or run the following commands as sudoers.
 
 ```sh
-sudo yum install redis -y
+sudo su
 ```
 
-## Install PHP extension
-
-```sh
-yum install redis -y
-yum install -y php-pecl-redis.x86_64
+##  Install Redis and PHP redis extension.
+```
+apt-get install redis-server
 ```
 
-## Start Redis
-
-```sh
-systemctl start redis.service
+## Start, Enable and restart the Redis-service
 ```
+systemctl start redis-server
 
-If you’d like Redis to start on boot, you can enable it with the enable command:
-
-```sh
-systemctl enable redis
+systemctl enable redis-server
 ```
-
-You can check Redis’s status by running the following:
-
-```sh
-systemctl status redis.service
-```
-
-Once you’ve confirmed that Redis is indeed running, test the setup with this command:
-
-```sh
-redis-cli ping
-```
-This should print PONG as the response. If this is the case, it means you now have Redis running on your server and we can begin configuring it to enhance its security.
 
 ## Install and Configure Supervisor
-
-```sh
-yum install -y supervisor
 ```
-
-
-## Start and Enable Supervisord
+apt-get install supervisor
+```
+## Copy paste the below configuration.( Change the directories according to your configuration)
 
 ```
-systemctl start supervisord
-systemctl enable supervisord
+nano /etc/supervisor/conf.d/faveo-worker.conf
 ```
-
-Copy paste the below content in supervisor configuration.
-
-```sh
-nano /etc/supervisord.d/faveo-worker.ini
 ```
-
-Change the directories according to your faveo configuration.
-
-```sh
 [program:faveo-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
@@ -92,22 +58,22 @@ numprocs=8
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/worker.log
 
-[program:faveo-Recur]
+[program:faveo-recur]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
 autostart=true
 autorestart=true
 numprocs=1
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/recur-worker.log
+stdout_logfile=/var/www/faveo/storage/logs/worker.log
 
 [program:faveo-Reports]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --queue=reports --sleep=3 --tries=3
 autostart=true
 autorestart=true
+user=www-data
 numprocs=1
-user=apache
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/reports-worker.log
 
@@ -116,9 +82,10 @@ process_name=%(program_name)s
 command=php /var/www/faveo/artisan horizon
 autostart=true
 autorestart=true
-user=apache
+user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
+
 ```
 ## Restart the Supervisor to reread configuration
 
@@ -127,12 +94,10 @@ systemctl restart supervisord
 ```
 
 
-To check the Status use the below command
+To check the Status of workers use the below command
 ```sh
 supervisorctl
 ```
-
-systemctl status supervisord
 
 ## Enable Redis in Faveo
 After Redis installation is complete, follow these [instructions](/docs/helper/enable-redis) to configure Redis with Faveo. 

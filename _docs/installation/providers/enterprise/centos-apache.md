@@ -11,7 +11,7 @@ toc: true
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [Cent OS 7](https://www.centos.org/download/).
+Faveo can run on [Cent OS 7 and 8 ](https://www.centos.org/download/).
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
@@ -34,79 +34,95 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### a. LAMP Installation
+### <b> 1. LAMP Installation</b>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+
+
+### <b> 2.a Update your Packages and install some utility tools</b>
 
 Login as root user by typing the command below
 
 ```sh
 sudo su
 ```
-
-### b. Update your package list
-
 ```sh
-yum update -y
+yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  c. Install and enable Remi repository
-
+###  <b>b. Install php-7.3 Packages </b>
+### <b> For Cent-OS 7</b>
 ```sh
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
-sudo yum install yum-utils
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+
+yum-config-manager --enable remi-php73
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
 ```
-###  d. Apache
-Apache should come pre-installed with your server. If it's not, install it with:
+
+### <b> For Cent-OS 8</b>
+
 
 ```sh
-yum install httpd
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+dnf module install php:remi-7.3 -y
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
+```
+###  <b>c. Install and run Apache</b>
+Install and Enable Apache Server
+
+```sh
+yum install -y httpd
 systemctl start httpd
 systemctl enable httpd
 ```
 
-### e. PHP 7.3+
 
-Install php 7.3 with these extensions:
 
-```sh
-yum install -y curl openssl  
-yum-config-manager --enable remi-php73
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
-yum remove php-mysql
-```
-
-<b>Setting Up ionCube</b>
+### <b>d. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
-ls ioncube 
-php -i | grep extension_dir
 ```
-Copy ion cube loader to Directory.
+Copy ioncube loader to PHP modules Directory.
 
 ```sh
+php -i | grep extension_dir
 cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
 sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### f. Mysql
+### <b> e. Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
+Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
+### <b>For Cent-OS 7></b>
+```sh
+yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+yum install -y mysql-community-server
+systemctl start mysqld
+systemctl enable mysqld
+```
+Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7, password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-rpm -ivh mysql-community-release-el7-5.noarch.rpm 
-yum install mysql-server
-systemctl start mysqld
+mysql_secure_installation 
 ```
+### <b>For Cent-OS 8</b>
+In CentOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
-Secure your mysql installation. Set a Password for mysql by running the command below
+```sh
+yum install mariadb-server -y
+systemctl start mariadb
+systemctl enable mariadb
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
 mysql_secure_installation 
@@ -116,6 +132,10 @@ mysql_secure_installation
 
 ```sh
 yum install phpmyadmin
+```
+At this point run the belove command to clear the yum cache.
+```sh
+yum clean all
 ```
 
 <a id="installation-steps" name="installation-steps"></a>
@@ -129,7 +149,8 @@ Once the softwares above are installed:
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-/var/www/faveo/
+mkdir -p /var/www/faveo/
+cd /var/www/faveo/
 ```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
@@ -172,39 +193,63 @@ exit
 **a.** Give proper permissions to the project directory by running:
 
 ```sh
-chown -R apache:apache /var/www/ 
-chown -R apache:apache /var/www/faveo/ 
-chmod -R 755 /var/www/
-chmod -R 755 /var/www/faveo/
-chmod -R 755 /var/www/faveo/storage/ 
-chmod -R 755 /var/www/faveo/bootstrap/ 
-chcon -R -t httpd_sys_rw_content_t /var/www/faveo/faveo-helpdesk
+chown -R apache:apache /var/www/faveo
+cd /var/www/faveo
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+```
+By default SELINUX will be Enforcing run the follwing comand to switch it to Permissive mode and restart the machine once in order to take effect.
+```ssh
+sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+reboot -f
 ```
 
 **b.** Enable the rewrite module of the Apache webserver:
 
+Check whether the Module exists in Apache modules directory.
+
 ```sh
-sudo a2enmod rewrite
+ls /etc/httpd/modules | grep mod_rewrite
+```
+Check if the module is loaded
+```sh
+grep -i LoadModule /etc/httpd/conf/httpd.conf | grep rewrite
+```
+If the output af the above command is blank then add the below line in /etc/httpd/conf/httpd.conf
+
+```sh
+LoadModule rewrite_module modules/mod_rewrite.so
+```
+
+Finally change the httpd.conf AllowOverride value to none to All under <Directory /var/www/> section.
+```sh
+<Directory "/var/www">
+    AllowOverride All 
+    # Allow open access:
+    Require all granted
+</Directory>
 ```
 
 **c.** Configure a new faveo site in apache by doing:
 
+Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
 nano /etc/httpd/conf.d/faveo.conf
 ```
 
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
+
 
 ```apache
 
 <VirtualHost *:80> 
-ServerName **YOUR IP ADDRESS/DOMAIN** 
+ServerName --DOMAINNAME-- 
 ServerAdmin webmaster@localhost 
 DocumentRoot /var/www/faveo/public 
 <Directory /var/www/faveo> 
 AllowOverride All 
 </Directory> 
 ErrorLog /var/log/httpd/faveo-error.log 
+CustomLog /var/log/httpd/faveo-access.log combined
 </VirtualHost>
 ```
 
@@ -218,6 +263,9 @@ systemctl restart httpd.service
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### 4. Install Faveo
 
+At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
+You can also check the Propagation update by Visiting this site www.whatsmydns.net.
+
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
@@ -225,12 +273,12 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
-To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
+To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`. Verify your php ececutable location and replace it accordingly in the below command.
 
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+echo "* * * * * apache /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 

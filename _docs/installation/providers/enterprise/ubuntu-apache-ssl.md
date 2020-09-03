@@ -8,30 +8,30 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install Let’s Encrypt SSL for Faveo on Ubuntu 18.04 Running Apache Web Server <!-- omit in toc -->
+# Install Let’s Encrypt SSL for Faveo on Ubuntu 16.04,18.04 and 20.04 Running Apache Web Server <!-- omit in toc -->
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on Ubuntu 18 Running Apache Web Server
+This document will list on how to install LetsEncrypt SSL on Ubuntu Running Apache Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
-We will install following dependencies in order to make Let’s Encrypt SSL work:
+We will install following dependencies in order to make LetsEncrypt SSL work:
 
 - python-certbot-apache
 
 
-## Installing dependent modules
+## Downloading the LetsEncrypt client for Ubuntu 16.04 and 18.04.
 
 ```sh
-apt install python-certbot-apache
+yum install python-certbot-apache
 ```
 
-## Downloading the Let’s Encrypt client
+## Downloading the LetsEncrypt client for Ubuntu 20.04
 
 ```sh
-sudo apt install certbot
+yum install python3-certbot-apache
 ```
 
 ## Setting up the SSL certificate
