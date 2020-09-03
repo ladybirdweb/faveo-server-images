@@ -58,7 +58,7 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-imap php7.3-ldap php7.3-gmp 
 ```
 
-Now apache2 will be installed enable it to start upon reboot.
+Now enable apache2 to start upon reboot.
 
 ```sh
 systemctl enable apache2
