@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 18.04 <!-- omit in toc -->
+# Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 16.04,18.04 and 20.04. <!-- omit in toc -->
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
@@ -42,7 +42,6 @@ systemctl enable redis-server
 ## Install and Configure Supervisor
 ```
 apt-get install supervisor
-
 ```
 ## Copy paste the below configuration.( Change the directories according to your configuration)
 
@@ -88,7 +87,7 @@ redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 
 ```
-## Restart the Supervisor to reread configuration
+## Restart the Supervisor to reread the new configuration.
 
 ```sh
 systemctl restart supervisord 

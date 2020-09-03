@@ -31,13 +31,13 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 yum install epel-release mod_ssl
 ```
 
-## Downloading the LetsEncrypt client for Cent-OS 7
+## Downloading the LetsEncrypt for Cent-OS 7
 
 ```sh
 yum install python-certbot-nginx
 ```
 
-## Downloading the LetsEncrypt client for Cent-OS 8
+## Downloading the LetsEncrypt for Cent-OS 8
 
 ```sh
 yum install python3-certbot-nginx

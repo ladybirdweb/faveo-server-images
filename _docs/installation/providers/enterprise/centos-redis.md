@@ -25,25 +25,19 @@ We will install following dependencies in order to make Redis work:
 ## Install Redis
 
 ```sh
-sudo yum install redis -y
+yum install redis -y
 ```
 
 ## Install PHP extension
 
 ```sh
-yum install redis -y
-yum install -y php-pecl-redis.x86_64
+yum install -y php-redis
 ```
 
-## Start Redis
+## Start and Enable Redis
 
 ```sh
-systemctl start redis.service
-```
-
-If you’d like Redis to start on boot, you can enable it with the enable command:
-
-```sh
+systemctl start redis
 systemctl enable redis
 ```
 

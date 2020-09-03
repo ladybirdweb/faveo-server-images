@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Installing Faveo Helpdesk Community on Ubuntu <!-- omit in toc -->
+# Installing Faveo Helpdesk Community on Ubuntu 16.04 and 18.04 <!-- omit in toc -->
 
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
@@ -108,7 +108,6 @@ max_execution_time = 360
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
@@ -220,7 +219,6 @@ find . -type d -exec chmod 755 {} \;
 a2enmod rewrite
 a2dissite 000-default.conf
 a2ensite faveo.conf
-
 # Enable php7.2 fpm, and restart apache
 a2enmod proxy_fcgi setenvif
 a2enconf php7.2-fpm
@@ -228,15 +226,14 @@ a2enconf php7.2-fpm
 
 #### c. Configure a new faveo site in apache by doing:
 
+Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
-nano /etc/apache2/sites-available/faveo.conf
+nano /etc/httpd/conf.d/faveo.conf
 ```
-
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
 
 ```apache
 <VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
+    ServerName --DOMAINNAME--
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/faveo/public
@@ -252,7 +249,7 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 </VirtualHost>
 ```
 
-#### d. Apply the new `.conf` file and restart Apache. You can do that by running:
+#### d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:
 
 ```sh
 service php7.2-fpm restart
@@ -275,7 +272,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * www-data /usr/bin/php7.2 /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
 <a id="redis-installation" name="redis-installation"></a>

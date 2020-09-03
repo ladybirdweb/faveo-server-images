@@ -40,23 +40,16 @@ Run the following commands as sudoers or Login as root user by typing the comman
 ```sh
 sudo su
 ```
-### b. Apache
-Install Apache with:
+### b. Update the packages
 
 ```sh
 apt update
-apt install -y apache2
 ```
 
 ### e. PHP 7.3+
 
-First add this PPA repository:
+Note: In Debian upon installing PHP packages apache2 will be automatically installed and started 
 
-```sh
-apt-get install -y software-properties-common
-add-apt-repository ppa:ondrej/php
-```
-Then install php 7.3 with these extensions:
 ```sh
 apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
@@ -64,8 +57,13 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
     php7.3-imap php7.3-ldap php7.3-gmp 
 ```
-After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
 
+Now apache2 will be installed enable it to start upon reboot.
+
+```sh
+systemctl enable apache2
+```
+After installing PHP 7.3, run the commands below to open PHP default config file.
 ```sh
 nano /etc/php/7.3/fpm/php.ini
 ```
@@ -86,11 +84,10 @@ max_execution_time = 360
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
-Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
+Copy ioncube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
 
 ```sh
 php -i | grep extension_dir
@@ -167,7 +164,7 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-1. Give proper permissions to the project directory by running:
+<b>1. Give proper permissions to the project directory by running:</b>
 
 ```sh
 sudo chown -R www-data:www-data /var/www/faveo
@@ -176,23 +173,23 @@ sudo find . -type f -exec chmod 644 {} \;
 sudo find . -type d -exec chmod 755 {} \;
 ```
 
-2. Enable the rewrite module of the Apache webserver:
+<b>2. Enable the rewrite module of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
 ```
 
-3. Configure a new Faveo site in apache by doing:
+<b>3. Configure a new Faveo site in apache by doing:</b>
+
+Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 
 ```sh
-sudo nano /etc/apache2/sites-available/faveo.conf
+nano /etc/apache2/sites-available/faveo.conf
 ```
-
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
 
 ```html
 <VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
+    ServerName --DOMAINNAME--
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/faveo/public
@@ -208,7 +205,7 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 </VirtualHost>
 ```
 
-4. Apply the new `.conf` file and reload Apache. You can do that by running:
+<b>4. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
 a2dissite 000-default.conf
@@ -217,13 +214,13 @@ systemctl restart apache2
 systemctl restart php7.3-fpm
 ```
 
-### 4. Install Faveo
+### <b>4. Install Faveo</b>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 5. Configure cron job
+### <b>5. Configure cron job</b>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -235,7 +232,25 @@ Create a new `/etc/cron.d/faveo` file with:
 echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
+<a id="redis-installation" name="redis-installation"></a>
+### <b>6. Redis Installation</b>
+
+Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+This is an optional step and will improve system performance and is highly recommended.
+
+[Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
+
+<a id="ssl-installation" name="ssl-installation"></a>
+### <b>7. SSL Installation</b>
+
+Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
+
+This is an optional step and will improve system security and is highly recommended.
+
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
+
 <a id="final-step" name="final-step"></a>
-### 6. Final step
+### <b>6. Final step</b>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.

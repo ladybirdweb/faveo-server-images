@@ -67,23 +67,18 @@ apt install -y git wget curl unzip nano
 ```
 
 ### e. PHP 7.3+
-
-First add this PPA repository:
-
-```sh
-apt-get install -y software-properties-common
-add-apt-repository ppa:ondrej/php
-```
-
-Then install php 7.3 with these extensions:
+Note: In Debian upon installing PHP packages apache2 will be automatically installed. so it needs to be removed later. 
 
 ```sh
-apt update
 apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
     php7.3-imap php7.3-ldap php7.3-gmp 
+```
+Now remove the apache2 package
+```sh
+apt remove apache2
 ```
 After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
 
@@ -107,7 +102,6 @@ max_execution_time = 360
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
@@ -234,7 +228,7 @@ server {
 ```
 Save the file and exit.
 
-#### <b> c. Enable the Faveo and Rewrite Module</b>
+#### <b> c. Enable the Faveo and remove the default site</b>
 After configuring the VirtualHost above delete the deafult Virtualhost and  enable the Faveo Virtualhost by running the commands below
 
 ```sh
@@ -263,7 +257,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### 6. Redis Installation
+### <b>6. Redis Installation</b>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -272,7 +266,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### 7. SSL Installation
+### <b>7. SSL Installation</b>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -281,6 +275,6 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-nginx-ssl)
 
 <a id="final-step" name="final-step"></a>
-### 8. Final step
+### <b>8. Final step</b>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

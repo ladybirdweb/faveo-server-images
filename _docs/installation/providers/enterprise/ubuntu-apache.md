@@ -85,13 +85,13 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
     php7.3-imap php7.3-ldap php7.3-gmp 
 ```
-After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
+After installing PHP 7.3, run the commands below to open PHP default config file.
 
 ```sh
 nano /etc/php/7.3/fpm/php.ini
 ```
 
-Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
+Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environment.
 
 ```
 file_uploads = On
@@ -107,7 +107,6 @@ max_execution_time = 360
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
@@ -219,7 +218,6 @@ find . -type d -exec chmod 755 {} \;
 a2enmod rewrite
 a2dissite 000-default.conf
 a2ensite faveo.conf
-
 # Enable php7.3 fpm, and restart apache
 a2enmod proxy_fcgi setenvif
 a2enconf php7.3-fpm
@@ -249,7 +247,7 @@ nano /etc/httpd/conf.d/faveo.conf
 </VirtualHost>
 ```
 
-#### d. Apply the new `.conf` file and restart Apache. You can do that by running:
+#### d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:
 
 ```sh
 service php7.3-fpm restart

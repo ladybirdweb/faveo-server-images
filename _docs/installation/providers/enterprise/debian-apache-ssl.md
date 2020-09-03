@@ -25,7 +25,7 @@ We will install following dependencies in order to make LetsEncrypt SSL work:
 ## Downloading the LetsEncrypt client.
 
 ```sh
-yum install python-certbot-apache
+apt install python-certbot-apache
 ```
 
 ## Setting up the SSL certificate

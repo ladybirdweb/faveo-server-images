@@ -102,14 +102,14 @@ The official Faveo installation uses Mysql as the database system and **this is 
 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
-### <b>For Cent-OS 7></b>
+### <b>For Cent-OS 7</b>
 ```sh
 yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 yum install -y mysql-community-server
 systemctl start mysqld
 systemctl enable mysqld
 ```
-Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7, password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
 mysql_secure_installation 
@@ -121,6 +121,7 @@ In CentOS 8 mariadb-server-10.3 is available from the default Repo's.So instead 
 yum install mariadb-server -y
 systemctl start mariadb
 systemctl enable mariadb
+```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
@@ -131,7 +132,7 @@ mysql_secure_installation
 **phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
 
 ```sh
-yum install phpmyadmin
+yum install -y phpmyadmin
 ```
 At this point run the belove command to clear the yum cache.
 ```sh
@@ -190,7 +191,7 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-**a.** Give proper permissions to the project directory by running:
+**a.** <b>Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R apache:apache /var/www/faveo
@@ -199,12 +200,12 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 By default SELINUX will be Enforcing run the follwing comand to switch it to Permissive mode and restart the machine once in order to take effect.
-```ssh
+```sh
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
 
-**b.** Enable the rewrite module of the Apache webserver:
+**b.** <b>Enable the rewrite module of the Apache webserver:</b>
 
 Check whether the Module exists in Apache modules directory.
 
@@ -230,9 +231,9 @@ Finally change the httpd.conf AllowOverride value to none to All under <Director
 </Directory>
 ```
 
-**c.** Configure a new faveo site in apache by doing:
+**c.** <b>Configure a new faveo site in apache by doing:</b>
 
-Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
+Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domain name mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
 nano /etc/httpd/conf.d/faveo.conf
 ```

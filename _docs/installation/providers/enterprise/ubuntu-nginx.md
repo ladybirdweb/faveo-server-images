@@ -13,7 +13,7 @@ toc: true
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
-Faveo can run on [Ubuntu 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/).
+Faveo can run on [Ubuntu 16.04 (Xenial Xerus),Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa)]. 
 
 -   [Prerequisites](#prerequisites)
 -   [Installation steps](#installation-steps)
@@ -103,11 +103,10 @@ upload_max_filesize = 100M
 max_execution_time = 360
 ```
 
-<b>Setting Up ionCube</b>
+<b>Setting Up IonCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
@@ -211,11 +210,11 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 
-#### <b>b. Create a copy of Nginx default config file</b>
+#### <b>b. Create the faveo.conf Virtualhost</b>
 Finally, configure Nginx site configuration file for Faveo. This file will control how users access Faveo content. Run the commands below to create a new configuration file called faveo
 
 ```
-nano /etc/nginx/sites-available/faveo
+nano /etc/nginx/sites-available/faveo.conf
 ```
 Then copy and paste the content below into the file and save it. Replace the highlighted line with your own domain name and directory root location.
 ```

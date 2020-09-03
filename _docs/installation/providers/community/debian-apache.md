@@ -69,23 +69,21 @@ apt install -y git wget curl unzip nano
 
 ### e. PHP 7.2+
 
-First add this PPA repository:
+Note: In Debian upon installing the PHP packages apache2 will be automatically insatlled and started even it is not listed in the install command.
 
 ```sh
-apt-get install -y software-properties-common
-add-apt-repository ppa:ondrej/php
-```
-
-Then install php 7.2 with these extensions:
-
-```sh
-apt update
 apt install -y php7.2 libapache2-mod-php7.2 php7.2-mysql \
     php7.2-cli php7.2-common php7.2-fpm php7.2-soap php7.2-gd \
     php7.2-json php7.2-opcache  php7.2-mbstring php7.2-zip \
     php7.2-bcmath php7.2-intl php7.2-xml php7.2-curl  \
     php7.2-imap php7.2-ldap php7.2-gmp 
 ```
+Now we have to enable apache to start automatically after reboot.
+
+```sh
+systemctl enable apache2
+```
+
 After installing PHP 7.2, run the commands below to open PHP default config file for Nginx…
 
 ```sh
@@ -108,7 +106,6 @@ max_execution_time = 360
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
-
 ```
 Make the note of path and directory from the above command.
 
@@ -123,16 +120,16 @@ systemctl restart apache2
 ```
 
 
-### f. Mysql
+### <b>f. Mysql</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Install Mysql 5.7. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
 ```sh
-apt install -y mysql-server-5.7
-systemctl start mysqld
-systemctl enable mysqld
+apt install -y mariadb-server
+systemctl start mariadb
+systemctl enable mariadb
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
@@ -155,7 +152,7 @@ Once the softwares above are installed:
 
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
-### 1. Upload Faveo
+### <b>1. Upload Faveo</b>
 
 You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
 
@@ -169,7 +166,7 @@ You should check out a tagged version of Faveo since `master` branch may not alw
 
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
-### 2. Setup the database
+### <b>2. Setup the database</b>
 
 Log in with the root account to configure the database.
 
@@ -203,9 +200,9 @@ exit
 ```
 
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### 3. Configure Apache webserver
+### <b>3. Configure Apache webserver</b>
 
-#### a. Give proper permissions to the project directory by running:
+#### <b>a. Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R www-data:www-data /var/www/faveo
@@ -214,29 +211,26 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 
-#### b. Enable the rewrite module and disable default site of the Apache webserver:
+#### <b>b. Enable the rewrite module and disable default site of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
 a2dissite 000-default.conf
 a2ensite faveo.conf
-
 # Enable php7.2 fpm, and restart apache
 a2enmod proxy_fcgi setenvif
 a2enconf php7.2-fpm
 ```
 
-#### c. Configure a new faveo site in apache by doing:
+#### </b>c. Configure a new faveo site in apache by doing:</b>
 
+Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
-nano /etc/apache2/sites-available/faveo.conf
+nano /etc/httpd/conf.d/faveo.conf
 ```
-
-Then, in the `nano` text editor window you just opened, copy the following - swapping the `**YOUR IP ADDRESS/DOMAIN**` with your server's IP address/associated domain:
-
 ```apache
 <VirtualHost *:80>
-    ServerName **YOUR IP ADDRESS/DOMAIN**
+    ServerName --DOMAINNAME--
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/faveo/public
@@ -252,7 +246,7 @@ Then, in the `nano` text editor window you just opened, copy the following - swa
 </VirtualHost>
 ```
 
-#### d. Apply the new `.conf` file and restart Apache. You can do that by running:
+#### d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:
 
 ```sh
 service php7.2-fpm restart
@@ -261,12 +255,12 @@ service apache2 restart
 
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 4. Install Faveo
+### <b>4. Install Faveo</b>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 5. Configure cron job
+### <b>5. Configure cron job</b>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -279,7 +273,7 @@ echo "* * * * * www-data /usr/bin/php7.2 /var/www/faveo/artisan schedule:run 2>&
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### 6. Redis Installation
+### <b>6. Redis Installation</b>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -288,7 +282,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### 7. SSL Installation
+### <b>7. SSL Installation</b>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -297,6 +291,6 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
 
 <a id="final-step" name="final-step"></a>
-### 8. Final step
+### <b>8. Final step</b>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

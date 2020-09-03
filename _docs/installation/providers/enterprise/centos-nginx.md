@@ -89,9 +89,8 @@ systemctl enable nginx
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
-
 ```
-Copy ion cube loader to Directory.
+Copy ioncube loader to Directory.
 
 ```sh
 php -i | grep extension_dir
@@ -106,14 +105,14 @@ The official Faveo installation uses Mysql as the database system and **this is 
 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
-### <b>For Cent-OS 7></b>
+### <b>For Cent-OS 7</b>
 ```sh
 yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 yum install -y mysql-community-server
 systemctl start mysqld
 systemctl enable mysqld
 ```
-Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7, password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
 mysql_secure_installation 
@@ -125,6 +124,7 @@ In CentOS 8 mariadb-server-10.3 is available from the default Repo's.So instead 
 yum install mariadb-server -y
 systemctl start mariadb
 systemctl enable mariadb
+```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
@@ -202,7 +202,7 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 By default SELINUX will be in Enforcing mode run the follwing command to switch it to Permissive mode and restart the machine once in order to take effect.
-```ssh
+```sh
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
@@ -211,7 +211,7 @@ reboot -f
 ```sh
 nano /etc/nginx/nginx.conf
 ```
-Replace the default server block code with the following and also you can replace example.com with your Domainname.
+Replace the default server block code with the following and you can also replace example.com with your Domain name.
 
 ```nginx
 server {
@@ -276,7 +276,7 @@ gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 ```sh
 nano /etc/php-fpm.d/www.conf
 ```
-You will need replace these lines
+You have to replace these lines.
 
 ```
 user = nginx
@@ -287,11 +287,11 @@ listen.owner = nobody to listen.owner = nginx
 
 listen.group = nobody to listen.group = nginx
 
-Finally check if ;listen = 127.0.0.1:9000 is without ; and in Cent-OS 8 you will find listen = /run/php-fpm/www.sock replace it to listen = 127.0.0.1:9000.
+Uncomment listen = 127.0.0.1:9000 by removing ; and in Cent-OS 8 you will find listen = /run/php-fpm/www.sock replace it to listen = 127.0.0.1:9000.
 
 ```
 
-Restart PFM and NGINX
+Restart PHP-FPM and NGINX
 ```sh
 systemctl start php-fpm.service
 systemctl enable php-fpm.service

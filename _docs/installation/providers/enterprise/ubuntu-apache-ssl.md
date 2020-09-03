@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install Let’s Encrypt SSL for Faveo on Ubuntu 16.04,18.04 and 20.04 Running Apache Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Ubuntu 16.04,18.04 and 20.04 Running Apache Web Server <!-- omit in toc -->
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
