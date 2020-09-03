@@ -8,14 +8,14 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install Let’s Encrypt SSL for Faveo on Cent OS 7 Running NGINX Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Cent OS 7 and 8 Running NGINX Web Server <!-- omit in toc -->
 
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on CentOS 7 Running Nginx Web Server
+This document will list on how to install Let’s Encrypt SSL on CentOS 7 and 8 Running Nginx Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
