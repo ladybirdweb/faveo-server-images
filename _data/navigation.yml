@@ -10,6 +10,11 @@ docs:
         url: /docs/installation/providers/enterprise/ubuntu-apache
       - title: Ubuntu with NGINX
         url: /docs/installation/providers/enterprise/ubuntu-nginx
+      - title: Debian with Apache
+        url: /docs/installation/providers/enterprise/debian-apache
+      - title: Debian with NGINX
+        url: /docs/installation/providers/enterprise/debian-nginx
+      
       - title: Windows Server 2019
         url: /docs/installation/providers/enterprise/windows
       - title: CentOS Web Panel
@@ -20,6 +25,8 @@ docs:
         url: /docs/installation/providers/community/ubuntu-apache
       - title: CentOS with Apache
         url: /docs/installation/providers/community/centos-apache
+      - title: Debian with Apache
+        url: /docs/installation/providers/community/debian-apache
 
 # Top bar Menu/Navigation
 main:
