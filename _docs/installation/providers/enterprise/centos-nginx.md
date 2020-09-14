@@ -16,7 +16,6 @@ toc: true
 Faveo can run on Cent-OS 7 and 8 (https://www.centos.org/download/).
 
 -   [Prerequisites](#prerequisites)
-
 -   [Installation steps](#installation-steps)
     -   [1. Upload Faveo](#1-upload-faveo)
     -   [2. Setup the database](#2-setup-the-database)

@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install Let’s Encrypt SSL for Faveo on Debian 10 (Buster) Running Nginx Web Server <!-- omit in toc -->
+# Install Let’s Encrypt SSL for Faveo on Debian Running Nginx Web Server <!-- omit in toc -->
 
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
