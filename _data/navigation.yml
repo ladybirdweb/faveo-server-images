@@ -14,7 +14,7 @@ docs:
         url: /docs/installation/providers/enterprise/debian-apache
       - title: Debian with NGINX
         url: /docs/installation/providers/enterprise/debian-nginx
-      - title: Windows Server 2019
+      - title: Windows Server
         url: /docs/installation/providers/enterprise/windows
       - title: CentOS Web Panel
         url: /docs/installation/providers/enterprise/centos-web-panel/
