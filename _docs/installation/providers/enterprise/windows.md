@@ -48,9 +48,7 @@ To install IIS Server open Server Manager and locate the Manage button on top ri
 -   - In "Features" section locate the .NET Framework 3.5 and .NET Framework 4.7 select the packages as show in the below image.
     
    
-
-    ![title](windows-images/features-selection.png)
-
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/15/features-selection.png" alt="Features_selection"/>
 Click next -> next -> thrice to confirm the settings and finally click on Install . It will get the IIS installed on the server. To verify the installation, you can type the following url in the browser
 
 ```
@@ -125,11 +123,11 @@ Download the Ioncube loader from the below link and extract
 - Copy the "ioncube_loader_win_7.3.dll" from extracted Ioncube folder and paste it in PHP extension diectory. which can be found here
 "C:\Program Files\PHP\v7.3\ext\" 
 
-![title](windows-images/ioncube-dll.png)
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/15/ioncube-dll.png" alt="ioncube-dll"/>
 
 - Copy the "loader-wizard.php" from the extracted Ioncube folder and paste it in the IIS Root Directory. which can be found here "C:\inetpub\wwwroot\"
 
-![title](windows-images/loader-wizard.png)
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/15/loader-wizard.png" alt="loader-wizard"/>
 
 ### <b>Step 6: Configure the php.ini file. </b>
 - Add the below line in your php.ini file to enable Ioncube.
