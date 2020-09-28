@@ -307,7 +307,7 @@ Perform  this step only if you have problem with delete option in Faveo ec=pven 
 To remove WebDav, go to Control Panel -> Uninstall Program -> Turn Windows features on or off -> IIS -> World Wide Web Services -> Common HTTP feature -> WebDAV Publishing.
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-<b> 7. Install Faveo </b>
+<b>  Install Faveo </b>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
