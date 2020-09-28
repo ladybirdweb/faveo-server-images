@@ -49,7 +49,7 @@ Now log in to your CentOS Web Panel server using the link provided by the instal
 
 - **CentOS Web Panel Admin GUI:** https://SERVER-IP:2031/
 - **Username:** root
-- **Password:** your-root-password
+- **Password:** your-os-root-password
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591248703Screenshot%20from%202020-06-04%2011-01-07.png"  />
 
@@ -61,7 +61,12 @@ As the Centos Web panel is now installed. You can host Faveo in this Centos Web 
 **Note:** You should have Domain pointing to this server.
 
 ## 4. Create user account  on CentOS Web Panel
-Create user account under User Accounts > New account.
+Create user account under User Accounts > New account. 
+ For creating a user account it is mandatory that you have a FQDN pointing to your server Public IP at this point.
+
+ Note: If your server sits behind a NAT network you have to enable the NAT-ed option in CWP settings. Usually if you setup your server on AWS or GCP they come with NAT network, so you have to enable NAT-ed in CWP settings. 
+ 
+ Goto > CWP Settings > Edit Settings select proper Public IP and Private IP  Scroll down and click on activate NAT-ed network configuration and don't forget to Rebuild the Web server once this is enabled.
 
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591272040cwp4.png"  />
 
@@ -71,7 +76,7 @@ CWP by default PHP 5.6 will be installed. You can install different PHP versions
 
 Faveo needs PHP 7.3,and some extensions.
 
-PHP Settings > php_switch_v2
+PHP Settings > php version switcher > Select the desired PHP version i.e, 7.3.22 and enable the following plugins imap, ldap, ioncube, fpm, redis and click on save & build. This will take approximately 20 minutes once it is done you will recieve a notification on successfull build with a hyper link to apply the configuration click on it to configure the new PHP version and you confirm to the new version in the Home dashboard displaying the current PHP version.
     
 <img alt="Cent OS Logo" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591357225Screenshot%20from%202020-06-05%2017-09-43.png"  />
     
@@ -101,6 +106,16 @@ Click on File Management > File manager and upload Faveo files
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591278060Screenshot%20from%202020-06-04%2019-10-48.png"  />
 
+At this point you need to make some changes to public/.htaccess file inside the Faveo root directory. This is done beacuse CWP limits some HTTP Headers in its global configuration in order to bypass the global settings this step is necessary.
+
+Just open the public/.htaccess to edit and append the below code in it and save the file. This can be done from the CWP Admin panel itself.
+
+```sh
+<Limit GET POST PUT OPTIONS DELETE PATCH HEAD>
+    Require all granted
+</Limit>
+```
+
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ## 8. Install Faveo
 
@@ -122,12 +137,21 @@ CWP settings > Backup configuration
     
 ## 11. SSL Configuration.
 
-Webserver Settings > SSL Certificates
+Webserver Settings > SSL Certificates. CWP offers free SSL certificate via LetEncrypt plugin .We recommend you to go with that if you cannot afford a Paid SSL certificate. 
 
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591336632Screenshot%20from%202020-06-05%2011-23-56.png"  />
     
 ## 12. Firewall Configuration
 
-Security > CSF firewall
+Security > CSF firewall > Click on Enable firewall by default the CSF firewall is configured to allow only a certain sets of Ports, if you want some other ports to be opened or closed it can be done here.
     
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1591323259Screenshot%20from%202020-06-04%2019-36-20.png"  />
+
+<a id="redis-installation" name="redis-installation"></a>
+### 13. Redis Installation
+
+Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+This is an optional step and will improve system performance and is highly recommended.
+
+[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
