@@ -212,22 +212,11 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 
-#### b. Enable the rewrite module and disable default site of the Apache webserver:
-
-```sh
-a2enmod rewrite
-a2dissite 000-default.conf
-a2ensite faveo.conf
-# Enable php7.3 fpm, and restart apache
-a2enmod proxy_fcgi setenvif
-a2enconf php7.3-fpm
-```
-
-#### c. Configure a new faveo site in apache by doing:
+#### b. Configure a new faveo site in apache by doing:
 
 Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
-nano /etc/httpd/conf.d/faveo.conf
+nano /etc/apache2/sites-available/faveo.conf
 ```
 
 ```apache
@@ -246,7 +235,16 @@ nano /etc/httpd/conf.d/faveo.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+#### c. Enable the rewrite module and disable default site of the Apache webserver:
 
+```sh
+a2enmod rewrite
+a2dissite 000-default.conf
+a2ensite faveo.conf
+# Enable php7.3 fpm, and restart apache
+a2enmod proxy_fcgi setenvif
+a2enconf php7.3-fpm
+```
 #### d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:
 
 ```sh
