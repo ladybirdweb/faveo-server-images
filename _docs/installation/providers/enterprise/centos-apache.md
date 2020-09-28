@@ -1,5 +1,4 @@
 ---
-title: "Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS"
 layout: single
 type: docs
 permalink: /docs/installation/providers/enterprise/centos-apache/
