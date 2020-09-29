@@ -338,8 +338,7 @@ Finally under Finish section select the checkbox to open the properties window a
 
 In the properties window select the Triggers tab and click on Edit and select the checkbox for "Repeat task every" and set values to run every 5 minutes for indefinitely and click on OK.
 
-Select the schedule and click Edit and set the cron to run every 10 minutes. You can change according to your needs.
-<img src="" alt="" />
+
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### <b>Step 8: SSL Installation </b>
