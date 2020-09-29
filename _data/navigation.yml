@@ -16,6 +16,8 @@ docs:
         url: /docs/installation/providers/enterprise/debian-nginx
       - title: Windows Server
         url: /docs/installation/providers/enterprise/windows
+      - title: Windows Server
+        url: /docs/installation/providers/enterprise/plesk-panel-windows
       - title: CentOS Web Panel
         url: /docs/installation/providers/enterprise/centos-web-panel/
   - title: Community edition
