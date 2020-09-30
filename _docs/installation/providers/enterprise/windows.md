@@ -9,8 +9,6 @@ toc: true
 title: Installing Faveo Helpdesk Freelancer, paid and Enterprise on Windows
 ---
 
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Windows <!-- omit in toc -->
-
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="65"  />
 
 Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server).
