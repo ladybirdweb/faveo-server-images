@@ -172,9 +172,53 @@ If you face trouble logging in faveo or if the pages does not load fully and you
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/29/plesk19.png" alt=""/>
 
 
+## 5. Configure IIS WebServer
+
+By default, IIS configures PHP only to accept GET, POST and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
+
+<b>Step 1: Open IIS Manager </b>
+
+Open the Start menu and type "IIS" in to the find box. You should see an application called "Internet Information Services (IIS) Manager".
+
+ 
+
+<b>Step 2: Select your computer in the "Connections" pane</b>
+
+On the left, there is a "Connections" pane. You should see your computer listed here. Click on your computer name which should load the a dashboard with a handful of icons.
+ 
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-14.59.44.png" alt=""/>
+
+<b>Step 3: Open PHP Handler Mapping</b>
+
+Double-click on the Handler Mappings icon to bring up the Handler Mappings screen.
+
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.01.17.png" alt="" />
+
+Then double-click on the handler for PHP files to bring up the "Edit Module Mapping" window:
+
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.03.15.png" alt="" />
+
+<b>Step 4: Edit Verbs</b>
+
+Click on the "Request Restrictions" button, then switch to the [Verbs] tab. Switch the radio button to "All Verbs", then click "OK" to close the window, then "OK" again to close the other window.
+
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.04.02.png" alt="" />
+
+Note: You may be prompted with an alert to "fix" the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the "Executable" box and it will save successfully.
 
 
-## 5. Cron Job configuration
+To Open the Faveo on your domain , you must set the binding.
+Go to Bindings option on right pane and select “HTTP” and edit the hostname to your concern.
+
+Now you can open the browser and enter the IP or Domain Name to open Faveo. To test the successfull configuration perform some create delete operations in Faveo if the Delete operation fails then the above steps is not sufficient at this point you may need to perform the below steps too.
+
+Disable WebDav (Optional)
+
+Perform  this step only if you have problem with delete option in Faveo ec=pven after following the previous steps.
+
+To remove WebDav, go to Control Panel -> Uninstall Program -> Turn Windows features on or off -> IIS -> World Wide Web Services -> Common HTTP feature -> WebDAV Publishing.
+
+## 6. Cron Job configuration
 Faveo needs a Job to run every 5 minutes in Background so we need to setup a Job in Task Scheduler and by default Faveo won't recognise the PHP executable Path when it comes to Plesk Panel. You need to first update the PHP executable path to environment variables by going to 
 - Control Panel -> System and Security Settings -> System
 - Click on Advanced system settings
@@ -185,7 +229,7 @@ Click Ok, Ok, and Ok. You've now added the PHP Environment variable
 
 
 
-<img alt="https://support.faveohelpdesk.com/uploads/2020/9/29/plesk20.png" src=" "  />
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/29/plesk20.png" alt=" "  />
 
 
 To open Taskscheduler press ctrl + R and Type "taskschd.msc".
