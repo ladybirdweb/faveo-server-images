@@ -18,7 +18,7 @@ Faveo can also be configured with Redis. This will help improve system performan
 
 ### Step 2: Goto Admin Panel->Queues and click on "redis" and input the values as driver="redis" queue="default"
 
-<img src="" alt="" />
+<img src="https://support.faveohelpdesk.com/uploads/2020/10/5/redis.png" alt="" />
 
 ### Step 3: Open Queues Click on Activate for redis.
 
