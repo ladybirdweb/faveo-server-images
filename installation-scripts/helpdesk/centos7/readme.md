@@ -26,7 +26,7 @@ To run, copy/paste this into the command-line
     
 ```sh
 yum -y install wget
-wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/helpdesk/centos7/autoinstall.sh
+wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/helpdesk/centos7/centos7.sh
 ```
 
 Change execution permission for file.
@@ -38,7 +38,7 @@ chmod +x Faveo-Centos-apache.sh
 Execute the script
 
 ```sh
-./Faveo-Centos-apache.sh
+./centos.sh -domainname demo1.demoladybird.com -email test@gmail.com -host_root_dir /var/www/faveo/faveo-helpdesk -license EOVSRVXU7AKX0002  -orderno 39187271 -db_root_pw Faveo123@ -db_name faveo1 -db_user faveo1 -db_user_pw faveo1
 ```
 
 ## Install Faveo
