@@ -26,7 +26,7 @@ To run, copy/paste this into the command-line
 
 ```sh 
 apt-get install wget -y
-wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/helpdesk/ubuntu18/autoinstall.sh
+wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/helpdesk/ubuntu18/ubuntu18.sh
 ```
 
 Change execution permission for file.
@@ -38,7 +38,7 @@ chmod +x Faveo-ubuntu-apache.sh
 Execute the script
 
 ```sh
-./Faveo-ubuntu-apache.sh
+./ubuntu18.sh -domainname demo1.demoladybird.com -email test@gmail.com -host_root_dir /var/www/faveo/faveo-helpdesk -license EOVSRVXU7AKX0002  -orderno 39187271 -db_root_pw Faveo123@ -db_name faveo1 -db_user faveo1 -db_user_pw faveo1
 ```
 
 ## Install Faveo
