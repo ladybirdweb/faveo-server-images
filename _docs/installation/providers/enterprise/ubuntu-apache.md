@@ -83,12 +83,12 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp 
+    php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
 ```
 After installing PHP 7.3, run the commands below to open PHP default config file.
 
 ```sh
-nano /etc/php/7.3/fpm/php.ini
+nano /etc/php/7.3/apache2/php.ini
 ```
 
 Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environment.
@@ -100,6 +100,7 @@ short_open_tag = On
 memory_limit = 256M
 cgi.fix_pathinfo = 0
 upload_max_filesize = 100M
+post_max_size = 100M
 max_execution_time = 360
 ```
 
@@ -128,8 +129,8 @@ Install Mysql 5.7. Note that this only installs the package, but does not setup 
 ### <b> For Ubuntu 16.04 and Ubuntu 18.04</b>
 ```sh
 apt install -y mysql-server-5.7
-systemctl start mysqld
-systemctl enable mysqld
+systemctl start mysql
+systemctl enable mysql
 ```
 ### <b> For Ubuntu 20.04 </b>
 ```sh
@@ -163,9 +164,19 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 
 ```sh
 mkdir -p /var/www/faveo
-cd /var/www/faveo
 ```
+Extracting the Faveo-Codebase zip file
+```sh
+unzip "Filename.zip" -d /var/www/faveo
+```
+ Give proper permissions to the project directory by running:
 
+```sh
+chown -R www-data:www-data /var/www/faveo
+cd /var/www/faveo/
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+```
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
 
@@ -203,16 +214,9 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ### 3. Configure Apache webserver
 
-#### a. Give proper permissions to the project directory by running:
 
-```sh
-chown -R www-data:www-data /var/www/faveo
-cd /var/www/faveo/
-find . -type f -exec chmod 644 {} \;
-find . -type d -exec chmod 755 {} \;
-```
 
-#### b. Configure a new faveo site in apache by doing:
+#### a. Configure a new faveo site in apache by doing:
 
 Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
@@ -233,6 +237,10 @@ nano /etc/apache2/sites-available/faveo.conf
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
+# Uncomment the below lines and replace the Server-IP and Domainame to configure IP to Domainname rewrite rule
+#    RewriteEngine on
+#    RewriteCond %{HTTP_HOST} ^--Server-IP--
+#    RewriteRule (.*) http://--Domainname--
 </VirtualHost>
 ```
 #### c. Enable the rewrite module and disable default site of the Apache webserver:

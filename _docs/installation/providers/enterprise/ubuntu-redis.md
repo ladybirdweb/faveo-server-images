@@ -90,7 +90,7 @@ stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 ## Restart the Supervisor to reread the new configuration.
 
 ```sh
-systemctl restart supervisord 
+systemctl restart supervisor 
 ```
 
 
