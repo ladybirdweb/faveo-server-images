@@ -13,16 +13,27 @@ toc: true
 
 Faveo can run on [Cent OS 7 and 8 ](https://www.centos.org/download/).
 
--   [Prerequisites](#prerequisites)
--   [Installation steps](#installation-steps)
-    -   [1. Upload Faveo](#1-upload-faveo)
-    -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [4. Install Faveo](#3-gui-faveo-installer)
-    -   [5. Configure cron job](#4-configure-cron-job)
-    -   [6. Redis Installation](#redis-installation)
-    -   [7. SSL Installation](#ssl-installation)
-    -   [8. Final step](#final-step)
+- [Prerequisites](#prerequisites)
+  - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
+  - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
+  - [<b>b. Install php-7.3 Packages </b>](#bb-install-php-73-packages-b)
+  - [<b> For Cent-OS 7</b>](#b-for-cent-os-7b)
+  - [<b> For Cent-OS 8</b>](#b-for-cent-os-8b)
+  - [<b>c. Install and run Apache</b>](#bc-install-and-run-apacheb)
+  - [<b>d. Setting Up ionCube</b>](#bd-setting-up-ioncubeb)
+  - [<b> e. Install and run Mysql/MariaDB</b>](#b-e-install-and-run-mysqlmariadbb)
+  - [<b>For Cent-OS 7</b>](#bfor-cent-os-7b)
+  - [<b>For Cent-OS 8</b>](#bfor-cent-os-8b)
+- [Installation steps](#installation-steps)
+  - [1. Upload Faveo](#1-upload-faveo)
+  - [1.a Extracting the Faveo-Codebase zip file](#1a-extracting-the-faveo-codebase-zip-file)
+  - [2. Setup the database](#2-setup-the-database)
+  - [3. Configure Apache webserver](#3-configure-apache-webserver)
+  - [4. Configure cron job](#4-configure-cron-job)
+  - [5. Redis Installation](#5-redis-installation)
+  - [6. SSL Installation](#6-ssl-installation)
+  - [7. Install Faveo](#7-install-faveo)
+  - [8. Final step](#8-final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -58,7 +69,7 @@ yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 
 yum-config-manager --enable remi-php73
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
 ### <b> For Cent-OS 8</b>
@@ -69,7 +80,7 @@ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarc
 yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 dnf module install php:remi-7.3 -y
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 ###  <b>c. Install and run Apache</b>
 Install and Enable Apache Server
@@ -109,11 +120,13 @@ yum install -y mysql-community-server
 systemctl start mysqld
 systemctl enable mysqld
 ```
-Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+Secure your MySql installation by executing the below command. Set Password for mysql root user,it will ask for password which is temporarily created by MySql-5.7 and it is required for changing the root password, we can get by running the below command and here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
+grep "temporary password" /var/log/mysqld.log
 mysql_secure_installation 
 ```
+
 ### <b>For Cent-OS 8</b>
 In CentOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
@@ -153,7 +166,11 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 mkdir -p /var/www/faveo/
 cd /var/www/faveo/
 ```
+### 1.a Extracting the Faveo-Codebase zip file
 
+```sh
+unzip "Filename.zip" -d /var/www/faveo
+```
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
 
@@ -262,15 +279,10 @@ systemctl restart httpd.service
 
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 4. Install Faveo
 
-At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
-You can also check the Propagation update by Visiting this site www.whatsmydns.net.
-
-Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
 
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 5. Configure cron job
+### 4. Configure cron job
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -284,7 +296,7 @@ echo "* * * * * apache /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo
 
 
 <a id="redis-installation" name="redis-installation"></a>
-### 6. Redis Installation
+### 5. Redis Installation
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -293,7 +305,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### 7. SSL Installation
+### 6. SSL Installation
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -302,6 +314,12 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl)
 
 <a id="final-step" name="final-step"></a>
+### 7. Install Faveo
+
+At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
+You can also check the Propagation update by Visiting this site www.whatsmydns.net.
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
 ### 8. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

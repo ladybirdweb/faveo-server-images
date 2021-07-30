@@ -15,16 +15,27 @@ toc: true
 
 Faveo can run on [Ubuntu 16.04 (Xenial Xerus),Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa)]. 
 
--   [Prerequisites](#prerequisites)
--   [Installation steps](#installation-steps)
-    -   [1. Upload Faveo](#1-upload-faveo)
-    -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Nginx webserver](#5-configure-apache-webserver)
-    -   [4. Install Faveo](#3-gui-faveo-installer)
-    -   [5. Configure cron job](#4-configure-cron-job)
-    -   [6. Redis Installation](#redis-installation)
-    -   [7. SSL Installation](#ssl-installation)
-    -   [8. Final step](#final-step)
+- [Prerequisites](#prerequisites)
+  - [a. LAMP Installation](#a-lamp-installation)
+  - [b. Update your package list](#b-update-your-package-list)
+  - [c. Nginx](#c-nginx)
+  - [d. Install some Utility packages](#d-install-some-utility-packages)
+  - [e. PHP 7.3+](#e-php-73)
+  - [<b>e. Mysql</b>](#be-mysqlb)
+  - [<b> For Ubuntu 16.04 and Ubuntu 18.04</b>](#b-for-ubuntu-1604-and-ubuntu-1804b)
+  - [<b> For Ubuntu 20.04 </b>](#b-for-ubuntu-2004-b)
+- [Installation steps](#installation-steps)
+  - [1. Upload Faveo](#1-upload-faveo)
+  - [2. Setup the database](#2-setup-the-database)
+  - [<b> 3. Configure Nginx webserver</b>](#b-3-configure-nginx-webserverb)
+    - [<b> a. Give proper permissions to the project directory by running:</b>](#b-a-give-proper-permissions-to-the-project-directory-by-runningb)
+    - [<b>b. Create the faveo.conf Virtualhost</b>](#bb-create-the-faveoconf-virtualhostb)
+    - [<b> c. Enable the Faveo and Rewrite Module</b>](#b-c-enable-the-faveo-and-rewrite-moduleb)
+  - [<b> 4. Install Faveo</b>](#b-4-install-faveob)
+  - [<b>5. Configure cron job</b>](#b5-configure-cron-jobb)
+  - [6. Redis Installation](#6-redis-installation)
+  - [7. SSL Installation](#7-ssl-installation)
+  - [8. Final step](#8-final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -110,7 +121,7 @@ tar xvfz ioncube_loaders_lin_x86-64.tar.gz
 ```
 Make the note of path and directory from the above command.
 
-Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
+Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
 
 ```sh
 php -i | grep extension_dir

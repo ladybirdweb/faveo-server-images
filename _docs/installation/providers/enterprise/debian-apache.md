@@ -14,14 +14,21 @@ toc: true
 
 Faveo can run on Debian 10 (Buster).
 
--   [Prerequisites](#prerequisites)
--   [Installation steps](#installation-steps)
-    -   [1. Upload Faveo](#1-upload-faveo)
-    -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [4. Install Faveo](#3-gui-faveo-installer)
-    -   [5. Configure cron job](#4-configure-cron-job)
-    -   [6. Final step](#final-step)
+- [Prerequisites](#prerequisites)
+  - [a. LAMP Installation](#a-lamp-installation)
+  - [b. Update the packages](#b-update-the-packages)
+  - [e. PHP 7.3+](#e-php-73)
+  - [d. MariaDB:](#d-mariadb)
+- [Installation steps](#installation-steps)
+  - [1. Upload Faveo](#1-upload-faveo)
+  - [1.a Extracting the Faveo-Codebase zip file](#1a-extracting-the-faveo-codebase-zip-file)
+  - [2. Setup the database](#2-setup-the-database)
+  - [3. Configure Apache webserver](#3-configure-apache-webserver)
+  - [4. Configure cron job](#4-configure-cron-job)
+  - [5. Redis Installation](#5-redis-installation)
+  - [6. SSL Installation](#6-ssl-installation)
+  - [7. Install Faveo](#7-install-faveo)
+  - [8. Final step](#8-final-step)
 
 <a id="prerequisites" name="prerequisites"></a>
 ## Prerequisites
@@ -55,7 +62,7 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp 
+    php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
 ```
 
 Now enable apache2 to start upon reboot.
@@ -87,7 +94,7 @@ tar xvfz ioncube_loaders_lin_x86-64.tar.gz
 ```
 Make the note of path and directory from the above command.
 
-Copy ioncube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
+Copy ioncube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
 
 ```sh
 php -i | grep extension_dir
@@ -118,7 +125,13 @@ Once the softwares above are installed:
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-/var/www/faveo
+mkdir /var/www/faveo
+cd /var/www/faveo
+```
+### 1.a Extracting the Faveo-Codebase zip file
+
+```sh
+unzip "Filename.zip" -d /var/www/faveo
 ```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
@@ -214,13 +227,8 @@ systemctl restart apache2
 systemctl restart php7.3-fpm
 ```
 
-### <b>4. Install Faveo</b>
-
-Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
-
-
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### <b>5. Configure cron job</b>
+### 4. Configure cron job
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -233,7 +241,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### <b>6. Redis Installation</b>
+### 5. Redis Installation
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -242,7 +250,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### <b>7. SSL Installation</b>
+### 6. SSL Installation
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -250,7 +258,12 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
 
+### 7. Install Faveo
+At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
 <a id="final-step" name="final-step"></a>
-### <b>6. Final step</b>
+### 8. Final step
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.

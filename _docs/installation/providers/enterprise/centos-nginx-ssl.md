@@ -70,5 +70,5 @@ This job can be safely scheduled to run every Monday at midnight:
 Create a new `/etc/cron.d/faveo-ssl` file with:
 
 ```sh
-echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot-auto renew && /bin/systemctl restart nginx.service" | sudo tee /etc/cron.d/faveo-ssl
+echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart nginx.service" | sudo tee /etc/cron.d/faveo-ssl
 ```

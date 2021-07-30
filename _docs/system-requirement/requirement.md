@@ -9,17 +9,21 @@ toc: true
 title: "Faveo Helpdesk System Requirements"
 ---
 
--   [1. Php Versions](#php-versions)
-    -   [PHP Extensions](#php-extensions)
-    -   [PHP Settings](#php-settings)
--   [2. File Permissions](#file-permissions)
-    -   [Linux](#linux)
-    -   [IIS - Windows](#iis)
--   [3. Database](#database)
-    -   [Version](#version)
-    -   [User Privileges](#user-privileges)
--   [4. Web Server](#web-server)
--   [5. Firewall Requirements](#firewall-requirements)
+- [1. PHP Version](#1-php-version)
+  - [a. PHP Extensions](#a-php-extensions)
+  - [b. PHP Settings](#b-php-settings)
+- [2. File Permissions](#2-file-permissions)
+  - [a. Linux](#a-linux)
+  - [b. IIS (Windows)](#b-iis-windows)
+- [3. Database](#3-database)
+  - [a. Version](#a-version)
+  - [b. User Privileges](#b-user-privileges)
+  - [c. Settings](#c-settings)
+- [4. Web Server](#4-web-server)
+  - [a. Apache](#a-apache)
+  - [b. Nginx](#b-nginx)
+  - [c. IIS](#c-iis)
+- [5. Firewall Requirements](#5-firewall-requirements)
 
 Faveo requires a fairly standard PHP & MySQL server setup in order to be installed and function correctly. If you require any assistance with setting up Faveo or determining if your system can support Faveo, please contact us.
 
@@ -95,7 +99,7 @@ Right click on the folder containing the Faveo files, click Properties and then 
 ## 3. Database
 <a id="version" name="version"></a>
 ### a. Version
-MySQL Server <b>5.7.x, 8.0.x</b> supported. <b>MariaDB 10.3 - 10.4</b> also supported.
+MySQL Server <b>5.7.x</b> supported. <b>MariaDB 10.3 </b> also supported.
 
 <a id="user-privileges" name="user-privileges"></a>
 ### b. User Privileges

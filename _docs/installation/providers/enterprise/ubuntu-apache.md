@@ -15,16 +15,27 @@ toc: true
 
 Faveo can run on [Ubuntu 16.04 (Xenial Xerus),Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa)](http://releases.ubuntu.com/18.04/).
 
--   [Prerequisites](#prerequisites)
--   [Installation steps](#installation-steps)
-    -   [1. Upload Faveo](#1-upload-faveo)
-    -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Apache webserver](#5-configure-apache-webserver)
-    -   [4. Install Faveo](#3-gui-faveo-installer)
-    -   [5. Configure cron job](#4-configure-cron-job)
-    -   [6. Redis Installation](#redis-installation)
-    -   [7. SSL Installation](#ssl-installation)
-    -   [8. Final step](#final-step)
+- [Prerequisites](#prerequisites)
+  - [a. LAMP Installation](#a-lamp-installation)
+  - [b. Update your package list](#b-update-your-package-list)
+  - [c. Apache](#c-apache)
+  - [d. Install some Utility packages](#d-install-some-utility-packages)
+  - [e. PHP 7.3+](#e-php-73)
+  - [<b>e. Mysql</b>](#be-mysqlb)
+  - [<b> For Ubuntu 16.04 and Ubuntu 18.04</b>](#b-for-ubuntu-1604-and-ubuntu-1804b)
+  - [<b> For Ubuntu 20.04 </b>](#b-for-ubuntu-2004-b)
+- [Installation steps](#installation-steps)
+  - [1. Upload Faveo](#1-upload-faveo)
+  - [2. Setup the database](#2-setup-the-database)
+  - [3. Configure Apache webserver](#3-configure-apache-webserver)
+    - [a. Configure a new faveo site in apache by doing:](#a-configure-a-new-faveo-site-in-apache-by-doing)
+    - [c. Enable the rewrite module and disable default site of the Apache webserver:](#c-enable-the-rewrite-module-and-disable-default-site-of-the-apache-webserver)
+    - [d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:](#d-apply-the-new-conf-file-and-restart-apache-and-php-fpm-you-can-do-that-by-running)
+  - [4. Configure cron job](#4-configure-cron-job)
+  - [5. Redis Installation](#5-redis-installation)
+  - [6. SSL Installation](#6-ssl-installation)
+  - [7. Install Faveo](#7-install-faveo)
+  - [8. Final step](#8-final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -111,7 +122,7 @@ tar xvfz ioncube_loaders_lin_x86-64.tar.gz
 ```
 Make the note of path and directory from the above command.
 
-Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown in the last step
+Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
 
 ```sh
 php -i | grep extension_dir
@@ -164,6 +175,7 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 
 ```sh
 mkdir -p /var/www/faveo
+cd /var/www/faveo
 ```
 Extracting the Faveo-Codebase zip file
 ```sh
@@ -260,16 +272,8 @@ service php7.3-fpm restart
 service apache2 restart
 ```
 
-
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 4. Install Faveo
-At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
-You can also check the Propagation update by Visiting this site www.whatsmydns.net.
-
-Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
-
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 5. Configure cron job
+### 4. Configure cron job
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -282,7 +286,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### 6. Redis Installation
+### 5. Redis Installation
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -291,13 +295,21 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### 7. SSL Installation
+### 6. SSL Installation
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl)
+
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+### 7. Install Faveo
+At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
+You can also check the Propagation update by Visiting this site www.whatsmydns.net.
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step

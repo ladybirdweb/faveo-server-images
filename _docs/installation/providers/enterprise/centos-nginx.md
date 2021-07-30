@@ -15,16 +15,27 @@ toc: true
 
 Faveo can run on Cent-OS 7 and 8 (https://www.centos.org/download/).
 
--   [Prerequisites](#prerequisites)
--   [Installation steps](#installation-steps)
-    -   [1. Upload Faveo](#1-upload-faveo)
-    -   [2. Setup the database](#2-setup-the-database)
-    -   [3. Configure Nginx webserver](#5-configure-apache-webserver)
-    -   [4. Install Faveo](#3-gui-faveo-installer)
-    -   [5. Configure cron job](#4-configure-cron-job)
-    -   [6. Redis Installation](#redis-installation)
-    -   [7. SSL Installation](#ssl-installation)
-    -   [8. Final step](#final-step)
+- [Prerequisites](#prerequisites)
+  - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
+  - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
+  - [<b>b. Install php-7.3 Packages </b>](#bb-install-php-73-packages-b)
+  - [<b> For Cent-OS 7</b>](#b-for-cent-os-7b)
+  - [<b> For Cent-OS 8</b>](#b-for-cent-os-8b)
+  - [<b>c. Install and run Nginx </b>](#bc-install-and-run-nginx-b)
+  - [<b> d. Setting Up ionCube</b>](#b-d-setting-up-ioncubeb)
+  - [<b> e. Install and run Mysql/MariaDB</b>](#b-e-install-and-run-mysqlmariadbb)
+  - [<b>For Cent-OS 7</b>](#bfor-cent-os-7b)
+  - [<b>For Cent-OS 8</b>](#bfor-cent-os-8b)
+- [Installation steps](#installation-steps)
+  - [1. Upload Faveo](#1-upload-faveo)
+  - [1.a Extracting the Faveo-Codebase zip file](#1a-extracting-the-faveo-codebase-zip-file)
+  - [2. Setup the database](#2-setup-the-database)
+  - [3. Configure Nginx webserver](#3-configure-nginx-webserver)
+  - [4. Configure cron job](#4-configure-cron-job)
+  - [. Redis Installation](#-redis-installation)
+  - [7. SSL Installation](#7-ssl-installation)
+  - [7. Install Faveo](#7-install-faveo)
+  - [8. Final step](#8-final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -111,9 +122,10 @@ yum install -y mysql-community-server
 systemctl start mysqld
 systemctl enable mysqld
 ```
-Secure your MySql installation by executing the below command. Set Password for mysql root user here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+Secure your MySql installation by executing the below command. Set Password for mysql root user,it will ask for password which is temporarily created by MySql-5.7 and it is required for changing the root password, we can get by running the below command and here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
+grep "temporary password" /var/log/mysqld.log
 mysql_secure_installation 
 ```
 ### <b>For Cent-OS 8</b>
@@ -153,6 +165,11 @@ Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://
 mkdir -p /var/www/faveo
 cd /var/www/faveo
 ```
+### 1.a Extracting the Faveo-Codebase zip file
+
+```sh
+unzip "Filename.zip" -d /var/www/faveo
+```
 
 <a id="2-setup-the-database" name="2-setup-the-database"></a>
 ### 2. Setup the database
@@ -190,7 +207,7 @@ exit
 
 
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### <b> 3. Configure Nginx webserver </b>
+###  3. Configure Nginx webserver 
 
 **a.** Give proper permissions to the project directory by running:
 
@@ -282,11 +299,12 @@ user = nginx
 
 group = nginx
 
-listen.owner = nobody to listen.owner = nginx
+listen.owner = nobody (to) listen.owner = nginx
 
-listen.group = nobody to listen.group = nginx
+listen.group = nobody (to) listen.group = nginx
 
-Uncomment listen = 127.0.0.1:9000 by removing ; and in Cent-OS 8 you will find listen = /run/php-fpm/www.sock replace it to listen = 127.0.0.1:9000.
+Uncomment listen = 127.0.0.1:9000 by removing (;) 
+In Cent-OS 8 you will find listen = /run/php-fpm/www.sock replace it (to) listen = 127.0.0.1:9000.
 
 ```
 
@@ -296,14 +314,8 @@ systemctl start php-fpm.service
 systemctl enable php-fpm.service
 systemctl restart nginx
 ```
-
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### 4. Install Faveo
-
-Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
-
 <a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### 5. Configure cron job
+### 4. Configure cron job
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -316,7 +328,7 @@ echo "* * * * * nginx /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### 6. Redis Installation
+### . Redis Installation
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -332,6 +344,12 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-nginx-ssl)
+
+<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+### 7. Install Faveo
+At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="final-step" name="final-step"></a>
 ### 8. Final step
