@@ -71,7 +71,7 @@ yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 
 yum-config-manager --enable remi-php73
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap
+yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
 ### <b> For Cent-OS 8</b>
