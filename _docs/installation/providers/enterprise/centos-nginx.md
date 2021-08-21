@@ -13,19 +13,17 @@ toc: true
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on Cent-OS 7 and 8 Stream (https://www.centos.org/download/).
+Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
 
 - [Prerequisites](#prerequisites)
   - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
   - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
   - [<b>b. Install php-7.3 Packages </b>](#bb-install-php-73-packages-b)
   - [<b> For Cent-OS 7</b>](#b-for-cent-os-7b)
-  - [<b> For Cent-OS 8 Stream</b>](#b-for-cent-os-8-streamb)
   - [<b>c. Install and run Nginx </b>](#bc-install-and-run-nginx-b)
   - [<b> d. Setting Up ionCube</b>](#b-d-setting-up-ioncubeb)
   - [<b> e. Install and run Mysql/MariaDB</b>](#b-e-install-and-run-mysqlmariadbb)
   - [<b>For Cent-OS 7</b>](#bfor-cent-os-7b)
-  - [<b>For Cent-OS 8 Stream</b>](#bfor-cent-os-8-streamb)
 - [Installation steps](#installation-steps)
   - [1. Upload Faveo](#1-upload-faveo)
   - [1.a Extracting the Faveo-Codebase zip file](#1a-extracting-the-faveo-codebase-zip-file)
@@ -74,16 +72,6 @@ yum-config-manager --enable remi-php73
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
-### <b> For Cent-OS 8 Stream</b>
-
-
-```sh
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-
-dnf module install php:remi-7.3 -y
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
-```
 ### <b>c. Install and run Nginx </b>
 
 Use the below steps to install and start Nginx
@@ -126,20 +114,6 @@ Secure your MySql installation by executing the below command. Set Password for 
 
 ```sh
 grep "temporary password" /var/log/mysqld.log
-mysql_secure_installation 
-```
-### <b>For Cent-OS 8 Stream</b>
-In CentOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
-
-```sh
-yum install mariadb-server -y
-systemctl start mariadb
-systemctl enable mariadb
-```
-
-Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
-
-```sh
 mysql_secure_installation 
 ```
 
@@ -304,7 +278,6 @@ listen.owner = nobody (to) listen.owner = nginx
 listen.group = nobody (to) listen.group = nginx
 
 Uncomment listen = 127.0.0.1:9000 by removing (;) 
-In Cent-OS 8 Stream you will find listen = /run/php-fpm/www.sock replace it (to) listen = 127.0.0.1:9000.
 
 ```
 

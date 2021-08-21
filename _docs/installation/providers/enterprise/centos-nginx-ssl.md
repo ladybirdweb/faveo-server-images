@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install LetsEncrypt SSL for Faveo on Cent OS 7 and 8 Stream Running NGINX Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Cent OS 7 Running NGINX Web Server <!-- omit in toc -->
 
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
@@ -35,12 +35,6 @@ yum install epel-release mod_ssl
 
 ```sh
 yum install python-certbot-nginx
-```
-
-## Downloading the LetsEncrypt for Cent-OS 8 Stream
-
-```sh
-yum install python3-certbot-nginx
 ```
 
 ## Setting up the SSL certificate
