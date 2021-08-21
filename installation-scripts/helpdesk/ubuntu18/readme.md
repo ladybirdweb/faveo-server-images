@@ -32,13 +32,13 @@ wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation
 Change execution permission for file.
 
 ```sh
-chmod +x Faveo-ubuntu-apache.sh
+chmod +x autoinstall.sh
 ```
 
 Execute the script
 
 ```sh
-./Faveo-ubuntu-apache.sh
+./autoinstall.sh
 ```
 
 ## Install Faveo

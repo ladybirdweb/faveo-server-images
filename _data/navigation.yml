@@ -2,6 +2,10 @@
 docs:
   - title: Freelancer & paid editions
     children:
+      - title: Rocky OS with Apache
+        url: /docs/installation/providers/enterprise/rockyos-apache
+      - title: Rocky OS with Nginx
+        url: /docs/installation/providers/enterprise/rocky-nginx
       - title: Cent OS with Apache
         url: /docs/installation/providers/enterprise/centos-apache
       - title: Cent OS with NGINX
