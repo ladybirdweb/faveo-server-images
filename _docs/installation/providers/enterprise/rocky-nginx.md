@@ -13,17 +13,17 @@ toc: true
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
-Faveo can run on Rocky-OS 8 Stream (https://rockylinux.org/download/).
+Faveo can run on [Rocky 8 ](https://rockylinux.org/download/).
 
 - [Prerequisites](#prerequisites)
   - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
   - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
   - [<b>b. Install php-7.3 Packages </b>](#bb-install-php-73-packages-b)
-  - [<b> For Rocky-OS 8 Stream</b>](#b-for-rocky-os-8-streamb)
+  - [<b> For Rocky-OS 8 </b>](#b-for-rocky-os-8-b)
   - [<b>c. Install and run Nginx </b>](#bc-install-and-run-nginx-b)
   - [<b> d. Setting Up ionCube</b>](#b-d-setting-up-ioncubeb)
   - [<b> e. Install and run Mysql/MariaDB</b>](#b-e-install-and-run-mysqlmariadbb)
-  - [<b>For Rocky-OS 8 Stream</b>](#bfor-rocky-os-8-streamb)
+  - [<b>For Rocky-OS 8 </b>](#bfor-rocky-os-8-b)
 - [Installation steps](#installation-steps)
   - [1. Upload Faveo](#1-upload-faveo)
   - [1.a Extracting the Faveo-Codebase zip file](#1a-extracting-the-faveo-codebase-zip-file)
@@ -62,7 +62,7 @@ yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
 ###  <b>b. Install php-7.3 Packages </b>
-### <b> For Rocky-OS 8 Stream</b>
+### <b> For Rocky-OS 8 </b>
 
 
 ```sh
@@ -103,7 +103,7 @@ The official Faveo installation uses Mysql as the database system and **this is 
 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
-### <b>For Rocky-OS 8 Stream</b>
+### <b>For Rocky-OS 8 </b>
 In RockyOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
 ```sh

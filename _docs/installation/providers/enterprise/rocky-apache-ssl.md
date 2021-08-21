@@ -8,14 +8,14 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install LetsEncrypt SSL for Faveo on Rocky 8 Stream Running Apache Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Rocky 8 Running Apache Web Server <!-- omit in toc -->
 
 
 <img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png"  width="200"  />
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on Rocky 8 Stream Running Apache Web Server
+This document will list on how to install Let’s Encrypt SSL on Rocky 8 Running Apache Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
