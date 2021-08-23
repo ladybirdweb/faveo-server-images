@@ -9,7 +9,8 @@ toc: true
 title: Install Let’s Encrypt SSL for Faveo on Windows Server Running IIS Web Server
 ---
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/65px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png" width="65"  />
+<img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
+
 
 ## Introduction
 This document will lists down how to install Let’s Encrypt SSL on Windows Server Running IIS Web Server
