@@ -2,6 +2,10 @@
 docs:
   - title: Freelancer & paid editions
     children:
+      - title: Cent OS 8 Stream with Apache
+        url: /docs/installation/providers/enterprise/centos8s-apache
+      - title: Cent OS 8 Stream with Nginx
+        url: /docs/installation/providers/enterprise/centos8s-nginx
       - title: Rocky OS with Apache
         url: /docs/installation/providers/enterprise/rocky-apache
       - title: Rocky OS with Nginx
