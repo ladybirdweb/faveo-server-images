@@ -1,21 +1,21 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/centos-nginx-ssl/
+permalink: /docs/installation/providers/enterprise/centos8s-nginx-ssl/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install LetsEncrypt SSL for Faveo on Cent OS 7 Running NGINX Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on CentOS-8-Stream OS 8 Running NGINX Web Server <!-- omit in toc -->
 
 
-<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
+<img alt="CentOS-8-Stream OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on CentOS 7 Running Nginx Web Server
+This document will list on how to install Let’s Encrypt SSL on CentOS-8-Stream Running Nginx Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
@@ -31,10 +31,10 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 yum install epel-release mod_ssl
 ```
 
-## Downloading the LetsEncrypt for Cent-OS 7
+## Downloading the LetsEncrypt for CentOS-8-Stream-OS
 
 ```sh
-yum install python-certbot-nginx
+yum install python3-certbot-nginx
 ```
 
 ## Setting up the SSL certificate

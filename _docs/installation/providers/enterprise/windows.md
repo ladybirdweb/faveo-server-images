@@ -147,7 +147,7 @@ extension=phpfileinfo.dll
 Note: If you didn't get the below output try restarting the IIS Server.
 
 ```
-localhost/loader-wizard.php
+localhost\loader-wizard.php
 ```
 
 <img src="https://camo.githubusercontent.com/b41798cb16af8fd8a4c3fde2f7c2121ecb874777/68747470733a2f2f666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f5f70726f5f696e7374616c6c6174696f6e5f77696e646f77732f696f6e637562656c6f6164657275726c2e6a7067" alt="" />
@@ -163,14 +163,14 @@ Once all the above softwares are installed:
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```
-c:/inetpub/wwwroot/
+c:\inetpub\wwwroot\
 ```
 <b> 2. Give Permissions to the Faveo folder </b>
 
 We need to give full write permission to "IIS_IUSRS" and "Users" for  wwwroot folder.
 
 ```
-c:/inetpub/wwwroot/
+c:\inetpub\wwwroot\
 ```
 
 <img src="https://camo.githubusercontent.com/f133d3f80548c359f3b4f54b109422bfd428b406/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f31312e6a7067" alt="" />

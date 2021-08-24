@@ -1,31 +1,30 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/centos-nginx/
+permalink: /docs/installation/providers/enterprise/centos8s-nginx/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS <!-- omit in toc -->
+# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Cent OS 8 Stream <!-- omit in toc -->
 
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
+<img alt="Centos-8-stream" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
+Faveo can run on [CentOS-8-Stream 8 ](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png).
 
 - [<b>Installation steps :</b>](#binstallation-steps-b)
-  - [<b>Prerequisites:</b>](#bprerequisitesb)
+  - [<b>Prerequisite :</b>](#bprerequisite-b)
     - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
     - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
-    - [<b> 2.b Install php-7.3 Packages </b>](#b-2b-install-php-73-packages-b)
-    - [<b> 2.c Install and run Nginx </b>](#b-2c-install-and-run-nginx-b)
-    - [<b> 2.d Setting Up ionCube</b>](#b-2d-setting-up-ioncubeb)
-    - [<b> 2.e Install and run Mysql/MariaDB</b>](#b-2e-install-and-run-mysqlmariadbb)
+    - [<b> 2.b. Install php-7.3 Packages </b>](#b-2b-install-php-73-packages-b)
+    - [<b> 2.c. Install and run Nginx </b>](#b-2c-install-and-run-nginx-b)
+    - [<b> 2.d. Setting Up ionCube</b>](#b-2d-setting-up-ioncubeb)
+    - [<b> 2.e. Install and run Mysql/MariaDB</b>](#b-2e-install-and-run-mysqlmariadbb)
   - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
     - [<b>3. Upload Faveo</b>](#b3-upload-faveob)
-    - [<b>3.a Extracting the Faveo-Codebase zip file</b>](#b3a-extracting-the-faveo-codebase-zip-fileb)
     - [<b>4. Setup the database</b>](#b4-setup-the-databaseb)
     - [<b>5. Configure Nginx webserver </b>](#b5-configure-nginx-webserver-b)
     - [<b>6. Configure cron job</b>](#b6-configure-cron-jobb)
@@ -35,10 +34,10 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
     - [<b>10. Final step</b>](#b10-final-stepb)
 
 <a id="installation-steps" name="installation-steps"></a>
-# <b>Installation steps :</b>
+# <b>Installation steps :</b> 
 
 <a id="prerequisites" name="prerequisites"></a>
-## <b>Prerequisites:</b>
+## <b>Prerequisite :</b>
 
 Faveo depends on the following:
 
@@ -62,17 +61,17 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  <b> 2.b Install php-7.3 Packages </b>
-```sh
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+###  <b> 2.b. Install php-7.3 Packages </b>
 
-yum-config-manager --enable remi-php73
+
+```sh
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+dnf module install php:remi-7.3 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
-
-### <b> 2.c Install and run Nginx </b>
+### <b> 2.c. Install and run Nginx </b>
 
 Use the below steps to install and start Nginx
 
@@ -82,7 +81,7 @@ systemctl start nginx
 systemctl enable nginx
 ```
 
-### <b> 2.d Setting Up ionCube</b>
+### <b> 2.d. Setting Up ionCube</b>
 
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
@@ -97,22 +96,24 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### <b> 2.e Install and run Mysql/MariaDB</b>
+### <b> 2.e. Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
-```sh
-yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-yum install -y mysql-community-server
-systemctl start mysqld
-systemctl enable mysqld
-```
-Secure your MySql installation by executing the below command. Set Password for mysql root user,it will ask for password which is temporarily created by MySql-5.7 and it is required for changing the root password, we can get by running the below command and here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+
+In CentOS-8-StreamOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
 ```sh
-grep "temporary password" /var/log/mysqld.log
+yum install mariadb-server -y
+systemctl start mariadb
+systemctl enable mariadb
+```
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+
+```sh
 mysql_secure_installation 
 ```
 
@@ -124,25 +125,26 @@ yum install phpmyadmin
 ```
 
 
+
+
 ## Once the softwares above are installed:
 
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
 ### <b>3. Upload Faveo</b>
-
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 mkdir -p /var/www/faveo
 cd /var/www/faveo
 ```
-### <b>3.a Extracting the Faveo-Codebase zip file</b>
+**3.a** <b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
 
-<a id="2-setup-the-database" name="2-setup-the-database"></a>
+<a id="4-setup-the-database" name="4-setup-the-database"></a>
 ### <b>4. Setup the database</b>
 
 Log in with the root account to configure the database.
@@ -180,7 +182,7 @@ exit
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 ###  <b>5. Configure Nginx webserver </b>
 
-**a.** Give proper permissions to the project directory by running:
+**5.a.** Give proper permissions to the project directory by running:
 
 ```sh
 chown -R nginx:nginx /var/www/faveo
@@ -193,7 +195,7 @@ By default SELINUX will be in Enforcing mode run the follwing command to switch 
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
-**b.** Edit nginx.conf file and replace the default server block code with the following/
+**5.b.** Edit nginx.conf file and replace the default server block code with the following/
 
 ```sh
 nano /etc/nginx/nginx.conf
@@ -258,7 +260,7 @@ gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 
 ```
 
-**c.** Edit config file for PHP FPM using vim editor
+**5.c.** Edit config file for PHP FPM using vim editor
 
 ```sh
 nano /etc/php-fpm.d/www.conf
@@ -275,6 +277,7 @@ listen.owner = nobody (to) listen.owner = nginx
 listen.group = nobody (to) listen.group = nginx
 
 Uncomment listen = 127.0.0.1:9000 by removing (;) 
+In CentOS-8-Stream-OS 8 you will find listen = /run/php-fpm/www.sock replace it (to) listen = 127.0.0.1:9000.
 
 ```
 
@@ -284,8 +287,9 @@ systemctl start php-fpm.service
 systemctl enable php-fpm.service
 systemctl restart nginx
 ```
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
+<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
 ### <b>6. Configure cron job</b>
+
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
@@ -303,7 +307,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
+[Redis installation documentation](/docs/installation/providers/enterprise/centos8s-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
 ### <b>8. SSL Installation</b>
@@ -312,7 +316,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-nginx-ssl)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos8s-nginx-ssl)
 
 <a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
 ### <b>9. Install Faveo</b>

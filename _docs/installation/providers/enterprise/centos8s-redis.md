@@ -1,16 +1,16 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/rocky-redis/
+permalink: /docs/installation/providers/enterprise/CentOS-8-Stream-redis/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install and configure Redis, Supervisor and Worker for Faveo on Rocky OS 8 <!-- omit in toc -->
+# Install and configure Redis, Supervisor and Worker for Faveo on CentOS-8-Stream <!-- omit in toc -->
 
-<img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
+<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
 ## Introduction
 

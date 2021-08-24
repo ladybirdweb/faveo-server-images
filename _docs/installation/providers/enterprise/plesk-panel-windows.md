@@ -94,7 +94,7 @@ Open file manager of your domain account and delete the default files under http
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/29/plesk14.png" alt=""/>
 
 
-Open Hosting settings of your domain account and set the Document root to httpdocs\public to avoid \public appearing in URL. This should be done before proceeding with further steps.
+Open Hosting settings of your domain account and set the Document root to httpdocs/public to avoid /public appearing in URL. This should be done before proceeding with further steps.
 
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/29/plesk18.png" alt="" />
  
