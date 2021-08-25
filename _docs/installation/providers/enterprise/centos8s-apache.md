@@ -13,9 +13,9 @@ toc: true
 
 Faveo can run on [CentOS-8-Stream 8 ](https://www.centos.org/download/).
 
-- [<b>Installation steps:</b>](#binstallation-stepsb)
-  - [<b>Prerequisites:</b>](#bprerequisitesb)
-    - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
+- [Installation steps:](#installation-steps)
+  - [Prerequisites:](#prerequisites)
+    - [1. LAMP Installation](#1-lamp-installation)
     - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
     - [<b> 2.b. Install php-7.3 Packages </b>](#b-2b-install-php-73-packages-b)
     - [<b> 2.c. Install and run Apache</b>](#b-2c-install-and-run-apacheb)
@@ -35,8 +35,8 @@ Faveo can run on [CentOS-8-Stream 8 ](https://www.centos.org/download/).
 <a id="prerequisites" name="prerequisites"></a>
 
 <a id="installation-steps" name="installation-steps"></a>
-# <b>Installation steps:</b>
-## <b>Prerequisites:</b>
+# Installation steps:
+## Prerequisites:
 
 Faveo depends on the following:
 
@@ -44,7 +44,7 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### <b> 1. LAMP Installation</b>
+###  1. LAMP Installation
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
