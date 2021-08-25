@@ -14,14 +14,14 @@ toc: true
 Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
 
 
-- [Installation steps :](#installation-steps-)
-  - [Prerequisites :](#prerequisites-)
-    - [1. LAMP Installation](#1-lamp-installation)
-    - [2.a Update your Packages and install some utility tools](#2a-update-your-packages-and-install-some-utility-tools)
-    - [2.b Install php-7.3 Packages](#2b-install-php-73-packages)
-    - [2.c Install and run Apache](#2c-install-and-run-apache)
-    - [2.d Setting Up ionCube](#2d-setting-up-ioncube)
-    - [2.e Install and run Mysql/MariaDB](#2e-install-and-run-mysqlmariadb)
+- [<b>Installation steps :</b>](#binstallation-steps-b)
+  - [<b>Prerequisites:</b>](#bprerequisitesb)
+    - [<b> 1. LAMP Installation</b>](#b-1-lamp-installationb)
+    - [<b> 2.a Update your Packages and install some utility tools</b>](#b-2a-update-your-packages-and-install-some-utility-toolsb)
+    - [<b>2.b Install php-7.3 Packages </b>](#b2b-install-php-73-packages-b)
+    - [<b>2.c Install and run Apache</b>](#b2c-install-and-run-apacheb)
+    - [<b>2.d Setting Up ionCube</b>](#b2d-setting-up-ioncubeb)
+    - [<b> 2.e Install and run Mysql/MariaDB</b>](#b-2e-install-and-run-mysqlmariadbb)
   - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
     - [<b>3. Upload Faveo</b>](#b3-upload-faveob)
     - [<b> 3.a Extracting the Faveo-Codebase zip file </b>](#b-3a-extracting-the-faveo-codebase-zip-file-b)
@@ -34,10 +34,10 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
     - [<b>10. Final step</b>](#b10-final-stepb)
 
 <a id="installation-steps" name="installation-steps"></a>
-# Installation steps :
+# <b>Installation steps :</b>
 
 <a id="prerequisites" name="prerequisites"></a>
-## Prerequisites :
+## <b>Prerequisites:</b>
 
 Faveo depends on the following:
 
@@ -45,12 +45,12 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-###  1. LAMP Installation
+### <b> 1. LAMP Installation</b>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 
-###  2.a Update your Packages and install some utility tools
+### <b> 2.a Update your Packages and install some utility tools</b>
 
 Login as root user by typing the command below
 
@@ -61,7 +61,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  2.b Install php-7.3 Packages 
+###  <b>2.b Install php-7.3 Packages </b>
 ```sh
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
@@ -71,7 +71,7 @@ yum-config-manager --enable remi-php73
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
-###  2.c Install and run Apache
+###  <b>2.c Install and run Apache</b>
 Install and Enable Apache Server
 
 ```sh
@@ -80,7 +80,7 @@ systemctl start httpd
 systemctl enable httpd
 ```
 
-### 2.d Setting Up ionCube
+### <b>2.d Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -94,7 +94,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-###  2.e Install and run Mysql/MariaDB
+### <b> 2.e Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
