@@ -15,21 +15,21 @@ Faveo can run on [CentOS-8-Stream 8 ](https://www.centos.org/download/).
 
 - [<strong>Installation steps:</strong>](#installation-steps)
   - [<strong>Prerequisites:</strong>](#prerequisites)
-    - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
-    - [<strong> 2.a Update your Packages and install some utility tools</strong>](#-2a-update-your-packages-and-install-some-utility-tools)
-    - [<strong> 2.b. Install php-7.3 Packages </strong>](#-2b-install-php-73-packages-)
-    - [<strong> 2.c. Install and run Apache</strong>](#-2c-install-and-run-apache)
-    - [<strong>2.d. Setting Up ionCube</strong>](#2d-setting-up-ioncube)
-    - [<strong> 2.e. Install and run Mysql/MariaDB </strong>](#-2e-install-and-run-mysqlmariadb-)
+    - [<strong>1.LAMP Installation</strong>](#1lamp-installation)
+    - [<strong>2.a.Update your Packages and install some utility tools</strong>](#2aupdate-your-packages-and-install-some-utility-tools)
+    - [<strong>2.b.Install php-7.3 Packages </strong>](#2binstall-php-73-packages-)
+    - [<strong>2.c.Install and run Apache</strong>](#2cinstall-and-run-apache)
+    - [<strong>2.d.Setting Up ionCube</strong>](#2dsetting-up-ioncube)
+    - [<strong>2.e.Install and run Mysql/MariaDB </strong>](#2einstall-and-run-mysqlmariadb-)
   - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
-    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
-    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
-    - [<strong>5. Configure Apache webserver</strong>](#5-configure-apache-webserver)
-    - [<strong> 6. Configure cron job</strong>](#-6-configure-cron-job)
-    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
-    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
-    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
-    - [<strong>10. Final step</strong>](#10-final-step)
+    - [<strong>3.Upload Faveo</strong>](#3upload-faveo)
+    - [<strong>4.Setup the database</strong>](#4setup-the-database)
+    - [<strong>5.Configure Apache webserver</strong>](#5configure-apache-webserver)
+    - [<strong>6.Configure cron job</strong>](#6configure-cron-job)
+    - [<strong>7.Redis Installation</strong>](#7redis-installation)
+    - [<strong>8.SSL Installation</strong>](#8ssl-installation)
+    - [<strong>9.Install Faveo</strong>](#9install-faveo)
+    - [<strong>10.Final step</strong>](#10final-step)
 
 
 <a id="prerequisites" name="prerequisites"></a>
@@ -44,12 +44,12 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### <strong> 1. LAMP Installation</strong>
+### <strong>1.LAMP Installation</strong>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 
-### <strong> 2.a Update your Packages and install some utility tools</strong>
+### <strong>2.a.Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
 
@@ -60,7 +60,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  <strong> 2.b. Install php-7.3 Packages </strong>
+###  <strong>2.b.Install php-7.3 Packages </strong>
 
 
 
@@ -71,7 +71,7 @@ yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 dnf module install php:remi-7.3 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
-###  <strong> 2.c. Install and run Apache</strong>
+###  <strong>2.c.Install and run Apache</strong>
 Install and Enable Apache Server
 
 ```sh
@@ -82,7 +82,7 @@ systemctl enable httpd
 
 
 
-### <strong>2.d. Setting Up ionCube</strong>
+### <strong>2.d.Setting Up ionCube</strong>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -96,7 +96,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### <strong> 2.e. Install and run Mysql/MariaDB </strong>
+### <strong>2.e.Install and run Mysql/MariaDB </strong>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -132,20 +132,20 @@ yum clean all
 
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
-### <strong>3. Upload Faveo</strong>
+### <strong>3.Upload Faveo</strong>
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 mkdir -p /var/www/faveo/
 cd /var/www/faveo/
 ```
-**3.a.** <b>Extracting the Faveo-Codebase zip file</b>
+**3.a.**<b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
-### <strong>4. Setup the database</strong>
+### <strong>4.Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -179,7 +179,7 @@ exit
 ```
 
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
-### <strong>5. Configure Apache webserver</strong>
+### <strong>5.Configure Apache webserver</strong>
 
 **5.a.** <b>Give proper permissions to the project directory by running:</b>
 
@@ -244,7 +244,7 @@ CustomLog /var/log/httpd/faveo-access.log combined
 </VirtualHost>
 ```
 
-**d.** Apply the new `.conf` file and restart Apache. You can do that by running:
+**5.d.** Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
 systemctl restart httpd.service
@@ -255,7 +255,7 @@ systemctl restart httpd.service
 
 
 <a id="6-configure-cron-job" name="6-configure-cron-job"></a>
-### <strong> 6. Configure cron job</strong>
+### <strong>6.Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -269,7 +269,7 @@ echo "* * * * * apache /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo
 
 
 <a id="redis-installation" name="redis-installation"></a>
-### <strong>7. Redis Installation</strong>
+### <strong>7.Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -278,7 +278,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/centos8s-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### <strong>8. SSL Installation</strong>
+### <strong>8.SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -287,12 +287,12 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos8s-apache-ssl)
 
 <a id="final-step" name="final-step"></a>
-### <strong>9. Install Faveo</strong>
+### <strong>9.Install Faveo</strong>
 
 At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
 You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
-### <strong>10. Final step</strong>
+### <strong>10.Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
