@@ -15,31 +15,21 @@ toc: true
 
 Faveo can run on Debian 10(Buster).
 
-- [<b>Installation steps :</b>](#binstallation-steps-b)
-  - [<b>Prerequisites :</b>](#bprerequisites-b)
-    - [<b>1. LAMP Installation</b>](#b1-lamp-installationb)
-    - [<b>2.a. Update your package list</b>](#b2a-update-your-package-listb)
-    - [<b>2.b. Nginx</b>](#b2b-nginxb)
-    - [<b>2.c. Install some Utility packages</b>](#b2c-install-some-utility-packagesb)
-    - [<b>2.d. PHP 7.3+</b>](#b2d-php-73b)
-    - [<b>3.a.Setting Up ionCube</b>](#b3asetting-up-ioncubeb)
-    - [<b>3.b. Mysql</b>](#b3b-mysqlb)
-  - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
-    - [<b>4. Upload Faveo</b>](#b4-upload-faveob)
-    - [<b>4.a Extracting the Faveo-Codebase zip file</b>](#b4a-extracting-the-faveo-codebase-zip-fileb)
-    - [<b>5. Setup the database</b>](#b5-setup-the-databaseb)
-    - [<b>6. Configure Nginx webserver</b>](#b6-configure-nginx-webserverb)
-    - [<b>7. Configure cron job</b>](#b7-configure-cron-jobb)
-    - [<b>8. Redis Installation</b>](#b8-redis-installationb)
-    - [<b>9. SSL Installation</b>](#b9-ssl-installationb)
-    - [<b>10. Install Faveo</b>](#b10-install-faveob)
-    - [<b>11. Final step</b>](#b11-final-stepb)
+- [<strong>Installation steps :</strong>](#installation-steps-)
+    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>2. Update your package list</strong>](#2-update-your-package-list)
+    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
+    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
+    - [<strong>5. Configure Nginx webserver</strong>](#5-configure-nginx-webserver)
+    - [<strong>6. Configure cron job</strong>](#6-configure-cron-job)
+    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
+    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
+    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps" name="installation-steps"></a>
-# <b>Installation steps :</b>
+# <strong>Installation steps :</strong>
 
-<a id="prerequisites" name="prerequisites"></a>
-## <b>Prerequisites :</b>
 
 Faveo depends on the following:
 
@@ -47,7 +37,7 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### <b>1. LAMP Installation</b>
+### <strong>1. LAMP Installation</strong>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
@@ -57,13 +47,12 @@ Run the following commands as sudoers or Login as root user by typing the comman
 sudo su
 ```
 
-### <b>2.a. Update your package list</b>
-
+### <strong>2. Update your package list</strong>
 ```sh
 apt update && apt upgrade -y
 ```
 
-### <b>2.b. Nginx</b>
+<b>2.a. Nginx</b>
 Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
@@ -71,13 +60,13 @@ apt install nginx
 systemctl start nginx
 systemctl enable nginx
 ```
-### <b>2.c. Install some Utility packages</b>
+<b>2.b. Install some Utility packages</b>
 
 ```sh
 apt install -y git wget curl unzip nano 
 ```
 
-### <b>2.d. PHP 7.3+</b>
+<b>2.c. PHP 7.3+</b>
 Note: In Debian upon installing PHP packages apache2 will be automatically installed. so it needs to be removed later. 
 
 ```sh
@@ -109,7 +98,7 @@ upload_max_filesize = 100M
 max_execution_time = 360
 ```
 
-### <b>3.a.Setting Up ionCube</b>
+<b>2.d.Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
@@ -126,7 +115,7 @@ systemctl restart nginx
 systemctl restart php7.3-fpm
 ```
 
-### <b>3.b. Mysql</b>
+<b>2.e. Mysql</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -150,25 +139,25 @@ apt install phpmyadmin
 
 
 
-## Once the softwares above are installed:
+Once the softwares above are installed:
 
 
-<a id="1-upload-faveo" name="1-upload-faveo"></a>
-### <b>4. Upload Faveo</b>
+<a id="3-upload-faveo" name="3-upload-faveo"></a>
+### <strong>3. Upload Faveo</strong>
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 mkdir /var/www/faveo
 cd /var/www/faveo
 ```
-### <b>4.a Extracting the Faveo-Codebase zip file</b>
+<b>3.a Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
 
-<a id="2-setup-the-database" name="2-setup-the-database"></a>
-### <b>5. Setup the database</b>
+<a id="4-setup-the-database" name="4-setup-the-database"></a>
+### <strong>4. Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -201,9 +190,9 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-### <b>6. Configure Nginx webserver</b>
+### <strong>5. Configure Nginx webserver</strong>
 
- <b> 6.a. Give proper permissions to the project directory by running:</b>
+ <b> 5.a. Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R www-data:www-data /var/www/faveo
@@ -212,7 +201,7 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 
- <b>6.b. Create a copy of Nginx default config file</b>
+ <b>5.b. Create a copy of Nginx default config file</b>
 Finally, configure Nginx site configuration file for Faveo. This file will control how users access Faveo content. Run the commands below to create a new configuration file called faveo
 
 ```
@@ -243,7 +232,7 @@ server {
 ```
 Save the file and exit.
 
-<b> 6.c. Enable the Faveo and remove the default site</b>
+<b> 5.c. Enable the Faveo and remove the default site</b>
 After configuring the VirtualHost above delete the deafult Virtualhost and  enable the Faveo Virtualhost by running the commands below
 
 ```sh
@@ -253,8 +242,8 @@ systemctl restart nginx
 systemctl restart php7.3-fpm
 ```
 
-<a id="4-configure-cron-job" name="4-configure-cron-job"></a>
-### <b>7. Configure cron job</b>
+<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+### <strong>6. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -267,7 +256,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### <b>8. Redis Installation</b>
+### <strong>7. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -276,7 +265,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### <b>9. SSL Installation</b>
+### <strong>8. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -284,13 +273,13 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-nginx-ssl)
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
-### <b>10. Install Faveo</b>
+<a id="9-gui-faveo-installer" name="9-gui-faveo-installer"></a>
+### <strong>9. Install Faveo</strong>
 At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="final-step" name="final-step"></a>
-### <b>11. Final step</b>
+### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

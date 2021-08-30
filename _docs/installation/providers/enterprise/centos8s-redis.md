@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/CentOS-8-Stream-redis/
+permalink: /docs/installation/providers/enterprise/centos8s-redis/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09

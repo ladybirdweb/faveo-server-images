@@ -14,35 +14,28 @@ toc: true
 
 Faveo can run on Debian 10 (Buster).
 
-- [<b>Installation steps :</b>](#binstallation-steps-b)
-  - [<b>Prerequisites :</b>](#bprerequisites-b)
-    - [<b>1. LAMP Installation</b>](#b1-lamp-installationb)
-    - [<b>2.a. Update the packages</b>](#b2a-update-the-packagesb)
-    - [<b>2.b. PHP 7.3+</b>](#b2b-php-73b)
-    - [<b>3.a. Setting Up ionCube</b>](#b3a-setting-up-ioncubeb)
-    - [<b>3.b. MariaDB:</b>](#b3b-mariadbb)
-  - [Once the softwares above are installed:</b>](#once-the-softwares-above-are-installedb)
-    - [<b>4.a Upload Faveo</b>](#b4a-upload-faveob)
-    - [<b>4.b Extracting the Faveo-Codebase zip file</b>](#b4b-extracting-the-faveo-codebase-zip-fileb)
-    - [<b>5. Setup the database</b>](#b5-setup-the-databaseb)
-    - [<b>6. Configure Apache webserver</b>](#b6-configure-apache-webserverb)
-    - [<b>7. Configure cron job</b>](#b7-configure-cron-jobb)
-    - [<b>8. Redis Installation</b>](#b8-redis-installationb)
-    - [<b>9. SSL Installation</b>](#b9-ssl-installationb)
-    - [<b>10. Install Faveo</b>](#b10-install-faveob)
-    - [<b>11. Final step</b>](#b11-final-stepb)
+- [<strong>Installation steps :</strong>](#installation-steps-)
+    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>2. Update the packages</strong>](#2-update-the-packages)
+    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
+    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
+    - [<strong>5. Configure Apache webserver</strong>](#5-configure-apache-webserver)
+    - [<strong>6. Configure cron job</strong>](#6-configure-cron-job)
+    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
+    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
+    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
-<a id="prerequisites" name="prerequisites"></a>
+
 <a id="installation-steps" name="installation-steps"></a>
-# <b>Installation steps :</b>
+# <strong>Installation steps :</strong>
 
-## <b>Prerequisites :</b>
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### <b>1. LAMP Installation</b>
+### <strong>1. LAMP Installation</strong>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
@@ -52,13 +45,13 @@ Run the following commands as sudoers or Login as root user by typing the comman
 ```sh
 sudo su
 ```
-### <b>2.a. Update the packages</b>
+### <strong>2. Update the packages</strong>
 
 ```sh
 apt update
 ```
 
-### <b>2.b. PHP 7.3+</b>
+<b>2.a. PHP 7.3+</b>
 
 Note: In Debian upon installing PHP packages apache2 will be automatically installed and started 
 
@@ -92,7 +85,7 @@ upload_max_filesize = 100M
 max_execution_time = 360
 ```
 
-### <b>3.a. Setting Up ionCube</b>
+<b>2.b. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
@@ -109,7 +102,7 @@ sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_
 systemctl restart apache2 
 ```
 
-### <b>3.b. MariaDB:</b>
+<b>2.c. MariaDB:</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -120,25 +113,25 @@ apt install -y mariadb-server
 ```
 
 
-## Once the softwares above are installed:</b>
+Once the softwares above are installed:</b>
 
 
-<a id="4-upload-faveo" name="4-upload-faveo"></a>
-### <b>4.a Upload Faveo</b>
+<a id="3-upload-faveo" name="3-upload-faveo"></a>
+### <strong>3. Upload Faveo</strong>
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 mkdir /var/www/faveo
 cd /var/www/faveo
 ```
-### <b>4.b Extracting the Faveo-Codebase zip file</b>
+<b>3.a Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
 
-<a id="5-setup-the-database" name="5-setup-the-database"></a>
-### <b>5. Setup the database</b>
+<a id="4-setup-the-database" name="4-setup-the-database"></a>
+### <strong>4. Setup the database</strong>
 
 First make the database a bit more secure.
 
@@ -177,10 +170,10 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="6-configure-apache-webserver" name="6-configure-apache-webserver"></a>
-### <b>6. Configure Apache webserver</b>
+<a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
+### <strong>5. Configure Apache webserver</strong>
 
-<b>6.a. Give proper permissions to the project directory by running:</b>
+<b>5.a. Give proper permissions to the project directory by running:</b>
 
 ```sh
 sudo chown -R www-data:www-data /var/www/faveo
@@ -189,13 +182,13 @@ sudo find . -type f -exec chmod 644 {} \;
 sudo find . -type d -exec chmod 755 {} \;
 ```
 
-<b>6.b. Enable the rewrite module of the Apache webserver:</b>
+<b>5.b. Enable the rewrite module of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
 ```
 
-<b>6.c. Configure a new Faveo site in apache by doing:</b>
+<b>5.c. Configure a new Faveo site in apache by doing:</b>
 
 Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domainname mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 
@@ -221,7 +214,7 @@ nano /etc/apache2/sites-available/faveo.conf
 </VirtualHost>
 ```
 
-<b>6.d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
+<b>5.d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
 a2dissite 000-default.conf
@@ -230,8 +223,8 @@ systemctl restart apache2
 systemctl restart php7.3-fpm
 ```
 
-<a id="7-configure-cron-job" name="7-configure-cron-job"></a>
-### <b>7. Configure cron job</b>
+<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+### <strong>6. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -244,7 +237,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### <b>8. Redis Installation</b>
+### <strong>7. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -253,7 +246,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### <b>9. SSL Installation</b>
+### <strong>8. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -261,12 +254,12 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
 
-### <b>10. Install Faveo</b>
+### <strong>9. Install Faveo</strong>
 At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="final-step" name="final-step"></a>
-### <b>11. Final step</b>
+### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost`.

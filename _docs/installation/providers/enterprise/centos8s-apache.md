@@ -7,21 +7,15 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 ---
-# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on CentOS-8-Stream OS 8 <!-- omit in toc -->
+# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on CentOS-8-Stream <!-- omit in toc -->
 
 <img alt="CentOS-8-Stream OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [CentOS-8-Stream 8 ](https://www.centos.org/download/).
+Faveo can run on [CentOS-8-Stream ](https://www.centos.org/download/).
 
 - [<strong>Installation steps:</strong>](#installation-steps)
-  - [<strong>Prerequisites:</strong>](#prerequisites)
     - [<strong>1.LAMP Installation</strong>](#1lamp-installation)
-    - [<strong>2.a.Update your Packages and install some utility tools</strong>](#2aupdate-your-packages-and-install-some-utility-tools)
-    - [<strong>2.b.Install php-7.3 Packages </strong>](#2binstall-php-73-packages-)
-    - [<strong>2.c.Install and run Apache</strong>](#2cinstall-and-run-apache)
-    - [<strong>2.d.Setting Up ionCube</strong>](#2dsetting-up-ioncube)
-    - [<strong>2.e.Install and run Mysql/MariaDB </strong>](#2einstall-and-run-mysqlmariadb-)
-  - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
+    - [<strong>2.Update your Packages and install some utility tools</strong>](#2update-your-packages-and-install-some-utility-tools)
     - [<strong>3.Upload Faveo</strong>](#3upload-faveo)
     - [<strong>4.Setup the database</strong>](#4setup-the-database)
     - [<strong>5.Configure Apache webserver</strong>](#5configure-apache-webserver)
@@ -32,11 +26,10 @@ Faveo can run on [CentOS-8-Stream 8 ](https://www.centos.org/download/).
     - [<strong>10.Final step</strong>](#10final-step)
 
 
-<a id="prerequisites" name="prerequisites"></a>
+
 
 <a id="installation-steps" name="installation-steps"></a>
 # <strong>Installation steps:</strong>
-## <strong>Prerequisites:</strong>
 
 Faveo depends on the following:
 
@@ -49,7 +42,7 @@ Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 
-### <strong>2.a.Update your Packages and install some utility tools</strong>
+### <strong>2.Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
 
@@ -60,7 +53,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl git -y
 ```
 
-###  <strong>2.b.Install php-7.3 Packages </strong>
+<strong>2.a.Install php-7.3 Packages </strong>
 
 
 
@@ -71,7 +64,7 @@ yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 dnf module install php:remi-7.3 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
-###  <strong>2.c.Install and run Apache</strong>
+<strong>2.b.Install and run Apache</strong>
 Install and Enable Apache Server
 
 ```sh
@@ -82,7 +75,7 @@ systemctl enable httpd
 
 
 
-### <strong>2.d.Setting Up ionCube</strong>
+<strong>2.c.Setting Up ionCube</strong>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -96,7 +89,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-### <strong>2.e.Install and run Mysql/MariaDB </strong>
+<strong>2.d.Install and run Mysql/MariaDB </strong>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -128,7 +121,7 @@ yum clean all
 ```
 
 
-## Once the softwares above are installed:
+Once the softwares above are installed:
 
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>

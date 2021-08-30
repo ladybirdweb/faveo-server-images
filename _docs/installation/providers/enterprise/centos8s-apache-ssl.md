@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/CentOS8S-apache-ssl/
+permalink: /docs/installation/providers/enterprise/centos8s-apache-ssl/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09

@@ -18,14 +18,17 @@ Faveo is a leading open source, self-hosted, on-premise help desk software.
 
 Faveo can be installed on a variety of platforms. The choice of the platform is yours.
 
-- [Requirements](#requirements)
-- [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
-  - [Freelancer, paid and Enterprise editions](#markdown-generic-linux-instructions-enterprise)
-  - [Community edition](#markdown-generic-linux-instructions)
-  - [One Click Installer](#markdown-one-click-installer)
-  - [Installation via scripts](#markdown-script-installer)
-  - [Installation on a shared server](#markdown-shared-sever)
-- [Help](#markdown-help)
+- [About Faveo](#about-faveo)
+  - [Requirements](#requirements)
+  - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
+    - [Installation instructions for Freelancer, paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
+    - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
+    - [Installation on a shared server](#installation-on-a-shared-server)
+  - [Help](#help)
+<!---    - [One click installers](#one-click-installers)
+    - [Installation via scripts](#installation-via-scripts) -->
+    - [Installation on a shared server](#installation-on-a-shared-server)
+  - [Help](#help)
 
 
 <a id="markdown-requirements" name="requirements"></a>
@@ -52,8 +55,12 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise editions
+* [Cent OS 8 Stream with Apache](/docs/installation/providers/enterprise/centos8s-apache)
+* [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache)
 * [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
+* [Rocky OS with Apache](/docs/installation/providers/enterprise/rocky-apache)
+* [Rocky OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
@@ -69,7 +76,7 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
 * [Debian with Apache](/docs/installation/providers/community/debian-apache)
 
-<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
+<!---<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
 
 Faveo Helpdesk Community can be installed using following installers
@@ -87,7 +94,7 @@ We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7)
-* [Ubuntu 16](/installation-scripts/helpdesk-community/ubuntu16)
+* [Ubuntu 16](/installation-scripts/helpdesk-community/ubuntu16) -->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server
