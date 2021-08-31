@@ -14,7 +14,7 @@ toc: true
 Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
 
 
-- [<strong>Installation steps :</strong>](#installation-steps-)
+- [<strong>Installation steps:</strong>](#installation-steps)
     - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
     - [<strong>2. Update your Packages and install some utility tools</strong>](#2-update-your-packages-and-install-some-utility-tools)
     - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
@@ -27,7 +27,7 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
     - [<strong>10.Final step</strong>](#10final-step)
 
 <a id="installation-steps" name="installation-steps"></a>
-# <strong>Installation steps :</strong>
+# <strong>Installation steps:</strong>
 
 Faveo depends on the following:
 

@@ -15,31 +15,20 @@ toc: true
 
 Faveo can run on [Ubuntu 16.04 (Xenial Xerus),Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa)]. 
 
-- [<b>Installation steps :</b>](#binstallation-steps-b)
-  - [<b>Prerequisites :</b>](#bprerequisites-b)
-    - [<b>1.a. LAMP Installation</b>](#b1a-lamp-installationb)
-    - [<b>1.b. Update your package list</b>](#b1b-update-your-package-listb)
-    - [<b>1.c. Nginx</b>](#b1c-nginxb)
-    - [<b>2.a. Install some Utility packages</b>](#b2a-install-some-utility-packagesb)
-    - [<b>2.b. PHP 7.3+</b>](#b2b-php-73b)
-    - [<b>2.c. Setting Up IonCube</b>](#b2c-setting-up-ioncubeb)
-    - [<b> 2.d. Mysql</b>](#b-2d-mysqlb)
-  - [Once the softwares above are installed:](#once-the-softwares-above-are-installed)
-    - [<b>3. Upload Faveo</b>](#b3-upload-faveob)
-    - [<b>4. Setup the database</b>](#b4-setup-the-databaseb)
-    - [<b> 5. Configure Nginx webserver</b>](#b-5-configure-nginx-webserverb)
-    - [<b> 6. Install Faveo</b>](#b-6-install-faveob)
-    - [<b>7. Configure cron job</b>](#b7-configure-cron-jobb)
-    - [<b>8. Redis Installation</b>](#b8-redis-installationb)
-    - [<b>9. SSL Installation</b>](#b9-ssl-installationb)
-    - [<b>10. Final step</b>](#b10-final-stepb)
+- [<strong>Installation steps :</strong>](#installation-steps-)
+    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>2. Install some Utility packages</strong>](#2-install-some-utility-packages)
+    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
+    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
+    - [<strong> 5. Configure Nginx webserver</strong>](#-5-configure-nginx-webserver)
+    - [<strong> 6. Install Faveo</strong>](#-6-install-faveo)
+    - [<strong>7. Configure cron job</strong>](#7-configure-cron-job)
+    - [<strong>8. Redis Installation</strong>](#8-redis-installation)
+    - [<strong>9. SSL Installation</strong>](#9-ssl-installation)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps" name="installation-steps"></a>
-# <b>Installation steps :</b>
-
-
-<a id="prerequisites" name="prerequisites"></a>
-## <b>Prerequisites :</b>
+# <strong>Installation steps :</strong>
 
 Faveo depends on the following:
 
@@ -47,7 +36,7 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-### <b>1.a. LAMP Installation</b>
+### <strong>1. LAMP Installation</strong>
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
@@ -57,13 +46,13 @@ Run the following commands as sudoers or Login as root user by typing the comman
 sudo su
 ```
 
-### <b>1.b. Update your package list</b>
+<b>1.a. Update your package list</b>
 
 ```sh
 apt update && apt upgrade -y
 ```
 
-### <b>1.c. Nginx</b>
+<b>1.b. Nginx</b>
 Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
@@ -71,13 +60,13 @@ apt install nginx
 systemctl start nginx
 systemctl enable nginx
 ```
-### <b>2.a. Install some Utility packages</b>
+### <strong>2. Install some Utility packages</strong>
 
 ```sh
 apt install -y git wget curl unzip nano 
 ```
 
-### <b>2.b. PHP 7.3+</b>
+<b>2.a. PHP 7.3+</b>
 
 First add this PPA repository:
 
@@ -114,7 +103,7 @@ upload_max_filesize = 100M
 max_execution_time = 360
 ```
 
-### <b>2.c. Setting Up IonCube</b>
+<b>2.b. Setting Up IonCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
@@ -132,7 +121,7 @@ systemctl restart nginx
 systemctl restart php7.3-fpm
 ```
 
-### <b> 2.d. Mysql</b>
+<b> 2.c. Mysql</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -163,19 +152,23 @@ mysql_secure_installation
 apt install phpmyadmin
 ```
 
-## Once the softwares above are installed:
+Once the softwares above are installed:
 
 
 <a id="3-upload-faveo" name="3-upload-faveo"></a>
-### <b>3. Upload Faveo</b>
+### <strong>3. Upload Faveo</strong>
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 /var/www/faveo
 ```
+**3.a** <b>Extracting the Faveo-Codebase zip file</b>
+```sh
+unzip "Filename.zip" -d /var/www/faveo
+```
 
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
-### <b>4. Setup the database</b>
+### <strong>4. Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -208,7 +201,7 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-### <b> 5. Configure Nginx webserver</b>
+### <strong> 5. Configure Nginx webserver</strong>
 
  **5.a.**  <b>Give proper permissions to the project directory by running:</b>
 
@@ -262,12 +255,12 @@ systemctl restart php7.3-fpm
 ```
 
 <a id="6-gui-faveo-installer" name="6-gui-faveo-installer"></a>
-### <b> 6. Install Faveo</b>
+### <strong> 6. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="7-configure-cron-job" name="7-configure-cron-job"></a>
-### <b>7. Configure cron job</b>
+### <strong>7. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -280,7 +273,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 ```
 
 <a id="redis-installation" name="redis-installation"></a>
-### <b>8. Redis Installation</b>
+### <strong>8. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -289,7 +282,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis)
 
 <a id="ssl-installation" name="ssl-installation"></a>
-### <b>9. SSL Installation</b>
+### <strong>9. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -298,6 +291,6 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-nginx-ssl)
 
 <a id="final-step" name="final-step"></a>
-### <b>10. Final step</b>
+### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
