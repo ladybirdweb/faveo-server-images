@@ -15,17 +15,18 @@ Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server
 
 - [<strong>Installation steps:</strong>](#installation-steps)
   - [<strong>1.Faveo depends on the following:</strong>](#1faveo-depends-on-the-following)
-  - [<strong> 2: Faveo Installation </strong>](#-2-faveo-installation-)
+  - [<strong> 2. Faveo Installation </strong>](#-2-faveo-installation-)
   - [<strong> 3. Configure Faveo in IIS Manager. </strong>](#-3-configure-faveo-in-iis-manager-)
   - [<strong> 4. Setting up the Database. </strong>](#-4-setting-up-the-database-)
   - [<strong> 5. Configure IIS webserver </strong>](#-5-configure-iis-webserver-)
-  - [<strong> 6. Install Faveo </strong>](#-6-install-faveo-)
-  - [<strong>7. Configure Task Scheduler </strong>](#7-configure-task-scheduler-)
-  - [<strong>8. SSL Installation </strong>](#8-ssl-installation-)
+  - [<strong>6. Configure Task Scheduler </strong>](#6-configure-task-scheduler-)
+  - [<strong>7. SSL Installation </strong>](#7-ssl-installation-)
+  - [<strong> 8. Install Faveo </strong>](#-8-install-faveo-)
   - [<strong>9. Final step</strong>](#9-final-step)
 
 
 <a id="installation-steps" name="installation-steps"></a>
+
 ## <strong>Installation steps:</strong>
 
 <a id="1faveo-depends-on-the-following" name="1faveo-depends-on-the-following"></a>
@@ -171,7 +172,8 @@ localhost\loader-wizard.php
 
 
 <a id="-2-faveo-installation-" name="-2-faveo-installation-"></a>
-### <strong> 2: Faveo Installation </strong> 
+
+### <strong> 2. Faveo Installation </strong> 
 
 Once all the above softwares are installed:
 
@@ -193,6 +195,7 @@ c:\inetpub\wwwroot\
 <img src="https://camo.githubusercontent.com/f133d3f80548c359f3b4f54b109422bfd428b406/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f31312e6a7067" alt="" />
 
 <a id="-3-configure-faveo-in-iis-manager-" name="-3-configure-faveo-in-iis-manager-"></a>
+
 ### <strong> 3. Configure Faveo in IIS Manager. </strong>
 - Open IIS Manager and in the left pane,
 - Explore till you find default_website and select it,
@@ -330,14 +333,10 @@ By default, IIS configures PHP only to accept GET, POST and HEAD request types. 
 - To remove WebDav,
 - Go to Control Panel -> Uninstall Program -> Turn Windows features on or off -> IIS -> World Wide Web Services -> Common HTTP feature -> WebDAV Publishing.
 
-<a id="-6-install-faveo-" name="-6-install-faveo-"></a>
-### <strong> 6. Install Faveo </strong>
 
-Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+<a id="6-configure-task-scheduler-" name="6-configure-task-scheduler-"></a>
 
-
-<a id="7-configure-task-scheduler-" name="7-configure-task-scheduler-"></a>
-### <strong>7. Configure Task Scheduler </strong>
+### <strong>6. Configure Task Scheduler </strong>
 
 - To open Taskscheduler press ctrl + R and Type "taskschd.msc".
 
@@ -362,9 +361,9 @@ C:\Windows\System32\cmd.exe
 - In the properties window select the Triggers tab and click on Edit and select the checkbox for "Repeat task every" and set values to run every 5 minutes for indefinitely and click on OK.
 
 
+<a id="7-ssl-installation-" name="7-ssl-installation-"></a>
 
-<a id="8-ssl-installation-" name="8-ssl-installation-"></a>
-### <strong>8. SSL Installation </strong>
+### <strong>7. SSL Installation </strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -372,7 +371,14 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/windows-iis-ssl)
 
+<a id="-8-install-faveo-" name="-8-install-faveo-"></a>
+
+### <strong> 8. Install Faveo </strong>
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
 <a id="9-final-step" name="9-final-step"></a>
+
 ### <strong>9. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
