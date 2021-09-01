@@ -28,6 +28,7 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
     - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps-" name="installation-steps-"></a>
+
 # <strong>Installation steps :</strong>
 
 
@@ -38,11 +39,14 @@ Faveo depends on the following:
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 <a id="-1-lamp-installation" name="-1-lamp-installation"></a>
+
 ### <strong> 1. LAMP Installation</strong>
+
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
 <a id="-2-update-your-packages-and-install-some-utility-tools" name="-2-update-your-packages-and-install-some-utility-tools"></a>
+
 ### <strong> 2. Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
@@ -120,6 +124,7 @@ Once the softwares above are installed:
 
 
 <a id="3-upload-faveo" name="3-upload-faveo"></a>
+
 ### <strong>3. Upload Faveo</strong>
 
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
@@ -135,6 +140,7 @@ unzip "Filename.zip" -d /var/www/faveo
 ```
 
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
+
 ### <strong>4. Setup the database</strong>
 
 Log in with the root account to configure the database.
@@ -278,7 +284,9 @@ systemctl enable php-fpm.service
 systemctl restart nginx
 ```
 <a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+
 ### <strong>6. Configure cron job</strong>
+
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
@@ -290,6 +298,7 @@ echo "* * * * * nginx /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo 
 ```
 
 <a id="7-redis-installation" name="7-redis-installation"></a>
+
 ### <strong>7. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
@@ -299,6 +308,7 @@ This is an optional step and will improve system performance and is highly recom
 [Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
 
 <a id="8-ssl-installation" name="8-ssl-installation"></a>
+
 ### <strong>8. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
@@ -308,12 +318,15 @@ This is an optional step and will improve system security and is highly recommen
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-nginx-ssl)
 
 <a id="9-install-faveo" name="9-install-faveo"></a>
+
 ### <strong>9. Install Faveo</strong>
+
 At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 <a id="10-final-step" name="10-final-step"></a>
+
 ### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

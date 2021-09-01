@@ -27,7 +27,8 @@ Faveo can run on Debian 10(Buster).
     - [<strong>9. Install Faveo</strong>](#9-install-faveo)
     - [<strong>10. Final step</strong>](#10-final-step)
 
-<a id="installation-steps" name="installation-steps"></a>
+<a id="installation-steps-" name="installation-steps-"></a>
+
 # <strong>Installation steps :</strong>
 
 
@@ -37,7 +38,10 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
+<a id="1-lamp-installation" name="1-lamp-installation"></a>
+
 ### <strong>1. LAMP Installation</strong>
+
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
@@ -47,7 +51,10 @@ Run the following commands as sudoers or Login as root user by typing the comman
 sudo su
 ```
 
+<a id="2-update-your-package-list" name="2-update-your-package-list"></a>
+
 ### <strong>2. Update your package list</strong>
+
 ```sh
 apt update && apt upgrade -y
 ```
@@ -143,7 +150,9 @@ Once the softwares above are installed:
 
 
 <a id="3-upload-faveo" name="3-upload-faveo"></a>
+
 ### <strong>3. Upload Faveo</strong>
+
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
@@ -157,6 +166,7 @@ unzip "Filename.zip" -d /var/www/faveo
 ```
 
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
+
 ### <strong>4. Setup the database</strong>
 
 Log in with the root account to configure the database.
@@ -189,6 +199,8 @@ And finally we apply the changes and exit the database.
 FLUSH PRIVILEGES;
 exit
 ```
+
+<a id="5-configure-nginx-webserver" name="5-configure-nginx-webserver"></a>
 
 ### <strong>5. Configure Nginx webserver</strong>
 
@@ -243,6 +255,7 @@ systemctl restart php7.3-fpm
 ```
 
 <a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+
 ### <strong>6. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
@@ -255,7 +268,8 @@ Create a new `/etc/cron.d/faveo` file with:
 echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
-<a id="redis-installation" name="redis-installation"></a>
+<a id="7-redis-installation" name="7-redis-installation"></a>
+
 ### <strong>7. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
@@ -264,7 +278,8 @@ This is an optional step and will improve system performance and is highly recom
 
 [Redis installation documentation](/docs/installation/providers/enterprise/debian-redis)
 
-<a id="ssl-installation" name="ssl-installation"></a>
+<a id="8-ssl-installation" name="8-ssl-installation"></a>
+
 ### <strong>8. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
@@ -273,13 +288,16 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-nginx-ssl)
 
-<a id="9-gui-faveo-installer" name="9-gui-faveo-installer"></a>
+<a id="9-install-faveo" name="9-install-faveo"></a>
+
 ### <strong>9. Install Faveo</strong>
+
 At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
-<a id="final-step" name="final-step"></a>
+<a id="10-final-step" name="10-final-step"></a>
+
 ### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

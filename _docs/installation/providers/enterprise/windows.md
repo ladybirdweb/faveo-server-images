@@ -20,8 +20,8 @@ Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server
   - [<strong> 4. Setting up the Database. </strong>](#-4-setting-up-the-database-)
   - [<strong> 5. Configure IIS webserver </strong>](#-5-configure-iis-webserver-)
   - [<strong> 6. Install Faveo </strong>](#-6-install-faveo-)
-  - [<strong>7: Configure Task Scheduler </strong>](#7-configure-task-scheduler-)
-  - [<strong>8: SSL Installation </strong>](#8-ssl-installation-)
+  - [<strong>7. Configure Task Scheduler </strong>](#7-configure-task-scheduler-)
+  - [<strong>8. SSL Installation </strong>](#8-ssl-installation-)
   - [<strong>9. Final step</strong>](#9-final-step)
 
 
@@ -337,7 +337,7 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 
 <a id="7-configure-task-scheduler-" name="7-configure-task-scheduler-"></a>
-### <strong>7: Configure Task Scheduler </strong>
+### <strong>7. Configure Task Scheduler </strong>
 
 - To open Taskscheduler press ctrl + R and Type "taskschd.msc".
 
@@ -364,7 +364,7 @@ C:\Windows\System32\cmd.exe
 
 
 <a id="8-ssl-installation-" name="8-ssl-installation-"></a>
-### <strong>8: SSL Installation </strong>
+### <strong>8. SSL Installation </strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
