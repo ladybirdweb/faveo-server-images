@@ -1,18 +1,18 @@
 #!/bin/sh
 #
-#  Faveo Helpdesk Ubuntu 18 Auto Installation Script
-#  Tested on Ubuntu 18.04.4 & Faveo Helpdesk v3.3.1
+#  Faveo Helpdesk Ubuntu Auto Installation Script
+#  Tested on Ubuntu & Faveo Helpdesk v4.6.2
 #
 #  Copyright (C) 2020 Ladybird Web Solution Pvt Ltd
 #
-#  Author Vijay Kumar
+#  Author Thirumoorthi & Viswash
 #
 #  * Note: This script does not contain any kind of error checking or
 #    management. If you are looking for professional, worry-free
 #    installation by a Faveo Certified Professional do not hesitate to
 #    contact me using the email listed above.
 #
-#  This script is intended to be run on a fresh Ubuntu 18 installation
+#  This script is intended to be run on a fresh Ubuntu installation
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
