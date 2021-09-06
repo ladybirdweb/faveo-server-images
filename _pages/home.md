@@ -27,8 +27,6 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
   - [Help](#help)
 <!--- [One click installers](#one-click-installers)
 [Installation via scripts](#installation-via-scripts) -->
-    - [Installation on a shared server](#installation-on-a-shared-server)
-  - [Help](#help)
 
 
 <a id="markdown-requirements" name="requirements"></a>
