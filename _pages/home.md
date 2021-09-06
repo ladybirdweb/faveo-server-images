@@ -25,8 +25,8 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
     - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
     - [Installation on a shared server](#installation-on-a-shared-server)
   - [Help](#help)
-<!--- - [One click installers](#one-click-installers)
-    - [Installation via scripts](#installation-via-scripts) -->
+<!--- [One click installers](#one-click-installers)
+[Installation via scripts](#installation-via-scripts) -->
     - [Installation on a shared server](#installation-on-a-shared-server)
   - [Help](#help)
 
@@ -76,7 +76,7 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
 * [Debian with Apache](/docs/installation/providers/community/debian-apache)
 
-<!---<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
+<!--- <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
 
 Faveo Helpdesk Community can be installed using following installers
