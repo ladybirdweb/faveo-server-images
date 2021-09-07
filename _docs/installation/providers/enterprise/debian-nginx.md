@@ -59,8 +59,8 @@ sudo su
 apt update && apt upgrade -y
 ```
 
-<b>2.a. Nginx</b>
-Apache should come pre-installed with your server. If it's not, install it with:
+<b>2.a. Nginx should come pre-installed with your server. If it's not, install it with:</b>
+
 
 ```sh
 apt install nginx

@@ -56,7 +56,20 @@ sudo su
 apt update
 ```
 
-<b>2.a. PHP 7.3+</b>
+<b>2.a. Install some Utility packages</b>
+
+```sh
+apt install -y git wget curl unzip nano 
+```
+<b>2.b. Apache should come pre-installed with your server. If it's not, install it with:</b>
+
+```sh
+apt install -y apache2
+systemctl start apache2
+systemctl enable apache2
+```
+
+<b>2.c. PHP 7.3+</b>
 
 Note: In Debian upon installing PHP packages apache2 will be automatically installed and started 
 
@@ -68,11 +81,6 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
 ```
 
-Now enable apache2 to start upon reboot.
-
-```sh
-systemctl enable apache2
-```
 After installing PHP 7.3, run the commands below to open PHP default config file.
 ```sh
 nano /etc/php/7.3/fpm/php.ini
@@ -90,7 +98,7 @@ upload_max_filesize = 100M
 max_execution_time = 360
 ```
 
-<b>2.b. Setting Up ionCube</b>
+<b>2.d. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
@@ -107,7 +115,7 @@ sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_
 systemctl restart apache2 
 ```
 
-<b>2.c. MariaDB:</b>
+<b>2.e. MariaDB:</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
