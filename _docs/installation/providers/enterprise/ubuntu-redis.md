@@ -35,7 +35,6 @@ apt-get install redis-server
 ## Start, Enable and restart the Redis-service
 ```
 systemctl start redis-server
-
 systemctl enable redis-server
 ```
 

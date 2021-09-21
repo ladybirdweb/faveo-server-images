@@ -59,7 +59,7 @@ apt update && apt upgrade -y
 Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
-apt install nginx
+apt install nginx -y
 systemctl start nginx
 systemctl enable nginx
 ```
@@ -88,15 +88,15 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
     php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp 
+    php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
 ```
-After installing PHP 7.3, run the commands below to open PHP default config file for Nginx…
+After installing PHP 7.3, run the commands below to open PHP default PHP config file for Nginx
 
 ```sh
 nano /etc/php/7.3/fpm/php.ini
 ```
 
-Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
+Then make the below changes on the file and save it. The value below are the recommended settings to apply in your environments.
 
 ```
 file_uploads = On
@@ -113,9 +113,7 @@ max_execution_time = 360
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 ```
-Make the note of path and directory from the above command.
-
-Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
+Copy the ion-cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the output of first command below, and restart the both nginx and php.
 
 ```sh
 php -i | grep extension_dir
@@ -164,10 +162,11 @@ Once the softwares above are installed:
 
 ### <strong>3. Upload Faveo</strong>
 
-Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
+Please download Faveo Package from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and create a directory and upload it to the directory as shown below.
 
 ```sh
-/var/www/faveo
+mkdir /var/www/faveo
+cd /var/www/faveo
 ```
 **3.a** <b>Extracting the Faveo-Codebase zip file</b>
 ```sh
@@ -222,14 +221,13 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 ```
 
-**5.b.**  <b>Create the faveo.conf Virtualhost</b>
+**5.b.**  <b>Create the faveo.conf</b>
 
-Finally, configure Nginx site configuration file for Faveo. This file will control how users access Faveo content. Run the commands below to create a new configuration file called faveo
-
+Finally, configure Nginx site configuration file for Faveo. This file will control how users access Faveo content. Run the commands below to create a new configuration file faveo.conf
 ```
 nano /etc/nginx/sites-available/faveo.conf
 ```
-Then copy and paste the content below into the file and save it. Replace the highlighted line with your own domain name and directory root location.
+Then copy and paste the content below into the file and save it. Replace the example.com line with your own domain name and directory root Path if faveo is installed in different path.
 ```
 server {
     listen 80;
@@ -255,11 +253,12 @@ server {
 Save the file and exit.
 
 **5.c.** <b> Enable the Faveo and Rewrite Module</b>
-After configuring the VirtualHost above delete the deafult Virtualhost and  enable the Faveo Virtualhost by running the commands below
+
+After configuring the configuration file above delete the deafult configuration and  enable the Faveo configuration by running below commands
 
 ```sh
-rm -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/faveo /etc/nginx/sites-enabled/
+rm -f /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+ln -s /etc/nginx/sites-available/faveo.conf /etc/nginx/sites-enabled/
 systemctl restart nginx
 systemctl restart php7.3-fpm
 ```

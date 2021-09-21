@@ -25,13 +25,13 @@ We will install following dependencies in order to make LetsEncrypt SSL work:
 ## Downloading the LetsEncrypt client for Ubuntu 16.04 and 18.04.
 
 ```sh
-apt install python-certbot-nginx
+apt install python-certbot-nginx -y
 ```
 
 ## Downloading the LetsEncrypt client for Ubuntu 20.04
 
 ```sh
-apt install python3-certbot-nginx
+apt install python3-certbot-nginx -y
 ```
 ## Setting up the SSL certificate
 
