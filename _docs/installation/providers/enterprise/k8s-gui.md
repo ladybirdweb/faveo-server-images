@@ -53,9 +53,19 @@ Fill the Database Name, Database username, and password in the specified boxes. 
 <a id="step4" name="step4"></a>
 ### Step 4: Locale Information
 
-Provide the system locale information as system login details and system language, system time and click on Continue.
+Provide the system locale information as system, login details, system language, system time.
 <img src="https://lh5.googleusercontent.com/s80NnEB2vEezRJ0lBBApn7TA21UvJbvvYuwyx48lZZOpPGiRh-VDL-QcBGo6k85XnjC_qaQOdn79A1Mczep7N2934mt5MVj_DPGv4kh-c6lRtc95Qy0_z1YqdMrj_6UPyTRYTau2" alt="" />
-    
+
+If you are deploying Faveo Helpdesk on kubernetes than S3 bucket and Redis DB is mandatory for persisten storage and other Functionalities of Faveo Helpdesk. 
+Under the Default Storage driver select S3 and provide your S3 bucket details. It is always recommended that your S3 bucket and Redis DB is in the same region as of your kubernetes cluster.
+
+<img src="kubernetes-images/S3-bucket.png">
+
+Select Redis in Cache Driver and input your Redis DB details and click on continue.
+
+<img src="kubernetes-images/redis-db.png">
+
+
 <a id="step5" name="step5"></a>
 ### Step 5: License Key
 
