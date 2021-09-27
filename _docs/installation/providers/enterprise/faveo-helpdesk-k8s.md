@@ -295,7 +295,7 @@ In this step, you have installed Cert-Manager using Helm and created a Let’s E
 
 At this point if the domain name is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
-Now you can install Faveo via [GUI](https://docs.faveohelpdesk.com/docs/installer/k8s-gui/) Wizard
+Now you can install Faveo via [GUI](/docs/installation/installer/k8s-gui) Wizard
 
 ## Step 6: Creating and Configuring ConfigMap for .env
 
