@@ -39,7 +39,7 @@ docs:
   - title: Kubernetes
     children:
       - title: Faveo on Kubernetes
-        url: /docs/installation/providers/enterprise/centos-apache/
+        url: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
 # Top bar Menu/Navigation
 main:
   - title: "User Manual"

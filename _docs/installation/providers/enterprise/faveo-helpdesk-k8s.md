@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/centos-apache/
+permalink: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
