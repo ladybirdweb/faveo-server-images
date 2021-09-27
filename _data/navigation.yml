@@ -36,7 +36,10 @@ docs:
         url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
-
+  - title: Faveo on Kubernetes
+    children:
+      - title:
+        url: /docs/installation/providers/enterprise/Faveo-helpdesk-k8s
 # Top bar Menu/Navigation
 main:
   - title: "User Manual"
