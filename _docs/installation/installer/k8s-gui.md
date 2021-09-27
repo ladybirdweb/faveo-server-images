@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/installer/gui/
+permalink: /docs/installation/installer/k8s-gui/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
@@ -59,11 +59,11 @@ Provide the system locale information as system, login details, system language,
 If you are deploying Faveo Helpdesk on kubernetes than S3 bucket and Redis DB is mandatory for persisten storage and other Functionalities of Faveo Helpdesk. 
 Under the Default Storage driver select S3 and provide your S3 bucket details. It is always recommended that your S3 bucket and Redis DB is in the same region as of your kubernetes cluster.
 
-<img src="kubernetes-images/S3-bucket.png">
+<img src="https://support.faveohelpdesk.com/uploads/2021/S3-bucket.png">
 
 Select Redis in Cache Driver and input your Redis DB details and click on continue.
 
-<img src="kubernetes-images/redis-db.png">
+<img src="https://support.faveohelpdesk.com/uploads/2021/redis-db.png">
 
 
 <a id="step5" name="step5"></a>

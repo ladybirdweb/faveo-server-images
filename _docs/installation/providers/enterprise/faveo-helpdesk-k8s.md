@@ -7,8 +7,8 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 ---
-# Deploying Faveo Helpdesk on Digital Ocean managed Kubernetes Cluster <!-- omit in toc -->
-<img src="kubernetes-images/kubernetes-logo.png" alt="drawing" width="300"/>
+# Deploying Faveo Helpdesk on managed Kubernetes Cluster <!-- omit in toc -->
+<img src="https://support.faveohelpdesk.com/uploads/2021/kubernetes-logo.png" alt="drawing" width="300"/>
 
 # Introduction
 
@@ -25,7 +25,7 @@ In this article, we’ll be deploying Faveo Helpdesk app on top of Kubernetes. B
 * A fully registered domain name with an available A record.You can use the domain registrar of your choice. Don’t worry about associating your domain’s A record with an IP at this time. Once you deploy Nginx ingress controller and your Load balancer is attached to your cluster, you will connect your_domain to the proper IP.
  
 Before beginning the installation take a look at the simplified Architectural Diagram of Faveo Helpdesk on kubernetes. This will help you understand the different components used and how they are inter connected to make Faveo Helpdesk work.
-![image info](kubernetes-images/faveo-kubernetes.png)
+<img src="https://support.faveohelpdesk.com/uploads/2021/faveo-kubernetes.png">
 
 Note: Digital Ocean allows you to install some of the resources or addons via one-click installers. But we recommend to follow the steps in this guide, which uses the Offcial documentaion of that addons to install them, as you will have complete control over there versions.
 
@@ -295,7 +295,7 @@ In this step, you have installed Cert-Manager using Helm and created a Let’s E
 
 At this point if the domain name is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
-Now you can install Faveo via [GUI](https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/k8s-gui/) Wizard
+Now you can install Faveo via [GUI](https://docs.faveohelpdesk.com/docs/installer/k8s-gui/) Wizard
 
 ## Step 6: Creating and Configuring ConfigMap for .env
 
