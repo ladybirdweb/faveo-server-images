@@ -295,7 +295,7 @@ In this step, you have installed Cert-Manager using Helm and created a Let’s E
 
 At this point if the domain name is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
-Now you can install Faveo via [GUI](https://docs.faveohelpdesk.com/docs/installation/installer/gui/) Wizard
+Now you can install Faveo via [GUI](https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/k8s-gui/) Wizard
 
 ## Step 6: Creating and Configuring ConfigMap for .env
 
@@ -515,7 +515,7 @@ kubectl get pods
 Now you should see supervisor pod running along with Faveo Helpdesk pods.
 
 The supervisor pod will use the configuration from .env which is mounted via configmap to perform all the operations.
-Always keep the number of supervisor replicas to 1 increasing this will lead unnecessary overlapping of mails and notifications.
+Always keep the number of supervisor replicas to 1 increasing this will lead unnecessary overlapping of mails and
 
 
 
