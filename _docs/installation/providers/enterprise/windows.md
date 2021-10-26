@@ -355,7 +355,11 @@ C:\Windows\System32\cmd.exe
 
 ```
 /c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+/c php c:\inetpub\wwwroot\faveo\artisan queue:listen database --queue=reports #this is for the reports.
+/c php "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring #this is for recurring.
+/c php c:\inetpub\wwwroot\faveo\artisan queue:work database #this is for mail.
 ```
+- The above commands will be the task sheduler commands.
 - Finally under Finish section select the checkbox to open the properties window after finish and click finish button.
 
 - In the properties window select the Triggers tab and click on Edit and select the checkbox for "Repeat task every" and set values to run every 5 minutes for indefinitely and click on OK.

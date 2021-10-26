@@ -257,7 +257,7 @@ Save the file and exit.
 After configuring the configuration file above delete the deafult configuration and  enable the Faveo configuration by running below commands
 
 ```sh
-rm -f /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+rm -f /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default*
 ln -s /etc/nginx/sites-available/faveo.conf /etc/nginx/sites-enabled/
 systemctl restart nginx
 systemctl restart php7.3-fpm
