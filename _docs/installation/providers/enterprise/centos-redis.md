@@ -82,6 +82,7 @@ process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
 autostart=true
 autorestart=true
+user=apache
 numprocs=8
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/worker.log
@@ -91,6 +92,7 @@ process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
 autostart=true
 autorestart=true
+user=apache
 numprocs=1
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/recur-worker.log
