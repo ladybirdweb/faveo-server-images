@@ -70,7 +70,7 @@ systemctl enable nginx
 <b>2.b. Install some Utility packages</b>
 
 ```sh
-apt install -y git wget curl unzip nano 
+apt install -y git wget curl unzip nano zip
 ```
 
 <b>2.c. PHP 7.3+</b>

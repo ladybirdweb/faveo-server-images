@@ -68,7 +68,7 @@ systemctl enable apache2
 ### <strong>2. Install some Utility packages</strong>
 
 ```sh
-apt install -y git wget curl unzip nano 
+apt install -y git wget curl unzip nano zip
 ```
 
 <b>2.a. PHP 7.3+</b>

@@ -59,7 +59,7 @@ apt update
 <b>2.a. Install some Utility packages</b>
 
 ```sh
-apt install -y git wget curl unzip nano 
+apt install -y git wget curl unzip nano zip
 ```
 <b>2.b. Apache should come pre-installed with your server. If it's not, install it with:</b>
 
