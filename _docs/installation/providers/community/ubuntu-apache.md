@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Installing Faveo Helpdesk Community on Ubuntu 18.04 <!-- omit in toc -->
+# Installing Faveo Helpdesk Community on Ubuntu<!-- omit in toc -->
 
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
