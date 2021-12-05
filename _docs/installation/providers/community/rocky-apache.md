@@ -1,34 +1,33 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/centos-apache/
+permalink: /docs/installation/providers/enterprise/rocky-apache/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
 ---
-# Installing Faveo Helpdesk Community on Cent OS <!-- omit in toc -->
+# Installing Faveo Helpdesk Community on Rocky OS 8<!-- omit in toc -->
 
-<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
+<img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
-Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
+Faveo can run on [Rocky 8 ](https://rockylinux.org/download/).
 
-
-- [<strong>Installation steps:</strong>](#installation-steps)
-    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
-    - [<strong>2. Update your Packages and install some utility tools</strong>](#2-update-your-packages-and-install-some-utility-tools)
+- [<strong>Installation steps :</strong>](#installation-steps-)
+    - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
+    - [<strong> 2. Update your Packages and install some utility tools</strong>](#-2-update-your-packages-and-install-some-utility-tools)
     - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
-    - [<strong>4.Setup the database</strong>](#4setup-the-database)
+    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
     - [<strong>5. Configure Apache webserver</strong>](#5-configure-apache-webserver)
-    - [<strong>6.Configure cron job</strong>](#6configure-cron-job)
-    - [<strong>7.Redis Installation</strong>](#7redis-installation)
-    - [<strong>8.SSL Installation</strong>](#8ssl-installation)
-    - [<strong>9.Install Faveo</strong>](#9install-faveo)
-    - [<strong>10.Final step</strong>](#10final-step)
+    - [<strong>6. Configure cron job</strong>](#6-configure-cron-job)
+    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
+    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
+    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
-<a id="installation-steps" name="installation-steps"></a>
+<a id="installation-steps-" name="installation-steps-"></a>
 
-# <strong>Installation steps:</strong>
+# <strong>Installation steps :</strong>
 
 Faveo depends on the following:
 
@@ -36,16 +35,16 @@ Faveo depends on the following:
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
-<a id="1-lamp-installation" name="1-lamp-installation"></a>
+<a id="-1-lamp-installation" name="-1-lamp-installation"></a>
 
-### <strong>1. LAMP Installation</strong>
+### <strong> 1. LAMP Installation</strong>
 
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
 
-<a id="2-update-your-packages-and-install-some-utility-tools" name="2-update-your-packages-and-install-some-utility-tools"></a>
+<a id="-2-update-your-packages-and-install-some-utility-tools" name="-2-update-your-packages-and-install-some-utility-tools"></a>
 
-### <strong>2. Update your Packages and install some utility tools</strong>
+### <strong> 2. Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
 
@@ -56,17 +55,18 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
-<b>2.a Install php-7.3 Packages </b>
-```sh
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+<b> 2.a. Install php-7.3 Packages </b>
 
-yum-config-manager --enable remi-php73
+
+
+```sh
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+dnf module install php:remi-7.3 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
-
-<b>2.b Install and run Apache</b>
+<b> 2.b. Install and run Apache</b>
 Install and Enable Apache Server
 
 ```sh
@@ -75,7 +75,9 @@ systemctl start httpd
 systemctl enable httpd
 ```
 
-<b>2.c Setting Up ionCube</b>
+
+
+<b> 2.c. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -89,23 +91,25 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b> 2.d Install and run Mysql/MariaDB</b>
+<b> 2.d. Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
-```sh
-yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-yum install -y mysql-community-server
-systemctl start mysqld
-systemctl enable mysqld
-```
-Secure your MySql installation by executing the below command. Set Password for mysql root user,it will ask for password which is temporarily created by MySql-5.7 and it is required for changing the root password, we can get by running the below command and here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+
+In Rocky OS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
 ```sh
-grep "temporary password" /var/log/mysqld.log
+yum install mariadb-server -y
+systemctl start mariadb
+systemctl enable mariadb
+```
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+
+```sh
 mysql_secure_installation 
 ```
 
@@ -118,7 +122,6 @@ At this point run the belove command to clear the yum cache.
 ```sh
 yum clean all
 ```
-
 Once the softwares above are installed:
 
 
@@ -134,15 +137,14 @@ git clone https://github.com/ladybirdweb/faveo-helpdesk.git
 ```
 You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
-<b> 3.a Extracting the Faveo-Codebase zip file </b>
+**3.a** <b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
+<a id="4-setup-the-database" name="4-setup-the-database"></a>
 
-<a id="4setup-the-database" name="4setup-the-database"></a>
-
-### <strong>4.Setup the database</strong>
+### <strong>4. Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -179,7 +181,7 @@ exit
 
 ### <strong>5. Configure Apache webserver</strong>
 
-**a.** <b>Give proper permissions to the project directory by running:</b>
+**5.a.** <b>Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R apache:apache /var/www/faveo
@@ -193,7 +195,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
 
-**b.** <b>Enable the rewrite module of the Apache webserver:</b>
+**5.b.** <b>Enable the rewrite module of the Apache webserver:</b>
 
 Check whether the Module exists in Apache modules directory.
 
@@ -219,7 +221,7 @@ Finally change the httpd.conf AllowOverride value to none to All under <Director
 </Directory>
 ```
 
-**c.** <b>Configure a new faveo site in apache by doing:</b>
+**5.c.** <b>Configure a new faveo site in apache by doing:</b>
 
 Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domain name mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
@@ -242,19 +244,16 @@ CustomLog /var/log/httpd/faveo-access.log combined
 </VirtualHost>
 ```
 
-**d.** Apply the new `.conf` file and restart Apache. You can do that by running:
+**5.d.** Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
 systemctl restart httpd.service
 ```
 
 
-<a id="3-gui-faveo-installer" name="3-gui-faveo-installer"></a>
+<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
 
-
-<a id="6configure-cron-job" name="6configure-cron-job"></a>
-
-### <strong>6.Configure cron job</strong>
+### <strong>6. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -266,38 +265,37 @@ Create a new `/etc/cron.d/faveo` file with:
 echo "* * * * * apache /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 ```
 
+<a id="7-redis-installation" name="7-redis-installation"></a>
 
-<a id="7redis-installation" name="7redis-installation"></a>
-
-### <strong>7.Redis Installation</strong>
+### <strong>7. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/centos-redis)
+[Redis installation documentation](/docs/installation/providers/enterprise/rocky-redis)
 
-<a id="8ssl-installation" name="8ssl-installation"></a>
+<a id="8-ssl-installation" name="8-ssl-installation"></a>
 
-### <strong>8.SSL Installation</strong>
+### <strong>8. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rocky-apache-ssl)
 
-<a id="9install-faveo" name="9install-faveo"></a>
+<a id="9-install-faveo" name="9-install-faveo"></a>
 
-### <strong>9.Install Faveo</strong>
+### <strong>9. Install Faveo</strong>
 
 At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
 You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
 
-<a id="10final-step" name="10final-step"></a>
+<a id="10-final-step" name="10-final-step"></a>
 
-### <strong>10.Final step</strong>
+### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.

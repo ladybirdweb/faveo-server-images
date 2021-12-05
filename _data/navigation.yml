@@ -36,6 +36,8 @@ docs:
         url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
+      -title: Rocky with Apache
+        url: /docs/installation/providers/community/rocky-apache
   - title: Kubernetes
     children:
       - title: Faveo on Kubernetes
