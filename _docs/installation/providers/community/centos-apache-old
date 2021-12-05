@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/community/centos-apache/
+permalink: /docs/installation/providers/community/centos-apache-old/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
