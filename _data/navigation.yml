@@ -31,13 +31,13 @@ docs:
   - title: Community edition
     children:
       - title: Ubuntu with Apache
-        url: /docs/installation/providers/community/ubuntu-apache/
+        url: /docs/installation/providers/community/ubuntu-apache
       - title: CentOS with Apache
-        url: /docs/installation/providers/community/centos-apache/
+        url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
-        url: /docs/installation/providers/community/debian-apache/
+        url: /docs/installation/providers/community/debian-apache
       - title: Rocky with Apache
-        url: /docs/installation/providers/community/rocky-apache/
+        url: /docs/installation/providers/community/rocky-apache
   - title: Kubernetes
     children:
       - title: Faveo on Kubernetes
