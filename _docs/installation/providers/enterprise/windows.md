@@ -354,10 +354,10 @@ C:\Windows\System32\cmd.exe
 - - Add following value in Argument :
 
 ```
-\inetpub\wwwroot\faveo\artisan" schedule:run
-\inetpub\wwwroot\faveo\artisan queue:listen database --queue=reports #this is for the reports.
-\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring #this is for recurring.
-\inetpub\wwwroot\faveo\artisan queue:work database #this is for mail.
+c:\inetpub\wwwroot\faveo\artisan" schedule:run #this is for faveo incoming mail,esacalation, faveo update check.
+c:\inetpub\wwwroot\faveo\artisan queue:listen database --queue=reports #this is for the reports.
+c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring #this is for recurring.
+c:\inetpub\wwwroot\faveo\artisan queue:work database #this is for outgoing mail.
 ```
 - The above commands will be the task sheduler commands.
 - Finally under Finish section select the checkbox to open the properties window after finish and click finish button.
