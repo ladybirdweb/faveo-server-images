@@ -102,7 +102,7 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 
 - The above command will save a key file with the name private.key for the server SSL certificate.
 
-### <sstrong>Create a certificate signing request for the server SSL</strong>
+### <strong>Create a certificate signing request for the server SSL</strong>
 
 - The below command will create a Certificate Signing Request for the Server SSL.
 
