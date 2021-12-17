@@ -102,7 +102,7 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 
 - The above command will save a key file with the name private.key for the server SSL certificate.
 
-### <strong>Create a certificate signing request for the server SSL</strong>
+### <sstrong>Create a certificate signing request for the server SSL</strong>
 
 - The below command will create a Certificate Signing Request for the Server SSL.
 
@@ -142,7 +142,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 
 - The installation of the SSL certificate is simple in windows machine we need to double click on the cert.pfx file that we created from the above step which will open certtificate installation wizard.
 
-    ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/certificateinstallation.png)
+    ![windows](windows-images/certificateinstallation.png)
 
 - Click on install certificates and all the settings to be left default and once the installation is successful it will prompt the installation is successful.
 
@@ -173,15 +173,15 @@ openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
 - After updating the above, the last part is to add bindings for the SSL.
 - As shown below open the IIS manager and click in the site and on the right pane select Bindings.
 
-  ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/bindings.jpeg)
+  ![windows](windows-images/bindings.jpeg)
 
 - As shown below there will be a prompt, there select Add option.
 
-  ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/portadd.jpeg)
+  ![windows](windows-images/portadd.jpeg)
 
 - As shown below change the http to https and add the domain name in the Hostname section and select the SSL certificate which we installed and click OK.
 
-  ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/bindingwithdomain.png)
+  ![windows](windows-images/bindingwithdomain.png)
 
 The certificate is installed successfully, since this is a selfsigned certificate the browser will show not valid, since the faveo consider's the server side SSL certificates in the probepage Domain SSL will be valid.
 
