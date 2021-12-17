@@ -8,34 +8,34 @@ last_modified_at: 2021-12-12
 toc: true
 ---
 
-# Install Self-Signed SSL for Faveo on Windows  <!-- omit in toc -->
+# Install Self-Signed SSL for Faveo on Windows  <!-- omit in to -->
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
 
 
 ## <strong>Introduction</strong>
 
-This document will list on how to install Self-Signed SSL certificates on Windows server.
+This document will list how to install Self-Signed SSL certificates on Windows servers.
 
-We will be using a tool OpenSSL for creating Self-Signed SSL certificate's in windows machine.
+We will be using the tool OpenSSL for creating a Self-Signed SSL certificate in a windows machine.
 The OpenSSL is an open-source library that provides cryptographic functions and implementations. OpenSSL is a defacto library for cryptography-related operations and is used by a lot of different applications. OpenSSL is provided as a library and application. OpenSSL provides functions and features like SSL/TLS, SHA1, Encryption, Decryption, AES, etc.
 
 ## <strong>Setting up OpenSSL for Windows</strong>
 
-With below commands we can install OpenSSL in windows server:
+With the below commands we can install OpenSSL in the windows server:
 
-Open SSL is not available for windows in .exe format the easiest way to install is by using a third party ssoftware CHOCOLATEY.
+Open SSL is not available for windows in .exe format the easiest way to install is by using a third-party software CHOCOLATEY.
 
 Install “Chocolatey” a package management software for windows by using the below command.
 
-Open Powershell.exe with Administrator Privilege, Paste the below command and hit enter
+Open Powershell.exe with Administrator Privilege, Paste the below command, and hit enter
 
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 It may ask for permission please select yes for all and when the installation is over then enter the below command.
 
-Open command prompt with Administrator privilege and enter the beloew command to install OpenSSL.
+Open the command prompt with Administrator privilege and enter the below command to install OpenSSL.
 
 ```
 choco install openssl 
@@ -50,15 +50,15 @@ It will prompt and ask for 'yes' give 'yes' and wait till the installation gets 
 - Create a private key for the certificate.
 - Create a certificate signing request.
 - Create a certificate and sign it with the CA private key.
-- Compiling the created certificate and key fie as .pfx file.
-- Installing the SSL certifiate.
+- Compiling the created certificate and key file as a .pfx file.
+- Installing the SSL certificate.
 
 ### <strong>Generate a private key for the CA</strong>
 
-Create a directory named ssl under desktop or on any directory, the following commands will create the ssl files those files will be saved in the directory whcih we create.
+Create a directory named SSL under the desktop or on any directory, the following commands will create the SSL files those files will be saved in the directory which we create.
 
 - Open Command Prompt from the SSL directory that we created,
-- Run the below command to create Private key for the rootCA this command will save a file name faveoroot.key in the SSL folder.
+- Run the below command to create a Private key for the rootCA this command will save a file name faveoroot.key in the SSL folder.
 
 ```
 openssl ecparam -out faveoroot.key -name prime256v1 -genkey
@@ -66,7 +66,7 @@ openssl ecparam -out faveoroot.key -name prime256v1 -genkey
 
 ### <strong>Generate a certificate signing request for the CA</strong>
 
-- From the command propmt run the below command which will create a CSR (certificate signing request) for the Root CA.
+- From the command prompt run the below command which will create a CSR (certificate signing request) for the Root CA.
 
 ```
 openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
@@ -79,18 +79,18 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Comman name (the common domain for the company like *.domain).
     - Email address.
 
-- The above command will save a file in the name faveoroot.csr in the ssl directory.
+- The above command will save a file in the name faveoroot.csr in the SSL directory.
 
 ### <strong>Generate a root certificate</strong>
 
-- The below ccommand will create the Root CA certificate which we will use to sign the ssl certificates.
+- The below ccommand will create the Root CA certificate which we will use to sign the SSL certificates.
 
 
 ```
 openssl x509 -req -sha256 -days 3650 -in faveoroot.csr -signkey faveoroot.key -out faveorootCA.crt
 ```
 
-- The above command will create a file and save it as faveorootCA.crt in the ssl directory.
+- The above command will create a file and save it as faveorootCA.crt in the SSL directory.
 
 ### <strong>Create a private key for the certificate</strong>
 
@@ -110,37 +110,37 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 openssl req -new -sha256 -key private.key -out faveolocal.csr
 ```
 
-- It will ask for the details as below we should give the details as shown befow.
+- It will ask for the details as below we should give the details as shown below.
 
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (the domain or the IP which we need to create the SSL certificate for faveo).
+    - Common name (the domain or the IP which we need to create the SSL certificate for faveo).
     - Email address.
-- The rest can be left blank and after this is completed it will create the csr file and save it with the name faveolocal.csr in the SSL directory.
+- The rest can be left blank and after this is completed it will create the CSR file and save it with the name faveolocal.csr in the SSL directory.
 
 ### <strong>Create a certificate and sign it with the CA private key</strong>
 
-- The below command will crearte the server SSL certificate which is signed by the Root CA that we created above.
+- The below command will create the server SSL certificate which is signed by the Root CA that we created above.
 
 ```
 openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -CAcreateserial -out faveolocal.crt -days 3650 -sha256 
 ```
-- The above command will create a the server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days that is ten years.
+- The above command will create a server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days that is ten years.
 
 ### <strong>Compiling the created certificate and key fie as .pfx file</strong>
 
-- As the windows need's the certificate file in .pfx format which will contain the both certificate and the key file and the CA fifle for the installation, so we need to convert the created files to .pfx format, this can be done with the below command.
+- As windows need the certificate file in .pfx format which will contain the both certificate and the key file and the CA fifle for the installation, so we need to convert the created files to .pfx format, this can be done with the below command.
 
 ```
 openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -certfile faveorootCA.crt
 ```
 
-- The above command will create a .pfx file with the name cert.pfx in the SSL direcctory.
+- The above command will create a .pfx file with the name cert.pfx in the SSL directory.
 
 ### <strong>Installing the SSL certifiate</strong>
 
-- The installation of the SSL certificate is simple in windows machine we need to double click on the cert.pfx file that we created from the above step which will open certtificate installation wizard.
+- The installation of the SSL certificate is simple in windows machines we need to double click on the cert.pfx file that we created from the above step which will open the certificate installation wizard.
 
     ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/certificateinstallation.png?raw=true)
 
@@ -164,14 +164,14 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 127.0.0.1            yourdomain
 ```
 
-- if the above is done we need edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of cacert.pem to "openssl.cafile" like.
+- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of cacert.pem to "openssl.cafile" like.
 
 ```
 openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
 ```
 
 - After updating the above, the last part is to add bindings for the SSL.
-- As shown below open the IIS manager and click in the site and on the right pane select Bindings.
+- As shown below open the IIS manager and click on the site and on the right pane select Bindings.
 
   ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/bindings.jpeg?raw=true)
 
@@ -179,10 +179,10 @@ openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
 
   ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/portadd.jpeg?raw=true)
 
-- As shown below change the http to https and add the domain name in the Hostname section and select the SSL certificate which we installed and click OK.
+- As shown below change the HTTP to HTTPS and add the domain name in the Hostname section and select the SSL certificate which we installed and click OK.
 
   ![windows](https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/bindingwithdomain.png?raw=true)
 
-The certificate is installed successfully, since this is a selfsigned certificate the browser will show not valid, since the faveo consider's the server side SSL certificates in the probepage Domain SSL will be valid.
+The certificate is installed successfully, since this is a self-signed certificate the browser will show not valid since the faveo consider's the server-side SSL certificates in the probe page Domain SSL will be valid.
 
 
