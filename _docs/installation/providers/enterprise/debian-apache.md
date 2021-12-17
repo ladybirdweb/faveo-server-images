@@ -35,8 +35,7 @@ Faveo can run on Debian 10 (Buster).
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
--   **SSL** proper ssl should be enabled, faveo will not work without proper SSL.
-
+-   **SSL** ,Trusted CA Signed or Slef-Signed SSL
   
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
 

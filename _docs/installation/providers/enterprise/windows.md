@@ -42,6 +42,7 @@ Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server
   - **d. Install Ioncube Loader**
 
   - **e. Configure the php.ini file.**
+  
   - **f. SSL: Trusted CA Signed or Slef-Signed SSL.**
 
 
