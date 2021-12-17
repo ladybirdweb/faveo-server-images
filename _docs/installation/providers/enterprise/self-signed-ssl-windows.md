@@ -102,7 +102,7 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 
 - The above command will save a key file with the name private.key for the server SSL certificate.
 
-### <sstrong>Create a certificate signing request for the server SSL</strong>
+### <strong>Create a certificate signing request for the server SSL</strong>
 
 - The below command will create a Certificate Signing Request for the Server SSL.
 
@@ -142,7 +142,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 
 - The installation of the SSL certificate is simple in windows machine we need to double click on the cert.pfx file that we created from the above step which will open certtificate installation wizard.
 
-    ![windows](windows-images/certificateinstallation.png)
+<img alt="windows" src="_docs/installation/providers/enterprise/windows-images/certificateinstallation.png">
 
 - Click on install certificates and all the settings to be left default and once the installation is successful it will prompt the installation is successful.
 
