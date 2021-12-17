@@ -112,6 +112,7 @@ Usually found in the below mentioned location. If it is differnt in your server 
 [Click here to download cacaert.pem file](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)
 
 <b> 1.e.(b) Edit the php.ini file which is found inside the PHP root directory.</b>
+
 Uncomment and add the location of cacert.pem to "curl.cainfo".
 
 ```
@@ -373,9 +374,12 @@ c:\inetpub\wwwroot\faveo\artisan queue:work database #this is for outgoing mail.
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+Faveo Requires HTTPS  so the SSL is must to work with the latest versions of faveo , so for teh insternal network and if there is no domain for free you can use the Self-Signed-SSL.
+
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/windows-iis-ssl)
+
+[Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 <a id="-8-install-faveo-" name="-8-install-faveo-"></a>
 

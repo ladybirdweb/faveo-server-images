@@ -142,5 +142,47 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 
 - The installation of the SSL certificate is simple in windows machine we need to double click on the cert.pfx file that we created from the above step which will open certtificate installation wizard.
 
+    ![windows](windows-images/certificateinstallation.png)
+
+- Click on install certificates and all the settings to be left default and once the installation is successful it will prompt the installation is successful.
+
+- Once the Certificate is installed we need to add the faveorootCA.crt file content to the cacert.pen file which will be in the below location:
+
+```
+(C:\Program Files\PHP\v7.3)
+```
+
+- After adding that we need to edit the host file which will be in this location
+
+```
+(C:\Windows\System32\drivers\etc)
+```
+
+- And add the below line by replacing the 'yourdomain' with the domain that we used to create the server SSL certificate.
+
+```
+127.0.0.1            yourdomain
+```
+
+- if the above is done we need edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of cacert.pem to "openssl.cafile" like.
+
+```
+openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
+```
+
+- After updating the above, the last part is to add bindings for the SSL.
+- As shown below open the IIS manager and click in the site and on the right pane select Bindings.
+
+  ![windows](windows-images/bindings.jpeg)
+
+- As shown below there will be a prompt, there select Add option.
+
+  ![windows](windows-images/portadd.jpeg)
+
+- As shown below change the http to https and add the domain name in the Hostname section and select the SSL certificate which we installed and click OK.
+
+  ![windows](windows-images/bindingwithdomain.png)
+
+The certificate is installed successfully, since this is a selfsigned certificate the browser will show not valid, since the faveo consider's the server side SSL certificates in the probepage Domain SSL will be valid.
 
 
