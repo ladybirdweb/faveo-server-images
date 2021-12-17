@@ -35,6 +35,7 @@ Below are the steps to create a Self-Signed SSL certificate using a CA.
 - Create a private key for the certificate.
 - Create a certificate signing request.
 - Create a certificate and sign it with the CA private key.
+- Installing the SSL certificate.
 
 ### <strong>Generate a private key for the CA:</strong>
 

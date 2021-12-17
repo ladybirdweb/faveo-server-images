@@ -146,7 +146,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 
 - Click on install certificates and all the settings to be left default and once the installation is successful it will prompt the installation is successful.
 
-- Once the Certificate is installed we need to add the faveorootCA.crt file content to the cacert.pen file which will be in the below location:
+- Once the Certificate is installed we need to add the faveorootCA.crt file content to the cacert.pem file which will be in the below location:
 
 ```
 (C:\Program Files\PHP\v7.3)
