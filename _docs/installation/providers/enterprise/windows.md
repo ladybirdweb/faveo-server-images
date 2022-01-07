@@ -93,7 +93,7 @@ http://localhost
 <b>1.c. Install MariaDB-10.3 </b>
 
 - Download and install MariaDB-10.3 from the official MariaDB website.
-"https://downloads.mariadb.org/mariadb/10.3.13/"
+"https://downloads.mariadb.org/mariadb/"
 
 - Execute the installer and peform the required installation steps and set the root password.
 
@@ -162,7 +162,7 @@ zend_extension = "C:\Program Files\PHP\v7.3\ext\ioncube_loader_win_7.3.dll"
 extension=php_mysqli.dll
 extension=php_pdo_mysql.dll
 extension=php_ldap.dll
-extension=phpfileinfo.dll
+extension=php_fileinfo.dll
 ```
 
 - Run the below URL to verify the ionCube Installation.

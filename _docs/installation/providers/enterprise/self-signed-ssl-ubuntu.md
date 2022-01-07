@@ -81,4 +81,4 @@ This command generates the file private-key.pem in the current directory.
 
 ### <strong>Create a certificate signing request:</strong>
 
-To create a signed certificate we need to create a CSR (certificate signing Request) 
+To create a signed certificate we need to create a CSR (certificate signing Request)
