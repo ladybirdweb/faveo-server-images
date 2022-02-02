@@ -34,7 +34,7 @@ Faveo can run on [Ubuntu 16.04 (Xenial Xerus),Ubuntu 18.04 (Bionic Beaver), Ubun
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.1** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
@@ -71,7 +71,7 @@ systemctl enable apache2
 apt install -y git wget curl unzip nano zip
 ```
 
-<b>2.a. PHP 7.3+</b>
+<b>2.a. PHP 7.1+</b>
 
 First add this PPA repository:
 
@@ -80,20 +80,20 @@ apt-get install -y software-properties-common
 add-apt-repository ppa:ondrej/php
 ```
 
-Then install php 7.3 with these extensions:
+Then install php 7.1 with these extensions:
 
 ```sh
 apt update
-apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
-    php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
-    php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
-    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
-    php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
+apt install -y php7.1 libapache2-mod-php7.1 php7.1-mysql \
+    php7.1-cli php7.1-common php7.1-fpm php7.1-soap php7.1-gd \
+    php7.1-json php7.1-opcache  php7.1-mbstring php7.1-zip \
+    php7.1-bcmath php7.1-intl php7.1-xml php7.1-curl  \
+    php7.1-imap php7.1-ldap php7.1-gmp php7.1-redis
 ```
-After installing PHP 7.3, run the commands below to open PHP default config file.
+After installing PHP 7.1, run the commands below to open PHP default config file.
 
 ```sh
-nano /etc/php/7.3/apache2/php.ini
+nano /etc/php/7.1/apache2/php.ini
 ```
 
 Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environment.
@@ -258,14 +258,14 @@ nano /etc/apache2/sites-available/faveo.conf
 a2enmod rewrite
 a2dissite 000-default.conf
 a2ensite faveo.conf
-# Enable php7.3 fpm, and restart apache
+# Enable php7.1 fpm, and restart apache
 a2enmod proxy_fcgi setenvif
-a2enconf php7.3-fpm
+a2enconf php7.1-fpm
 ```
  **5.c.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
-service php7.3-fpm restart
+service php7.1-fpm restart
 service apache2 restart
 ```
 

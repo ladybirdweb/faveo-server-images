@@ -34,10 +34,10 @@ docs:
         url: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
   - title: Community edition
     children:
-#      - title: Ubuntu with Apache
-#        url: /docs/installation/providers/community/ubuntu-apache
-#      - title: CentOS with Apache
-#        url: /docs/installation/providers/community/centos-apache
+      - title: Ubuntu with Apache
+        url: /docs/installation/providers/community/ubuntu-apache
+      - title: CentOS with Apache
+        url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
 # Top bar Menu/Navigation
