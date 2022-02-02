@@ -33,7 +33,7 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.1** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
@@ -53,16 +53,16 @@ Login as root user by typing the command below
 sudo su
 ```
 ```sh
-yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
+ 
+yum update -y && yum install unzip wget nano yum-utils curl openssl zip git epel-release -y
+
 ```
 
-<b>2.a Install php-7.3 Packages </b>
+<b>2.a Install php-7.1 Packages </b>
 ```sh
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
-
-yum-config-manager --enable remi-php73
+yum-config-manager --enable remi-php71
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
@@ -84,8 +84,8 @@ Copy ioncube loader to PHP modules Directory.
 
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
-sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
+cp ioncube/ioncube_loader_lin_7.1.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.1.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
@@ -225,6 +225,7 @@ Pick a editor of your choice copy the following and replace '--DOMAINNAME--' wit
 ```sh
 nano /etc/httpd/conf.d/faveo.conf
 ```
+
 
 
 
