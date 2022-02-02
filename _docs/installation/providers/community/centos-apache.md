@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2020-06-09
 toc: true
 ---
-# Installing Faveo Helpdesk Community on Cent OS <!-- omit in toc -->
+# Installing Faveo Helpdesk Community on Cent OS 7 <!-- omit in toc -->
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
