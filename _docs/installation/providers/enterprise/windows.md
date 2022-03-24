@@ -25,8 +25,6 @@ Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server
   - [<strong>9. Final step</strong>](#9-final-step)
 
 
-<a id="installation-steps" name="installation-steps"></a>
-
 ## <strong>Installation steps:</strong>
 
 <a id="1faveo-depends-on-the-following" name="1faveo-depends-on-the-following"></a>
@@ -48,30 +46,30 @@ Faveo can run on [Windows Server](https://www.microsoft.com/en-au/windows-server
 
 <b>1.a. Install IIS server </b>
 
-To install IIS Server open Server Manager and locate the Manage button on top right corner click on it and select -> Add Roles and Features
-- A wizard will open disaplying the overview click on next and under "Installation Type" select Role-based and Feature-based installation and select next. Leave the deafult in "Sever Selection" and click next. Now under "Server Roles" search and enable checkbox for "Web Server IIS" and click on Add Features window and proceed by clicking next.
+To install IIS Server open Server Manager and locate the Manage button on the top right corner click on it and select -> Add Roles and Features
+- A wizard will open displaying the overview, click on next, and under “Installation Type” select Role-based and Feature-based installation and select next. Leave the default in “Server Selection” and click next. Now under “Server Roles” search and enable the checkbox for “Web Server IIS” click on the “Add Features'' window and proceed by clicking next.
 
 <img src="https://camo.githubusercontent.com/9419f38c09fee84514e6e8c8e118cd5fe1e7a822/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f312e6a7067" alt="" />
 
--   - In "Features" section locate the .NET Framework 3.5 and .NET Framework 4.7 select the packages as show in the below image.
+- In the “Features” section locate the .NET Framework 3.5 and .NET Framework 4.7 select the packages as shown in the below image.
     
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/15/features-selection.png" alt="Features_selection"/>
   
-- Click next -> next -> thrice to confirm the settings and finally click on Install . It will get the IIS installed on the server. To verify the installation, you can type the following url in the browser
+- Click next -> next -> thrice to confirm the settings and finally click on Install. It will get the IIS installed on the server. To verify the installation, you can type the following URL in the browser
 
 ```
-http://localhost
+http://localhost/
 ```
 
 <b> 1.b. Install PHP-7.3 </b>
 
-- To make the installation easy and smooth, we will be using Web platform Installer. It is a special tool provided by Microsoft for quick installation of most of our requirement. You can download from following link and install it.
+- To make the installation easy and smooth, we will be using the Web Platform Installer. It is a special tool provided by Microsoft for quick installation of most of our requirements. You can download it from the following link and install it.
 
 [Click here to download Web platform installer](https://www.microsoft.com/web/downloads/platform.aspx)
 
-- After installation locate "Tools" in the  Server Manager Dashboard on the top right corner click on it and select "Internet Information Services (IIS) Manager"
-- Now in the Left Pane of the IIS Manager window select your server then you will find the "Web Platform Installer" if it is installed from the previous step.  
-- Open the Web Platform Installer and search the following Extensions to add.
+- After installation locate “Tools” in the Server Manager Dashboard on the top right corner click on it and select “Internet Information Services (IIS) Manager”
+- Now in the Left Pane of the IIS Manager window select your server then you will find the “Web Platform Installer” if it is installed from the previous step.  
+- Open the Web Platform Installer and search for the following Extensions to add.
 
    **PHP 7.3**
 
@@ -83,30 +81,29 @@ http://localhost
 
 
 
-- Click on install and accept the license agreement the installation should take few minutes to complete.
+- “Click on install and accept the license agreement”, the installation should take a few minutes to complete.
 
 - Download and install PHP Manager from the below link
+
 -   [Click here to download PHP Manager](https://www.faveohelpdesk.com/user-manual/windows_installation/phpmanager.zip)
 
 - Extract the ZIP file and install PHP Manager.
 
 <b>1.c. Install MariaDB-10.3 </b>
 
-- Download and install MariaDB-10.3 from the official MariaDB website.
-"https://downloads.mariadb.org/mariadb/"
+- Download and install MariaDB-10.3 from the official MariaDB website. “https://downloads.mariadb.org/mariadb/”
 
-- Execute the installer and peform the required installation steps and set the root password.
-
-
+- Execute the installer to perform the required installation steps and set the root password.
 
 <b>1.d. Copy and Enable cacert.pem file in php.ini. </b>
 
-This is required to avoid "cURL 60 error" which is one of the Probes that Faveo checks. In other words this is a neccessary  step to run Faveo on IIS Server.
+- This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks. In other words, this is a necessary step to run Faveo on IIS Server.
 
-<b> 1.e.(a) 
-Download and Extract the "cacert.pem" file and copy it to the PHP root directory.</b>
 
-Usually found in the below mentioned location. If it is differnt in your server copy it to that location.
+<b> 1.e.(a) Download and Extract the “cacert.pem” file and copy it to the PHP root directory.</b>
+
+- Usually found in the below mentioned location. If it is different in your server copy it to that location.
+
 ```
 (C:\Program Files\PHP\v7.3)
 ```
@@ -114,25 +111,26 @@ Usually found in the below mentioned location. If it is differnt in your server 
 
 <b> 1.e.(b) Edit the php.ini file which is found inside the PHP root directory.</b>
 
-Uncomment and add the location of cacert.pem to "curl.cainfo".
+- Uncomment and add the location of cacert.pem to “curl.cainfo”.
 
 ```
 curl.cainfo = "C:\Program Files\PHP\v7.3\cacert.pem"
 ```
 
-Note: The location of PHP 7.3 in IIS Server is following. You will need this location to add extensions in your websites.
+- Note: The location of PHP 7.3 in the IIS Server is the following. You will need this location to add extensions to your websites.
 
 <img src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/05/1589806641php.png" alt="" />
 
-<b>  1.f. Install Ioncube Loader </b>
+<b>  1.f.  Install Ioncube Loader </b>
 
 <b> 1.f.(a) Download the Ioncube loader from the below link and extract.</b>
 
 [Click here to download IonCube](https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)
 
-<b> 1.f.(b) Copy the "ioncube_loader_win_7.3.dll" from extracted Ioncube folder and paste it in PHP extension diectory.</b>
+<b> 1.f.(b) Copy the “ioncube_loader_win_7.3.dll” from extracted Ioncube folder and paste it in the PHP extension directory.</b>
 
- which can be found here:
+- which can be found here:
+
  ```
 "C:\Program Files\PHP\v7.3\ext\" 
 ```
@@ -140,9 +138,10 @@ Note: The location of PHP 7.3 in IIS Server is following. You will need this loc
 
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/15/ioncube-dll.png" alt="ioncube-dll"/>
 
-<b> 1.f.(c) Copy the "loader-wizard.php" from the extracted Ioncube folder and paste it in the IIS Root Directory.</b>
+<b> 1.f.(c) Copy the “loader-wizard.php” from the extracted Ioncube folder and paste it into the IIS Root Directory.</b>
 
- which can be found here:
+- which can be found here:
+
  ```
  "C:\inetpub\wwwroot\"
  ```
@@ -156,7 +155,7 @@ Note: The location of PHP 7.3 in IIS Server is following. You will need this loc
 zend_extension = "C:\Program Files\PHP\v7.3\ext\ioncube_loader_win_7.3.dll"
 ```
 
-- Make sure the below lines present in the php.ini file if not add or uncomment the respective lines.
+- Make sure the below lines are present in the php.ini file if not add or uncomment the respective lines.
 
 ```
 extension=php_mysqli.dll
@@ -165,8 +164,7 @@ extension=php_ldap.dll
 extension=php_fileinfo.dll
 ```
 
-- Run the below URL to verify the ionCube Installation.
-Note: If you didn't get the below output try restarting the IIS Server.
+- Run the below URL to verify the ionCube Installation. Note: If you didn’t get the below output try restarting the IIS Server.
 
 ```
 localhost\loader-wizard.php
@@ -179,18 +177,19 @@ localhost\loader-wizard.php
 
 ### <strong> 2. Faveo Installation </strong> 
 
-Once all the above softwares are installed:
+- Once all the above software is installed.
 
 <a id="1-upload-faveo" name="1-upload-faveo"></a>
-<b>2.a. Upload Faveo </b>
-Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
+<b>2.a. Upload Faveo </b>
+
+- Please download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
 ```
 c:\inetpub\wwwroot\
 ```
 <b> 2.b. Give Permissions to the Faveo folder </b>
 
-We need to give full write permission to "IIS_IUSRS" and "Users" for  wwwroot folder.
+- We need to give full write permission to “IIS_IUSRS” and “Users” for the wwwroot folder.
 
 ```
 c:\inetpub\wwwroot\
@@ -202,9 +201,9 @@ c:\inetpub\wwwroot\
 
 ### <strong> 3. Configure Faveo in IIS Manager. </strong>
 - Open IIS Manager and in the left pane,
-- Explore till you find default_website and select it,
-- Then in the right pane you will see the "Basic Settings" option click on it,
-- set the Pyhsical Path value to : 
+- Explore till you find default_website and select it.
+- Then in the right pane, you will see the “Basic Settings” option click on it.
+- Set the Physical Path value to: 
 ```
 "%SystemDrive%\inetpub\wwwroot\public"
 ``` 
@@ -212,13 +211,12 @@ c:\inetpub\wwwroot\
 <img src="https://camo.githubusercontent.com/37530a227e367268afd3106b89f1e1dd343e1fdf/68747470733a2f2f7777772e666176656f68656c706465736b2e636f6d2f757365722d6d616e75616c2f696d616765732f666176656f696e7374616c6c6174696f6e77696e646f77732f362e6a7067" alt="" />
 
 <b> 3.a Configure web.config file for IIS </b>
-- Open notepad and copy the below and the save the file under below path as web.config
+- Open notepad and copy the below and then save the file under the below path as web.config
 ```
  c:\inetpub\wwwroot\public
  ```
-- Make sure while saving you select all file types otherwise you will end up having the file as web.config.txt which is not acceptable because the file type should be "CONFIG File".
-- Below is the code which should be copied in the file
-
+- Make sure while saving you select all file types otherwise you will end up having the file as web.config.txt which is not acceptable because the file type should be “CONFIG File”.
+- Below is the code which should be copied in the file.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -260,27 +258,27 @@ c:\inetpub\wwwroot\
 
 ### <strong> 4. Setting up the Database. </strong>
 
-Open MariaDB 10.3 Command Line Client and run the below commands.
+Open MariaDB 10.3 Command Line Client and run the below command.
 
-- Create a database called 'faveo'.
+- Create a database called ‘faveo’.
 
 ```sql
 CREATE DATABASE faveo;
 ```
 
-- Create a user called 'faveo' and its password 'strongpassword'.
+- Create a user called ‘faveo’ and its password ‘strong password’.
 
 ```sql
 CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
 ```
 
-- We have to authorize the new user on the faveo db so that he is allowed to change the database.
+- We have to authorize the new user on the faveo DB so that he is allowed to change the database.
 
 ```sql
 GRANT ALL ON faveo.* TO 'faveo'@'localhost';
 ```
 
-- And finally we apply the changes and exit the database.
+- And finally, we apply the changes and exit the database.
 
 ```sql
 FLUSH PRIVILEGES;
@@ -291,16 +289,17 @@ exit
 
 ### <strong> 5. Configure IIS webserver </strong>
 
-By default, IIS configures PHP only to accept GET, POST and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
+By default, IIS configures PHP only to accept GET, POST, and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
+
 
 <b>5.a Open IIS Manager </b>
 
-- Open the Start menu and type "IIS" in to the find box. You should see an application called "Internet Information Services (IIS) Manager".
+- Open the Start menu and type “IIS” into the find box. You should see an application called “Internet Information Services (IIS) Manager”.
 
  
 <b>5.b Select your computer in the "Connections" pane</b>
 
-- On the left, there is a "Connections" pane. You should see your computer listed here. Click on your computer name which should load the a dashboard with a handful of icons.
+- On the left, there is a “Connections” pane. You should see your computer listed here. Click on your computer name which should load the dashboard with a handful of icons.
  
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-14.59.44.png" alt=""/>
 
@@ -310,29 +309,29 @@ By default, IIS configures PHP only to accept GET, POST and HEAD request types. 
 
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.01.17.png" alt="" />
 
-- Then double-click on the handler for PHP files to bring up the "Edit Module Mapping" window:
+- Then double-click on the handler for PHP files to bring up the “Edit Module Mapping” window:
 
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.03.15.png" alt="" />
 
 <b>5.c Edit Verbs</b>
 
-- Click on the "Request Restrictions" button, then switch to the [Verbs] tab. Switch the radio button to "All Verbs", then click "OK" to close the window, then "OK" again to close the other window.
+- Click on the “Request Restrictions” button, then switch to the [Verbs] tab. Switch the radio button to “All Verbs”, then click“OK” to close the window, then “OK” again to close the other.
 
 <img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.04.02.png" alt="" />
 
-- Note: You may be prompted with an alert to "fix" the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the **"Executable"** box and it will save successfully.
+- Note: You may be prompted with an alert to “fix” the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the “Executable” box and it will save successfully.
 
 <b>5.e Setting up Bindings</b>
 
-- To Open the Faveo on your domain , you must set the binding.
+- To Open the Faveo on your domain, you must set the binding.
 
-- Go to Bindings option on right pane and select **HTTP** and edit the hostname to your concerned Domain.
+- Go to the Bindings option on the right pane, select HTTP and edit the hostname to your concerned Domain.
 
-- Now you can open the browser and enter the IP or Domain Name to open Faveo. To test the successfull configuration perform some create delete operations in Faveo if the Delete operation fails then the above steps is not sufficient at this point you may need to perform the below steps too.
+- Now you can open the browser and enter the IP or Domain Name to open Faveo. To test the successful configuration perform some delete operations in Faveo if the Delete operation fails then the above steps are not sufficient at this point you may need to perform the below steps too
 
 **Disable WebDav (Optional)**
 
-- Perform  this step only if you have problem with delete option in Faveo ec=pven after following the previous steps.
+- Perform this step only if you have a problem with the delete option in Faveo even after following the previous steps.
 
 - To remove WebDav,
 - Go to Control Panel -> Uninstall Program -> Turn Windows features on or off -> IIS -> World Wide Web Services -> Common HTTP feature -> WebDAV Publishing.
@@ -342,20 +341,20 @@ By default, IIS configures PHP only to accept GET, POST and HEAD request types. 
 
 ### <strong>6. Configure Task Scheduler </strong>
 
-- To open Taskscheduler press ctrl + R and Type "taskschd.msc".
+- To open Task scheduler press ctrl + R and Type “taskschd.msc”.
 
-- To Setup Schedule task for Faveo. Open Task scheduler on server and follow this steps
+- To Setup Schedule task for Faveo. Open Task Scheduler on the server and follow these steps.
 
-- On the Right pane of  Task scheduler select “create basic task” and enter a name for the task and click next.
+- On the Right pane of the Task scheduler select “create basic task” enter a name for the task and click Next.
 
-- Under Trigger section select daily and click next and leave the default values in daily section and proceed next.
+- Under Trigger, section select daily and click next and leave the default values in daily section and proceed next.
 
-- Now under Action section select start a program and click next and in Start a program copy the below value in to the program/script field.
+- Now under the Action section select start a program and click next and in Start a program copy the below value into the program/script field.
 
 ```
 C:\Windows\System32\cmd.exe
 ```
-- - Add following value in Argument :
+- Add the following value to the Argument :
 
 ```
 c:\inetpub\wwwroot\faveo\artisan" schedule:run #this is for faveo incoming mail,esacalation, faveo update check.
@@ -363,20 +362,19 @@ c:\inetpub\wwwroot\faveo\artisan queue:listen database --queue=reports #this is 
 c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring #this is for recurring.
 c:\inetpub\wwwroot\faveo\artisan queue:work database #this is for outgoing mail.
 ```
-- The above commands will be the task sheduler commands.
-- Finally under Finish section select the checkbox to open the properties window after finish and click finish button.
+- The above commands will be the task scheduler commands.
+- Finally under the Finish section select the checkbox to open the properties window after finish and click the finish button.
 
-- In the properties window select the Triggers tab and click on Edit and select the checkbox for "Repeat task every" and set values to run every 5 minutes for indefinitely and click on OK.
+- In the properties, window selects the Triggers tab, click on edit and select the checkbox for “Repeat task every” set values to run every 5 minutes indefinitely and click on OK.
 
 
 <a id="7-ssl-installation-" name="7-ssl-installation-"></a>
 
 ### <strong>7. SSL Installation </strong>
 
-Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
+Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
-Faveo Requires HTTPS  so the SSL is must to work with the latest versions of faveo , so for teh insternal network and if there is no domain for free you can use the Self-Signed-SSL.
-
+Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/windows-iis-ssl)
 
@@ -392,4 +390,4 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 ### <strong>9. Final step</strong>
 
-The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
+The final step is to have fun with your newly created instance, which should be up and running to http://localhost or the domain you have configured Faveo with.
