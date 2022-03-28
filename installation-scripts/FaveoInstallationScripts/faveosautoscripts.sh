@@ -83,10 +83,19 @@ echo -e "$skyblue                                                               
 echo -e "$yellow         This is a automated Installation Script for Faveo Helpdesk products which runs on Linux Distro's $reset"
 echo -e "                                                                                                          "
 echo -e "                                                                                                          "
+
 # Detect Debian users running the script with "sh" instead of bash.
+
 if readlink /proc/$$/exe | grep -q "dash"; then
 	echo '&red This installer needs to be run with "bash", not "sh". $reset'
-	exit
+	exit 1
+fi
+
+# Checking for the Super User.
+
+if [[ $EUID -ne 0 ]]; then
+   echo -e "$red This script must be run as root $reset"
+   exit 1
 fi
 
 # Detect OS
@@ -142,7 +151,7 @@ elif [[  -e /etc/rocky-release ]]; then
     sleep 1
     echo -e "                                 "
     echo -e "Supported OS Version [CHECK :$green OK $reset]"
-# if the required OS and version is not detected the below response will be passed to the user.
+# If the required OS and version is not detected the below response will be passed to the user.
 else
 	echo "$red This installer seems to be running on an unsupported distribution.
 Supported distros are Ubuntu, Debian, Rocky Linux, CentOS and Fedora.$reset"
@@ -171,14 +180,11 @@ This version of CentOS is too old and unsupported.$reset"
 fi
 
 # Prerequisties for the Faveo installation like the Domain, email, License and order numbers are taken below:
+echo -e "                               "
+echo -e "$skyblue Please provide the Below details which is required for the Faveo installaion $reset"
 
-echo -e "                                 "
-echo "$red Please make sure the Domain is propagated to the server pubic IP, please propagate the server IP to the domain and Try again $reset";
-echo -e "                                 "
-read -p "Continue ($green y $reset/$red n $reset)?" REPLY1
-if [[ ! $REPLY1 =~ ^(yes|y|Yes|YES|Y) ]]; then
-        exit 1;
-fi;
+Get_Faveo_Prerequisties ()
+{
 echo -e "                                 "
 echo "$yellow Domain Name$reset";
 echo -e "                                 "
@@ -187,7 +193,8 @@ echo -e "                                 "
 echo "$yellow Email $reset";
 echo -e "                                 "
 read Email
-echo -e "                                 "
+echo "$yellow You can find the License and Order No from https://billing.faveohelpdesk.com $reset"
+echo -e "                                   "
 echo "$yellow License Code $reset";
 echo -e "                                 "
 read LicenseCode
@@ -207,16 +214,100 @@ echo -e "                                 "
 echo "License Code:$yellow $LicenseCode $reset";
 echo -e "                                 "
 echo "Order Number:$yellow $OrderNumber $reset";
+}
+#Executing function to fetch the above detais.
+
+Get_Faveo_Prerequisties
+
+#Checking the Details with functions below.
+
 echo -e "\n";
 read -p "Continue ($green y $reset/$red n $reset)?" REPLY
-
 if [[ ! $REPLY =~ ^(yes|y|Yes|YES|Y) ]]; then
+    echo -e "                           "
+    read -p "Do you wish to Re-enter Continue ($green y $reset/$red n $reset)?" REPLY2
+    if [[ ! $REPLY2 =~ ^(yes|y|Yes|YES|Y) ]]; then
         exit 1;
+    else
+        Get_Faveo_Prerequisties
+    fi;
+    read -p "Is the above details are correct ($green y $reset/$red n $reset)?" REPLY3
+    if [[ ! $REPLY3 =~ ^(yes|y|Yes|YES|Y) ]]; then
+        echo "Please restart the script"
+        exit 1;
+    else
+        echo -e "        "
+        echo "$skyblue Proceeding the Installation $reset"
+        echo -e "          "
+    fi
+else 
+    echo -e "           "
+    echo "Proceeding Further"
 fi;
 
+#DNS Propagation checking with DIG command.
 
+echo -e "               "
+echo -e "$yellow Checking whether the domain is propagated to the server's public IP. $reset"
+echo -e "                                       "
 
-# All the required prerequisties are stored in a variabe above:
-# For Ubuntu 16.04 and 18.04 the installation follows beloaw:
+#Installing Prerequisties for faveo;
+
+#####    apt update && apt install dnsutils git wget curl unzip nano zip -y || yum update -y && yum install unzip wget nano yum-utils curl openssl zip git bind-utils -y
+
+#Checking the server public IP:
+
+PublicIP=$(curl -s ifconfig.me) 
+
+#checking the domian propagated IP:
+
+echo -e "               "
+DomainIP=$(dig $DomainName +short)
+echo -e "               "
+
+# Condition for comparing the IP's:
+
+if [[ $PublicIP != $DomainIP ]]; then
+    echo -e "$yellow Please make sure the Domain is propagated to the server pubic IP and try again, The server IP is $red $PublicIP $reset and The domain is propagated to $red $DomainIP $reset $reset";
+    echo -e "               "
+    exit 1
+else
+    echo -e "$yellow The Domain is Propagated to the Server Public IP CHECK :$green OK $reset $reset"
+    echo -e "               "
+    echo "$skyblue Proceeding the Installation $reset"
+    echo -e "               "
+fi
+
+# Checking for required ports whether it is open or not.
+
+echo -e "$yellow Checking for the Port 80 and 443 Http and Https Faveo requires those Ports for the Installation $reset" 
+echo -e "       "
+
+nc -z $DomainName 80
+
+if [[ $? != 0 ]]; then
+    echo "$red The Port 80 is Not open. Please open the required Ports and restart the script $reset";
+    echo -e "               "
+    exit 1
+else
+    echo "$yellow The Port 80 Open CHECK :$green OK $reset $reset"
+    echo -e "               "
+    echo "$skyblue Proceeding the Installation $reset"
+    echo -e "               "
+fi
+
+nc -z $DomainName 443
+
+if [[ $? != 0 ]]; then
+    echo "$red The Port 443 is Not open. Please open the required Ports and restart the script $reset";
+    echo -e "               "
+    exit 1
+else
+    echo "$yellow The Port 443 Open CHECK :$green OK $reset $reset"
+    echo -e "               "
+    echo "$skyblue Proceeding the Installation $reset"
+    echo -e "               "
+fi
+
 
 
