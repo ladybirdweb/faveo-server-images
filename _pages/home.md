@@ -86,8 +86,26 @@ Faveo Helpdesk Community can be installed using following installers
 We have created script for simple, one click installtion of Faveo.
 
 **For Faveo Helpdesk Installation script**
+* click on the below link and download the file "faveoautoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
 
-* [Installation Script](/installation-scripts/FaveoInstallationScripts/faveosautoscripts.sh) 
+
+* [Installation Script](/installation-scripts/FaveoInstallationScripts/faveoautoscript.sh) 
+
+* Once the file is copied to the faveo server we need to make the file excecutable by using the below command we will change the permission to excecute.
+```
+chmod +x faveosutoscript.sh
+```
+* After changing the file permission we need to excecute the file by using the below command.
+```
+./faveoautoscript.sh
+```
+* After excecuting the file it will ask for the below values please keep them ready before starting the script.
+```
+Domain             - (The domain propagated to the faveo server public IP)
+Email
+Faveo License code - (This can be obtained from https://billing.faveohelpdesk.com)
+Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.com)
+```
 
 <!--- **For Faveo Helpdesk Freelancer, paid and Enterprise version**
 
