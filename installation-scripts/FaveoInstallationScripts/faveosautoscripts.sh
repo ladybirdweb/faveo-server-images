@@ -405,7 +405,7 @@ Ubuntu_Installation ()
 
 
     wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
-    tar xvfz ioncube_loaders_lin_x86-64.tar.gz -q
+    tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 
     PhpExtDirUbuntu=$(php -i | grep extension_dir)
     cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/'$PhpExtDirUbuntu'
@@ -451,7 +451,7 @@ Ubuntu_Installation ()
      
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$OrderNumber\&serial_key\=$LicenseCode --output faveo.zip 
 
-    unzip "faveo.zip" -d /var/www/faveo -q
+    unzip "faveo.zip" -d /var/www/faveo 
 
     # Faveo Folder permissions:
 
@@ -470,7 +470,8 @@ Ubuntu_Installation ()
 
     touch /var/www/DB-password
 
-    db_user_pw=$(openssl rand -base64 12)  >> /var/www/DB-password
+    db_user_pw=$(openssl rand -base64 12)  
+    echo -e "$db_user_pw" >> /var/www/DB-password
 
 	mysql -uroot  -e "CREATE DATABASE faveo ;"
 	mysql -uroot  -e "CREATE USER faveo@localhost IDENTIFIED BY '$db_user_pw';"
@@ -731,7 +732,7 @@ gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
      
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$OrderNumber\&serial_key\=$LicenseCode --output faveo.zip
 
-    unzip "faveo.zip" -d /var/www/faveo -q
+    unzip "faveo.zip" -d /var/www/faveo 
 
 
     # Faveo Folder permissions:
@@ -749,7 +750,8 @@ gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
 
     touch /var/www/DB-password
 
-    db_user_pw=$(openssl rand -base64 12) >> /var/www/DB-password
+    db_user_pw=$(openssl rand -base64 12) 
+    echo -e "$db_user_pw" >> /var/www/DB-password
 
 	mysql -uroot  -e "CREATE DATABASE faveo ;"
 	mysql -uroot  -e "CREATE USER faveo@localhost IDENTIFIED BY '$db_user_pw';"
