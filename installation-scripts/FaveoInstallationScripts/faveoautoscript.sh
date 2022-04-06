@@ -201,7 +201,7 @@ echo -e "                                   "
 echo "$yellow License Code $reset";
 echo -e "                                 "
 read LicenseCode
-read 0.5
+sleep 0.5
 echo -e "                                 "
 echo "$yellow Order Number $reset";
 echo -e "                                 "
@@ -407,10 +407,11 @@ Ubuntu_Installation ()
     wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
     tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 
-    PhpExtDirUbuntu=$(php -i | grep extension_dir)
-    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/'$PhpExtDirUbuntu'
-    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDirUbuntu'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDirUbuntu'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+    PhpExtDir=$(php -i | grep extension_dir)
+    
+    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/'$PhpExtDir'
+    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
     systemctl restart apache2 
 
     if [[ $? != 0 ]]; then
@@ -423,6 +424,20 @@ Ubuntu_Installation ()
 
 
     if [[ "$os" == "ubuntu" && "$os_version" -lt 2004 ]]; then
+        apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+        add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.3/ubuntu xenial main'
+        apt-get update
+        apt-get install mariadb-server -y
+        systemctl start mysql
+        systemctl enable mysql
+    
+    else
+        apt install -y mariadb-server-10.3
+        systemctl start mariadb
+        systemctl enable mariadb
+    fi
+
+    if [[ "$os" == "debian" && "$os_version" -lt 10 ]]; then
         apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
         add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.3/ubuntu xenial main'
         apt-get update
@@ -608,6 +623,18 @@ stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
     if [[ $? != 0 ]]; then
     echo -e "$red Failed to obtain SSL certificates $reset"
     fi
+
+    if [[ "$os" == "debian" && "$os_version" -lt 10 ]]; then
+    apt install python-certbot-apache -y
+    else
+    apt install python3-certbot-apache -y
+    fi    
+
+    certbot run -n --apache --agree-tos -d $DomainName  -m  $Email --redirect -q
+
+    if [[ $? != 0 ]]; then
+    echo -e "$red Failed to obtain SSL certificates $reset"
+    fi
     sleep 0.5
 
     echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /etc/init.d/apache2 restart " | sudo tee /etc/cron.d/faveo-ssl
@@ -624,7 +651,7 @@ CentOS_Installation  ()
 {
     # Update your Packages and install some utility tools
     echo -e "$yellow Updating server repo and Packages $reset"
-    yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
+    yum update -y && yum install unzip wget nano yum-utils curl openssl zip git tar -y
    
     if [[ $? != 0 ]]; then
     echo -e "$red failed at server and repo update $reset"
@@ -632,14 +659,25 @@ CentOS_Installation  ()
     sleep 0.5
 
     # Install php-7.3 Packages
-    echo -e "$yellow Installing PHP and PHP Extensions"
+    echo -e "$yellow Installing PHP and PHP Extensions $reset"
 
-    yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-    yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
-    yum-config-manager --enable remi-php73
-    yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+    if [[ "$os" == "centos" && "$os_version" -lt 8 ]]; then
+	yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+	yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+	yum-config-manager --enable remi-php73
+	yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+    
+    else
+	yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+	yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+	dnf module install php:remi-7.3 -y
+	yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+
+    fi
+
+
 
     if [[ $? != 0 ]]; then
     echo -e "$red Failed at Adding PHP 7.3 PPA repository and installing PHP and required extensions. $reset"
@@ -708,7 +746,8 @@ CentOS_Installation  ()
 
     # Installing MySql DB.
     echo -e "$yellow Installing MySql DB $reset"
-
+    
+    if [[ "$os" == "centos" && "$os_version" -lt 8 ]]; then
     touch /etc/yum.repos.d/mariadb.repo
     echo -e "[mariadb]
 name = MariaDB
@@ -719,6 +758,31 @@ gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
     yum install MariaDB-server MariaDB-client -y
     systemctl enable mysql.service
     systemctl start mysql.service
+    
+    else
+	dnf module -y install mariadb:10.3
+	systemctl start mariadb
+	systemctl enable mariadb
+    fi 
+
+    if [[ "$os" == "rocky" && "$os_version" -lt 8 ]]; then
+    touch /etc/yum.repos.d/mariadb.repo
+    echo -e "[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.3/centos73-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
+
+    yum install MariaDB-server MariaDB-client -y
+    systemctl enable mysql.service
+    systemctl start mysql.service
+    
+    else
+	dnf module -y install mariadb:10.3
+	systemctl start mariadb
+	systemctl enable mariadb
+    fi 
+    
 
     if [[ $? != 0 ]]; then
     echo -e "$red Failed to install MariaDB. $reset"
@@ -792,7 +856,7 @@ gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
     touch /etc/httpd/conf.d/faveo.conf
 
     echo -e "<VirtualHost *:80> 
-ServerName --DOMAINNAME-- 
+ServerName $DomainName 
 ServerAdmin webmaster@localhost 
 DocumentRoot /var/www/faveo/public 
 <Directory /var/www/faveo> 
@@ -891,6 +955,11 @@ stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log" >> /etc/superviso
     else
     yum install python3-certbot-apache -y
     fi    
+    if [[ "$os" == "rocky" && "$os_version" -lt 8 ]]; then
+    yum install python-certbot-apache -y
+    else
+    yum install python3-certbot-apache -y
+    fi    
 
     certbot run -n --apache --agree-tos -d $DomainName  -m  $Email --redirect -q
 
@@ -944,22 +1013,22 @@ echo -e "                                                                       
 sleep 0.05
 echo -e "------------------------------------------------------------------------------------------------"
 sleep 0.05
-echo -e "|                                        |                                                     |"
+echo -e "|                                                                                              |"
 sleep 0.05
-echo -e "| $skyblue Faveo URL $reset              |         $green               $DomainName    $reset  |"
+echo -e "| $skyblue Faveo URL $reset                        $green               $DomainName    $reset  |"
 sleep 0.05
-echo -e "|                                        |                                                     |"
+echo -e "|                                                                                              |"
 sleep 0.05
-echo -e "| $skyblue Faveo DB User $reset          |         $green               faveo   $reset         |"
+echo -e "| $skyblue Faveo DB User $reset                    $green               faveo   $reset         |"
 sleep 0.05
-echo -e "|                                        |                                                     |"
+echo -e "|                                                                                              |"
 sleep 0.05
-echo -e "| $skyblue Faveo DB Name  $reset         |         $green               faveo  $reset          |"
+echo -e "| $skyblue Faveo DB Name  $reset                   $green               faveo  $reset          |"
 sleep 0.05
-echo -e "|                                        |                                                     |"
+echo -e "|                                                                                              |"
 sleep 0.05
-echo -e "| $skyblue Faveo DB User Passwd  $reset  |         $green               $db_user_pw $reset     |"
+echo -e "| $skyblue Faveo DB User Passwd  $reset            $green               $db_user_pw $reset     |"
 sleep 0.05
-echo -e "|                                        |                                                     |"
+echo -e "|                                                                                              |"
 sleep 0.05
 echo -e "------------------------------------------------------------------------------------------------"
