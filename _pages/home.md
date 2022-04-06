@@ -25,8 +25,8 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
     - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
     - [Installation on a shared server](#installation-on-a-shared-server)
   - [Help](#help)
-<!--- [One click installers](#one-click-installers)
-[Installation via scripts](#installation-via-scripts) -->
+- [One click installers](#one-click-installers)
+[Installation via scripts](#installation-via-scripts)
 
 
 <a id="markdown-requirements" name="requirements"></a>
@@ -74,7 +74,7 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Ubuntu with Apache](/docs/installation/providers/community/ubuntu-apache)
 * [Debian with Apache](/docs/installation/providers/community/debian-apache)
 
-<!--- <a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
+<a id="markdown-one-click-installer" name="markdown-one-click-installer"></a>
 ### One click installers 
 
 Faveo Helpdesk Community can be installed using following installers
@@ -85,14 +85,18 @@ Faveo Helpdesk Community can be installed using following installers
 ### Installation via scripts 
 We have created script for simple, one click installtion of Faveo.
 
-**For Faveo Helpdesk Freelancer, paid and Enterprise version**
+**For Faveo Helpdesk Installation script**
+
+* [Installation Script](/installation-scripts/FaveoInstallationScripts/faveosautoscripts.sh) 
+
+<!--- **For Faveo Helpdesk Freelancer, paid and Enterprise version**
 
 * [Cent OS 7](/installation-scripts/helpdesk/centos7)
 * [Ubuntu 18](/installation-scripts/helpdesk/ubuntu18)
 
 **For Faveo Helpdesk Community**
 * [Cent OS 7](/installation-scripts/helpdesk-community/centos7)
-* [Ubuntu 16](/installation-scripts/helpdesk-community/ubuntu16) -->
+* [Ubuntu 16](/installation-scripts/helpdesk-community/ubuntu16) --->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server
