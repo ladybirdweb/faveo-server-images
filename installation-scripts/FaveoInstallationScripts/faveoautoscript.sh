@@ -366,7 +366,17 @@ Ubuntu_Installation ()
 
     echo -e "$yesllow Installing PHP 7.3 and PHP Extensions $reset"
 
+    if [[ "$os" == "debian" ]]; then
+    apt update
+    apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
+    php7.3-cli php7.3-common php7.3-fpm php7.3-soap php7.3-gd \
+    php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
+    php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
+    php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
+    
+    fi
 
+    if [[ "$os" == "ubuntu" ]]; then
     apt-get install -y software-properties-common
     add-apt-repository ppa:ondrej/php -y
 
@@ -376,6 +386,7 @@ Ubuntu_Installation ()
     php7.3-json php7.3-opcache  php7.3-mbstring php7.3-zip \
     php7.3-bcmath php7.3-intl php7.3-xml php7.3-curl  \
     php7.3-imap php7.3-ldap php7.3-gmp php7.3-redis
+    fi
 
     if [[ $? != 0 ]]; then
     echo -e "$red Failed at Adding PHP 7.3 PPA repository and installing PHP and required extensions. $reset"
@@ -383,9 +394,18 @@ Ubuntu_Installation ()
     sleep 0.5
     # Editing php.ini file.
     echo -e "$yellow Editing php.ini file to Faveo requirements $reset"
+    if [[ "$os" == "debian" ]]; then
+    sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/fpm/php.ini
+    fi
 
-
-
+    if [[ "$os" == "ubuntu" ]]; then
     sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/7.3/apache2/php.ini
     sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/7.3/apache2/php.ini
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/7.3/apache2/php.ini
@@ -394,6 +414,7 @@ Ubuntu_Installation ()
     sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/7.3/apache2/php.ini
     sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/7.3/apache2/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/apache2/php.ini
+    fi
 
     if [[ $? != 0 ]]; then
     echo -e "$red Failed at Editing php.ini file. $reset"
@@ -437,18 +458,12 @@ Ubuntu_Installation ()
         systemctl enable mariadb
     fi
 
-    if [[ "$os" == "debian" && "$os_version" -lt 10 ]]; then
-        apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-        add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.3/ubuntu xenial main'
-        apt-get update
-        apt-get install mariadb-server -y
-        systemctl start mysql
-        systemctl enable mysql
-    
-    else
-        apt install -y mariadb-server-10.3
-        systemctl start mariadb
-        systemctl enable mariadb
+    if [[ "$os" == "debian" ]]; then
+
+    apt install -y mariadb-server
+    systemctl start mariadb
+    systemctl enable mariadb
+
     fi
 
     if [[ $? != 0 ]]; then
@@ -624,10 +639,8 @@ stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
     echo -e "$red Failed to obtain SSL certificates $reset"
     fi
 
-    if [[ "$os" == "debian" && "$os_version" -lt 10 ]]; then
+    if [[ "$os" == "debian" ]]; then
     apt install python-certbot-apache -y
-    else
-    apt install python3-certbot-apache -y
     fi    
 
     certbot run -n --apache --agree-tos -d $DomainName  -m  $Email --redirect -q
