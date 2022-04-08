@@ -127,7 +127,7 @@ apt install -y mariadb-server
 ```
 
 
-<b>Once the softwares above are installed:</b>
+Once the softwares above are installed:</b>
 
 
 <a id="3-upload-faveo" name="3-upload-faveo"></a>

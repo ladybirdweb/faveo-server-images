@@ -56,7 +56,7 @@ Login as root user by typing the command below
 sudo su
 ```
 ```sh
-yum update -y && yum install unzip wget nano yum-utils curl openssl zip git tar -y
+yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
 <strong>2.a.Install php-7.3 Packages </strong>
