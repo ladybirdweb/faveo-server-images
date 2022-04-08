@@ -156,14 +156,14 @@ Supported distros are Ubuntu, Debian, Rocky Linux, CentOS and Fedora.$reset"
 	exit
 fi
 
-if [[ "$os" == "ubuntu" && "$os_version" -lt 1604 ]]; then
+if [[ "$os" == "ubuntu" && "$os_version" -lt 1804 ]]; then
     echo "$os_version"
 	echo "$red Ubuntu 16.04 or higher is required to use this installer.
 This version of Ubuntu is too old and unsupported.$reset"
 	exit
 fi
 
-if [[ "$os" == "debian" && "$os_version" -lt 9 ]]; then
+if [[ "$os" == "debian" && "$os_version" -lt 10 ]]; then
     echo "$os_version"
 	echo "$red Debian 9 or higher is required to use this installer.
 This version of Debian is too old and unsupported.$reset"
@@ -263,7 +263,7 @@ sleep 0.5
 
 echo -e "$yellow Installing precheck tools for faveo $reset"
 
-apt update && apt install dnsutils git wget curl unzip nano zip -y || yum update -y && yum install unzip wget nano yum-utils curl openssl zip git nc bind-utils -y >/dev/null 2>&1
+apt update && apt install dnsutils git wget curl unzip nano netcat zip -y || yum update -y && yum install unzip wget nano yum-utils curl openssl zip git nc bind-utils -y >/dev/null 2>&1
 
 sleep 0.5
 echo -e "                                                               "

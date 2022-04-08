@@ -83,7 +83,7 @@ Faveo Helpdesk Community can be installed using following installers
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
-We have created script for simple, one click installtion of Faveo.
+We have created script for simple, one click installtion of Faveo, this script supports Ubuntu 18.04, 20.04, Centos 7, 8 Stream, Rocky 8.
 
 **For Faveo Helpdesk Installation script**
 * click on the below link and download the file "faveoautoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
