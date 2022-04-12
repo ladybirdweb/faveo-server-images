@@ -445,10 +445,14 @@ Ubuntu_Installation ()
 
 
     if [[ "$os" == "ubuntu" && "$os_version" -lt 2004 ]]; then
-        apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-        add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.3/ubuntu xenial main'
+        wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+        echo "b9e90cde27affc2a44f9fc60e302ccfcacf71f4ae02071f30d570e6048c28597 mariadb_repo_setup" \
+            | sha256sum -c -        
+        chmod +x mariadb_repo_setup
+        sudo ./mariadb_repo_setup \
+            --mariadb-server-version="mariadb-10.3"
         apt-get update
-        apt-get install mariadb-server -y
+        DEBIAN_FRONTEND=noninteractive apt-get install mariadb-server -y
         systemctl start mysql
         systemctl enable mysql
     
@@ -768,7 +772,7 @@ baseurl = http://yum.mariadb.org/10.3/centos73-amd64/
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
 
-    yum install MariaDB-server MariaDB-client -y
+    DEBIAN_FRONTEND=noninteractive yum install MariaDB-server MariaDB-client -y
     systemctl enable mysql.service
     systemctl start mysql.service
     
