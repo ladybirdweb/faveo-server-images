@@ -123,7 +123,7 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
 <IfModule mod_ssl.c>
         <VirtualHost *:443>
-                ServerAdmin ---DomainName---
+                ServerAdmin ---DomainName or IP---
 
                 DocumentRoot /var/www/faveo/public
 
@@ -152,4 +152,10 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
 nano /etc/hosts
 ```
-- In the above file add the below line replace the domain or the IP on which we care
+- In the above file add the below line replace the domain or the IP which is used for the faveo.
+```
+127.0.0.1  ---Domain or IP---
+```
+- After the above is done then we need to add the the ca-cert file path to the php.ini file add the path to the openssl.cafile like this : "<b>openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"</b> 
+
+- Now check the faveo on the Browser it will take you to probe page, if everything is good then you can proceed with the installation in Browser.

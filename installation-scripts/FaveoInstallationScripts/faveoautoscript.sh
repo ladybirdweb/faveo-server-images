@@ -429,10 +429,10 @@ Ubuntu_Installation ()
     tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 
     PhpExtDir=$(php -i | grep extension_dir)
-    
-    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/'$PhpExtDir'
-    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-    sed -i '2 a zend_extension = "/usr/lib/php/'$PhpExtDir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+    echo -e "$PhpExtDir"
+    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/"$PhpExtDir"
+    sed -i '2 a zend_extension = "/usr/lib/php/"$PhpExtDir"/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/"$PhpExtDir"/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
     systemctl restart apache2 
 
     if [[ $? != 0 ]]; then

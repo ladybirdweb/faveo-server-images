@@ -86,6 +86,9 @@ To create a signed certificate we need to create a CSR (certificate signing Requ
 
 
 
+## Setting up the SSL certificate
+To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate.
+
 ## <strong>Steps</strong>
 
 - Generate a private key for the CA (Certificate Authority).
@@ -94,14 +97,12 @@ To create a signed certificate we need to create a CSR (certificate signing Requ
 - Create a private key for the certificate.
 - Create a certificate signing request.
 - Create a certificate and sign it with the CA private key.
-- Compiling the created certificate and key file as a .pfx file.
 - Installing the SSL certificate.
 
 ### <strong>Generate a private key for the CA</strong>
 
-Create a directory named SSL under the desktop or on any directory, the following commands will create the SSL files those files will be saved in the directory which we create.
-
-- Open Command Prompt from the SSL directory that we created,
+Create a directory named SSL in the home or on any directory, the following commands will create the SSL files those files will be saved in the directory which we create.
+- From the SSL folder that was created run the below commands.
 - Run the below command to create a Private key for the rootCA this command will save a file name faveoroot.key in the SSL folder.
 
 ```
@@ -110,7 +111,7 @@ openssl ecparam -out faveoroot.key -name prime256v1 -genkey
 
 ### <strong>Generate a certificate signing request for the CA</strong>
 
-- From the command prompt run the below command which will create a CSR (certificate signing request) for the Root CA.
+- Run the below command which will create a CSR (certificate signing request) for the Root CA.
 
 ```
 openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
@@ -120,7 +121,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (the common domain for the company like *.domain).
+    - Comman name (We don't need to add any details to this field)
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -148,7 +149,7 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 
 ### <strong>Create a certificate signing request for the server SSL</strong>
 
-- The below command will create a Certificate Signing Request for the Server SSL.
+- The below command will create a Certificate Signing Request for the Server webpage SSL.
 
 ```
 openssl req -new -sha256 -key private.key -out faveolocal.csr
@@ -159,7 +160,7 @@ openssl req -new -sha256 -key private.key -out faveolocal.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Common name (the domain or the IP which we need to create the SSL certificate for faveo).
+    - Common name (the domain or the IP which we need to create the SSL certificate for faveo should be entered).
     - Email address.
 - The rest can be left blank and after this is completed it will create the CSR file and save it with the name faveolocal.csr in the SSL directory.
 
@@ -171,3 +172,60 @@ openssl req -new -sha256 -key private.key -out faveolocal.csr
 openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -CAcreateserial -out faveolocal.crt -days 3650 -sha256 
 ```
 - The above command will create a server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days that is ten years.
+
+## Setting up the Virtual host file for the Self signed SSL certificate's.
+
+- We need to enable some Modules for the ssl as below : 
+```
+dnf install mod_ssl
+systemctl restart httpd
+```
+- The above will install mod_ssl module and restart apache.
+- Before creating the Virtual host file for SSL we need to copy the created SSL certificate's and Key file to the corresponding directory with below command, these commands should be runned from the SSL Directory.
+```
+cp faveolocal.crt /etc/pki/tls/certs
+cp private.key /etc/pki/tls/private
+cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
+```
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.g/faveo-ssl.conf.</b>
+- Then need to copy the below configuration inside the faveo-ssl.conf file.
+
+```
+<IfModule mod_ssl.c>
+        <VirtualHost *:443>
+                ServerAdmin ---DomainName or IP---
+
+                DocumentRoot /var/www/faveo/public
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+                SSLEngine on
+
+                SSLCertificateFile      /etc/pki/tls/certs/faveolocal.crt
+                SSLCertificateKeyFile /etc/pki/tls/private/private.key
+
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
+                </Directory>
+
+        </VirtualHost>
+</IfModule>
+```
+
+## After Creating the Virtual Host file we need to add the local host for the domain.
+
+- After adding the SSL certificates and virtual hosts we need to add the domain to the hosts file to the local host as below.
+```
+nano /etc/hosts
+```
+- In the above file add the below line replace the domain or the IP which is used for the faveo.
+```
+127.0.0.1  ---Domain or IP---
+```
+- After the above is done then we need to add the the ca-cert file path to the php.ini file add the path to the openssl.cafile like this : "<b>openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"</b> 
+
+- Now check the faveo on the Browser it will take you to probe page, if everything is good then you can proceed with the installation in Browser.
