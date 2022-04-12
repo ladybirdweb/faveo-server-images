@@ -772,7 +772,7 @@ baseurl = http://yum.mariadb.org/10.3/centos73-amd64/
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
 
-    DEBIAN_FRONTEND=noninteractive yum install MariaDB-server MariaDB-client -y
+    yum install MariaDB-server MariaDB-client -y
     systemctl enable mysql.service
     systemctl start mysql.service
     
