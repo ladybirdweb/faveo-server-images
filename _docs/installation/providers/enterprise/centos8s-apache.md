@@ -102,7 +102,7 @@ The official Faveo installation uses Mysql as the database system and **this is 
 Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
-In CentOS-8-Stream OS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
+In CentOS-8-Stream mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
 
 ```sh
 yum install mariadb-server -y
