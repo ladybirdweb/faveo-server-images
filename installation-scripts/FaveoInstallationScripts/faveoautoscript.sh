@@ -428,11 +428,11 @@ Ubuntu_Installation ()
     wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
     tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 
-    PhpExtDir=$(php -i | grep extension_dir)
-    echo -e "$PhpExtDir"
-    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/"$PhpExtDir"
-    sed -i '2 a zend_extension = "/usr/lib/php/"$PhpExtDir"/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
-    sed -i '2 a zend_extension = "/usr/lib/php/"$PhpExtDir"/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+    PhpExtDir=$(php -i | grep "PHP Extension =>")
+    phpdir=$(grep -oE '[0-9]*' <<<$PhpExtDir)
+    cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/''$phpdir''
+    sed -i '2 a zend_extension = "/usr/lib/php/'$phpdir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/'$phpdir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
     systemctl restart apache2 
 
     if [[ $? != 0 ]]; then
@@ -485,7 +485,7 @@ Ubuntu_Installation ()
      
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$OrderNumber\&serial_key\=$LicenseCode --output faveo.zip 
 
-    unzip "faveo.zip" -d /var/www/faveo 
+    unzip -q "faveo.zip" -d /var/www/faveo 
 
     # Faveo Folder permissions:
 
@@ -813,7 +813,7 @@ gpgcheck=1" >> /etc/yum.repos.d/mariadb.repo
      
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$OrderNumber\&serial_key\=$LicenseCode --output faveo.zip
 
-    unzip "faveo.zip" -d /var/www/faveo 
+    unzip -q "faveo.zip" -d /var/www/faveo 
 
 
     # Faveo Folder permissions:
