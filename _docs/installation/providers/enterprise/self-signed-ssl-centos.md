@@ -14,10 +14,10 @@ toc: true
 
 
 ## Introduction
-This document will list on how to install Self-Signed SSL certificates on CentOS.
+This document will guide on how to install Self-Signed SSL certificates on CentOS.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate.
+To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
@@ -51,7 +51,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (We don't need to add any details to this field)
+    - Comman name (We should not need to add any details to this field)
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -147,6 +147,11 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
+
+- Need to update the CA certificate's run the below command to update the CA certs.
+```
+update-ca-trust extract
+```
 
 - After adding the SSL certificates and virtual hosts we need to add the domain to the hosts file to the local host as below.
 ```

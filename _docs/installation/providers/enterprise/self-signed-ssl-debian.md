@@ -13,12 +13,10 @@ toc: true
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
 ## Introduction
-
-
-## Installing dependent modules
+This document will guide on how to install Self-Signed SSL certificates on Debian.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate.
+To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
@@ -52,7 +50,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (We don't need to add any details to this field)
+    - Comman name (We should not need to add any details to this field)
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -108,15 +106,15 @@ openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -
 
 - We need to enable some Modules for the ssl as below : 
 ```
-dnf install mod_ssl
-systemctl restart httpd
+sudo a2enmod ssl
+systemctl restart apache2
 ```
 - The above will install mod_ssl module and restart apache.
 - Before creating the Virtual host file for SSL we need to copy the created SSL certificate's and Key file to the corresponding directory with below command, these commands should be runned from the SSL Directory.
 ```
-cp faveolocal.crt /etc/pki/tls/certs
-cp private.key /etc/pki/tls/private
-cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
+cp faveolocal.crt /etc/ssl/certs
+cp private.key /etc/ssl/private
+cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
 - Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.g/faveo-ssl.conf.</b>
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
@@ -133,8 +131,8 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 
                 SSLEngine on
 
-                SSLCertificateFile      /etc/pki/tls/certs/faveolocal.crt
-                SSLCertificateKeyFile /etc/pki/tls/private/private.key
+                SSLCertificateFile      /etc/ssl/certs/faveolocal.crt
+                SSLCertificateKeyFile /etc/ssl/private/private.key
 
                 <FilesMatch "\.(cgi|shtml|phtml|php)$">
                                 SSLOptions +StdEnvVars
@@ -148,6 +146,10 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
+- Then need to update the CA certificate's to that run the below command.
+```
+sudo update-ca-certificates
+```
 
 - After adding the SSL certificates and virtual hosts we need to add the domain to the hosts file to the local host as below.
 ```

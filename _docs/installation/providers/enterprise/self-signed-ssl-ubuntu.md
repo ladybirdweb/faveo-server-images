@@ -15,79 +15,10 @@ toc: true
 
 ## <strong>Introduction:</strong>
 
-This document will list on how to install Self-Signed SSL certificates on Ubuntu.
-
-We will be using a tool OpenSSL for creating Self-Signed SSL certificate's in ubuntu.
-The OpenSSL is an open-source library that provides cryptographic functions and implementations. OpenSSL is a defacto library for cryptography-related operations and is used by a lot of different applications. OpenSSL is provided as a library and application. OpenSSL provides functions and features like SSL/TLS, SHA1, Encryption, Decryption, AES, etc.
-
-This OpenSSL is installed and ready to use in Ubuntu, to check the OpenSSL is installed and the version of it please use the below command.
-```sh
-openssl version
-```
-
-## <strong>STEPS:</strong>
-
-To create a Self-Signed SSL certificates we need to create CA(Certificate Authority) from which we will validate and sign the SSL certificate as a valid certificate.
-Below are the steps to create a Self-Signed SSL certificate using a CA.
-
-- Generate a private key for the CA.
-- Generate a root certificate.
-- Create a private key for the certificate.
-- Create a certificate signing request.
-- Create a certificate and sign it with the CA private key.
-- Installing the SSL certificate.
-
-### <strong>Generate a private key for the CA:</strong>
-
-Please create a directory for saving the certificates and the key files that we creaate in the below steps, please run this commands from the home directory:
-```sh
-mkdir ssl
-cd ssl
-```
-
-The private key for the CA can be generated using the following command.
-
-```sh
-openssl genpkey -algorithm RSA -des3 -out private-key-ca.pem -pkeyopt rsa_keygen_bits:4096
-```
-The above command will create a Private key for the CA certificate with the name private-key-ca.pem. The above command will ask for a password for the key file please provide a meaningful password, which will be necessary for the below commands. 
-
-### <strong>Generate a root certificate (CA Certificate):</strong>
-
-To generate a CA root certificate based on the private key generated in the previous step use the below command.
-
-```sh
-openssl req -x509 -new -key private-key-ca.pem -sha256 -days 3650 -out ca-certificate.pem
-```
-- -x509 — Perform a certificate command.
-- -new — Indicates the new certificate.
-- -out — The filename to use to save the generated certificate. In this case, certificate.pem.
-- -req — Indicate to OpenSSL that the input is a CSR.
-- -signkey — Self-sign the certificate request using the given private-key.pem file.
-- -days — The number of days the generated certificate is valid. Normal values are 365, 730, and 1095 days, to specify a duration of one, two, or three years.
-
-OpenSSL again asks the passphrase of the private key which we used on the above command while creating private key and asks what information to put in the root certificate.
-
-The above command will create a CA certificate file which will be saved in the current directory.
-
-### <strong>Create a private key for the certificate:</strong>
-
-To generate a Self-Segined we need to create a new key file specific to the certificate for the domain to create it use the below command.
-
-```sh
-openssl genpkey -algorithm RSA -des3 -out private-key.pem -pkeyopt rsa_keygen_bits:4096
-```
-This command generates the file private-key.pem in the current directory.
-
-### <strong>Create a certificate signing request:</strong>
-
-To create a signed certificate we need to create a CSR (certificate signing Request)
-
-
-
+This document will guide on how to install Self-Signed SSL certificates on Ubuntu.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate.
+To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
@@ -121,7 +52,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (We don't need to add any details to this field)
+    - Comman name (We should not need to add any details to this field)
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -177,15 +108,15 @@ openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -
 
 - We need to enable some Modules for the ssl as below : 
 ```
-dnf install mod_ssl
-systemctl restart httpd
+sudo a2enmod ssl
+systemctl restart apache2
 ```
 - The above will install mod_ssl module and restart apache.
 - Before creating the Virtual host file for SSL we need to copy the created SSL certificate's and Key file to the corresponding directory with below command, these commands should be runned from the SSL Directory.
 ```
-cp faveolocal.crt /etc/pki/tls/certs
-cp private.key /etc/pki/tls/private
-cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
+cp faveolocal.crt /etc/ssl/certs
+cp private.key /etc/ssl/private
+cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
 - Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.g/faveo-ssl.conf.</b>
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
@@ -202,8 +133,8 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 
                 SSLEngine on
 
-                SSLCertificateFile      /etc/pki/tls/certs/faveolocal.crt
-                SSLCertificateKeyFile /etc/pki/tls/private/private.key
+                SSLCertificateFile      /etc/ssl/certs/faveolocal.crt
+                SSLCertificateKeyFile /etc/ssl/private/private.key
 
                 <FilesMatch "\.(cgi|shtml|phtml|php)$">
                                 SSLOptions +StdEnvVars
@@ -217,6 +148,10 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
+- Then need to update the CA certificate's to that run the below command.
+```
+sudo update-ca-certificates
+```
 
 - After adding the SSL certificates and virtual hosts we need to add the domain to the hosts file to the local host as below.
 ```
