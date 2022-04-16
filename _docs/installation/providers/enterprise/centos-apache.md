@@ -283,6 +283,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl)
+<!---[Self Signed SSL Certificate documentation](/docs/installation/providers/enterprise/self-signed-ssl-centos.md)--->
 
 <a id="9install-faveo" name="9install-faveo"></a>
 

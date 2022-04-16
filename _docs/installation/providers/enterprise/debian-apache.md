@@ -273,7 +273,8 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 This is an optional step and will improve system security and is highly recommended.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)]
+<!---[Self Signed SSL certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-debian.md)--->
 
 <a id="9-install-faveo" name="9-install-faveo"></a>
 

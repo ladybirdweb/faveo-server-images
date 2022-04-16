@@ -301,7 +301,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl)
-
+<!---[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-ubuntu.md)--->
 <a id="9-install-faveo" name="9-install-faveo"></a>
 
 ### <strong>9. Install Faveo</strong>
