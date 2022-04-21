@@ -433,6 +433,8 @@ Ubuntu_Installation ()
     cp ioncube/ioncube_loader_lin_7.3.so /usr/lib/php/''$phpdir''
     sed -i '2 a zend_extension = "/usr/lib/php/'$phpdir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/apache2/php.ini
     sed -i '2 a zend_extension = "/usr/lib/php/'$phpdir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/cli/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/'$phpdir'/ioncube_loader_lin_7.3.so"' /etc/php/7.3/fpm/php.ini
+
     systemctl restart apache2 
 
     if [[ $? != 0 ]]; then
