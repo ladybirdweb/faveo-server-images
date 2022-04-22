@@ -66,6 +66,8 @@ The preferred OS distribution is Cent OS 7, simply because all the development i
 * [Windows](/docs/installation/providers/enterprise/windows)
 * [CentOS Web Panel](/docs/installation/providers/enterprise/centos-web-panel)
 * [WampServer](/docs/installation/providers/enterprise/wamp)
+* [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
+* [Kuberenetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community edition
