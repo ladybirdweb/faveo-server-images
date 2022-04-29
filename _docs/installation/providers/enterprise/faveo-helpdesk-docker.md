@@ -16,12 +16,6 @@ A pretty simplified Docker Compose workflow that sets up a network of containers
 
 All the Faveo Helpdesk editions are supported except the community edition.
 
-## <b>Prerequisites for faveo installation with docker:</b>
-
-1. Docker.
-2. Docker Compose.
-3. Git Hub.
-
 ## <b>Usage</b>
 ___
 
@@ -46,9 +40,9 @@ chmod +x faveo-run.sh
 <b>Complete the below steps to get the Containers up.</b>
 
 Run the script "faveo-run.sh" by passing the necessary arguments.
-```
-Note: You should have a Valid domain name pointing to your public IP. Since this domain name is used to obtain SSL certificates from Let's Encrypt CA and the Email is used for the same process. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number.
-```
+
+**Note: You should have a Valid domain name pointing to your public IP. Since this domain name is used to obtain SSL certificates from Let's Encrypt CA and the Email is used for the same process. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number.**
+
 
 Usage:
 ```sh
