@@ -95,7 +95,7 @@ apt install -y php7.3 libapache2-mod-php7.3 php7.3-mysql \
 After installing PHP 7.3, run the commands below to open PHP default config file.
 
 ```sh
-nano /etc/php/7.3/apache2/php.ini
+nano /etc/php/7.3/fpm/php.ini
 ```
 
 Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environment.
@@ -245,8 +245,8 @@ nano /etc/apache2/sites-available/faveo.conf
         Require all granted
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/faveo-error.log
+    CustomLog ${APACHE_LOG_DIR}/faveo-access.log combined
 # Uncomment the below lines and replace the Server-IP and Domainame to configure IP to Domainname rewrite rule
 #    RewriteEngine on
 #    RewriteCond %{HTTP_HOST} ^--Server-IP--

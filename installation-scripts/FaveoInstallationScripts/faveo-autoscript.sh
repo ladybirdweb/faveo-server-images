@@ -406,14 +406,14 @@ Ubuntu_Installation ()
     fi
 
     if [[ "$os" == "ubuntu" ]]; then
-    sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/7.3/apache2/php.ini
-    sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/apache2/php.ini
+    sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/fpm/php.ini
     fi
 
     if [[ $? != 0 ]]; then
@@ -534,8 +534,8 @@ Ubuntu_Installation ()
         Require all granted
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/faveo-error.log
+    CustomLog ${APACHE_LOG_DIR}/faveo-access.log combined
 # Uncomment the below lines and replace the Server-IP and Domainame to configure IP to Domainname rewrite rule
 #    RewriteEngine on
 #    RewriteCond %{HTTP_HOST} ^--Server-IP--
