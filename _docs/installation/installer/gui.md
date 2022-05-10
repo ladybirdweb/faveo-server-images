@@ -71,7 +71,7 @@ And we have an option to change queue, storage drive and enviornment to redis as
 
 Product License Key: Provide the license key received for the purchased product and click on the Continue button. Refer the link [How to get the product license key?](/docs/helpers/license-key)
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/license-code.png?raw=true" alt="" />
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/license-code.jpg?raw=true" alt="" />
     
 Congratulations! Faveo is installed and operational!
 
