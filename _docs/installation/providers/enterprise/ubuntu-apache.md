@@ -116,7 +116,7 @@ max_execution_time = 360
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 ```
-Make the note of path and directory from the above command.
+Make the note of path and directory from the below first command.
 
 Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
 
