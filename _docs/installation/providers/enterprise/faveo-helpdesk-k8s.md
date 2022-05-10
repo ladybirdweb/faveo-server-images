@@ -209,7 +209,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.5.0 \
+  --version v1.8.0 \
   --set installCRDs=true
 ```
 To verify our installation, check the cert-manager Namespace for running pods:
