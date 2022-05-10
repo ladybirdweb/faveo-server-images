@@ -4,14 +4,14 @@ type: docs
 permalink: /docs/installation/providers/enterprise/centos-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2022-05-07
 toc: true
 ---
-# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Cent OS <!-- omit in toc -->
+# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on CentOS 7  with Apache<!-- omit in toc -->
 
-<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
+<img alt="CentOS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Centos-logo-light.svg/300px-Centos-logo-light.svg.png" width="200"  />
 
-Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
+Faveo can run on [CentOS 7 ](https://www.centos.org/download/).
 
 
 - [<strong>Installation steps:</strong>](#installation-steps)
@@ -34,14 +34,14 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **MariaDB 10.3+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
 
 ### <strong>1. LAMP Installation</strong>
 
 Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+If you follow this step, no need to install Apache, PHP, MariaDB separetely as listed below
 
 <a id="2-update-your-packages-and-install-some-utility-tools" name="2-update-your-packages-and-install-some-utility-tools"></a>
 
@@ -89,23 +89,33 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b> 2.d Install and run Mysql/MariaDB</b>
+<b> 2.d Install and run MariaDB</b>
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
+Note: Currently Faveo supports only  MariaDB-10.3.
+
+Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
+```sh
+vi /etc/yum.repos.d/mariadb.repo
+
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.3/centos73-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+```
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
 ```sh
-yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-yum install -y mysql-community-server
-systemctl start mysqld
-systemctl enable mysqld
+yum install MariaDB-server MariaDB-client
+systemctl enable mysql.service
+systemctl start mysql.service
 ```
-Secure your MySql installation by executing the below command. Set Password for mysql root user,it will ask for password which is temporarily created by MySql-5.7 and it is required for changing the root password, we can get by running the below command and here in mysql-5.7 password validator will be enabled upon installation so you need provide a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-grep "temporary password" /var/log/mysqld.log
+
 mysql_secure_installation 
 ```
 
