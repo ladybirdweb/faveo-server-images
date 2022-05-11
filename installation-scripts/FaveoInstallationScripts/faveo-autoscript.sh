@@ -414,6 +414,8 @@ Ubuntu_Installation ()
     sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/7.3/fpm/php.ini
     sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/7.3/fpm/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/fpm/php.ini
+    sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/7.3/apache2/php.ini
+
     fi
 
     if [[ $? != 0 ]]; then
