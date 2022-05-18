@@ -294,7 +294,7 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos-apache-ssl)
 
-[Self Signed SSL Certificate documentation](/_docs/installation/providers/enterprise/self-signed-ssl-centos.md)
+[Self Signed SSL Certificate documentation](/docs/installation/providers/enterprise/self-signed-ssl-centos/)
 
 <a id="9install-faveo" name="9install-faveo"></a>
 
