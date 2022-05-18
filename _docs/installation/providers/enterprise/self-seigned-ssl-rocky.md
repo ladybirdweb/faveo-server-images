@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/self-signed-ssl-centos/
+permalink: /docs/installation/providers/enterprise/self-signed-ssl-rocky/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09

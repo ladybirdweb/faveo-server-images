@@ -276,7 +276,7 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-apache-ssl)
 
-[Self Signed SSL certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-debian.md)
+[Self Signed SSL certificate Documentation](/_docs/installation/providers/enterprise/self-signed-ssl-debian.md)
 
 <a id="9-install-faveo" name="9-install-faveo"></a>
 
