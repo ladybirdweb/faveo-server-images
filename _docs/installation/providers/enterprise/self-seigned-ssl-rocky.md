@@ -14,7 +14,7 @@ toc: true
 
 
 ## Introduction
-This document will guide on how to install Self-Signed SSL certificates on Rocky 8.
+This document will guide on how to install Self-Signed SSL certificates on Rocky 8 with apahce.
 
 ## Setting up the SSL certificate
 To Install Self Signed SSL certificates in Rocky 8, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
@@ -51,7 +51,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (We should not need to add any details to this field)
+    - Comman name (Leave this as blank or provide the company domain not the faveo domain)
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -90,7 +90,7 @@ openssl req -new -sha256 -key private.key -out faveolocal.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Common name (the domain or the IP which we need to create the SSL certificate for faveo should be entered).
+    - Common name (Here please provide the Domain or the IP through which you need to access faveo)).
     - Email address.
 - The rest can be left blank and after this is completed it will create the CSR file and save it with the name faveolocal.csr in the SSL directory.
 

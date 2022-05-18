@@ -76,7 +76,7 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (the common domain for the company like *.domain).
+    - Comman name (Leave this as blank or provide the company domain not the faveo domain).
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
@@ -115,7 +115,7 @@ openssl req -new -sha256 -key private.key -out faveolocal.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Common name (the domain or the IP which we need to create the SSL certificate for faveo).
+    - Common name (Here please provide the Domain or the IP through which you need to access faveo).
     - Email address.
 - The rest can be left blank and after this is completed it will create the CSR file and save it with the name faveolocal.csr in the SSL directory.
 

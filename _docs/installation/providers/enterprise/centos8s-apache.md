@@ -284,10 +284,11 @@ This is an optional step and will improve system performance and is highly recom
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/centos8s-apache-ssl)
-<!---[Self Signed SSL Certificate documentation](/docs/installation/providers/enterprise/self-signed-ssl-centos.md)--->
+
+[Self Signed SSL Certificate documentation](/docs/installation/providers/enterprise/self-signed-ssl-centos.md)
 
 <a id="9install-faveo" name="9install-faveo"></a>
 
