@@ -91,7 +91,7 @@ http://localhost/
 
 <b>1.c. Install MariaDB-10.3 </b>
 
-- Download and install MariaDB-10.3 from the official MariaDB website. “https://downloads.mariadb.org/mariadb/”
+- Download and install MariaDB-10.3 from the official MariaDB website. [Click here to download mariaDB](https://downloads.mariadb.org/mariadb/)
 
 - Execute the installer to perform the required installation steps and set the root password.
 
