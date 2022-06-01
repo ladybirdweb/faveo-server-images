@@ -61,6 +61,8 @@ apt update && apt upgrade -y
 Apache should come pre-installed with your server. If it's not, install it with:
 
 ```sh
+sudo add-apt-repository ppa:ondrej/apache2
+sudo apt update
 apt install apache2
 systemctl start apache2
 systemctl enable apache2
