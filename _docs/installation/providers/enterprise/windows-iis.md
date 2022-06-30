@@ -51,7 +51,8 @@ To install IIS Server open Server Manager and locate the *Manage* button on the 
 
 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/Server-roles.png?raw=true" width=400px; height=250px;>
+"<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/Server-roles.png?raw=true" width=400px; height=250px;>"
+
 
 - In the *Features* section locate the *.NET Framework 3.5 and .NET Framework 4.7* select the packages as shown in the below image:
 
