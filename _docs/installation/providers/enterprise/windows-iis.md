@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2022-06-30
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Faveo Helpdesk Freelancer, paid and Enterprise on Windows
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Windows
 ---
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
@@ -51,17 +51,17 @@ To install IIS Server open Server Manager and locate the *Manage* button on the 
 
 
 
-"<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/Server-roles.png?raw=true" width=400px; height=250px;>"
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/Server-roles.png?raw=true" alt="" width=400px; height=250px; />
 
 
 - In the *Features* section locate the *.NET Framework 3.5 and .NET Framework 4.7* select the packages as shown in the below image:
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/netframeworl.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/netframeworl.png?raw=true" alt="" width=400px; height=250px; />
 
 
 - In the *Role Services* section locate the *Appplication Development* select the package *CGI* and click *Next*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/cgi.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/cgi.png?raw=true" alt="" width=400px; height=250px; />
 
 
 
@@ -78,11 +78,11 @@ name="2Install-PHP-7.3"></a>
 
 -   [Click Here](https://windows.php.net/downloads/releases/archives/) to download PHP 7.3 NTS x64 zip file. Extract the zip file & rename it to *php7.3*. Now move the renamed *php7.3* folder to *C:\Program Files*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php.png?raw=true" width=400px; height=150px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php.png?raw=true" alt="" width=400px; height=150px; />
 
 -   Open *php7.3* folder, find *php.ini-development* & rename it to *php.ini* to make it php configuration file.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true" alt="" width=400px; height=250px; />
 
 -   Open *php.ini* using Notepad++, add the below lines at the end of this file & save the file:
 
@@ -128,7 +128,7 @@ name="3Add-Handler-Mapping"></a>
 
 - Open Server Manager, locate *Tools* on the top right corner  of Dashboard, Click on it and select *Internet Information Services (IIS) Manager*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" width=550px; height=150px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" alt="" width=550px; height=150px; />
 
 
 - Now in the Left Panel of the IIS Manager window select your server then you will find the *Handler Mappings*. Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, a new window will appear. Add the below in respective boxes & click *OK*.
@@ -151,7 +151,7 @@ FastCgiModule
 ```
 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" alt="" width=400px; height=250px; />
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot* as *index.php*. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
 ```
@@ -162,7 +162,7 @@ phpinfo();
 
 - Now in  IIS Manager window find the *Default Document*. Open *Default Document*, Click on *Add* in the Right Panel, a new window will appear. Add *index.php* as Name & click *OK*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/indexphp.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/indexphp.png?raw=true" alt="" width=400px; height=250px; />
 
 <a id="4Install-MariaDB-10.3/MySQL-5.7" 
 name="4Install-MariaDB-10.3/MySQL-5.7"></a>
@@ -172,7 +172,7 @@ name="4Install-MariaDB-10.3/MySQL-5.7"></a>
 MariaDB 10.3 installation steps are listed below, MySQL 5.7 installation documentation link is given at the end of this section (section 4).
 -   [Click here ](https://downloads.mariadb.org/mariadb/) to download  *MariaDB-10.3* from the official MariaDB website.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mariadb.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mariadb.png?raw=true" alt="" width=400px; height=250px; />
 
 - Execute the installer to perform the required installation steps and set the root password.
 
@@ -220,7 +220,7 @@ C:\inetpub\wwwroot\
 
 - Give full permissions to *IIS_IUSRS* and *Users* for the wwwroot folder.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" alt="" width=400px; height=250px; />
 
 <a id="8Configure-Faveo-in-IIS-Manager" 
 name="8Configure-Faveo-in-IIS-Manager"></a>
@@ -238,7 +238,7 @@ name="8Configure-Faveo-in-IIS-Manager"></a>
 ``` 
 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/BasicSettings.png?raw=true" width=400px; height=200px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/BasicSettings.png?raw=true" alt="" width=400px; height=200px; />
 
 <a id="9Configure-web.config-file-for-IIS" 
 name="9Configure-web.config-file-for-IIS"></a>
@@ -326,17 +326,17 @@ By default, IIS configures PHP only to accept GET, POST, and HEAD request types.
 
 - Double-click on the *Handler Mappings* icon to bring up the Handler Mappings screen.
 
-<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.01.17.png" width=400px; height=250px; />
+<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.01.17.png" alt="" width=400px; height=250px; />
 
 - Then double-click on the *Handler* for PHP files to bring up the *Edit Module Mapping* window:
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs1.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs1.png?raw=true" alt="" width=400px; height=250px; />
 
  **Edit Verbs**
 
 - Click on the *Request Restrictions* button, then switch to the ***Verbs*** tab. Switch the radio button to *All Verbs*, then click *OK* to close the window, then *OK* again to close the other.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs2.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs2.png?raw=true" alt="" width=400px; height=250px; />
 
 - **Note:** You may be prompted with an alert to *fix* the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the *Executable* box and it will save successfully.
 
@@ -351,7 +351,7 @@ name="12Setting-up-Bindings"></a>
 
 - Then in the right pane, you will see the *Bindings* option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Bindings1.png?raw=true" width=400px; height=150px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Bindings1.png?raw=true" alt="" width=400px; height=150px; />
 
 - Now you can open the browser and enter the IP or Domain Name to open Faveo.
 
@@ -371,7 +371,7 @@ name="13Configure-Task-Scheduler"></a>
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
 - On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskScheduler.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskScheduler.png?raw=true" alt="" width=400px; height=250px; />
 
 - Under *Task Trigger*, section select *Daily* and click *Next* and leave the default values in *Daily* section tick the *Synchronize across time zones* and proceed *Next*.
 
@@ -405,13 +405,13 @@ c:\inetpub\wwwroot\faveo\artisan queue:work database
 ```
 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" alt="" width=400px; height=250px; />
 
 - Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
 
 - In the properties, window selects the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" width=400px; height=250px; />
 
 
 <a id="14Redis-Installation" 
