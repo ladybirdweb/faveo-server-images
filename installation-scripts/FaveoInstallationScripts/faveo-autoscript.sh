@@ -314,7 +314,7 @@ Ubuntu_Installation ()
 
     echo -e "$yellow Installing Apache and Utility packages $reset"
  
-    sudo add-apt-repository ppa:ondrej/apache2
+    sudo add-apt-repository ppa:ondrej/apache2 -y
     sudo apt update
     apt install apache2 -y
     systemctl start apache2
