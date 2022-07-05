@@ -124,8 +124,8 @@ cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
 <IfModule mod_ssl.c>
         <VirtualHost *:443>
-                ServerAdmin ---DomainName or IP---
-
+                ServerName --DOMAINNAME-- 
+                ServerAdmin webmaster@localhost
                 DocumentRoot /var/www/faveo/public
 
                 ErrorLog ${APACHE_LOG_DIR}/error.log
