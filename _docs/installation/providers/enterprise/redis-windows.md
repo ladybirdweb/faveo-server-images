@@ -23,7 +23,7 @@ title: Installing Redis on Windows Server
 
 <a href="https://pecl.php.net/package/redis/5.1.1/windows" > Click here</a> to download  PHP 7.3 NTS x64 zip file.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis1.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis1.png?raw=true" style=" width:400px ; height:250px ">
 
 - Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\Program Files\php7.3\ext.* *(C:\php\ext incase of Apache WebServer).* 
 - Now enable php redis extension in *php.ini* configuration located in *C:\Program Files\php7.3.*  *(C:\php incase of Apache WebServer).*
@@ -39,28 +39,28 @@ extension=php_redis.dll
 
 <a href="https://github.com/tporadowski/redis/releases" > Click here</a> to download last recent release of Redis.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis2.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis2.png?raw=true" style=" width:400px ; height:250px ">
 
 Execute the installer to perform the required installation steps
 - Accept the terms in the License agreement.
 - Add the Redis installation folder to the PATH environment variable.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis3.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis3.png?raw=true" style=" width:400px ; height:250px ">
 
 - Set the Max Memory Limit from 300-500 MB.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis4.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis4.png?raw=true" style=" width:400px ; height:250px ">
 
 The Redis installation is finished. 
 
 - Now go to *windows menu > Run > Services*, This can be done by  following shortcut *win+R*, type *services.msc* & click *OK*, it will open a new Services tab. 
 - Find *Redis* right click on it & go to *Properties > Recovery* a new tab will open. 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis5.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis5.png?raw=true" style=" width:400px ; height:250px ">
 
 - Change *first failure, second failure & subsequent failure* from Take No Action to *Restart the Service* & click *OK*. 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis6.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis6.png?raw=true" style=" width:400px ; height:250px ">
 
 Redis has been successfully installed, this can be confirmed in Command Prompt by typing *redis-cli*, a loopback address will be shown in the Command Prompt.
 
@@ -78,15 +78,15 @@ Paste this path in System Environmental Variables by following the below steps:
 
 - Right click on *This PC*, go to *Properties > Advanced System Settings > Environment Variables.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis8.png" width=700px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis8.png?raw=true" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis9.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis9.png?raw=true" style=" width:400px ; height:250px ">
 
 - Now click on *Path > Edit > New* & add copied path *C:\Program Files\nssm-2.24\win64* \ here and click *OK* in all 3 tabs.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis10.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis10.png?raw=true" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis11.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis11.png?raw=true" style=" width:400px ; height:250px ">
 
 NSSM has been installed now, it can be confirmed in Command Prompt by typing *nssm*
 
@@ -105,9 +105,9 @@ nssm install faveo-mail-worker
 
 - In Application section click on three dots and navigate to *C > Windows > System32* and search for *cmd*, click on the cmd as shown in the figure below, then click on *open*,  a path will be added.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis12.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis12.png?raw=true" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis13.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis13.png?raw=true" style=" width:400px ; height:250px ">
 
 
 - Add  the below content as Arguments:
@@ -126,23 +126,23 @@ nssm install faveo-mail-worker
 
 - (Do the Same for remaing two as well):
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis14.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis14.png?raw=true" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis15.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis15.png?raw=true" style=" width:400px ; height:250px ">
 
 - Now go to *windows menu > Run > Services*, This can be done by  following shortcut *win+R*, type *services.msc* & click *OK*, it will open a new Services tab. 
 - Find *Faveo-mail-worker* right click on it & go to *Properties > Recovery* a new tab will open.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis16.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis16.png?raw=true" style=" width:400px ; height:250px ">
 
 
  - Change *first failure, second failure & subsequent failure* from Take No Action to *Restart the Service* & click *OK*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis17.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis17.png?raw=true" style=" width:400px ; height:250px ">
 
 - Now click *faveo-mail-worker* and *start the service* as shown below: 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis18.png" width=400px; height=250px;>
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis18.png?raw=true" style=" width:400px ; height:250px ">
 
 
 **Repeat the above steps for FAVEO RECURRING & FAVEO REPORTS**
