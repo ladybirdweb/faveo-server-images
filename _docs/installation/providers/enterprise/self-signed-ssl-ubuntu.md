@@ -118,7 +118,7 @@ cp faveolocal.crt /etc/ssl/certs
 cp private.key /etc/ssl/private
 cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/apache2/sites-availabe/faveo-ssl.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/apache2/sites-available/faveo-ssl.conf.</b>
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
 
 ```
