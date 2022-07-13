@@ -13,7 +13,7 @@ title: "Installing Faveo Helpdesk on cPanel"
 
 Faveo is a self-hosted software where you can install the software by yourself on your own servers. While the installer provides step by step guide during the installation, it's important and helpful to have general knowledge about Web servers, PHP and MySQL.
 
-Before getting started make sure your server meets following minimum requirement required to install and use Faveo as listed [here](docs/system-requirement/requirement/)
+Before getting started make sure your server meets following minimum requirement required to install and use Faveo as listed [here](/docs/system-requirement/requirement/)
 
 Faveo can run on [cPanel](https://cpanel.net/).
 
