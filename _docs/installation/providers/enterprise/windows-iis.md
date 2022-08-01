@@ -4,10 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-06-30
+last_modified_at: 2022-08-01
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Windows
+title: Installing Faveo Helpdesk on Windows Server
 ---
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
@@ -19,7 +19,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
 
   - [<strong>1.Install IIS Server</strong>](#1Install-IIS-Server)
   - [<strong> 2. Install PHP 7.3 </strong>](#2Install-PHP-7.3)
-  - [<strong> 3. Add Handler Mapping </strong>](#3Add-Handler-Mapping)
+  - [<strong> 3. Create FastCGI Handler Mapping </strong>](#3Create-FastCGI-Handler-Mapping)
   - [<strong> 4. Install MariaDB-10.3/MySQL 5.7 </strong>](#4Install-MariaDB-10.3/MySQL-5.7)
   - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
   - [<strong> 6. Install Ioncube Loader </strong>](#6Install-Ioncube-Loader)
@@ -117,13 +117,12 @@ extension=php_imap.dll
 extension=php_tidy.dll
 extension=php_fileinfo.dll
 extension=php_ldap.dll
-extension=php_redis.dll
 ```
 
-<a id="3Add-Handler-Mapping" 
-name="3Add-Handler-Mapping"></a>
+<a id="3Create-FastCGI-Handler-Mapping" 
+name="3Create-FastCGI-Handler-Mapping"></a>
 
-### <strong>3. Add Handler Mapping</strong>
+### <strong>3. Create FastCGI Handler Mapping</strong>
 
 
 - Open Server Manager, locate *Tools* on the top right corner  of Dashboard, Click on it and select *Internet Information Services (IIS) Manager*.
@@ -200,7 +199,7 @@ name="6Install-Ioncube-Loader"></a>
 
 - Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\Program Files\php7.3\ext.*
 
-- Add the below line in your php.ini file at the tarting to enable Ioncube.
+- Add the below line in your php.ini file at the starting to enable Ioncube.
 
 ```
 zend_extension = "C:\Program Files\php7.3\ext\ioncube_loader_win_7.3.dll"
@@ -386,22 +385,22 @@ C:\Windows\System32\cmd.exe
 
 - This is for faveo incoming mail,esacalation, faveo update check.
 ```
-c:\inetpub\wwwroot\faveo\artisan" schedule:run
+/c "c:\inetpub\wwwroot\faveo\artisan" schedule:run
 ```
 
 - This is for the reports.
 ```
-c:\inetpub\wwwroot\faveo\artisan queue:listen database --queue=reports
+/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=reports
 ```
 
 - This is for recurring.
 ```
-c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring
+/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring
 ```
 
 - This is for outgoing mail
 ```
-c:\inetpub\wwwroot\faveo\artisan queue:work database
+/c "c:\inetpub\wwwroot\faveo\artisan" queue:work database
 ```
 
 
@@ -409,7 +408,7 @@ c:\inetpub\wwwroot\faveo\artisan queue:work database
 
 - Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
 
-- In the properties, window selects the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+- In the properties window, select the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
