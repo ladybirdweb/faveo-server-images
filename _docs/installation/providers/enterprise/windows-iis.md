@@ -168,13 +168,9 @@ name="4Install-MariaDB-10.3/MySQL-5.7"></a>
 
 ### <strong>4. Install MariaDB-10.3/MySQL 5.7</strong>
 
-MariaDB 10.3 installation steps are listed below, MySQL 5.7 installation documentation link is given at the end of this section (section 4).
--   [Click here ](https://downloads.mariadb.org/mariadb/) to download  *MariaDB-10.3* from the official MariaDB website.
+- An open-source relational database management system(RDBMS) can be choosen among the MariaDB and MySQL.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mariadb.png?raw=true" alt="" style=" width:400px ; height:250px ">
-
-- Execute the installer to perform the required installation steps and set the root password.
-
+- [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
 - [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
 
 <a id="5Enable-cacert.pem-File-in-PHP-Configuration-File" 
