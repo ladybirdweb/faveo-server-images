@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2022-06-29
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Redis on Windows Server
+title: Installing MySQL 5.7 on Windows Server
 ---
 
 
