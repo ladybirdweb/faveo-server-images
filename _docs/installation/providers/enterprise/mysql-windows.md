@@ -21,61 +21,61 @@ title: Installing MySQL 5.7 on Windows Server
 
 
 
-1. <a href="https://dev.mysql.com/downloads/windows/installer/5.7.html" > Click here</a> to download MySQL from official official website.
+<a href="https://dev.mysql.com/downloads/windows/installer/5.7.html" > Click here</a> to download MySQL from official official website.
 
-2. Click the *Download* button under *MySQL Installer 5.7* for Windows.
+Click the *Download* button under *MySQL Installer 5.7* for Windows.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql1.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-3. After clicking Download, choose which *Installer* to use by clicking *Download*.
+After clicking Download, choose which *Installer* to use by clicking *Download*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql2.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-4. In order to download, you must click *Login,Sign Up*, or click *No thanks, just start my download*.
+In order to download, you must click *Login,Sign Up*, or click *No thanks, just start my download*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql3.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-5. If prompted, select *Yes* to allow changes to the computer.
-6. After downloading, check the *I accept* box under the License Agreement and click *Next*.
+If prompted, select *Yes* to allow changes to the computer.
+After downloading, check the *I accept* box under the License Agreement and click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql4.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-7. Select the *Setup Type*  as *Server Only* then click *Next*.
+Select the *Setup Type*  as *Server Only* then click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql5.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-8. To begin installation, click on *Execute*.
+To begin installation, click on *Execute*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql6.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-9. When installation is complete, click *Next*.
+When installation is complete, click *Next*.
 
-10. A walk through product configuration will then appear. Click *Next* to begin.
+A walk through product configuration will then appear. Click *Next* to begin.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql7.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
-11. First, select the Server Configuration Type as shown in below image then click *Next*.
+First, select the Server Configuration Type as shown in below image then click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql9.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-12. Set an account password, then click *Next*. This Sets the *MysQl Root Password*.
+Set an account password, then click *Next*. This Sets the *MysQl Root Password*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql10.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-13. Choose a name for the installed program, choose a user account under which the program will be used, then click *Next*.
+Choose a name for the installed program, choose a user account under which the program will be used, then click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql11.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-14. Use the Plugins and Extensions window to choose how the program will connect to the server, then click *Next*.
+Use the Plugins and Extensions window to choose how the program will connect to the server, then click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql12.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-15. To apply the chosen settings, click *Execute* in the *Apply Server Configuration* window.
+To apply the chosen settings, click *Execute* in the *Apply Server Configuration* window.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql13.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-16. When configuration is complete, click *Finish*.
+When configuration is complete, click *Finish*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql14.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
