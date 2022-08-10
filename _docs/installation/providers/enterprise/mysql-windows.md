@@ -12,6 +12,8 @@ title: Installing MySQL 5.7 on Windows Server
 
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  /> 
+
+
 <img alt="mysql" src="https://redpaladin.com/wp-content/uploads/2017/03/mysql-logo.jpg" width="200"  />
 
 [<strong>Install MySQL 5.7 on Windows Server</strong>](#Install-MySQL-5.7-on-Windows-Server)
