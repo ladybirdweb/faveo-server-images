@@ -21,39 +21,39 @@ title: Installing Mariadb 10.3 on Windows Server
 
 
 
-1.  [Click here ](https://downloads.mariadb.org/mariadb/) to download  *MariaDB-10.3* from the official MariaDB website.
+[Click here ](https://downloads.mariadb.org/mariadb/) to download  *MariaDB-10.3* from the official MariaDB website.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mariadb.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-2. Execute the installer to perform the required installation and click Next.
+Execute the installer to perform the required installation and click Next.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria1.png" alt="" style=" width:400px ; height:250px ">
 
-3. Accept the License Agreement terms and click Next.
+Accept the License Agreement terms and click Next.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/maria2.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-4. In the *Custom Setup* section select *MariaDB Server* and click *Next*.
+In the *Custom Setup* section select *MariaDB Server* and click *Next*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria3.png" alt="" style=" width:400px ; height:250px ">
 
-5. Set an account password, then click *Next*. This Sets the MariaDB Root Password.
+Set an account password, then click *Next*. This Sets the MariaDB Root Password.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria4.png" alt="" style=" width:400px ; height:250px ">
 
-6. In *Default Instance Properties* section set the values to default and click *Next*.
+In *Default Instance Properties* section set the values to default and click *Next*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria5.png" alt="" style=" width:400px ; height:250px ">
 
-7. Feedback plugin can be enabled or disabled in the checkbox then click *Next*.
+Feedback plugin can be enabled or disabled in the checkbox then click *Next*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria6.png" alt="" style=" width:400px ; height:250px ">
 
-8. Click *Install* to begin the MariaDB installation.
+Click *Install* to begin the MariaDB installation.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria7.png" alt="" style=" width:400px ; height:250px ">
 
-9. Click *Finish* to complete the installation.
+Click *Finish* to complete the installation.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria8.png" alt="" style=" width:400px ; height:250px ">
 
