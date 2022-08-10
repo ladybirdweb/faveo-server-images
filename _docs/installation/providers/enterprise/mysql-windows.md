@@ -79,11 +79,11 @@ When configuration is complete, click *Finish*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql14.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-17. The program will then go back to the *Product Configuration* screen. Click *Next*.
+The program will then go back to the *Product Configuration* screen. Click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql15.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-18. Installation is now complete. Click *Copy Log to Clipboard* to see ReadMe file, or click *Finish*.
+Installation is now complete. Click *Copy Log to Clipboard* to see ReadMe file, or click *Finish*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql16.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
