@@ -406,7 +406,7 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 - Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
 - In Database, Read and Write operations are slow because of storing data in secondary memory.
 
-- [Database Configuring documentation](/docs/installation/providers/enterprise/database-windows) 
+- [Database Configuring documentation](/docs/installation/providers/enterprise/database) 
 
 - **Redis** is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
 - In Redis, Read and Write operations are extremely fast because of storing data in primary memory.
