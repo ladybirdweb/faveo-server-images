@@ -1,13 +1,13 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/mariadb-windows/
+permalink: /docs/installation/providers/enterprise/database/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-08-10
+last_modified_at: 2022-08-11
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Mariadb 10.3 on Windows Server
+title: Configuring Database Queue Driver on Windows Server
 ---
 
 
