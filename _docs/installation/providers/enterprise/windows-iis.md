@@ -30,8 +30,8 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 11. Configure IIS webserver </strong>](#11Configure-IIS-webserver)
   - [<strong> 12. Setting up Bindings </strong>](#12Setting-up-Bindings)
   - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
-  - [<strong> 14. SSL Installation </strong>](#15SSL-Installation)
-  - [<strong> 15. Install Faveo </strong>](#16Install-Faveo)
+  - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
+  - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
 
 The Installation steps listed above are to be followed to install  Faveo on your Windows-IIS Server.
 
