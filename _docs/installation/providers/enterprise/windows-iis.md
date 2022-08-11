@@ -30,9 +30,8 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 11. Configure IIS webserver </strong>](#11Configure-IIS-webserver)
   - [<strong> 12. Setting up Bindings </strong>](#12Setting-up-Bindings)
   - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
-  - [<strong> 14. Redis Installation </strong>](#14Redis-Installation)
-  - [<strong> 15. SSL Installation </strong>](#15SSL-Installation)
-  - [<strong> 16. Install Faveo </strong>](#16Install-Faveo)
+  - [<strong> 14. SSL Installation </strong>](#15SSL-Installation)
+  - [<strong> 15. Install Faveo </strong>](#16Install-Faveo)
 
 The Installation steps listed above are to be followed to install  Faveo on your Windows-IIS Server.
 
@@ -384,22 +383,6 @@ C:\Windows\System32\cmd.exe
 /c "c:\inetpub\wwwroot\faveo\artisan" schedule:run
 ```
 
-- This is for the reports.
-```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=reports
-```
-
-- This is for recurring.
-```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring
-```
-
-- This is for outgoing mail
-```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:work database
-```
-
-
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
@@ -409,23 +392,33 @@ C:\Windows\System32\cmd.exe
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
-<a id="14Redis-Installation" 
-name="14Redis-Installation"></a>
+**Queue Drivers**
 
-### <strong>14. Redis Installation</strong>
+A queue driver is the handler for managing how to run a queued job, identifying whether the jobs succeeded or failed, and trying the job again if configured to do so. There are different queue lists are available to be used by the system:
 
-Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+- Sync (Activated by default)
+- Database (this will use the database used by the application to act as a queue)
+- Redis
 
-This  will improve system performance and is highly recommended.
+- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities operated by the system, this sync method can be used. 
+
+- **Database** driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in completed state and is removed from the queue.
+- Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
+- In Database, Read and Write operations are slow because of storing data in secondary memory.
+
+- [Database Configuring documentation](/docs/installation/providers/enterprise/database-windows) 
+
+- **Redis** is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
+- In Redis, Read and Write operations are extremely fast because of storing data in primary memory.
 
 - [Redis Installation documentation](/docs/installation/providers/enterprise/redis-windows)
 
+*Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
+<a id="14SSL-Installation" 
+name="14SSL-Installation"></a>
 
-<a id="15SSL-Installation" 
-name="15SSL-Installation"></a>
-
-### <strong>15. SSL Installation</strong>
+### <strong>14. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
@@ -436,9 +429,9 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 - [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 
-<a id="16Install-Faveo" 
-name="16Install-Faveo"></a>
+<a id="15Install-Faveo" 
+name="15Install-Faveo"></a>
 
-### <strong>16. Install Faveo</strong>
+### <strong>15. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
