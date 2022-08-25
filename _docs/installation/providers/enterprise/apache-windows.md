@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/apache-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-08-25
+last_modified_at: 2022-08-12
 last_modified_by: Mohammad_Asif
 toc: true
 title: Faveo Installation on Windows with Apache Web Server
@@ -63,52 +63,8 @@ In addition you need to have the relevant C++ Redistributable for Visual Studio 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
 
-<b>b. Configure Apache </b>
 
-- Go to the *conf* subdirectory and locate the *httpd.conf* file & do the following changes:
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache5.png" alt="" style=" width:500px ; height:250px ">
-
-Add *ExecCGI* to the *Options* directive:
-
-- Find the line *Options Indexes FollowSymLinks* and add *ExecCGI* to it:
-
-```
-Options Indexes FollowSymLinks ExecCGI
-```
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache6.png" alt="" style=" width:500px ; height:100px ">
-
-Allow the Execution of .cgi/.pl Files
-
-- Find the following line in the configuration file and uncomment it by removing the *#* signal.
-
-```
-AddHandler cgi-script .cgi
-```
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache7.png" alt="" style=" width:500px ; height:100px ">
-
-- Additionally, add the following line below it:
-
-```
-AddHandler cgi-script .pl
-```
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache8.png" alt="" style=" width:500px ; height:100px ">
-
-Determine the Location of Perl Directly from the Windows Registry
-
-- Write the following line to the end of the configuration file:
-
-```
-ScriptInterpreterSource Registry
-```
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache9.png" alt="" style=" width:500px ; height:100px ">
-
-
-<b>c. Run Apache </b>
+<b>b. Run Apache </b>
 
 Open a Command Prompt in the “bin” folder at the location where you extracted Apache.
 
@@ -123,7 +79,7 @@ You might see a Windows Firewall prompt. Allow the access to be appropriate.
 
 Failing to allow Apache access through your server’s firewall will result in other computers/devices being unable to connect to your web server.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache11.png" alt="" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache11.png" alt="" style=" width:500px ; height:300px ">
 
 You will come across a *could not bind to address* error if another service is already running on Apache’s default port (80).
 
@@ -131,7 +87,7 @@ Therefore, check that you don’t currently have an IIS (Internet Information Se
 
 If so, you either need to stop/disable IIS in order to run Apache or change the port on either IIS or Apache to allow both services to run simultaneously.
 
-<b>d. Test Whether Apache is Running Successfully </b>
+<b>c. Test Whether Apache is Running Successfully </b>
 
 - Keep the previous command window open, and navigate to below adress with your web browser.
 
@@ -143,7 +99,7 @@ http://127.0.0.1
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache12.png" alt="" style=" width:500px ; height:100px ">
 
-<b>e. Install Apache as a Windows Service Default </b>
+<b>d. Install Apache as a Windows Service Default </b>
 
 After the previous step, Apache will exit after you close the command window. 
 
@@ -174,7 +130,7 @@ services.msc
 
 Look for the service *Apache HTTP Server.* You should see *Automatic* towards the left of that line. If you don’t, change the Startup Type to *Automatic* by double-clicking the line.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache13.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache13.png" alt="" style=" width:500px ; height:350px ">
 
 Step 3: Finally, restart your server and open a web browser once you are logged back in. Navigate to the following address in the web browser: 
 
@@ -198,9 +154,9 @@ Configuring the Window's Firewall is the final step to install Apache web server
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 4: Then, select the radio button next to *Specific remote ports:* and enter the following into the input box: *80, 443, 8080.*
+- Step 4: Then, select the radio button next to *Specific remote ports:* and enter the following into the input box: *80, 443.*
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16a.png" alt="" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16b.png" alt="" style=" width:500px ; height:250px ">
 
 - Step 5: Click *Next* and select the *Allow the connection* option.
 
@@ -276,6 +232,7 @@ AddHandler fcgid-script .php
 FcgidWrapper "/php/php-cgi.exe" .php
  ```
 
+
   <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache24a.png" alt="" style=" width:500px ; height:170px ">
 
 - Step 3: Search for *#ServerName www.example.com:80* and change this line to below:
@@ -300,19 +257,8 @@ Define SRVROOT "c:/Apache24"
 ```
 
 
-- Step 6: Add the *Options ExecCGI* command below the Require all granted line in the *<Directory "${SRVROOT}/htdocs">* directive.
 
-- It willlook like below:
-
-```
-Require all granted
-Options ExecCGI
-</Directory>
-```
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache26.png" alt="" style=" width:500px ; height:160px ">
-
-
-- Step 7: Search for the *<IfModule mime_module>* directive and add the below content above this directive:
+- Step 6: Search for the *< IfModule mime_module >* directive and add the below content above this directive:
 
 ```
 <Directory "/php">
@@ -357,19 +303,23 @@ extension=openssl
 extension=exif
 extension=xsl
 extension=soap
+extension=php_mysqli.dll
+extension=php_pdo_mysql.dll
+extension=php_ldap.dll
+extension=php_fileinfo.dll
 ```
 
 - Step 4: Set the recommended minimum value of these PHP directives listed below for Faveo to work properly. 
 - Search for the directives and assign the value according to this example:
 
 ```
-max_execution_time = 3600
-max_input_time = 3600
+max_execution_time = 360
+max_input_time = 360
 max_input_vars = 10000
-memory_limit = 1024M
+memory_limit = 256M
 post_max_size = 1024M
-upload_max_filesize = 1024M
-max_file_uploads = 200
+upload_max_filesize = 100M
+max_file_uploads = 100
 short_open_tag = On
 ```
 
@@ -451,16 +401,7 @@ name="4Install-Ioncube-Loader"></a>
 zend_extension = "C:\php\ext\ioncube_loader_win_7.3.dll"
 ```
 
-- Step 5: Make sure the below lines are present in the *php.ini* file if not add or uncomment the respective lines.
-
-```
-extension=php_mysqli.dll
-extension=php_pdo_mysql.dll
-extension=php_ldap.dll
-extension=php_fileinfo.dll
-```
-
-- Step 6: Run the below URL to verify the ionCube Installation. 
+- Step 5: Run the below URL to verify the ionCube Installation. 
 - Note: If you didn’t get the below output try restarting the Apache Server.
 
 ```
@@ -505,6 +446,8 @@ name="7Setting-up-the-Database"></a>
 
 
 Open MariaDB 10.3 Command Line Client and run the below command.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache42.png" alt="" style=" width:500px ; height:300px ">
 
 - Create a database called ‘faveo’.
 
@@ -599,8 +542,10 @@ name="9SSL-Installation"></a>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
+Apache only supports Paid SSL or the Self Signed SSL, Let’s Encrypt is not supported by Apache.
 
-- [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/windows-apache-ssl)
+
+- [ Self Signed SSL installation documentation](/docs/installation/providers/enterprise/windows-apache-ssl)
 
 
 
