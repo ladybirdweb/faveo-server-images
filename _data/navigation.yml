@@ -24,7 +24,7 @@ docs:
         url: /docs/installation/providers/enterprise/debian-nginx
       - title: Windows IIS Server
         url: /docs/installation/providers/enterprise/windows-iis
-        - title: Windows Apache Server
+      - title: Windows Apache Server
         url: /docs/installation/providers/enterprise/apache-windows
       - title: Plesk Panel Windows
         url: /docs/installation/providers/enterprise/plesk-panel-windows
