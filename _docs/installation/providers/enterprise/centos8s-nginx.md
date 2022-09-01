@@ -258,7 +258,7 @@ gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 
 ```
 
-**5.c.** Edit config file for PHP FPM using vim editor
+**5.c.** Edit config file for PHP FPM using nano editor
 
 ```sh
 nano /etc/php-fpm.d/www.conf
