@@ -141,7 +141,7 @@ FastCgiModule
 ```
 - Executable (Optional)
 ```
-"C:\Program Files\php7.3|php-cgi.exe"
+"C:\Program Files\php7.3\php-cgi.exe"
 ```
 - Name
 ```
@@ -276,6 +276,11 @@ name="9Configure-web.config-file-for-IIS"></a>
 
 </configuration>
 ```
+
+-   [Click Here](https://www.iis.net/downloads/microsoft/url-rewrite) to download URL Rewrite.
+- URL Rewrite enables Web administrators to create powerful rules to implement URLs that are easier for users to remember and easier for search engines to find.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/URL-Rewrite.png" alt="" style=" width:400px ; height:200px ">
 
 <a id="10Setting-up-the-Database" 
 name="10Setting-up-the-Database"></a>
