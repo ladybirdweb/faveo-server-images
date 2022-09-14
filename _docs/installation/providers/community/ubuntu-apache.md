@@ -252,7 +252,23 @@ nano /etc/apache2/sites-available/faveo.conf
 #    RewriteRule (.*) http://--Domainname--
 </VirtualHost>
 ```
-**5.b.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
+
+**5.b.** <b>Disable Directory Browsing on Apache:</b>
+
+
+Disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+
+```sh
+<Directory "/var/www">
+    Options -Indexes +FollowSymLinks
+    AllowOverride All 
+    # Allow open access:
+    Require all granted
+</Directory>
+```
+
+
+**5.c.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
@@ -262,7 +278,7 @@ a2ensite faveo.conf
 a2enmod proxy_fcgi setenvif
 a2enconf php7.1-fpm
 ```
- **5.c.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
+ **5.d.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
 service php7.1-fpm restart
