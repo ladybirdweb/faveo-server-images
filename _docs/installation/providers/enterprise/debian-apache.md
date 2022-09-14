@@ -235,8 +235,7 @@ nano /etc/apache2/sites-available/faveo.conf
 
 <b>5.d. Disable Directory Browsing on Apache:</b>
 
-
-Finally disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+Disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
 
 ```sh
 <Directory "/var/www">
