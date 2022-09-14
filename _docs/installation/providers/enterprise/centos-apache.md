@@ -217,14 +217,17 @@ If the output af the above command is blank then add the below line in /etc/http
 LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
-Finally change the httpd.conf AllowOverride value to none to All under <Directory /var/www/> section.
+Finally disable Directory Browsing on Apache, edit the httpd.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+
 ```sh
 <Directory "/var/www">
+    Options -Indexes +FollowSymLinks
     AllowOverride All 
     # Allow open access:
     Require all granted
 </Directory>
 ```
+
 
 **c.** <b>Configure a new faveo site in apache by doing:</b>
 
