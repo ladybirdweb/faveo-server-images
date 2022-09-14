@@ -250,6 +250,22 @@ nano /etc/apache2/sites-available/faveo.conf
 </VirtualHost>
 ```
 
+<b>5.d. Disable Directory Browsing on Apache:</b>
+
+
+Disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+
+```sh
+<Directory "/var/www">
+    Options -Indexes +FollowSymLinks
+    AllowOverride All 
+    # Allow open access:
+    Require all granted
+</Directory>
+```
+
+
+
 <b>5.d. Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
