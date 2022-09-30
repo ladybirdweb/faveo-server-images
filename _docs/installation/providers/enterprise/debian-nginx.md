@@ -36,7 +36,7 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
@@ -127,12 +127,18 @@ systemctl restart php7.3-fpm
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-```sh
-apt install -y mariadb-server-10.3
-systemctl start mariadb
-systemctl enable mariadb
-```
+Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
+```sh
+sudo apt update
+sudo apt-get install curl software-properties-common dirmngr
+curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+sudo bash mariadb_repo_setup --mariadb-server-version=10.6
+sudo apt-get update
+sudo apt-get install mariadb-server mariadb-client
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 ```sh
@@ -144,7 +150,6 @@ mysql_secure_installation
 ```sh
 apt install phpmyadmin
 ```
-
 
 
 Once the softwares above are installed:
