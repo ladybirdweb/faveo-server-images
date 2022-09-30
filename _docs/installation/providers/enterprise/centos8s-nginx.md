@@ -35,7 +35,7 @@ Faveo depends on the following:
 
 -   **Nginx** 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
 <a id="-1-lamp-installation" name="-1-lamp-installation"></a>
@@ -97,15 +97,19 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
+Note: Currently Faveo supports only Mysql-8.0 and MariaDB-10.6.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
-In CentOS-8-Stream mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
+In CentOS-8-Stream mariadb-server-10.6 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.6 by running the following commands.
 
 ```sh
-yum install mariadb-server -y
-systemctl start mariadb
-systemctl enable mariadb
+curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+sudo bash mariadb_repo_setup --mariadb-server-version=10.6
+sudo dnf install boost-program-options -y
+sudo dnf module reset mariadb -y
+sudo yum install MariaDB-server MariaDB-client MariaDB-backup
+sudo systemctl enable --now mariadb
+sudo systemctl enable --now mariadb
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
