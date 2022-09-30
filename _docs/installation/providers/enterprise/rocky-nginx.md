@@ -35,7 +35,7 @@ Faveo depends on the following:
 
 -   **Nginx** 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
@@ -98,15 +98,27 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
-Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
+Note: Currently Faveo supports only MariaDB-10.3.
 
-In RockyOS 8 mariadb-server-10.3 is available from the default Repo's.So instead of downloading and adding other Repos you could simply install MariadDB-10.3 by running the following commands.
+Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
 
 ```sh
-yum install mariadb-server -y
-systemctl start mariadb
-systemctl enable mariadb
+sudo nano /etc/yum.repos.d/mariadb.repo
+```
+```
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.6/rhel8-amd64
+module_hotfixes=1
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+```
+Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
+```
+sudo dnf update
+sudo dnf install mariadb-server mariadb
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
