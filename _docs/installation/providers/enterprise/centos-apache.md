@@ -34,7 +34,7 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MariaDB 10.3+**
+-   **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
 
@@ -93,15 +93,16 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only  MariaDB-10.3.
+Note: Currently Faveo supports only  MariaDB-10.6.
 
 Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
 ```sh
-vi /etc/yum.repos.d/mariadb.repo
-
+nano /etc/yum.repos.d/mariadb.repo
+```
+```
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.3/centos73-amd64/
+baseurl = http://yum.mariadb.org/10.6/centos73-amd64/
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 ```
@@ -115,7 +116,6 @@ systemctl start mysql.service
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-
 mysql_secure_installation 
 ```
 
