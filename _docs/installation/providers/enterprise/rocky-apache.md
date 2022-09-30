@@ -96,7 +96,7 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only MariaDB-10.3.
+Note: Currently Faveo supports only MariaDB-10.6.
 
 Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
 
