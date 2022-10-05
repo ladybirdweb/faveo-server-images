@@ -22,7 +22,7 @@ title: Faveo Installation on Windows with Apache Web Server
 
   - [<strong>1.Install & Configure Apache for Windows</strong>](#1Install-&-Configure-Apache-for-Windows)
   - [<strong> 2. PHP 7.3 for Apache Web Server </strong>](#2PHP-7.3-for-Apache-Web-Server)
-  - [<strong> 3. Install MariaDB-10.3/MySQL 5.7  </strong>](#3Install-MariaDB-10.3/MySQL-5.7)
+  - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
   - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
   - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
@@ -370,10 +370,10 @@ LoadModule access_compat_module modules/mod_access_compat.so
 ```
 
 
-<a id="3Install-MariaDB-10.3/MySQL-5.7" 
-name="3Install-MariaDB-10.3/MySQL-5.7"></a>
+<a id="3Install-MariaDB-10.6/MySQL-8.0" 
+name="3Install-MariaDB-10.6/MySQL-8.0"></a>
 
-### <strong>3. Install MariaDB-10.3/MySQL 5.7 </strong>
+### <strong>3. Install MariaDB 10.6/MySQL 8.0 </strong>
 
 
 - An open-source relational database management system(RDBMS) can be choosen among the MariaDB and MySQL.
