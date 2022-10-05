@@ -445,7 +445,7 @@ name="7Setting-up-the-Database"></a>
 ### <strong>7. Setting up the Database</strong>
 
 
-Open MariaDB 10.3 Command Line Client and run the below command.
+Open MariaDB 10.36 Command Line Client and run the below command.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache42.png" alt="" style=" width:500px ; height:300px ">
 
