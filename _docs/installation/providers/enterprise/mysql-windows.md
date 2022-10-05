@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2022-06-29
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing MySQL 5.7 on Windows Server
+title: Installing MySQL 8.0 on Windows Server
 ---
 
 
@@ -16,20 +16,13 @@ title: Installing MySQL 5.7 on Windows Server
 
 <img alt="mysql" src="https://redpaladin.com/wp-content/uploads/2017/03/mysql-logo.jpg" width="200"  />
 
-[<strong>Install MySQL 5.7 on Windows Server</strong>](#Install-MySQL-5.7-on-Windows-Server)
+[<strong>Install MySQL 8.0 on Windows Server</strong>](#Install-MySQL-8.0-on-Windows-Server)
 
 
+<a href="https://dev.mysql.com/downloads/windows/installer/8.0.html" > Click here</a> to download *MySQL Installer 5.7* for Windows from official official website.
 
 
-<a href="https://dev.mysql.com/downloads/windows/installer/5.7.html" > Click here</a> to download MySQL from official official website.
-
-Click the *Download* button under *MySQL Installer 5.7* for Windows.
-
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql1.png?raw=true" alt="" style=" width:400px ; height:250px ">
-
-After clicking Download, choose which *Installer* to use by clicking *Download*.
-
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/mysql2.png?raw=true" alt="" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/mysql8.0.png" alt="" style=" width:400px ; height:250px ">
 
 In order to download, you must click *Login,Sign Up*, or click *No thanks, just start my download*.
 
