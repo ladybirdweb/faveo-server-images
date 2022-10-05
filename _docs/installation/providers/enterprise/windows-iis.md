@@ -20,7 +20,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong>1.Install IIS Server</strong>](#1Install-IIS-Server)
   - [<strong> 2. Install PHP 7.3 </strong>](#2Install-PHP-7.3)
   - [<strong> 3. Create FastCGI Handler Mapping </strong>](#3Create-FastCGI-Handler-Mapping)
-  - [<strong> 4. Install MariaDB-10.3/MySQL 5.7 </strong>](#4Install-MariaDB-10.3/MySQL-5.7)
+  - [<strong> 4. Install MariaDB 10.6/MySQL 8.0 </strong>](#4Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
   - [<strong> 6. Install Ioncube Loader </strong>](#6Install-Ioncube-Loader)
   - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
@@ -162,10 +162,10 @@ phpinfo();
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/indexphp.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-<a id="4Install-MariaDB-10.3/MySQL-5.7" 
-name="4Install-MariaDB-10.3/MySQL-5.7"></a>
+<a id="4Install-MariaDB-10.6/MySQL-8.0" 
+name="4Install-MariaDB-10.6/MySQL-8.0"></a>
 
-### <strong>4. Install MariaDB-10.3/MySQL 5.7</strong>
+### <strong>4. Install MariaDB 10.6/MySQL 8.0</strong>
 
 - An open-source relational database management system(RDBMS) can be choosen among the MariaDB and MySQL.
 
