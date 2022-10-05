@@ -19,7 +19,7 @@ title: Installing MySQL 8.0 on Windows Server
 [<strong>Install MySQL 8.0 on Windows Server</strong>](#Install-MySQL-8.0-on-Windows-Server)
 
 
-<a href="https://dev.mysql.com/downloads/windows/installer/8.0.html" > Click here</a> to download *MySQL Installer 5.7* for Windows from official official website.
+<a href="https://dev.mysql.com/downloads/windows/installer/8.0.html" > Click here</a> to download *MySQL Installer 8.0* for Windows from official official website.
 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/mysql8.0.png" alt="" style=" width:400px ; height:250px ">
