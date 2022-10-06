@@ -40,7 +40,7 @@ Basically, Faveo depends on the following:
 -   **Git**
 -   **PHP 7.3.x** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **Composer**(Optional)
--   **MySQL 5.7.x** or **MariaDB 10.3+**
+-   **MySQL 8.0.x** or **MariaDB 10.6+**
 -   **Redis** or **Beanstalk**(Optional)
 
 For complete minimum requirement list [check here](/docs/system-requirement/requirement)
@@ -49,7 +49,7 @@ For complete minimum requirement list [check here](/docs/system-requirement/requ
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
 ## Installation instructions for specific platforms
 
-The preferred OS distribution is Cent OS 7, simply because all the development is made on it and we know it works. However, any OS that lets you install the above packages should work.
+The above mentioned prerequisites to be met have to be installed then faveo can be installed in any OS/Distro from the list below:
 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise editions
