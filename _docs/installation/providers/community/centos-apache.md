@@ -34,7 +34,7 @@ Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 7.1** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 8.0+** or **MariaDB 10.6+**
+-   **MySQL 5.7+** or **MariaDB 10.3+**
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
 
@@ -93,25 +93,14 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only  MariaDB-10.6.
-
-Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
-```sh
-nano /etc/yum.repos.d/mariadb.repo
-```
-```
-[mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/10.6/centos73-amd64/
-gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgcheck=1
-```
+Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
 ```sh
-yum install MariaDB-server MariaDB-client
-systemctl enable mysql.service
-systemctl start mysql.service
+yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+yum install -y mysql-community-server
+systemctl start mysqld
+systemctl enable mysqld
 ```
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
