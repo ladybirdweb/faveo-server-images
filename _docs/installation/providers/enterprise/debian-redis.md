@@ -97,6 +97,26 @@ numprocs=1
 user=www-data
 redirect_stderr=true
 stdout_logfile=/home/supportfaveohelp/public_html/storage/logs/worker-deactivate.log
+
+[program:support-faveo-notify-high]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify --sleep=3 --tries=3
+autostart=true
+autorestart=true
+numprocs=1
+user=supportfaveohelp
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/notify-high.log
+
+program:support-faveo-notify-medium]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=notify --sleep=3 --tries=3
+autostart=true
+autorestart=true
+numprocs=1
+user=supportfaveohelp
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/notify-medium.log
 ```
 ## Restart the Supervisor to reread configuration
 
