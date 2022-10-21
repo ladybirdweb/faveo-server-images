@@ -187,7 +187,7 @@ name="5Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 - Edit the *php.ini* located in *C:\Program Files\php7.3*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 
 ```
-curl.cainfo = "C:\Program Files\php7.3\cacert.pem"
+curl.cainfo = "C:\php7.3\cacert.pem"
 ```
 
 <a id="6Install-Ioncube-Loader" 
@@ -197,12 +197,12 @@ name="6Install-Ioncube-Loader"></a>
 
 - [Click here](https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)  to download Ioncube Loader zip file, Extract the zip file
 
-- Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\Program Files\php7.3\ext.*
+- Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php7.3\ext.*
 
 - Add the below line in your php.ini file at the starting to enable Ioncube.
 
 ```
-zend_extension = "C:\Program Files\php7.3\ext\ioncube_loader_win_7.3.dll"
+zend_extension = "C:\php7.3\ext\ioncube_loader_win_7.3.dll"
 ```
 
 
@@ -211,13 +211,13 @@ name="7Upload-Faveo"></a>
 
 ### <strong>7. Upload Faveo</strong>
 
-- Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
-
+- Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and extract the contents inside IIS Root Directory.
+*
 ```
 C:\inetpub\wwwroot\
 ```
 
-- Give full permissions to *IIS_IUSRS* and *Users* for the wwwroot folder.
+- Right click on *wwwroot* directory and in the security tab click on edit and add user *IUSR*. Give full permissions to *IIS_IUSRS*, *IUSR* and *Users* for the wwwroot folder.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
@@ -227,7 +227,7 @@ name="8Configure-Faveo-in-IIS-Manager"></a>
 ### <strong>8. Configure Faveo in IIS Manager</strong>
 
 - Open IIS Manager and in the left pane, Explore till you find *Default Web Site*, select it.
-- Then in the right pane, you will see the *Basic Settings* option click on it, a new window will open as  shown below:
+- Then in the right panel, you will see the *Basic Settings* option click on it, a new window will open as  shown below:
 
 
 - Set the *Physical Path* value to: 
@@ -282,7 +282,7 @@ name="9Configure-web.config-file-for-IIS"></a>
 </configuration>
 ```
 
--   [Click Here](https://www.iis.net/downloads/microsoft/url-rewrite) to download URL Rewrite.
+-   <a href="https://www.iis.net/downloads/microsoft/url-rewrite" target="_blank" rel="noopener">Click Here</a> to download URL Rewrite. Click on *Install this Extension* execute the installer and click *Install*.
 - URL Rewrite enables Web administrators to create powerful rules to implement URLs that are easier for users to remember and easier for search engines to find.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/URL-Rewrite.png" alt="" style=" width:400px ; height:200px ">
@@ -292,7 +292,7 @@ name="10Setting-up-the-Database"></a>
 
 ### <strong>10. Setting up the Database</strong>
 
-Open MariaDB 10.3 Command Line Client and run the below command.
+Open MariaDB 10.6 Command Line Client from the start menu and enter the password that you set while installing. Run the below commands to create a database and database user for Faveo Helpdesk.
 
 - Create a database called ‘faveo’.
 
@@ -300,13 +300,13 @@ Open MariaDB 10.3 Command Line Client and run the below command.
 CREATE DATABASE faveo;
 ```
 
-- Create a user called ‘faveo’ and its password ‘strong password’.
+- Create a user called ‘faveo’ and change the *strongpassword* with the password of your choice.
 
 ```sql
 CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
 ```
 
-- We have to authorize the new user on the faveo DB so that he is allowed to change the database.
+- Grant access to the faveo user to faveo Database.
 
 ```sql
 GRANT ALL ON faveo.* TO 'faveo'@'localhost';
@@ -351,9 +351,9 @@ name="12Setting-up-Bindings"></a>
 
 - To Open the Faveo on your domain, you must set the binding.
 
-- Open IIS Manager and in the left pane, Explore till you find *Default Web Site*, select it.
+- Open IIS Manager and in the left panel, Explore till you find *Default Web Site*, select it.
 
-- Then in the right pane, you will see the *Bindings* option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
+- Then in the right panel, you will see the *Bindings* option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Bindings1.png?raw=true" alt="" style=" width:400px ; height:150px ">
 

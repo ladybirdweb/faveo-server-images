@@ -19,9 +19,7 @@ title: Installing Mariadb 10.6 on Windows Server
 [<strong>Install MariaDB 10.6  on Windows Server</strong>](#Install-MariaDB-10.6-on-Windows-Server)
 
 
-
-
-[Click here ](https://downloads.mariadb.org/mariadb/) to download  *MariaDB-10.6* from the official MariaDB website.
+<a href="https://downloads.mariadb.org/mariadb/" target="_blank" rel="noopener">Click Here</a> to download  *MariaDB-10.6* from the official MariaDB website.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/mariadb10.6.png" alt="" style=" width:400px ; height:250px ">
 
