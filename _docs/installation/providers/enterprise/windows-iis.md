@@ -75,7 +75,7 @@ name="2Install-PHP-7.3"></a>
 
 ### <strong>2. Install PHP 7.3</strong>
 
--   [Click Here](https://windows.php.net/downloads/releases/archives/) to download PHP 7.3 NTS x64 zip file. Extract the zip file & rename it to *php7.3*. Now move the renamed *php7.3* folder to *C:\Program Files*.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-7.3.33-nts-Win32-VC15-x64.zip" file. Extract the zip file & "rename it to *php7.3*. Now move the renamed *php7.3* folder to *C:\php7.3*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php.png?raw=true" alt="" style=" width:400px ; height:150px ">
 
@@ -85,7 +85,7 @@ name="2Install-PHP-7.3"></a>
 
 -   Open *php.ini* using Notepad++, add the below lines at the end of this file & save the file:
 
-Faveo-Changes
+Required configuration changes for Faveo Helpdesk.
 ```
 error_log=C:\Windows\temp\PHP73x64_errors.log
 upload_tmp_dir=C:\Windows\temp
@@ -96,26 +96,25 @@ fastcgi.impersonate=1
 fastcgi.logging=0
 max_execution_time=300
 date.timezone=Asia/Kolkata
-extension_dir="C:\Program Files\php7.3\ext\"
+extension_dir="C:\php7.3\ext\"
+upload_max_filesize = 100M
+post_max_size = 100M
+memory_limit = 256M
 ```
 
-ExtensionList
+Uncomment this extensions.
 ```
-extension=php_mysqli.dll
-extension=php_mbstring.dll
-extension=php_gd2.dll
-extension=php_gettext.dll
-extension=php_curl.dll
-extension=php_exif.dll
-extension=php_xmlrpc.dll
-extension=php_openssl.dll
-extension=php_soap.dll
-extension=php_pdo_mysql.dll
-extension=php_pdo_sqlite.dll
-extension=php_imap.dll
-extension=php_tidy.dll
-extension=php_fileinfo.dll
-extension=php_ldap.dll
+extension=bz2
+extension=curl
+extension=fileinfo
+extension=gd2
+extension=imap
+extension=ldap
+extension=mbstring
+extension=mysqli
+extension=soap
+extension=sockets
+extension=sodium
 ```
 
 <a id="3Create-FastCGI-Handler-Mapping" 
@@ -124,12 +123,12 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 ### <strong>3. Create FastCGI Handler Mapping</strong>
 
 
-- Open Server Manager, locate *Tools* on the top right corner  of Dashboard, Click on it and select *Internet Information Services (IIS) Manager*.
+- Open Server Manager, locate *Tools* on the top right corner  of the Dashboard, Open *Internet Information Services (IIS) Manager*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" alt="" style=" width:550px ; height:150px ">
 
 
-- Now in the Left Panel of the IIS Manager window select your server then you will find the *Handler Mappings*. Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, a new window will appear. Add the below in respective boxes & click *OK*.
+- Now in the Left Panel of the IIS Manager select the server then you will find the *Handler Mappings* it will populate the available options to configure. Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields & click *OK*.
 
 - RequestPath
 ```
@@ -141,7 +140,7 @@ FastCgiModule
 ```
 - Executable (Optional)
 ```
-"C:\Program Files\php7.3\php-cgi.exe"
+"C:\php7.3\php-cgi.exe"
 ```
 - Name
 ```
@@ -158,9 +157,15 @@ phpinfo();
 ?>
 ```
 
-- Now in  IIS Manager window find the *Default Document*. Open *Default Document*, Click on *Add* in the Right Panel, a new window will appear. Add *index.php* as Name & click *OK*.
+- Now go back to the main server configuration and select *Default Document*. Open *Default Document*, Click on *Add* from the Right Panel, a new window will appear. Add the value *index.php* and click *OK*.
 
+
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/dashboard.png?raw=true" alt="" style=" width:400px ; height:250px ">
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/indexphp.png?raw=true" alt="" style=" width:400px ; height:250px ">
+
+- Now if you visit "http://localhost" in the browser you should be able to see PHP Info page.
+
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpinfo.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 <a id="4Install-MariaDB-10.6/MySQL-8.0" 
 name="4Install-MariaDB-10.6/MySQL-8.0"></a>

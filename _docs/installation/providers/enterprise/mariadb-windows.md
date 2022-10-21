@@ -25,11 +25,11 @@ title: Installing Mariadb 10.6 on Windows Server
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/mariadb10.6.png" alt="" style=" width:400px ; height:250px ">
 
-Execute the installer to perform the required installation and click Next.
+Execute the installer and click Next.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria1.png" alt="" style=" width:400px ; height:250px ">
 
-Accept the License Agreement terms and click Next.
+Accept the License Agreement and click Next.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/maria2.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
@@ -37,11 +37,11 @@ In the *Custom Setup* section select *MariaDB Server* and click *Next*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria3.png" alt="" style=" width:400px ; height:250px ">
 
-Set an account password, then click *Next*. This Sets the MariaDB Root Password.
+Set the root user password for MariaDB, then click *Next*. 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria4.png" alt="" style=" width:400px ; height:250px ">
 
-In *Default Instance Properties* section set the values to default and click *Next*.
+In *Default Instance Properties* section leave the default values and click *Next*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria5.png" alt="" style=" width:400px ; height:250px ">
 
@@ -58,3 +58,5 @@ Click *Finish* to complete the installation.
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/maria8.png" alt="" style=" width:400px ; height:250px ">
 
 MariaDB has been successfully installed on your windows server.
+
+
