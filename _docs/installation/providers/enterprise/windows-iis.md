@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-08-01
+last_modified_at: 2022-10-23
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Windows Server
@@ -127,7 +127,7 @@ extension=sodium
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env3.png" alt="" style=" width:500px ; height:300px ">
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env4.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env6.png" alt="" style=" width:500px ; height:300px ">
 
 
 <a id="3Create-FastCGI-Handler-Mapping" 
