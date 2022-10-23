@@ -32,33 +32,40 @@ title: Configuring Database Queue Driver on Windows Server
 ```
 C:\Windows\System32\cmd.exe
 ```
+
 - Add the following highlighted values to the Argument :
 
 
-- This is for the reports.
-```
-For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=reports
+- This is for the reports**.
 
-For Apache
+*For IIS*
+```
+/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=reports
+```
+*For Apache*
+```
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=reports
 ```
 
 - This is for recurring.
-```
-For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=recurring
 
-For Apache
+*For IIS*
+```
+/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=recurring
+```
+*For Apache*
+```
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=recurring
 ```
 
-- This is for outgoing mail
-```
-For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:work database
+- This is for outgoing mail.
 
-For Apache
+*For IIS*
+```
+/c php "c:\inetpub\wwwroot\artisan" queue:work database
+```
+*For Apache*
+```
 /c php "c:\Apache24\htdocs\artisan" queue:work database
 ```
 
