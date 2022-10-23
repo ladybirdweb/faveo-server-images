@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/redis-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-06-29
+last_modified_at: 2022-10-23
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Redis on Windows Server
@@ -113,18 +113,21 @@ nssm install faveo-mail-worker
 - Add  the below content as Arguments:
 
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work redis --sleep=3 --tries=3
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work redis --sleep=3 --tries=3
 ```
 
 - Go to *Details* and give Display Name as *faveo-mail-worker*. (*faveo-recurring* & *faveo-reports* for the remaing two.) 
 
 - Now click on the right arrow and go to *I/O* and set *Output (stdout)* by clicking on three dots.
 
--  Navigate to *C:\inetpub\wwwroot\storage\logs*, provide a file name as *worker.log* (*recurring.log* & *reports.log* for the remaing two) and click *open* as shown in figure below, Output (stdout) will be added. 
+-  Navigate to *C:\inetpub\wwwroot\storage\logs*, (*C:\Apache24\htdocs\storage\logs* in case of Apache) provide a file name as *worker.log* (*recurring.log*, *reports.log* & notification.log for the remaing three) and click *open* as shown in figure below, Output (stdout) will be added. 
 
 - Now click on *Install Service* .
 
-- (Do the Same for remaing two as well):
+- (Do the Same for remaing three as well):
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis14.png?raw=true" style=" width:400px ; height:250px ">
 
@@ -145,7 +148,7 @@ nssm install faveo-mail-worker
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis18.png?raw=true" style=" width:400px ; height:250px ">
 
 
-**Repeat the above steps for FAVEO RECURRING & FAVEO REPORTS**
+**Repeat the above steps for FAVEO RECURRING, FAVEO REPORTS & FAVEO NOTIFICATION**
 
 The details to be filled for Faveo Mail Worker, Faveo Recurring & Faveo Reports are summarised below:
 
@@ -169,12 +172,18 @@ C:\Windows\System32
 
 Arguments
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work redis --sleep=3 --tries=3
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work redis --sleep=3 --tries=3
 ```
 
 Output(Stdout)
 ```
+For IIS
 C:\inetpub\wwwroot\storage\logs\worker.log
+For Apache
+C:\Apache24\htdocs\storage\logs\worker.log
 ```
 
 
@@ -200,12 +209,18 @@ C:\Windows\System32
 
 Arguments
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
 ```
 
 Output(Stdout)
 ```
+For IIS
 C:\inetpub\wwwroot\storage\logs\recurring.log
+For Apache
+C:\Apache24\htdocs\storage\logs\recurring.log
 ```
 
 
@@ -232,12 +247,56 @@ C:\Windows\System32
 
 Arguments
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
 ```
 
 Output(Stdout)
 ```
+For IIS
 C:\inetpub\wwwroot\storage\logs\reports.log
+For Apache
+C:\Apache24\htdocs\storage\logs\reports.log
+```
+
+
+
+
+- **FAVEO NOTIFICATION**
+
+
+
+Command
+```
+nssm install faveo-reports
+```
+
+Path
+```
+C:\Windows\System32\cmd.exe
+```
+
+Startup Directory
+```
+C:\Windows\System32
+```
+
+Arguments
+```
+For IIS
+/c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
+```
+
+Output(Stdout)
+```
+For IIS
+C:\inetpub\wwwroot\storage\logs\notification.log
+For Apache
+C:\Apache24\htdocs\storage\logs\notification.log
 ```
 
 
