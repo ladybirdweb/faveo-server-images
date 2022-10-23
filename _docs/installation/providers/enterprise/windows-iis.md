@@ -403,7 +403,7 @@ C:\Windows\System32\cmd.exe
 
 - This is for faveo incoming mail,esacalation, faveo update check.
 ```
-/c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+/c php "c:\inetpub\wwwroot\artisan" schedule:run
 ```
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" alt="" style=" width:400px ; height:250px ">
