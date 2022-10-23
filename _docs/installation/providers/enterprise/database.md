@@ -37,38 +37,26 @@ C:\Windows\System32\cmd.exe
 
 
 - This is for the reports.
-
-*For IIS*
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=reports
-```
-
-*For Apache*
-```
+For Apache
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=reports
 ```
 
 - This is for recurring.
-
-*For IIS*
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=recurring
-```
-
-*For Apache*
-```
+For Apache
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=recurring
 ```
 
 - This is for outgoing mail.
-
-*For IIS*
 ```
+For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work database
-```
-
-*For Apache*
-```
+For Apache
 /c php "c:\Apache24\htdocs\artisan" queue:work database
 ```
 
@@ -82,5 +70,4 @@ C:\Windows\System32\cmd.exe
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 **Note:** Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
-
 
