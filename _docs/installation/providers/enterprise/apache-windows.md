@@ -370,11 +370,13 @@ LoadModule access_compat_module modules/mod_access_compat.so
 ```
 ### <strong>d. Update the Environment Variable for PHP Binary</strong>
 - Right click on This PC, go to *Properties > Advanced System Settings > Environment Variables.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
 
 - Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env3.png" alt="" style=" width:500px ; height:300px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env4.png" alt="" style=" width:500px ; height:300px ">
