@@ -36,12 +36,13 @@ C:\Windows\System32\cmd.exe
 - Add the following highlighted values to the Argument :
 
 
-- This is for the reports**.
+- This is for the reports.
 
 *For IIS*
 ```
 /c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=reports
 ```
+
 *For Apache*
 ```
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=reports
@@ -53,6 +54,7 @@ C:\Windows\System32\cmd.exe
 ```
 /c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=recurring
 ```
+
 *For Apache*
 ```
 /c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=recurring
@@ -64,6 +66,7 @@ C:\Windows\System32\cmd.exe
 ```
 /c php "c:\inetpub\wwwroot\artisan" queue:work database
 ```
+
 *For Apache*
 ```
 /c php "c:\Apache24\htdocs\artisan" queue:work database
