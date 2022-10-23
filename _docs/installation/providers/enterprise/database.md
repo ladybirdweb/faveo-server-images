@@ -37,17 +37,29 @@ C:\Windows\System32\cmd.exe
 
 - This is for the reports.
 ```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=reports
+For IIS
+/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=reports
+
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=reports
 ```
 
 - This is for recurring.
 ```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:listen database --queue=recurring
+For IIS
+/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=recurring
+
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=recurring
 ```
 
 - This is for outgoing mail
 ```
-/c "c:\inetpub\wwwroot\faveo\artisan" queue:work database
+For IIS
+/c php "c:\inetpub\wwwroot\artisan" queue:work database
+
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:work database
 ```
 
 
