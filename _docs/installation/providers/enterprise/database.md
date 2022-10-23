@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/database/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-08-11
+last_modified_at: 2022-10-23
 last_modified_by: Mohammad_Asif
 toc: true
 title: Configuring Database Queue Driver on Windows Server
