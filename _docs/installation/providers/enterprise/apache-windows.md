@@ -214,7 +214,7 @@ name="2PHP-7.3-for-Apache-Web-Server"></a>
  - Add the content below after the *#LoadModule xml2enc_module modules/mod_xml2enc.so line:*
 
  ```
- LoadModule fcgid_module modules/mod_fcgid.so
+LoadModule fcgid_module modules/mod_fcgid.so
 FcgidInitialEnv PHPRC "/php"
 FcgidInitialEnv PHP_FCGI_MAX_REQUESTS "100000"
 FcgidIOTimeout 1800
@@ -368,6 +368,16 @@ LoadModule rewrite_module modules/mod_rewrite.so
 LoadModule authz_host_module modules/mod_authz_host.so
 LoadModule access_compat_module modules/mod_access_compat.so
 ```
+### <strong>d. Update the Environment Variable for PHP Binary</strong>
+- Right click on This PC, go to *Properties > Advanced System Settings > Environment Variables.
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
+
+- Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env3.png" alt="" style=" width:500px ; height:300px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env4.png" alt="" style=" width:500px ; height:300px ">
 
 
 <a id="3Install-MariaDB-10.6/MySQL-8.0" 
@@ -499,7 +509,7 @@ C:\Windows\System32\cmd.exe
 
 - This is for faveo incoming mail,esacalation, faveo update check.
 ```
-/c "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+/c php "c:\Apache24\htdocs\faveo\artisan" schedule:run
 ```
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
