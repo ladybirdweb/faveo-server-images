@@ -102,7 +102,7 @@ post_max_size = 100M
 memory_limit = 256M
 ```
 
-Uncomment this extensions.
+Uncomment these extensions.
 ```
 extension=bz2
 extension=curl
@@ -116,6 +116,19 @@ extension=soap
 extension=sockets
 extension=sodium
 ```
+### <strong>2.a. Update the Environment Variable for PHP Binary</strong>
+- Right click on This PC, go to *Properties > Advanced System Settings > Environment Variables.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
+
+- Now click on Path > Edit > New & add copied path C:\php7.3\ here and click OK in all 3 tabs.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env3.png" alt="" style=" width:500px ; height:300px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env4.png" alt="" style=" width:500px ; height:300px ">
+
 
 <a id="3Create-FastCGI-Handler-Mapping" 
 name="3Create-FastCGI-Handler-Mapping"></a>
@@ -183,8 +196,8 @@ name="5Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 ### <strong>5. Enable cacert.pem File in PHP Configuration File</strong>
 
 - [Click here](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)  to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the *cacert.pem* file and copy it to *C:\Program Files\php7.3* path.
-- Edit the *php.ini* located in *C:\Program Files\php7.3*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+- Extract the *cacert.pem* file and copy it to *C:\php7.3* path.
+- Edit the *php.ini* located in *C:\php7.3*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 
 ```
 curl.cainfo = "C:\php7.3\cacert.pem"
@@ -390,7 +403,7 @@ C:\Windows\System32\cmd.exe
 
 - This is for faveo incoming mail,esacalation, faveo update check.
 ```
-/c "c:\inetpub\wwwroot\faveo\artisan" schedule:run
+/c php "c:\inetpub\wwwroot\faveo\artisan" schedule:run
 ```
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" alt="" style=" width:400px ; height:250px ">
