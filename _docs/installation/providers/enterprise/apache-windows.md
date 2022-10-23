@@ -511,7 +511,7 @@ C:\Windows\System32\cmd.exe
 
 - This is for faveo incoming mail,esacalation, faveo update check.
 ```
-/c php "c:\Apache24\htdocs\faveo\artisan" schedule:run
+/c php "c:\Apache24\htdocs\artisan" schedule:run
 ```
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
