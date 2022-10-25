@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/apache-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-08-12
+last_modified_at: 2022-10-25
 last_modified_by: Mohammad_Asif
 toc: true
 title: Faveo Installation on Windows with Apache Web Server
@@ -25,11 +25,12 @@ title: Faveo Installation on Windows with Apache Web Server
   - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
   - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
-  - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
-  - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
-  - [<strong> 8. Configure Task Scheduler </strong>](#8Configure-Task-Scheduler)
-  - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
-  - [<strong> 10. Install Faveo </strong>](#10Install-Faveo)
+  - [<strong> 6. Install wkhtmltopdf </strong>](#6Install-wkhtmltopdf)
+  - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
+  - [<strong> 8. Setting up the Database </strong>](#8Setting-up-the-Database)
+  - [<strong> 9. Configure Task Scheduler </strong>](#9Configure-Task-Scheduler)
+  - [<strong> 10. SSL Installation </strong>](#10SSL-Installation)
+  - [<strong> 11. Install Faveo </strong>](#11Install-Faveo)
 
 
 
@@ -41,7 +42,7 @@ title: Faveo Installation on Windows with Apache Web Server
 
 <b>a. Download Apache for Windows </b>
 
-- <a href="https://www.apachelounge.com/download/  " > Click here</a> to download 64-bit version Apache.
+- <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener" > Click Here</a> to download 64-bit version Apache. 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache1.png" alt="" style=" width:500px ; height:250px ">
 
@@ -50,7 +51,7 @@ title: Faveo Installation on Windows with Apache Web Server
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache3.png" alt="" style=" width:500px ; height:250px ">
 
 In addition you need to have the relevant C++ Redistributable for Visual Studio installed on your server too.
-- <a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170" > Click here</a> to download the Visual Studio.
+- <a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener" > Click Here</a> to download the Visual Studio.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
 
@@ -187,7 +188,7 @@ name="2PHP-7.3-for-Apache-Web-Server"></a>
 ### <strong>2. PHP 7.3 for Apache Web Server</strong>
 
 
- -   [Click Here](https://windows.php.net/downloads/releases/archives/) to download PHP 7.3 NTS x64 zip file. 
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 7.3 NTS x64 zip file.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache19.png" alt="" style=" width:500px ; height:150px ">
 
@@ -201,7 +202,7 @@ name="2PHP-7.3-for-Apache-Web-Server"></a>
 ### <strong>a. Mod_fcgi</strong>
 
 
- -  [Click Here](https://www.apachelounge.com/download/) to download Mod_fcgi zip file. 
+-   <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">Click Here</a> to download Mod_fcgi zip file. 
 
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache21.png" alt="" style=" width:500px ; height:100px ">
 
@@ -323,7 +324,7 @@ max_file_uploads = 100
 short_open_tag = On
 ```
 
-- Step 5: Set up PHP TimeZone according to your region. You must use the value available in [PHP documentation](https://www.php.net/manual/en/timezones.php). 
+- Step 5: Set up PHP TimeZone according to your region. You must use the value available in <a href="https://www.php.net/manual/en/timezones.php" target="_blank" rel="noopener">PHP Documentation</a> 
 - Search for the *date.timezone* line, uncomment it and edit it according to the selected TimeZone:
 
 
@@ -399,7 +400,7 @@ name="4Install-Ioncube-Loader"></a>
 ### <strong>4. Install Ioncube Loader</strong>
 
 
--  [Click Here](https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip) to download IonCube Loader zip file. 
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
@@ -427,17 +428,43 @@ name="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 ### <strong>5. Download & Enable cacert.pem File in PHP Configuration File</strong>
 
 
-- [Click here](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)  to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the *cacert.pem* file and copy it to *C:\php* path.
 - Edit the *php.ini*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 ```
 curl.cainfo = "C:\php\cacert.pem"
 ```
 
-<a id="6Upload-Faveo" 
-name="6Upload-Faveo"></a>
 
-### <strong>6. Upload Faveo</strong>
+<a id="6Install-wkhtmltopdf" 
+name="6Install-wkhtmltopdf"></a>
+
+### <strong>6. Install wkhtmltopdf</strong>
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without loosing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+-   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
+
+- Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
+
+- Click *I Agree* on the license agreement screen.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
+
+- Specify the installation destination folder or leave it as default location and click *Install*
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
+
+- When installation is complete, click the *Close* button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
+
+<a id="7Upload-Faveo" 
+name="7Upload-Faveo"></a>
+
+### <strong>7. Upload Faveo</strong>
 
 
 - Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
@@ -451,10 +478,10 @@ name="6Upload-Faveo"></a>
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
 
-<a id="7Setting-up-the-Database" 
-name="7Setting-up-the-Database"></a>
+<a id="8Setting-up-the-Database" 
+name="8Setting-up-the-Database"></a>
 
-### <strong>7. Setting up the Database</strong>
+### <strong>8. Setting up the Database</strong>
 
 
 Open MariaDB 10.6 Command Line Client and run the below command.
@@ -487,10 +514,10 @@ exit
 ```
 
 
-<a id="8Configure-Task-Scheduler" 
-name="8Configure-Task-Scheduler"></a>
+<a id="9Configure-Task-Scheduler" 
+name="9Configure-Task-Scheduler"></a>
 
-### <strong>8. Configure Task Scheduler</strong>
+### <strong>9. Configure Task Scheduler</strong>
 
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
@@ -546,10 +573,10 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 *Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="9SSL-Installation" 
-name="9SSL-Installation"></a>
+<a id="10SSL-Installation" 
+name="10SSL-Installation"></a>
 
-### <strong>9. SSL Installation</strong>
+### <strong>10. SSL Installation</strong>
 
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
@@ -561,9 +588,9 @@ Apache only supports Paid SSL or the Self Signed SSL, Let’s Encrypt is not sup
 
 
 
-<a id="10Install-Faveo" 
-name="10Install-Faveo"></a>
+<a id="11Install-Faveo" 
+name="11Install-Faveo"></a>
 
-### <strong>10. Install Faveo</strong>
+### <strong>11. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
