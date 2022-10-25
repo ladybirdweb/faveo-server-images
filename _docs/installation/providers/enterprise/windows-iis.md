@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-10-23
+last_modified_at: 2022-10-25
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Windows Server
@@ -23,15 +23,16 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 4. Install MariaDB 10.6/MySQL 8.0 </strong>](#4Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
   - [<strong> 6. Install Ioncube Loader </strong>](#6Install-Ioncube-Loader)
-  - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
-  - [<strong> 8. Configure Faveo in IIS Manager </strong>](#8Configure-Faveo-in-IIS-Manager)
-  - [<strong> 9. Configure web.config file for IIS </strong>](#9Configure-web.config-file-for-IIS)
-  - [<strong> 10. Setting up the Database </strong>](#10Setting-up-the-Database)
-  - [<strong> 11. Configure IIS webserver </strong>](#11Configure-IIS-webserver)
-  - [<strong> 12. Setting up Bindings </strong>](#12Setting-up-Bindings)
-  - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
-  - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
-  - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
+  - [<strong> 7. Install wkhtmltopdf </strong>](#7Install-wkhtmltopdf)
+  - [<strong> 8. Upload Faveo </strong>](#8Upload-Faveo)
+  - [<strong> 9. Configure Faveo in IIS Manager </strong>](#9Configure-Faveo-in-IIS-Manager)
+  - [<strong> 10. Configure web.config file for IIS </strong>](#10Configure-web.config-file-for-IIS)
+  - [<strong> 11. Setting up the Database </strong>](#11Setting-up-the-Database)
+  - [<strong> 12. Configure IIS webserver </strong>](#12Configure-IIS-webserver)
+  - [<strong> 13. Setting up Bindings </strong>](#13Setting-up-Bindings)
+  - [<strong> 14. Configure Task Scheduler </strong>](#14Configure-Task-Scheduler)
+  - [<strong> 15. SSL Installation </strong>](#15SSL-Installation)
+  - [<strong> 16. Install Faveo </strong>](#16Install-Faveo)
 
 The Installation steps listed above are to be followed to install  Faveo on your Windows-IIS Server.
 
@@ -117,7 +118,7 @@ extension=sockets
 extension=sodium
 ```
 ### <strong>2.a. Update the Environment Variable for PHP Binary</strong>
-- Right click on This PC, go to *Properties > Advanced System Settings > Environment Variables.
+- Right click on This PC, go to Properties > Advanced System Settings > Environment Variables.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
 
@@ -195,7 +196,7 @@ name="5Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 
 ### <strong>5. Enable cacert.pem File in PHP Configuration File</strong>
 
-- [Click here](https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)  to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the *cacert.pem* file and copy it to *C:\php7.3* path.
 - Edit the *php.ini* located in *C:\php7.3*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 
@@ -208,7 +209,7 @@ name="6Install-Ioncube-Loader"></a>
 
 ### <strong>6. Install Ioncube Loader</strong>
 
-- [Click here](https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)  to download Ioncube Loader zip file, Extract the zip file
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
 - Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php7.3\ext.*
 
@@ -218,14 +219,34 @@ name="6Install-Ioncube-Loader"></a>
 zend_extension = "C:\php7.3\ext\ioncube_loader_win_7.3.dll"
 ```
 
+<a id="7Install-wkhtmltopdf" 
+name="7Install-wkhtmltopdf"></a>
 
-<a id="7Upload-Faveo" 
-name="7Upload-Faveo"></a>
+### <strong>7. Install wkhtmltopdf</strong>
 
-### <strong>7. Upload Faveo</strong>
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without loosing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
-- Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and extract the contents inside IIS Root Directory.
-*
+-   <a href="https://wkhtmltopdf.org/downloads.html/" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
+
+- Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
+
+- Click *I Agree* on the license agreement screen.
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
+
+- Specify the installation destination folder or leave it as default location and click *Install*
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
+
+- When installation is complete, click the *Close* button.
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
+
+
+<a id="8Upload-Faveo" 
+name="8Upload-Faveo"></a>
+
+### <strong>8. Upload Faveo</strong>
+
+- Download the Faveo Helpdesk from *https://billing.faveohelpdesk.com* and extract the contents inside IIS Root Directory.
 ```
 C:\inetpub\wwwroot\
 ```
@@ -234,10 +255,10 @@ C:\inetpub\wwwroot\
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-<a id="8Configure-Faveo-in-IIS-Manager" 
-name="8Configure-Faveo-in-IIS-Manager"></a>
+<a id="9Configure-Faveo-in-IIS-Manager" 
+name="9Configure-Faveo-in-IIS-Manager"></a>
 
-### <strong>8. Configure Faveo in IIS Manager</strong>
+### <strong>9. Configure Faveo in IIS Manager</strong>
 
 - Open IIS Manager and in the left pane, Explore till you find *Default Web Site*, select it.
 - Then in the right panel, you will see the *Basic Settings* option click on it, a new window will open as  shown below:
@@ -252,10 +273,10 @@ name="8Configure-Faveo-in-IIS-Manager"></a>
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/BasicSettings.png?raw=true" alt="" style=" width:400px ; height:200px ">
 
-<a id="9Configure-web.config-file-for-IIS" 
-name="9Configure-web.config-file-for-IIS"></a>
+<a id="10Configure-web.config-file-for-IIS" 
+name="10Configure-web.config-file-for-IIS"></a>
 
-### <strong>9. Configure web.config file for IIS</strong>
+### <strong>10. Configure web.config file for IIS</strong>
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot\public* as *web.config*. Make sure while saving you select all file types.
 
@@ -300,10 +321,10 @@ name="9Configure-web.config-file-for-IIS"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/URL-Rewrite.png" alt="" style=" width:400px ; height:200px ">
 
-<a id="10Setting-up-the-Database" 
-name="10Setting-up-the-Database"></a>
+<a id="11Setting-up-the-Database" 
+name="11Setting-up-the-Database"></a>
 
-### <strong>10. Setting up the Database</strong>
+### <strong>11. Setting up the Database</strong>
 
 Open MariaDB 10.6 Command Line Client from the start menu and enter the password that you set while installing. Run the below commands to create a database and database user for Faveo Helpdesk.
 
@@ -332,10 +353,10 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="11Configure-IIS-webserver" 
-name="11Configure-IIS-webserver"></a>
+<a id="12Configure-IIS-webserver" 
+name="12Configure-IIS-webserver"></a>
 
-### <strong>11. Configure IIS webserver</strong>
+### <strong>12. Configure IIS webserver</strong>
 
 By default, IIS configures PHP only to accept GET, POST, and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
 
@@ -357,10 +378,10 @@ By default, IIS configures PHP only to accept GET, POST, and HEAD request types.
 
 - **Note:** You may be prompted with an alert to *fix* the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the *Executable* box and it will save successfully.
 
-<a id="12Setting-up-Bindings" 
-name="12Setting-up-Bindings"></a>
+<a id="13Setting-up-Bindings" 
+name="13Setting-up-Bindings"></a>
 
-### <strong>12. Setting up Bindings</strong>
+### <strong>13. Setting up Bindings</strong>
 
 - To Open the Faveo on your domain, you must set the binding.
 
@@ -380,10 +401,10 @@ To test the successful configuration perform some delete operations in Faveo if 
 - Go to *Control Panel > Uninstall Program > Turn Windows features on or off > IIS > World Wide Web Services > Common HTTP feature > WebDAV Publishing*.
 
 
-<a id="13Configure-Task-Scheduler" 
-name="13Configure-Task-Scheduler"></a>
+<a id="14Configure-Task-Scheduler" 
+name="14Configure-Task-Scheduler"></a>
 
-### <strong>13. Configure Task Scheduler</strong>
+### <strong>14. Configure Task Scheduler</strong>
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
 - On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
@@ -438,10 +459,10 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 *Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="14SSL-Installation" 
-name="14SSL-Installation"></a>
+<a id="15SSL-Installation" 
+name="15SSL-Installation"></a>
 
-### <strong>14. SSL Installation</strong>
+### <strong>15. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
@@ -452,9 +473,9 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 - [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 
-<a id="15Install-Faveo" 
-name="15Install-Faveo"></a>
+<a id="16Install-Faveo" 
+name="16Install-Faveo"></a>
 
-### <strong>15. Install Faveo</strong>
+### <strong>16. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
