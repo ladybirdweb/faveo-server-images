@@ -138,7 +138,6 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 
 
 - Open Server Manager, locate *Tools* on the top right corner  of the Dashboard, Open *Internet Information Services (IIS) Manager*.
-
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" alt="" style=" width:550px ; height:150px ">
 
 
@@ -160,8 +159,6 @@ FastCgiModule
 ```
 "FastCGI"
 ```
-
-
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot* as *index.php*. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
@@ -209,7 +206,7 @@ name="6Install-Ioncube-Loader"></a>
 
 ### <strong>6. Install Ioncube Loader</strong>
 
--   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip)" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
 - Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php7.3\ext.*
 
@@ -226,18 +223,22 @@ name="7Install-wkhtmltopdf"></a>
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without loosing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
--   <a href="https://wkhtmltopdf.org/downloads.html/" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+-   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
 
 - Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
 
 - Click *I Agree* on the license agreement screen.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
 
 - Specify the installation destination folder or leave it as default location and click *Install*
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
 - When installation is complete, click the *Close* button.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
 
