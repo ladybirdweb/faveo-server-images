@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2022-10-25
 toc: true
 ---
 
@@ -21,15 +21,15 @@ This document will lists down how to install Let’s Encrypt SSL on Windows Serv
 
 ## Download the Let’s Encrypt client
 
-Download Lets encrypt file from GitHub Link [https://github.com/win-acme/win-acme/releases](https://github.com/win-acme/win-acme/releases)
+<a href="https://www.win-acme.com/" target="_blank" rel="noopener">Click Here</a> to download win-acme.v2.1.23.1315.x64.pluggable.zip.
 
-Download the file called ``` win-acme.v2.1.8.847.x64.pluggable.zip ```
-
-<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1592304791Screenshot%20from%202020-06-16%2016-21-04.png"  />
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/winacme.png"  />
 
 ## Setting up the SSL certificate
 
-Extract the zip file under particular directory and RUN the Wacs.exe application.
+Extract the zip file under particular directory and RUN the wacs.exe application as Administrator.
+
+<img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1592304791Screenshot%20from%202020-06-16%2016-21-04.png"  />
 
 **Step 1:** Type N to generate new certificate.
 <img alt="" src="https://support.faveohelpdesk.com/ckeditor_attachements/2020/06/1592304939ssl2.png"  />
