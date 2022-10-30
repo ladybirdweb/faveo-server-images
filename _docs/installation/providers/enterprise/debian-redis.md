@@ -88,16 +88,6 @@ user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 
-[program:support-faveo-Worker-deactivate]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation --sleep=3
-autostart=true
-autorestart=true
-numprocs=1
-user=www-data
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker-deactivate.log
-
 [program:support-faveo-notification]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
