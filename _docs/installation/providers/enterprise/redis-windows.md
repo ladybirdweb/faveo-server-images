@@ -21,12 +21,12 @@ title: Installing Redis on Windows Server
 
 <b>1. Install PHP 7.3 </b>
 
-<a href="https://pecl.php.net/package/redis/5.1.1/windows" > Click here</a> to download  PHP 7.3 NTS x64 zip file.
+<a href="https://pecl.php.net/package/redis/5.1.1/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 7.3 NTS x64 zip file.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis1.png?raw=true" style=" width:400px ; height:250px ">
 
-- Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\Program Files\php7.3\ext.* *(C:\php\ext incase of Apache WebServer).* 
-- Now enable php redis extension in *php.ini* configuration located in *C:\Program Files\php7.3.*  *(C:\php incase of Apache WebServer).*
+- Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\php7.3\ext.* *(C:\php\ext incase of Apache WebServer).* 
+- Now enable php redis extension in *php.ini* configuration located in *C:\php7.3.*  *(C:\php incase of Apache WebServer).*
 
 ```
 extension=php_redis.dll
@@ -37,7 +37,7 @@ extension=php_redis.dll
 
 <b>2. Install Redis </b>
 
-<a href="https://github.com/tporadowski/redis/releases" > Click here</a> to download last recent release of Redis.
+<a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener">Click Here</a> to download last recent release of Redis.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis2.png?raw=true" style=" width:400px ; height:250px ">
 
@@ -66,7 +66,7 @@ Redis has been successfully installed, this can be confirmed in Command Prompt b
 
 <b>3. Install NSSM </b>
 
-<a href="https://github.com/ladybirdweb/faveo-server-images/raw/master/_docs/installation/providers/enterprise/windows-images/nssm-2.24.zip" > Click here</a> to download NSSM.
+<a href="https://github.com/ladybirdweb/faveo-server-images/raw/master/_docs/installation/providers/enterprise/windows-images/nssm-2.24.zip" target="_blank" rel="noopener">Click Here</a> to download NSSM.
 
 Unzip the *nssm-2.24* zip file, a folder nssm-2.24 with nssm files will be created.
 
