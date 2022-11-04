@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/database/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-10-23
+last_modified_at: 2022-11-04
 last_modified_by: Mohammad_Asif
 toc: true
 title: Configuring Database Queue Driver on Windows Server
@@ -58,6 +58,14 @@ For IIS
 /c php "c:\inetpub\wwwroot\artisan" queue:work database
 For Apache
 /c php "c:\Apache24\htdocs\artisan" queue:work database
+```
+
+- This is for Faveo Notifications.
+```
+For IIS
+/c php "c:\inetpub\wwwroot\artisan" queue:listen database --queue=high_priority_notify,notify
+For Apache
+/c php "c:\Apache24\htdocs\artisan" queue:listen database --queue=high_priority_notify,notify
 ```
 
 
