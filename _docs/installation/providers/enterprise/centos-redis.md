@@ -149,7 +149,9 @@ To check the Status use the below command
 supervisorctl
 ```
 
+```
 systemctl status supervisord
+```
 
 ## Enable Redis in Faveo
 After Redis installation is complete, follow these [instructions](/docs/helper/enable-redis) to configure Redis with Faveo. 
