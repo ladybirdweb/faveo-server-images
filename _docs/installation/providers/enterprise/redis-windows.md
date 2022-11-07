@@ -78,15 +78,15 @@ Paste this path in System Environmental Variables by following the below steps:
 
 - Right click on *This PC*, go to *Properties > Advanced System Settings > Environment Variables.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis8.png?raw=true" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis9.png?raw=true" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:400px ; height:250px ">
 
 - Now click on *Path > Edit > New* & add copied path *C:\Program Files\nssm-2.24\win64* \ here and click *OK* in all 3 tabs.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis10.png?raw=true" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:400px ; height:250px ">
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis11.png?raw=true" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envnssm.png" style=" width:400px ; height:250px ">
 
 NSSM has been installed now, it can be confirmed in Command Prompt by typing *nssm*
 
