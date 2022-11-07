@@ -257,9 +257,15 @@ Search for the *Define SRVROOT* and edit it as follows:
 Define SRVROOT "c:/Apache24"
 ```
 
+- Step 6: Add the Options ExecCGI command below the Require all granted line in the *<Directory "${SRVROOT}/htdocs">* directive.
 
+```
+Require all granted
+	Options ExecCGI
+</Directory>
+```
 
-- Step 6: Search for the *< IfModule mime_module >* directive and add the below content above this directive:
+- Step 7: Search for the *< IfModule mime_module >* directive and add the below content above this directive:
 
 ```
 <Directory "/php">
