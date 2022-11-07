@@ -121,8 +121,7 @@ systemctl start mysql.service
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-
-mysql_secure_installation 
+mariadb-secure-installation
 ```
 
 **phpMyAdmin(Optional):** 
