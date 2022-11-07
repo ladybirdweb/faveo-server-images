@@ -96,7 +96,17 @@ autorestart=true
 numprocs=4
 user=www-data
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/notification.lo
+stdout_logfile=/var/www/faveo/storage/logs/notification.log
+
+[program:faveo-deactivate]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=de$
+autostart=true
+autorestart=true
+numprocs=1
+user=www-data
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/worker.log
 ```
 ## Restart the Supervisor to reread configuration
 
