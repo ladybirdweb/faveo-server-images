@@ -20,6 +20,13 @@ This document will list how to install Self-Signed SSL certificates on Windows s
 We will be using the tool OpenSSL for creating a Self-Signed SSL certificate in a windows machine.
 The OpenSSL is an open-source library that provides cryptographic functions and implementations. OpenSSL is a defacto library for cryptography-related operations and is used by a lot of different applications. OpenSSL is provided as a library and application. OpenSSL provides functions and features like SSL/TLS, SHA1, Encryption, Decryption, AES, etc.
 
+Before proceeding with the SSL installation Load the following modules for SSL in httpd.conf
+```
+LoadModule ssl_module modules/mod_ssl.so
+Include conf/extra/httpd-ssl.conf
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+```
+
 ## <strong>Setting up OpenSSL for Windows</strong>
 
 With the below commands we can install OpenSSL in the windows server:
