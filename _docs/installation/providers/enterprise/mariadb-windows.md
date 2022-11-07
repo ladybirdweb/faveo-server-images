@@ -57,4 +57,17 @@ Click *Finish* to complete the installation.
 
 MariaDB has been successfully installed on your windows server.
 
+Now dd the System Environmental Variables for MariaDB by following the below steps:
+
+Right click on *This PC*, go to *Properties > Advanced System Settings > Environment Variables.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:400px ; height:250px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:400px ; height:250px ">
+
+Now click on *Path > Edit > New* & add copied path *C:\Program Files\nssm-2.24\win64* \ here and click *OK* in all 3 tabs.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:400px ; height:250px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envmaria.png" style=" width:400px ; height:250px ">
 
