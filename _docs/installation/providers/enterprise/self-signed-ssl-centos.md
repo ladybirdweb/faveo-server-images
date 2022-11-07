@@ -107,7 +107,7 @@ openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -
 
 - We need to enable some Modules for the ssl as below : 
 ```
-dnf install mod_ssl
+yum install mod_ssl
 systemctl restart httpd
 ```
 - The above will install mod_ssl module and restart apache.
