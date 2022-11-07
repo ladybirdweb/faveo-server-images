@@ -36,12 +36,17 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
 
 The Installation steps listed above are to be followed to install  Faveo on your Windows-IIS Server.
 
+Before we follow the installtion steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
 
 <a id="1Install-IIS-Server" name="1Install-IIS-Server"></a>
 
 ### <strong>1. Install IIS Server</strong>
 
 To install IIS Server open Server Manager and locate the *Manage* button on the top right corner click on it and select  *Add Roles and Features*.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/servermanager.png" alt="" style=" width:550px ; height:120px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/addroles.png" alt="" style=" width:550px ; height:120px ">
 
 - A wizard will open displaying the overview, click on *Next*, and under *Installation Type* select *Role-based and Feature-based installation* and select *Next*. 
 
@@ -116,6 +121,8 @@ extension=mysqli
 extension=soap
 extension=sockets
 extension=sodium
+extension=openssl
+extension=pdo_mysql
 ```
 ### <strong>2.a. Update the Environment Variable for PHP Binary</strong>
 - Right click on This PC, go to Properties > Advanced System Settings > Environment Variables.
@@ -126,7 +133,7 @@ extension=sodium
 
 - Now click on Path > Edit > New & add copied path C:\php7.3\ here and click OK in all 3 tabs.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env3.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env6.png" alt="" style=" width:500px ; height:300px ">
 
@@ -141,7 +148,13 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" alt="" style=" width:550px ; height:150px ">
 
 
-- Now in the Left Panel of the IIS Manager select the server then you will find the *Handler Mappings* it will populate the available options to configure. Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields & click *OK*.
+- Now in the Left Panel of the IIS Manager select the server then you will find the *Handler Mappings* it will populate the available options to configure.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/handlermap.png" alt="" style=" width:400px ; height:250px ">
+
+- Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields & click *OK*.
+
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - RequestPath
 ```
@@ -159,7 +172,6 @@ FastCgiModule
 ```
 "FastCGI"
 ```
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot* as *index.php*. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
 ```
@@ -171,7 +183,7 @@ phpinfo();
 - Now go back to the main server configuration and select *Default Document*. Open *Default Document*, Click on *Add* from the Right Panel, a new window will appear. Add the value *index.php* and click *OK*.
 
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/dashboard.png?raw=true" alt="" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/defaultdoc.png" alt="" style=" width:400px ; height:250px ">
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/indexphp.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - Now if you visit "http://localhost" in the browser you should be able to see PHP Info page.
@@ -241,6 +253,12 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
+- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php7.3\ext
+
+- Update the Environmet variable for wkhtmltopdf. *Refer to section **(2.a)** for adding Environment Variable*
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
+
 
 <a id="8Upload-Faveo" 
 name="8Upload-Faveo"></a>
@@ -255,6 +273,8 @@ C:\inetpub\wwwroot\
 - Right click on *wwwroot* directory and in the security tab click on edit and add user *IUSR*. Give full permissions to *IIS_IUSRS*, *IUSR* and *Users* for the wwwroot folder.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" alt="" style=" width:400px ; height:250px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/permissioniis.png" alt="" style=" width:400px ; height:250px ">
 
 <a id="9Configure-Faveo-in-IIS-Manager" 
 name="9Configure-Faveo-in-IIS-Manager"></a>
@@ -390,7 +410,7 @@ name="13Setting-up-Bindings"></a>
 
 - Then in the right panel, you will see the *Bindings* option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Bindings1.png?raw=true" alt="" style=" width:400px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/bindingnew.png" alt="" style=" width:400px ; height:250px ">
 
 - Now you can open the browser and enter the IP or Domain Name to open Faveo.
 
@@ -436,6 +456,9 @@ C:\Windows\System32\cmd.exe
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
+- Similarly add two more triggers *At log on* & *At startup up*, set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
 **Queue Drivers**
 
