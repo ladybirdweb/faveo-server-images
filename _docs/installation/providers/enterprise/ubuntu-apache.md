@@ -169,8 +169,8 @@ curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor |
 echo deb [arch=amd64,arm64,ppc64el,s390x signed-by=/usr/share/keyrings/mariadb.gpg] http://mirror.mariadb.org/repo/10.6/ubuntu/ jammy main | sudo tee /etc/apt/sources.list.d/mariadb.list
 sudo apt update
 sudo apt install mariadb-server mariadb-client -y
-sudo systemctl start mysql
-sudo systemctl enable mysql
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
