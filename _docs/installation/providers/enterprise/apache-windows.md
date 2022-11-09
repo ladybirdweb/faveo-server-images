@@ -476,7 +476,7 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 - Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php\ext
 
-- Update the Environment variable for wkhtmltopdf. *Refer to section **(2.d)** for adding Environment Variable*
+- Update the Environment variable for wkhtmltopdf. *Refer to section **(2.b Step 8)** for adding Environment Variable*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
@@ -487,6 +487,7 @@ name="7Upload-Faveo"></a>
 
 
 - Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
+
 ```
  C:\Apache24\htdocs
 ```
@@ -542,7 +543,6 @@ name="9Configure-Task-Scheduler"></a>
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
 - On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
-
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
 
 - Under *Task Trigger*, section select *Daily* and click *Next* and leave the default values in *Daily* section tick the *Synchronize across time zones* and proceed *Next*.
@@ -560,17 +560,14 @@ C:\Windows\System32\cmd.exe
 ```
 /c php "c:\Apache24\htdocs\artisan" schedule:run
 ```
-
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
 
 - Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
 
 - In the properties window, select the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
-
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
 
 - Similarly add two more triggers *At log on* & *At startup up*, set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
-
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
 **Queue Drivers**
