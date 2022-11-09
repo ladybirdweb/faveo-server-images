@@ -17,8 +17,15 @@ toc: true
 
 This document will list how to install Self-Signed SSL certificates on Windows servers.
 
-We will be using the tool OpenSSL for creating a Self-Signed SSL certificate in a windows machine.
-The OpenSSL is an open-source library that provides cryptographic functions and implementations. OpenSSL is a defacto library for cryptography-related operations and is used by a lot of different applications. OpenSSL is provided as a library and application. OpenSSL provides functions and features like SSL/TLS, SHA1, Encryption, Decryption, AES, etc.
+- We will be using the tool OpenSSL for creating a Self-Signed SSL certificate on a windows machine.
+
+- The OpenSSL is an open-source library that provides cryptographic functions and implementations. 
+
+- OpenSSL is a defacto library for cryptography-related operations and is used by a lot of different applications. 
+
+- OpenSSL is provided as a library and application. 
+
+- OpenSSL provides functions and features like SSL/TLS, SHA1, Encryption, Decryption, AES, etc.
 
 Before proceeding with the SSL installation Load the following modules for SSL in httpd.conf
 ```
@@ -29,13 +36,13 @@ LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 
 ## <strong>Setting up OpenSSL for Windows</strong>
 
-With the below commands we can install OpenSSL in the windows server:
+With the below commands we can install OpenSSL on the windows server:
 
 Open SSL is not available for windows in .exe format the easiest way to install is by using a third-party software CHOCOLATEY.
 
 Install “Chocolatey” a package management software for windows by using the below command.
 
-Open Powershell.exe with Administrator Privilege, Paste the below command, and hit enter
+Open Powershell.exe with Administrator Privilege, Paste the below command and hit enter
 
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -83,14 +90,14 @@ openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
     - Country Name.
     - State Name.
     - Organization.
-    - Comman name (Leave this as blank or provide the company domain not the faveo domain).
+    - Common name (Leave this as blank or provide the company domain not the faveo domain).
     - Email address.
 
 - The above command will save a file in the name faveoroot.csr in the SSL directory.
 
 ### <strong>Generate a root certificate</strong>
 
-- The below ccommand will create the Root CA certificate which we will use to sign the SSL certificates.
+- The below command will create the Root CA certificate which we will use to sign the SSL certificates.
 
 
 ```
@@ -117,7 +124,7 @@ openssl ecparam -out private.key -name prime256v1 -genkey
 openssl req -new -sha256 -key private.key -out faveolocal.csr
 ```
 
-- It will ask for the details as below we should give the details as shown below.
+- It will ask for the details below we should give the details as shown below.
 
     - Country Name.
     - State Name.
@@ -133,11 +140,11 @@ openssl req -new -sha256 -key private.key -out faveolocal.csr
 ```
 openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -CAcreateserial -out faveolocal.crt -days 3650 -sha256 
 ```
-- The above command will create a server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days that is ten years.
+- The above command will create a server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days which is ten years.
 
-### <strong>Compiling the created certificate and key fie as .pfx file</strong>
+### <strong>Compiling the created certificate and key file as .pfx file</strong>
 
-- As windows need the certificate file in .pfx format which will contain the both certificate and the key file and the CA fifle for the installation, so we need to convert the created files to .pfx format, this can be done with the below command.
+- As windows need the certificate file in .pfx format which will contain the both certificate and the key file and the CA file for the installation, so we need to convert the created files to .pfx format, this can be done with the below command.
 
 ```
 openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -certfile faveorootCA.crt
@@ -145,7 +152,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 
 - The above command will create a .pfx file with the name cert.pfx in the SSL directory.
 
-### <strong>Installing the SSL certifiate</strong>
+### <strong>Installing the SSL certificate</strong>
 
 - The installation of the SSL certificate is simple in windows machines we need to double click on the cert.pfx file that we created from the above step which will open the certificate installation wizard.
 
