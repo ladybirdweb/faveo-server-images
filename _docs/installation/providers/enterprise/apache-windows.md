@@ -34,7 +34,7 @@ title: Faveo Installation on Windows with Apache Web Server
 
 
 
-Before we follow the installtion steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
+Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
 
 
 <a id="1Install-&-Configure-Apache-for-Windows" name="1Install-&-Configure-Apache-for-Windows"></a>
@@ -52,7 +52,7 @@ Before we follow the installtion steps <a href="https://notepad-plus-plus.org/do
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache3.png" alt="" style=" width:500px ; height:250px ">
 
-In addition you need to have the relevant C++ Redistributable for Visual Studio installed on your server too.
+In addition, you need to have the relevant C++ Redistributable for Visual Studio installed on your server too.
 - <a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener" > Click Here</a> to download the Visual Studio.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
@@ -69,7 +69,7 @@ In addition you need to have the relevant C++ Redistributable for Visual Studio 
 
 <b>b. Run Apache </b>
 
-Open a Command Prompt in the “bin” folder at the location where you extracted Apache.
+Open a Command Prompt in the “C:\Apache24\bin” folder at the location where you extracted Apache.
 
 - For command prompt, enter the following command to start Apache:
 
@@ -92,7 +92,7 @@ If so, you either need to stop/disable IIS in order to run Apache or change the 
 
 <b>c. Test Whether Apache is Running Successfully </b>
 
-- Keep the previous command window open, and navigate to below adress with your web browser.
+- Keep the previous command window open, and navigate to the below address with your web browser.
 
 ```
 http://127.0.0.1
@@ -110,7 +110,7 @@ To ensure that your Apache web server runs all the time, you need to install it 
 
 Here is how you can install Apache as a Windows Service in an easy and quick way:
 
-Step 1: Open an administrative command prompt window and enter the following command:
+Step 1: Open an administrative command prompt window, navigate to the *C:\Apache24\bin* location and enter the following command:
 
 ```
 httpd.exe -k install -n "Apache HTTP Server"
@@ -173,7 +173,7 @@ Configuring the Window's Firewall is the final step to install Apache web server
 - Step 9: Test the server for other devices by connecting to your server’s IP address from a device other than the one you are using to connect to the server right now. Open a web browser on that device and enter the IP address of your server like:
 
  ```
- http://142.250.183.238
+ http://SERVER-PUBLIC-IP
  ```
 
 You will be able to see the test web page that shows the message *It works!*.
@@ -182,7 +182,7 @@ You will be able to see the test web page that shows the message *It works!*.
 
 If the test page works successfully and shows the message, it means that you have successfully configured Windows Firewall and other devices can connect to your web server. 
 
-These were the simple steps in which you can install Apache Web Server on Windows Server 2022.
+These were the simple steps by which you can install Apache Web Server on Windows Server 2022.
 
 <a id="2PHP-7.3-for-Apache-Web-Server" 
 name="2PHP-7.3-for-Apache-Web-Server"></a>
@@ -249,6 +249,7 @@ ServerName YOURDOMAIN:80
 ```
 index.php index.phtml
 ```
+After adding this, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache25.png" alt="" style=" width:500px ; height:100px ">
 
@@ -291,8 +292,10 @@ With Apache active and functional, you now need to define and configure the *php
 Assign the value *“C:\php\ext”* to this directive as shown below:
 
 ```
-extension_dir = "C:\php\ext"
+extension_dir = "c"
 ```
+After assigning the value *C:\php\ext*, it will look like below:
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache29.png" alt="" style=" width:300px ; height:100px ">
 
 - Step 3: Enable the extensions listed below, by uncommenting them (Remove the semicolon **;** at beginning of line).
@@ -347,12 +350,27 @@ date.timezone = Asia/Kolkata
 ```
 session.save_path = "C:\Windows\Temp"
 ```
+After adding the path, it look look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache30.png" alt="" style=" width:300px ; height:100px ">
 
 - Step 7:  Save all changes made to the *php.ini file.*
 
-- Step 8:  Verify changes made through the *info.php* file. 
+- Step 8: Update the Environment Variable for PHP Binary.
+
+- Right click on This PC, go to *Properties > Advanced System Settings >* Environment Variables.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
+
+- Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
+
+- Step 9:  Verify changes made through the *info.php* file. 
 - You need to create this file and place it in the *C:\Apache24\htdocs* directory with the following content:
 
 ```
@@ -363,7 +381,7 @@ phpinfo();
 - After this, check the generated page in your browser by going to the URL below:
 
 ```
-127.0.0.1/info.php.
+http://127.0.0.1/info.php
 ```
 
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache31.png" alt="" style=" width:500px ; height:100px ">
@@ -377,18 +395,6 @@ LoadModule rewrite_module modules/mod_rewrite.so
 LoadModule authz_host_module modules/mod_authz_host.so
 LoadModule access_compat_module modules/mod_access_compat.so
 ```
-### <strong>d. Update the Environment Variable for PHP Binary</strong>
-- Right click on This PC, go to *Properties > Advanced System Settings > Environment Variables.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
-
-- Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
 
 
 <a id="3Install-MariaDB-10.6/MySQL-8.0" 
@@ -397,7 +403,7 @@ name="3Install-MariaDB-10.6/MySQL-8.0"></a>
 ### <strong>3. Install MariaDB 10.6/MySQL 8.0 </strong>
 
 
-- An open-source relational database management system(RDBMS) can be choosen among the MariaDB and MySQL.
+- An open-source relational database management system(RDBMS) can be chosen among the MariaDB and MySQL.
 
 - [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
 - [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
@@ -426,7 +432,7 @@ zend_extension = "C:\php\ext\ioncube_loader_win_7.3.dll"
 - Note: If you didn’t get the below output try restarting the Apache Server.
 
 ```
-localhost\loader-wizard.php
+http://127.0.0.1\loader-wizard.php
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache32.png" alt="" style=" width:500px ; height:150px ">
 
@@ -443,13 +449,12 @@ name="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 curl.cainfo = "C:\php\cacert.pem"
 ```
 
-
 <a id="6Install-wkhtmltopdf" 
 name="6Install-wkhtmltopdf"></a>
 
 ### <strong>6. Install wkhtmltopdf</strong>
 
-Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without loosing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. It is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
 -   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
 
@@ -465,13 +470,13 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
-- When installation is complete, click the *Close* button.
+- When the installation is complete, click the *Close* button.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
 - Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php\ext
 
-- Update the Environmet variable for wkhtmltopdf. *Refer to section **(2.d)** for adding Environment Variable*
+- Update the Environment variable for wkhtmltopdf. *Refer to section **(2.d)** for adding Environment Variable*
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
@@ -551,7 +556,7 @@ C:\Windows\System32\cmd.exe
 ```
 - Add the following highlighted values to the Argument :
 
-- This is for faveo incoming mail,esacalation, faveo update check.
+- This is for faveo incoming mail, esacalation, faveo update check.
 ```
 /c php "c:\Apache24\htdocs\artisan" schedule:run
 ```
@@ -570,15 +575,15 @@ C:\Windows\System32\cmd.exe
 
 **Queue Drivers**
 
-A queue driver is the handler for managing how to run a queued job, identifying whether the jobs succeeded or failed, and trying the job again if configured to do so. There are different queue lists are available to be used by the system:
+A queue driver is the handler for managing how to run a queued job, identifying whether the jobs succeeded or failed, and trying the job again if configured to do so. There are different queue lists available to be used by the system:
 
 - Sync (Activated by default)
 - Database (this will use the database used by the application to act as a queue)
 - Redis
 
-- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities operated by the system, this sync method can be used. 
+- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
 
-- **Database** driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in completed state and is removed from the queue.
+- **Database** driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in a completed state and is removed from the queue.
 - Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
 - In Database, Read and Write operations are slow because of storing data in secondary memory.
 
