@@ -270,7 +270,7 @@ C:\Apache24\htdocs\storage\logs\reports.log
 
 Command
 ```
-nssm install faveo-reports
+nssm install faveo-notifications
 ```
 
 Path
