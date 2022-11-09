@@ -69,7 +69,7 @@ In addition, you need to have the relevant C++ Redistributable for Visual Studio
 
 <b>b. Run Apache </b>
 
-Open a Command Prompt in the “C:\Apache24\bin” folder at the location where you extracted Apache.
+Open a Command Prompt in the *C:\Apache24\bin* folder. (i.e., the location where you extracted Apache).
 
 - For command prompt, enter the following command to start Apache:
 
@@ -565,9 +565,11 @@ C:\Windows\System32\cmd.exe
 - Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
 
 - In the properties window, select the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
 
 - Similarly add two more triggers *At log on* & *At startup up*, set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
 **Queue Drivers**
