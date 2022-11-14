@@ -91,18 +91,17 @@ Paste this path in System Environmental Variables by following the below steps:
 NSSM has been installed now, it can be confirmed in Command Prompt by typing *nssm*
 
 
-<b>4. General Instructions to Configure NSSM</b>
+<b>4. General Instructions to Create NSSM Services</b>
 
-**NOTE:** These are the General Instructions to configure NSSM for Faveo. The actual ones are listed below as Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports & Faveo-Notifications.
+**NOTE: These are the General Instructions to create NSSM Services for Faveo. The actual ones are listed below as Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports & Faveo-Notifications.**
 
-Go to Command Prompt and configure TEST-WORKER by typing the following commands. (Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports & Faveo-Notifications are to be configured in actual) :
+Go to Command Prompt and configure NSSM-SERVICE by typing the following commands. (Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports & Faveo-Notifications are to be configured in actual).
 
-**TEST-WORKER**
 
-Type the below command in Command Prompt, this will open a new window.
+- Type the below command in Command Prompt, this will open a new window.
 
 ```
-nssm install TEST-WORKER
+nssm install SERVICE-NAME
 ```
 
 - In Application section click on three dots and navigate to *C > Windows > System32* and search for *cmd*, click on the cmd as shown in the figure below, then click on *open*,  a path will be added.
@@ -121,11 +120,11 @@ For Apache
 /c php "c:\Apache24\htdocs\artisan" queue:work <driver_name> --argument
 ```
 
-- Go to *Details* and give Display Name as *TEST-WORKER* (The actual names will be *faveo-mail-worker*, *faveo-recurring*,  *faveo-reports* & faveo-notifications) 
+- Go to *Details* and give Display Name as *SERVICE-NAME* (The actual names will be *faveo-mail-worker*, *faveo-recurring*,  *faveo-reports* & faveo-notifications) 
 
 - Now click on the right arrow and go to *I/O* and set *Output (stdout)* by clicking on three dots.
 
--  Navigate to *C:\inetpub\wwwroot\storage\logs*, (*C:\Apache24\htdocs\storage\logs* in case of Apache) provide a file name as *TEST.log* and click *open* as shown in figure below, Output (stdout) will be added.
+-  Navigate to *C:\inetpub\wwwroot\storage\logs*, (*C:\Apache24\htdocs\storage\logs* in case of Apache) provide a file name as *SERVICE-NAME.log* and click *open* as shown in figure below, Output (stdout) will be added.
 (The actual file names would be *worker.log*, *recurring.log*, *reports.log* & notification.log).
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis14.png?raw=true" style=" width:400px ; height:250px ">
@@ -136,7 +135,7 @@ For Apache
 
 
 - Now go to *windows menu > Run > Services*, This can be done by  following shortcut *win+R*, type *services.msc* & click *OK*, it will open a new Services tab. 
-- Find *TEST-WORKER* right click on it & go to *Properties > Recovery* a new tab will open.
+- Find *SERVICE-NAME* right click on it & go to *Properties > Recovery* a new tab will open.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis16.png?raw=true" style=" width:400px ; height:250px ">
 
@@ -145,12 +144,12 @@ For Apache
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis17.png?raw=true" style=" width:400px ; height:250px ">
 
-- Now click *TEST-WORKER* and *start the service* as shown below: 
+- Now click *SERVICE-NAME* and *start the service* as shown below: 
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis18.png?raw=true" style=" width:400px ; height:250px ">
 
 
-**Follow the above general steps for FAVEO MAIL WORKER, FAVEO RECURRING, FAVEO REPORTS & FAVEO NOTIFICATIONS**
+**Follow the above general steps to create NSSM Services for FAVEO MAIL WORKER, FAVEO RECURRING, FAVEO REPORTS & FAVEO NOTIFICATIONS**
 
 The details to be filled for Faveo Mail Worker, Faveo Recurring, Faveo Reports  & Faveo Notifications are summarised below:
 
