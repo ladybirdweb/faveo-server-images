@@ -28,15 +28,14 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 9. Configure Faveo in IIS Manager </strong>](#9Configure-Faveo-in-IIS-Manager)
   - [<strong> 10. Configure web.config file for IIS </strong>](#10Configure-web.config-file-for-IIS)
   - [<strong> 11. Setting up the Database </strong>](#11Setting-up-the-Database)
-  - [<strong> 12. Configure IIS webserver </strong>](#12Configure-IIS-webserver)
-  - [<strong> 13. Setting up Bindings </strong>](#13Setting-up-Bindings)
-  - [<strong> 14. Configure Task Scheduler </strong>](#14Configure-Task-Scheduler)
-  - [<strong> 15. SSL Installation </strong>](#15SSL-Installation)
-  - [<strong> 16. Install Faveo </strong>](#16Install-Faveo)
+  - [<strong> 12. Setting up Bindings </strong>](#12Setting-up-Bindings)
+  - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
+  - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
+  - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
 
-The Installation steps listed above are to be followed to install  Faveo on your Windows-IIS Server.
+The Installation steps listed above are to be followed to install Faveo on your Windows-IIS Server.
 
-Before we follow the installtion steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
+Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
 
 <a id="1Install-IIS-Server" name="1Install-IIS-Server"></a>
 
@@ -64,7 +63,7 @@ To install IIS Server open Server Manager and locate the *Manage* button on the 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/netframeworl.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
-- In the *Role Services* section locate the *Appplication Development* select the package *CGI* and click *Next*.
+- In the *Role Services* section locate the *Application Development* select the package *CGI* and click *Next*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/cgi.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
@@ -152,9 +151,8 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/handlermap.png" alt="" style=" width:400px ; height:250px ">
 
-- Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields & click *OK*.
+- Open *Handler Mappings*, Click on *Add Module Mapping* in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Handlermapings.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 - RequestPath
 ```
@@ -172,6 +170,15 @@ FastCgiModule
 ```
 "FastCGI"
 ```
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/modulemapping.png" alt="" style=" width:400px ; height:250px ">
+
+
+- Click on the *Request Restrictions* button, then switch to the ***Verbs*** tab. Switch the radio button to *All Verbs*, then click *OK* to close the window, then *OK* again to close the other.
+
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs2.png?raw=true" alt="" style=" width:400px ; height:250px ">
+
+**Note:** You may be prompted with an alert to *fix* the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the *Executable* box and it will save successfully.
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot* as *index.php*. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
 ```
@@ -195,7 +202,7 @@ name="4Install-MariaDB-10.6/MySQL-8.0"></a>
 
 ### <strong>4. Install MariaDB 10.6/MySQL 8.0</strong>
 
-- An open-source relational database management system(RDBMS) can be choosen among the MariaDB and MySQL.
+- An open-source relational database management system(RDBMS) can be chosen among the MariaDB and MySQL.
 
 - [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
 - [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
@@ -233,7 +240,7 @@ name="7Install-wkhtmltopdf"></a>
 
 ### <strong>7. Install wkhtmltopdf</strong>
 
-Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without loosing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
 -   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
 
@@ -374,35 +381,11 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="12Configure-IIS-webserver" 
-name="12Configure-IIS-webserver"></a>
 
-### <strong>12. Configure IIS webserver</strong>
+<a id="12Setting-up-Bindings" 
+name="12Setting-up-Bindings"></a>
 
-By default, IIS configures PHP only to accept GET, POST, and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
-
-- Open *IIS Manager*, Click on your Server Name which should load the dashboard with a handful of icons.
-
-- Double-click on the *Handler Mappings* icon to bring up the Handler Mappings screen.
-
-<img src="https://support.faveohelpdesk.com/uploads/2020/9/28/Screenshot-2014-06-04-15.01.17.png" alt="" style=" width:400px ; height:250px ">
-
-- Then double-click on the *Handler* for PHP files to bring up the *Edit Module Mapping* window:
-
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs1.png?raw=true" alt="" style=" width:400px ; height:250px ">
-
- **Edit Verbs**
-
-- Click on the *Request Restrictions* button, then switch to the ***Verbs*** tab. Switch the radio button to *All Verbs*, then click *OK* to close the window, then *OK* again to close the other.
-
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs2.png?raw=true" alt="" style=" width:400px ; height:250px ">
-
-- **Note:** You may be prompted with an alert to *fix* the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the *Executable* box and it will save successfully.
-
-<a id="13Setting-up-Bindings" 
-name="13Setting-up-Bindings"></a>
-
-### <strong>13. Setting up Bindings</strong>
+### <strong>12. Setting up Bindings</strong>
 
 - To Open the Faveo on your domain, you must set the binding.
 
@@ -422,10 +405,10 @@ To test the successful configuration perform some delete operations in Faveo if 
 - Go to *Control Panel > Uninstall Program > Turn Windows features on or off > IIS > World Wide Web Services > Common HTTP feature > WebDAV Publishing*.
 
 
-<a id="14Configure-Task-Scheduler" 
-name="14Configure-Task-Scheduler"></a>
+<a id="13Configure-Task-Scheduler" 
+name="13Configure-Task-Scheduler"></a>
 
-### <strong>14. Configure Task Scheduler</strong>
+### <strong>13. Configure Task Scheduler</strong>
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
 - On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
@@ -443,7 +426,7 @@ C:\Windows\System32\cmd.exe
 ```
 - Add the following highlighted values to the Argument :
 
-- This is for faveo incoming mail,esacalation, faveo update check.
+- This is for faveo incoming mail, esacalation, faveo update check.
 ```
 /c php "c:\inetpub\wwwroot\artisan" schedule:run
 ```
@@ -468,7 +451,7 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 - Database (this will use the database used by the application to act as a queue)
 - Redis
 
-- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities operated by the system, this sync method can be used. 
+- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
 
 - **Database** driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in completed state and is removed from the queue.
 - Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
@@ -483,10 +466,10 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 *Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="15SSL-Installation" 
-name="15SSL-Installation"></a>
+<a id="14SSL-Installation" 
+name="14SSL-Installation"></a>
 
-### <strong>15. SSL Installation</strong>
+### <strong>14. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
@@ -497,9 +480,9 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 - [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 
-<a id="16Install-Faveo" 
-name="16Install-Faveo"></a>
+<a id="15Install-Faveo" 
+name="15Install-Faveo"></a>
 
-### <strong>16. Install Faveo</strong>
+### <strong>15. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
