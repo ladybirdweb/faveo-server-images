@@ -156,7 +156,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 - Once the Certificate is installed we need to add the faveorootCA.crt file content to the cacert.pem file which will be in the below location:
 
 ```
-(C:\Program Files\PHP\v7.3)
+C:\php7.3
 ```
 
 - After adding that we need to edit the host file which will be in this location
@@ -174,7 +174,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 - if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of cacert.pem to "openssl.cafile" like.
 
 ```
-openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
+openssl.cafile = "C:\php7.3\cacert.pem"
 ```
 
 - After updating the above, the last part is to add bindings for the SSL.
@@ -192,4 +192,14 @@ openssl.cafile = "C:\Program Files\PHP\v7.3\cacert.pem"
 
 The certificate is installed successfully, since this is a self-signed certificate the browser will show not valid since the faveo considers the server-side SSL certificates in the probe page Domain SSL will be valid.
 
+**Note:** If the SSL certificate is not shown in the Bindings tab then follow the below steps:
 
+- Open IIS manager and go to *Server Certificates*, double click on it a new tab will appear.
+
+ <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/servercertificates.png" alt="" style=" width:580px ; height:330px ">
+
+- Click on *Import*, a small tab will open, click on three dots and navigate to the *cert.pfx* file, select the *cert.pfx file* and enter the password if the certicate is password protected, then click on *OK*, the SSL certificate will be exported.
+
+ <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/certificateadd.png?raw=true" alt="" style=" width:580px ; height:330px ">
+
+- Now add Bindings for the certificate as shown as shown above.
