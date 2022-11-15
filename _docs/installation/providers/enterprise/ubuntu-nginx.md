@@ -157,9 +157,6 @@ sudo systemctl enable mysql
  <b> For Ubuntu 22.04 </b>
 
 ```
-sudo apt install dirmngr ca-certificates software-properties-common gnupg gnupg2 apt-transport-https curl -y
-curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mariadb.gpg  > /dev/null  2>&1
-echo deb [arch=amd64,arm64,ppc64el,s390x signed-by=/usr/share/keyrings/mariadb.gpg] http://mirror.mariadb.org/repo/10.6/ubuntu/ jammy main | sudo tee /etc/apt/sources.list.d/mariadb.list
 sudo apt update
 sudo apt install mariadb-server mariadb-client -y
 sudo systemctl start mariadb
@@ -175,6 +172,18 @@ mysql_secure_installation
 
 ```sh
 apt install phpmyadmin
+```
+
+
+<b>2.d. Install wkhtmltopdf</b>
+
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). 
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+```sh
+apt-get -y install wkhtmltopdf
 ```
 
 Once the softwares above are installed:
