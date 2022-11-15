@@ -99,7 +99,7 @@ Right click on the folder containing the Faveo files, click Properties and then 
 ## 3. Database
 <a id="version" name="version"></a>
 ### a. Version
-MySQL Server <b>5.7.x</b> supported. <b>MariaDB 10.3 </b> also supported.
+MySQL Server <b>8.0.x</b> supported. <b>MariaDB 10.6 </b> also supported.
 
 <a id="user-privileges" name="user-privileges"></a>
 ### b. User Privileges
