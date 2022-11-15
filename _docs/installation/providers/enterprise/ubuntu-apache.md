@@ -13,7 +13,7 @@ toc: true
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
-Faveo can run on [Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa)](http://releases.ubuntu.com/18.04/).
+Faveo can run on [Ubuntu 18.04 (Bionic Beaver), Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/18.04/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
