@@ -8,7 +8,7 @@ last_modified_at: 2020-06-09
 toc: true
 ---
 
-# Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 18.04 and 20.04. <!-- omit in toc -->
+# Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 18.04, 20.04 and 22.04. <!-- omit in toc -->
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
@@ -87,7 +87,7 @@ user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 
-[program:support-faveo-notification]
+[program:faveo-notification]
 process_name=%(program_name)s_%(process_num)02d
 command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
 autostart=true
