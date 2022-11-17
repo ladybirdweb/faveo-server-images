@@ -53,8 +53,8 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 ### Installation instructions for Freelancer, paid and Enterprise editions
 * [Cent OS 8 Stream with Apache](/docs/installation/providers/enterprise/centos8s-apache)
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
-* [Rocky OS with Apache](/docs/installation/providers/enterprise/rocky-apache)
-* [Rocky OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
+* [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
+* [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
 * [Ubuntu with Apache (Recommended)](/docs/installation/providers/enterprise/ubuntu-apache)
 * [Ubuntu with NGINX (Recommended)](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
