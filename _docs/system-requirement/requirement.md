@@ -83,7 +83,8 @@ The following directories (and directories within recursively) must be writable 
 We recommend setting the above directories to 755 permissions. You may also need to adjust the owner and group of the directories.
 
 ```sh
-chmod -R 755 /path/to/directory
+find /path/to/directory -type f -exec chmod 644 {} \;
+find /path/to/directory -type d -exec chmod 755 {} \;
 chown -R www-data:www-data /path/to/directory
 ```
 <p class="notice--warning">
@@ -99,7 +100,7 @@ Right click on the folder containing the Faveo files, click Properties and then 
 ## 3. Database
 <a id="version" name="version"></a>
 ### a. Version
-MySQL Server <b>8.0.x</b> supported. <b>MariaDB 10.6 </b> also supported.
+Latest version of Faveo supports MySQL Server <b>8.0.x</b> and <b>MariaDB 10.6.x </b>.
 
 <a id="user-privileges" name="user-privileges"></a>
 ### b. User Privileges
