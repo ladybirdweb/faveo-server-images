@@ -49,14 +49,10 @@ For detailed requirements list [check here](/docs/system-requirement/requirement
 ## Installation instructions for specific platforms
 
 The above mentioned prerequisites to be met have to be installed then faveo can be installed in any OS/Distro from the below list:
-<!---* [Cent OS with Apache](/docs/installation/providers/enterprise/centos-apache)
-* [Cent OS with NGINX](/docs/installation/providers/enterprise/centos-nginx) 
-* [WampServer](/docs/installation/providers/enterprise/wamp)--> 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise editions
 * [Cent OS 8 Stream with Apache](/docs/installation/providers/enterprise/centos8s-apache)
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
-
 * [Rocky OS with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky OS with NGINX](/docs/installation/providers/enterprise/centos-nginx)
 * [Ubuntu with Apache (Recommended)](/docs/installation/providers/enterprise/ubuntu-apache)
@@ -64,7 +60,6 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
 * [Windows](/docs/installation/providers/enterprise/windows)
-
 * [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
 * [Kubernetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
 
