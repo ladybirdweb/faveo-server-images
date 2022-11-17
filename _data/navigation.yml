@@ -1,19 +1,19 @@
 # Sidebar Menu/Navigation
 docs:
-  - title: Freelancer & paid editions
+  - title: Freelancer & Paid editions
     children:
       - title: Cent OS 8 Stream with Apache
         url: /docs/installation/providers/enterprise/centos8s-apache
       - title: Cent OS 8 Stream with Nginx
         url: /docs/installation/providers/enterprise/centos8s-nginx
-      - title: Rocky OS with Apache
+      - title: Rocky Linux 8 with Apache
         url: /docs/installation/providers/enterprise/rocky-apache
-      - title: Rocky OS with Nginx
+      - title: Rocky Linux 8 with Nginx
         url: /docs/installation/providers/enterprise/rocky-nginx
-      - title: Cent OS with Apache
-        url: /docs/installation/providers/enterprise/centos-apache
-      - title: Cent OS with NGINX
-        url: /docs/installation/providers/enterprise/centos-nginx
+      #- title: Cent OS with Apache
+      #  url: /docs/installation/providers/enterprise/centos-apache
+      #- title: Cent OS with NGINX
+      #  url: /docs/installation/providers/enterprise/centos-nginx
       - title: Ubuntu with Apache
         url: /docs/installation/providers/enterprise/ubuntu-apache
       - title: Ubuntu with NGINX
@@ -28,8 +28,8 @@ docs:
         url: /docs/installation/providers/enterprise/apache-windows
       - title: Plesk Panel Windows
         url: /docs/installation/providers/enterprise/plesk-panel-windows
-      - title: CentOS Web Panel
-        url: /docs/installation/providers/enterprise/centos-web-panel/
+      #- title: CentOS Web Panel
+      #  url: /docs/installation/providers/enterprise/centos-web-panel/
   - title: Kubernetes
     children:
       - title: Faveo on Kubernetes
