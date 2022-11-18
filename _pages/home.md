@@ -55,8 +55,8 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
-* [Ubuntu with Apache (Recommended)](/docs/installation/providers/enterprise/ubuntu-apache)
-* [Ubuntu with NGINX (Recommended)](/docs/installation/providers/enterprise/ubuntu-nginx)
+* [Ubuntu with Apache ] <span style="color:green"> (Recommended)</span>.(/docs/installation/providers/enterprise/ubuntu-apache)
+* [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
 * [Windows](/docs/installation/providers/enterprise/windows)
@@ -107,11 +107,10 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 -->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
-### Installation on a shared server
-
+### Installation on a shared server <span style="color:maroon"> (Not recommended)</span>
 Faveo can also be installed on a shared server if Emails Incoming/Outgoing is the only requirement, though we highly recommend cloud, VPS or dedicated server for best performance and more control.
-
-Note: In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.
+<span style="color:maroon">
+Note: In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</span>
 * [cPanel](/docs/installation/providers/community/cpanel)
 
 <a id="markdown-help" name="markdown-help"></a>
