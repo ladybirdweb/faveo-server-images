@@ -159,10 +159,11 @@ Currently, Faveo supports 3 queue drivers "sync," "database,"  and "redis," whi
 
 1. Sync: where the only requirements are incoming and outgoing emails. It is appropriate for a Cpanel-like environment or any other shared hosting environment where installing and configuring the Redis database is not possible.
 
-2. Redis: preferred queue driver It enables all the functionality of Faveo.
+2. Redis: preferred queue driver. It enables all the functionality of Faveo. 
 
 3. Database: An alternative to Redis that works only on Windows servers
 
+Redis requires "supervisor" daemon service we need to install the same to work smoothly.
 
 <a id="firewall-requirements" name="firewall-requirements"></a>
 ## 6. Firewall Requirements
