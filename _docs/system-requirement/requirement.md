@@ -43,7 +43,7 @@ For assistance installing a new version of PHP please contact your hosting provi
 - FileInfo
 - GD 
 - Iconv
-- ionCube Loaders and above for PHP 7.3.x
+- ionCube Loaders 
 - JSON
 - Mbstring
 - OpenSSL
@@ -133,7 +133,7 @@ Faveo supports Apache, nginx and IIS web server, in all cases you must enable th
 
 Apache works out of the box, however for nginx and IIS you will need to install the rewrite rules.
 
-Depending on the web server you are running, you may need to configure it further to run SupportPal correctly - for example, ensuring all the HTTP request verbs (DELETE, GET, OPTIONS, POST and PUT) are enabled. Below is a list of common web servers and steps required for them.
+Depending on the web server you are running, you may need to configure it further to run Faveo correctly - for example, ensuring all the HTTP request verbs (DELETE, GET, OPTIONS, POST and PUT) are enabled. Below is a list of common web servers and steps required for them.
 
 ### a. Apache
 Apache is supported out of the box.
