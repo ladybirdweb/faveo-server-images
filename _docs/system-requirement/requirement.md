@@ -23,7 +23,8 @@ title: "Faveo Helpdesk System Requirements"
   - [a. Apache](#a-apache)
   - [b. Nginx](#b-nginx)
   - [c. IIS](#c-iis)
-- [5. Firewall Requirements](#5-firewall-requirements)
+- [5. Redis and Supervisor](#6-firewall-requirements)
+- [6. Firewall Requirements](#6-firewall-requirements)
 
 Faveo requires a fairly standard PHP & MySQL server setup in order to be installed and function correctly. If you require any assistance with setting up Faveo or determining if your system can support Faveo, please contact us.
 
