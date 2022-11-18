@@ -55,7 +55,8 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
-* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache) <span style="color:green"> (Recommended)</span>
+* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache)<span class="label" style="background-color: rgb(0, 255, 0); color: white; border-radius:20px; padding:3px">Recommended
+    </span>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
@@ -107,10 +108,11 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 -->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
-### Installation on a shared server <span style="color:red"> (Not recommended)</span>
+### Installation on a shared server <span class="label" style="background-color: rgb(255, 0, 0); color: white; border-radius:20px; padding:3px">Not Recommended
+    </span>
 Faveo can also be installed on a shared server if Emails Incoming/Outgoing is the only requirement, though we highly recommend cloud, VPS or dedicated server for best performance and more control. <br />
 <span style="color:red">
-Note: In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</span>
+Note: </span> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.
 * [cPanel](/docs/installation/providers/community/cpanel)
 
 <a id="markdown-help" name="markdown-help"></a>
