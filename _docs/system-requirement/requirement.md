@@ -163,7 +163,7 @@ Currently, Faveo supports 3 queue drivers "sync," "database,"  and "redis," whi
 
 3. Database: An alternative to Redis that works only on Windows servers
 
-Redis requires "supervisor" daemon service we need to install the same to work smoothly.
+Redis requires "supervisor" daemon service we need to install the same for Redis to work smoothly.
 
 <a id="firewall-requirements" name="firewall-requirements"></a>
 ## 6. Firewall Requirements
