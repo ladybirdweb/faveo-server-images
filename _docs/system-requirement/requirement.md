@@ -40,15 +40,15 @@ For assistance installing a new version of PHP please contact your hosting provi
 - cURL
 - DOM
 - FileInfo
-- GD (requires libpng and libjpeg)
+- GD 
 - Iconv
-- ionCube Loaders v10.3 and above for PHP 7.3.x
+- ionCube Loaders and above for PHP 7.3.x
 - JSON
 - Mbstring
 - OpenSSL
-- PDO (with MySQL Client Driver 5.6.0+ or MySQLnd 5.0.9)
+- PDO 
 - Tokenizer
-- XML (with libxml2 version 2.7.0 or above)
+- XML 
 - IMAP - When using email download to pull in department tickets
 - LDAP - When using LDAP operator authentication
 
@@ -152,6 +152,17 @@ Please replace the follow constants in the below code snippet:
 **<faveo_base_url>** with your installation base URL
 **<absolute_path_to_php_cgi.exe>** with the absolute path to your PHP cgi executable
 
+<a id="Redis and Supervisor" name="Redis and Supervisor"></a>
+## 6. Queue Driver
+Currently, Faveo supports 3 queue drivers "sync," "database,"  and "redis," which are responsible for the core functionality of Faveo emails (incoming and outgoing), recurring emails, report generation, notifications, etc.
+
+1. Sync: where the only requirements are incoming and outgoing emails. It is appropriate for a Cpanel-like environment or any other shared hosting environment where installing and configuring the Redis database is not possible.
+
+2. Redis: preferred queue driver It enables all the functionality of Faveo.
+
+3. Database: An alternative to Redis that works only on Windows servers
+
+
 <a id="firewall-requirements" name="firewall-requirements"></a>
-## 5. Firewall Requirements
+## 6. Firewall Requirements
 Please open outbound access to billing.faveohelpdesk.com

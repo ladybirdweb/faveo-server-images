@@ -36,9 +36,9 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 Basically, Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) or **Nginx** or **IIS**
--   **PHP 7.3.x** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.3.x** with the certain extensions like php-curl, php-gd, php-mbstring, php-pecl-mcrypt, php-mysqlnd, php-odbc, php-pdo etc
 -   **Composer**(Optional)
--   **MySQL 8.0.x** or **MariaDB 10.6+**
+-   **MySQL 8.0.x** or **MariaDB 10.6.x**
 -   **Redis** 
 -   **Supervisor**
 
