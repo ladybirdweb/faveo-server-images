@@ -14,9 +14,9 @@ docs:
       #  url: /docs/installation/providers/enterprise/centos-apache
       #- title: Cent OS with NGINX
       #  url: /docs/installation/providers/enterprise/centos-nginx
-      - title: Ubuntu with Apache
+      - title: Ubuntu with Apache (Recommended)
         url: /docs/installation/providers/enterprise/ubuntu-apache
-      - title: Ubuntu with NGINX
+      - title: Ubuntu with NGINX (Recommended)
         url: /docs/installation/providers/enterprise/ubuntu-nginx
       - title: Debian with Apache
         url: /docs/installation/providers/enterprise/debian-apache
