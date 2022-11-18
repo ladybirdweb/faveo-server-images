@@ -149,10 +149,6 @@ On IIS, please create a web.config file in the root of your installation directo
 **Required Extension(s)**
 The [URL Rewrite extension](https://www.iis.net/downloads/microsoft/url-rewrite) is required for the below web.config file to function correctly, otherwise a 500.19 error is likely to be shown when visiting Faveo (see Understanding HTTP Error 500.19).
 
-Please replace the follow constants in the below code snippet:
-**<faveo_base_url>** with your installation base URL
-**<absolute_path_to_php_cgi.exe>** with the absolute path to your PHP cgi executable
-
 <a id="Redis and Supervisor" name="Redis and Supervisor"></a>
 ## 5. Queue Driver
 Currently, Faveo supports 3 queue drivers "sync," "database,"  and "redis," which are responsible for the core functionality of Faveo emails (incoming and outgoing), recurring emails, report generation, notifications, etc.
