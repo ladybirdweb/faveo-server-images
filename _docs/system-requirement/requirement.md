@@ -95,8 +95,7 @@ If you're using CentOS, it has SELinux enabled by default which has measures in 
 
 <a id="iis" name="iis"></a>
 ### b. IIS (Windows)
-Right click on the folder containing the Faveo files, click Properties and then the Security tab. Click Edit... and then Add..., enter IUSRS and click Check Names. Click OK, and check the Full Control checkbox in the permissions. Do the same for the IIS_IUSRS group too.
-
+Right click on the folder containing the Faveo files, click Properties and then the Security tab. Provide full permission to IUSR and IIS_ISURS group apply the changes.
 <a id="database" name="database"></a>
 ## 3. Database
 <a id="version" name="version"></a>
