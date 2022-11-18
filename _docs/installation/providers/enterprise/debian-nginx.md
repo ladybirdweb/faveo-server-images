@@ -13,7 +13,7 @@ toc: true
 
 <img alt="Debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
-Faveo can run on Debian 10(Buster).
+Faveo can run on Debian 11(Bullseye).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
