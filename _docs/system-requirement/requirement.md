@@ -154,7 +154,7 @@ Please replace the follow constants in the below code snippet:
 **<absolute_path_to_php_cgi.exe>** with the absolute path to your PHP cgi executable
 
 <a id="Redis and Supervisor" name="Redis and Supervisor"></a>
-## 6. Queue Driver
+## 5. Queue Driver
 Currently, Faveo supports 3 queue drivers "sync," "database,"  and "redis," which are responsible for the core functionality of Faveo emails (incoming and outgoing), recurring emails, report generation, notifications, etc.
 
 1. Sync: where the only requirements are incoming and outgoing emails. It is appropriate for a Cpanel-like environment or any other shared hosting environment where installing and configuring the Redis database is not possible.
