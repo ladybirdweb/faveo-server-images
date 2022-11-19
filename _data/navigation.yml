@@ -1,4 +1,20 @@
 # Sidebar Menu/Navigation
+<style>
+.button {
+  border: none;
+  color: black;
+  #padding: 15px 32px;
+  border-radius:4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #F70A0A;} /* Red */
+</style>
 docs:
   - title: Freelancer & Paid editions
     children:
@@ -14,7 +30,7 @@ docs:
       #  url: /docs/installation/providers/enterprise/centos-apache
       #- title: Cent OS with NGINX
       #  url: /docs/installation/providers/enterprise/centos-nginx
-      - title: Ubuntu with Apache (Recommended)
+      - title: Ubuntu with Apache (Recommended)<button class="button button1"><b>Recommended</b></button>
         url: /docs/installation/providers/enterprise/ubuntu-apache
       - title: Ubuntu with NGINX 
         url: /docs/installation/providers/enterprise/ubuntu-nginx
