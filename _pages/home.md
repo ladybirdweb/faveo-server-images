@@ -111,7 +111,7 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 ### Installation on a shared server <span class="label" style="background-color: #F7340A; color: black; border-radius:6px; padding:3px">Not Recommended</span>
 Faveo can also be installed on a shared server if Emails Incoming/Outgoing is the only requirement, though we highly recommend cloud, VPS or dedicated server for best performance and more control. <br />
 <span style="color:red">
-<b>Note: </span> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</b>
+<b>Note: </b></span> <b> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</b>
 * [cPanel](/docs/installation/providers/community/cpanel)
 
 <a id="markdown-help" name="markdown-help"></a>
