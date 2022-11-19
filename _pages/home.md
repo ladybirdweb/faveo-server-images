@@ -55,7 +55,7 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
-* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache)<span class="label" style="background-color: rgb(0, 255, 0); color: white; border-radius:20px; padding:3px">Recommended
+* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache)<span class="label" style="background-color: #339933; color: Black; border-radius:6px; padding:3px"><b>Recommended</b>
     </span>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
@@ -108,11 +108,11 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 -->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
-### Installation on a shared server <span class="label" style="background-color: rgb(255, 0, 0); color: white; border-radius:20px; padding:3px">Not Recommended
+### Installation on a shared server <span class="label" style="background-color: #F7340A; color: black; border-radius:6px; padding:3px"><b>Not Recommended</b>
     </span>
 Faveo can also be installed on a shared server if Emails Incoming/Outgoing is the only requirement, though we highly recommend cloud, VPS or dedicated server for best performance and more control. <br />
 <span style="color:red">
-Note: </span> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.
+<b>Note: </span> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</b>
 * [cPanel](/docs/installation/providers/community/cpanel)
 
 <a id="markdown-help" name="markdown-help"></a>
