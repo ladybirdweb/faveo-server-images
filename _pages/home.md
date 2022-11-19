@@ -55,14 +55,36 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
-* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache ) <text>  </text> <span class="label" style="background-color: #339933; color: Black; border-radius:6px; padding:4px"> Recommended
-    </span>
+* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache )<style>
+.button {
+  border: none;
+  color: black;
+  #padding: 15px 32px;
+  border-radius:4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style><button class="button button1"><b>Recommended</b></button>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
 * [Windows](/docs/installation/providers/enterprise/windows)
 * [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
 * [Kubernetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
+
+
+
+
+
+
+
+
 
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community edition
@@ -108,7 +130,22 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 -->
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
-### Installation on a shared server <span class="label" style="background-color: #F7340A; color: black; border-radius:6px; padding:4px">Not Recommended</span>
+### Installation on a shared server. <style>
+.button {
+  border: none;
+  color: black;
+  #padding: 15px 32px;
+  border-radius:4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {background-color: #C70039;} /* Green */
+.button2 {background-color: #C70039;} /* Blue */
+</style><button class="button button1"><b>Not Recommended</b></button>
 Faveo can also be installed on a shared server if Emails Incoming/Outgoing is the only requirement, though we highly recommend cloud, VPS or dedicated server for best performance and more control. <br />
 <span style="color:red">
 <b>Note: </b></span> <b> In Faveo features like Report generation, Recurring Emails, Notifications etc relies on Redis Database. So if you choose shared hosting like Cpanel. These features will not be available.</b>
