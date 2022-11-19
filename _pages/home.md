@@ -72,7 +72,7 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Cent OS 8 Stream with NGINX](/docs/installation/providers/enterprise/centos8s-nginx)
 * [Rocky Linux 8 with Apache](/docs/installation/providers/enterprise/rocky-apache)
 * [Rocky Linux 8 with NGINX](/docs/installation/providers/enterprise/centos-nginx)
-* [Ubuntu with Apache ](/docs/installation/providers/enterprise/ubuntu-apache)<text>  </text><button class="button button1"><b>Recommended</b></button>
+* [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)<button class="button button1"><b>Recommended</b></button>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
