@@ -20,7 +20,7 @@ toc: true
   cursor: pointer;
 }
 .button1 {background-color: #4CAF50;} /* Green */
-.button2 {background-color: #C70039;} /* Red */
+.button2 {background-color: #F70A0A;} /* Red */
 </style>
 
 Welcome to the Faveo installation documentation.
