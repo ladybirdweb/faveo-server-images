@@ -290,7 +290,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/rocky-rhel)
+[Redis installation documentation](/docs/installation/providers/enterprise/rhel-redis)
 
 <a id="8-ssl-installation" name="8-ssl-installation"></a>
 
