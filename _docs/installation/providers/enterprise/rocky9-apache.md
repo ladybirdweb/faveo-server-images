@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-25-11
+last_modified_at: 2022-11-25
 toc: true
 ---
 # Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Rocky OS 9 <!-- omit in toc -->
