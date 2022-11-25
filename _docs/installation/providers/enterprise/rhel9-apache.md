@@ -11,7 +11,7 @@ toc: true
 
 <img alt="Rhel OS Logo" src="https://1000logos.net/wp-content/uploads/2021/04/Red-Hat-logo.png" width="200"  />
 
-Faveo can run on [Rocky 9 ](https://rockylinux.org/download/).
+Faveo can run on [RHEL 9 ](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
