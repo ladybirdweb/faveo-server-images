@@ -120,7 +120,7 @@ sudo bash mariadb_repo_setup --mariadb-server-version=10.6
 sudo dnf install boost-program-options -y
 sudo yum install MariaDB-server MariaDB-client MariaDB-backup
 sudo systemctl enable --now mariadb
-sudo systemctl enable --now mariadb
+sudo systemctl start --now mariadb
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
