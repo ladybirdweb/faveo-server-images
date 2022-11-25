@@ -56,7 +56,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
-<b> 2.a. Install php-7.3 Packages </b>
+<b> 2.a. Install php-8.1 Packages </b>
 
 
 
