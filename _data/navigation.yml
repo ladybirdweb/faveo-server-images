@@ -11,7 +11,7 @@ docs:
         url: /docs/installation/providers/enterprise/rocky-apache
       - title: Rocky Linux 8 with Nginx
         url: /docs/installation/providers/enterprise/rocky-nginx
-      - title: Cent OS with Apache
+      #- title: Cent OS with Apache
       #  url: /docs/installation/providers/enterprise/centos-apache
       #- title: Cent OS with NGINX
       #  url: /docs/installation/providers/enterprise/centos-nginx
