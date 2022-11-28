@@ -88,14 +88,6 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
 * [Kubernetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
 
-
-
-
-
-
-
-
-
 <a id="markdown-generic-linux-instructions" name="generic-linux-instructions"></a>
 ### Installation instructions for Community edition
 
