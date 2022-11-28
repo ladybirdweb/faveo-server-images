@@ -21,6 +21,7 @@ toc: true
 }
 .button1 {background-color: #4CAF50;} /* Green */
 .button2 {background-color: #F70A0A;} /* Red */
+.NEW {background-color: #FFF933;} /* yellow */
 </style>
 
 Welcome to the Faveo installation documentation.
@@ -45,7 +46,14 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 <!--- [One click installers](#one-click-installers)
 [Installation via scripts](#installation-via-scripts) -->
 
+<a id="Package upgrade" name="Package Upgrade"></a>
+## How tos <button class="button NEW"><b>NEW</b></button>
+-   Upgrade to PHP 8.1 
 
+<!---    MySQL 
+
+-    MariaDB 
+-->
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
  
