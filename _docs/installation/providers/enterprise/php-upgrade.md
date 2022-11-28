@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /pages/php-upgrade/
+permalink: /docs/installation/providers/enterprise/php-upgrade/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-26
