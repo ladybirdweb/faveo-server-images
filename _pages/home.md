@@ -43,7 +43,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
     - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
     - [Installation on a shared server](#installation-on-a-shared-server)
   - [Help](#help)
-<!--- [One click installers](#one-click-installers)
+<!---- [One click installers](#one-click-installers)
 [Installation via scripts](#installation-via-scripts) -->
 
 <a id="Package upgrade" name="Package Upgrade"></a>
