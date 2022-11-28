@@ -19,7 +19,7 @@ toc: true
 
 
 
-## Introduction:
+## Introduction
 
 This document will guide you to upgrade PHP-8.1 for Faveo Helpdesk.
 
