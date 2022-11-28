@@ -10,7 +10,7 @@ toc: true
 
 # Upgrade From PHP 7.3.x to PHP 8.1.x  <!-- omit in toc -->
 
-<img alt="PHP" src="https://www.php.net/images/logos/new-php-logo.svg
+<img alt="PHP" src="[https://www.php.net/images/logos/new-php-logo.svg](https://www.php.net/images/logos/php-logo-white.svg)
 " width="200"  />
 
 
