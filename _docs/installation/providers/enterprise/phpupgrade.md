@@ -10,8 +10,7 @@ toc: true
 
 # Upgrade From PHP 7.3.x to PHP 8.1.x  <!-- omit in toc -->
 
-<img alt="PHP" src="(https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg)" width="200" />
-
+<img alt="PHP" src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" width="200" />
 
 
 # How to Upgrade from PHP 7.x to PHP 8.1 on Ubuntu, CentOS, RHEL, Debian, Windows Server <!-- omit in toc -->
