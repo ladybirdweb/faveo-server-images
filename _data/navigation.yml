@@ -50,7 +50,7 @@ docs:
   - title: How tos
     - children:
       - title: Upgrade PHP to 8.1
-        url: /pages/php-upgrade/
+        url: /pages/php-upgrade
 #      - title: MySQL Version 8
 #        url:
 #      - title: MariaDB Version 10.6
