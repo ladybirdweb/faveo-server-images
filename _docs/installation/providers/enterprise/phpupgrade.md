@@ -307,7 +307,8 @@ extension=pdo_mysql
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/handlermap.png?raw=true"/>
 
 - Open Handler Mappings, Select "FastCGI" and Click on Edit in the Right Panel, update the new "c:\php8.1\php-cgi.exe" path.
-<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
+
 - Click on "ok" and restart the IIS server once.
 
 
