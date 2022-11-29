@@ -191,7 +191,7 @@ systemctl restart nginx (Incase of Nginx)
 systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
 
-# For Centos 8 Stream and Rockey 8
+# For Centos 8 Stream and Rocky 8
 
 In CentOS 8 stream and Rocky 8 machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to disable PHP 7.3 and enable PHP 8.1 Remi repo.
 ```sh
@@ -232,12 +232,11 @@ Note: After the update, if you came across ioncube not loaded issue please reboo
 - After installing PHP 8.1 in the server we need to change the php version for the faveo domain, follow the below steps to do so.
 - Login to the Cpanel and search for **MultiPHP Manager** as shown in the below snap.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/multi-php-manager.png?raw=true"/>
-- Once the MultiPHP Manager is opened select the domain and in the search bar there will the php version's installed in the server, we can find the PHP 8.1 version in the drop-down and select the version and click apply as shown in the below snap
+- After opening the MultiPHP Manager select the "checkbox" of the domain, change the PHP version from the drop down to PHP 8.1 and click apply as shown in the below snap
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/php-version-change-apply.png?raw=true"/>
 Note: if you are not able to find the PHP version in the drop-down then it is not installed on the server Please contact your Hosting provider and install PHP-8.1 and try again.
-- After changing the PHP version in the Cpanel it will be like the below.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/after-php-change.png?raw=true"/>
-- Once the above is done we need to update the cron in the Cpanel to do so, search for cron jobs in the Cpanel search and click on it to open the cron jobs page as below.
+- Once PHP 8.1 is udpated to the domain we need to update PHP version in cron as well in to do so, search for cron jobs in the Cpanel search and click on it to open the cron jobs page as below.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/cron-search.png?raw=true"/>
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/Screenshot%20from%202022-11-28%2011-30-14.png?raw=true"/>
 - Once we get to the cronjobs page we need to edit the cron to use the php8.1 to do so we need to edit the cron job to use the domain-specific php path and save as shown in the below snap with the below commands.
@@ -248,3 +247,13 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
       /usr/local/bin/php (we need to change this path to the below)
       /usr/local/bin/ea-php8.1
       ```
+
+# For Windows Servers.
+
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/GUI-images/php-8.1.png?raw=true"/>
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/GUI-images/movephp8.1.png?raw=true"/>
+
+- Open php8.1 folder, find php.ini-development & rename it to php.ini to make it php configuration file.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true"/>
+
