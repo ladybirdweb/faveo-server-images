@@ -251,9 +251,66 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
 # For Windows Servers.
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
-<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/GUI-images/php-8.1.png?raw=true"/>
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php-8.1.png?raw=true"/>
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/GUI-images/movephp8.1.png?raw=true"/>
 
 - Open php8.1 folder, find php.ini-development & rename it to php.ini to make it php configuration file.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true"/>
+
+- Open php.ini using Notepad++, add the below lines at the end of this file & save the file:
+Required configuration changes for Faveo Helpdesk.
+
+```sh
+error_log=C:\Windows\temp\PHP73x64_errors.log
+upload_tmp_dir=C:\Windows\temp
+session.save_path=C:\Windows\temp
+cgi.force_redirect=0
+cgi.fix_pathinfo=1
+fastcgi.impersonate=1
+fastcgi.logging=0
+max_execution_time=300
+date.timezone=Asia/Kolkata
+extension_dir="C:\php7.3\ext\"
+upload_max_filesize = 100M
+post_max_size = 100M
+memory_limit = 256M
+```
+Uncomment these extensions.
+
+```sh
+extension=bz2
+extension=curl
+extension=fileinfo
+extension=gd2
+extension=imap
+extension=ldap
+extension=mbstring
+extension=mysqli
+extension=soap
+extension=sockets
+extension=sodium
+extension=openssl
+extension=pdo_mysql
+```
+### Update the Environment Variable for PHP BinaryPermalink
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/env1.png?raw=true"/>
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/env2.png?raw=true"/>
+
+- Now click on Path > Edit. Delete the old PHP 7.3 path and add PHP 8.1 path and click on ok.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php8.1-path.png?raw=true"/>
+
+### Create FastCGI Handler Mapping
+- Open Server Manager, locate Tools on the top right corner of the Dashboard, Open Internet Information Services (IIS) Manager.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true"/>
+
+- Now in the Left Panel of the IIS Manager select the server then you will find the Handler Mappings it will populate the available options to configure.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/handlermap.png?raw=true"/>
+
+- Open Handler Mappings, Select "FastCGI" and Click on Edit in the Right Panel, update the new "c:\php8.1\php-cgi.exe" path.
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
+- Click on "ok" and restart the IIS server once.
+
+
+
+
 
