@@ -252,7 +252,7 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php-8.1.png?raw=true"/>
-<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/movphp8.1.png?raw=true"/>
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/GUI-images/movphp8.1.png?raw=true"/>
 
 - Open php8.1 folder, find php.ini-development & rename it to php.ini to make it php configuration file.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true"/>
@@ -307,7 +307,16 @@ extension=pdo_mysql
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/handlermap.png?raw=true"/>
 
 - Open Handler Mappings, Select "FastCGI" and Click on Edit in the Right Panel, update the new "c:\php8.1\php-cgi.exe" path.
-<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
+
+<img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
+
+### Configure PHP 8.1 Ioncube loader
+<a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
+- Copy the ioncube_loader_win_8.1.dll file from extracted Ioncube folder and paste it in the PHP extension directory C:\php8.1\ext.
+- Add the below line in your php.ini file at the starting to enable Ioncube.
+```sh
+zend_extension = "C:\php8.1\ext\ioncube_loader_win_8.1.dll"
+```
 
 - Click on "ok" and restart the IIS server once.
 
