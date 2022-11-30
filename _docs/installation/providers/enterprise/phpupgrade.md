@@ -90,7 +90,7 @@ Press [ENTER] to continue or Ctrl-c to cancel adding it.
 ```
 Press ENTER to add the repository.
 
-<!-- If you are running Debian 10 or 11
+If you are running Debian 10 or 11
 ```sh
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
 curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg --yes
@@ -158,7 +158,7 @@ sudo systemctl restart nginx
 sudo systemctl restart apache2
 ```
 
-# For CentOS 7
+<!-- # For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
 ```sh
