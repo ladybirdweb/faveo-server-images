@@ -49,8 +49,6 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 ## How To's <button class="button NEW"><b>NEW</b></button>
 - Upgrade to PHP 8.1 [click here](/docs/installation/providers/enterprise/phpupgrade/)
-<!-- - Upgrade to MariaDB-10.6 (Coming Soon)
-- Upgrade to MySQL-8.0 (Coming Soon) -->
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
