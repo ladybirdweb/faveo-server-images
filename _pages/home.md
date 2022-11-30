@@ -38,7 +38,6 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 - [About Faveo](#about-faveo)
   - [Requirements](#requirements)
-  - [HowTo's] (#howtos)
   - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
     - [Installation instructions for Freelancer, Paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
     - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
@@ -47,12 +46,12 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
   - [One click installers](#one-click-installers)
 [Installation via scripts](#installation-via-scripts)
 
-
+<!---
 <a id="markdown-howtos" name="howtos"></a>
 ## How To's <button class="button NEW"><b>NEW</b></button>
 -   Upgrade to PHP 8.1 [click here](/docs/installation/providers/enterprise/phpupgrade.md)
 
-<!---    MySQL 
+    MySQL 
 
 -    MariaDB 
 -->
