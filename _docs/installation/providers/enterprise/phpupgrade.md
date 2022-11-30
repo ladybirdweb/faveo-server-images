@@ -35,7 +35,7 @@ php -v
 ```
 If you are running PHP 7.x, you can continue with this guide to upgrade to PHP 8.1 
 
-# For Ubuntu and Debian
+<!-- # For Ubuntu and Debian
 Type the following command to remove the existing PHP version.
 
 ```sh
@@ -310,7 +310,7 @@ extension=pdo_mysql
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
 
 ### Configure Ioncube PHP 8.1 loader
-- Click on "ok" and restart the IIS server once.
+- Click on "ok" and restart the IIS server once. -->
 
 
 
