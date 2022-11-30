@@ -38,16 +38,18 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 - [About Faveo](#about-faveo)
   - [Requirements](#requirements)
+  - [HowTo's] (#howtos)
   - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
     - [Installation instructions for Freelancer, Paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
     - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
     - [Installation on a shared server](#installation-on-a-shared-server)
   - [Help](#help)
-<!---- [One click installers](#one-click-installers)
-[Installation via scripts](#installation-via-scripts) -->
+  - [One click installers](#one-click-installers)
+[Installation via scripts](#installation-via-scripts)
 
 
-## How tos <button class="button NEW"><b>NEW</b></button>
+<a id="markdown-howtos" name="howtos"></a>
+## How To's <button class="button NEW"><b>NEW</b></button>
 -   Upgrade to PHP 8.1 [click here](/docs/installation/providers/enterprise/phpupgrade.md)
 
 <!---    MySQL 
@@ -103,10 +105,9 @@ Faveo Helpdesk Community can be installed using following installers
 - **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php)
 
 
-<!---
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
-We have created script for simple, one click installtion of Faveo, this script supports Apache webserver on Ubuntu 18.04, 20.04, Centos 7, 8 Stream, Rocky 8, Debian 10 (Buster).
+We have created script for simple, one click installtion of Faveo, this script supports Apache webserver on Ubuntu 20.04, 22.04 and Debian 11 (Bullseye).
 
  **For Faveo Helpdesk Installation script**
 * click on the below link and download the file "faveo-autoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
@@ -129,7 +130,7 @@ Email
 Faveo License code - (This can be obtained from https://billing.faveohelpdesk.com)
 Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.com)
 ```
--->
+
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server <button class="button button2"><b>Not Recommended</b></button>
