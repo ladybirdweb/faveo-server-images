@@ -50,7 +50,7 @@ sudo apt-get autoclean
 ```sh
 sudo apt-get autoremove
 ```
-### Add Ondřej Surý’s PPA repository
+<!-- ### Add Ondřej Surý’s PPA repository
 If you are running Ubuntu 22.04 and above, you do not need to add this repository below. Instead, skip this step.
 
 If you are running Ubuntu 20.04 or 18.04, the PHP 8.1 binary packages are only available in the Ondřej Surý PPA repository. Install below.
@@ -310,7 +310,7 @@ extension=pdo_mysql
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
 
 ### Configure Ioncube PHP 8.1 loader
-- Click on "ok" and restart the IIS server once.
+- Click on "ok" and restart the IIS server once. -->
 
 
 

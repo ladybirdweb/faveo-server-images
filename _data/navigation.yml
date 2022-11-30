@@ -48,14 +48,14 @@ docs:
         url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
- - title: How tos
-   - children:
-     - title: Upgrade PHP to 8.1
-       url: /docs/installation/providers/enterprise/phpupgrade/
-     - title: MySQL Version 8
-       url:
-     - title: MariaDB Version 10.6
-       url:
+#  - title: How tos
+#    - children:
+#      - title: Upgrade PHP to 8.1
+#        url: /docs/installation/providers/enterprise/phpupgrade/
+#      - title: MySQL Version 8
+#        url:
+#      - title: MariaDB Version 10.6
+#        url:
 
 # Top bar Menu/Navigation
 main:
