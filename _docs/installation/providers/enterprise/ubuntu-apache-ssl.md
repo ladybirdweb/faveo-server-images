@@ -59,5 +59,5 @@ This job can be safely scheduled to run every Monday at midnight:
 Create a new `/etc/cron.d/faveo-ssl` file with:
 
 ```sh
-echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /etc/init.d/apache2 restart " | sudo tee /etc/cron.d/faveo-ssl
+echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && systemctl restart apache2 " | sudo tee /etc/cron.d/faveo-ssl
 ```
