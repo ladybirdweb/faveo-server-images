@@ -50,7 +50,7 @@ sudo apt-get autoclean
 ```sh
 sudo apt-get autoremove
 ```
-<!-- ### Add Ondřej Surý’s PPA repository
+### Add Ondřej Surý’s PPA repository
 If you are running Ubuntu 22.04 and above, you do not need to add this repository below. Instead, skip this step.
 
 If you are running Ubuntu 20.04 or 18.04, the PHP 8.1 binary packages are only available in the Ondřej Surý PPA repository. Install below.
@@ -64,14 +64,14 @@ Output:
 ```sh
 Co-installable PHP versions: PHP 5.6, PHP 7.x, and most requested extensions are included. Only Supported Versions of PHP (http://php.net/supported-versions.php) for Supported Ubuntu Releases (https://wiki.ubuntu.com/Releases) are provided. Don't ask for end-of-life PHP versions or Ubuntu releases, they won't be provided.
 
-Debian old stable and stable packages are provided as well: https://deb.sury.org/#debian-dpa
+Debian old stable and stable packages are provided as well: https://deb.sury.org/debian-dpa
 
 You can get more information about the packages at https://deb.sury.org
 
 IMPORTANT: The -backports are now required on older Ubuntu releases.
 
 BUGS&FEATURES: This PPA now has an issue tracker:
-https://deb.sury.org/#bug-reporting
+https://deb.sury.org/bug-reporting
 
 CAVEATS:
 1. If you are using php-gearman, you need to add ppa:ondrej/pkg-gearman
@@ -84,13 +84,13 @@ PLEASE READ: If you like my work and want to give me a little motivation, please
 WARNING: add-apt-repository is broken with non-UTF-8 locales, see
 https://github.com/oerdnj/deb.sury.org/issues/56 for a workaround:
 
-# LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
  More info: https://launchpad.net/~ondrej/+archive/ubuntu/php
 Press [ENTER] to continue or Ctrl-c to cancel adding it.
 ```
 Press ENTER to add the repository.
 
-If you are running Debian 10 or 11
+<!-- If you are running Debian 10 or 11
 ```sh
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
 curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg --yes
