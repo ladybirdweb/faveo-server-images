@@ -158,7 +158,7 @@ sudo systemctl restart nginx
 sudo systemctl restart apache2
 ```
 
-<!-- # For CentOS 7
+# For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
 ```sh
@@ -226,7 +226,7 @@ systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
 Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
 
-# For Cpanel.
+<!-- # For Cpanel.
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
 - After installing PHP 8.1 in the server we need to change the php version for the faveo domain, follow the below steps to do so.
