@@ -110,7 +110,7 @@ sudo apt-get install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
             php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis
 ```
 Press Y and ENTER if prompted.
-### Restart Apache.
+### Restart Apache
 ```sh
 sudo systemctl restart apache2
 ```
@@ -118,7 +118,7 @@ sudo systemctl restart apache2
 ```sh
 sudo apt-get install php8.1-fpm
 ```
-### Install and configure Ioncube 8.1 extension.
+### Install and configure Ioncube 8.1 extension
 Download the latest Ioncube loader
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
@@ -130,20 +130,20 @@ Copy the ioncube_loader_lin_8.1.so to PHP Extensin directory.
 ```sh
 ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
 ```
-### Update the PHP Configuration files.
+### Update the PHP Configuration files
 ```sh
 sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/apache2/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/cli/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/fpm/php.ini
 
 ```
-### Change PHP default settings.
+### Change PHP default settings
 ```sh
 sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/apache2/php.ini
 sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/apache2/php.ini
 sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/apache2/php.ini 
 ```
-### Change PHP default settings if NGINX is configured. (Optional)
+### Change PHP default settings if NGINX is configured (Optional)
 ```sh
 sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/fpm/php.ini
 sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/fpm/php.ini
@@ -153,11 +153,12 @@ sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/fpm/ph
 sudo systemctl restart php8.1-fpm
 sudo systemctl restart nginx
 ```
-### Restart Apache.
+### Restart Apache
 ```sh
 sudo systemctl restart apache2
 ```
 <a id="centos" name="centos"></a>
+
 ## For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
@@ -168,7 +169,7 @@ Now run the below command to update to PHP 8.1
 ```sh
 sudo yum update -y
 ```
-### Install and configure Ioncube 8.1 extension.
+### Install and configure Ioncube 8.1 extension
 Download the latest Ioncube loader
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
@@ -202,7 +203,7 @@ Now run the below command to update to PHP 8.1
 ```sh
 sudo yum update -y
 ```
-### Install and configure Ioncube 8.1 extension.
+### Install and configure Ioncube 8.1 extension
 Download the latest Ioncube loader
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
@@ -227,7 +228,8 @@ systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
 
 <a id="cpanel" name="cpanel"></a>
-## For Cpanel.
+
+## For Cpanel
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
 - After installing PHP 8.1 in the server we need to change the php version for the faveo domain, follow the below steps to do so.
@@ -250,7 +252,8 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
       ```
 
 <a id="windows" name="windows"></a>
-## For Windows Servers.
+
+## For Windows Servers
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php-8.1.png?raw=true"/>
