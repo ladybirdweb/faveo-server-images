@@ -732,7 +732,7 @@ EOF
     {
         rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
         apt purge apache2 -y
-        apt mariadb* redis supervisor php8.1* -y  && apt autoremove -y
+        apt purge mariadb* redis supervisor php8.1* -y  && apt autoremove -y
         apt purge wkhtmltox -y 
         rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb*  /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/cron.d/faveo-ssl /var/www/faveo /usr/local/share/ca-certificates/*
         update-ca-certificates --fresh 
