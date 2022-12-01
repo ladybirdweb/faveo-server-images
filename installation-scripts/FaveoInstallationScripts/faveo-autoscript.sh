@@ -684,6 +684,8 @@ EOF
         echo -e "\n";
     else
         echo -e "$green Redis & Supervisor configured. $reset"
+        echo -e "$green Configuring Faveo Cronjob $reset"
+        echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
         credentials "$1" "$2"
     fi
     }
@@ -729,7 +731,7 @@ EOF
     }
     rollback ()
     {
-        rm -rf /var/lib/mysql #Avoiding prompt to delete Database that is created by this script.
+        rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
         apt purge apache2 -y
         apt mariadb* redis supervisor php8.1* -y  && apt autoremove -y
         apt purge wkhtmltox -y 
