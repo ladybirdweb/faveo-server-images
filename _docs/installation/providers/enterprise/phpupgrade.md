@@ -21,7 +21,7 @@ toc: true
 
 This document will guide you to upgrade PHP-8.1 for Faveo Helpdesk.
 
-<b>This guide has been tested on: </b>
+- <strong>This guide has been tested on: </strong>
 -   [<strong>Ubuntu 18.04, 20.04, 22.04  </strong>](#ubuntu&debian)
 -   [<strong> Debian 10, 11 </strong>](#ubuntu&debian)
 -   [<strong>CentOS 7, 8 Stream, 9 Stream </strong>](#centos)
@@ -158,7 +158,6 @@ sudo systemctl restart nginx
 sudo systemctl restart apache2
 ```
 <a id="centos" name="centos"></a>
-
 ## For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
@@ -228,7 +227,6 @@ systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
 
 <a id="cpanel" name="cpanel"></a>
-
 ## For Cpanel
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
@@ -252,7 +250,6 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
       ```
 
 <a id="windows" name="windows"></a>
-
 ## For Windows Servers
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
