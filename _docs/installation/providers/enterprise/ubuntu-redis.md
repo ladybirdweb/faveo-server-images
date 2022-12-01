@@ -99,13 +99,13 @@ stdout_logfile=/var/www/faveo/storage/logs/notification.log
 
 [program:faveo-deactivate]
 process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=de$
+command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation --sleep=3 --tries=3
 autostart=true
 autorestart=true
 numprocs=1
 user=www-data
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker.log
+stdout_logfile=/var/www/faveo/storage/logs/deactivation.log
 ```
 ## Restart the Supervisor to reread the new configuration.
 
