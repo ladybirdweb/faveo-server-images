@@ -21,7 +21,7 @@ toc: true
 
 This document will guide you to upgrade PHP-8.1 for Faveo Helpdesk.
 
-- [<strong>This guide has been tested on: </strong>]
+<b>This guide has been tested on: </b>
 -   [<strong>Ubuntu 18.04, 20.04, 22.04  </strong>](#ubuntu&debian)
 -   [<strong> Debian 10, 11 </strong>](#ubuntu&debian)
 -   [<strong>CentOS 7, 8 Stream, 9 Stream </strong>](#centos)
