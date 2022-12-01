@@ -31,6 +31,11 @@ docs:
         url: /docs/installation/providers/enterprise/plesk-panel-windows
       #- title: CentOS Web Panel
       #  url: /docs/installation/providers/enterprise/centos-web-panel/
+      
+  - title: How To's
+    children:
+      - title: Upgrade PHP to 8.1
+        url: /docs/installation/providers/enterprise/phpupgrade/
 
   - title: Kubernetes
     children:
@@ -48,10 +53,7 @@ docs:
         url: /docs/installation/providers/community/centos-apache
       - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
-  # - title: How To's
-  #   children:
-  #     - title: Upgrade PHP to 8.1
-  #       url: /docs/installation/providers/enterprise/phpupgrade/
+
 #      - title: MariaDB Version 10.6
 #        url:
 #      - title: MySQL Version 8
