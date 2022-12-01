@@ -21,12 +21,12 @@ toc: true
 
 This document will guide you to upgrade PHP-8.1 for Faveo Helpdesk.
 
-This guide has been tested on: 
--   Ubuntu 18.04, 20.04, 22.04
--   Debian 10, 11
--   CentOS 7, 8 Stream, 9 Stream
--   Shared Hosting (Cpanel)
--   Windows 2012, 2016, 2019
+- [<strong>This guide has been tested on: </strong>]
+-   [<strong>Ubuntu 18.04, 20.04, 22.04  </strong>](#ubuntu&debian)
+-   [<strong> Debian 10, 11 </strong>](#ubuntu&debian)
+-   [<strong>CentOS 7, 8 Stream, 9 Stream </strong>](#centos)
+-   [<strong>Shared Hosting (Cpanel) </strong>](#cpanel)
+-   [<strong>Windows 2012, 2016, 2019 </strong>](#windows)
 
 Before proceeding further check your current PHP version. To find out which version of PHP you are currently using, run this in the Terminal or Windows command prompt. 
 
@@ -34,7 +34,7 @@ Before proceeding further check your current PHP version. To find out which vers
 php -v
 ```
 If you are running PHP 7.x, you can continue with this guide to upgrade to PHP 8.1 
-
+<a id="ubuntu&debian" name="ubuntu&debian"></a>
 ## For Ubuntu and Debian
 Type the following command to remove the existing PHP version.
 
@@ -157,7 +157,7 @@ sudo systemctl restart nginx
 ```sh
 sudo systemctl restart apache2
 ```
-
+<a id="centos" name="centos"></a>
 ## For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
@@ -226,6 +226,7 @@ systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
 Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
 
+<a id="cpanel" name="cpanel"></a>
 ## For Cpanel.
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
@@ -248,6 +249,7 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
       /usr/local/bin/ea-php8.1
       ```
 
+<a id="windows" name="windows"></a>
 ## For Windows Servers.
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
