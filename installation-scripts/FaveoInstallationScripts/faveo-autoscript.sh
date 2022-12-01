@@ -105,7 +105,7 @@ sleep 0.05
 # OS validation for Faveo Helpdesk Compatability.
 os_check ()
 {
-#Ubuntu Servers:
+# Ubuntu OS:
 
     echo -e " ";
     echo -e "$yellow Checking OS Compatability for Faveo Helpdesk.$reset";
@@ -129,7 +129,7 @@ os_check ()
             ubuntu
         fi
 
-#debian Check:
+# Debian OS:
 
     elif [[ -e /etc/debian_version ]]; then
     	os="debian"
@@ -155,92 +155,96 @@ os_check ()
     	echo "$red This installer seems to be running on an unsupported distribution. Supported distros are Ubuntu, Debian, Rocky Linux, CentOS and Fedora.$reset";
     	exit
     fi
-
-    # Prerequisties for the Faveo installation like the Domain, email, License and order numbers are taken below:
 }
      
-
-    web_server_selection ()
-    {
-        
-    #Webserver selection
-        sleep 0.05
-        echo -e "                                       "
-        echo -e "$skyblue Select your preferred web server[APACHE or NGINX].$reset";
-        sleep 0.05
-        echo -e "$green (1) - Apache $reset";
-        sleep 0.05
-        echo -e "$green (2) - Nginx $reset";
-        echo -e "                                 "
-        read -p "$yellow Enter 1 for Apache, 2 for Nginx: $reset" webserver
-                echo -e "                                 "
-        if [[ "$webserver" == "1" ]]; then
-            web_server="apache"
-            echo -e "$green You have selected Apache Webserver $reset";
-            ssl_selection "$1" "$2" "$3" "$4" "$web_server"
-        elif [[ "$webserver" == "2" ]]; then
-            web_server="nginx"
-            echo -e "$green You have selected Nginx Webserver $reset";
-            ssl_selection "$1" "$2" "$3" "$4" "$web_server"
-        else 
-            echo -e "$red Please select your preferred Web Server. $reset";
-            web_server_selection
-        fi
-        sleep 0.05
-    }
+# Webserver selection prompt
+web_server_selection ()
+{
+    sleep 0.05
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred web server[APACHE or NGINX].$reset";
+    sleep 0.05
+    echo -e "$green (1) - Apache $reset";
+    sleep 0.05
+    echo -e "$green (2) - Nginx $reset";
+    echo -e "                                 "
+    read -p "$yellow Enter 1 for Apache, 2 for Nginx: $reset" webserver
+            echo -e "                                 "
+    if [[ "$webserver" == "1" ]]; then
+        web_server="apache"
+        echo -e "$green You have selected Apache Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    elif [[ "$webserver" == "2" ]]; then
+        web_server="nginx"
+        echo -e "$green You have selected Nginx Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    else 
+        echo -e "$red Please select your preferred Web Server. $reset";
+        web_server_selection
+    fi
+    sleep 0.05
+}
     
-    ssl_selection ()
+# SSL Selection Prompt
+ssl_selection ()
+{
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred SSL certficates for Faveo Helpdesk.$reset";
+    sleep 0.05
+    echo -e "$green Press (A) for FreeSSL from Letsencrypt $reset";
+    echo -e "$green Press (B) for Self-Signed SSL $reset";
+    echo -e "$green Press (C) for Paid SSL $reset";
+    read -p "$yellow Please select from available options [A,B,C]:" ssl
+    if [[ "$ssl" =~ ^(A|a)$ ]]; then
+        echo -e "$green You have selected Lets Encrypt Free SSL $reset";
+        ssl_type=certbot
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(B|b)$ ]]; then 
+        echo -e "$green You have selected Self-Signed SSL $reset";
+        ssl_type=self-signed
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(C|c)$ ]]; then
+        echo -e "$green You have selected Paid SSL $reset";
+        ssl_files ()
+        {
+            read -p "$yellow Input the Absolute Path to Certificate file for $1 : $reset" certfile
+            read -p "$yellow Input the Absolute Path to Certificate Key file for $1: $reset" keyfile
+            ssl_type=paid-ssl
+            echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+        }
+        ssl_files "$1" "$2" "$3" "$4" "$5"
+    else 
+        echo -e "$red Please select a valid option: $reset";
+        ssl_selection
+    fi
+    
+}
 
-    {
-    #SSL Selection
-        echo -e "                                       "
-        echo -e "$skyblue Select your preferred SSL certficates for Faveo Helpdesk.$reset";
-        sleep 0.05
-        echo -e "$green Press (A) for FreeSSL from Letsencrypt $reset";
-        echo -e "$green Press (B) for Self-Signed SSL $reset";
-        echo -e "$green Press (C) for Paid SSL $reset";
-        read -p "$yellow Please select from available options [A,B,C]:" ssl
-        if [[ "$ssl" =~ ^(A|a)$ ]]; then
-            echo -e "$green You have selected Lets Encrypt Free SSL $reset";
-            ssl_type=certbot
-            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
-        elif [[ "$ssl" =~ ^(B|b)$ ]]; then 
-            echo -e "$green You have selected Self-Signed SSL $reset";
-            eweb_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
-        elif [[ "$ssl" =~ ^(C|c)$ ]]; then
-            echo -e "$green You have selected Paid SSL $reset";
-            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
-        else 
-            echo -e "$red Please select a valid option: $reset";
-            ssl_selection
-        fi
-        
-    }
+web_server_configuration ()
+{
+    echo "$1" #domain
+    echo "$2" #email
+    echo "$3" #license
+    echo "$4" #orderno
+    echo "$5" #web_server
+    echo "$6" #ssl_type
+    echo "$7" #certfile
+    echo "$8" #keyfile
 
-    web_server_configuration ()
-    {
-        echo "$1" #domain
-        echo "$2" #email
-        echo "$3" #license
-        echo "$4" #orderno
-        echo "$5" #web_server
-        echo "$6" #ssl_type
     if [[ "$5" == "apache" ]]; then
         echo -e "\n";
         echo -e "$green Installing Apache. $reset";
         echo -e "                       ";
-        
+    
         ### Ubuntu 22.04 needrestart configuration
-
         if [[ $(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f 2 | tr -d '.') == 2204 ]]; then
             sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
             sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/g" /etc/needrestart/needrestart.conf
         fi
         ### APACHE Installation
-
         apt-get update  && apt-get upgrade -y  && apt-get install lsb-release \
         ca-certificates apt-transport-https software-properties-common gnupg2 wget zip unzip curl nano -y 
-
         if grep -qs "ubuntu" /etc/os-release; then
             add-apt-repository --yes ppa:ondrej/apache2 
             apt-get update   && apt-get install apache2 -y 
@@ -251,12 +255,12 @@ os_check ()
             apt-get update  && apt-get install apache2 -y 
             systemctl enable apache2
         fi
-        
-        mkdir -p /var/www/faveo/public
-        echo "Test" > /var/www/faveo/public/test.html      
-        ### Apache configuration.
-        touch /etc/apache2/sites-available/faveo.conf
-        echo "127.0.0.1      $1" >> /etc/hosts
+    ### Creating Temporary Index file for Testing
+    mkdir -p /var/www/faveo/public
+    echo "Test" > /var/www/faveo/public/test.html      
+    ### Apache configuration.
+    touch /etc/apache2/sites-available/faveo.conf
+    echo "127.0.0.1      $1" >> /etc/hosts
     
 cat <<  EOF > /etc/apache2/sites-available/faveo.conf
 <VirtualHost *:80>
@@ -271,28 +275,31 @@ cat <<  EOF > /etc/apache2/sites-available/faveo.conf
     CustomLog /var/log/apache2/faveo-access.log combined
 </VirtualHost>
 EOF
-        a2enmod rewrite
-        a2dissite 000-default.conf
-        a2ensite faveo.conf
-        systemctl restart apache2
-        test=$(curl -s http://"$1"/test.html)
-    
-            if [[ "$test" == "Test" ]]; then
-              echo -e "\n";
-              echo -e "$green Apache Configured. $reset"
-              if [[ "$6" == "certbot" ]]; then
+    a2enmod rewrite
+    a2dissite 000-default.conf
+    a2ensite faveo.conf
+    systemctl restart apache2
+    test=$(curl -s http://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
+        echo -e "\n";
+        echo -e "$green Apache Configured. $reset"
+            if [[ "$6" == "certbot" ]]; then
                 certbot_apache "$1" "$2" "$3" "$4" 
-              elif [[ "$6" == "self-signed" ]]; then
+            elif [[ "$6" == "self-signed" ]]; then
                 self_signed_apache "$1" "$2" "$3" "$4" 
-              else
-                paid_ssl_apache "$1" "$2" "$3" "$4" 
+            elif [[ "$6" == "paid-ssl" ]]; then
+                echo "$1" "$2" "$3" "$4" "$7" "$8"
+                paid_ssl_apache "$1" "$2" "$3" "$4" "$7" "$8"
+            else
+                echo -e "$red Something went wrong in SSL Selection. $reset"
+                exit 1
             fi
         else
-          echo -e "\n";
-          echo -e "$red Something went wrong. Check your Internet connection/Firewall/Domain Propagaion. $reset"
-          echo -e "$red Rolling Back..... $reset"
-          rollback
-          echo -e "\n";
+        echo -e "\n";
+        echo -e "$red Something went wrong. Check your Internet connection/Firewall/Domain Propagaion. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
         fi
     elif [[ "$1" == "nginx" ]]; then
         echo -e "\n";
@@ -300,7 +307,6 @@ EOF
         ### NGINX Installation
         apt-get update  && apt-get upgrade -y  && apt-get install lsb-release \
         ca-certificates apt-transport-https software-properties-common gnupg2 wget zip unzip curl nano -y
-
         add-apt-repository --yes ppa:ondrej/nginx  
         apt-get update && apt install nginx -y  
         systemctl enable nginx && systemctl start nginx
@@ -314,225 +320,294 @@ EOF
             fi
     else
         echo -e "$red Something went wrong. Check your Internet connection. $reset"
-        echo -e "$red Rolling Back..... $reset"
+        echo -e "$red Rolling Back....... $reset"
         rollback
     fi
-                
-    }
+            
+}
 
-    certbot_apache ()
-    {
-        echo "$1" "$2" "$3" "$4" 
-        echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
-        apt-get install python3-certbot-apache -y  
-        certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
-        if [[ $? != 0 ]]; then
-        echo -e "$red Failed to obtain SSL certificates $reset";
+certbot_apache ()
+{
+    echo "$1" "$2" "$3" "$4" 
+    echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
+    apt-get install python3-certbot-apache -y  
+    certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
+    if [[ $? != 0 ]]; then
+    echo -e "$red Failed to obtain SSL certificates $reset";
+    rollback
+    else 
+    echo -e "$green Certificate Obtained. $reset"
+    echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart apache2.service" | sudo tee /etc/cron.d/faveo-ssl
+    faveo_configure "$1" "$3" "$4" 
+    fi
+}
+
+self_signed_apache ()
+{
+    echo "$1" "$2" "$3" "$4" 
+    echo -e "$green Generating Self Signed SSL certificates for $1. $reset"
+    mkdir -p /etc/apache2/ssl
+    openssl ecparam -out /etc/apache2/ssl/faveoroot.key -name prime256v1 -genkey
+    openssl req -new -sha256 -key /etc/apache2/ssl/faveoroot.key -out /etc/apache2/ssl/faveoroot.csr -subj "/C=/ST=/L=/O=/OU=/CN="
+    openssl x509 -req -sha256 -days 7300 -in /etc/apache2/ssl/faveoroot.csr -signkey /etc/apache2/ssl/faveoroot.key -out /etc/apache2/ssl/faveorootCA.crt
+    openssl ecparam -out /etc/apache2/ssl/private.key -name prime256v1 -genkey
+    openssl req -new -sha256 -key /etc/apache2/ssl/private.key -out /etc/apache2/ssl/faveolocal.csr -subj "/C=IN/ST=Karnataka/L=Bangalore/O=Ladybird Web Solutions Pvt Ltd/OU=Development Team/CN=$1"
+    openssl x509 -req -in /etc/apache2/ssl/faveolocal.csr -CA  /etc/apache2/ssl/faveorootCA.crt -CAkey /etc/apache2/ssl/faveoroot.key -CAcreateserial -out /etc/apache2/ssl/faveolocal.crt -days 7300 -sha256
+    openssl x509 -in /etc/apache2/ssl/faveolocal.crt -text -noout
+    if [[ $? -eq 0 ]]; then
+        echo -e "$green Certificates generated successfully for $1 $reset"
+    else
+        echo -e "$red Certification generation failed. $reset"
         rollback
-        else 
-        echo -e "$green Certificate Obtained. $reset"
-        echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart apache2.service" | sudo tee /etc/cron.d/faveo-ssl
-        faveo_configure "$1" "$3" "$4" 
-        fi
+    fi;
 
-    }
+    cp /etc/apache2/ssl/faveorootCA.crt /usr/local/share/ca-certificates/
+    update-ca-certificates
+cat <<  EOF > /etc/apache2/sites-available/faveo-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName $1
+    DocumentRoot /var/www/faveo/public
+    <Directory /var/www/faveo>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/apache2/faveo-ssl-error.log
+    CustomLog /var/log/apache2/faveo-ssl-access.log combined
 
-    self_signed_apache ()
-    {
-        echo "Self Signed Apache"
-        $1
-    }
-
-    paid_ssl_apache ()
-    {
-        echo "Paid SSL Apache"
-        $1
-    }
-
-    attributes ()
-    {
-        sleep 0.05
-        echo -e "                                 "
-        echo -e "$skyblue Enter the following details required by the Faveo Helpdesk Installaion. $reset";
-        sleep 0.05
-    #Enter Domain:
-
-        echo -e "                                 "
-        read -p "$yellow Domain Name: $reset" DomainName
-        sleep 0.05
-    #Enter Email:
-        regex="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
-        echo -e "                                 "
-        read -p "$yellow Email:  $reset" Email
-        if [[ $Email =~ $regex ]] ; then
-            echo "                                "
-            sleep 0.05
-        else
-            echo -e "$red Please Enter a Valid Email$reset"
-            echo "                                "
-            attributes
-        fi
-    
-    #Enter License code:
-
-        echo "$yellow You can find the License and Order Number of your product by visiting https://billing.faveohelpdesk.com $reset";
-        echo -e "                                   "
-        read -n 16 -p "$yellow License Code:  $reset" LicenseCode
-        echo -e "                                 "
-        sleep 0.05
-
-    #Enter Order No:
-
-        echo -e "                                 "
-        read -n 8 -p "$yellow Order Number: $reset" OrderNumber
-        sleep 0.05
-
-    #Confirming the entered details:
-
-        echo -e "                                 "
-        echo -e "\n";
-        echo -e "Confirm the Entered details:\n";
-        sleep 0.05
-        echo -e "============================\n";
-        sleep 0.05
-        echo -e "                                 "
-        echo "Domain Name    :$yellow $DomainName $reset";
-        sleep 0.05
-        echo -e "                                 "
-        echo "Email          :$yellow $Email $reset";
-        sleep 0.05
-        echo -e "                                 "
-        echo "License Code   :$yellow $LicenseCode $reset";
-        sleep 0.05
-        echo -e "                                 "
-        echo "Order Number   :$yellow $OrderNumber $reset";
-        echo -e "                                 "
-        sleep 0.05
-        
-        read -p "Continue ($green y $reset/$red n $reset)?" REPLY
-        if [[ ! $REPLY =~ ^(yes|y|Yes|YES|Y) ]]; then
-            attributes
-        else
-            echo -e "                                 "
-            web_server_selection "$DomainName" "$Email" "$LicenseCode" "$OrderNumber"
-            echo -e "                                 "
-        fi;    
-    }
-    dependencies ()
-    {   
-        echo -e "$green Installing PHP and configuring necessary extensions. $reset"
-        if grep -qs "ubuntu" /etc/os-release; then
-            add-apt-repository --yes ppa:ondrej/php  ; 
-            apt update && apt-get install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
-            php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
-            php8.1-opcache  php8.1-mbstring php8.1-zip \
-            php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
-            php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis  
-        elif grep -qs "debian" /etc/os-release; then
-            echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
-            curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg --yes
-            apt update && apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
-            php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
-            php8.1-opcache  php8.1-mbstring php8.1-zip \
-            php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
-            php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis  
-        fi
-
-        if [[ $? != 0 ]]; then
+SSLCertificateFile /etc/apache2/ssl/faveolocal.crt
+SSLCertificateKeyFile /etc/apache2/ssl/private.key
+</VirtualHost>
+</IfModule>
+EOF
+    a2enmod ssl
+    a2ensite faveo-ssl.conf
+    systemctl restart apache2
+    test=$(curl -ks https://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
             echo -e "\n";
-            echo -e "$red Something went wrong Configuring PHP. $reset"
-            echo -e "$red Rolling Back..... $reset"
+            echo -e "$green Self Signed SSL Configured for $1. $reset."
+            faveo_configure "$1" "$3" "$4" 
+        else
+            echo -e "$red Self Signed SSL Configuration failed. $reset"
             rollback
-            echo -e "\n";
-        else
-            sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/fpm/php.ini
-            sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/apache2/php.ini  
-            sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/memory_limit =.*/memory_limit = -1/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/cli/php.ini
-            sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/memory_limit =.*/memory_limit = -1/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/apache2/php.ini
-            sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/apache2/php.ini 
-            extensions
-            if [[ $? != 0 ]]; then
-                    echo -e "\n";
-                    echo -e "$red Something went wrong.Cronfiguring PHP. $reset"
-                    echo -e "$red Rolling Back..... $reset"
-                    rollback
-                    echo -e "\n";
-                else
-                    systemctl restart php8.1-fpm
-                    systemctl restart apache2
-                    echo -e "$green PHP is configured. $reset"
-            fi            
         fi
-        echo "$green Updating MariaDB-10.6 Repository.$reset"
-            curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup   
-            bash mariadb_repo_setup --mariadb-server-version=10.6        
-            if [[ $? != 0 ]]; then
+}
+
+paid_ssl_apache ()
+{
+    echo "$1" "$2" "$3" "$4" "$5" "$6"
+    echo -e "$green Configuring SSL Certificates for $1. $reset"
+cat <<  EOF > /etc/apache2/sites-available/faveo-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName $1
+    DocumentRoot /var/www/faveo/public
+    <Directory /var/www/faveo>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/apache2/faveo-ssl-error.log
+    CustomLog /var/log/apache2/faveo-ssl-access.log combined
+
+SSLCertificateFile $5
+SSLCertificateKeyFile $6
+</VirtualHost>
+</IfModule>
+EOF
+    a2enmod ssl
+    a2ensite faveo-ssl.conf
+    systemctl restart apache2
+    test=$(curl -ks https://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
+            echo -e "\n";
+            echo -e "$green SSL Configured for $1. $reset."
+            faveo_configure "$1" "$3" "$4" 
+        else
+            echo -e "$red SSL Configuration failed. $reset"
+            rollback
+        fi
+}
+
+attributes ()
+{
+    sleep 0.05
+    echo -e "                                 "
+    echo -e "$skyblue Enter the following details required by the Faveo Helpdesk Installaion. $reset";
+    sleep 0.05
+#Enter Domain:
+    echo -e "                                 "
+    read -p "$yellow Domain Name: $reset" DomainName
+    sleep 0.05
+#Enter Email:
+    regex="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
+    echo -e "                                 "
+    read -p "$yellow Email:  $reset" Email
+    if [[ $Email =~ $regex ]] ; then
+        echo "                                "
+        sleep 0.05
+    else
+        echo -e "$red Please Enter a Valid Email$reset"
+        echo "                                "
+        attributes
+    fi
+
+#Enter License code:
+    echo "$yellow You can find the License and Order Number of your product by visiting https://billing.faveohelpdesk.com $reset";
+    echo -e "                                   "
+    read -n 16 -p "$yellow License Code:  $reset" LicenseCode
+    echo -e "                                 "
+    sleep 0.05
+#Enter Order No:
+    echo -e "                                 "
+    read -n 8 -p "$yellow Order Number: $reset" OrderNumber
+    sleep 0.05
+#Confirming the entered details:
+    echo -e "                                 "
+    echo -e "\n";
+    echo -e "Confirm the Entered details:\n";
+    sleep 0.05
+    echo -e "============================\n";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Domain Name    :$yellow $DomainName $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Email          :$yellow $Email $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "License Code   :$yellow $LicenseCode $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Order Number   :$yellow $OrderNumber $reset";
+    echo -e "                                 "
+    sleep 0.05
+    
+    read -p "Continue ($green y $reset/$red n $reset)?" REPLY
+    if [[ ! $REPLY =~ ^(yes|y|Yes|YES|Y) ]]; then
+        attributes
+    else
+        echo -e "                                 "
+        web_server_selection "$DomainName" "$Email" "$LicenseCode" "$OrderNumber"
+        echo -e "                                 "
+    fi;    
+}
+dependencies ()
+{   
+    echo -e "$green Installing PHP and configuring necessary extensions. $reset"
+    if grep -qs "ubuntu" /etc/os-release; then
+        add-apt-repository --yes ppa:ondrej/php  ; 
+        apt update && apt-get install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
+        php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
+        php8.1-opcache  php8.1-mbstring php8.1-zip \
+        php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
+        php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis  
+    elif grep -qs "debian" /etc/os-release; then
+        echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
+        curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg --yes
+        apt update && apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
+        php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
+        php8.1-opcache  php8.1-mbstring php8.1-zip \
+        php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
+        php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis  
+    fi
+    if [[ $? != 0 ]]; then
+        echo -e "\n";
+        echo -e "$red Something went wrong Configuring PHP. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
+    else
+        sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/fpm/php.ini
+        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/apache2/php.ini  
+        sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/memory_limit =.*/memory_limit = -1/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/cli/php.ini
+        sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/memory_limit =.*/memory_limit = -1/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.1/apache2/php.ini
+        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.1/apache2/php.ini 
+        extensions
+        if [[ $? != 0 ]]; then
                 echo -e "\n";
-                echo -e "$red Something went wrong. Configuring MariaDB-10.6. $reset"
+                echo -e "$red Something went wrong.Cronfiguring PHP. $reset"
                 echo -e "$red Rolling Back..... $reset"
                 rollback
                 echo -e "\n";
             else
-                apt update; apt install mariadb-server mariadb-client -y
-                systemctl enable mariadb
-                systemctl start mariadb
-                rm -f "$PWD"/mariadb_repo_setup 
-                PASS=$(openssl rand -base64 12)
-                mysql -u root <<MYSQL_SCRIPT
+                systemctl restart php8.1-fpm
+                systemctl restart apache2
+                echo -e "$green PHP is configured. $reset"
+        fi            
+    fi
+    echo "$green Updating MariaDB-10.6 Repository.$reset"
+        curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup   
+        bash mariadb_repo_setup --mariadb-server-version=10.6        
+        if [[ $? != 0 ]]; then
+            echo -e "\n";
+            echo -e "$red Something went wrong. Configuring MariaDB-10.6. $reset"
+            echo -e "$red Rolling Back..... $reset"
+            rollback
+            echo -e "\n";
+        else
+            apt update; apt install mariadb-server mariadb-client -y
+            systemctl enable mariadb
+            systemctl start mariadb
+            rm -f "$PWD"/mariadb_repo_setup 
+            PASS=$(openssl rand -base64 12)
+            mysql -u root <<MYSQL_SCRIPT
 CREATE DATABASE faveo;
 CREATE USER 'faveo'@'localhost' IDENTIFIED BY '$PASS';
 GRANT ALL PRIVILEGES ON faveo.* TO 'faveo'@'localhost';
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
 
-                if [[ $? != 0 ]]; then
-                    echo -e "\n";
-                    echo -e "$red Something went wrong.Creating Database user. $reset"
-                    echo -e "$red Rolling Back..... $reset"
-                    rollback
-                    echo -e "\n";
-                else
-                    echo -e "$green MariaDB-10.6 is configured. $reset"
-                    redis  "$1" "$PASS"
-                fi
-        fi
-    }
-    faveo_configure ()
-    {
-        echo $1 $2 $3 
-        curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
-        unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
-        if [[ $? != 0 ]]; then
-            echo -e "\n";
-            echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
-            echo -e "$red Rolling Back..... $reset"
-            rollback
-            echo -e "\n";
-        else
-            chown -R www-data:www-data /var/www/faveo
-            dependencies "$1"
-        fi   
-    }
+            if [[ $? != 0 ]]; then
+                echo -e "\n";
+                echo -e "$red Something went wrong.Creating Database user. $reset"
+                echo -e "$red Rolling Back..... $reset"
+                rollback
+                echo -e "\n";
+            else
+                echo -e "$green MariaDB-10.6 is configured. $reset"
+                redis  "$1" "$PASS"
+            fi
+    fi
+}
+faveo_configure ()
+{
+    echo $1 $2 $3 
+    curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
+    unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
+    if [[ $? != 0 ]]; then
+        echo -e "\n";
+        echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
+    else
+        chown -R www-data:www-data /var/www/faveo
+        dependencies "$1"
+    fi   
+}
     redis ()
     {
         echo -e "$green Installing and Configuring Redis. $reset"
@@ -591,7 +666,8 @@ stdout_logfile=/var/www/faveo/storage/logs/notification.log
 
 [program:faveo-deactivate]
 process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation
+command=php  /var/www/faveo/artisan queue:work redis --queue=        update-ca-certificates --fresh 
+deactivation
 autostart=true
 autorestart=true
 numprocs=1
@@ -654,8 +730,11 @@ EOF
     rollback ()
     {
         rm -rf /var/lib/mysql #Avoiding prompt to delete Database that is created by this script.
-        apt-get purge apache2 mariadb* redis supervisor php8.1* wkhtmltox libapache2-mod-php8.1 -y  && apt autoremove -y 
-        rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb* /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/apache2 /var/www/faveo /var/www/html/test.html /etc/cron.d/faveo-ssl
+        apt purge apache2 -y
+        apt mariadb* redis supervisor php8.1* -y  && apt autoremove -y
+        apt purge wkhtmltox -y 
+        rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb*  /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/cron.d/faveo-ssl /var/www/faveo /usr/local/share/ca-certificates/*
+        update-ca-certificates --fresh 
         echo -e "$red Contact Faveo Technical Support. $reset"
         echo -e "$red Rolled Back. $reset"
         exit 1
