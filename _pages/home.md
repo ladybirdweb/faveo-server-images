@@ -37,14 +37,14 @@ Faveo is a leading open source, self-hosted, on-premise help desk software.
 Faveo can be installed on a variety of platforms. The choice of the platform is yours.
 
 - [About Faveo](#about-faveo)
-  - [Requirements](#requirements)
-  - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
-    - [Installation instructions for Freelancer, Paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
-    - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
-    - [Installation on a shared server](#installation-on-a-shared-server)
-  - [Help](#help)
-  - [One click installers](#one-click-installers)
-  - [Installation via scripts](#installation-via-scripts)
+- [Requirements](#requirements)
+- [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
+  - [Installation instructions for Freelancer, Paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
+  - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
+  - [Installation on a shared server](#installation-on-a-shared-server)
+- [Help](#help)
+- [One click installers](#one-click-installers)
+- [Installation via scripts](#installation-via-scripts)
 
 
 ## How To's <button class="button NEW"><b>NEW</b></button>
@@ -104,7 +104,7 @@ Faveo Helpdesk Community can be installed using following installers
 We have created script for simple, one click installtion of Faveo, this script supports Apache webserver on Ubuntu 20.04, 22.04 and Debian 11 (Bullseye).
 
  **For Faveo Helpdesk Installation script**
-* click on the below link and download the file "faveo-autoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
+* Click on the below link and download the file "faveo-autoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
 
 
 * [Installation Script](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) 

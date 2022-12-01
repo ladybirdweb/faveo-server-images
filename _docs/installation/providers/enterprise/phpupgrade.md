@@ -35,7 +35,7 @@ php -v
 ```
 If you are running PHP 7.x, you can continue with this guide to upgrade to PHP 8.1 
 
-# For Ubuntu and Debian
+## For Ubuntu and Debian
 Type the following command to remove the existing PHP version.
 
 ```sh
@@ -158,7 +158,7 @@ sudo systemctl restart nginx
 sudo systemctl restart apache2
 ```
 
-# For CentOS 7
+## For CentOS 7
 
 In CentOS machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to enable PHP 8.1 Remi repo.
 ```sh
@@ -191,7 +191,7 @@ systemctl restart nginx (Incase of Nginx)
 systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
 
-# For Centos 8 Stream and Rocky 8
+## For Centos 8 Stream and Rocky 8
 
 In CentOS 8 stream and Rocky 8 machines, we can simply upgrade from a lower version of PHP to a Higher one by switching the Repository. Run the below command to disable PHP 7.3 and enable PHP 8.1 Remi repo.
 ```sh
@@ -226,7 +226,7 @@ systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
 Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
 
-# For Cpanel.
+## For Cpanel.
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
 - After installing PHP 8.1 in the server we need to change the php version for the faveo domain, follow the below steps to do so.
@@ -248,7 +248,7 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
       /usr/local/bin/ea-php8.1
       ```
 
-# For Windows Servers.
+## For Windows Servers.
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.12-nts-Win32-vs16-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php-8.1.png?raw=true"/>
