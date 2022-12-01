@@ -35,7 +35,7 @@ docs:
   - title: How To's
     children:
       - title: Upgrade PHP to 8.1
-        url: /docs/installation/providers/enterprise/phpupgrade/
+        url: /docs/installation/providers/enterprise/php-upgrade/
 
   - title: Kubernetes
     children:
