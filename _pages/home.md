@@ -124,7 +124,15 @@ Email
 Faveo License code - (This can be obtained from https://billing.faveohelpdesk.com)
 Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.com)
 ```
+<b>Note:</b> This script will configured everything requried for Faveo Helpdesk to run that includes configuring supervisor and redis. The supervisor jobs will fail initially until the GUI part of the installation is completed. Run the below command to restart the supervisor daemon.
 
+```sh
+systemctl restart supervisor
+```
+Run the below to check the status of each Jobs
+```sh
+supervisorctl status
+```
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server <button class="button button2"><b>Not Recommended</b></button>
