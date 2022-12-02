@@ -1,30 +1,13 @@
 #!/bin/bash
-#
-#  This Script is maintained by Ladybird Web Solution Pvt Ltd.
-#
-#  Faveo Helpdesk Auto Installation Script
-#  Tested with Ubuntu 18.04,20.04, Centos 7,8 Stream, Rockey 8 Stream, Debian Version faveo 4.10.3
-#
-#  Copyright (C) 2020 Ladybird Web Solution Pvt Ltd.
-#
-#  Author: Thirumoorthi Duraipandi.
-#  Assisted By: Viswash.
-#  Email: thirumoorthi.duraipandi@ladybirdweb.com.
-#
-#  This script is intended to be run on a fresh Faveo installation.
-#
-#  This program is free software; you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program; if not, see <http://www.gnu.org/licenses>.
+##---------- Author : Vishwas S & Thirumoorthi Duraipandi------------------------------------##
+##---------- Email : vishwas.s@ladybirdweb.com,thirumoorthi.duraipandi@ladybirdweb.com-------##
+##---------- Github page : https://github.com/ladybirdweb/faveo-server-images/---------------##
+##---------- Purpose : Auto Install Faveo Helpdesk in a linux system.------------------------##
+##---------- Tested on : RHEL9/8/7, Rocky 9/8, Ubuntu22/20/18, CentOS 9 Stream, Debian 11----## 
+##---------- Updated version : v1.0 (Updated on 2nd Dec 2022) -------------------------------##
+##-----NOTE: This script requires root privileges, otherwise one could run the script -------##
+##---------- as a sudo user who got root privileges. ----------------------------------------##
+##----USAGE: "sudo /bin/bash faveo-autoscript.sh" -------------------------------------------##
 
 
 # Colour variables for the script.
