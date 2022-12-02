@@ -126,7 +126,7 @@ wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.t
 ```sh
 tar -xvf ioncube_loaders_lin_x86-64.tar.gz
 ```
-Copy the ioncube_loader_lin_8.1.so to PHP Extensin directory.
+Copy the ioncube_loader_lin_8.1.so to PHP Extension directory.
 ```sh
 ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
 ```
@@ -174,7 +174,7 @@ Download the latest Ioncube loader
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
 ```
-Copy the ioncube_loader_lin_8.1.so to PHP Extensin directory.
+Copy the ioncube_loader_lin_8.1.so to PHP Extension directory.
 ```sh
 cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules
 ```
@@ -208,7 +208,7 @@ Download the latest Ioncube loader
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
 ```
-Copy the ioncube_loader_lin_8.1.so to PHP Extensin directory.
+Copy the ioncube_loader_lin_8.1.so to PHP Extension directory.
 ```sh
 cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules
 ```
@@ -224,20 +224,20 @@ systemctl restart httpd (Incase of Apache)
 systemctl restart nginx (Incase of Nginx)
 systemctl restart php8.1-fpm (Incase of Nginx with php-fpm)
 ```
-Note: After the update, if you came across ioncube not loaded issue please reboot the machine.
+Note: After the update, if you came across an ioncube not loaded issue please reboot the machine.
 
 <a id="cpanel" name="cpanel"></a>
 ## For Cpanel
 
 - To enable PHP 8.1 in Cpanel the PHP version has to be installed in the server this is done through WHM, This can be done by contacting your Hosting Provider.
-- After installing PHP 8.1 in the server we need to change the php version for the faveo domain, follow the below steps to do so.
+- After installing PHP 8.1 on the server we need to change the php version for the faveo domain, follow the below steps to do so.
 - Login to the Cpanel and search for **MultiPHP Manager** as shown in the below snap.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/multi-php-manager.png?raw=true"/>
-- After opening the MultiPHP Manager select the "checkbox" of the domain, change the PHP version from the drop down to PHP 8.1 and click apply as shown in the below snap
+- After opening the MultiPHP Manager select the "checkbox" of the domain, change the PHP version from the drop-down to PHP 8.1 and click apply as shown in the below snap
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/php-version-change-apply.png?raw=true"/>
 Note: if you are not able to find the PHP version in the drop-down then it is not installed on the server Please contact your Hosting provider and install PHP-8.1 and try again.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/after-php-change.png?raw=true"/>
-- Once PHP 8.1 is udpated to the domain we need to update PHP version in cron as well in to do so, search for cron jobs in the Cpanel search and click on it to open the cron jobs page as below.
+- Once PHP 8.1 is updated to the domain we need to update PHP version in cron as well to do so, search for cron jobs in the Cpanel search and click on it to open the cron jobs page as below.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/cron-search.png?raw=true"/>
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/Screenshot%20from%202022-11-28%2011-30-14.png?raw=true"/>
 - Once we get to the cronjobs page we need to edit the cron to use the php8.1 to do so we need to edit the cron job to use the domain-specific php path and save as shown in the below snap with the below commands.
@@ -302,21 +302,21 @@ extension=pdo_mysql
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/php8.1-path.png?raw=true"/>
 
 ### Create FastCGI Handler Mapping
-- Open Server Manager, locate Tools on the top right corner of the Dashboard, Open Internet Information Services (IIS) Manager.
+- Open Server Manager, locate Tools on the top right corner of the Dashboard, and Open Internet Information Services (IIS) Manager.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true"/>
 
 - Now in the Left Panel of the IIS Manager select the server then you will find the Handler Mappings it will populate the available options to configure.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/handlermap.png?raw=true"/>
 
-- Open Handler Mappings, Select "FastCGI" and Click on Edit in the Right Panel, update the new "c:\php8.1\php-cgi.exe" path.
+- Open Handler Mappings, Select "FastCGI" Click on Edit in the Right Panel, and update the new "c:\php8.1\php-cgi.exe" path.
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/6bfb7af0993f57bb9c975aaf3978083b8c7353f1/_docs/installation/providers/enterprise/windows-images/fastcgiphp8.1.png?raw=true"/>
 - Click on "ok" and restart the IIS server once.
 
 ### Configure Ioncube PHP 8.1 loader
 
 - <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
-- Copy the ioncube_loader_win_8.1.dll file from extracted Ioncube folder and paste it in the PHP extension directory C:\php8.1\ext.
-- Add the below line in your php.ini file at the starting to enable Ioncube.
+- Copy the ioncube_loader_win_8.1.dll file from extracted Ioncube folder and paste it into the PHP extension directory C:\php8.1\ext.
+- Add the below line in your php.ini file at the start to enable Ioncube.
 ```sh
 zend_extension = "C:\php8.1\ext\ioncube_loader_win_8.1.dll"
 ```
