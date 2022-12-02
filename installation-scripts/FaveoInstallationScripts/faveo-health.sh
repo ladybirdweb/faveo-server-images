@@ -1,13 +1,13 @@
 #!/bin/bash
 ##---------- Author : Vishwas S--------------------------------------------------------------##
 ##---------- Email : vishwas.s@ladybirdweb.com ----------------------------------------------##
-##---------- Github page : https://github.com/SimplyLinuxFAQ/health-check-script ------------##
+##---------- Github page : https://github.com/ladybirdweb/faveo-server-images/ --------------##
 ##---------- Purpose : To quickly check and report health status in a linux system.----------##
 ##---------- Tested on : RHEL9/8/7, Rocky 9/8, Ubuntu22/20/18, CentOS 9 Stream, Debian 11----## 
 ##---------- Updated version : v1.0 (Updated on 2nd Dec 2022) -------------------------------##
 ##-----NOTE: This script requires root privileges, otherwise one could run the script -------##
 ##---------- as a sudo user who got root privileges. ----------------------------------------##
-##----USAGE: "sudo /bin/bash <ScriptName>" --------------------------------------------------##
+##----USAGE: "sudo /bin/bash faveo-health.sh" -----------------------------------------------##
 
 
 
