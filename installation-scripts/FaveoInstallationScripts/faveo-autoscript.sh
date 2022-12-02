@@ -22,6 +22,7 @@ skyblue=$(tput setaf 14)
 
 reset=$(tput sgr0)
 
+echo -e "$skyblue Faveo Helpdesk AUTO-INSTALLER v1.1 $reset"
 # Faveo Banner.
 
 echo -e "$skyblue                                                                                                                         $reset";

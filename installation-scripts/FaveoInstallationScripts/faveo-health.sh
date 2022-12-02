@@ -28,7 +28,7 @@ if [[ $(id -u) -ne 0 ]]; then
    echo -e "$red This script must be run as root or sudo user $reset";
    exit 1
 fi
-
+echo -e "$skyblue Faveo Helpdesk HEALTH CHECK v1.1 $reset"
 #------variables used------#
 S="************************************"
 D="-------------------------------------"

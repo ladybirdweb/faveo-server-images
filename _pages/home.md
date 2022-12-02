@@ -101,15 +101,16 @@ Faveo Helpdesk Community can be installed using following installers
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
-We have created script for simple, one click installtion of Faveo, this script supports Apache webserver on Ubuntu 20.04, 22.04 and Debian 11 (Bullseye).
+Bash script to Auto Installation of Faveo Helpdesk on Linux Operating System. Tested on : RHEL9/8/7, Rocky 9/8, Ubuntu22/20/18, CentOS 9 Stream, Debian 11
 
- **For Faveo Helpdesk Installation script**
-* Click on the below link and download the file "faveo-autoscript.sh" once downloaded copy the file to the linux server where we need to install faveo.
+  **For Faveo Helpdesk Installation script**
+* [Click here](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) to download the "faveo-autoscript.sh" or use wget to download using the below command. 
+ 
+```sh
+wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh
+```
 
-
-* [Installation Script](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) 
-
-* Once the file is copied to the faveo server we need to make the file excecutable by using the below command we will change the permission to excecute.
+* Once the file is downlaoded to the faveo server provide executable permission to the script.
 ```
 chmod +x faveo-autoscript.sh
 ```
