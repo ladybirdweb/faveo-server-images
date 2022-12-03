@@ -107,7 +107,7 @@ Bash script to Auto Installation of Faveo Helpdesk on Linux Operating System. Te
 * [Click here](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) to download the "faveo-autoscript.sh" or use wget to download using the below command. 
  
 ```sh
-wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh
+wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh
 ```
 
 * Once the file is downlaoded to the faveo server provide executable permission to the script.
