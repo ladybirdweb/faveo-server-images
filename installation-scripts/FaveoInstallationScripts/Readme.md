@@ -9,7 +9,7 @@ Prerequisites:
 
 Download the faveo-health.sh script using wget
 ```sh
-wget https://github.com/ladybirdweb/faveo-server-images/blob/master/installation-scripts/FaveoInstallationScripts/faveo-health.sh
+wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/faveo-health.sh
 ```
 Once downloaded, navigate to the folder where the script has been downloaded and execute the below command to provide executable permission to the faveo-health.sh script
 ```sh
