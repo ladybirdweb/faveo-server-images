@@ -675,7 +675,7 @@ EOF
     extensions ()
     {
         wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
-        https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+    
         tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
         \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
         rm -rf "$PWD"/ioncube*
