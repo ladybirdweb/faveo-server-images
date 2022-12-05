@@ -96,44 +96,15 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 
 Faveo Helpdesk Community can be installed using following installers
 - **Softaculous** [https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk](https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk)
-- **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php)
-
+- **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
-Bash script to Auto Installation of Faveo Helpdesk on Linux Operating System. Tested on : RHEL9/8/7, Rocky 9/8, Ubuntu22/20/18, CentOS 9 Stream, Debian 11
+Bash script to Auto Installation of Faveo Helpdesk on Linux Operating System. Tested on : Ubuntu 22/20/18
+- [**Installation via Scripts**](/docs/installation/providers/enterprise/script-installers/)
 
-  **For Faveo Helpdesk Installation script**
-* [Click here](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) to download the "faveo-autoscript.sh" or use wget to download using the below command. 
  
-```sh
-wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh
-```
 
-* Once the file is downlaoded to the faveo server provide executable permission to the script.
-```
-chmod +x faveo-autoscript.sh
-```
-* After changing the file permission we need to excecute the file by using the below command.
-```
-./faveo-autoscript.sh
-```
-* After excecuting the file it will ask for the below values please keep them ready before starting the script.
-```
-Domain             - (The domain propagated to the faveo server public IP)
-Email
-Faveo License code - (This can be obtained from https://billing.faveohelpdesk.com)
-Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.com)
-```
-<b>Note:</b> This script will configured everything requried for Faveo Helpdesk to run that includes configuring supervisor and redis. The supervisor jobs will fail initially until the GUI part of the installation is completed. Run the below command to restart the supervisor daemon.
-
-```sh
-systemctl restart supervisor
-```
-Run the below to check the status of each Jobs
-```sh
-supervisorctl status
-```
 
 <a id="markdown-shared-sever" name="markdown-shared-sever"></a>
 ### Installation on a shared server <button class="button button2"><b>Not Recommended</b></button>
