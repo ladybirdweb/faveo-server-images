@@ -10,7 +10,7 @@ toc: true
 
 # Faveo Helpesk Installation via Scripts <!-- omit in toc -->
 
-## Installing faveo Helpdesk via Bash Script on Ubuntu 22.04,20.04
+## Installing Faveo Helpdesk via Bash Script on Ubuntu 22.04,20.04
 
 Prerequisites:
 - "wget" tool installed.
