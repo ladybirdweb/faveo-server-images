@@ -96,7 +96,7 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 
 Faveo Helpdesk Community can be installed using following installers
 - **Softaculous** [https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk](https://www.softaculous.com/apps/customersupport/Faveo_Helpdesk)
-- **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php
+- **Fantastico** [https://www.netenberg.com/fantastico.php](https://www.netenberg.com/fantastico.php)
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
