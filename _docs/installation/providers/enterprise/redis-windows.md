@@ -153,7 +153,7 @@ For Apache
 
 The details to be filled for Faveo Mail Worker, Faveo Recurring, Faveo Reports  & Faveo Notifications are summarised below:
 
-- **FAVEO MAIL WORKER**
+- **FAVEO WORKER**
 
 
 Command
@@ -168,15 +168,18 @@ C:\Windows\System32\cmd.exe
 
 Startup Directory
 ```
-C:\Windows\System32
+For IIS
+C:\inetpub\wwwroot
+For Apache
+C:\Apache24\htdocs
 ```
 
 Arguments
 ```
 For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:work redis --sleep=3 --tries=3
+php "c:\inetpub\wwwroot\artisan" queue:work redis --sleep=3 --tries=3
 For Apache
-/c php "c:\Apache24\htdocs\artisan" queue:work redis --sleep=3 --tries=3
+php "c:\Apache24\htdocs\artisan" queue:work redis --sleep=3 --tries=3
 ```
 
 Output(Stdout)
@@ -205,15 +208,18 @@ C:\Windows\System32\cmd.exe
 
 Startup Directory
 ```
-C:\Windows\System32
+For IIS
+C:\inetpub\wwwroot
+For Apache
+C:\Apache24\htdocs
 ```
 
 Arguments
 ```
 For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
+php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
 For Apache
-/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
+php "c:\Apache24\htdocs\artisan" queue:work redis --queue=recurring --sleep=3 --tries=3
 ```
 
 Output(Stdout)
@@ -243,15 +249,18 @@ C:\Windows\System32\cmd.exe
 
 Startup Directory
 ```
-C:\Windows\System32
+For IIS
+C:\inetpub\wwwroot
+For Apache
+C:\Apache24\htdocs
 ```
 
 Arguments
 ```
 For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
+php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
 For Apache
-/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
+php "c:\Apache24\htdocs\artisan" queue:work redis --queue=reports --sleep=3 --tries=3
 ```
 
 Output(Stdout)
@@ -281,15 +290,18 @@ C:\Windows\System32\cmd.exe
 
 Startup Directory
 ```
-C:\Windows\System32
+For IIS
+C:\inetpub\wwwroot
+For Apache
+C:\Apache24\htdocs
 ```
 
 Arguments
 ```
 For IIS
-/c php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
+php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
 For Apache
-/c php "c:\Apache24\htdocs\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
+php "c:\Apache24\htdocs\artisan" queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
 ```
 
 Output(Stdout)
@@ -299,8 +311,44 @@ C:\inetpub\wwwroot\storage\logs\notification.log
 For Apache
 C:\Apache24\htdocs\storage\logs\notification.log
 ```
+- **FAVEO DEACTIVATYE AGENTS**
 
 
 
-Now NSSM has been successfully configured.
+Command
+```
+nssm install faveo-deactivation
+```
+
+Path
+```
+C:\Windows\System32\cmd.exe
+```
+
+Startup Directory
+```
+For IIS
+C:\inetpub\wwwroot
+For Apache
+C:\Apache24\htdocs
+```
+
+Arguments
+```
+For IIS
+php "c:\inetpub\wwwroot\artisan" queue:work redis --queue=deactivation --sleep=3 --tries=3
+For Apache
+php "c:\Apache24\htdocs\artisan" queue:work redis --queue=deactivation --sleep=3 --tries=3
+```
+
+Output(Stdout)
+```
+For IIS
+C:\inetpub\wwwroot\storage\logs\deactivation.log
+For Apache
+C:\Apache24\htdocs\storage\logs\deactivation.log
+```
+Open service manager and start all the services configured by NSSM.
+
+
 

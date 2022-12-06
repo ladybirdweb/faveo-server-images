@@ -194,7 +194,7 @@ ssl_selection ()
             read -p "$yellow Input the Absolute Path to Certificate file for $1 : $reset" certfile
             read -p "$yellow Input the Absolute Path to Certificate Key file for $1: $reset" keyfile
             ssl_type=paid-ssl
-            echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+            #echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
             web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
         }
         ssl_files "$1" "$2" "$3" "$4" "$5"
@@ -272,7 +272,7 @@ EOF
             elif [[ "$6" == "self-signed" ]]; then
                 self_signed_apache "$1" "$2" "$3" "$4" 
             elif [[ "$6" == "paid-ssl" ]]; then
-                echo "$1" "$2" "$3" "$4" "$7" "$8"
+                #echo "$1" "$2" "$3" "$4" "$7" "$8"
                 paid_ssl_apache "$1" "$2" "$3" "$4" "$7" "$8"
             else
                 echo -e "$red Something went wrong in SSL Selection. $reset"
@@ -312,7 +312,7 @@ EOF
 
 certbot_apache ()
 {
-    echo "$1" "$2" "$3" "$4" 
+    #echo "$1" "$2" "$3" "$4" 
     echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
     apt-get install python3-certbot-apache -y  
     certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
@@ -578,9 +578,10 @@ MYSQL_SCRIPT
 }
 faveo_configure ()
 {
-    echo $1 $2 $3 
+    #echo $1 $2 $3 
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
     unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
+    rm -f $PWD/faveo.zip
     if [[ $? != 0 ]]; then
         echo -e "\n";
         echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
@@ -674,8 +675,7 @@ EOF
     }
     extensions ()
     {
-        wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
-    
+        wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz   
         tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
         \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
         rm -rf "$PWD"/ioncube*
@@ -686,6 +686,7 @@ EOF
         if [[ $derivative == 2004 ]]; then
             wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
             dpkg -i "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
+            rm -f "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
             apt install -f -y
             if [[ $? != 0 ]]; then
                 echo -e "\n";

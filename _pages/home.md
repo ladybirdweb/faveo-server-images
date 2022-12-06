@@ -80,7 +80,8 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
-* [Windows](/docs/installation/providers/enterprise/windows)
+* [Windows IIS](/docs/installation/providers/enterprise/windows-iis)
+* [Windows Apache](/docs/installation/providers/enterprise/apache-windows)
 * [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
 * [Kubernetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
 

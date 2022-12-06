@@ -292,7 +292,7 @@ With Apache active and functional, you now need to define and configure the *php
 Assign the value *“C:\php\ext”* to this directive as shown below:
 
 ```
-extension_dir = "c"
+extension_dir = "C:\php\ext"
 ```
 After assigning the value *C:\php\ext*, it will look like below:
 
