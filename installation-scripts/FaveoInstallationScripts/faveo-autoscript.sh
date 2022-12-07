@@ -593,12 +593,12 @@ faveo_configure ()
         dependencies "$1"
     fi   
 }
-    redis ()
-    {
-        echo -e "$green Installing and Configuring Redis. $reset"
-        apt install redis supervisor -y  
-        systemctl enable redis-server
-        systemctl enable supervisor
+redis ()
+{
+    echo -e "$green Installing and Configuring Redis. $reset"
+    apt install redis supervisor -y  
+    systemctl enable redis-server
+    systemctl enable supervisor
 cat <<  EOF > /etc/supervisor/conf.d/faveo-worker.conf
 [program:faveo-worker]
 process_name=%(program_name)s_%(process_num)02d
@@ -659,93 +659,92 @@ user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/deactivation.log
 EOF
-    systemctl restart supervisor
-    if [[ $? != 0 ]]; then
-        echo -e "\n";
-        echo -e "$red Something went wrong. Configuring Redis and Supervisor. $reset"
-        echo -e "$red Rolling Back..... $reset"
-        rollback
-        echo -e "\n";
-    else
-        echo -e "$green Redis & Supervisor configured. $reset"
-        echo -e "$green Configuring Faveo Cronjob $reset"
-        echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
-        credentials "$1" "$2"
-    fi
-    }
-    extensions ()
-    {
-        wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz   
-        tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
-        \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
-        rm -rf "$PWD"/ioncube*
-        sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/apache2/php.ini
-        sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/cli/php.ini
-        sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/fpm/php.ini
-        derivative=$(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f 2 | tr -d '.')
-        if [[ $derivative == 2004 ]]; then
-            wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
-            dpkg -i "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
-            rm -f "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
-            apt install -f -y
-            if [[ $? != 0 ]]; then
-                echo -e "\n";
-                echo -e "$red Something went wrong. Configuring PDF Plugin. $reset"
-                echo -e "$red Rolling Back..... $reset"
-                rollback
-            fi
-            rm -f "$PWD"/wkhtmltox_0.12.6-1.focal_amd64.deb
-        elif [[ $derivative == 2204 ]]; then
-            echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-            apt-get update; apt install libssl1.1 -y
-            wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb -P /var/www/
-            dpkg -i /var/www/wkhtmltox_0.12.6-1.focal_amd64.deb
-            apt --fix-broken install -y
-            if [[ $? != 0 ]]; then
-                echo -e "\n";
-                echo -e "$red Something went wrong. Configuring PDF Plugin. $reset"
-                echo -e "$red Rolling Back..... $reset"
-                rollback
-            fi
-            rm -f "$PWD"/wkhtmltox_0.12.6-1.focal_amd64.deb
-        else
-            apt-get install wkhtmltopdf -y
-            systemctl restart apache2
+systemctl restart supervisor
+if [[ $? != 0 ]]; then
+    echo -e "\n";
+    echo -e "$red Something went wrong. Configuring Redis and Supervisor. $reset"
+    echo -e "$red Rolling Back..... $reset"
+    rollback
+    echo -e "\n";
+else
+    echo -e "$green Redis & Supervisor configured. $reset"
+    echo -e "$green Configuring Faveo Cronjob $reset"
+    echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+    credentials "$1" "$2"
+fi
+}
+extensions ()
+{
+    wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz   
+    tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
+    \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
+    rm -rf "$PWD"/ioncube*
+    sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/apache2/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/cli/php.ini
+    sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/fpm/php.ini
+    derivative=$(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f 2 | tr -d '.')
+    if [[ $derivative == 2004 ]]; then
+        wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+        dpkg -i "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
+        rm -f "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
+        apt install -f -y
+        if [[ $? != 0 ]]; then
+            echo -e "\n";
+            echo -e "$red Something went wrong. Configuring PDF Plugin. $reset"
+            echo -e "$red Rolling Back..... $reset"
+            rollback
         fi
-    }
-    rollback ()
-    {
-        rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
-        apt purge apache2 -y
-        apt purge mariadb* redis supervisor php8.1* -y  && apt autoremove -y
-        apt purge wkhtmltox -y 
-        rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb*  /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/cron.d/faveo-ssl /var/www/faveo /usr/local/share/ca-certificates/*
-        update-ca-certificates --fresh 
-        echo -e "$red Contact Faveo Technical Support. $reset"
-        echo -e "$red Rolled Back. $reset"
-        exit 1
-    }
+        rm -f "$PWD"/wkhtmltox_0.12.6-1.focal_amd64.deb
+    elif [[ $derivative == 2204 ]]; then
+        echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+        apt-get update; apt install libssl1.1 -y
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb -P /var/www/
+        dpkg -i /var/www/wkhtmltox_0.12.6-1.focal_amd64.deb
+        apt --fix-broken install -y
+        if [[ $? != 0 ]]; then
+            echo -e "\n";
+            echo -e "$red Something went wrong. Configuring PDF Plugin. $reset"
+            echo -e "$red Rolling Back..... $reset"
+            rollback
+        fi
+        rm -f "$PWD"/wkhtmltox_0.12.6-1.focal_amd64.deb
+    else
+        apt-get install wkhtmltopdf -y
+        systemctl restart apache2
+    fi
+}
+rollback ()
+{
+    rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
+    apt purge apache2 -y
+    apt purge mariadb* redis supervisor php8.1* -y  && apt autoremove -y
+    apt purge wkhtmltox -y 
+    rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb*  /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/cron.d/faveo-ssl /var/www/faveo /usr/local/share/ca-certificates/*
+    update-ca-certificates --fresh 
+    echo -e "$red Contact Faveo Technical Support. $reset"
+    echo -e "$red Rolled Back. $reset"
+    exit 1
+}
 # Executing function to fetch the above detais.
-    credentials ()
-    {
-        echo "Your URL: https://$1" >> "$PWD"/credentials.txt
-        echo "Database Username: faveo" >> /"$PWD"/credentials.txt
-        echo "Database Password: $2" >> "$PWD"/credentials.txt
-        echo -e "$skyblue Faveo Helpdesk successfully installed. Please visit $1 and finish the GUI Installation$reset"
-        echo -e "$skyblue Faveo Database name: faveo $reset"
-        echo -e "$skyblue Database Username:   faveo $reset"
-        echo -e "$skyblue Database Password:   $2 $reset"
-        echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
-    }
-    ubuntu ()
-    {
-        attributes
-    }
-    
-    debian ()
-    {
-        attributes
-    }
+credentials ()
+{
+    echo "Your URL: https://$1" >> "$PWD"/credentials.txt
+    echo "Database Username: faveo" >> /"$PWD"/credentials.txt
+    echo "Database Password: $2" >> "$PWD"/credentials.txt
+    echo -e "$skyblue Faveo Helpdesk successfully installed. Please visit $1 and finish the GUI Installation$reset"
+    echo -e "$skyblue Faveo Database name: faveo $reset"
+    echo -e "$skyblue Database Username:   faveo $reset"
+    echo -e "$skyblue Database Password:   $2 $reset"
+    echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
+}
+ubuntu ()
+{
+    attributes
+}
 
-    sleep 0.05
-    os_check
+debian ()
+{
+    attributes
+}
+sleep 0.05
+os_check
