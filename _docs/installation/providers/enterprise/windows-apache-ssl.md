@@ -184,7 +184,7 @@ C:\php
 openssl.cafile = "C:\php\cacert.pem"
 ```
 
-- Edit the *httpd-ssl.conf* file, seaarch for *<VirtualHost _default_:443>* 
+- Edit the *httpd-ssl.conf* file, search for *<VirtualHost _default_:443>* 
 - Turn SSL Engine on & add the certificate paths respectively as shown below:
 
 ```
