@@ -18,7 +18,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
 - [<strong>Installation steps:</strong>](#installation-steps)
 
   - [<strong>1.Install IIS Server</strong>](#1Install-IIS-Server)
-  - [<strong> 2. Install PHP z </strong>](#2Install-PHP-7.3)
+  - [<strong> 2. Install PHP z </strong>](#2Install-PHP-8.1)
   - [<strong> 3. Create FastCGI Handler Mapping </strong>](#3Create-FastCGI-Handler-Mapping)
   - [<strong> 4. Install MariaDB 10.6/MySQL 8.0 </strong>](#4Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
@@ -75,16 +75,16 @@ To install IIS Server open Server Manager and locate the *Manage* button on the 
 http://localhost/
 ```
 
-<a id="2Install-PHP-7.3" 
-name="2Install-PHP-7.3"></a>
+<a id="2Install-PHP-8.1" 
+name="2Install-PHP-8.1"></a>
 
-### <strong>2. Install PHP 7.3</strong>
+### <strong>2. Install PHP 8.1</strong>
 
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-7.3.33-nts-Win32-VC15-x64.zip" file. Extract the zip file & "rename it to *php7.3*. Now move the renamed *php7.3* folder to *C:\php7.3*.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.33-nts-Win32-VC15-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php.png?raw=true" alt="" style=" width:400px ; height:150px ">
 
--   Open *php7.3* folder, find *php.ini-development* & rename it to *php.ini* to make it php configuration file.
+-   Open *php8.1* folder, find *php.ini-development* & rename it to *php.ini* to make it php configuration file.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
@@ -101,7 +101,7 @@ fastcgi.impersonate=1
 fastcgi.logging=0
 max_execution_time=300
 date.timezone=Asia/Kolkata
-extension_dir="C:\php7.3\ext\"
+extension_dir="C:\php8.1\ext\"
 upload_max_filesize = 100M
 post_max_size = 100M
 memory_limit = 256M
@@ -130,7 +130,7 @@ extension=pdo_mysql
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
 
-- Now click on Path > Edit > New & add copied path C:\php7.3\ here and click OK in all 3 tabs.
+- Now click on Path > Edit > New & add copied path C:\php8.1\ here and click OK in all 3 tabs.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
@@ -164,7 +164,7 @@ FastCgiModule
 ```
 - Executable (Optional)
 ```
-"C:\php7.3\php-cgi.exe"
+"C:\php8.1\php-cgi.exe"
 ```
 - Name
 ```
@@ -214,11 +214,11 @@ name="5Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 ### <strong>5. Enable cacert.pem File in PHP Configuration File</strong>
 
 -   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the *cacert.pem* file and copy it to *C:\php7.3* path.
-- Edit the *php.ini* located in *C:\php7.3*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+- Extract the *cacert.pem* file and copy it to *C:\php8.1* path.
+- Edit the *php.ini* located in *C:\php8.1*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 
 ```
-curl.cainfo = "C:\php7.3\cacert.pem"
+curl.cainfo = "C:\php8.1\cacert.pem"
 ```
 
 <a id="6Install-Ioncube-Loader" 
@@ -226,14 +226,14 @@ name="6Install-Ioncube-Loader"></a>
 
 ### <strong>6. Install Ioncube Loader</strong>
 
--   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
-- Copy the *ioncube_loader_win_7.3.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php7.3\ext.*
+- Copy the *ioncube_loader_win_8.1.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php8.1\ext.*
 
 - Add the below line in your php.ini file at the starting to enable Ioncube.
 
 ```
-zend_extension = "C:\php7.3\ext\ioncube_loader_win_7.3.dll"
+zend_extension = "C:\php8.1\ext\ioncube_loader_win_8.1.dll"
 ```
 
 <a id="7Install-wkhtmltopdf" 
@@ -261,7 +261,7 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
-- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php7.3\ext
+- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php8.1\ext
 
 - Update the Environmet variable for wkhtmltopdf. *Refer to section **(2.a)** for adding Environment Variable*
 
