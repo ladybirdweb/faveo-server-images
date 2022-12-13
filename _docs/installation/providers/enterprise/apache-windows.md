@@ -21,7 +21,7 @@ title: Faveo Installation on Windows with Apache Web Server
 - [<strong>Installation steps:</strong>](#installation-steps)
 
   - [<strong>1.Install & Configure Apache for Windows</strong>](#1Install-&-Configure-Apache-for-Windows)
-  - [<strong> 2. PHP 7.3 for Apache Web Server </strong>](#2PHP-7.3-for-Apache-Web-Server)
+  - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-7.3-for-Apache-Web-Server)
   - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
   - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
