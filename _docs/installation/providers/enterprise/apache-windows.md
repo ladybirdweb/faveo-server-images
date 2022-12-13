@@ -192,7 +192,7 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache19.png" alt="" style=" width:500px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/php-8.1.png" alt="" style=" width:500px ; height:150px ">
 
 - Extract the zip file & rename it to *php*. Now move the renamed *php* folder to *C drive*.
 
