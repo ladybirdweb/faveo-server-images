@@ -14,7 +14,7 @@ toc: true
 Faveo can run on [CentOS-8-Stream ](https://www.centos.org/download/).
 
 - [<strong>Installation steps:</strong>](#installation-steps)
-    - [<strong>1.LAMP Installation</strong>](#1lamp-installation)
+    - [<strong>1.LAMP Stack Installation</strong>](#1lamp-installation)
     - [<strong>2.Update your Packages and install some utility tools</strong>](#2update-your-packages-and-install-some-utility-tools)
     - [<strong>3.Upload Faveo</strong>](#3upload-faveo)
     - [<strong>4.Setup the database</strong>](#4setup-the-database)
@@ -35,13 +35,13 @@ Faveo can run on [CentOS-8-Stream ](https://www.centos.org/download/).
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
 <a id="1lamp-installation" name="1lamp-installation"></a>
 
-### <strong>1.LAMP Installation</strong>
+### <strong>1.LAMP Stack Installation</strong>
 
 Follow the [instructions here](https://github.com/teddysun/lamp)
 If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
@@ -59,7 +59,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
-<strong>2.a.Install php-7.3 Packages </strong>
+<strong>2.a.Install php-8.1 Packages </strong>
 
 
 
@@ -67,7 +67,7 @@ yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
-dnf module install php:remi-7.3 -y
+dnf module install php:remi-8.1 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 <strong>2.b.Install and run Apache</strong>
@@ -90,8 +90,8 @@ Copy ioncube loader to PHP modules Directory.
 
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
-sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
+cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
