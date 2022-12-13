@@ -30,7 +30,7 @@ Faveo requires a fairly standard PHP & MySQL server setup in order to be install
 
 <a id="php-versions" name="php-versions"></a>
 ## 1. PHP Version
-PHP versions **8.1.x** are supported.
+PHP versions **7.3.x** are supported.
 
 For assistance installing a new version of PHP please contact your hosting provider or server administrator.
 
