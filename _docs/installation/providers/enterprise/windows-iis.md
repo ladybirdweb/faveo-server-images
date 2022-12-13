@@ -18,7 +18,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
 - [<strong>Installation steps:</strong>](#installation-steps)
 
   - [<strong>1.Install IIS Server</strong>](#1Install-IIS-Server)
-  - [<strong> 2. Install PHP 8.1 </strong>](#2Install-PHP-8.1)
+  - [<strong> 2. Install PHP </strong>](#2Install-PHP-8.1)
   - [<strong> 3. Create FastCGI Handler Mapping </strong>](#3Create-FastCGI-Handler-Mapping)
   - [<strong> 4. Install MariaDB 10.6/MySQL 8.0 </strong>](#4Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
