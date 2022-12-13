@@ -82,7 +82,7 @@ name="2Install-PHP-8.1"></a>
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download "php-8.1.33-nts-Win32-VC15-x64.zip" file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php.png?raw=true" alt="" style=" width:400px ; height:150px ">
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php8.1.png?raw=true" alt="" style=" width:400px ; height:150px ">
 
 -   Open *php8.1* folder, find *php.ini-development* & rename it to *php.ini* to make it php configuration file.
 
