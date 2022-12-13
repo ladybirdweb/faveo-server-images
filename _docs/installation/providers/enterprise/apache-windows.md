@@ -414,18 +414,18 @@ name="4Install-Ioncube-Loader"></a>
 ### <strong>4. Install Ioncube Loader</strong>
 
 
--   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
-- Step 2: Copy the *ioncube_loader_win_7.3.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
+- Step 2: Copy the *ioncube_loader_win_8.1.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
 
 - Step 3: Copy the *“loader-wizard.php”* from the extracted Ioncube folder and paste it into the *C:\Apache24\htdocs*.
 
 - Step 4: Edit the *php.ini* file and below the last line enter the path to the extension within the *zend_extension* parameter:
 
 ```
-zend_extension = "C:\php\ext\ioncube_loader_win_7.3.dll"
+zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
 ```
 
 - Step 5: Run the below URL to verify the ionCube Installation. 
