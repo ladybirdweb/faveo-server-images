@@ -34,7 +34,7 @@ Faveo can run on [CentOS-8-Stream](https://upload.wikimedia.org/wikipedia/common
 Faveo depends on the following:
 
 -   **Nginx** 
--   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 7.3+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
@@ -58,14 +58,14 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
-<b> 2.a. Install php-8.1 Packages </b>
+<b> 2.a. Install php-7.3 Packages </b>
 
 
 ```sh
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
-dnf module install php:remi-8.1 -y
+dnf module install php:remi-7.3 -y
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 <b> 2.b. Install and run Nginx </b>
@@ -88,8 +88,8 @@ Copy ioncube loader to Directory.
 
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules 
-sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
+cp ioncube/ioncube_loader_lin_7.3.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.3.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
