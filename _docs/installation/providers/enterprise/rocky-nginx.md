@@ -34,7 +34,7 @@ Faveo can run on [Rocky 8 ](https://rockylinux.org/download/).
 Faveo depends on the following:
 
 -   **Nginx** 
--   **PHP z+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
