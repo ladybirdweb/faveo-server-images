@@ -21,7 +21,7 @@ title: Faveo Installation on Windows with Apache Web Server
 - [<strong>Installation steps:</strong>](#installation-steps)
 
   - [<strong>1.Install & Configure Apache for Windows</strong>](#1Install-&-Configure-Apache-for-Windows)
-  - [<strong> 2. PHP 7.3 for Apache Web Server </strong>](#2PHP-7.3-for-Apache-Web-Server)
+  - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-8.1-for-Apache-Web-Server)
   - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
   - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
@@ -184,15 +184,15 @@ If the test page works successfully and shows the message, it means that you hav
 
 These were the simple steps by which you can install Apache Web Server on Windows Server 2022.
 
-<a id="2PHP-7.3-for-Apache-Web-Server" 
-name="2PHP-7.3-for-Apache-Web-Server"></a>
+<a id="2PHP-8.1-for-Apache-Web-Server" 
+name="2PHP-8.1-for-Apache-Web-Server"></a>
 
-### <strong>2. PHP 7.3 for Apache Web Server</strong>
+### <strong>2. PHP 8.1 for Apache Web Server</strong>
 
 
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 7.3 NTS x64 zip file.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache19.png" alt="" style=" width:500px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/php-8.1.png" alt="" style=" width:500px ; height:150px ">
 
 - Extract the zip file & rename it to *php*. Now move the renamed *php* folder to *C drive*.
 
@@ -278,7 +278,7 @@ Require all granted
 </Directory>
 ```
 
-### <strong>b. Configure the PHP 7.3</strong>
+### <strong>b. Configure the PHP 8.1</strong>
 
 
 With Apache active and functional, you now need to define and configure the *php.ini* file so those database extensions and libraries are available for use by Faveo.
@@ -414,18 +414,18 @@ name="4Install-Ioncube-Loader"></a>
 ### <strong>4. Install Ioncube Loader</strong>
 
 
--   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
-- Step 2: Copy the *ioncube_loader_win_7.3.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
+- Step 2: Copy the *ioncube_loader_win_8.1.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
 
 - Step 3: Copy the *“loader-wizard.php”* from the extracted Ioncube folder and paste it into the *C:\Apache24\htdocs*.
 
 - Step 4: Edit the *php.ini* file and below the last line enter the path to the extension within the *zend_extension* parameter:
 
 ```
-zend_extension = "C:\php\ext\ioncube_loader_win_7.3.dll"
+zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
 ```
 
 - Step 5: Run the below URL to verify the ionCube Installation. 
