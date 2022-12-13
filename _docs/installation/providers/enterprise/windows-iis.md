@@ -226,7 +226,7 @@ name="6Install-Ioncube-Loader"></a>
 
 ### <strong>6. Install Ioncube Loader</strong>
 
--   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc15_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
+-   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc6_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
 - Copy the *ioncube_loader_win_8.1.dll* file from extracted Ioncube folder and paste it in the PHP extension directory *C:\php8.1\ext.*
 
