@@ -128,7 +128,7 @@ tar -xvf ioncube_loaders_lin_x86-64.tar.gz
 ```
 Copy the ioncube_loader_lin_8.1.so to PHP Extension directory.
 ```sh
-ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
+cp ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902/
 ```
 ### Update the PHP Configuration files
 ```sh
