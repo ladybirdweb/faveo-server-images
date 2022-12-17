@@ -70,19 +70,19 @@ sleep 0.05
 
 # Detect Debian users running the script with "sh" instead of bash.
     
-    echo -e " ";
-    if readlink /proc/$$/exe | grep -q "dash"; then
-    	echo "&red This installer needs to be run with 'bash', not 'sh'. $reset";
-    	exit 1
-    fi
+echo -e " ";
+if readlink /proc/$$/exe | grep -q "dash"; then
+	echo "&red This installer needs to be run with 'bash', not 'sh'. $reset";
+	exit 1
+fi
 
 # Checking for the Super User.
     
-    echo -e " ";
-    if [[ $EUID -ne 0 ]]; then
-       echo -e "$red This script must be run as root $reset";
-       exit 1
-    fi
+echo -e " ";
+if [[ $EUID -ne 0 ]]; then
+   echo -e "$red This script must be run as root $reset";
+   exit 1
+fi
 
 
 

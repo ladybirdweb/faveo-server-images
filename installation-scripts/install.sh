@@ -1,0 +1,393 @@
+#!/bin/bash
+
+#!/bin/bash
+##---------- Author : Vishwas S & Thirumoorthi Duraipandi------------------------------------##
+##---------- Email : vishwas.s@ladybirdweb.com,thirumoorthi.duraipandi@ladybirdweb.com-------##
+##---------- Github page : https://github.com/ladybirdweb/faveo-server-images/---------------##
+##---------- Purpose : Auto Install Faveo Helpdesk in a linux system.------------------------##
+##---------- Tested on : RHEL9/8/7, Rocky 9/8, Ubuntu22/20/18, CentOS 9 Stream, Debian 11----## 
+##---------- Updated version : v1.0 (Updated on 2nd Dec 2022) -------------------------------##
+##-----NOTE: This script requires root privileges, otherwise one could run the script -------##
+##---------- as a sudo user who got root privileges. ----------------------------------------##
+##----USAGE: "sudo /bin/bash faveo-autoscript.sh" -------------------------------------------##
+
+
+# Colour variables for the script.
+
+red=$(tput setaf 1)
+
+green=$(tput setaf 2)
+
+yellow=$(tput setaf 11)
+
+skyblue=$(tput setaf 14)
+
+reset=$(tput sgr0)
+
+echo -e "$skyblue Faveo Helpdesk AUTO-INSTALLER v1.0 $reset"
+# Faveo Banner.
+
+echo -e "$skyblue                                                                                                                         $reset";
+sleep 0.05
+echo -e "$skyblue                                        _______ _______ _     _ _______ _______                                          $reset";
+sleep 0.05
+echo -e "$skyblue                                       (_______|_______|_)   (_|_______|_______)                                         $reset";
+sleep 0.05
+echo -e "$skyblue                                        _____   _______ _     _ _____   _     _                                          $reset";
+sleep 0.05
+echo -e "$skyblue                                       |  ___) |  ___  | |   | |  ___) | |   | |                                         $reset";
+sleep 0.05
+echo -e "$skyblue                                       | |     | |   | |\ \ / /| |_____| |___| |                                         $reset";
+sleep 0.05
+echo -e "$skyblue                                       |_|     |_|   |_| \___/ |_______)\_____/                                          $reset";
+sleep 0.05
+echo -e "$skyblue                                                                                                                         $reset";
+sleep 0.05
+echo -e "$skyblue                               _     _ _______ _       ______ ______  _______  ______ _     _                            $reset";
+sleep 0.05
+echo -e "$skyblue                             (_)   (_|_______|_)     (_____ (______)(_______)/ _____|_)   | |                            $reset";
+sleep 0.05
+echo -e "$skyblue                              _______ _____   _       _____) )     _ _____  ( (____  _____| |                            $reset";
+sleep 0.05
+echo -e "$skyblue                             |  ___  |  ___) | |     |  ____/ |   | |  ___)  \____ \|  _   _)                            $reset";
+sleep 0.05
+echo -e "$skyblue                             | |   | | |_____| |_____| |    | |__/ /| |_____ _____) ) |  \ \                             $reset";
+sleep 0.05
+echo -e "$skyblue                             |_|   |_|_______)_______)_|    |_____/ |_______|______/|_|   \_)                            $reset";
+sleep 0.05
+echo -e "$skyblue                                                                                                                         $reset";
+sleep 0.05
+echo -e "$skyblue                                                                                                                         $reset";
+
+
+
+echo -e "$yellow                   This is a automated Installation Script for Faveo Helpdesk products which runs on Linux Distro's $reset";
+echo -e "                                                                                                          "
+sleep 0.05
+echo -e "$yellow    At the end of this script you will get the details for the faveo GUI configuration please copy those information for future use $reset";
+sleep 0.05
+
+
+
+
+# Detect Debian users running the script with "sh" instead of bash.
+    
+echo -e " ";
+if readlink /proc/$$/exe | grep -q "dash"; then
+	echo "&red This installer needs to be run with 'bash', not 'sh'. $reset";
+	exit 1
+fi
+
+# Checking for the Super User.
+    
+echo -e " ";
+if [[ $EUID -ne 0 ]]; then
+   echo -e "$red This script must be run as root $reset";
+   exit 1
+fi
+
+
+# Below the OS will be detected and the Version check will be done according to Faveo Requirement.
+
+os_check ()
+{
+    echo -e " ";
+    echo -e "$yellow Checking for the OS & Version $reset";
+    sleep 0.5
+    if grep -qs "rocky" /etc/os-release; then
+    	os="rocky"
+    	os_version=$(grep -shoE '[0-9]+'  /etc/rocky-release | head -1)
+    	group_name="nobody"
+        Os_Version=$(hostnamectl | grep 'Operating System')
+    	group_name="nogroup"
+        sleep 1
+        echo -e "                                 "
+        echo -e "[OS Detected] : $green $Os_Version $reset";
+        sleep 1 
+        echo -e "                                 "
+        echo -e "Supported OS Version [CHECK :$green OK $reset]"
+        attributes
+    elif grep -qs "red" /etc/os-release; then
+    	os="redhat"
+    	os_version=$(grep -shoE '[0-9]+'  /etc/redhat-release | head -1)
+    	group_name="nobody"
+        Os_Version=$(hostnamectl | grep 'Operating System')
+    	group_name="nogroup"
+        sleep 1
+        echo -e "                                 "
+        echo -e "[OS Detected] : $green $Os_Version $reset";
+        sleep 1
+        echo -e "                                 "
+        echo -e "Supported OS Version [CHECK :$green OK $reset]"
+        attributes
+    # If the required OS and version is not detected the below response will be passed to the user.
+    else
+    	echo "$red This installer seems to be running on an unsupported distribution. Supported distros are Ubuntu, Debian, Rocky Linux,RedHat Linux.$reset";
+    	exit
+    fi
+}
+
+web_server_selection ()
+{
+    sleep 0.05
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred web server[APACHE or NGINX].$reset";
+    sleep 0.05
+    echo -e "$green (1) - Apache $reset";
+    sleep 0.05
+    echo -e "$green (2) - Nginx $reset";
+    echo -e "                                 "
+    read -p "$yellow Enter 1 for Apache, 2 for Nginx: $reset" webserver
+            echo -e "                                 "
+    if [[ "$webserver" == "1" ]]; then
+        web_server="apache"
+        echo -e "$green You have selected Apache Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    elif [[ "$webserver" == "2" ]]; then
+        web_server="nginx"
+        echo -e "$green You have selected Nginx Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    else 
+        echo -e "$red Please select your preferred Web Server. $reset";
+        web_server_selection
+    fi
+    sleep 0.05
+}
+    
+# SSL Selection Prompt
+ssl_selection ()
+{
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred SSL certficates for Faveo Helpdesk.$reset";
+    sleep 0.05
+    echo -e "$green Press (A) for FreeSSL from Letsencrypt $reset";
+    echo -e "$green Press (B) for Self-Signed SSL $reset";
+    echo -e "$green Press (C) for Paid SSL $reset";
+    read -p "$yellow Please select from available options [A,B,C]:" ssl
+    if [[ "$ssl" =~ ^(A|a)$ ]]; then
+        echo -e "$green You have selected Lets Encrypt Free SSL $reset";
+        ssl_type=certbot
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(B|b)$ ]]; then 
+        echo -e "$green You have selected Self-Signed SSL $reset";
+        ssl_type=self-signed
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(C|c)$ ]]; then
+        echo -e "$green You have selected Paid SSL $reset";
+        ssl_files ()
+        {
+            read -p "$yellow Input the Absolute Path to Certificate file for $1 : $reset" certfile
+            read -p "$yellow Input the Absolute Path to Certificate Key file for $1: $reset" keyfile
+            ssl_type=paid-ssl
+            #echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+        }
+        ssl_files "$1" "$2" "$3" "$4" "$5"
+    else 
+        echo -e "$red Please select a valid option: $reset";
+        ssl_selection
+    fi
+    
+}
+
+web_server_configuration ()
+{
+    echo "$1" #domain
+    echo "$2" #email
+    echo "$3" #license
+    echo "$4" #orderno
+    echo "$5" #web_server
+    echo "$6" #ssl_type
+    echo "$7" #certfile
+    echo "$8" #keyfile
+
+    if [[ "$5" == "apache" ]]; then
+        echo -e "\n";
+        echo -e "$green Installing Apache. $reset";
+        echo -e "                       ";
+        ### APACHE Installation
+        dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
+        yum install httpd mod_ssl wget zip unzip curl nano -y 
+        systemctl enable httpd
+        ### Creating Temporary Index file for Testing
+        mkdir -p /var/www/faveo/public
+        echo "Test" > /var/www/faveo/public/test.html      
+        ### Apache configuration.
+        touch /etc/httpd/conf.d/faveo.conf
+        echo "127.0.0.1      $1" >> /etc/hosts
+    
+cat <<  EOF > /etc/httpd/conf.d/faveo.conf
+<VirtualHost *:80>
+    ServerName $1
+    DocumentRoot /var/www/faveo/public
+    <Directory /var/www/faveo>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/httpd/faveo-error.log
+    CustomLog /var/log/httpd/faveo-access.log combined
+</VirtualHost>
+EOF
+    # Setting selinux to permissive mode.
+
+    echo -e "$yellow Setting Selinux to permissive mode $reset";
+    setenforce 0
+    sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+
+    #  Adding Rewrite engine to the apache config.
+
+    ls /etc/httpd/modules | grep mod_rewrite 
+    if [[ $? != 0 ]]; then
+        echo -e "$red mod_rewrite is not in apache folder. $reset";
+        rollback
+    fi
+    grep -i LoadModule /etc/httpd/conf/httpd.conf | grep rewrite
+    if [[ $? != 0 ]]; then
+    echo -e "LoadModule rewrite_module modules/mod_rewrite.so" >> /etc/httpd/conf/httpd.conf
+    fi   
+    sed -i '125s/AllowOverride.*/AllowOverride All/g' /etc/httpd/conf/httpd.conf
+    sleep 0.5
+
+    systemctl restart httpd
+    test=$(curl -s http://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
+        echo -e "\n";
+        echo -e "$green Apache Configured. $reset"
+            if [[ "$6" == "certbot" ]]; then
+                certbot_apache "$1" "$2" "$3" "$4" 
+            elif [[ "$6" == "self-signed" ]]; then
+                self_signed_apache "$1" "$2" "$3" "$4" 
+            elif [[ "$6" == "paid-ssl" ]]; then
+                #echo "$1" "$2" "$3" "$4" "$7" "$8"
+                paid_ssl_apache "$1" "$2" "$3" "$4" "$7" "$8"
+            else
+                echo -e "$red Something went wrong in SSL Selection. $reset"
+                exit 1
+            fi
+        else
+        echo -e "\n";
+        echo -e "$red Something went wrong. Check your Internet connection/Firewall/Domain Propagaion. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
+        fi
+    elif [[ "$1" == "nginx" ]]; then
+        echo -e "\n";
+        echo -e "$red Installing Nginx. $reset"
+        ### NGINX Installation
+        apt-get update  && apt-get upgrade -y  && apt-get install lsb-release \
+        ca-certificates apt-transport-https software-properties-common gnupg2 wget zip unzip curl nano -y
+        add-apt-repository --yes ppa:ondrej/nginx  
+        apt-get update && apt install nginx -y  
+        systemctl enable nginx && systemctl start nginx
+        echo -e "                       "
+            if [[ $? != 0 ]]; then
+                echo -e "\n";
+                echo -e "$red Something went wrong. Check your Internet connection/Firewall/Domain Propagaion. $reset"
+                echo -e "$red Rolling Back..... $reset"
+                rollback
+                echo -e "\n";
+            fi
+    else
+        echo -e "$red Something went wrong. Check your Internet connection. $reset"
+        echo -e "$red Rolling Back....... $reset"
+        rollback
+    fi
+            
+}
+
+certbot_apache ()
+{
+    #echo "$1" "$2" "$3" "$4" 
+    echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
+    yum install python3-certbot-apache -y  
+    certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
+    if [[ $? != 0 ]]; then
+    echo -e "$red Failed to obtain SSL certificates $reset";
+    rollback
+    else 
+    echo -e "$green Certificate Obtained. $reset"
+    echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart apache2.service" | sudo tee /etc/cron.d/faveo-ssl
+    echo "Certificates Obtained"
+    #faveo_configure "$1" "$3" "$4" 
+    fi
+}
+
+attributes ()
+{
+    sleep 0.05
+    echo -e "                                 "
+    echo -e "$skyblue Enter the following details required by the Faveo Helpdesk Installaion. $reset";
+    sleep 0.05
+#Enter Domain:
+    echo -e "                                 "
+    read -p "$yellow Domain Name: $reset" DomainName
+    sleep 0.05
+#Enter Email:
+    regex="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
+    echo -e "                                 "
+    read -p "$yellow Email:  $reset" Email
+    if [[ $Email =~ $regex ]] ; then
+        echo "                                "
+        sleep 0.05
+    else
+        echo -e "$red Please Enter a Valid Email$reset"
+        echo "                                "
+        attributes
+    fi
+
+#Enter License code:
+    echo "$yellow You can find the License and Order Number of your product by visiting https://billing.faveohelpdesk.com $reset";
+    echo -e "                                   "
+    read -n 16 -p "$yellow License Code:  $reset" LicenseCode
+    echo -e "                                 "
+    sleep 0.05
+#Enter Order No:
+    echo -e "                                 "
+    read -n 8 -p "$yellow Order Number: $reset" OrderNumber
+    sleep 0.05
+#Confirming the entered details:
+    echo -e "                                 "
+    echo -e "\n";
+    echo -e "Confirm the Entered details:\n";
+    sleep 0.05
+    echo -e "============================\n";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Domain Name    :$yellow $DomainName $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Email          :$yellow $Email $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "License Code   :$yellow $LicenseCode $reset";
+    sleep 0.05
+    echo -e "                                 "
+    echo "Order Number   :$yellow $OrderNumber $reset";
+    echo -e "                                 "
+    sleep 0.05
+    
+    read -p "Continue ($green y $reset/$red n $reset)?" REPLY
+    if [[ ! $REPLY =~ ^(yes|y|Yes|YES|Y) ]]; then
+        attributes
+    else
+        echo -e "                                 "
+        web_server_selection "$DomainName" "$Email" "$LicenseCode" "$OrderNumber"
+        echo -e "                                 "
+    fi;    
+}
+
+rollback ()
+{
+    rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
+    yum remove httpd epel-release mod_ssl -y
+    rm -rf $PWD/*.deb /etc/apt/sources.list.d/mariadb*  /etc/apt/trusted.gpg.d/sury-keyring.gpg /etc/cron.d/faveo-ssl /var/www/faveo /usr/local/share/ca-certificates/*
+    update-ca-certificates --fresh 
+    echo -e "$red Contact Faveo Technical Support. $reset"
+    echo -e "$red Rolled Back. $reset"
+    exit 1
+}
+
+sleep 0.05
+os_check
