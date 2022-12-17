@@ -238,6 +238,13 @@ web_server_configuration ()
             sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-apache2.gpg] https://packages.sury.org/apache2/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/apache2.list'
             apt-get update  && apt-get install apache2 -y 
             systemctl enable apache2
+            if [[ $? != 0 ]]; then
+                echo -e "\n";
+                echo -e "$red Apache Installation Failed.Check your Internet connection/Firewall/Domain Propagaion. $reset"
+                echo -e "$red Rolling Back..... $reset"
+                rollback
+                echo -e "\n";
+            fi
         fi
     ### Creating Temporary Index file for Testing
     mkdir -p /var/www/faveo/public
