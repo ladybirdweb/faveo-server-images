@@ -28,14 +28,18 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 ## Installing dependent modules
 
 ```sh
-yum install epel-release mod_ssl
+yum install -y epel-release mod_ssl
 ```
 
 
 ## Downloading the LetsEncrypt for Rocky-OS 
 
 ```sh
-yum install python3-certbot-apache
+yum install -y python3-certbot-apache
+```
+
+```sh
+systemctl restart httpd.service
 ```
 
 ## Setting up the SSL certificate
