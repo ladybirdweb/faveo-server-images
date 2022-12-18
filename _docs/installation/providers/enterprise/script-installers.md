@@ -34,7 +34,7 @@ Excecute the script.
 ```
 ./install.sh
 ```
-When prompted input the followinf details.
+When prompted input the following details.
 ```
 Domain             - (The domain propagated to the faveo server public IP)
 Email
