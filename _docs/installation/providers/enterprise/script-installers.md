@@ -44,7 +44,10 @@ Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.co
 <b>Note:</b> This script will configured everything requried for Faveo Helpdesk to run that includes configuring supervisor and redis. The supervisor jobs will fail initially until the GUI part of the installation is completed. Run the below command to restart the supervisor daemon.
 
 ```sh
+(Debian or Ubuntu)
 systemctl restart supervisor
+(RHEL or Rocky)
+systemctl restart supervisord
 ```
 Run the below to check the status of each Jobs
 ```sh
