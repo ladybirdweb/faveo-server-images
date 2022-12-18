@@ -303,7 +303,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/rhel-redis)
+[Redis installation documentation](/docs/installation/providers/enterprise/rhel-redis/)
 
 <a id="8-ssl-installation" name="8-ssl-installation"></a>
 
@@ -313,7 +313,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rhel-apache-ssl)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rhel-apache-ssl/)
 
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-rhel/)
 
