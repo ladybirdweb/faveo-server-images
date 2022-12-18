@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/rocky-apache-ssl/
+permalink: /docs/installation/providers/enterprise/rhel-apache-ssl/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
