@@ -101,7 +101,8 @@ Faveo Helpdesk Community can be installed using following installers
 
 <a id="markdown-script-installer" name="markdown-script-installer"></a>
 ### Installation via scripts 
-Bash script to Auto Installation of Faveo Helpdesk on Linux Operating System. Tested on : Ubuntu 22/20/18
+Bash script to Auto Installation of Faveo Helpdesk on the following Linux Operating System Ubuntu 20.04/22.04, Debian 11, RHEL 9, Rocky 9
+
 - [**Installation via Scripts**](/docs/installation/providers/enterprise/script-installers/)
 
  
