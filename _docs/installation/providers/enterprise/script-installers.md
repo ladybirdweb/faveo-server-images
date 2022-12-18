@@ -10,25 +10,29 @@ toc: true
 
 # Faveo Helpesk Installation via Scripts <!-- omit in toc -->
 
-## Installing Faveo Helpdesk via Bash Script on Ubuntu 22.04,20.04
+## Installing Faveo Helpdesk via Bash Script for:
+- Ubuntu 20.04, 22.04
+- Debian 11
+- RHEL 9
+- Rocky 9
 
 Prerequisites:
 - "wget" tool installed.
 - sudo or root user privilege
 
-* [Click here](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) to download the "faveo-autoscript.sh" or use wget to download using the below command. 
+* [Click here](/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh) to download the "install.sh" or use wget to download using the below command. 
  
 ```sh
-wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/faveo-autoscript.sh
+wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/install.sh
 ```
 
 * Once the file is downlaoded to the faveo server provide executable permission to the script.
 ```
-chmod +x faveo-autoscript.sh
+chmod +x install.sh
 ```
 * After changing the file permission we need to excecute the file by using the below command.
 ```
-./faveo-autoscript.sh
+./install.sh
 ```
 * After excecuting the file it will ask for the below values please keep them ready before starting the script.
 ```
