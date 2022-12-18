@@ -26,22 +26,22 @@ Prerequisites:
 wget https://github.com/ladybirdweb/faveo-server-images/raw/master/installation-scripts/FaveoInstallationScripts/install.sh
 ```
 
-* Once the file is downlaoded to the faveo server provide executable permission to the script.
+Once the file is downlaoded to the faveo server provide executable permission to the script.
 ```
 chmod +x install.sh
 ```
-* After changing the file permission we need to excecute the file by using the below command.
+Excecute the script.
 ```
 ./install.sh
 ```
-* After excecuting the file it will ask for the below values please keep them ready before starting the script.
+When prompted input the followinf details.
 ```
 Domain             - (The domain propagated to the faveo server public IP)
 Email
 Faveo License code - (This can be obtained from https://billing.faveohelpdesk.com)
 Faveo Order No     - (This can be obtained from https://billing.faveohelpdesk.com)
 ```
-<b>Note:</b> This script will configured everything requried for Faveo Helpdesk to run that includes configuring supervisor and redis. The supervisor jobs will fail initially until the GUI part of the installation is completed. Run the below command to restart the supervisor daemon.
+<b>Note:</b> This script will install all the dependencies and requirements for Faveo Helpdesk to run that includes configuring supervisor and redis. The supervisor jobs will fail initially until the GUI part of the installation is completed. Run the below command to restart the supervisor daemon.
 
 ```sh
 (Debian or Ubuntu)
