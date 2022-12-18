@@ -87,107 +87,320 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 
-# Below the OS will be detected and the Version check will be done according to Faveo Requirement.
-
-os_check ()
+redhat_block ()
 {
-    echo -e " ";
-    echo -e "$yellow Checking for the OS & Version $reset";
-    sleep 0.5
-    if grep -qs "rocky" /etc/os-release; then
-    	os="rocky"
-    	os_version=$(grep -shoE '[0-9]+'  /etc/rocky-release | head -1)
-    	group_name="nobody"
-        Os_Version=$(hostnamectl | grep 'Operating System')
-    	group_name="nogroup"
-        sleep 1
-        echo -e "                                 "
-        echo -e "[OS Detected] : $green $Os_Version $reset";
-        sleep 1 
-        echo -e "                                 "
-        echo -e "Supported OS Version [CHECK :$green OK $reset]"
-        attributes
-    elif grep -qs "red" /etc/os-release; then
-    	os="redhat"
-    	os_version=$(grep -shoE '[0-9]+'  /etc/redhat-release | head -1)
-    	group_name="nobody"
-        Os_Version=$(hostnamectl | grep 'Operating System')
-    	group_name="nogroup"
-        sleep 1
-        echo -e "                                 "
-        echo -e "[OS Detected] : $green $Os_Version $reset";
-        sleep 1
-        echo -e "                                 "
-        echo -e "Supported OS Version [CHECK :$green OK $reset]"
-        attributes
-    # If the required OS and version is not detected the below response will be passed to the user.
+rollback ()
+{
+    rm -rf /var/lib/mysql /etc/cron.d/faveo*  #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
+    yum remove httpd epel-release mod_ssl remi-release mariadb* redis supervisor php-* php* -y
+    rm -rf /etc/httpd /var/www/faveo
+    update-ca-certificates --fresh 
+    echo -e "$red Contact Faveo Technical Support. $reset"
+    echo -e "$red Rolled Back. $reset"
+    exit 1
+}
+
+credentials ()
+{
+    echo "Your URL: https://$1" >> "$PWD"/credentials.txt
+    echo "Database Username: faveo" >> /"$PWD"/credentials.txt
+    echo "Database Password: $2" >> "$PWD"/credentials.txt
+    echo -e "$skyblue Faveo Helpdesk successfully installed. Please visit $1 and finish the GUI Installation$reset"
+    echo -e "$skyblue Faveo Database name: faveo $reset"
+    echo -e "$skyblue Database Username:   faveo $reset"
+    echo -e "$skyblue Database Password:   $2 $reset"
+    echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
+}
+
+redis ()
+{
+    echo -e "$green Installing and Configuring Redis. $reset"
+    yum install redis supervisor -y  
+    systemctl enable redis
+    systemctl enable supervisord
+cat <<  EOF > /etc/supervisord.d/faveo-worker.ini
+[program:faveo-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=apache
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/worker.log
+
+[program:faveo-recur]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user =apache
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/recur-worker.log
+
+[program:faveo-Reports]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=reports --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=apache
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/reports-worker.log
+
+[program:faveo-Horizon]
+process_name=%(program_name)s
+command=php /var/www/faveo/artisan horizon
+autostart=true
+autorestart=true
+user=apache
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
+
+[program:faveo-notification]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
+autostart=true
+autorestart=true
+numprocs=4
+user=apache
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/notification.log
+
+[program:faveo-deactivate]
+process_name=%(program_name)s_%(process_num)02d
+command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation --sleep=3 --tries=3
+autostart=true
+autorestart=true
+numprocs=1
+user=apache
+redirect_stderr=true
+stdout_logfile=/var/www/faveo/storage/logs/deactivation.log
+EOF
+systemctl restart supervisord
+if [[ $? != 0 ]]; then
+    echo -e "\n";
+    echo -e "$red Something went wrong. Configuring Redis and Supervisor. $reset"
+    echo -e "$red Rolling Back..... $reset"
+    rollback
+    echo -e "\n";
+else
+    echo -e "$green Redis & Supervisor configured. $reset"
+    echo -e "$green Configuring Faveo Cronjob $reset"
+    echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+    credentials "$1" "$2"
+fi
+}
+
+extensions ()
+{
+    # Configuring Ioncube PHP Extension
+    wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz   
+    tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
+    \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules
+    rm -rf "$PWD"/ioncube*
+    sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
+    #Configuring PDF Plugin
+    yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+    wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+    rpm -vh wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+    if [[ $? != 0 ]]; then
+        echo -e "\n";
+        echo -e "$red Something went wrong.Cronfiguring Ioncube and PDF Plugin. Contact Faveo Support for Troubleshooting. $reset"
     else
-    	echo "$red This installer seems to be running on an unsupported distribution. Supported distros are Ubuntu, Debian, Rocky Linux,RedHat Linux.$reset";
-    	exit
+        rm -f wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
     fi
 }
 
-web_server_selection ()
-{
-    sleep 0.05
-    echo -e "                                       "
-    echo -e "$skyblue Select your preferred web server[APACHE or NGINX].$reset";
-    sleep 0.05
-    echo -e "$green (1) - Apache $reset";
-    sleep 0.05
-    echo -e "$green (2) - Nginx $reset";
-    echo -e "                                 "
-    read -p "$yellow Enter 1 for Apache, 2 for Nginx: $reset" webserver
-            echo -e "                                 "
-    if [[ "$webserver" == "1" ]]; then
-        web_server="apache"
-        echo -e "$green You have selected Apache Webserver $reset";
-        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
-    elif [[ "$webserver" == "2" ]]; then
-        web_server="nginx"
-        echo -e "$green You have selected Nginx Webserver $reset";
-        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
-    else 
-        echo -e "$red Please select your preferred Web Server. $reset";
-        web_server_selection
+dependencies ()
+{   
+    echo -e "$green Installing PHP and configuring necessary extensions. $reset"
+    yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+    yum module list php -y
+    dnf module install php:remi-8.1 -y
+    yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+    if [[ $? != 0 ]]; then
+        echo -e "\n";
+        echo -e "$red Something went wrong Configuring PHP. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
+    else
+        sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php.ini
+        sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php.ini
+        sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php.ini
+        sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php.ini
+        sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php.ini
+        sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php.ini
+        sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php.ini
+        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php.ini
+        extensions
+        if [[ $? != 0 ]]; then
+                echo -e "\n";
+                echo -e "$red Something went wrong.Cronfiguring PHP. $reset"
+                echo -e "$red Rolling Back..... $reset"
+                rollback
+                echo -e "\n";
+            else
+                systemctl restart httpd
+                echo -e "$green PHP is configured. $reset"
+        fi            
     fi
-    sleep 0.05
+    echo "$green Updating MariaDB-10.6 Repository.$reset"
+        curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup   
+        bash mariadb_repo_setup --mariadb-server-version=10.6        
+        if [[ $? != 0 ]]; then
+            echo -e "\n";
+            echo -e "$red Something went wrong. Configuring MariaDB-10.6. $reset"
+            echo -e "$red Rolling Back..... $reset"
+            rollback
+            echo -e "\n";
+        else
+            dnf install boost-program-options -y
+            dnf module reset mariadb -y
+            yum install MariaDB-server MariaDB-client MariaDB-backup -y
+            systemctl enable --now mariadb
+            systemctl start mariadb
+            rm -f "$PWD"/mariadb_repo_setup 
+            PASS=$(openssl rand -base64 12)
+            mysql -u root <<MYSQL_SCRIPT
+CREATE DATABASE faveo;
+CREATE USER 'faveo'@'localhost' IDENTIFIED BY '$PASS';
+GRANT ALL PRIVILEGES ON faveo.* TO 'faveo'@'localhost';
+FLUSH PRIVILEGES;
+MYSQL_SCRIPT
+
+            if [[ $? != 0 ]]; then
+                echo -e "\n";
+                echo -e "$red Something went wrong.Creating Database User. $reset"
+                echo -e "$red Rolling Back..... $reset"
+                rollback
+                echo -e "\n";
+            else
+                echo -e "$green MariaDB-10.6 is configured. $reset"
+                redis  "$1" "$PASS"
+            fi
+    fi
 }
-    
-# SSL Selection Prompt
-ssl_selection ()
+
+faveo_configure ()
 {
-    echo -e "                                       "
-    echo -e "$skyblue Select your preferred SSL certficates for Faveo Helpdesk.$reset";
-    sleep 0.05
-    echo -e "$green Press (A) for FreeSSL from Letsencrypt $reset";
-    echo -e "$green Press (B) for Self-Signed SSL $reset";
-    echo -e "$green Press (C) for Paid SSL $reset";
-    read -p "$yellow Please select from available options [A,B,C]:" ssl
-    if [[ "$ssl" =~ ^(A|a)$ ]]; then
-        echo -e "$green You have selected Lets Encrypt Free SSL $reset";
-        ssl_type=certbot
-        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
-    elif [[ "$ssl" =~ ^(B|b)$ ]]; then 
-        echo -e "$green You have selected Self-Signed SSL $reset";
-        ssl_type=self-signed
-        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
-    elif [[ "$ssl" =~ ^(C|c)$ ]]; then
-        echo -e "$green You have selected Paid SSL $reset";
-        ssl_files ()
-        {
-            read -p "$yellow Input the Absolute Path to Certificate file for $1 : $reset" certfile
-            read -p "$yellow Input the Absolute Path to Certificate Key file for $1: $reset" keyfile
-            ssl_type=paid-ssl
-            #echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
-            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
-        }
-        ssl_files "$1" "$2" "$3" "$4" "$5"
+    #echo $1 $2 $3 
+    curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
+    unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
+    rm -f $PWD/faveo.zip
+    if [[ $? != 0 ]]; then
+        echo -e "\n";
+        echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
+        echo -e "$red Rolling Back..... $reset"
+        rollback
+        echo -e "\n";
+    else
+        chown -R apache:apache /var/www/faveo
+        dependencies "$1"
+    fi   
+}
+
+certbot_apache ()
+{
+    #echo "$1" "$2" "$3" "$4" 
+    echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
+    yum install python3-certbot-apache -y  
+    certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
+    if [[ $? != 0 ]]; then
+    echo -e "$red Failed to obtain SSL certificates $reset";
+    rollback
     else 
-        echo -e "$red Please select a valid option: $reset";
-        ssl_selection
+    echo -e "$green Certificate Obtained. $reset"
+    echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart httpd" | sudo tee /etc/cron.d/faveo-ssl
+    echo "Certificates Obtained"
+    faveo_configure "$1" "$3" "$4" 
     fi
-    
+}
+self_signed_apache ()
+{
+    echo "$1" "$2" "$3" "$4" 
+    echo -e "$green Generating Self Signed SSL certificates for $1. $reset"
+    mkdir -p /etc/httpd/ssl
+    openssl ecparam -out /etc/httpd/ssl/faveoroot.key -name prime256v1 -genkey
+    openssl req -new -sha256 -key /etc/httpd/ssl/faveoroot.key -out /etc/httpd/ssl/faveoroot.csr -subj "/C=/ST=/L=/O=/OU=/CN="
+    openssl x509 -req -sha256 -days 7300 -in /etc/httpd/ssl/faveoroot.csr -signkey /etc/httpd/ssl/faveoroot.key -out /etc/httpd/ssl/faveorootCA.crt
+    openssl ecparam -out /etc/httpd/ssl/private.key -name prime256v1 -genkey
+    openssl req -new -sha256 -key /etc/httpd/ssl/private.key -out /etc/httpd/ssl/faveolocal.csr -subj "/C=IN/ST=Karnataka/L=Bangalore/O=Ladybird Web Solutions Pvt Ltd/OU=Development Team/CN=$1"
+    openssl x509 -req -in /etc/httpd/ssl/faveolocal.csr -CA  /etc/httpd/ssl/faveorootCA.crt -CAkey /etc/httpd/ssl/faveoroot.key -CAcreateserial -out /etc/httpd/ssl/faveolocal.crt -days 7300 -sha256
+    openssl x509 -in /etc/httpd/ssl/faveolocal.crt -text -noout
+    if [[ $? -eq 0 ]]; then
+        echo -e "$green Certificates generated successfully for $1 $reset"
+    else
+        echo -e "$red Certification generation failed. $reset"
+        rollback
+    fi;
+
+    cp /etc/httpd/ssl/faveorootCA.crt /etc/pki/ca-trust/source/anchors/
+    update-ca-trust extract
+cat <<  EOF > /etc/httpd/conf.d/faveo-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName $1
+    DocumentRoot /var/www/faveo/public
+    <Directory /var/www/faveo>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/httpd/faveo-ssl-error.log
+    CustomLog /var/log/httpd/faveo-ssl-access.log combined
+
+SSLCertificateFile /etc/httpd/ssl/faveolocal.crt
+SSLCertificateKeyFile /etc/httpd/ssl/private.key
+</VirtualHost>
+</IfModule>
+EOF
+    systemctl restart httpd
+    test=$(curl -ks https://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
+            echo -e "\n";
+            echo -e "$green Self Signed SSL Configured for $1. $reset."
+            faveo_configure "$1" "$3" "$4" 
+        else
+            echo -e "$red Self Signed SSL Configuration failed. $reset"
+            rollback
+        fi
+}
+
+paid_ssl_apache ()
+{
+    echo "$1" "$2" "$3" "$4" "$5" "$6"
+    echo -e "$green Configuring SSL Certificates for $1. $reset"
+cat <<  EOF > /etc/httpd/conf.d/faveo-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName $1
+    DocumentRoot /var/www/faveo/public
+    <Directory /var/www/faveo>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/httpd/faveo-ssl-error.log
+    CustomLog /var/log/httpd/faveo-ssl-access.log combined
+
+SSLCertificateFile $5
+SSLCertificateKeyFile $6
+</VirtualHost>
+</IfModule>
+EOF
+    systemctl restart httpd
+    test=$(curl -ks https://"$1"/test.html)
+        if [[ "$test" == "Test" ]]; then
+            echo -e "\n";
+            echo -e "$green SSL Configured for $1. $reset."
+            faveo_configure "$1" "$3" "$4" 
+        else
+            echo -e "$red SSL Configuration failed. $reset"
+            rollback
+        fi
 }
 
 web_server_configuration ()
@@ -304,305 +517,68 @@ EOF
             
 }
 
-certbot_apache ()
+# SSL Selection Prompt
+ssl_selection ()
 {
-    #echo "$1" "$2" "$3" "$4" 
-    echo -e "$green Obtaining Certificates for $1 from Letsencrypt. $reset"
-    yum install python3-certbot-apache -y  
-    certbot run -n --apache --agree-tos -d "$1"  -m  "$2" --redirect -q
-    if [[ $? != 0 ]]; then
-    echo -e "$red Failed to obtain SSL certificates $reset";
-    rollback
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred SSL certficates for Faveo Helpdesk.$reset";
+    sleep 0.05
+    echo -e "$green Press (A) for FreeSSL from Letsencrypt $reset";
+    echo -e "$green Press (B) for Self-Signed SSL $reset";
+    echo -e "$green Press (C) for Paid SSL $reset";
+    read -p "$yellow Please select from available options [A,B,C]:" ssl
+    if [[ "$ssl" =~ ^(A|a)$ ]]; then
+        echo -e "$green You have selected Lets Encrypt Free SSL $reset";
+        ssl_type=certbot
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(B|b)$ ]]; then 
+        echo -e "$green You have selected Self-Signed SSL $reset";
+        ssl_type=self-signed
+        web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type"
+    elif [[ "$ssl" =~ ^(C|c)$ ]]; then
+        echo -e "$green You have selected Paid SSL $reset";
+        ssl_files ()
+        {
+            read -p "$yellow Input the Absolute Path to Certificate file for $1 : $reset" certfile
+            read -p "$yellow Input the Absolute Path to Certificate Key file for $1: $reset" keyfile
+            ssl_type=paid-ssl
+            #echo "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+            web_server_configuration "$1" "$2" "$3" "$4" "$5" "$ssl_type" "$certfile" "$keyfile"
+        }
+        ssl_files "$1" "$2" "$3" "$4" "$5"
     else 
-    echo -e "$green Certificate Obtained. $reset"
-    echo "45 2 * * 6 /etc/letsencrypt/ && ./certbot renew && /bin/systemctl restart httpd" | sudo tee /etc/cron.d/faveo-ssl
-    echo "Certificates Obtained"
-    faveo_configure "$1" "$3" "$4" 
-    fi
-}
-self_signed_apache ()
-{
-    echo "$1" "$2" "$3" "$4" 
-    echo -e "$green Generating Self Signed SSL certificates for $1. $reset"
-    mkdir -p /etc/httpd/ssl
-    openssl ecparam -out /etc/httpd/ssl/faveoroot.key -name prime256v1 -genkey
-    openssl req -new -sha256 -key /etc/httpd/ssl/faveoroot.key -out /etc/httpd/ssl/faveoroot.csr -subj "/C=/ST=/L=/O=/OU=/CN="
-    openssl x509 -req -sha256 -days 7300 -in /etc/httpd/ssl/faveoroot.csr -signkey /etc/httpd/ssl/faveoroot.key -out /etc/httpd/ssl/faveorootCA.crt
-    openssl ecparam -out /etc/httpd/ssl/private.key -name prime256v1 -genkey
-    openssl req -new -sha256 -key /etc/httpd/ssl/private.key -out /etc/httpd/ssl/faveolocal.csr -subj "/C=IN/ST=Karnataka/L=Bangalore/O=Ladybird Web Solutions Pvt Ltd/OU=Development Team/CN=$1"
-    openssl x509 -req -in /etc/httpd/ssl/faveolocal.csr -CA  /etc/httpd/ssl/faveorootCA.crt -CAkey /etc/httpd/ssl/faveoroot.key -CAcreateserial -out /etc/httpd/ssl/faveolocal.crt -days 7300 -sha256
-    openssl x509 -in /etc/httpd/ssl/faveolocal.crt -text -noout
-    if [[ $? -eq 0 ]]; then
-        echo -e "$green Certificates generated successfully for $1 $reset"
-    else
-        echo -e "$red Certification generation failed. $reset"
-        rollback
-    fi;
-
-    cp /etc/httpd/ssl/faveorootCA.crt /etc/pki/ca-trust/source/anchors/
-    update-ca-trust extract
-cat <<  EOF > /etc/httpd/conf.d/faveo-ssl.conf
-<IfModule mod_ssl.c>
-<VirtualHost *:443>
-    ServerName $1
-    DocumentRoot /var/www/faveo/public
-    <Directory /var/www/faveo>
-        Options -Indexes +FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-    ErrorLog /var/log/httpd/faveo-ssl-error.log
-    CustomLog /var/log/httpd/faveo-ssl-access.log combined
-
-SSLCertificateFile /etc/httpd/ssl/faveolocal.crt
-SSLCertificateKeyFile /etc/httpd/ssl/private.key
-</VirtualHost>
-</IfModule>
-EOF
-    systemctl restart httpd
-    test=$(curl -ks https://"$1"/test.html)
-        if [[ "$test" == "Test" ]]; then
-            echo -e "\n";
-            echo -e "$green Self Signed SSL Configured for $1. $reset."
-            faveo_configure "$1" "$3" "$4" 
-        else
-            echo -e "$red Self Signed SSL Configuration failed. $reset"
-            rollback
-        fi
-}
-
-paid_ssl_apache ()
-{
-    echo "$1" "$2" "$3" "$4" "$5" "$6"
-    echo -e "$green Configuring SSL Certificates for $1. $reset"
-cat <<  EOF > /etc/httpd/conf.d/faveo-ssl.conf
-<IfModule mod_ssl.c>
-<VirtualHost *:443>
-    ServerName $1
-    DocumentRoot /var/www/faveo/public
-    <Directory /var/www/faveo>
-        Options -Indexes +FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-    ErrorLog /var/log/httpd/faveo-ssl-error.log
-    CustomLog /var/log/httpd/faveo-ssl-access.log combined
-
-SSLCertificateFile $5
-SSLCertificateKeyFile $6
-</VirtualHost>
-</IfModule>
-EOF
-    systemctl restart httpd
-    test=$(curl -ks https://"$1"/test.html)
-        if [[ "$test" == "Test" ]]; then
-            echo -e "\n";
-            echo -e "$green SSL Configured for $1. $reset."
-            faveo_configure "$1" "$3" "$4" 
-        else
-            echo -e "$red SSL Configuration failed. $reset"
-            rollback
-        fi
-}
-
-dependencies ()
-{   
-    echo -e "$green Installing PHP and configuring necessary extensions. $reset"
-    yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
-    yum module list php -y
-    dnf module install php:remi-8.1 -y
-    yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
-    if [[ $? != 0 ]]; then
-        echo -e "\n";
-        echo -e "$red Something went wrong Configuring PHP. $reset"
-        echo -e "$red Rolling Back..... $reset"
-        rollback
-        echo -e "\n";
-    else
-        sed -i 's/file_uploads =.*/file_uploads = On/g' /etc/php.ini
-        sed -i 's/allow_url_fopen =.*/allow_url_fopen = On/g' /etc/php.ini
-        sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php.ini
-        sed -i 's/memory_limit =.*/memory_limit = 256MB/g' /etc/php.ini
-        sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo = 0/g' /etc/php.ini
-        sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php.ini
-        sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php.ini
-        sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php.ini
-        extensions
-        if [[ $? != 0 ]]; then
-                echo -e "\n";
-                echo -e "$red Something went wrong.Cronfiguring PHP. $reset"
-                echo -e "$red Rolling Back..... $reset"
-                rollback
-                echo -e "\n";
-            else
-                systemctl restart httpd
-                echo -e "$green PHP is configured. $reset"
-        fi            
-    fi
-    echo "$green Updating MariaDB-10.6 Repository.$reset"
-        curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup   
-        bash mariadb_repo_setup --mariadb-server-version=10.6        
-        if [[ $? != 0 ]]; then
-            echo -e "\n";
-            echo -e "$red Something went wrong. Configuring MariaDB-10.6. $reset"
-            echo -e "$red Rolling Back..... $reset"
-            rollback
-            echo -e "\n";
-        else
-            dnf install boost-program-options -y
-            dnf module reset mariadb -y
-            yum install MariaDB-server MariaDB-client MariaDB-backup -y
-            systemctl enable --now mariadb
-            systemctl start mariadb
-            rm -f "$PWD"/mariadb_repo_setup 
-            PASS=$(openssl rand -base64 12)
-            mysql -u root <<MYSQL_SCRIPT
-CREATE DATABASE faveo;
-CREATE USER 'faveo'@'localhost' IDENTIFIED BY '$PASS';
-GRANT ALL PRIVILEGES ON faveo.* TO 'faveo'@'localhost';
-FLUSH PRIVILEGES;
-MYSQL_SCRIPT
-
-            if [[ $? != 0 ]]; then
-                echo -e "\n";
-                echo -e "$red Something went wrong.Creating Database User. $reset"
-                echo -e "$red Rolling Back..... $reset"
-                rollback
-                echo -e "\n";
-            else
-                echo -e "$green MariaDB-10.6 is configured. $reset"
-                redis  "$1" "$PASS"
-            fi
-    fi
-}
-
-extensions ()
-{
-    # Configuring Ioncube PHP Extension
-    wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz   
-    tar -zxf "$PWD"/ioncube_loaders_lin_x86-64.tar.gz
-    \cp "$PWD"/ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules
-    rm -rf "$PWD"/ioncube*
-    sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
-    #Configuring PDF Plugin
-    yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
-    wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
-    rpm -vh wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
-    if [[ $? != 0 ]]; then
-        echo -e "\n";
-        echo -e "$red Something went wrong.Cronfiguring Ioncube and PDF Plugin. Contact Faveo Support for Troubleshooting. $reset"
-    else
-        rm -f wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
-    fi
-}
-faveo_configure ()
-{
-    #echo $1 $2 $3 
-    curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
-    unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
-    rm -f $PWD/faveo.zip
-    if [[ $? != 0 ]]; then
-        echo -e "\n";
-        echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
-        echo -e "$red Rolling Back..... $reset"
-        rollback
-        echo -e "\n";
-    else
-        chown -R apache:apache /var/www/faveo
-        dependencies "$1"
+        echo -e "$red Please select a valid option: $reset";
+        ssl_selection
     fi   
 }
-redis ()
+
+web_server_selection ()
 {
-    echo -e "$green Installing and Configuring Redis. $reset"
-    yum install redis supervisor -y  
-    systemctl enable redis
-    systemctl enable supervisord
-cat <<  EOF > /etc/supervisord.d/faveo-worker.ini
-[program:faveo-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=apache
-numprocs=8
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker.log
-
-[program:faveo-recur]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user =apache
-numprocs=1
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/recur-worker.log
-
-[program:faveo-Reports]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=reports --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=apache
-numprocs=1
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/reports-worker.log
-
-[program:faveo-Horizon]
-process_name=%(program_name)s
-command=php /var/www/faveo/artisan horizon
-autostart=true
-autorestart=true
-user=apache
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
-
-[program:faveo-notification]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
-autostart=true
-autorestart=true
-numprocs=4
-user=apache
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/notification.log
-
-[program:faveo-deactivate]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation --sleep=3 --tries=3
-autostart=true
-autorestart=true
-numprocs=1
-user=apache
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/deactivation.log
-EOF
-systemctl restart supervisord
-if [[ $? != 0 ]]; then
-    echo -e "\n";
-    echo -e "$red Something went wrong. Configuring Redis and Supervisor. $reset"
-    echo -e "$red Rolling Back..... $reset"
-    rollback
-    echo -e "\n";
-else
-    echo -e "$green Redis & Supervisor configured. $reset"
-    echo -e "$green Configuring Faveo Cronjob $reset"
-    echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
-    credentials "$1" "$2"
-fi
+    sleep 0.05
+    echo -e "                                       "
+    echo -e "$skyblue Select your preferred web server[APACHE or NGINX].$reset";
+    sleep 0.05
+    echo -e "$green (1) - Apache $reset";
+    sleep 0.05
+    echo -e "$green (2) - Nginx $reset";
+    echo -e "                                 "
+    read -p "$yellow Enter 1 for Apache, 2 for Nginx: $reset" webserver
+            echo -e "                                 "
+    if [[ "$webserver" == "1" ]]; then
+        web_server="apache"
+        echo -e "$green You have selected Apache Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    elif [[ "$webserver" == "2" ]]; then
+        web_server="nginx"
+        echo -e "$green You have selected Nginx Webserver $reset";
+        ssl_selection "$1" "$2" "$3" "$4" "$web_server"
+    else 
+        echo -e "$red Please select your preferred Web Server. $reset";
+        web_server_selection
+    fi
+    sleep 0.05
 }
-credentials ()
-{
-    echo "Your URL: https://$1" >> "$PWD"/credentials.txt
-    echo "Database Username: faveo" >> /"$PWD"/credentials.txt
-    echo "Database Password: $2" >> "$PWD"/credentials.txt
-    echo -e "$skyblue Faveo Helpdesk successfully installed. Please visit $1 and finish the GUI Installation$reset"
-    echo -e "$skyblue Faveo Database name: faveo $reset"
-    echo -e "$skyblue Database Username:   faveo $reset"
-    echo -e "$skyblue Database Password:   $2 $reset"
-    echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
-}
+
 attributes ()
 {
     sleep 0.05
@@ -666,17 +642,47 @@ attributes ()
         echo -e "                                 "
     fi;    
 }
-
-rollback ()
-{
-    rm -rf /var/lib/mysql /etc/cron.d/faveo* #Avoiding prompt to delete Database that is created by this script and removing cronjobs.
-    yum remove httpd epel-release mod_ssl remi-release mariadb* redis supervisor php-* php* -y
-    rm -rf /etc/httpd /etc/cron.d/faveo*
-    update-ca-certificates --fresh 
-    echo -e "$red Contact Faveo Technical Support. $reset"
-    echo -e "$red Rolled Back. $reset"
-    exit 1
+attributes
 }
+# Below the OS will be detected and the Version check will be done according to Faveo Requirement.
+os_check ()
+{
+    echo -e " ";
+    echo -e "$yellow Checking for the OS & Version $reset";
+    sleep 0.5
+    if grep -qs "rocky" /etc/os-release; then
+    	os="rocky"
+    	os_version=$(grep -shoE '[0-9]+'  /etc/rocky-release | head -1)
+    	group_name="nobody"
+        Os_Version=$(hostnamectl | grep 'Operating System')
+    	group_name="nogroup"
+        sleep 1
+        echo -e "                                 "
+        echo -e "[OS Detected] : $green $Os_Version $reset";
+        sleep 1 
+        echo -e "                                 "
+        echo -e "Supported OS Version [CHECK :$green OK $reset]"
+        redhat_block
+    elif grep -qs "red" /etc/os-release; then
+    	os="redhat"
+    	os_version=$(grep -shoE '[0-9]+'  /etc/redhat-release | head -1)
+    	group_name="nobody"
+        Os_Version=$(hostnamectl | grep 'Operating System')
+    	group_name="nogroup"
+        sleep 1
+        echo -e "                                 "
+        echo -e "[OS Detected] : $green $Os_Version $reset";
+        sleep 1
+        echo -e "                                 "
+        echo -e "Supported OS Version [CHECK :$green OK $reset]"
+        redhat_block
+    # If the required OS and version is not detected the below response will be passed to the user.
+    else
+    	echo "$red This installer seems to be running on an unsupported distribution. Supported distros are Ubuntu, Debian, Rocky Linux,RedHat Linux.$reset";
+    	exit
+    fi
+}
+
 
 sleep 0.05
 os_check
