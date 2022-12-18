@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/rocky-redis/
+permalink: /docs/installation/providers/enterprise/rhel-redis/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
