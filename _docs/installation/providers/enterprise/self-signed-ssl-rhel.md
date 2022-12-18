@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/self-signed-ssl-rocky/
+permalink: /docs/installation/providers/enterprise/self-signed-ssl-rhel/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
