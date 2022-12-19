@@ -6,9 +6,10 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
 toc: true
+title: Install Self-Signed SSL for Faveo on RHEL 9
+
 ---
 
-# Install Self-Signed SSL for Faveo on RHEL 9 <!-- omit in toc -->
 
 <img alt="Rhel OS Logo" src="https://1000logos.net/wp-content/uploads/2021/04/Red-Hat-logo.png" width="200"  />
 
