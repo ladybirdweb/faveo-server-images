@@ -6,8 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
 toc: true
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on RHEL OS 9
 ---
-# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on RHEL OS 9 <!-- omit in toc -->
 
 <img alt="Rhel OS Logo" src="https://1000logos.net/wp-content/uploads/2021/04/Red-Hat-logo.png" width="200"  />
 
@@ -232,14 +232,13 @@ Check if the module is loaded
 ```sh
 grep -i LoadModule /etc/httpd/conf/httpd.conf | grep rewrite
 ```
-If the output af the above command is blank then add the below line in /etc/httpd/conf/httpd.conf
+If the output of the above command is blank then add the below line in **/etc/httpd/conf/httpd.conf**
 
 ```sh
 LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
-
-Finally disable Directory Browsing on Apache, edit the httpd.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+Also disable Directory Browsing on Apache, change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
 
 ```sh
 <Directory "/var/www">
