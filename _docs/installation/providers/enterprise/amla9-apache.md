@@ -6,8 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-12-18
 toc: true
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Amla Linux 9 
 ---
-# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Amla Linux 9 <!-- omit in toc -->
 
 <img alt="Amla Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
