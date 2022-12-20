@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-25
 toc: true
+title: Install Self-Signed SSL for Faveo on Amla Linux 9
 ---
-
-# Install Self-Signed SSL for Faveo on Amla Linux 9 <!-- omit in toc -->
 
 <img alt="Amla linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
