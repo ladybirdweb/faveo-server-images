@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/generic-migration/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-11-26
+last_modified_at: 2022-12-20
 toc: true
 ---
 
