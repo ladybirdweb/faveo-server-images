@@ -42,6 +42,8 @@ docs:
     children:
       - title: Upgrade PHP to 8.1
         url: /docs/installation/providers/enterprise/php-upgrade/
+      - title: Migrate or Clone
+        url: /docs/installation/providers/enterprise/generic-migration/
 
   - title: Kubernetes
     children:
