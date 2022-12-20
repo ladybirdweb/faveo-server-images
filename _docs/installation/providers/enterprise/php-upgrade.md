@@ -6,9 +6,10 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-11-26
 toc: true
+title: Upgrade From PHP 7.3.x to PHP 8.1.x 
 ---
 
-# Upgrade From PHP 7.3.x to PHP 8.1.x  <!-- omit in toc -->
+#  <!-- omit in toc -->
 
 <img alt="PHP" src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" width="200" />
 
