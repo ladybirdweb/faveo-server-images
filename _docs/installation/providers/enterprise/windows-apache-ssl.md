@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2022-08-25
 toc: true
+title: Install Self-Signed SSL for Faveo on Windows
 ---
-
-# Install Self-Signed SSL for Faveo on Windows  <!-- omit in toc -->
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
 
