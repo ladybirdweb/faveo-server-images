@@ -128,16 +128,6 @@ Secure your MySql installation by executing the below command. Set Password for 
 mariadb-secure-installation  
 ```
 
-**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
-
-```sh
-yum install -y phpmyadmin
-```
-At this point run the belove command to clear the yum cache.
-```sh
-yum clean all
-```
-Once the softwares above are installed:
 
 <b>2.e. Install wkhtmltopdf</b>
 
