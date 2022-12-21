@@ -19,14 +19,14 @@ title: Installing Redis on Windows Server
 [<strong>Install Redis & Configure it with NSSM</strong>](#Install-Redis-&-Configure-it-with-NSSM)
 
 
-<b>1. Install PHP 7.3 </b>
+<b>1. Install PHP 8.1 </b>
 
-<a href="https://pecl.php.net/package/redis/5.1.1/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 7.3 NTS x64 zip file.
+<a href="https://pecl.php.net/package/redis/5.3.7/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis1.png?raw=true" style=" width:400px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/PHPredis.png" style=" width:400px ; height:250px ">
 
-- Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\php7.3\ext.* *(C:\php\ext incase of Apache WebServer).* 
-- Now enable php redis extension in *php.ini* configuration located in *C:\php7.3.*  *(C:\php incase of Apache WebServer).*
+- Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\php8.1\ext.* *(C:\php\ext incase of Apache WebServer).* 
+- Now enable php redis extension in *php.ini* configuration located in *C:\php8.1.*  *(C:\php incase of Apache WebServer).*
 
 ```
 extension=php_redis.dll
