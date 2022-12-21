@@ -127,17 +127,6 @@ Secure your MySql installation by executing the below command. Set Password for 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin(Optional):** 
-Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
-
-```sh
-yum install phpmyadmin
-```
-
-
-Once the softwares above are installed:
-
-
 <a id="3-upload-faveo" name="3-upload-faveo"></a>
 
 ### <strong>3. Upload Faveo</strong>
