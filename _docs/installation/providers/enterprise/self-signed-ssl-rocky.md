@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: Install Self-Signed SSL for Faveo on Rocky 9
 ---
-
-# Install Self-Signed SSL for Faveo on Rocky 8 <!-- omit in toc -->
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
