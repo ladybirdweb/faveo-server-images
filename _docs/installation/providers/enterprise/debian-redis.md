@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: Install and configure Redis, Supervisor and Worker for Faveo on Debian
 ---
-
-# Install and configure Redis, Supervisor and Worker for Faveo on Debian <!-- omit in toc -->
 
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
