@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Debian With Apache Webserver
 ---
-
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Debian <!-- omit in toc -->
 
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="96" height="127" />
 
@@ -243,7 +242,7 @@ nano /etc/apache2/sites-available/faveo.conf
 
 <b>5.d. Disable Directory Browsing on Apache:</b>
 
-Disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
+Disable Directory Browsing on Apache, edit the **/etc/apache2/apache2.conf** and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
 
 ```sh
 <Directory "/var/www">
