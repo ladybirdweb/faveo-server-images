@@ -6,7 +6,7 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2020-06-09
 toc: true
-title: Install LetsEncrypt SSL for Faveo on Rocky 9 Running Apache Web Serve
+title: Install LetsEncrypt SSL for Faveo on Rocky 9 Running Apache Web Server
 ---
 
 
