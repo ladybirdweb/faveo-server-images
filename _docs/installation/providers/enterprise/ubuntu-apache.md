@@ -269,7 +269,7 @@ nano /etc/apache2/sites-available/faveo.conf
     DocumentRoot /var/www/faveo/public
 
     <Directory /var/www/faveo/public>
-        Options Indexes FollowSymLinks
+        Options -Indexes +FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
@@ -282,22 +282,8 @@ nano /etc/apache2/sites-available/faveo.conf
 #    RewriteRule (.*) http://--Domainname--
 </VirtualHost>
 ```
-**5.b.** <b>Disable Directory Browsing on Apache:</b>
 
-
-Disable Directory Browsing on Apache, edit the **/etc/apache2/apache2.conf** and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
-
-```sh
-<Directory "/var/www">
-    Options -Indexes +FollowSymLinks
-    AllowOverride All 
-    # Allow open access:
-    Require all granted
-</Directory>
-```
-
-
-**5.c.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
+**5.b.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
@@ -307,7 +293,7 @@ a2ensite faveo.conf
 a2enmod proxy_fcgi setenvif
 a2enconf php8.1-fpm
 ```
- **5.d.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
+ **5.c.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
 service php8.1-fpm restart
