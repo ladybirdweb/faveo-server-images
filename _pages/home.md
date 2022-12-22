@@ -54,7 +54,17 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
- 
+
+### **Hardware Requirements**:
+
+The minimum Hardware requirements for faveo to work: <button class="button button1"><b>Recommended</b></button>
+-   **2VCPU's**,
+-   **4GIB RAM**,
+-   **40GIB Volume**.
+
+The above is the minimum requirements for faveo to work, and will vary according to faveo tickets and load.
+
+### **Software Requirements**:
 
 Basically, Faveo depends on the following:
 
@@ -65,7 +75,7 @@ Basically, Faveo depends on the following:
 -   **Redis** 
 -   **Supervisor**
 
-For detailed requirements list [check here](/docs/system-requirement/requirement)
+For detailed Software requirements list [check here](/docs/system-requirement/requirement)
 
 
 <a id="markdown-installation-instructions-for-specific-platforms" name="installation-instructions-for-specific-platforms"></a>
