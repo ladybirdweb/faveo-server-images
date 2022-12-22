@@ -220,8 +220,9 @@ extensions ()
     elif [[ $derivative == 2204 ]]; then
         echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
         apt-get update; apt install libssl1.1 -y
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb -P /var/www/
-        dpkg -i /var/www/wkhtmltox_0.12.6-1.focal_amd64.deb
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
+    
+        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
         apt --fix-broken install -y
         if [[ $? != 0 ]]; then
             echo -e "\n";
@@ -827,7 +828,7 @@ extensions ()
         echo -e "\n";
         echo -e "$red Something went wrong.Cronfiguring Ioncube and PDF Plugin. Contact Faveo Support for Troubleshooting. $reset"
     else
-        rm -f wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+        rm -f $PWD/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
     fi
 }
 
