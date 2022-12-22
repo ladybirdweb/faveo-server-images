@@ -57,13 +57,12 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 ### **Hardware Requirements**:
 
-The minimum Hardware requirements for faveo to work: <button class="button button1"><b>Recommended</b></button>
--   **2 VCPU's**,
--   **4 GB RAM**,
--   **40 GB Volume**,
--   **20 TB Traffic**
+The minimum Hardware requirements for faveo to work:
+-   **CPU:** 2vCPU
+-   **RAM:**  4GiB
+-   **Storage:** 40GiB
 
-The above is the minimum requirements for faveo to work, and will vary accordingly with faveo tickets and load.
+The above is the minimum requirements for Faveo Helpdesk, and will vary accordingly with the frequency of tickets and workflows.
 
 ### **Software Requirements**:
 
