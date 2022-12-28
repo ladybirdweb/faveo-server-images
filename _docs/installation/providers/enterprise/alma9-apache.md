@@ -1,15 +1,15 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/amla9-apache/
+permalink: /docs/installation/providers/enterprise/alma9-apache/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-12-18
 toc: true
-title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Amla Linux 9 
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Alma Linux 9 
 ---
 
-<img alt="Amla Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
+<img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
 Faveo can run on [Amla Linux 9 ](https://almalinux.org/).
 
@@ -293,7 +293,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](/docs/installation/providers/enterprise/amla-redis)
+[Redis installation documentation](/docs/installation/providers/enterprise/alma-redis)
 
 <a id="8-ssl-installation" name="8-ssl-installation"></a>
 
@@ -303,9 +303,9 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
-[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/amla-apache-ssl)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/alma-apache-ssl)
 
-[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-amla/)
+[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-alma/)
 
 <a id="9-install-faveo" name="9-install-faveo"></a>
 
