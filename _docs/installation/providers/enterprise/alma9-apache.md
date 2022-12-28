@@ -11,7 +11,7 @@ title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Alma Linux 9
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
-Faveo can run on [Amla Linux 9 ](https://almalinux.org/).
+Faveo can run on [Alma Linux 9 ](https://almalinux.org/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
