@@ -3,8 +3,8 @@
 docs:
   - title: Freelancer & Paid editions
     children:
-      - title: Amla Linux 9 with Apache
-        url: /docs/installation/providers/enterprise/amla9-apache
+      - title: Alma Linux 9 with Apache
+        url: /docs/installation/providers/enterprise/alma9-apache
      #- title: Cent OS 8 Stream with Apache
      #   url: /docs/installation/providers/enterprise/centos8s-apache
      #- title: Cent OS 8 Stream with Nginx
