@@ -1,15 +1,15 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/amla-redis/
+permalink: /docs/installation/providers/enterprise/alma-redis/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2022-12-18
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on Amla Linux 9
+title: Install and configure Redis, Supervisor and Worker for Faveo on Alma Linux 9
 ---
 
-<img alt="Rhel OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
+<img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
 ## Introduction
 
