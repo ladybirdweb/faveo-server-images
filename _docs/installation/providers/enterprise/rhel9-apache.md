@@ -280,7 +280,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-echo "* * * * * apache /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+(sudo -u apache crontab -l 2>/dev/null; echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u apache crontab -
 ```
 
 <a id="7-redis-installation" name="7-redis-installation"></a>
