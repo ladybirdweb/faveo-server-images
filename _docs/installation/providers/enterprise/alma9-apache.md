@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-12-18
+last_modified_at: 2023-01-12
 toc: true
 title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Alma Linux 9 
 ---
@@ -282,7 +282,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-(sudo -u apache crontab -l 2>/dev/null; echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u apache crontab -
+(sudo -u apache crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u apache crontab -
 ```
 
 <a id="7-redis-installation" name="7-redis-installation"></a>
