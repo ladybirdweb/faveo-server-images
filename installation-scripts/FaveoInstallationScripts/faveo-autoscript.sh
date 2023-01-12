@@ -676,7 +676,7 @@ if [[ $? != 0 ]]; then
 else
     echo -e "$green Redis & Supervisor configured. $reset"
     echo -e "$green Configuring Faveo Cronjob $reset"
-    echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+    (sudo -u www-data crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u www-data crontab -
     credentials "$1" "$2"
 fi
 }
