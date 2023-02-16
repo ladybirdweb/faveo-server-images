@@ -44,6 +44,8 @@ docs:
         url: /docs/installation/providers/enterprise/php-upgrade/
       - title: Migrate or Clone
         url: /docs/installation/providers/enterprise/generic-migration/
+      - title: Install Wkhtmltopdf
+        url: /docs/installation/providers/enterprise/wkhtmltopdf/
 
   - title: Kubernetes
     children:
