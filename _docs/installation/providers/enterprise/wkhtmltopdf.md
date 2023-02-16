@@ -8,6 +8,8 @@ last_modified_at: 2023-01-31
 toc: true
 title: How to install wkhtmltopdf plugin on different servers 
 ---
+<img alt="Wkhtmltopdf" src="https://ourcodeworld.com/public-media/articles/articleocw-590c895c5d17d.png" width="200"  />
+
 # <strong>Introduction :</strong>
 This document will guide you to install wkhtmltopdf on your server.
 
