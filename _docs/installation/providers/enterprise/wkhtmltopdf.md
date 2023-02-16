@@ -1,0 +1,94 @@
+---
+layout: single
+type: docs
+permalink: /docs/installation/providers/enterprise/wkhtmltopdf/
+redirect_from:
+  - /theme-setup/
+last_modified_at: 2023-01-31
+toc: true
+title: How to install wkhtmltopdf plugin on different servers 
+---
+# <strong>Introduction :</strong>
+This document will guide you to install wkhtmltopdf on your server.
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc).
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+#  <!-- omit in toc -->
+- [<strong>Steps to install wkhtmltopdf :</strong>](#steps-to-install-wkhtmltopdf)
+    - [<strong> 1. Linux Distros</strong>](#-1-linux-distros)
+    - [<strong> 2. Windows Servers</strong>](#-2-windows-servers)
+    
+  
+
+<a id="-1-linux-distros" name="-1-linux-distros"></a>
+
+### <strong> 1. Linux Distros</strong>
+
+  Follow the below steps to install wkhtmltopdf on your server.
+
+**For Alma Linux 9, Rocky9 and RHEL9**
+
+Install different fonts to support wkhtmltopdf.
+
+```
+yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+```
+
+Download the rpm package from github
+
+```
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+```
+
+Install the package.
+
+```
+sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+```
+
+**For Ubuntu and Debain**
+
+For Ubuntu and Debian type the below command, it will install the package along with all the required fonts.
+
+```
+apt-get -y install wkhtmltopdf
+```
+
+<a id="-2-windows-servers" name="-2-windows-servers"></a>
+
+### <strong> 2. Windows Servers</strong>
+
+Follow the below procedure to install wkhtmltopdf plugin on windows server with IIS or Apache webserver.
+
+
+-   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
+
+- Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
+
+- Click *I Agree* on the license agreement screen.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
+
+- Specify the installation destination folder or leave it as default location and click *Install*
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
+
+- When installation is complete, click the *Close* button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
+
+- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php8.1\ext (C:\php8.1\ext - incase of Apache)
+
+- Update the Environmet variable for wkhtmltopdf.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
+
+
+
+  
+
+
