@@ -50,12 +50,25 @@ Install the package.
 sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
 ```
 
-**For Ubuntu and Debain**
+**For Ubuntu 18.04, 20.04 and Debain**
 
-For Ubuntu and Debian type the below command, it will install the package along with all the required fonts.
+For Ubuntu 18.04, 20.04 and Debian type the below command, it will install the package along with all the required fonts.
 
 ```
 apt-get -y install wkhtmltopdf
+```
+
+**For Ubuntu 22.04**
+
+For Ubuntu 22.04 run the below commands to install the package.
+
+```
+echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+        apt-get update; apt install libssl1.1 -y
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
+    
+        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
+        apt --fix-broken install -y
 ```
 
 <a id="-2-windows-servers" name="-2-windows-servers"></a>
