@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky-nginx-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-11-25
+last_modified_at: 2023-02-19
 toc: true
 ---
 
