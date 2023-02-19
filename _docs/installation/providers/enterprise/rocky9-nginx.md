@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-01-12
+last_modified_at: 2023-02-19
 toc: true
 title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Rocky OS 9 With Nginx Webserver
 ---
@@ -218,44 +218,90 @@ nano /etc/nginx/nginx.conf
 ```
 Replace the default server block code with the following and you can also replace example.com with your Domain name.
 
-```nginx
-server {
-    listen   80;
-    server_name  example.com www.example.com;
+```
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-# note that these lines are originally from the "location /" block
-root   /var/www/faveo/public;
-index index.php index.html index.htm;
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
 
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
 
-location ~ \.php$ {
-    try_files $uri =404;
-    fastcgi_pass 127.0.0.1:9000;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include fastcgi_params;
+events {
+    worker_connections 1024;
 }
 
-location / {
-            	try_files $uri $uri/ /index.php?$query_string;
-}
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
 
-location ~* \.html$ {
-    expires -1;
-}
+    access_log  /var/log/nginx/access.log  main;
 
-location ~* \.(css|gif|jpe?g|png)$ {
-    expires 1M;
-    add_header Pragma public;
-    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
-}
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 4096;
 
-gzip on;
-gzip_http_version 1.1;
-gzip_vary on;
-gzip_comp_level 6;
-gzip_proxied any;
-gzip_types application/atom+xml
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        server_name  --YOUR DOMAIN NAME--;
+        root         /var/www/faveo/public/;
+        index index.php index.html index.htm;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+#This is for user friendly URL 
+	location ~ \.php$ {
+	    try_files $uri =404;
+	    fastcgi_pass 127.0.0.1:9000;
+	    fastcgi_index index.php;
+	    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	    include fastcgi_params;
+	}
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location ~* \.html$ {
+	    expires -1;
+	}
+
+	location ~* \.(css|gif|jpe?g|png)$ {
+	    expires 1M;
+	    add_header Pragma public;
+	    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+	}
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
+
+	gzip on;
+	gzip_http_version 1.1;
+	gzip_vary on;
+	gzip_comp_level 6;
+	gzip_proxied any;
+	gzip_types application/atom+xml
            application/javascript
            application/json
            application/vnd.ms-fontobject
@@ -270,10 +316,10 @@ gzip_types application/atom+xml
            #text/html -- text/html is gzipped by default by nginx
            text/plain
            text/xml;
-gzip_buffers 16 8k;
-gzip_disable "MSIE [1-6]\.(?!.*SV1)";
-   }
+	gzip_buffers 16 8k;
+	gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 
+}
 ```
 
 **5.c.** <b>Edit config file for PHP FPM using vim editor</b>
@@ -284,17 +330,11 @@ nano /etc/php-fpm.d/www.conf
 You have to replace these lines.
 
 ```
-user = nginx
+user = apache   (to)   user = nginx
+group = apache  (to)   group = nginx
 
-group = nginx
-
-listen.owner = nobody (to) listen.owner = nginx
-
-listen.group = nobody (to) listen.group = nginx
-
-Uncomment listen = 127.0.0.1:9000 by removing (;) 
-In Rocky-OS 8 you will find listen = /run/php-fpm/www.sock replace it (to) listen = 127.0.0.1:9000.
-
+listen.owner = nobody   (to)    listen.owner = nginx
+listen.group = nobody   (to)    ;listen.group = nginx
 ```
 
 Restart PHP-FPM and NGINX
@@ -314,7 +354,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 Create a new `/etc/cron.d/faveo` file with:
 
 ```sh
-(sudo -u apache crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u apache crontab -
+(sudo -u nginx crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u nginx crontab -
 ```
 
 <a id="7-redis-installation" name="7-redis-installation"></a>
