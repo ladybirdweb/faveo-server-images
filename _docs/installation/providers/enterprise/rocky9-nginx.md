@@ -330,7 +330,7 @@ user = apache   (to)   user = nginx
 group = apache  (to)   group = nginx
 
 listen.owner = nobody   (to)    listen.owner = nginx
-listen.group = nobody   (to)    ;listen.group = nginx
+listen.group = nobody   (to)    listen.group = nginx
 ```
 
 Restart PHP-FPM and NGINX
