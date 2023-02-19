@@ -219,10 +219,6 @@ nano /etc/nginx/nginx.conf
 Replace the default server block code with the following and you can also replace example.com with your Domain name.
 
 ```
-# For more information on configuration, see:
-#   * Official English Documentation: http://nginx.org/en/docs/
-#   * Official Russian Documentation: http://nginx.org/ru/docs/
-
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
