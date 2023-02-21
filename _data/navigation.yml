@@ -5,18 +5,24 @@ docs:
     children:
       - title: Alma Linux 9 with Apache
         url: /docs/installation/providers/enterprise/alma9-apache
+      - title: Alma Linux 9 with Apache
+        url: /docs/installation/providers/enterprise/alma9-nginx
      #- title: Cent OS 8 Stream with Apache
      #   url: /docs/installation/providers/enterprise/centos8s-apache
      #- title: Cent OS 8 Stream with Nginx
      #  url: /docs/installation/providers/enterprise/centos8s-nginx
       - title: Rocky Linux 9 with Apache
         url: /docs/installation/providers/enterprise/rocky9-apache
+      - title: Rocky Linux 9 with Apache
+        url: /docs/installation/providers/enterprise/rocky9-nginx
      # - title: Rocky Linux 8 with Apache
      #  url: /docs/installation/providers/enterprise/rocky-apache
      # - title: Rocky Linux 8 with Nginx
      #   url: /docs/installation/providers/enterprise/rocky-nginx
       - title: RHEL 9 with Apache
         url: /docs/installation/providers/enterprise/rhel9-apache
+      - title: RHEL 9 with Apache
+        url: /docs/installation/providers/enterprise/rhel9-nginx
       #- title: Cent OS with Apache
       #  url: /docs/installation/providers/enterprise/centos-apache
       #- title: Cent OS with NGINX
