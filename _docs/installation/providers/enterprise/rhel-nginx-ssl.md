@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/rocky-nginx-ssl/
+permalink: /docs/installation/providers/enterprise/rhel-nginx-ssl/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2023-02-19
