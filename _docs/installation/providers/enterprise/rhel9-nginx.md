@@ -6,8 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2023-02-19
 toc: true
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Rhel OS 9 With Nginx Webserver
 ---
-# Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Rhel OS 9 <!-- omit in toc -->
 
 <img alt="Rhel OS Logo" src="https://1000logos.net/wp-content/uploads/2021/04/Red-Hat-logo.png" width="200"  />
 
