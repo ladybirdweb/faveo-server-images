@@ -6,7 +6,7 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2023-02-19
 toc: true
-title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Alma Linux 9 
+title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Alma Linux 9 with Nginx Webserver
 ---
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
