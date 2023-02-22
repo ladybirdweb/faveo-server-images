@@ -85,8 +85,11 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, paid and Enterprise editions
 * [Amla Linux 9 with Apache](/docs/installation/providers/enterprise/amla9-apache)
+* [Alma Linux 9 with Nginx](/docs/installation/providers/enterprise/alma9-nginx)
 * [Rocky Linux 9 with Apache](/docs/installation/providers/enterprise/rocky9-apache)
+* [Rocky Linux 9 with Nginx](/docs/installation/providers/enterprise/rocky9-nginx)
 * [RHEL 9 with Apache](/docs/installation/providers/enterprise/rhel9-apache)
+* [RHEL 9 with Nginx](/docs/installation/providers/enterprise/rhel9-nginx)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)<button class="button button1"><b>Recommended</b></button>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
