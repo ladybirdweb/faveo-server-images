@@ -64,11 +64,11 @@ For Ubuntu 22.04 run the below commands to install the package.
 
 ```
 echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-        apt-get update; apt install libssl1.1 -y
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
-    
-        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
-        apt --fix-broken install -y
+apt-get update
+apt install libssl1.1 -y
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
+dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
+apt --fix-broken install -y
 ```
 
 <a id="-2-windows-servers" name="-2-windows-servers"></a>
