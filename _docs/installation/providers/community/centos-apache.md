@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/community/centos-apache
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-03-06
 toc: true
 ---
 # Installing Faveo Helpdesk Community on Cent OS 7 <!-- omit in toc -->
@@ -33,8 +33,8 @@ Faveo can run on [Cent OS 7 ](https://www.centos.org/download/).
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **PHP 7.1** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
--   **MySQL 5.7+** or **MariaDB 10.3+**
+-   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **MySQL 8.0+** or **MariaDB 10.6+**
 
 <a id="1-lamp-installation" name="1-lamp-installation"></a>
 
@@ -53,16 +53,16 @@ Login as root user by typing the command below
 sudo su
 ```
 ```sh
- 
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git epel-release -y
-
 ```
 
-<b>2.a Install php-7.1 Packages </b>
+<b>2.a Install php-8.1 Packages </b>
 ```sh
-yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 yum install -y https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-yum-config-manager --enable remi-php71
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+
+yum-config-manager --enable remi-php81
 yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
 
@@ -84,28 +84,39 @@ Copy ioncube loader to PHP modules Directory.
 
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_7.1.so /usr/lib64/php/modules 
-sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_7.1.so"' /etc/php.ini
+cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules 
+sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b> 2.d Install and run Mysql/MariaDB</b>
+<b> 2.d Install and run MariaDB</b>
 
 The official Faveo installation uses MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only Mysql-5.7 and MariaDB-10.3.
+Note: Currently Faveo supports only  MariaDB-10.6.
+
+Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
+```sh
+nano /etc/yum.repos.d/mariadb.repo
+```
+```
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.6/centos73-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+```
 Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
 
 ```sh
-yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-yum install -y mysql-community-server
-systemctl start mysqld
-systemctl enable mysqld
+yum install MariaDB-server MariaDB-client
+systemctl enable mysql.service
+systemctl start mysql.service
 ```
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-mysql_secure_installation 
+mariadb-secure-installation 
 ```
 
 **phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
