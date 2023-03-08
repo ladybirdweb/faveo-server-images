@@ -1,7 +1,7 @@
 # Sidebar Menu/Navigation
 
 docs:
-  - title: Installation Guide
+  - title: INSTALLATION GUIDE
     children:
       - title: Alma Linux 9 with Apache
         url: /docs/installation/providers/enterprise/alma9-apache
