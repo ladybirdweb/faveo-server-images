@@ -1,7 +1,7 @@
 # Sidebar Menu/Navigation
 
 docs:
-  - title: Freelancer & Paid editions
+  - title: Installation Guide
     children:
       - title: Alma Linux 9 with Apache
         url: /docs/installation/providers/enterprise/alma9-apache
@@ -61,14 +61,14 @@ docs:
     children:
       - title: Faveo on Docker
         url: /docs/installation/providers/enterprise/faveo-helpdesk-docker/
-  - title: Community edition
-    children:
-      - title: Ubuntu with Apache
-        url: /docs/installation/providers/community/ubuntu-apache
-      - title: CentOS with Apache
-        url: /docs/installation/providers/community/centos-apache
-      - title: Debian with Apache
-        url: /docs/installation/providers/community/debian-apache
+#  - title: Community edition
+#    children:
+#      - title: Ubuntu with Apache
+#        url: /docs/installation/providers/community/ubuntu-apache
+#      - title: CentOS with Apache
+#        url: /docs/installation/providers/community/centos-apache
+#      - title: Debian with Apache
+#        url: /docs/installation/providers/community/debian-apache
 
 #      - title: MariaDB Version 10.6
 #        url:
