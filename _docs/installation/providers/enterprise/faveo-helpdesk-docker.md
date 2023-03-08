@@ -43,7 +43,7 @@ chmod +x faveo-community-run.sh
 
 1. A valid domain name fully propagated to your Server's IP.
 2. Sudo Privilege.
-3. Faveo license and Order number. (this can be obtained from billing https://billing.faveohelpdesk.com).<b> (This is not required for Community Edition)
+3. Faveo license and Order number. (this can be obtained from billing https://billing.faveohelpdesk.com).<b> (This is not required for Community Edition)</b>
 4. Unreserved ports 80 and 443. (If it is reserved feel free to edit and change the ports of your choice in docker-copompose.yml)
 5. Operating Systems Centos 7,8 or above and Ubuntu 16,18,20.
 
