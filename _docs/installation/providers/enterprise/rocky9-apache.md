@@ -4,9 +4,9 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-01-12
+last_modified_at: 2023-03-09
 toc: true
-title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Rocky OS 9
+title: Installing Faveo Helpdesk on Rocky OS 9
 ---
 
 <img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
@@ -146,17 +146,29 @@ sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
 
 ### <strong>3. Upload Faveo</strong>
 
+**For Faveo Freelancer, Paid and Enterprise Version**
+
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
 mkdir -p /var/www/faveo/
 cd /var/www/faveo/
 ```
-**3.a** <b>Extracting the Faveo-Codebase zip file</b>
+<b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
+**For Faveo Community Version**
+
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
+
+```sh
+mkdir -p /var/www/
+cd /var/www/
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
+```
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
 
 ### <strong>4. Setup the database</strong>
