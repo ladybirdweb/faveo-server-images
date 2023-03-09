@@ -4,9 +4,9 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-01-12
+last_modified_at: 2023-03-09
 toc: true
-title: Installing Faveo Helpdesk Freelancer, Paid and Enterprise on Debian With Apache Webserver
+title: Installing Faveo Helpdesk on Debian With Apache Webserver
 ---
 
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="96" height="127" />
@@ -142,17 +142,29 @@ sudo mysql_secure_installation
 
 ### <strong>3. Upload Faveo</strong>
 
+**For Faveo Freelancer, Paid and Enterprise Version**
+
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-mkdir /var/www/faveo
-cd /var/www/faveo
+mkdir -p /var/www/faveo/
+cd /var/www/faveo/
 ```
-<b>3.a Extracting the Faveo-Codebase zip file</b>
+<b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
+**For Faveo Community Version**
+
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
+
+```sh
+mkdir -p /var/www/
+cd /var/www/
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
+```
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
 
