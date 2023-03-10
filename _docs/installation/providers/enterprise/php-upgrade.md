@@ -263,16 +263,16 @@ Note: if you are not able to find the PHP version in the drop-down then it is no
 Required configuration changes for Faveo Helpdesk.
 
 ```sh
-error_log=C:\Windows\temp\PHP73x64_errors.log
-upload_tmp_dir=C:\Windows\temp
-session.save_path=C:\Windows\temp
+error_log=C:\Windows\temp\PHP81x64_errors.log
+upload_tmp_dir="C:\Windows\Temp"
+session.save_path="C:\Windows\Temp"
 cgi.force_redirect=0
 cgi.fix_pathinfo=1
 fastcgi.impersonate=1
 fastcgi.logging=0
 max_execution_time=300
 date.timezone=Asia/Kolkata
-extension_dir="C:\php7.3\ext\"
+extension_dir="C:\php8.1\ext\"
 upload_max_filesize = 100M
 post_max_size = 100M
 memory_limit = 256M
