@@ -35,7 +35,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
 
 The Installation steps listed above are to be followed to install Faveo on your Windows-IIS Server.
 
-Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
+Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  ,  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> &  <a href="https://7-zip.org/download.html" target="_blank" rel="noopener">7-Zip</a> must be installed.
 
 <a id="1Install-IIS-Server" name="1Install-IIS-Server"></a>
 
@@ -92,9 +92,9 @@ name="2Install-PHP-8.1"></a>
 
 Required configuration changes for Faveo Helpdesk.
 ```
-error_log=C:\Windows\temp\PHP73x64_errors.log
-upload_tmp_dir=C:\Windows\temp
-session.save_path=C:\Windows\temp
+error_log=C:\Windows\temp\PHP81x64_errors.log
+upload_tmp_dir="C:\Windows\Temp"
+session.save_path="C:\Windows\Temp"
 cgi.force_redirect=0
 cgi.fix_pathinfo=1
 fastcgi.impersonate=1
