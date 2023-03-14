@@ -34,7 +34,7 @@ title: Faveo Installation on Windows with Apache Web Server
 
 
 
-Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  &  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> must be installed.
+Before we follow the installation steps <a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad++</a>  ,  <a href="https://www.win-rar.com/download.html?&L=0" target="_blank" rel="noopener">Winrar</a> &  <a href="https://7-zip.org/download.html" target="_blank" rel="noopener">7-Zip</a> must be installed.
 
 
 <a id="1Install-&-Configure-Apache-for-Windows" name="1Install-&-Configure-Apache-for-Windows"></a>
@@ -313,12 +313,12 @@ extension=fileinfo
 extension=mbstring
 extension=openssl
 extension=exif
-extension=xsl
+extension=xslp
+extension=pdo_mysql
+extension=mysqli
 extension=soap
-extension=php_mysqli.dll
-extension=php_pdo_mysql.dll
-extension=php_ldap.dll
-extension=php_fileinfo.dll
+extension=sockets
+extension=sodium
 ```
 
 - Step 4: Set the recommended minimum value of these PHP directives listed below for Faveo to work properly. 
