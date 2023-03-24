@@ -39,8 +39,8 @@ docs:
         url: /docs/installation/providers/enterprise/windows-iis
       - title: Windows Apache Server
         url: /docs/installation/providers/enterprise/apache-windows
-      - title: Plesk Panel Windows
-        url: /docs/installation/providers/enterprise/plesk-panel-windows
+#      - title: Plesk Panel Windows
+#        url: /docs/installation/providers/enterprise/plesk-panel-windows
       #- title: CentOS Web Panel
       #  url: /docs/installation/providers/enterprise/centos-web-panel/
 
