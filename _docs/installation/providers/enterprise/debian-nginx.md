@@ -281,7 +281,7 @@ Faveo requires some background processes to continuously run.
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-Create a new `/etc/cron.d/faveo` file with:
+[comment]: <Create a new `/etc/cron.d/faveo` file with:>
 
 ```sh
 (sudo -u www-data crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u www-data crontab -
