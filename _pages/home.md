@@ -39,12 +39,11 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - [About Faveo](#about-faveo)
 - [Requirements](#requirements)
 - [Installation instructions for specific platforms](#installation-instructions-for-specific-platforms)
-  - [Installation instructions for Freelancer, Paid and Enterprise editions](#installation-instructions-for-freelancer-paid-and-enterprise-editions)
-  - [Installation instructions for Community edition](#installation-instructions-for-community-edition)
-  - [Installation on a shared server](#installation-on-a-shared-server)
-- [Help](#help)
-- [One click installers](#one-click-installers)
-- [Installation via scripts](#installation-via-scripts)
+- [Installation instructions for Freelancer, Paid, Enterprise and Community editions](#installation-instructions-for-freelancer-paid-enterprise-and-community-editions)
+- [Installation on a shared server](#installation-on-a-shared-server)
+  - [Help](#help)
+  - [One click installers](#one-click-installers)
+  - [Installation via scripts](#installation-via-scripts)
 
 
 ## How To's <button class="button NEW"><b>NEW</b></button>
@@ -84,7 +83,7 @@ For detailed Software requirements list [check here](/docs/system-requirement/re
 
 The above mentioned prerequisites to be met have to be installed then faveo can be installed in any OS/Distro from the below list:
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
-### Installation instructions for Freelancer, paid and Enterprise editions
+### Installation instructions for Freelancer, Paid, Enterprise and Community editions
 * [Amla Linux 9 with Apache](/docs/installation/providers/enterprise/amla9-apache)
 * [Alma Linux 9 with Nginx](/docs/installation/providers/enterprise/alma9-nginx)
 * [Rocky Linux 9 with Apache](/docs/installation/providers/enterprise/rocky9-apache)
