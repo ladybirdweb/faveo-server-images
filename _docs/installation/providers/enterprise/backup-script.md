@@ -29,17 +29,19 @@ title: "Automated Backup Script for Faveo Filesystem and Database to the FTP-Ser
 
 ## Usage
 ---
-1. Clone this repository to your server from where you want to take backups.
+
+
+<b>1. </b> Clone this repository to your server from where you want to take backups.
 
 ```
 https://github.com/ladybirdweb/backup-script.git
 ```
 
-2. Once the repository is cloned go inside the directory and you can find two files **main.py** and **cron.sh** after that follow the below steps.
+<b>2. </b> Once the repository is cloned go inside the directory and you can find two files **main.py** and **cron.sh** after that follow the below steps.
 
-3. In this script we need to provide the below details to do the backup and upload operations.
+<b>3. </b> In this script we need to provide the below details to do the backup and upload operations.
 
-4. First we need to set the variable to the script in the **main.py** file, below are the details that we have to update in the script.
+<b>4. </b> First we need to set the variable to the script in the **main.py** file, below are the details that we have to update in the script.
 
 ```
 # Set the Backup Retention period in days for REMOTE Default 7 days:
@@ -92,9 +94,9 @@ REMOTE_DIR = "/remote/directory/in/ftp/server"
 
 
 
-5. Once the above details are added to the **main.py** file the python script is ready.
+<b>5. </b> Once the above details are added to the **main.py** file the python script is ready.
 
-6. We need to execute the **cron.sh** this is a shell script you need to change the file permission and execute it to do the same you should be inside the cloned repository.
+<b>6. </b> We need to execute the **cron.sh** this is a shell script you need to change the file permission and execute it to do the same you should be inside the cloned repository.
 
 - To change the file permission run the below command.
 
@@ -109,7 +111,7 @@ chmod +x *
 ```
 
 
-7. Once the script is executed it will ask you for the below details.
+<b>7. </b> Once the script is executed it will ask you for the below details.
 
 - You can **ADD** or **REMOVE** cron with the first option, it will ask you whether to add or remove the cronjob like below: you need to enter add or remove as per your need (if you enter to remove the script will search and remove the backup script cronjob)
 
@@ -145,7 +147,7 @@ Enter the time of day to run the cron job (in 24-hour format, e.g. 23:30) or pre
 ```
 
 
-8. Once the above is done the cronjob will be created and the script will prompt you with a success message.
+<b>8. </b> Once the above is done the cronjob will be created and the script will prompt you with a success message.
 
 ## Conclusion
 
