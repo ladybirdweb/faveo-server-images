@@ -39,6 +39,7 @@ https://github.com/ladybirdweb/backup-script.git
 3. In this script we need to provide the below details to do the backup and upload operations.
 
 4. First we need to set the variable to the script in the **main.py** file, below are the details that we have to update in the script.
+
 ```
 # Set the Backup Retention period in days for REMOTE Default 7 days:
 BACKUP_RETENTION = 7
@@ -91,10 +92,13 @@ REMOTE_DIR = "/remote/directory/in/ftp/server"
 
 6. We need to execute the **cron.sh** this is a shell script you need to change the file permission and execute it to do the same you should be inside the cloned repository.
 - To change the file permission run the below command.
+
 ```
 chmod +x *
 ```
+
 - To execute the script run the below command.
+
 ```
 /bin/bash cron.sh
 ```
@@ -106,22 +110,28 @@ chmod +x *
 ```
 Do you want to add or remove the cron job? Enter 'add' or 'remove':
 ```
+
 - Then it will ask a confirmation on whether the required details are added to **main.py** file: you can respond with yes or no, if you have added the details enter yes or enter no it will stop the script.
+
 ```
 Have you added the required details to the main.py script? Enter 'yes' or 'no':
 ```
 
 - Then it will ask for the absolute path to the cloned directory, to get this detail you can run pwd in your terminal and paste the output here.
+
 ```
 Enter the directory path for the scripts (to get this directory use 'pwd' command):
 ```
+
 - Then it will ask for the cron interval there will be three options Daily, Weekly, Monthly 
+
 ```
 Select the cron interval:
 1. Daily (this cron will run daily)
 2. Weekly (this cron is defaulted to run every Sunday on every week to change you need to edit interval_choice inside the cron.sh file)
 3. Monthly (this cron is defaulted to run on the first of every month to change this you need to edit the interval choice inside the cron.sh file)
 ```
+
 - The final step is to mention the time in 24.00 hrs format, on this time the cron will run at the specified interval.
 
 ```
