@@ -30,6 +30,7 @@ title: "Automated Backup Script for Faveo Filesystem and Database to the FTP-Ser
 ## Usage
 ---
 1. Clone this repository to your server from where you want to take backups.
+
 ```
 https://github.com/ladybirdweb/backup-script.git
 ```
@@ -73,6 +74,7 @@ FTP_PASS = "ftp-password"
 REMOTE_DIR = "/remote/directory/in/ftp/server"
 ```
 
+
 -  **BACKUP_RETENTION =** Here mention the backup retention period that you want to use in the remote FTP-Server in days (default is 7 days), this is used to save the last N no of days in the remote server.
 - **LOCAL_BACKUP_RETENTION =** Here mention the backup retention period that you want to use in the local server in days (default is 5 mins). this is used to delete the N no of days old files in the local server.
 - **BACKUP_DIRECTORY =** Here mention the directory where you want to store the backup zip files in the local server. (this should be an absolute path)
@@ -88,9 +90,12 @@ REMOTE_DIR = "/remote/directory/in/ftp/server"
 - **FTP_PASS =** Here mention the FTP user password.
 - **REMOTE_DIR =** Here mention the remote directory on FTP server where you want to upload the backup files.
 
+
+
 5. Once the above details are added to the **main.py** file the python script is ready.
 
 6. We need to execute the **cron.sh** this is a shell script you need to change the file permission and execute it to do the same you should be inside the cloned repository.
+
 - To change the file permission run the below command.
 
 ```
@@ -102,6 +107,7 @@ chmod +x *
 ```
 /bin/bash cron.sh
 ```
+
 
 7. Once the script is executed it will ask you for the below details.
 
@@ -137,6 +143,7 @@ Select the cron interval:
 ```
 Enter the time of day to run the cron job (in 24-hour format, e.g. 23:30) or press Enter to use the default time of midnight:
 ```
+
 
 8. Once the above is done the cronjob will be created and the script will prompt you with a success message.
 
