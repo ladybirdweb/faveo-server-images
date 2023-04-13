@@ -25,7 +25,11 @@ The easiest way to handle this is to simply run a system backup through your Fav
 - To take a backup of the faveo filesystem and database navigate to Admin Panel-> System Backups. Give the location of the backup path and make sure that the directory actually exists in the server if not create the directory and provide the necessary permission so the web server user is able to access that directory. Click on backup and the backup process will start in the background and you will get a notification once the backup is completed. The time to take backups depends on the size of the faveo file system and database.
 
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/backup1.png?raw=true"/>
+
+
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/backup2.png?raw=true"/>
+
+
 <img alt="" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/GUI-images/backup3.png?raw=true"/>
 
 - Install all Faveo prerequisites on your target server.
