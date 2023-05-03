@@ -12,7 +12,7 @@ title: "Automated Backup Script for Faveo File System and Database to the FTP-Se
 
 <img src="https://www.faveohelpdesk.com/wp-content/uploads/2022/10/faveo-logo-1.png" alt="" style=" width:200px ; height:80px ">
 
-### Backup Script
+## Backup Script
 
 
 > **Note** : 
