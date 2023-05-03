@@ -52,8 +52,10 @@ docs:
         url: /docs/installation/providers/enterprise/generic-migration/
       - title: Install Wkhtmltopdf
         url: /docs/installation/providers/enterprise/wkhtmltopdf/
-      - title: Faveo Backup Script & Backup Tool
+      - title: Faveo Backup Script
         url: /docs/installation/providers/enterprise/backup-script/
+      - title: UrBackup Tool
+        url: /docs/installation/providers/enterprise/backup-tool/
 
 
   - title: Kubernetes
