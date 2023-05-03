@@ -181,21 +181,21 @@ Now the cron will run the script at the specified time and interval which will e
 
 1.a. In the backup server you need to install URBackup server to install follow this : (https://www.urbackup.org/download.html)
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/download.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/download.png" alt="" style=" width:550px ; height:250px "/>
 
 1.b Once the installation is started it might ask for the directory where to store the backups please select a directory and the urbackup user should have permissions to access it once it is done, you can browse the domain or IP of the URBackup server with the port 55414.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackup-opening.png" alt="" style=" width:400px ; height:200px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackup-opening.png" alt="" style=" width:550px ; height:200px "/>
 
 1.c. Once that is done we need to configure the server.
 
 - Once the above page is opened we need to create a user and set a password for the same, to do so we need to click on the setting icon on the top and then click on the user and create a user as shown in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/useradd.png" alt="" style=" width:400px ; height:150px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/useradd.png" alt="" style=" width:550px ; height:150px "/>
 
 - Once the above is done we can continue setting up the server to do so click on general as shown in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/serverconfig1.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/serverconfig1.png" alt="" style=" width:550px ; height:250px "/>
 
 - Click on **server** under general as shown in the above snap and fill the details below as shown in the above.
 
@@ -209,7 +209,7 @@ Now the cron will run the script at the specified time and interval which will e
 
 - Once that is done we need to set the options for the **File Backup** to do so click the next option after the server as shown in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/filebackup.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/filebackup.png" alt="" style=" width:550px ; height:250px "/>
 
 - we need to change the default values like interval for incremental file backups and things as shown in the snap above, we can also change the options as per our requirements.
 
@@ -222,13 +222,13 @@ Now the cron will run the script at the specified time and interval which will e
 
 - Then we can also change the options for **Image Backups** as shown in the below snap. This is optional and depends upon the needs of the client. 
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/imagebackup.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/imagebackup.png" alt="" style=" width:550px ; height:250px "/>
 
 - Once the above is done we need to configre the **Internet/Active Clients** option, this will be the configuration we need to pass in the URbackupp client servers.
 
 - To do the same follow the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/internetclientserver.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/internetclientserver.png" alt="" style=" width:550px ; height:250px "/>
 
 - As shown in the above snap we need to enter the URbackup Server Domain or IP to it, this IP or domain we use for connecting URbackup client to the server.
 
@@ -236,17 +236,17 @@ Now the cron will run the script at the specified time and interval which will e
 
 - Once the above is done we can enable email notification for the backup to do so click on **Mail** next to general and configure as show in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/emailconfig.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/emailconfig.png" alt="" style=" width:550px ; height:250px "/>
 
 - Once this is done the server is ready, now we can start adding clients to the server to do so, follow the below in structions.
 
 - Go to the urbackup home page, you can find a **Add New Client** button over there as show in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackup-opening.png" alt="" style=" width:400px ; height:200px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackup-opening.png" alt="" style=" width:550px ; height:200px "/>
 
 - Click on the **Add New Client**, it will ask you the client details with the IP or hostname and the client name as show in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientadd.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientadd.png" alt="" style=" width:550px ; height:250px "/>
 
 There are two options to add the client:
 1. Internet/Active Client - This is the remote client, only client name needs to be mentioined for this option.
@@ -254,7 +254,7 @@ There are two options to add the client:
 
 - Once this is done it will take you to the client download page as show in the below snap.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientdownload.png" alt="" style=" width:400px ; height:350px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientdownload.png" alt="" style=" width:550px ; height:350px "/>
 
 - In the above snap we have options to download clients on different OS like windows, linux, docker..
 
@@ -310,7 +310,7 @@ yum install lsb-core
 
 - You can find the client in the urbackup dashboard as online and last seen as shown in the below snap for example.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientaddstatus.png" alt="" style=" width:400px ; height:200px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientaddstatus.png" alt="" style=" width:550px ; height:200px "/>
 
 - You can start the backup by clicking the drop down and then you can select whcih type of backup and start it once started it will do the backup as per the intervals setted in the server configuration above.
 
@@ -318,9 +318,10 @@ yum install lsb-core
 
 - To setup urbackup client in the windows we need to download the preconfigured windows client from the download page which will be shown while we are adding a client as shown below.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientdownload.png" alt="" style=" width:400px ; height:250px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/clientdownload.png" alt="" style=" width:550px ; height:250px "/>
 
 - Once downloaded we need to install the client in the windows machine follow the below snaps.
+
 <img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackupclientinstallation1.png" alt="" style=" width:400px ; height:350px "/>
 
 <img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackupinstall2.png" alt="" style=" width:400px ; height:250px "/>
@@ -387,7 +388,7 @@ yum install lsb-core
 
 - We can download the backups for the URbackup server page, to do so go to the backups page in the urbackup server dashboard as shown in the below snap from there we can download the backups.
 
-<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackuprestore.png" alt="" style=" width:400px ; height:150px "/>
+<img alt="" src="https://raw.githubusercontent.com/ladybirdweb/backup-script/main/snaps/urbackuprestore.png" alt="" style=" width:550px ; height:150px "/>
 
 ---
 ## Conclusion:
