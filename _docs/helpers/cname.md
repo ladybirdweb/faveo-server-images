@@ -6,9 +6,8 @@ redirect_from:
   - /theme-setup/
 last_modified_at: 2023-05-29
 toc: true
+title: Creating Custom Domains for Faveo Cloud
 ---
-
-# Creating Custom Domains for Faveo Cloud <!-- omit in toc -->
 
 This document will guide you on how to create a custom domain for your Faveo Cloud instance.
 
