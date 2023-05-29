@@ -52,7 +52,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Install Wkhtmltopdf [click here](/docs/installation/providers/enterprise/wkhtmltopdf/)
 - Faveo Backup Script [click here](/docs/installation/providers/enterprise/backup-script/)
 - UrBackup Tool [click here](/docs/installation/providers/enterprise/backup-tool/)
-- Custom Domain for Faveo Cloud [click here](/docs/helpers/cname.md)
+- Custom Domain for Faveo Cloud [click here](/docs/helpers/cname)
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
