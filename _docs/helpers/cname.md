@@ -15,9 +15,13 @@ This document will guide you on how to create a custom domain for your Faveo Clo
 
 ### Prerequisites:
 
-1. To create a custom domain, you need to have a domain registered with any vendor like GoDaddy, Namecheap, Freenom, etc.
+1. To create a custom domain, it is necessary to have a registered domain with a reputable vendor such as GoDaddy, Namecheap, Freenom, or other similar providers. If you currently do not possess a domain to create a custom domain, you have the option to register one through our platform at [store.ladybirdwebhost.com](store.ladybirdwebhost.com) or through your preferred domain vendor.
 
-2. You also need to have access to the DNS management of the domain. You can obtain this information from the vendor from whom you purchased the domain.
+2. We understand that acquiring a domain is a crucial step in establishing your online presence. Thus, we offer the convenience of domain registration directly through our platform, ensuring a seamless experience for our global audience. Alternatively, if you have a preferred domain vendor that you trust, you can register a domain through them as well.
+
+3. Please note that a registered domain is a prerequisite for creating a custom domain. Once you have obtained a domain, you can proceed with the necessary steps to create your desired custom domain.
+
+4. Additionally, you will need to have access to the DNS management of the domain. You can obtain this information from the vendor from whom you purchased the domain. This access will enable you to configure the necessary DNS settings for your custom domain.
 
 ### To create a custom domain, follow the steps below to create a CNAME record:
 
