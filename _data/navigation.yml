@@ -56,6 +56,8 @@ docs:
         url: /docs/installation/providers/enterprise/backup-script/
       - title: UrBackup Tool
         url: /docs/installation/providers/enterprise/backup-tool/
+      - title: Custom Domain
+        url: /docs/helper/cname/
 
 
   - title: Kubernetes
