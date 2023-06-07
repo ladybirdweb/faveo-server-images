@@ -112,6 +112,7 @@ credentials ()
     echo -e "$skyblue Database Username:   faveo $reset"
     echo -e "$skyblue Database Password:   $2 $reset"
     echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
+    exit 0
 }
 
 redis ()
@@ -730,6 +731,7 @@ credentials ()
     echo -e "$skyblue Database Username:   faveo $reset"
     echo -e "$skyblue Database Password:   $2 $reset"
     echo -e "$green You can find this details saved in $PWD/credentials.txt.$reset"
+    exit 0
 }
 
 redis ()
@@ -1345,6 +1347,7 @@ os_check ()
         echo -e "                                 "
         echo -e "Supported OS Version [CHECK :$green OK $reset]"
         redhat_block
+
     # If the required OS and version is not detected the below response will be passed to the user.
 
     else
