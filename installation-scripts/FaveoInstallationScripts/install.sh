@@ -190,7 +190,7 @@ if [[ $? != 0 ]]; then
 else
     echo -e "$green Redis & Supervisor configured. $reset"
     echo -e "$green Configuring Faveo Cronjob $reset"
-    echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+    (sudo -u www-data crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u www-data crontab -
     credentials "$1" "$2"
 fi
 }
@@ -343,6 +343,7 @@ faveo_configure ()
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
     unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
     rm -f $PWD/faveo.zip
+    mkdir /var/www/storage
     if [[ $? != 0 ]]; then
         echo -e "\n";
         echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
@@ -350,7 +351,7 @@ faveo_configure ()
         rollback
         echo -e "\n";
     else
-        chown -R www-data:www-data /var/www/faveo
+        chown -R www-data:www-data /var/www
         dependencies "$1"
     fi   
 }
@@ -807,7 +808,7 @@ if [[ $? != 0 ]]; then
 else
     echo -e "$green Redis & Supervisor configured. $reset"
     echo -e "$green Configuring Faveo Cronjob $reset"
-    echo "* * * * * apache /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+    (sudo -u apache crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u www-data crontab -
     credentials "$1" "$2"
 fi
 }
@@ -909,6 +910,7 @@ faveo_configure ()
     curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$3\&serial_key\=$2 --output $PWD/faveo.zip 
     unzip $PWD/faveo.zip -d /var/www/faveo  >>/dev/null
     rm -f $PWD/faveo.zip
+    mkdir /var/www/storage
     if [[ $? != 0 ]]; then
         echo -e "\n";
         echo -e "$red Something went wrong. Downloading Faveo Helpdesk package. $reset"
@@ -916,7 +918,7 @@ faveo_configure ()
         rollback
         echo -e "\n";
     else
-        chown -R apache:apache /var/www/faveo
+        chown -R apache:apache /var/www
         dependencies "$1"
     fi   
 }
@@ -1075,6 +1077,7 @@ EOF
     sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 
     #  Adding Rewrite engine to the apache config.
+    echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
 
     ls /etc/httpd/modules | grep mod_rewrite 
     if [[ $? != 0 ]]; then
