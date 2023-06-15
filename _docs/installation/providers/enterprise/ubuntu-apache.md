@@ -377,3 +377,5 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 ### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
+
+> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
