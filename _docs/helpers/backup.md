@@ -11,9 +11,9 @@ title: "Enable File Sysyem and Database Backup in Faveo"
 ---
 Faveo has an inbuilt backup option which needs to be setup before taking backups. Let's configure backup for the Faveo by following the below steps.
 
-## Make storage folder for backups.
+## 1. Make storage folder for backups.
 
-**1. For Linux Based Systems:**
+**a. For Linux Based Systems:**
 
 Make a storage directory under the path /var/www by the following command.
 
@@ -33,7 +33,7 @@ chown -R www-data:www-data /var/www/storage/
 chown -R apache:apache /var/www/storage/
 ```
 
-**2. For Windows Based Systems:**
+**b. For Windows Based Systems:**
 
 Make a storage directory under the path C:\inetpub\
 
@@ -45,7 +45,7 @@ Right click on storage directory and in the security tab click on edit and add u
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/permissioniis.png" alt="" style=" width:400px ; height:250px ">
 
-## Setup Backup Directory in Faveo.
+## 2. Setup Backup Directory in Faveo.
 
 Login into the Faveo and go to *Admin Panel > Settings > System Backup*.
 
