@@ -22,7 +22,8 @@ Faveo can run on [Rocky 9 ](https://rockylinux.org/download/).
     - [<strong>6. Redis Installation</strong>](#6-redis-installation)
     - [<strong>7. SSL Installation</strong>](#7-ssl-installation)
     - [<strong>8. Install Faveo</strong>](#8-install-faveo)
-    - [<strong>9. Final step</strong>](#9-final-step)
+    - [<strong>9. Faveo Backup</strong>](#9-faveo-backup)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps-" name="installation-steps-"></a>
 
@@ -384,10 +385,16 @@ At this point if the domainname is propagated properly with your server’s IP y
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
-<a id="9-final-step" name="9-final-step"></a>
+<a id="9-faveo-backup" name="9-faveo-backup"></a>
 
-### <strong>9. Final step</strong>
+### <strong>9. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+
+
+<a id="10-final-step" name="10-final-step"></a>
+
+### <strong>10. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
-
-> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
