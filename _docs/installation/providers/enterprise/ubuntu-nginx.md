@@ -24,7 +24,8 @@ Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)].
     - [<strong>7. Redis Installation</strong>](#7-redis-installation)
     - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
     - [<strong> 9. Install Faveo</strong>](#-9-install-faveo)
-    - [<strong>10. Final step</strong>](#10-final-step)
+    - [<strong>10. Faveo Backup</strong>](#10-faveo-backup)
+    - [<strong>11. Final step</strong>](#11-final-step)
 
 <a id="installation-steps-" name="installation-steps-"></a>
 
@@ -361,10 +362,15 @@ This is an optional step and will improve system security and is highly recommen
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
-<a id="10-final-step" name="10-final-step"></a>
+<a id="10-faveo-backup" name="10-faveo-backup"></a>
 
-### <strong>10. Final step</strong>
+### <strong>10. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+
+<a id="11-final-step" name="11-final-step"></a>
+
+### <strong>11. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
-
-> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
