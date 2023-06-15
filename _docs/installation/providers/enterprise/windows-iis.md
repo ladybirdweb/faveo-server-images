@@ -32,6 +32,7 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
   - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
   - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
+  - [<strong>16. Faveo Backup</strong>](#16-faveo-backup)
 
 The Installation steps listed above are to be followed to install Faveo on your Windows-IIS Server.
 
@@ -489,4 +490,9 @@ name="15Install-Faveo"></a>
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 
-> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+<a id="16-faveo-backup" name="16-faveo-backup"></a>
+
+### <strong>16. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
