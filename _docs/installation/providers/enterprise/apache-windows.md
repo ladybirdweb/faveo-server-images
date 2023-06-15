@@ -31,6 +31,7 @@ title: Faveo Installation on Windows with Apache Web Server
   - [<strong> 9. Configure Task Scheduler </strong>](#9Configure-Task-Scheduler)
   - [<strong> 10. SSL Installation </strong>](#10SSL-Installation)
   - [<strong> 11. Install Faveo </strong>](#11Install-Faveo)
+  - [<strong>12. Faveo Backup</strong>](#12-faveo-backup)
 
 
 
@@ -619,4 +620,9 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 
 
-> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+<a id="12-faveo-backup" name="12-faveo-backup"></a>
+
+### <strong>12. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
