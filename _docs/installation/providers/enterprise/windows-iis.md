@@ -487,3 +487,6 @@ name="15Install-Faveo"></a>
 ### <strong>15. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
+
+> **Note**: At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
