@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-10-25
+last_modified_at: 2023-06-20
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Windows Server
@@ -81,9 +81,9 @@ name="2Install-PHP-8.1"></a>
 
 ### <strong>2. Install PHP 8.1</strong>
 
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download php 8.1.12 NTS 64bit file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download php 8.1.9 NTS 64bit file. Extract the zip file & "rename it to *php8.1*. Now move the renamed *php8.1* folder to *C:\php8.1*.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/php-8.1.png?raw=true" alt="" style=" width:400px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/php819.png" alt="" style=" width:400px ; height:150px ">
 
 -   Open *php8.1* folder, find *php.ini-development* & rename it to *php.ini* to make it php configuration file.
 
@@ -198,6 +198,25 @@ phpinfo();
 - Now if you visit "http://localhost" in the browser you should be able to see PHP Info page.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpinfo.png?raw=true" alt="" style=" width:400px ; height:250px ">
+
+**Note:** If you don't see the above php page and see the error page like below, you need to install the relevant C++ Redistributable for Visual Studio.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/error-iis.png" alt="" style=" width:400px ; height:250px ">
+
+#### Install Visual Studio (Conditional Step)
+- <a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener" > Click Here</a> to download the Visual Studio.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
+
+- Execute the installer to perform the required installation.
+- Accept the License Agreement terms and click *Install*.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4a.png" alt="" style=" width:500px ; height:250px ">
+
+- Click *Close* to finish the installation.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
+
 
 <a id="4Install-MariaDB-10.6/MySQL-8.0" 
 name="4Install-MariaDB-10.6/MySQL-8.0"></a>
