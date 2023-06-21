@@ -201,7 +201,7 @@ helm repo add jetstack https://charts.jetstack.io
 ```
 Update your local Helm chart repository cache:
 ```sh
-help repo update
+helm repo update
 ```
 Install cert-manager and its Custom Resource Definitions (CRDs) like Issuers and ClusterIssuers
 ```sh
