@@ -48,36 +48,6 @@ apt-get install supervisor
 nano /etc/supervisor/conf.d/faveo-worker.conf
 ```
 ```
-[program:faveo-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=www-data
-numprocs=8
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker.log
-
-[program:faveo-recur]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=recurring --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=www-data
-numprocs=1
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker.log
-
-[program:faveo-Reports]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=reports --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=www-data
-numprocs=1
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/reports-worker.log
-
 [program:faveo-Horizon]
 process_name=%(program_name)s
 command=php /var/www/faveo/artisan horizon
@@ -87,25 +57,6 @@ user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
 
-[program:faveo-notification]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=high_priority_notify,notify --sleep=3 --tries=3
-autostart=true
-autorestart=true
-numprocs=4
-user=www-data
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/notification.log
-
-[program:faveo-deactivate]
-process_name=%(program_name)s_%(process_num)02d
-command=php  /var/www/faveo/artisan queue:work redis --queue=deactivation --sleep=3 --tries=3
-autostart=true
-autorestart=true
-numprocs=1
-user=www-data
-redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/worker.log
 ```
 ## Restart the Supervisor to reread configuration
 
