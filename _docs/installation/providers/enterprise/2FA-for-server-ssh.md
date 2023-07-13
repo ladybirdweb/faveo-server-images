@@ -13,6 +13,7 @@ title: "How to enable two-factor authentication (2FA) for SSH"
   - [<strong>2. Disable SSH logins for root</strong>](#2Disable-SSH-logins-for-root)
   - [<strong>3. Install an authenticator app on a mobile device</strong>](#3Install-an-authenticator-app-on-a-mobile-device)
   - [<strong>4. Enable two-factor authentication on the server</strong>](#4Enable-two-factor-authentication-on-the-server)
+  - [<strong>5. Disabling two-factor authentication for SSH</strong>](#5Disabling-two-factor-authentication-for-SSH)
 
 This article describes how to enable and disable two-factor authentication for SSH on an unmanaged server.
 
@@ -224,8 +225,10 @@ service sshd restart
 	-	At the Password prompt, type the password for the user.
 > If authentication fails, verify that you followed the previous steps correctly. Do not log out as the root user until you are sure the new authentication configuration is working correctly.
 
+<a id="5Disabling-two-factor-authentication-for-SSH" name="5Disabling-two-factor-authentication-for-SSH"></a>
 
-## Disabling two-factor authentication for SSH
+### <strong>5. Disabling two-factor authentication for SSH</strong>
+
 > If you decide that you no longer want to use two-factor authentication with SSH, you can disable it. To do this, follow these steps:
 
 1. Log in to your server using SSH.
