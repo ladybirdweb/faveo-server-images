@@ -9,9 +9,10 @@ last_modified_by: Mohammad_Asif
 toc: true
 title: "Webmin Installation on Linux Server"
 ---
-This Document is divided into two sections:
+This document is divided into three sections:
 - Installing Webmin on Linux Server
 - Installing ConfigServer Security & Firewall (CSF) on Webmin
+- Enabling Two-Factor Authentication for Webmin
 
 ---
 Installing Webmin on Linux Server
@@ -177,3 +178,70 @@ And then we should restrict syslog/rsyslog access:
 > Since the CSF firewall will be enabled now, you need to allow the required ports and IPs in the CSF firewall 
 
 After these changes press the button *Change* at the bottom of the page and *Restart csf+lfd* afterward.
+
+---
+
+## Enabling Two-Factor Authentication
+
+Webmin provides Google Authenticator Two-Factor Authentication tokens to generate and use. We highly recommend looking into this security measure for your server, as it will greatly increase overall protection. You will require the Google Authenticator application or a compatible authentication application to generate codes each time you'd like to log in. Enter your username and credentials, then follow by entering the generated code.
+
+
+Step 1 : Visit the Webmin menu and select "Webmin Configuration".
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-1.png" alt="" style=" width:500px ; height:250px"/>
+
+Step 2 : Go to "Two-Factor Authentication".
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-2.png" alt="" style=" width:500px ; height:250px"/>
+
+Step 3 : Select "Google Authenticator."
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-3.png" alt="" style=" width:500px ; height:160px"/>
+
+Step 4 : Click on "Save." 
+
+Probably you will be told that "The Perl module Authen::OATH needed for two-factor authentication is not installed. Use the Perl Modules page in Webmin to install it".
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-4.png" alt="" style=" width:500px ; height:150px"/>
+
+Step 5 : Go ahead and select on the "Perl Modules" link and let it install automatically. Installing on Debian should be fairly easy, while you may need to install multiple modules for CentOS installation.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-5.png" alt="" style=" width:500px ; height:200px"/>
+
+
+Step 6 : In order to add on Google Authenticator as an extra layer of security, go back to the two-step verification screen and select "Google Authenticator." Select "save" after it's been selected.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-6.png" alt="" style=" width:500px ; height:150px"/>
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-7.png" alt="" style=" width:500px ; height:130px"/>
+
+Step 7 : Below the Webmin menu on this web page, click the "Webmin Users" link.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-8.png" alt="" style=" width:500px ; height:150px"/>
+
+Step 8 : Select the "Two-Factor Authentication" button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-9.png" alt="" style=" width:500px ; height:200px"/>
+
+Step 9 : Select "Enroll for Two-Factor Authentication" button and click it. 
+
+Enrolling an authenticator will require a compatible application that is installed on your mobile device, such as Google Authenticator/Authy. We would recommend Google Authenticator/Authy until other clients are fully compatible.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-10.png" alt="" style=" width:500px ; height:150px"/>
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-11.png" alt="" style=" width:500px ; height:200px"/>
+
+
+> **NOTE:**
+> The Above QR Code and the Google Authenticator code are for the reference, your Codes will be different than the above.
+
+Step 10 : When you log in, use your two-factor authentication key as well as your username and password.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/2fa-12.png" alt="" style=" width:500px ; height:200px"/>
+
+Installing Webmin with two-factor authentication enabled helps secure your Webmin installation.
+
+
+
+
