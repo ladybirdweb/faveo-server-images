@@ -69,14 +69,14 @@ Redis has been successfully installed, this can be confirmed in Command Prompt b
 ## Install WinSW Service
 
 Download WinSW Config File.
-- [IIS](https://raw.githubusercontent.com/tamilselvan-lws/Documents/main/Redis%20Windows%20Server/Files/WinSW-IIS.zip) 
-- [Apache](https://raw.githubusercontent.com/tamilselvan-lws/Documents/main/Redis%20Windows%20Server/Files/WinSW-Apache.zip)
+- [IIS](https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/redis-config-file/WinSW-IIS.zip) 
+- [Apache](https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/redis-config-file/WinSW-Apache.zip)
 
 Unzip the <code>WinSW-{version}.zip</code> file.
 
 Go inside the folder & copy the WinSW folder & paste it in C:\ .
 
-<img src="/windows-images/redis19.png" style=" width:400px">
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis19.png" style=" width:400px">
 
 ---
 
@@ -245,6 +245,6 @@ winsw start
 
 Open service manager and check status of all the services configured by WinSW.
 
-<img src="/windows-images/redis20.png" style=" width:400px">
+<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis20.png" style=" width:400px">
 
 ---
