@@ -82,7 +82,7 @@ Go inside the folder & copy the WinSW folder & paste it in C:\ .
 
 <b>4. General Instructions to Create WinSW Services</b>
 
-**NOTE: These are the General Instructions to create WinSW Services for Faveo. The actual ones are listed below as Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports & Faveo-Notifications.**
+**NOTE: These are the General Instructions to create WinSW Services for Faveo. The actual ones are listed below as Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports, Faveo-Notifications & Faveo Deactivation.**
 
 Go to Command Prompt and configure WinSW-SERVICE by typing the following commands. (Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports, Faveo-Notifications & Faveo-Deactivation are to be configured in actual).
 
@@ -133,7 +133,7 @@ winsw uninstall
 
 
 ---
-**Follow the above general steps to create WinSW Services for FAVEO MAIL WORKER, FAVEO RECURRING, FAVEO REPORTS, FAVEO NOTIFICATIONS & FAVEO DEACTIVATION**
+**Follow the above general steps to create WinSW Services for Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports, Faveo-Notifications & Faveo Deactivation.**
 
 
 - **FAVEO WORKER**
