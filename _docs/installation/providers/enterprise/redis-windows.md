@@ -76,7 +76,7 @@ Unzip the <code>WinSW-{version}.zip</code> file.
 
 Go inside the folder & copy the WinSW folder & paste it in C:\ .
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis19.png" style=" width:400px">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/redis19.png" style=" width:400px">
 
 ---
 
@@ -245,6 +245,6 @@ winsw start
 
 Open service manager and check status of all the services configured by WinSW.
 
-<img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/redis20.png" style=" width:400px">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/redis20.png" style=" width:400px">
 
 ---
