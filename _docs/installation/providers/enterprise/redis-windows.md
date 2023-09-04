@@ -133,7 +133,7 @@ winsw uninstall
 
 
 ---
-**Follow the above general steps to create WinSW Services for Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports, Faveo-Notifications & Faveo Deactivation.**
+**Follow the below steps to create WinSW Services for Faveo-Mail-Worker, Faveo-Recurring, Faveo-Reports, Faveo-Notifications & Faveo Deactivation.**
 
 
 - **FAVEO WORKER**
