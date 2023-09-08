@@ -191,7 +191,7 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 ### <strong>2. PHP 8.1 for Apache Web Server</strong>
 
 
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download <code>php-8.1.22-nts-Win32-vs16-x64.zip</code> file.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
 
@@ -266,7 +266,7 @@ Define SRVROOT "c:/Apache24"
 Options Indexes FollowSymLinks ExecCGI
 AllowOverride All
 ```
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px ; height:170px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px">
 
 - Step 7: Search for the <code>IfModule mime_module</code> directive and add the below content above this directive:
 
