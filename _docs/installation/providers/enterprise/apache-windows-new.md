@@ -47,7 +47,7 @@ Before we follow the installation steps <a href="https://notepad-plus-plus.org/d
 
 - <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener" > Click Here</a> to download 64-bit version Apache. 
 
-<img src="/INSTALLATION GUIDE/Images/Win-Apache-Images/Apache-Window-1.png" alt="" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-1.png" alt="" style=" width:500px ; height:250px ">
 
 - Extract its contents of the zip file to a suitable location on your Windows server to be configured. It is recommended to extract the contents in the <code>C drive</code> of the server.
 
@@ -193,7 +193,7 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 
 -   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
 
-<img src="/INSTALLATION GUIDE/Images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
 
 - Extract the zip file & rename it to <code>*php*</code>. Now move the renamed <code>*php*</code> folder to <code>*C drive*</code>.
 
@@ -207,7 +207,7 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 
 -   <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">Click Here</a> to download Mod_fcgi zip file. 
 
- <img src="/INSTALLATION GUIDE/Images/Win-Apache-Images/Apache-Window-11.png" alt="" style=" width:500px ; height:100px ">
+ <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-11.png" alt="" style=" width:500px ; height:100px ">
 
  - Step 1: Unzip the <code>*mod_Fcgi file*</code>, copy the <code>*mod_fcgid.so*</code> file to the <code>*C:\Apache24\modules*</code> folder.
 
@@ -266,7 +266,7 @@ Define SRVROOT "c:/Apache24"
 Options Indexes FollowSymLinks ExecCGI
 AllowOverride All
 ```
-<img src="/INSTALLATION GUIDE/Images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px ; height:170px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px ; height:170px ">
 
 - Step 7: Search for the <code>IfModule mime_module</code> directive and add the below content above this directive:
 
@@ -277,7 +277,7 @@ AllowOverride All
     Require all granted
 </Directory>
 ```
-<img src="/INSTALLATION GUIDE/Images/Win-Apache-Images/Apache-Window-13.png" alt="" style=" width:500px ; height:170px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-13.png" alt="" style=" width:500px ; height:170px ">
 
 ### <strong>b. Configure the PHP 8.1</strong>
 
