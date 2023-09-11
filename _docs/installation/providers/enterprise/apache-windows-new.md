@@ -24,14 +24,13 @@ title: Faveo Installation on Windows with Apache Web Server
   - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-8.1-for-Apache-Web-Server)
   - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
-  - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
-  - [<strong> 6. Install wkhtmltopdf </strong>](#6Install-wkhtmltopdf)
-  - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
-  - [<strong> 8. Setting up the Database </strong>](#8Setting-up-the-Database)
-  - [<strong> 9. Configure Task Scheduler </strong>](#9Configure-Task-Scheduler)
-  - [<strong> 10. SSL Installation </strong>](#10SSL-Installation)
-  - [<strong> 11. Install Faveo </strong>](#11Install-Faveo)
-  - [<strong>12. Faveo Backup</strong>](#12-faveo-backup)
+  - [<strong> 5. Install wkhtmltopdf </strong>](#5Install-wkhtmltopdf)
+  - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
+  - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
+  - [<strong> 8. Configure Task Scheduler </strong>](#8Configure-Task-Scheduler)
+  - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
+  - [<strong> 10. Install Faveo </strong>](#10Install-Faveo)
+  - [<strong> 11. Faveo Backup</strong>](#11-faveo-backup)
 
 
 
@@ -185,24 +184,7 @@ If the test page works successfully and shows the message, it means that you hav
 
 These were the simple steps by which you can install Apache Web Server on Windows Server 2022.
 
-<a id="2PHP-8.1-for-Apache-Web-Server" 
-name="2PHP-8.1-for-Apache-Web-Server"></a>
-
-### <strong>2. PHP 8.1 for Apache Web Server</strong>
-
-
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download <code>php-8.1.22-nts-Win32-vs16-x64.zip</code> file.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
-
-- Extract the zip file & rename it to <code>*php*</code>. Now move the renamed <code>*php*</code> folder to <code>*C drive*</code>.
-
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache20.png" alt="" style=" width:500px ; height:150px ">
-
-
-
-### <strong>a. Mod_fcgi</strong>
+### <strong>f. Mod_fcgi</strong>
 
 
 -   <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">Click Here</a> to download Mod_fcgi zip file. 
@@ -279,12 +261,38 @@ AllowOverride All
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-13.png" alt="" style=" width:500px ; height:170px ">
 
+### <strong>g. Enable Necessary Modules</strong>
+
+- Look for the following line in httpd.conf, Uncomment it by removing # at its beginning.
+
+```
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule authz_host_module modules/mod_authz_host.so
+LoadModule access_compat_module modules/mod_access_compat.so
+```
+
+
+<a id="2PHP-8.1-for-Apache-Web-Server" 
+name="2PHP-8.1-for-Apache-Web-Server"></a>
+
+### <strong>2. PHP 8.1 for Apache Web Server</strong>
+
+
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download <code>php-8.1.22-nts-Win32-vs16-x64.zip</code> file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
+
+- Extract the zip file & rename it to <code>*php*</code>. Now move the renamed <code>*php*</code> folder to <code>*C drive*</code>.
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache20.png" alt="" style=" width:500px ; height:150px ">
+
 ### <strong>b. Configure the PHP 8.1</strong>
 
 
 With Apache active and functional, you now need to define and configure the *php.ini* file so those database extensions and libraries are available for use by Faveo.
 
-- Step 1: Access the PHP folder in *C:* \ and rename the *php.ini-development* file to *php.ini*.
+- Step 1: Access the PHP folder in <code>*C:* \ </code> and rename the *php.ini-development* file to *php.ini*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache28.png" alt="" style=" width:500px ; height:200px ">
 
@@ -386,15 +394,16 @@ http://127.0.0.1/info.php
 
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache31.png" alt="" style=" width:500px ; height:100px ">
 
-### <strong>c. Enable Necessary Modules</strong>
+ ### <strong>c. Download & Enable cacert.pem File in PHP Configuration File</strong>
 
-- Look for the following line in httpd.conf, Uncomment it by removing # at its beginning.
 
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the *cacert.pem* file and copy it to *C:\php* path.
+- Edit the *php.ini*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
 ```
-LoadModule rewrite_module modules/mod_rewrite.so
-LoadModule authz_host_module modules/mod_authz_host.so
-LoadModule access_compat_module modules/mod_access_compat.so
+curl.cainfo = "C:\php\cacert.pem"
 ```
+
 
 
 <a id="3Install-MariaDB-10.6/MySQL-8.0" 
@@ -439,20 +448,11 @@ http://127.0.0.1\loader-wizard.php
 <a id="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File" 
 name="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 
-### <strong>5. Download & Enable cacert.pem File in PHP Configuration File</strong>
 
+<a id="5Install-wkhtmltopdf" 
+name="5Install-wkhtmltopdf"></a>
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the *cacert.pem* file and copy it to *C:\php* path.
-- Edit the *php.ini*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
-```
-curl.cainfo = "C:\php\cacert.pem"
-```
-
-<a id="6Install-wkhtmltopdf" 
-name="6Install-wkhtmltopdf"></a>
-
-### <strong>6. Install wkhtmltopdf</strong>
+### <strong>5. Install wkhtmltopdf</strong>
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. It is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
@@ -480,10 +480,10 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
-<a id="7Upload-Faveo" 
-name="7Upload-Faveo"></a>
+<a id="6Upload-Faveo" 
+name="6Upload-Faveo"></a>
 
-### <strong>7. Upload Faveo</strong>
+### <strong>6. Upload Faveo</strong>
 
 
 - Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
@@ -499,10 +499,10 @@ name="7Upload-Faveo"></a>
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
 
-<a id="8Setting-up-the-Database" 
-name="8Setting-up-the-Database"></a>
+<a id="7Setting-up-the-Database" 
+name="7Setting-up-the-Database"></a>
 
-### <strong>8. Setting up the Database</strong>
+### <strong>7. Setting up the Database</strong>
 
 
 Open MariaDB 10.6 Command Line Client and run the below command.
@@ -538,7 +538,7 @@ exit
 <a id="9Configure-Task-Scheduler" 
 name="9Configure-Task-Scheduler"></a>
 
-### <strong>9. Configure Task Scheduler</strong>
+### <strong>8. Configure Task Scheduler</strong>
 
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
@@ -595,10 +595,10 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 *Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="10SSL-Installation" 
-name="10SSL-Installation"></a>
+<a id="9SSL-Installation" 
+name="9SSL-Installation"></a>
 
-### <strong>10. SSL Installation</strong>
+### <strong>9. SSL Installation</strong>
 
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
@@ -610,10 +610,10 @@ Apache only supports Paid SSL or the Self Signed SSL, Let’s Encrypt is not sup
 
 
 
-<a id="11Install-Faveo" 
-name="11Install-Faveo"></a>
+<a id="10Install-Faveo" 
+name="10Install-Faveo"></a>
 
-### <strong>11. Install Faveo</strong>
+### <strong>10. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
@@ -621,7 +621,7 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 <a id="12-faveo-backup" name="12-faveo-backup"></a>
 
-### <strong>12. Faveo Backup</strong>
+### <strong>11. Faveo Backup</strong>
 
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
