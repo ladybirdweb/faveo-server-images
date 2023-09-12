@@ -296,14 +296,14 @@ With Apache active and functional, you now need to define and configure the *php
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache28.png" alt="" style=" width:500px ; height:200px ">
 
-- Step 2: Access the *php.ini* file with a text editor using Administrative privileges and search for the *;extension_dir = "ext"* directive.
+- Step 2: Access the <code>*php.ini*</code> file with a text editor using Administrative privileges and search for the <code>*;extension_dir = "ext"*</code> directive.
 
-Assign the value *“C:\php\ext”* to this directive as shown below:
+Assign the value <code>*“C:\php\ext”*</code> to this directive as shown below:
 
 ```
 extension_dir = "C:\php\ext"
 ```
-After assigning the value *C:\php\ext*, it will look like below:
+After assigning the value <code>*C:\php\ext*</code>, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache29.png" alt="" style=" width:300px ; height:100px ">
 
@@ -366,20 +366,20 @@ After adding the path, it look look like below:
 
 - Step 8: Update the Environment Variable for PHP Binary.
 
-- Right click on This PC, go to *Properties > Advanced System Settings >* Environment Variables.
+- Right click on This PC, go to <code>*Properties > Advanced System Settings >*</code> Environment Variables.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
 
-- Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
+- Now click on Path > Edit > New & add copied path <code>*C:\php\ </code> here and click OK in all 3 tabs.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
 
-- Step 9:  Verify changes made through the *info.php* file. 
-- You need to create this file and place it in the *C:\Apache24\htdocs* directory with the following content:
+- Step 9:  Verify changes made through the <code>*info.php*</code> file. 
+- You need to create this file and place it in the <code>*C:\Apache24\htdocs*</code> directory with the following content:
 
 ```
 <?php
@@ -397,9 +397,9 @@ http://127.0.0.1/info.php
  ### <strong>c. Download & Enable cacert.pem File in PHP Configuration File</strong>
 
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the *cacert.pem* file and copy it to *C:\php* path.
-- Edit the *php.ini*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code>*cacaert.pem*</code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the <code>*cacert.pem*</code> file and copy it to <code>*C:\php*</code> path.
+- Edit the <code>*php.ini*</code>, Uncomment <code>*curl.cainfo*</code> and add the location of cacert.pem to it as below:
 ```
 curl.cainfo = "C:\php\cacert.pem"
 ```
@@ -427,11 +427,11 @@ name="4Install-Ioncube-Loader"></a>
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
-- Step 2: Copy the *ioncube_loader_win_8.1.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
+- Step 2: Copy the <code>*ioncube_loader_win_8.1.dll*</code> file and paste it into the PHP extensions directory <code>*C:\php\ext*</code>.
 
-- Step 3: Copy the *“loader-wizard.php”* from the extracted Ioncube folder and paste it into the *C:\Apache24\htdocs*.
+- Step 3: Copy the <code>*“loader-wizard.php”*</code> from the extracted Ioncube folder and paste it into the <code>*C:\Apache24\htdocs*</code>.
 
-- Step 4: Edit the *php.ini* file and below the last line enter the path to the extension within the *zend_extension* parameter:
+- Step 4: Edit the <code>*php.ini*</code> file and below the last line enter the path to the extension within the <code>*zend_extension*</code> parameter:
 
 ```
 zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
@@ -460,23 +460,23 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
 
-- Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
+- Run the downloaded <code>*wkhtmltopdf-0.12.6-1.exe installer*</code>.
 
-- Click *I Agree* on the license agreement screen.
+- Click <code>*I Agree*</code> on the license agreement screen.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
 
-- Specify the installation destination folder or leave it as default location and click *Install*
+- Specify the installation destination folder or leave it as default location and click <code>*Install*</code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
-- When the installation is complete, click the *Close* button.
+- When the installation is complete, click the <code>*Close*</code> button.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
-- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php\ext
+- Now copy <code>wkhtmltox.dll</code> located at <code>C:\Program Files\wkhtmltopdf\bin</code> and paste it in <code>C:\php\ext</code>
 
-- Update the Environment variable for wkhtmltopdf. *Refer to section **(2.b Step 8)** for adding Environment Variable*.
+- Update the Environment variable for wkhtmltopdf. 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
@@ -494,7 +494,7 @@ name="6Upload-Faveo"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33.png" alt="" style=" width:500px ; height:250px ">
   
-- We need to give full write permission to *Users* for the *C:\Apache24\htdocs*folder.
+- We need to give full write permission to <code>*Users*</code> for the <code>*C:\Apache24\htdocs*</code> folder.
   
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
@@ -541,16 +541,17 @@ name="9Configure-Task-Scheduler"></a>
 ### <strong>8. Configure Task Scheduler</strong>
 
 
-- To open Task scheduler press *Win+R* and type *taskschd.msc*.
-- On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
+- To open Task scheduler press *Win+R* and type <code>*taskschd.msc*</code>.
+- On the Right pane of the Task scheduler select <code>*Create Basic Task*</code> enter a <code>*Name*</code> for the task and click <code>*Next*</code>.
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
 
-- Under *Task Trigger*, section select *Daily* and click *Next* and leave the default values in *Daily* section tick the *Synchronize across time zones* and proceed *Next*.
+- Under <code>*Task Trigger*</code>, section select <code>*Daily*</code> and click <code>*Next*</code> and leave the default values in *Daily* section tick the <code>*Synchronize across time zones*</code> and proceed <code>*Next*</code>.
 
-- Now under the *Action* section select *Start a program* and click *Next*. 
+- Now under the <code>*Action*</code> section select <code>*Start a program*</code> and click <code>*Next*</code>. 
 
 
-- In *Start a program* copy the below value into the *program/script field*.
+- In <code>*Start a program*</code> copy the below value into the <code>*program/script field*</code>.
 ```
 C:\Windows\System32\cmd.exe
 ```
@@ -562,13 +563,13 @@ C:\Windows\System32\cmd.exe
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
 
-- Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
+- Finally under the <code>*Finish*</code> section select the <code>*checkbox*</code> to open the properties window after finish and click the <code>*Finish*</code> button.
 
-- In the properties window, select the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+- In the properties window, select the <code>*Triggers*</code> tab, click on <code>*Edit*</code> and select the checkbox for <code>*Repeat task every*</code> set values to run every <code>*5 minutes*</code>, for a duration of <code>*indefinitely*</code> and click on <code>*OK*</code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
 
-- Similarly add two more triggers *At log on* & *At startup up*, set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
+- Similarly add two more triggers <code>*At log on*</code> & <code>*At startup up*</code>, set values to run every <code>*5 minutes*</code>, for a duration of <code>*indefinitely*</code> and click on <code>*OK*</code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
