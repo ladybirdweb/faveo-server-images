@@ -382,6 +382,11 @@ After adding the path, it look look like below:
 phpinfo();
 ?>
 ```
+
+- Step 10: Restart <code>**Apache HTTP Server**</code> Service.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache31.png" alt="" style=" width:500px">
+
 - After this, check the generated page in your browser by going to the URL below:
 
 ```
