@@ -27,7 +27,7 @@ title: Faveo Installation on Windows with Apache Web Server
   - [<strong> 5. Install wkhtmltopdf </strong>](#5Install-wkhtmltopdf)
   - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
   - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
-  - [<strong> 8. Configure Task Scheduler </strong>](#8Configure-Task-Scheduler)
+  - [<strong> 8. Set Cron & Configure Queue Driver </strong>](#8Configure-Task-Scheduler)
   - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
   - [<strong> 10. Install Faveo </strong>](#10Install-Faveo)
   - [<strong> 11. Faveo Backup</strong>](#11-faveo-backup)
@@ -393,7 +393,7 @@ phpinfo();
 http://127.0.0.1/info.php
 ```
 
- <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache31.png" alt="" style=" width:500px ; height:100px ">
+ <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-16.png" alt="" style=" width:500px ; height:100px ">
 
  ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
 
@@ -508,7 +508,7 @@ name="7Setting-up-the-Database"></a>
 
 Open MariaDB 10.6 or Mysql 8.0 Command Line Client and run the below command.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache42.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-15.png" alt="" style=" width:500px ; height:300px ">
 
 - Create a database called ‘faveo’.
 
