@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/apache-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-09-08
-last_modified_by: TamilSelvan_M
+last_modified_at: 2022-10-25
+last_modified_by: Mohammad_Asif
 toc: true
 title: Faveo Installation on Windows with Apache Web Server
 ---
@@ -24,13 +24,14 @@ title: Faveo Installation on Windows with Apache Web Server
   - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-8.1-for-Apache-Web-Server)
   - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
-  - [<strong> 5. Install wkhtmltopdf </strong>](#5Install-wkhtmltopdf)
-  - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
-  - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
-  - [<strong> 8. Set Cron & Configure Queue Driver </strong>](#8Configure-Task-Scheduler)
-  - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
-  - [<strong> 10. Install Faveo </strong>](#10Install-Faveo)
-  - [<strong> 11. Faveo Backup</strong>](#11-faveo-backup)
+  - [<strong> 5. Download & Enable cacert.pem File in PHP Configuration File </strong>](#5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File)
+  - [<strong> 6. Install wkhtmltopdf </strong>](#6Install-wkhtmltopdf)
+  - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
+  - [<strong> 8. Setting up the Database </strong>](#8Setting-up-the-Database)
+  - [<strong> 9. Configure Task Scheduler </strong>](#9Configure-Task-Scheduler)
+  - [<strong> 10. SSL Installation </strong>](#10SSL-Installation)
+  - [<strong> 11. Install Faveo </strong>](#11Install-Faveo)
+  - [<strong>12. Faveo Backup</strong>](#12-faveo-backup)
 
 
 
@@ -39,15 +40,16 @@ Before we follow the installation steps <a href="https://notepad-plus-plus.org/d
 
 <a id="1Install-&-Configure-Apache-for-Windows" name="1Install-&-Configure-Apache-for-Windows"></a>
 
-### <b>1. Install & Configure Apache for Windows</b>
+### <strong>1. Install & Configure Apache for Windows</strong>
 
-### <b>a. Download Apache for Windows</b>
+
+<b>a. Download Apache for Windows </b>
 
 - <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener" > Click Here</a> to download 64-bit version Apache. 
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-1.png" alt="" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache1.png" alt="" style=" width:500px ; height:250px ">
 
-- Extract its contents of the zip file to a suitable location on your Windows server to be configured. It is recommended to extract the contents in the <code>C drive</code> of the server.
+- Extract its contents of the zip file to a suitable location on your Windows server to be configured. It is recommended to extract the contents in the C drive of the server.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache3.png" alt="" style=" width:500px ; height:250px ">
 
@@ -57,17 +59,18 @@ In addition, you need to have the relevant C++ Redistributable for Visual Studio
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
 
 - Execute the installer to perform the required installation.
-- Accept the License Agreement terms and click <code>**Install**</code>.
+- Accept the License Agreement terms and click *Install*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4a.png" alt="" style=" width:500px ; height:250px ">
 
-- Click <code>**Close**</code> to finish the installation.
+- Click *Close* to finish the installation.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
 
-### <b>b. Run Apache</b>
 
-Open a Command Prompt in the <Code>**C:\Apache24\bin**</code> folder. (i.e., the location where you extracted Apache).
+<b>b. Run Apache </b>
+
+Open a Command Prompt in the *C:\Apache24\bin* folder. (i.e., the location where you extracted Apache).
 
 - For command prompt, enter the following command to start Apache:
 
@@ -76,13 +79,13 @@ Httpd.exe
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache10.png" alt="" style=" width:500px ; height:100px ">
 
-You might see a Windows Firewall prompt. <code>Allow</code> the access to be appropriate. 
+You might see a Windows Firewall prompt. Allow the access to be appropriate. 
 
 Failing to allow Apache access through your server’s firewall will result in other computers/devices being unable to connect to your web server.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache11.png" alt="" style=" width:500px ; height:300px ">
 
-You will come across a **could not bind to address** error if another service is already running on Apache’s default port (80).
+You will come across a *could not bind to address* error if another service is already running on Apache’s default port (80).
 
 Therefore, check that you don’t currently have an IIS (Internet Information Services) server already running. 
 
@@ -92,11 +95,11 @@ If so, you either need to stop/disable IIS in order to run Apache or change the 
 
 - Keep the previous command window open, and navigate to the below address with your web browser.
 
-```cpp
+```
 http://127.0.0.1
 ```
 
-- If Apache is running on your Windows Server 2022 you will see the message **It works!** in your browser.
+- If Apache is running on your Windows Server 2022 you will see the message *It works!* in your browser.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache12.png" alt="" style=" width:500px ; height:100px ">
 
@@ -108,28 +111,28 @@ To ensure that your Apache web server runs all the time, you need to install it 
 
 Here is how you can install Apache as a Windows Service in an easy and quick way:
 
-Step 1: Open an administrative command prompt window, navigate to the <code>**C:\Apache24\bin**</code> location and enter the following command:
+Step 1: Open an administrative command prompt window, navigate to the *C:\Apache24\bin* location and enter the following command:
 
-```cpp
+```
 httpd.exe -k install -n "Apache HTTP Server"
 ```
 
 - You will see the following output,
 
-```cpp
+```
 Installing the 'Apache HTTP Server' service
 The 'Apache HTTP Server' service is successfully installed.
 Testing httpd.conf....
 Errors reported here must be corrected before the service can be started.
 ```
 
-Step 2: Then, write the following command and press <code>**Enter**</code> In the Command Prompt window.
+Step 2: Then, write the following command and press *Enter* In the Command Prompt window.
 
-```cpp
+```
 services.msc
 ```
 
-Look for the service <code>**Apache HTTP Server.**</code> You should see <code>**Automatic**</code> towards the left of that line. If you don’t, change the Startup Type to **Automatic** by double-clicking the line.
+Look for the service *Apache HTTP Server.* You should see *Automatic* towards the left of that line. If you don’t, change the Startup Type to *Automatic* by double-clicking the line.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache13.png" alt="" style=" width:500px ; height:350px ">
 
@@ -138,42 +141,43 @@ Step 3: Finally, restart your server and open a web browser once you are logged 
 ```
 http://127.0.0.1
 ```
-### <b>e. Configure Windows Firewall – Open to World </b>
+
+<b>e. Configure Windows Firewall – Open to World </b>
 
 Configuring the Window's Firewall is the final step to install Apache web server on Windows Server 2022. It allows connections from the Internet to your new web server. Here are the steps that you need to follow:
 
-- Step 1: Go to Start Menu and enter a search query, <code>**firewall**</code>. Select the <code>**Windows Firewall With Advanced Security**</code> item.
+- Step 1: Go to Start Menu and enter a search query, *firewall*. Select the *Windows Firewall With Advanced Security* item.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache14.png" alt="" style=" width:500px ; height:110px ">
 
-- Step 2: Select the <code>**New Rule**</code> on the right-hand sidebar.
+- Step 2: Select the *New Rule* on the right-hand sidebar.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache15.png" alt="" style=" width:500px ; height:130px ">
 
-- Step 3: Click on <code>**Port,**</code> and then click <code>**Next**</code>. 
+- Step 3: Click on *Port,* and then click *Next*. 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 4: Then, select the radio button next to <code>**Specific remote ports:**</code> and enter the following into the input box: <code>**80, 443.**</code>
+- Step 4: Then, select the radio button next to *Specific remote ports:* and enter the following into the input box: *80, 443.*
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16b.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 5: Click <code>**Next**</code> and select the <code>**Allow the connection**</code> option.
+- Step 5: Click *Next* and select the *Allow the connection* option.
 
-- Step 6: Click <code>**Next**</code>. Make sure that all the boxes on the next page are selected and then click <code>**Next**</code> again.
+- Step 6: Click *Next*. Make sure that all the boxes on the next page are selected and then click *Next* again.
 
-- Step 7: In the <code>**Name**</code> section, enter a description which ensures that you will be able to remember the rule’s purpose later such as: <code>**Allow Incoming Apache Traffic.**</code>
+- Step 7: In the *Name* section, enter a description which ensures that you will be able to remember the rule’s purpose later such as: *Allow Incoming Apache Traffic.*
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache17.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 8: Click <code>**Finish**</code>.
+- Step 8: Click *Finish*.
 - Step 9: Test the server for other devices by connecting to your server’s IP address from a device other than the one you are using to connect to the server right now. Open a web browser on that device and enter the IP address of your server like:
 
  ```
  http://SERVER-PUBLIC-IP
  ```
 
-You will be able to see the test web page that shows the message **It works!**.
+You will be able to see the test web page that shows the message *It works!*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache18.png" alt="" style=" width:500px ; height:100px ">
 
@@ -181,21 +185,39 @@ If the test page works successfully and shows the message, it means that you hav
 
 These were the simple steps by which you can install Apache Web Server on Windows Server 2022.
 
-### <b>f. Mod_fcgi </b>
+<a id="2PHP-8.1-for-Apache-Web-Server" 
+name="2PHP-8.1-for-Apache-Web-Server"></a>
+
+### <strong>2. PHP 8.1 for Apache Web Server</strong>
+
+
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 NTS x64 zip file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/php819.png" alt="" style=" width:500px ; height:150px ">
+
+- Extract the zip file & rename it to *php*. Now move the renamed *php* folder to *C drive*.
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache20.png" alt="" style=" width:500px ; height:150px ">
+
+
+
+### <strong>a. Mod_fcgi</strong>
+
 
 -   <a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">Click Here</a> to download Mod_fcgi zip file. 
 
- <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-11.png" alt="" style=" width:500px ; height:100px ">
+ <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache21.png" alt="" style=" width:500px ; height:100px ">
 
- - Step 1: Unzip the <code>**mod_Fcgi file**</code>, copy the <code>**mod_fcgid.so**</code> file to the <code>**C:\Apache24\modules**</code> folder.
+ - Step 1: Unzip the *mod_Fcgi file*, copy the *mod_fcgid.so* file to the *C:\Apache24\modules* folder.
 
   <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache22.png" alt="" style=" width:500px ; height:100px ">
 
- - Step 2:Edit the <code>**C:\Apache24\conf\httpd.conf**</code> file using a text editor in Administrator mode, so that any changes you make are saved.
+ - Step 2:Edit the *httpd.conf* file located in the *C:\Apache24\conf* \ folder using a text editor in Administrator mode, so that any changes you make are saved.
 
- - Add the content below after the <code>**#LoadModule xml2enc_module modules/mod_xml2enc.so**</code> line:
+ - Add the content below after the *#LoadModule xml2enc_module modules/mod_xml2enc.so line:*
 
- ```cpp
+ ```
 LoadModule fcgid_module modules/mod_fcgid.so
 FcgidInitialEnv PHPRC "/php"
 FcgidInitialEnv PHP_FCGI_MAX_REQUESTS "100000"
@@ -217,13 +239,13 @@ FcgidWrapper "/php/php-cgi.exe" .php
 
   <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache24a.png" alt="" style=" width:500px ; height:170px ">
 
-- Step 3: Search for <code>**#ServerName www.example.com:80**</code> and change this line to below:
+- Step 3: Search for *#ServerName www.example.com:80* and change this line to below:
 
 ```
 ServerName YOURDOMAIN:80
 ```
 
-- Step 4: Change the contents of the <code>**DirectoryIndex**</code> directive by adding the following contents to the directive line:
+- Step 4: Change the contents of the *DirectoryIndex* directive by adding the following contents to the directive line:
 
 ```
 index.php index.phtml
@@ -232,94 +254,69 @@ After adding this, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache25.png" alt="" style=" width:500px ; height:100px ">
 
-- Step 5: Set the <code>**${SRVROOT}**</code> variable with your Apache folder path:
-Search for the <code>**Define SRVROOT**</code> and edit it as follows:
+- Step 5: Set the *${SRVROOT}* variable with your Apache folder path:
+Search for the *Define SRVROOT* and edit it as follows:
 
 ```
 Define SRVROOT "c:/Apache24"
 ```
-- Step 6: Change the contents of the <code>**<Directory "${SRVROOT}/htdocs">**</code> directive.
+
+- Step 6: Add the Options ExecCGI command below the Require all granted line in the *<Directory "${SRVROOT}/htdocs">* directive.
 
 ```
-Options Indexes FollowSymLinks ExecCGI
-AllowOverride All
+Require all granted
+	Options ExecCGI
+</Directory>
 ```
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px">
 
-- Step 7: Search for the <code>**IfModule mime_module**</code> directive and add the below content above this directive:
+- Step 7: Search for the *< IfModule mime_module >* directive and add the below content above this directive:
 
 ```
 <Directory "/php">
-    AllowOverride None
-    Options None
-    Require all granted
+AllowOverride None
+Options None
+Require all granted
 </Directory>
 ```
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-13.png" alt="" style=" width:500px ; height:170px ">
 
-### <b>g. Enable Necessary Modules </b>
-
-- Look for the following line in <code>**C:\Apache24\conf\httpd.conf**</code>, Uncomment it by removing # at its beginning.
-
-```
-LoadModule rewrite_module modules/mod_rewrite.so
-LoadModule authz_host_module modules/mod_authz_host.so
-LoadModule access_compat_module modules/mod_access_compat.so
-```
+### <strong>b. Configure the PHP 8.1</strong>
 
 
-<a id="2PHP-8.1-for-Apache-Web-Server" 
-name="2PHP-8.1-for-Apache-Web-Server"></a>
+With Apache active and functional, you now need to define and configure the *php.ini* file so those database extensions and libraries are available for use by Faveo.
 
-
-### <b>2. PHP 8.1 for Apache Web Server</b>
-
-
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download <code>php-8.1.22-nts-Win32-vs16-x64.zip</code> file.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
-
-- Extract the zip file & rename it to <code>**php**</code>. Now move the renamed <code>**php**</code> folder to <code>**C drive**</code>.
-
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache20.png" alt="" style=" width:500px ; height:150px ">
-
-### <b>b. Configure the PHP 8.1</b>
-
-With Apache active and functional, you now need to define and configure the **php.ini** file so those database extensions and libraries are available for use by Faveo.
-
-- Step 1: Access the PHP folder in <code>**C:/** </code> and rename the <code>**php.ini-development**</code> file to <code>**php.ini**</code>.
+- Step 1: Access the PHP folder in *C:* \ and rename the *php.ini-development* file to *php.ini*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache28.png" alt="" style=" width:500px ; height:200px ">
 
-- Step 2: Access the <code>**php.ini**</code> file with a text editor using Administrative privileges and search for the <code>**;extension_dir = "ext"**</code> directive.
+- Step 2: Access the *php.ini* file with a text editor using Administrative privileges and search for the *;extension_dir = "ext"* directive.
 
-Assign the value <code>**“C:\php\ext”**</code> to this directive as shown below:
+Assign the value *“C:\php\ext”* to this directive as shown below:
 
 ```
 extension_dir = "C:\php\ext"
 ```
-After assigning the value <code>**C:\php\ext**</code>, it will look like below:
+After assigning the value *C:\php\ext*, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache29.png" alt="" style=" width:300px ; height:100px ">
 
-- Step 3: Enable the extensions listed below, by uncommenting them (Remove the semicolon <code>**;**</code> at beginning of line).
+- Step 3: Enable the extensions listed below, by uncommenting them (Remove the semicolon **;** at beginning of line).
 
 Default Extensions
 
 ```
 extension=bz2
-extension=ldap
 extension=curl
-extension=fileinfo
-extension=gd
+extension=gd2
 extension=gettext
 extension=imap
+extension=ldap
+extension=fileinfo
 extension=mbstring
-extension=exif
-extension=mysqli
 extension=openssl
+extension=exif
+extension=xslp
 extension=pdo_mysql
+extension=mysqli
 extension=soap
 extension=sockets
 extension=sodium
@@ -340,7 +337,7 @@ short_open_tag = On
 ```
 
 - Step 5: Set up PHP TimeZone according to your region. You must use the value available in <a href="https://www.php.net/manual/en/timezones.php" target="_blank" rel="noopener">PHP Documentation</a> 
-- Search for the **date.timezone** line, uncomment it and edit it according to the selected TimeZone:
+- Search for the *date.timezone* line, uncomment it and edit it according to the selected TimeZone:
 
 
 ```
@@ -348,7 +345,7 @@ date.timezone = Asia/Kolkata
 ```
 
 - Step 6: Set the folder where temporary files will be stored. 
-- Search for the **;session.save_path line**, uncomment it, and enter the path to your temporary folder.
+- Search for the *;session.save_path line*, uncomment it, and enter the path to your temporary folder.
 
 
 ```
@@ -358,59 +355,53 @@ After adding the path, it look look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache30.png" alt="" style=" width:300px ; height:100px ">
 
-- Step 7:  Save all changes made to the **php.ini file.**
+- Step 7:  Save all changes made to the *php.ini file.*
 
 - Step 8: Update the Environment Variable for PHP Binary.
 
-- Right click on This PC, go to <code>**Properties > Advanced System Settings >**</code> Environment Variables.
+- Right click on This PC, go to *Properties > Advanced System Settings >* Environment Variables.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
 
-- Now click on Path > Edit > New & add copied path <code>**C:\php** </code> here and click OK in all 3 tabs.
+- Now click on Path > Edit > New & add copied path C:\php\ here and click OK in all 3 tabs.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
 
-- Step 9:  Verify changes made through the <code>**info.php**</code> file. 
-- You need to create this file and place it in the <code>**C:\Apache24\htdocs**</code> directory with the following content:
+- Step 9:  Verify changes made through the *info.php* file. 
+- You need to create this file and place it in the *C:\Apache24\htdocs* directory with the following content:
 
 ```
 <?php
 phpinfo();
 ?>
 ```
-
-- Step 10: Restart <code>**Apache HTTP Server**</code> Service.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-14.png" alt="" style=" width:500px">
-
 - After this, check the generated page in your browser by going to the URL below:
 
 ```
 http://127.0.0.1/info.php
 ```
 
- <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-16.png" alt="" style=" width:500px ; height:100px ">
+ <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache31.png" alt="" style=" width:500px ; height:100px ">
 
- ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
+### <strong>c. Enable Necessary Modules</strong>
 
+- Look for the following line in httpd.conf, Uncomment it by removing # at its beginning.
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code>**cacaert.pem**</code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the <code>**cacert.pem**</code> file and copy it to <code>**C:\php**</code> path.
-- Edit the <code>**php.ini**</code>, Uncomment <code>**curl.cainfo**</code> and add the location of cacert.pem to it as below:
 ```
-curl.cainfo = "C:\php\cacert.pem"
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule authz_host_module modules/mod_authz_host.so
+LoadModule access_compat_module modules/mod_access_compat.so
 ```
-
 
 
 <a id="3Install-MariaDB-10.6/MySQL-8.0" 
 name="3Install-MariaDB-10.6/MySQL-8.0"></a>
 
-### <b>3. Install MariaDB 10.6/MySQL 8.0 </b>
+### <strong>3. Install MariaDB 10.6/MySQL 8.0 </strong>
 
 
 - An open-source relational database management system(RDBMS) can be chosen among the MariaDB and MySQL.
@@ -421,18 +412,18 @@ name="3Install-MariaDB-10.6/MySQL-8.0"></a>
 <a id="4Install-Ioncube-Loader" 
 name="4Install-Ioncube-Loader"></a>
 
-### <b>4. Install Ioncube Loader</b>
+### <strong>4. Install Ioncube Loader</strong>
 
 
 -   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
-- Step 2: Copy the <code>**ioncube_loader_win_8.1.dll**</code> file and paste it into the PHP extensions directory <code>**C:\php\ext**</code>.
+- Step 2: Copy the *ioncube_loader_win_8.1.dll* file and paste it into the PHP extensions directory *C:\php\ext*.
 
-- Step 3: Copy the <code>**“loader-wizard.php”**</code> from the extracted Ioncube folder and paste it into the <code>**C:\Apache24\htdocs**</code>.
+- Step 3: Copy the *“loader-wizard.php”* from the extracted Ioncube folder and paste it into the *C:\Apache24\htdocs*.
 
-- Step 4: Edit the <code>**php.ini**</code> file and below the last line enter the path to the extension within the <code>**zend_extension**</code> parameter:
+- Step 4: Edit the *php.ini* file and below the last line enter the path to the extension within the *zend_extension* parameter:
 
 ```
 zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
@@ -449,11 +440,20 @@ http://127.0.0.1\loader-wizard.php
 <a id="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File" 
 name="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 
+### <strong>5. Download & Enable cacert.pem File in PHP Configuration File</strong>
 
-<a id="5Install-wkhtmltopdf" 
-name="5Install-wkhtmltopdf"></a>
 
-### <b>5. Install wkhtmltopdf</b>
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the *cacert.pem* file and copy it to *C:\php* path.
+- Edit the *php.ini*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+```
+curl.cainfo = "C:\php\cacert.pem"
+```
+
+<a id="6Install-wkhtmltopdf" 
+name="6Install-wkhtmltopdf"></a>
+
+### <strong>6. Install wkhtmltopdf</strong>
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. It is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
@@ -461,30 +461,30 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
 
-- Run the downloaded <code>**wkhtmltopdf-0.12.6-1.exe installer**</code>.
+- Run the downloaded *wkhtmltopdf-0.12.6-1.exe installer*.
 
-- Click <code>**I Agree**</code> on the license agreement screen.
+- Click *I Agree* on the license agreement screen.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
 
-- Specify the installation destination folder or leave it as default location and click <code>**Install**</code>
+- Specify the installation destination folder or leave it as default location and click *Install*
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
-- When the installation is complete, click the <code>**Close**</code> button.
+- When the installation is complete, click the *Close* button.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
-- Now copy <code>**wkhtmltox.dll**</code> located at <code>**C:\Program Files\wkhtmltopdf\bin**</code> and paste it in <code>**C:\php\ext**</code>
+- Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php\ext
 
-- Update the Environment variable for wkhtmltopdf. 
+- Update the Environment variable for wkhtmltopdf. *Refer to section **(2.b Step 8)** for adding Environment Variable*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
-<a id="6Upload-Faveo" 
-name="6Upload-Faveo"></a>
+<a id="7Upload-Faveo" 
+name="7Upload-Faveo"></a>
 
-### <b>6. Upload Faveo</b>
+### <strong>7. Upload Faveo</strong>
 
 
 - Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
@@ -495,20 +495,20 @@ name="6Upload-Faveo"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33.png" alt="" style=" width:500px ; height:250px ">
   
-- We need to give full write permission to <code>**Users**</code> for the <code>**C:\Apache24\htdocs**</code> folder.
+- We need to give full write permission to *Users* for the *C:\Apache24\htdocs*folder.
   
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
 
-<a id="7Setting-up-the-Database" 
-name="7Setting-up-the-Database"></a>
+<a id="8Setting-up-the-Database" 
+name="8Setting-up-the-Database"></a>
 
-### <b>7. Setting up the Database</b>
+### <strong>8. Setting up the Database</strong>
 
 
-Open MariaDB 10.6 or Mysql 8.0 Command Line Client and run the below command.
+Open MariaDB 10.6 Command Line Client and run the below command.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-15.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache42.png" alt="" style=" width:500px ; height:300px ">
 
 - Create a database called ‘faveo’.
 
@@ -539,21 +539,19 @@ exit
 <a id="9Configure-Task-Scheduler" 
 name="9Configure-Task-Scheduler"></a>
 
-### <b>8. Set Cron & Configure Queue Driver</b>
+### <strong>9. Configure Task Scheduler</strong>
 
-### <b>a. Cron in Task Scheduler</b>
 
-- To open Task scheduler press **Win+R** and type <code>**taskschd.msc**</code>.
-- On the Right pane of the Task scheduler select <code>**Create Basic Task**</code> enter a <code>**Name**</code> for the task and click <code>**Next**</code>.
-
+- To open Task scheduler press *Win+R* and type *taskschd.msc*.
+- On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
 
-- Under <code>**Task Trigger**</code>, section select <code>**Daily**</code> and click <code>**Next**</code> and leave the default values in **Daily** section tick the <code>**Synchronize across time zones**</code> and proceed <code>**Next**</code>.
+- Under *Task Trigger*, section select *Daily* and click *Next* and leave the default values in *Daily* section tick the *Synchronize across time zones* and proceed *Next*.
 
-- Now under the <code>**Action**</code> section select <code>**Start a program**</code> and click <code>**Next**</code>. 
+- Now under the *Action* section select *Start a program* and click *Next*. 
 
 
-- In <code>**Start a program**</code> copy the below value into the <code>**program/script field**</code>.
+- In *Start a program* copy the below value into the *program/script field*.
 ```
 C:\Windows\System32\cmd.exe
 ```
@@ -565,17 +563,17 @@ C:\Windows\System32\cmd.exe
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
 
-- Finally under the <code>**Finish**</code> section select the <code>**checkbox**</code> to open the properties window after finish and click the <code>**Finish**</code> button.
+- Finally under the *Finish* section select the *checkbox* to open the properties window after finish and click the *Finish* button.
 
-- In the properties window, select the <code>**Triggers**</code> tab, click on <code>**Edit**</code> and select the checkbox for <code>**Repeat task every**</code> set values to run every <code>**5 minutes**</code>, for a duration of <code>**indefinitely**</code> and click on <code>**OK**</code>.
+- In the properties window, select the *Triggers* tab, click on *Edit* and select the checkbox for *Repeat task every* set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
 
-- Similarly add two more triggers <code>**At log on**</code> & <code>**At startup up**</code>, set values to run every <code>**5 minutes**</code>, for a duration of <code>**indefinitely**</code> and click on <code>**OK**</code>.
+- Similarly add two more triggers *At log on* & *At startup up*, set values to run every *5 minutes*, for a duration of *indefinitely* and click on *OK*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
-### <b>b. Queue Drivers</b>
+**Queue Drivers**
 
 A queue driver is the handler for managing how to run a queued job, identifying whether the jobs succeeded or failed, and trying the job again if configured to do so. There are different queue lists available to be used by the system:
 
@@ -596,12 +594,12 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 - [Redis Installation documentation](/docs/installation/providers/enterprise/redis-windows)
 
-**Note:** Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
+*Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="9SSL-Installation" 
-name="9SSL-Installation"></a>
+<a id="10SSL-Installation" 
+name="10SSL-Installation"></a>
 
-### <b>9. SSL Installation</b>
+### <strong>10. SSL Installation</strong>
 
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
@@ -613,10 +611,10 @@ Apache only supports Paid SSL or the Self Signed SSL, Let’s Encrypt is not sup
 
 
 
-<a id="10Install-Faveo" 
-name="10Install-Faveo"></a>
+<a id="11Install-Faveo" 
+name="11Install-Faveo"></a>
 
-### <b>10. Install Faveo</b>
+### <strong>11. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
@@ -624,7 +622,7 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 <a id="12-faveo-backup" name="12-faveo-backup"></a>
 
-### <b>11. Faveo Backup</b>
+### <strong>12. Faveo Backup</strong>
 
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
