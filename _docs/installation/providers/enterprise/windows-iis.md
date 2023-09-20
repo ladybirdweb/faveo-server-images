@@ -42,35 +42,35 @@ Before we follow the installation steps <a href="https://notepad-plus-plus.org/d
 
 ### <strong>1. Install IIS Server</strong>
 
-To install IIS Server open Server Manager and locate the <b><code>Manage</code></b> button on the top right corner click on it and select  <b><code>Add Roles and Features</code></b>.
+To install IIS Server open Server Manager and locate the <code><b>Manage</b></code> button on the top right corner click on it and select  <code><b>Add Roles and Features</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/servermanager.png" alt="" style=" width:550px ; height:120px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/addroles.png" alt="" style=" width:550px ; height:120px ">
 
-- A wizard will open displaying the overview, click on <b><code>Next</code></b>, and under <b><code>Installation Type</code></b> select <b><code>Role-based and Feature-based installation</code></b> and select <b><code>Next</code></b>. 
+- A wizard will open displaying the overview, click on <code><b>Next</b></code>, and under <code><b>Installation Type</b></code> select <code><b>Role-based and Feature-based installation</b></code> and select <code><b>Next</b></code>. 
 
-- Leave the default in <b><code>Server Selection</code></b> and click <b><code>Next</code></b>. 
+- Leave the default in <code><b>Server Selection</b></code> and click <code><b>Next</b></code>. 
 
-- Now under <b><code>Server Roles</code></b> search and enable the checkbox for <b><code>Web Server IIS</code></b> click on the <b><code>Add Features</code></b> window and proceed by clicking <b><code>Next</code></b>.
+- Now under <code><b>Server Roles</b></code> search and enable the checkbox for <code><b>Web Server IIS</b></code> click on the <code><b>Add Features</b></code> window and proceed by clicking <code><b>Next</b></code>.
 
 
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/Server-roles.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
-- In the <b><code>Features</code></b> section locate the <b><code>.NET Framework 3.5 and .NET Framework 4.7</code></b> select the packages as shown in the below image:
+- In the <code><b>Features</b></code> section locate the <code><b>.NET Framework 3.5 and .NET Framework 4.7</b></code> select the packages as shown in the below image:
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/netframeworl.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
-- In the <b><code>Role Services</code></b> section locate the <b><code>Application Development</code></b> select the package <b><code>CGI</code></b> and click <b><code>Next</code></b>.
+- In the <code><b>Role Services</b></code> section locate the <code><b>Application Development</b></code> select the package <code><b>CGI</b></code> and click <code><b>Next</b></code>.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/cgi.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
 
 
-- Click <b><code>Next</code></b> thrice to confirm the settings and finally click on <b><code>Install</code></b>. It will get the IIS installed on the server. To verify the installation, you can type the following URL in the browser
+- Click <code><b>Next</b></code> thrice to confirm the settings and finally click on <code><b>Install</b></code>. It will get the IIS installed on the server. To verify the installation, you can type the following URL in the browser
 
 ```
 http://localhost/
@@ -81,15 +81,15 @@ name="2Install-PHP-8.1"></a>
 
 ### <strong>2. Install PHP 8.1</strong>
 
--   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download php 8.1.9 NTS 64bit file. Extract the zip file & "rename it to <b><code>php8.1</code></b>. Now move the renamed <b><code>php8.1</code></b> folder to <b><code>C:\php8.1</code></b>.
+-   <a href="https://windows.php.net/downloads/releases/archives/" target="_blank" rel="noopener">Click Here</a> to download php 8.1.9 NTS 64bit file. Extract the zip file & "rename it to <code><b>php8.1</b></code>. Now move the renamed <code><b>php8.1</b></code> folder to <code><b>C:\php8.1</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/php819.png" alt="" style=" width:400px ; height:150px ">
 
--   Open <b><code>php8.1</code></b> folder, find <b><code>php.ini-development</code></b> & rename it to <b><code>php.ini</code></b> to make it php configuration file.
+-   Open <code><b>php8.1</b></code> folder, find <code><b>php.ini-development</b></code> & rename it to <code><b>php.ini</b></code> to make it php configuration file.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/phpconfig.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
--   Open <b><code>php.ini</code></b> using Notepad++, add the below lines at the end of this file & save the file:
+-   Open <code><b>php.ini</b></code> using Notepad++, add the below lines at the end of this file & save the file:
 
 Required configuration changes for Faveo Helpdesk.
 ```
@@ -139,9 +139,9 @@ extension=pdo_mysql
 
 ### <strong>2.b. Enable cacert.pem File in PHP Configuration File</strong>
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <b><code>cacaert.pem</code></b> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the <b><code>cacert.pem</code></b> file and copy it to <b><code>C:\php8.1</code></b> path.
-- Edit the <b><code>php.ini</code></b> located in <b><code>C:\php8.1</code></b>, Uncomment <b><code>curl.cainfo</code></b> and add the location of cacert.pem to it as below:
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacaert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\php8.1</b></code> path.
+- Edit the <code><b>php.ini</b></code> located in <code><b>C:\php8.1</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of cacert.pem to it as below:
 
 ```
 curl.cainfo = "C:\php8.1\cacert.pem"
@@ -154,20 +154,20 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 ### <strong>3. Create FastCGI Handler Mapping</strong>
 
 
-- Open Server Manager, locate <b><code>Tools</code></b> on the top right corner  of the Dashboard, Open <b><code>Internet Information Services (IIS) Manager</code></b>.
+- Open Server Manager, locate <code><b>Tools</b></code> on the top right corner  of the Dashboard, Open <code><b>Internet Information Services (IIS) Manager</b></code>.
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/iis.png?raw=true" alt="" style=" width:550px ; height:150px ">
 
 
-- Now in the Left Panel of the IIS Manager select the server then you will find the <b><code>Handler Mappings</code></b> it will populate the available options to configure.
+- Now in the Left Panel of the IIS Manager select the server then you will find the <code><b>Handler Mappings</b></code> it will populate the available options to configure.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/handlermap.png" alt="" style=" width:400px ; height:250px ">
 
-- Open <b><code>Handler Mappings</code></b>, Click on <b><code>Add Module Mapping</code></b> in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields.
+- Open <code><b>Handler Mappings</b></code>, Click on <code><b>Add Module Mapping</b></code> in the Right Panel, Add Module Mapping window will appear. Add the below values in the respective fields.
 
 
 - RequestPath
 ```
-<b><code>.php
+<code><b>.php
 ```
 - Module
 ```
@@ -186,20 +186,20 @@ FastCgiModule
 
 By default, IIS configures PHP only to accept GET, POST, and HEAD request types. Since Faveo makes use of other requests types (such as DELETE and PUT), you must manually change the PHP handler to allow them.
 
-- Click on the <b><code>Request Restrictions</code></b> button, then switch to the <b><code>Verbs</code></b> tab. Switch the radio button to <b><code>All Verbs</code></b>, then click <b><code>OK</code></b> to close the window, then <b><code>OK</code></b> again to close the other.
+- Click on the <code><b>Request Restrictions</b></code> button, then switch to the <code><b>Verbs</b></code> tab. Switch the radio button to <code><b>All Verbs</b></code>, then click <code><b>OK</b></code> to close the window, then <code><b>OK</b></code> again to close the other.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Verbs2.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-**Note:** You may be prompted with an alert to <b><code>fix</code></b> the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the <b><code>Executable</code></b> box and it will save successfully.
+**Note:** You may be prompted with an alert to <code><b>fix</b></code> the path to the PHP executable. If so, just put double-quotation marks around the path that already exists in the <code><b>Executable</b></code> box and it will save successfully.
 
-- Open notepad and copy the below lines and save the file under the path <b><code>C:\inetpub\wwwroot</code></b> as <b><code>index.php</code></b>. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
+- Open notepad and copy the below lines and save the file under the path <code><b>C:\inetpub\wwwroot</b></code> as <code><b>index.php</b></code>. Make sure while saving you select all file types otherwise you will end up having the file as index.php.txt
 ```
 <?php
 phpinfo();
 ?>
 ```
 
-- Now go back to the main server configuration and select <b><code>Default Document</code></b>. Open <b><code>Default Document</code></b>, Click on <b><code>Add</code></b> from the Right Panel, a new window will appear. Add the value <b><code>index.php</code></b> and click <b><code>OK</code></b>.
+- Now go back to the main server configuration and select <code><b>Default Document</b></code>. Open <code><b>Default Document</b></code>, Click on <code><b>Add</b></code> from the Right Panel, a new window will appear. Add the value <code><b>index.php</b></code> and click <code><b>OK</b></code>.
 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/defaultdoc.png" alt="" style=" width:400px ; height:250px ">
@@ -219,11 +219,11 @@ phpinfo();
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
 
 - Execute the installer to perform the required installation.
-- Accept the License Agreement terms and click <b><code>Install</code></b>.
+- Accept the License Agreement terms and click <code><b>Install</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4a.png" alt="" style=" width:500px ; height:250px ">
 
-- Click <b><code>Close</code></b> to finish the installation.
+- Click <code><b>Close</b></code> to finish the installation.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
 
@@ -249,7 +249,7 @@ name="5Install-Ioncube-Loader"></a>
 
 -   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
-- Copy the <b><code>ioncube_loader_win_8.1.dll</code></b> file from extracted Ioncube folder and paste it in the PHP extension directory <b><code>C:\php8.1\ext.</code></b>
+- Copy the <code><b>ioncube_loader_win_8.1.dll</b></code> file from extracted Ioncube folder and paste it in the PHP extension directory <code><b>C:\php8.1\ext.</b></code>
 
 - Add the below line in your php.ini file at the starting to enable Ioncube.
 
@@ -268,23 +268,23 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
 
-- Run the downloaded <b><code>wkhtmltopdf-0.12.6-1.exe installer</code></b>.
+- Run the downloaded <code><b>wkhtmltopdf-0.12.6-1.exe installer</b></code>.
 
-- Click <b><code>I Agree</code></b> on the license agreement screen.
+- Click <code><b>I Agree</b></code> on the license agreement screen.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
 
-- Specify the installation destination folder or leave it as default location and click <b><code>Install</code></b>
+- Specify the installation destination folder or leave it as default location and click <code><b>Install</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
-- When installation is complete, click the <b><code>Close</code></b> button.
+- When installation is complete, click the <code><b>Close</b></code> button.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
 - Now copy wkhtmltox.dll located at C:\Program Files\wkhtmltopdf\bin and paste it in C:\php8.1\ext
 
-- Update the Environmet variable for wkhtmltopdf. <b><code>Refer to section (2.a) for adding Environment Variable</code></b>
+- Update the Environmet variable for wkhtmltopdf. <code><b>Refer to section (2.a) for adding Environment Variable</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
@@ -294,12 +294,12 @@ name="7Upload-Faveo"></a>
 
 ### <strong>7. Upload Faveo</strong>
 
-- Download the Faveo Helpdesk from <b><code>https://billing.faveohelpdesk.com</code></b> and extract the contents inside IIS Root Directory.
+- Download the Faveo Helpdesk from <code><b>https://billing.faveohelpdesk.com</b></code> and extract the contents inside IIS Root Directory.
 ```
 C:\inetpub\wwwroot\
 ```
 
-- Right click on <b><code>wwwroot</code></b> directory and in the security tab click on edit and add user <b><code>IUSR</code></b>. Give full permissions to <b><code>IIS_IUSRS</code></b>, <b><code>IUSR</code></b> and <b><code>Users</code></b> for the wwwroot folder.
+- Right click on <code><b>wwwroot</b></code> directory and in the security tab click on edit and add user <code><b>IUSR</b></code>. Give full permissions to <code><b>IIS_IUSRS</b></code>, <code><b>IUSR</b></code> and <code><b>Users</b></code> for the wwwroot folder.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Permission.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
@@ -310,11 +310,11 @@ name="8Configure-Faveo-in-IIS-Manager"></a>
 
 ### <strong>8. Configure Faveo in IIS Manager</strong>
 
-- Open IIS Manager and in the left pane, Explore till you find <b><code>Default Web Site</code></b>, select it.
-- Then in the right panel, you will see the <b><code>Basic Settings</code></b> option click on it, a new window will open as  shown below:
+- Open IIS Manager and in the left pane, Explore till you find <code><b>Default Web Site</b></code>, select it.
+- Then in the right panel, you will see the <code><b>Basic Settings</b></code> option click on it, a new window will open as  shown below:
 
 
-- Set the <b><code>Physical Path</code></b> value to: 
+- Set the <code><b>Physical Path</b></code> value to: 
 
 ```
 "%SystemDrive%\inetpub\wwwroot\public"
@@ -328,7 +328,7 @@ name="9Configure-web.config-file-for-IIS"></a>
 
 ### <strong>9. Configure web.config file for IIS</strong>
 
-- Open notepad and copy the below lines and save the file under the path <b><code>C:\inetpub\wwwroot\public</code></b> as <b><code>web.config</code></b>. Make sure while saving you select all file types.
+- Open notepad and copy the below lines and save the file under the path <code><b>C:\inetpub\wwwroot\public</b></code> as <code><b>web.config</b></code>. Make sure while saving you select all file types.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -366,7 +366,7 @@ name="9Configure-web.config-file-for-IIS"></a>
 </configuration>
 ```
 
--   <a href="https://www.iis.net/downloads/microsoft/url-rewrite" target="_blank" rel="noopener">Click Here</a> to download URL Rewrite. Click on <b><code>Install this Extension</code></b> execute the installer and click <b><code>Install</code></b>.
+-   <a href="https://www.iis.net/downloads/microsoft/url-rewrite" target="_blank" rel="noopener">Click Here</a> to download URL Rewrite. Click on <code><b>Install this Extension</b></code> execute the installer and click <code><b>Install</b></code>.
 - URL Rewrite enables Web administrators to create powerful rules to implement URLs that are easier for users to remember and easier for search engines to find.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/URL-Rewrite.png" alt="" style=" width:400px ; height:200px ">
@@ -384,7 +384,7 @@ Open MariaDB 10.6 Command Line Client from the start menu and enter the password
 CREATE DATABASE faveo;
 ```
 
-- Create a user called ‘faveo’ and change the <b><code>strongpassword</code></b> with the password of your choice.
+- Create a user called ‘faveo’ and change the <code><b>strongpassword</b></code> with the password of your choice.
 
 ```sql
 CREATE USER 'faveo'@'localhost' IDENTIFIED BY 'strongpassword';
@@ -411,9 +411,9 @@ name="11Setting-up-Bindings"></a>
 
 - To Open the Faveo on your domain, you must set the binding.
 
-- Open IIS Manager and in the left panel, Explore till you find <b><code>Default Web Site</code></b>, select it.
+- Open IIS Manager and in the left panel, Explore till you find <code><b>Default Web Site</b></code>, select it.
 
-- Then in the right panel, you will see the <b><code>Bindings</code></b> option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
+- Then in the right panel, you will see the <code><b>Bindings</b></code> option click on it, a new window will open select HTTP and edit the hostname to your concerned Domain as  shown below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/bindingnew.png" alt="" style=" width:400px ; height:250px ">
 
@@ -424,7 +424,7 @@ name="11Setting-up-Bindings"></a>
 
 To test the successful configuration perform some delete operations in Faveo if the Delete operation fails then the above steps are not sufficient at this point you may need to remove WebDav:
 
-- Go to <b><code>Control Panel > Uninstall Program > Turn Windows features on or off > IIS > World Wide Web Services > Common HTTP feature > WebDAV Publishing</code></b>.
+- Go to <code><b>Control Panel > Uninstall Program > Turn Windows features on or off > IIS > World Wide Web Services > Common HTTP feature > WebDAV Publishing</b></code>.
 
 
 <a id="12Configure-Task-Scheduler" 
@@ -432,17 +432,17 @@ name="12Configure-Task-Scheduler"></a>
 
 ### <strong>12. Set Cron & Configure Queue Driver</strong>
 
-- To open Task scheduler press <b><code>Win+R</code></b> and type <b><code>taskschd.msc</code></b>.
-- On the Right pane of the Task scheduler select <b><code>Create Basic Task</code></b> enter a <b><code>Name</code></b> for the task and click <b><code>Next</code></b>.
+- To open Task scheduler press <code><b>Win+R</b></code> and type <code><b>taskschd.msc</b></code>.
+- On the Right pane of the Task scheduler select <code><b>Create Basic Task</b></code> enter a <code><b>Name</b></code> for the task and click <code><b>Next</b></code>.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskScheduler.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-- Under <b><code>Task Trigger</code></b>, section select <b><code>Daily</code></b> and click <b><code>Next</code></b> and leave the default values in <b><code>Daily</code></b> section tick the <b><code>Synchronize across time zones</code></b> and proceed <b><code>Next</code></b>.
+- Under <code><b>Task Trigger</b></code>, section select <code><b>Daily</b></code> and click <code><b>Next</b></code> and leave the default values in <code><b>Daily</b></code> section tick the <code><b>Synchronize across time zones</b></code> and proceed <code><b>Next</b></code>.
 
-- Now under the <b><code>Action</code></b> section select <b><code>Start a program</code></b> and click <b><code>Next</code></b>. 
+- Now under the <code><b>Action</b></code> section select <code><b>Start a program</b></code> and click <code><b>Next</b></code>. 
 
 
-- In <b><code>Start a program</code></b> copy the below value into the <b><code>program/script field</code></b>.
+- In <code><b>Start a program</b></code> copy the below value into the <code><b>program/script field</b></code>.
 ```
 C:\Windows\System32\cmd.exe
 ```
@@ -455,13 +455,13 @@ C:\Windows\System32\cmd.exe
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/Taskschd.gif?raw=true" alt="" style=" width:400px ; height:250px ">
 
-- Finally under the <b><code>Finish</code></b> section select the <b><code>checkbox</code></b> to open the properties window after finish and click the <b><code>Finish</code></b> button.
+- Finally under the <code><b>Finish</b></code> section select the <code><b>checkbox</b></code> to open the properties window after finish and click the <code><b>Finish</b></code> button.
 
-- In the properties window, select the <b><code>Triggers</code></b> tab, click on <b><code>Edit</code></b> and select the checkbox for <b><code>Repeat task every</code></b> set values to run every <b><code>5 minutes</code></b>, for a duration of <b><code>indefinitely</code></b> and click on <b><code>OK</code></b>.
+- In the properties window, select the <code><b>Triggers</b></code> tab, click on <code><b>Edit</b></code> and select the checkbox for <code><b>Repeat task every</b></code> set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/TaskTrigger.png?raw=true" alt="" style=" width:400px ; height:250px ">
 
-- Similarly add two more triggers <b><code>At log on</code></b> & <b><code>At startup up</code></b>, set values to run every <b><code>5 minutes</code></b>, for a duration of <b><code>indefinitely</code></b> and click on <b><code>OK</code></b>.
+- Similarly add two more triggers <code><b>At log on</b></code> & <code><b>At startup up</b></code>, set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
