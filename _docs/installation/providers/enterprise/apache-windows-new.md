@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/apache-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-09-08
+last_modified_at: 2023-09-20
 last_modified_by: TamilSelvan_M
 toc: true
 title: Faveo Installation on Windows with Apache Web Server
