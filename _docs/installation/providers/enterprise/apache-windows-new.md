@@ -47,7 +47,7 @@ Before we follow the installation steps <a href="https://notepad-plus-plus.org/d
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-1.png" alt="" style=" width:500px ; height:250px ">
 
-- Extract its contents of the zip file to a suitable location on your Windows server to be configured. It is recommended to extract the contents in the <code>C drive</code> of the server.
+- Extract its contents of the zip file to a suitable location on your Windows server to be configured. It is recommended to extract the contents in the <code><b>C drive</b></code> of the server.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache3.png" alt="" style=" width:500px ; height:250px ">
 
@@ -57,17 +57,17 @@ In addition, you need to have the relevant C++ Redistributable for Visual Studio
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4.png" alt="" style=" width:500px ; height:250px ">
 
 - Execute the installer to perform the required installation.
-- Accept the License Agreement terms and click <code>**Install**</code>.
+- Accept the License Agreement terms and click <code><b>Install</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4a.png" alt="" style=" width:500px ; height:250px ">
 
-- Click <code>**Close**</code> to finish the installation.
+- Click <code><b>Close</b></code> to finish the installation.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
 
 ### <b>b. Run Apache</b>
 
-Open a Command Prompt in the <Code>**C:\Apache24\bin**</code> folder. (i.e., the location where you extracted Apache).
+Open a Command Prompt in the <Code><b>C:\Apache24\bin</b></code> folder. (i.e., the location where you extracted Apache).
 
 - For command prompt, enter the following command to start Apache:
 
@@ -82,7 +82,7 @@ Failing to allow Apache access through your server’s firewall will result in o
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache11.png" alt="" style=" width:500px ; height:300px ">
 
-You will come across a **could not bind to address** error if another service is already running on Apache’s default port (80).
+You will come across a <b>could not bind to address</b> error if another service is already running on Apache’s default port (80).
 
 Therefore, check that you don’t currently have an IIS (Internet Information Services) server already running. 
 
@@ -96,7 +96,7 @@ If so, you either need to stop/disable IIS in order to run Apache or change the 
 http://127.0.0.1
 ```
 
-- If Apache is running on your Windows Server 2022 you will see the message **It works!** in your browser.
+- If Apache is running on your Windows Server 2022 you will see the message <b>It works!</b> in your browser.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache12.png" alt="" style=" width:500px ; height:100px ">
 
@@ -108,7 +108,7 @@ To ensure that your Apache web server runs all the time, you need to install it 
 
 Here is how you can install Apache as a Windows Service in an easy and quick way:
 
-Step 1: Open an administrative command prompt window, navigate to the <code>**C:\Apache24\bin**</code> location and enter the following command:
+Step 1: Open an administrative command prompt window, navigate to the <code><b>C:\Apache24\bin</b></code> location and enter the following command:
 
 ```cpp
 httpd.exe -k install -n "Apache HTTP Server"
@@ -123,13 +123,13 @@ Testing httpd.conf....
 Errors reported here must be corrected before the service can be started.
 ```
 
-Step 2: Then, write the following command and press <code>**Enter**</code> In the Command Prompt window.
+Step 2: Then, write the following command and press <code><b>Enter</b></code> In the Command Prompt window.
 
 ```cpp
 services.msc
 ```
 
-Look for the service <code>**Apache HTTP Server.**</code> You should see <code>**Automatic**</code> towards the left of that line. If you don’t, change the Startup Type to **Automatic** by double-clicking the line.
+Look for the service <code><b>Apache HTTP Server.</b></code> You should see <code><b>Automatic</b></code> towards the left of that line. If you don’t, change the Startup Type to <b>Automatic</b> by double-clicking the line.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache13.png" alt="" style=" width:500px ; height:350px ">
 
@@ -142,38 +142,38 @@ http://127.0.0.1
 
 Configuring the Window's Firewall is the final step to install Apache web server on Windows Server 2022. It allows connections from the Internet to your new web server. Here are the steps that you need to follow:
 
-- Step 1: Go to Start Menu and enter a search query, <code>**firewall**</code>. Select the <code>**Windows Firewall With Advanced Security**</code> item.
+- Step 1: Go to Start Menu and enter a search query, <code><b>firewall</b></code>. Select the <code><b>Windows Firewall With Advanced Security</b></code> item.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache14.png" alt="" style=" width:500px ; height:110px ">
 
-- Step 2: Select the <code>**New Rule**</code> on the right-hand sidebar.
+- Step 2: Select the <code><b>New Rule</b></code> on the right-hand sidebar.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache15.png" alt="" style=" width:500px ; height:130px ">
 
-- Step 3: Click on <code>**Port,**</code> and then click <code>**Next**</code>. 
+- Step 3: Click on <code><b>Port,</b></code> and then click <code><b>Next</b></code>. 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 4: Then, select the radio button next to <code>**Specific remote ports:**</code> and enter the following into the input box: <code>**80, 443.**</code>
+- Step 4: Then, select the radio button next to <code><b>Specific remote ports:</b></code> and enter the following into the input box: <code><b>80, 443.</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache16b.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 5: Click <code>**Next**</code> and select the <code>**Allow the connection**</code> option.
+- Step 5: Click <code><b>Next</b></code> and select the <code><b>Allow the connection</b></code> option.
 
-- Step 6: Click <code>**Next**</code>. Make sure that all the boxes on the next page are selected and then click <code>**Next**</code> again.
+- Step 6: Click <code><b>Next</b></code>. Make sure that all the boxes on the next page are selected and then click <code><b>Next</b></code> again.
 
-- Step 7: In the <code>**Name**</code> section, enter a description which ensures that you will be able to remember the rule’s purpose later such as: <code>**Allow Incoming Apache Traffic.**</code>
+- Step 7: In the <code><b>Name</b></code> section, enter a description which ensures that you will be able to remember the rule’s purpose later such as: <code><b>Allow Incoming Apache Traffic.</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache17.png" alt="" style=" width:500px ; height:250px ">
 
-- Step 8: Click <code>**Finish**</code>.
+- Step 8: Click <code><b>Finish</b></code>.
 - Step 9: Test the server for other devices by connecting to your server’s IP address from a device other than the one you are using to connect to the server right now. Open a web browser on that device and enter the IP address of your server like:
 
  ```
  http://SERVER-PUBLIC-IP
  ```
 
-You will be able to see the test web page that shows the message **It works!**.
+You will be able to see the test web page that shows the message <b>It works!</b>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache18.png" alt="" style=" width:500px ; height:100px ">
 
@@ -187,13 +187,13 @@ These were the simple steps by which you can install Apache Web Server on Window
 
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-11.png" alt="" style=" width:500px ; height:100px ">
 
- - Step 1: Unzip the <code>**mod_Fcgi file**</code>, copy the <code>**mod_fcgid.so**</code> file to the <code>**C:\Apache24\modules**</code> folder.
+ - Step 1: Unzip the <code><b>mod_Fcgi file</b></code>, copy the <code><b>mod_fcgid.so</b></code> file to the <code><b>C:\Apache24\modules</b></code> folder.
 
   <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache22.png" alt="" style=" width:500px ; height:100px ">
 
- - Step 2:Edit the <code>**C:\Apache24\conf\httpd.conf**</code> file using a text editor in Administrator mode, so that any changes you make are saved.
+ - Step 2:Edit the <code><b>C:\Apache24\conf\httpd.conf</b></code> file using a text editor in Administrator mode, so that any changes you make are saved.
 
- - Add the content below after the <code>**#LoadModule xml2enc_module modules/mod_xml2enc.so**</code> line:
+ - Add the content below after the <code><b>#LoadModule xml2enc_module modules/mod_xml2enc.so</b></code> line:
 
  ```cpp
 LoadModule fcgid_module modules/mod_fcgid.so
@@ -217,13 +217,13 @@ FcgidWrapper "/php/php-cgi.exe" .php
 
   <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache24a.png" alt="" style=" width:500px ; height:170px ">
 
-- Step 3: Search for <code>**#ServerName www.example.com:80**</code> and change this line to below:
+- Step 3: Search for <code><b>#ServerName www.example.com:80</b></code> and change this line to below:
 
 ```
 ServerName YOURDOMAIN:80
 ```
 
-- Step 4: Change the contents of the <code>**DirectoryIndex**</code> directive by adding the following contents to the directive line:
+- Step 4: Change the contents of the <code><b>DirectoryIndex</b></code> directive by adding the following contents to the directive line:
 
 ```
 index.php index.phtml
@@ -232,13 +232,13 @@ After adding this, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache25.png" alt="" style=" width:500px ; height:100px ">
 
-- Step 5: Set the <code>**${SRVROOT}**</code> variable with your Apache folder path:
-Search for the <code>**Define SRVROOT**</code> and edit it as follows:
+- Step 5: Set the <code><b>${SRVROOT}</b></code> variable with your Apache folder path:
+Search for the <code><b>Define SRVROOT</b></code> and edit it as follows:
 
 ```
 Define SRVROOT "c:/Apache24"
 ```
-- Step 6: Change the contents of the <code>**<Directory "${SRVROOT}/htdocs">**</code> directive.
+- Step 6: Change the contents of the <code><b><Directory "${SRVROOT}/htdocs"></b></code> directive.
 
 ```
 Options Indexes FollowSymLinks ExecCGI
@@ -246,7 +246,7 @@ AllowOverride All
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-12.png" alt="" style=" width:500px">
 
-- Step 7: Search for the <code>**IfModule mime_module**</code> directive and add the below content above this directive:
+- Step 7: Search for the <code><b>IfModule mime_module</b></code> directive and add the below content above this directive:
 
 ```
 <Directory "/php">
@@ -259,7 +259,7 @@ AllowOverride All
 
 ### <b>g. Enable Necessary Modules </b>
 
-- Look for the following line in <code>**C:\Apache24\conf\httpd.conf**</code>, Uncomment it by removing # at its beginning.
+- Look for the following line in <code><b>C:\Apache24\conf\httpd.conf</b></code>, Uncomment it by removing # at its beginning.
 
 ```
 LoadModule rewrite_module modules/mod_rewrite.so
@@ -279,31 +279,31 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-10.png" alt="" style=" width:500px ; height:150px ">
 
-- Extract the zip file & rename it to <code>**php**</code>. Now move the renamed <code>**php**</code> folder to <code>**C drive**</code>.
+- Extract the zip file & rename it to <code><b>php</b></code>. Now move the renamed <code><b>php</b></code> folder to <code><b>C drive</b></code>.
 
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache20.png" alt="" style=" width:500px ; height:150px ">
 
 ### <b>b. Configure the PHP 8.1</b>
 
-With Apache active and functional, you now need to define and configure the **php.ini** file so those database extensions and libraries are available for use by Faveo.
+With Apache active and functional, you now need to define and configure the <b>php.ini</b> file so those database extensions and libraries are available for use by Faveo.
 
-- Step 1: Access the PHP folder in <code>**C:/** </code> and rename the <code>**php.ini-development**</code> file to <code>**php.ini**</code>.
+- Step 1: Access the PHP folder in <code><b>C:/</b> </code> and rename the <code><b>php.ini-development</b></code> file to <code><b>php.ini</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache28.png" alt="" style=" width:500px ; height:200px ">
 
-- Step 2: Access the <code>**php.ini**</code> file with a text editor using Administrative privileges and search for the <code>**;extension_dir = "ext"**</code> directive.
+- Step 2: Access the <code><b>php.ini</b></code> file with a text editor using Administrative privileges and search for the <code><b>;extension_dir = "ext"</b></code> directive.
 
-Assign the value <code>**“C:\php\ext”**</code> to this directive as shown below:
+Assign the value <code><b>“C:\php\ext”</b></code> to this directive as shown below:
 
 ```
 extension_dir = "C:\php\ext"
 ```
-After assigning the value <code>**C:\php\ext**</code>, it will look like below:
+After assigning the value <code><b>C:\php\ext</b></code>, it will look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache29.png" alt="" style=" width:300px ; height:100px ">
 
-- Step 3: Enable the extensions listed below, by uncommenting them (Remove the semicolon <code>**;**</code> at beginning of line).
+- Step 3: Enable the extensions listed below, by uncommenting them (Remove the semicolon <code><b>;</b></code> at beginning of line).
 
 Default Extensions
 
@@ -340,7 +340,7 @@ short_open_tag = On
 ```
 
 - Step 5: Set up PHP TimeZone according to your region. You must use the value available in <a href="https://www.php.net/manual/en/timezones.php" target="_blank" rel="noopener">PHP Documentation</a> 
-- Search for the **date.timezone** line, uncomment it and edit it according to the selected TimeZone:
+- Search for the <b>date.timezone</b> line, uncomment it and edit it according to the selected TimeZone:
 
 
 ```
@@ -348,7 +348,7 @@ date.timezone = Asia/Kolkata
 ```
 
 - Step 6: Set the folder where temporary files will be stored. 
-- Search for the **;session.save_path line**, uncomment it, and enter the path to your temporary folder.
+- Search for the <b>;session.save_path line</b>, uncomment it, and enter the path to your temporary folder.
 
 
 ```
@@ -358,24 +358,24 @@ After adding the path, it look look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache30.png" alt="" style=" width:300px ; height:100px ">
 
-- Step 7:  Save all changes made to the **php.ini file.**
+- Step 7:  Save all changes made to the <b>php.ini file.</b>
 
 - Step 8: Update the Environment Variable for PHP Binary.
 
-- Right click on This PC, go to <code>**Properties > Advanced System Settings >**</code> Environment Variables.
+- Right click on This PC, go to <code><b>Properties > Advanced System Settings ></b></code> Environment Variables.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
 
-- Now click on Path > Edit > New & add copied path <code>**C:\php** </code> here and click OK in all 3 tabs.
+- Now click on Path > Edit > New & add copied path <code><b>C:\php</b> </code> here and click OK in all 3 tabs.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
 
-- Step 9:  Verify changes made through the <code>**info.php**</code> file. 
-- You need to create this file and place it in the <code>**C:\Apache24\htdocs**</code> directory with the following content:
+- Step 9:  Verify changes made through the <code><b>info.php</b></code> file. 
+- You need to create this file and place it in the <code><b>C:\Apache24\htdocs</b></code> directory with the following content:
 
 ```
 <?php
@@ -383,7 +383,7 @@ phpinfo();
 ?>
 ```
 
-- Step 10: Restart <code>**Apache HTTP Server**</code> Service.
+- Step 10: Restart <code><b>Apache HTTP Server</b></code> Service.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-14.png" alt="" style=" width:500px">
 
@@ -398,9 +398,9 @@ http://127.0.0.1/info.php
  ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
 
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code>**cacaert.pem**</code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the <code>**cacert.pem**</code> file and copy it to <code>**C:\php**</code> path.
-- Edit the <code>**php.ini**</code>, Uncomment <code>**curl.cainfo**</code> and add the location of cacert.pem to it as below:
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacaert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\php</b></code> path.
+- Edit the <code><b>php.ini</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of cacert.pem to it as below:
 ```
 curl.cainfo = "C:\php\cacert.pem"
 ```
@@ -428,11 +428,11 @@ name="4Install-Ioncube-Loader"></a>
 
 - Step 1: Extract the IonCube Loader file downloaded.
 
-- Step 2: Copy the <code>**ioncube_loader_win_8.1.dll**</code> file and paste it into the PHP extensions directory <code>**C:\php\ext**</code>.
+- Step 2: Copy the <code><b>ioncube_loader_win_8.1.dll</b></code> file and paste it into the PHP extensions directory <code><b>C:\php\ext</b></code>.
 
-- Step 3: Copy the <code>**“loader-wizard.php”**</code> from the extracted Ioncube folder and paste it into the <code>**C:\Apache24\htdocs**</code>.
+- Step 3: Copy the <code><b>“loader-wizard.php”</b></code> from the extracted Ioncube folder and paste it into the <code><b>C:\Apache24\htdocs</b></code>.
 
-- Step 4: Edit the <code>**php.ini**</code> file and below the last line enter the path to the extension within the <code>**zend_extension**</code> parameter:
+- Step 4: Edit the <code><b>php.ini</b></code> file and below the last line enter the path to the extension within the <code><b>zend_extension</b></code> parameter:
 
 ```
 zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
@@ -461,21 +461,21 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
 
-- Run the downloaded <code>**wkhtmltopdf-0.12.6-1.exe installer**</code>.
+- Run the downloaded <code><b>wkhtmltopdf-0.12.6-1.exe installer</b></code>.
 
-- Click <code>**I Agree**</code> on the license agreement screen.
+- Click <code><b>I Agree</b></code> on the license agreement screen.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
 
-- Specify the installation destination folder or leave it as default location and click <code>**Install**</code>
+- Specify the installation destination folder or leave it as default location and click <code><b>Install</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
 
-- When the installation is complete, click the <code>**Close**</code> button.
+- When the installation is complete, click the <code><b>Close</b></code> button.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
 
-- Now copy <code>**wkhtmltox.dll**</code> located at <code>**C:\Program Files\wkhtmltopdf\bin**</code> and paste it in <code>**C:\php\ext**</code>
+- Now copy <code><b>wkhtmltox.dll</b></code> located at <code><b>C:\Program Files\wkhtmltopdf\bin</b></code> and paste it in <code><b>C:\php\ext</b></code>
 
 - Update the Environment variable for wkhtmltopdf. 
 
@@ -495,7 +495,7 @@ name="6Upload-Faveo"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33.png" alt="" style=" width:500px ; height:250px ">
   
-- We need to give full write permission to <code>**Users**</code> for the <code>**C:\Apache24\htdocs**</code> folder.
+- We need to give full write permission to <code><b>Users</b></code> for the <code><b>C:\Apache24\htdocs</b></code> folder.
   
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
@@ -536,24 +536,24 @@ exit
 ```
 
 
-<a id="9Configure-Task-Scheduler" 
-name="9Configure-Task-Scheduler"></a>
+<a id="8Configure-Task-Scheduler" 
+name="8Configure-Task-Scheduler"></a>
 
 ### <b>8. Set Cron & Configure Queue Driver</b>
 
 ### <b>a. Cron in Task Scheduler</b>
 
-- To open Task scheduler press **Win+R** and type <code>**taskschd.msc**</code>.
-- On the Right pane of the Task scheduler select <code>**Create Basic Task**</code> enter a <code>**Name**</code> for the task and click <code>**Next**</code>.
+- To open Task scheduler press <b>Win+R</b> and type <code><b>taskschd.msc</b></code>.
+- On the Right pane of the Task scheduler select <code><b>Create Basic Task</b></code> enter a <code><b>Name</b></code> for the task and click <code><b>Next</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
 
-- Under <code>**Task Trigger**</code>, section select <code>**Daily**</code> and click <code>**Next**</code> and leave the default values in **Daily** section tick the <code>**Synchronize across time zones**</code> and proceed <code>**Next**</code>.
+- Under <code><b>Task Trigger</b></code>, section select <code><b>Daily</b></code> and click <code><b>Next</b></code> and leave the default values in <b>Daily<b> section tick the <code><b>Synchronize across time zones</b></code> and proceed <code><b>Next</b></code>.
 
-- Now under the <code>**Action**</code> section select <code>**Start a program**</code> and click <code>**Next**</code>. 
+- Now under the <code><b>Action</b></code> section select <code><b>Start a program</b></code> and click <code><b>Next</b></code>. 
 
 
-- In <code>**Start a program**</code> copy the below value into the <code>**program/script field**</code>.
+- In <code><b>Start a program</b></code> copy the below value into the <code><b>program/script field</b></code>.
 ```
 C:\Windows\System32\cmd.exe
 ```
@@ -565,13 +565,13 @@ C:\Windows\System32\cmd.exe
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
 
-- Finally under the <code>**Finish**</code> section select the <code>**checkbox**</code> to open the properties window after finish and click the <code>**Finish**</code> button.
+- Finally under the <code><b>Finish</b></code> section select the <code><b>checkbox</b></code> to open the properties window after finish and click the <code><b>Finish</b></code> button.
 
-- In the properties window, select the <code>**Triggers**</code> tab, click on <code>**Edit**</code> and select the checkbox for <code>**Repeat task every**</code> set values to run every <code>**5 minutes**</code>, for a duration of <code>**indefinitely**</code> and click on <code>**OK**</code>.
+- In the properties window, select the <code><b>Triggers</b></code> tab, click on <code><b>Edit</b></code> and select the checkbox for <code><b>Repeat task every</b></code> set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
 
-- Similarly add two more triggers <code>**At log on**</code> & <code>**At startup up**</code>, set values to run every <code>**5 minutes**</code>, for a duration of <code>**indefinitely**</code> and click on <code>**OK**</code>.
+- Similarly add two more triggers <code><b>At log on</b></code> & <code><b>At startup up</b></code>, set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
 
@@ -583,20 +583,20 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 - Database (this will use the database used by the application to act as a queue)
 - Redis
 
-- **Sync**, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
+- <b>Sync<b>, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
 
-- **Database** driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in a completed state and is removed from the queue.
+- <b>Database<b> driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in a completed state and is removed from the queue.
 - Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
 - In Database, Read and Write operations are slow because of storing data in secondary memory.
 
 - [Database Configuring documentation](/docs/installation/providers/enterprise/database) 
 
-- **Redis** is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
+- <b>Redis<b> is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
 - In Redis, Read and Write operations are extremely fast because of storing data in primary memory.
 
 - [Redis Installation documentation](/docs/installation/providers/enterprise/redis-windows)
 
-**Note:** Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
+<b>Note:<b> Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
 <a id="9SSL-Installation" 
 name="9SSL-Installation"></a>
