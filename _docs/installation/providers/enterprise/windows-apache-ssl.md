@@ -8,6 +8,8 @@ last_modified_at: 2022-08-25
 toc: true
 title: Install Self-Signed SSL for Faveo on Windows
 ---
+<style>p>code, a>code, li>code, figcaption>code, td>code {background: #dedede;}</style>
+
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
 
@@ -183,7 +185,7 @@ C:\php
 openssl.cafile = "C:\php\cacert.pem"
 ```
 
-- Edit the <code>*C:\Apache24\conf\extra\httpd-ssl.conf*</code> file, search for *<VirtualHost _default_:443>* 
+- Edit the <code><b>C:\Apache24\conf\extra\httpd-ssl.conf</b></code> file, search for *<VirtualHost _default_:443>* 
 - Turn SSL Engine on & add the certificate paths respectively as shown below:
 
 ```

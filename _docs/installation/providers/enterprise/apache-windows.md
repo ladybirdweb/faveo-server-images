@@ -10,11 +10,7 @@ toc: true
 title: Faveo Installation on Windows with Apache Web Server
 ---
 
-<style>
-p>code, a>code, li>code, figcaption>code, td>code {
-    background: #dedede;
-}
-</style>
+<style>p>code, a>code, li>code, figcaption>code, td>code {background: #dedede;}</style>
 
 
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
@@ -83,7 +79,7 @@ Httpd.exe
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache10.png" alt="" style=" width:500px ; height:100px ">
 
-You might see a Windows Firewall prompt. <code>Allow</code> the access to be appropriate. 
+You might see a Windows Firewall prompt. <code><b>Allow</b></code> the access to be appropriate. 
 
 Failing to allow Apache access through your server’s firewall will result in other computers/devices being unable to connect to your web server.
 
