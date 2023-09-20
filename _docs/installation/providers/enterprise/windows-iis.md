@@ -21,18 +21,17 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 2. Install PHP 8.1 </strong>](#2Install-PHP-8.1)
   - [<strong> 3. Create FastCGI Handler Mapping </strong>](#3Create-FastCGI-Handler-Mapping)
   - [<strong> 4. Install MariaDB 10.6/MySQL 8.0 </strong>](#4Install-MariaDB-10.6/MySQL-8.0)
-  - [<strong> 5. Enable cacert.pem File in PHP Configuration File </strong>](#5Enable-cacert.pem-File-in-PHP-Configuration-File)
-  - [<strong> 6. Install Ioncube Loader </strong>](#6Install-Ioncube-Loader)
-  - [<strong> 7. Install wkhtmltopdf </strong>](#7Install-wkhtmltopdf)
-  - [<strong> 8. Upload Faveo </strong>](#8Upload-Faveo)
-  - [<strong> 9. Configure Faveo in IIS Manager </strong>](#9Configure-Faveo-in-IIS-Manager)
-  - [<strong> 10. Configure web.config file for IIS </strong>](#10Configure-web.config-file-for-IIS)
-  - [<strong> 11. Setting up the Database </strong>](#11Setting-up-the-Database)
-  - [<strong> 12. Setting up Bindings </strong>](#12Setting-up-Bindings)
-  - [<strong> 13. Configure Task Scheduler </strong>](#13Configure-Task-Scheduler)
-  - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
-  - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
-  - [<strong>16. Faveo Backup</strong>](#16-faveo-backup)
+  - [<strong> 5. Install Ioncube Loader </strong>](#5Install-Ioncube-Loader)
+  - [<strong> 6. Install wkhtmltopdf </strong>](#6Install-wkhtmltopdf)
+  - [<strong> 7. Upload Faveo </strong>](#7Upload-Faveo)
+  - [<strong> 8. Configure Faveo in IIS Manager </strong>](#8Configure-Faveo-in-IIS-Manager)
+  - [<strong> 9. Configure web.config file for IIS </strong>](#9Configure-web.config-file-for-IIS)
+  - [<strong> 10. Setting up the Database </strong>](#10Setting-up-the-Database)
+  - [<strong> 11. Setting up Bindings </strong>](#11Setting-up-Bindings)
+  - [<strong> 12. Configure Task Scheduler </strong>](#12Configure-Task-Scheduler)
+  - [<strong> 13. SSL Installation </strong>](#13SSL-Installation)
+  - [<strong> 14. Install Faveo </strong>](#14Install-Faveo)
+  - [<strong>15. Faveo Backup</strong>](#15-faveo-backup)
 
 The Installation steps listed above are to be followed to install Faveo on your Windows-IIS Server.
 
@@ -323,8 +322,8 @@ name="8Configure-Faveo-in-IIS-Manager"></a>
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/windows-images/BasicSettings.png?raw=true" alt="" style=" width:400px ; height:200px ">
 
-<a id="10Configure-web.config-file-for-IIS" 
-name="10Configure-web.config-file-for-IIS"></a>
+<a id="9Configure-web.config-file-for-IIS" 
+name="9Configure-web.config-file-for-IIS"></a>
 
 ### <strong>9. Configure web.config file for IIS</strong>
 
@@ -371,8 +370,8 @@ name="10Configure-web.config-file-for-IIS"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/URL-Rewrite.png" alt="" style=" width:400px ; height:200px ">
 
-<a id="11Setting-up-the-Database" 
-name="11Setting-up-the-Database"></a>
+<a id="10Setting-up-the-Database" 
+name="10Setting-up-the-Database"></a>
 
 ### <strong>10. Setting up the Database</strong>
 
@@ -404,8 +403,8 @@ exit
 ```
 
 
-<a id="12Setting-up-Bindings" 
-name="12Setting-up-Bindings"></a>
+<a id="11Setting-up-Bindings" 
+name="11Setting-up-Bindings"></a>
 
 ### <strong>11. Setting up Bindings</strong>
 
@@ -427,8 +426,8 @@ To test the successful configuration perform some delete operations in Faveo if 
 - Go to *Control Panel > Uninstall Program > Turn Windows features on or off > IIS > World Wide Web Services > Common HTTP feature > WebDAV Publishing*.
 
 
-<a id="13Configure-Task-Scheduler" 
-name="13Configure-Task-Scheduler"></a>
+<a id="12Configure-Task-Scheduler" 
+name="12Configure-Task-Scheduler"></a>
 
 ### <strong>12. Configure Task Scheduler</strong>
 
