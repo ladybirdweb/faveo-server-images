@@ -137,6 +137,16 @@ extension=pdo_mysql
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env6.png" alt="" style=" width:500px ; height:300px ">
 
+### <strong>2.b. Enable cacert.pem File in PHP Configuration File</strong>
+
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+- Extract the *cacert.pem* file and copy it to *C:\php8.1* path.
+- Edit the *php.ini* located in *C:\php8.1*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+
+```
+curl.cainfo = "C:\php8.1\cacert.pem"
+```
+
 
 <a id="3Create-FastCGI-Handler-Mapping" 
 name="3Create-FastCGI-Handler-Mapping"></a>
@@ -218,8 +228,10 @@ phpinfo();
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache4b.png" alt="" style=" width:500px ; height:250px ">
 
 
+
 <a id="4Install-MariaDB-10.6/MySQL-8.0" 
 name="4Install-MariaDB-10.6/MySQL-8.0"></a>
+
 
 ### <strong>4. Install MariaDB 10.6/MySQL 8.0</strong>
 
@@ -228,23 +240,12 @@ name="4Install-MariaDB-10.6/MySQL-8.0"></a>
 - [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
 - [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
 
-<a id="5Enable-cacert.pem-File-in-PHP-Configuration-File" 
-name="5Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 
-### <strong>5. Enable cacert.pem File in PHP Configuration File</strong>
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download *cacaert.pem* file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
-- Extract the *cacert.pem* file and copy it to *C:\php8.1* path.
-- Edit the *php.ini* located in *C:\php8.1*, Uncomment *curl.cainfo* and add the location of cacert.pem to it as below:
+<a id="5Install-Ioncube-Loader" 
+name="5Install-Ioncube-Loader"></a>
 
-```
-curl.cainfo = "C:\php8.1\cacert.pem"
-```
-
-<a id="6Install-Ioncube-Loader" 
-name="6Install-Ioncube-Loader"></a>
-
-### <strong>6. Install Ioncube Loader</strong>
+### <strong>5. Install Ioncube Loader</strong>
 
 -   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download Ioncube Loader zip file, Extract the zip file.
 
@@ -256,10 +257,10 @@ name="6Install-Ioncube-Loader"></a>
 zend_extension = "C:\php8.1\ext\ioncube_loader_win_8.1.dll"
 ```
 
-<a id="7Install-wkhtmltopdf" 
-name="7Install-wkhtmltopdf"></a>
+<a id="6Install-wkhtmltopdf" 
+name="6Install-wkhtmltopdf"></a>
 
-### <strong>7. Install wkhtmltopdf</strong>
+### <strong>6. Install wkhtmltopdf</strong>
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
@@ -288,10 +289,10 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
 
-<a id="8Upload-Faveo" 
-name="8Upload-Faveo"></a>
+<a id="7Upload-Faveo" 
+name="7Upload-Faveo"></a>
 
-### <strong>8. Upload Faveo</strong>
+### <strong>7. Upload Faveo</strong>
 
 - Download the Faveo Helpdesk from *https://billing.faveohelpdesk.com* and extract the contents inside IIS Root Directory.
 ```
@@ -304,10 +305,10 @@ C:\inetpub\wwwroot\
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/permissioniis.png" alt="" style=" width:400px ; height:250px ">
 
-<a id="9Configure-Faveo-in-IIS-Manager" 
-name="9Configure-Faveo-in-IIS-Manager"></a>
+<a id="8Configure-Faveo-in-IIS-Manager" 
+name="8Configure-Faveo-in-IIS-Manager"></a>
 
-### <strong>9. Configure Faveo in IIS Manager</strong>
+### <strong>8. Configure Faveo in IIS Manager</strong>
 
 - Open IIS Manager and in the left pane, Explore till you find *Default Web Site*, select it.
 - Then in the right panel, you will see the *Basic Settings* option click on it, a new window will open as  shown below:
@@ -325,7 +326,7 @@ name="9Configure-Faveo-in-IIS-Manager"></a>
 <a id="10Configure-web.config-file-for-IIS" 
 name="10Configure-web.config-file-for-IIS"></a>
 
-### <strong>10. Configure web.config file for IIS</strong>
+### <strong>9. Configure web.config file for IIS</strong>
 
 - Open notepad and copy the below lines and save the file under the path *C:\inetpub\wwwroot\public* as *web.config*. Make sure while saving you select all file types.
 
@@ -373,7 +374,7 @@ name="10Configure-web.config-file-for-IIS"></a>
 <a id="11Setting-up-the-Database" 
 name="11Setting-up-the-Database"></a>
 
-### <strong>11. Setting up the Database</strong>
+### <strong>10. Setting up the Database</strong>
 
 Open MariaDB 10.6 Command Line Client from the start menu and enter the password that you set while installing. Run the below commands to create a database and database user for Faveo Helpdesk.
 
@@ -406,7 +407,7 @@ exit
 <a id="12Setting-up-Bindings" 
 name="12Setting-up-Bindings"></a>
 
-### <strong>12. Setting up Bindings</strong>
+### <strong>11. Setting up Bindings</strong>
 
 - To Open the Faveo on your domain, you must set the binding.
 
@@ -429,7 +430,7 @@ To test the successful configuration perform some delete operations in Faveo if 
 <a id="13Configure-Task-Scheduler" 
 name="13Configure-Task-Scheduler"></a>
 
-### <strong>13. Configure Task Scheduler</strong>
+### <strong>12. Configure Task Scheduler</strong>
 
 - To open Task scheduler press *Win+R* and type *taskschd.msc*.
 - On the Right pane of the Task scheduler select *Create Basic Task* enter a *Name* for the task and click *Next*.
@@ -487,10 +488,10 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 *Note:* Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="14SSL-Installation" 
-name="14SSL-Installation"></a>
+<a id="13SSL-Installation" 
+name="13SSL-Installation"></a>
 
-### <strong>14. SSL Installation</strong>
+### <strong>13. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
@@ -501,17 +502,17 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 - [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 
-<a id="15Install-Faveo" 
-name="15Install-Faveo"></a>
+<a id="14Install-Faveo" 
+name="14Install-Faveo"></a>
 
-### <strong>15. Install Faveo</strong>
+### <strong>14. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 
-<a id="16-faveo-backup" name="16-faveo-backup"></a>
+<a id="15-faveo-backup" name="16-faveo-backup"></a>
 
-### <strong>16. Faveo Backup</strong>
+### <strong>15. Faveo Backup</strong>
 
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
