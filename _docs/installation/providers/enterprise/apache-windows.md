@@ -10,6 +10,13 @@ toc: true
 title: Faveo Installation on Windows with Apache Web Server
 ---
 
+<style>
+p>code, a>code, li>code, figcaption>code, td>code {
+    background: #dedede;
+}
+</style>
+
+
 <img alt="Windows" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_2021.svg/250px-Windows_logo_and_wordmark_-_2021.svg.png" width="200"  />
 
 
