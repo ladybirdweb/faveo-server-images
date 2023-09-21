@@ -13,7 +13,7 @@ title: Installing Faveo Helpdesk on Ubuntu With litespeed Web Server
 
 
 
-<img alt="Ubuntu" src="/Images/litespeed-images/litespeed-webserver-logo.png" height="120" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/litespeed-webserver-logo.png?raw=true" height="120" />
 
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/).
 
@@ -311,7 +311,7 @@ http://server_domain_or_IP
 ```
 Your browser will load the default LiteSpeed web page, which will match the following image:
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-80.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-80.png?raw=true" />
 
 You can look around the example website to explore the features offered by the web server.
 
