@@ -386,12 +386,12 @@ Here, you can configure your server to use any specific PHP processor. For this 
 - Replace <code></b>uds://tmp/lshttpd/lsphp.sock</b></code> with <code><b>uds://tmp/lshttpd/lsphp81.sock</b></code>
 - Replace <code><b>lsphp74/bin/lsphp</b></code> with <code><b>$SERVER_ROOT/lsphp81/bin/lsphp</b></code>
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-configure-php.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-configure-php.png?raw=true" />
 
 Use the **Graceful Restart** button in the top right to restart the web server. The **Graceful Restart** button is highlighted in the upper right of the following screencapture:
 
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-gracefull-restart.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-gracefull-restart.png?raw=true" />
 
 Verify that your server is now using the specified PHP version by visiting the informational page at port <code><b>8088</b></code>:
 
@@ -435,7 +435,7 @@ In the **Domain Name** field, type <code>example.com</code> and click the save b
 
 Then again on the **General** tab of *Virtual Hosts* configuration, click the edit icon next to the *Index Files* section.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-virtual-host-general-1.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-virtual-host-general-1.png?raw=true" />
 
 In the **Index Files** field, add *index.php* at the beginning of the section. Then click the save button at the top right corner.
 
@@ -447,7 +447,7 @@ Next, go to the **Rewrite tab** of the *Virtual Hosts* configuration view and ed
 
 Set **Enable Rewrite** and Auto Load from *.htaccess* to Yes and click the save icon at the top right corner.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-rewrite-control.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-rewrite-control.png?raw=true" />
 
 Once you’ve configured the OpenLiteSpeed server, Click the gracefully restart icon to apply the changes.
 
@@ -494,7 +494,7 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 
 Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
-[Let’s Encrypt SSL installation documentation](https://github.com/tamilselvan-lws/Documents/blob/main/Let's%20Encrypt%20SSL%20-%20OLSWS.md)
+[Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ols-let's-encrypt-ssl.md)
 
 
 
@@ -521,7 +521,7 @@ Redis is an open-source (BSD licensed), in-memory data structure store, used as 
 
 This is an optional step and will improve system performance and is highly recommended.
 
-[Redis installation documentation](https://github.com/tamilselvan-lws/Documents/blob/main/Redis.md)
+[Redis installation documentation](/docs/installation/providers/enterprise/ols-redis.md)
 
 
 <a id="s10" name="steps-9"></a>
