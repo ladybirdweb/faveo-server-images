@@ -1,4 +1,4 @@
-<img alt="Ubuntu" src="/Images/openlitespeed-images/openlitespeed_logo_grey_bold.png" height="120" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/openlitespeed_logo_grey_bold.png?raw=true" width="200px" />
 
 ## Introduction
 
