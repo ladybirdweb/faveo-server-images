@@ -400,8 +400,7 @@ http://127.0.0.1/info.php
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-16.png" alt="" style=" width:500px ; height:100px ">
 
  
- ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
-
+### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
 
 -   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacaert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\php</b></code> path.
