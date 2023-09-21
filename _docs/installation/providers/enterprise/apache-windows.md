@@ -402,7 +402,7 @@ http://127.0.0.1/info.php
  
 ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
 
--   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacaert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
+-   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\php</b></code> path.
 - Edit the <code><b>C:\php\php.ini</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of cacert.pem to it as below:
 ```
