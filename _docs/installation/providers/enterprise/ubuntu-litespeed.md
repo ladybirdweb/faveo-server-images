@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/litespeed-ubuntu/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-07-19
+last_modified_at: 2023-09-21
+last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With litespeed Web Server
 ---
@@ -325,11 +326,11 @@ You will likely see a page warning you that the SSL certificate from the server 
 
 You will be prompted to enter the administrative username and password that you selected with the admpass.sh script in the previous step:
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-7080.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-7080.png?raw=true" />
 
 Once authenticated, you will be presented with the LiteSpeed administration interface:
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-admin-page.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-admin-page.png?raw=true" />
 
 The majority of your configuration for the web server will take place via this dashboard.
 
@@ -526,13 +527,13 @@ sudo apt install lsphp81 lsphp81-curl lsphp81-imap lsphp81-mysql lsphp81-ldap ls
 
 Configuring LSPHP 8.1
 
-Via **http://your_server_ip:7080**, log in to the Admin Panel (using the credentials you just set up) and navigate to the Server Configuration section. Then, click the External App tab.
+Via <code><b>http://your_server_ip:7080</b></code>, log in to the Admin Panel (using the credentials you just set up) and navigate to the Server Configuration section. Then, click the External App tab.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-external.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-external.png?raw=true" />
 
 You will see the following screen:
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-external-new.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-external-new.png?raw=true" />
 
 Here, you can configure your server to use any specific PHP processor. For this tutorial, we will use lsphp81.
 
@@ -556,24 +557,24 @@ Here, you can configure your server to use any specific PHP processor. For this 
 - Process Soft Limit: <code>1400</code>
 - Process Hard Limit: <code>1500</code>
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-external-new-add.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-external-new-add.png?raw=true" />
 
 navigate to the Server Configuration section. Then, click the Script Handler tab.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-scripthandler.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-scripthandler.png?raw=true" />
 
 - Suffixes: <code>php81</code>
 - Handler Type: <code>Litespedd SAPI</code>
 - Handler Name: <code>[Server Level]: lsphp81</code>
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-scripthandler-edit.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-scripthandler-edit.png?raw=true" />
 
 Then, click the PHP tab. Edit PHP Global Configuration.
 
 - Detached Mode: <code>Yes</code>
 - Control Panel: <code>Litespedd Native</code>
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-php-globalconfig.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-php-globalconfig.png?raw=true" />
 
 Then, Edit PHP Handler Definition.
 
@@ -581,7 +582,7 @@ Then, Edit PHP Handler Definition.
 - Command: <code>$SERVER_ROOT/lsphp81/bin/lsphp</code>
 - Handler Suffixes: <code>php</code>
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-server-php-handler.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-server-php-handler.png?raw=true" />
 
 
 
@@ -616,35 +617,35 @@ max_execution_time = 360
 
 Moving next to configure the rewrite module which is an essential requirement for the WordPress features. Go to the Virtual Hosts and click on the view icon.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-view.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-view.png?raw=true" />
 
 Click on the **General** tab and edit the *General options* with the edit icon at the top right corner.
 
 In the **Document Root** field, type <code>$VH_ROOT/html/faveo</code>
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-general.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-general.png?raw=true" />
 
 Then again on the **General** tab of *Virtual Hosts* configuration, click the edit icon next to the *Index Files* section.
 
 In the **Index Files** field, add *index.php* at the beginning of the section. Then click the save button at the top right corner.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-general-index.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-general-index.png?raw=true" />
 
 
 Then again on the General tab of Virtual Hosts configuration, click the edit icon next to the **ht access** section.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-htaccess.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-htaccess.png?raw=true" />
 
 Next, go to the **Script Handler tab** of the *Virtual Hosts* configuration view and edit the *Script Handler Definition* options.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-scripthandler.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-scripthandler.png?raw=true" />
 
 Next, go to the **Rewrite tab** of the *Virtual Hosts* configuration view and edit the *Rewrite Control* options.
 
 Set **Enable Rewrite** and Auto Load from *.htaccess* to Yes and click the save icon at the top right corner.
 
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-rewrite.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-rewrite.png?raw=true" />
 
 
 

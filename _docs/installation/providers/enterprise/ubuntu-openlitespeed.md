@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/openlitespeed-ubuntu/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-09-20
+last_modified_at: 2023-09-21
+last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Openlitespeed Web Server
 ---

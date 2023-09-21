@@ -1,5 +1,5 @@
 
-<img alt="Ubuntu" src="/Images/litespeed-images/litespeed-webserver-logo.png" height="120" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/litespeed-webserver-logo.png?raw=true" height="120" />
 
 ## Introduction
 
@@ -49,12 +49,12 @@ Key is saved at:         /etc/letsencrypt/live/example.com/privkey.pem
 
 Next, configure the Faveo site on your litespeed server to use the SSL certificate. Navigate to the Virtual Host configuration and open the SSL tab. Edit the SSL Private Key & Certificate.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-virtualhost-ssl.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-virtualhost-ssl.png?raw=true" />
 
 
 Once completed, go to Listeners and add a new listener.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-listener-add-ssl.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-listener-add-ssl.png?raw=true" />
 
 Fill in the fields as follows:
 
@@ -73,11 +73,11 @@ Next, view the SSL listener to configure the Virtual host mapping.
 Add a row in Virtual Host Mappings.
 Choose the virtual host and type in your domain name. Save the settings from the save button on the top right corner.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-listener-ssl-add-domain.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-listener-ssl-add-domain.png?raw=true" />
 
 Next, configure the Faveo site on your litespeed server to use the SSL certificate. Navigate to the SSL listener configuration and open the SSL tab. Edit the SSL Private Key & Certificate.
 
-<img alt="Ubuntu" src="/Images/litespeed-images/ls-listener-ssl-add.png" />
+<img alt="Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/litespeed-images/ls-listener-ssl-add.png?raw=true" />
 
 Once you’ve configured the SSL with your litespeed server, click the gracefully restart icon to apply the changes.
 
