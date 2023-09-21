@@ -25,10 +25,11 @@ title: Faveo Installation on Windows with Apache Web Server
 
   - [<strong>1.Install & Configure Apache for Windows</strong>](#1Install-&-Configure-Apache-for-Windows)
   - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-8.1-for-Apache-Web-Server)
-  - [<strong> 3. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
-  - [<strong> 4. Install Ioncube Loader </strong>](#4Install-Ioncube-Loader)
-  - [<strong> 5. Install wkhtmltopdf </strong>](#5Install-wkhtmltopdf)
-  - [<strong> 6. Upload Faveo </strong>](#6Upload-Faveo)
+
+  - [<strong> 3. Install Ioncube Loader </strong>](#3Install-Ioncube-Loader)
+  - [<strong> 4. Install wkhtmltopdf </strong>](#4Install-wkhtmltopdf)
+  - [<strong> 5. Upload Faveo </strong>](#5Upload-Faveo)
+  - [<strong> 6. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
   - [<strong> 8. Set Cron & Configure Queue Driver </strong>](#8Configure-Task-Scheduler)
   - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
@@ -289,7 +290,7 @@ name="2PHP-8.1-for-Apache-Web-Server"></a>
 
 ### <b>b. Configure the PHP 8.1</b>
 
-With Apache active and functional, you now need to define and configure the <b>php.ini</b> file so those database extensions and libraries are available for use by Faveo.
+With Apache active and functional, you now need to define and configure the <code><b>C:\php\php.ini</b> </code>file so those database extensions and libraries are available for use by Faveo.
 
 - Step 1: Access the PHP folder in <code><b>C:/</b> </code> and rename the <code><b>php.ini-development</b></code> file to <code><b>php.ini</b></code>.
 
@@ -343,7 +344,7 @@ short_open_tag = On
 ```
 
 - Step 5: Set up PHP TimeZone according to your region. You must use the value available in <a href="https://www.php.net/manual/en/timezones.php" target="_blank" rel="noopener">PHP Documentation</a> 
-- Search for the <b>date.timezone</b> line, uncomment it and edit it according to the selected TimeZone:
+- Search for the <code><b>date.timezone</b></code> line, uncomment it and edit it according to the selected TimeZone:
 
 
 ```
@@ -351,7 +352,7 @@ date.timezone = Asia/Kolkata
 ```
 
 - Step 6: Set the folder where temporary files will be stored. 
-- Search for the <b>;session.save_path line</b>, uncomment it, and enter the path to your temporary folder.
+- Search for the <code><b>;session.save_path line</b></code>, uncomment it, and enter the path to your temporary folder.
 
 
 ```
@@ -361,7 +362,7 @@ After adding the path, it look look like below:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache30.png" alt="" style=" width:300px ; height:100px ">
 
-- Step 7:  Save all changes made to the <b>php.ini file.</b>
+- Step 7:  Save all changes made to the <code><b>php.ini</b></code> file.
 
 - Step 8: Update the Environment Variable for PHP Binary.
 
@@ -398,33 +399,22 @@ http://127.0.0.1/info.php
 
  <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Win-Apache-Images/Apache-Window-16.png" alt="" style=" width:500px ; height:100px ">
 
- ### <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
+ ###  <b>c. Download & Enable cacert.pem File in PHP Configuration File</b>
 
 
 -   <a href="https://www.faveohelpdesk.com/user-manual/windows_installation/pem_file.zip)" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacaert.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\php</b></code> path.
-- Edit the <code><b>php.ini</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of cacert.pem to it as below:
+- Edit the <code><b>C:\php\php.ini</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of cacert.pem to it as below:
 ```
 curl.cainfo = "C:\php\cacert.pem"
 ```
 
 
 
-<a id="3Install-MariaDB-10.6/MySQL-8.0" 
-name="3Install-MariaDB-10.6/MySQL-8.0"></a>
+<a id="3Install-Ioncube-Loader" 
+name="3Install-Ioncube-Loader"></a>
 
-### <b>3. Install MariaDB 10.6/MySQL 8.0 </b>
-
-
-- An open-source relational database management system(RDBMS) can be chosen among the MariaDB and MySQL.
-
-- [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
-- [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
-
-<a id="4Install-Ioncube-Loader" 
-name="4Install-Ioncube-Loader"></a>
-
-### <b>4. Install Ioncube Loader</b>
+### <b>3. Install Ioncube Loader</b>
 
 
 -   <a href="https://downloads.ioncube.com/loader_downloads/ioncube_loaders_win_nonts_vc16_x86-64.zip" target="_blank" rel="noopener">Click Here</a> to download IonCube Loader zip file.
@@ -435,7 +425,7 @@ name="4Install-Ioncube-Loader"></a>
 
 - Step 3: Copy the <code><b>“loader-wizard.php”</b></code> from the extracted Ioncube folder and paste it into the <code><b>C:\Apache24\htdocs</b></code>.
 
-- Step 4: Edit the <code><b>php.ini</b></code> file and below the last line enter the path to the extension within the <code><b>zend_extension</b></code> parameter:
+- Step 4: Edit the <code><b>C:\php\php.ini</b></code> file and below the last line enter the path to the extension within the <code><b>zend_extension</b></code> parameter:
 
 ```
 zend_extension = "C:\php\ext\ioncube_loader_win_8.1.dll"
@@ -449,14 +439,14 @@ http://127.0.0.1\loader-wizard.php
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache32.png" alt="" style=" width:500px ; height:150px ">
 
-<a id="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File" 
-name="5Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
+<a id="4Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File" 
+name="4Download-&-Enable-cacert.pem-File-in-PHP-Configuration-File"></a>
 
 
-<a id="5Install-wkhtmltopdf" 
-name="5Install-wkhtmltopdf"></a>
+<a id="4Install-wkhtmltopdf" 
+name="4Install-wkhtmltopdf"></a>
 
-### <b>5. Install wkhtmltopdf</b>
+### <b>4. Install wkhtmltopdf</b>
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. It is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
@@ -484,10 +474,10 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
-<a id="6Upload-Faveo" 
-name="6Upload-Faveo"></a>
+<a id="5Upload-Faveo" 
+name="5Upload-Faveo"></a>
 
-### <b>6. Upload Faveo</b>
+### <b>5. Upload Faveo</b>
 
 
 - Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
@@ -503,8 +493,22 @@ name="6Upload-Faveo"></a>
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
 
-<a id="7Setting-up-the-Database" 
-name="7Setting-up-the-Database"></a>
+<a id="6Setting-up-the-Database" 
+name="6Setting-up-the-Database"></a>
+
+<a id="6Install-MariaDB-10.6/MySQL-8.0" 
+name="6Install-MariaDB-10.6/MySQL-8.0"></a>
+
+### <b>6. Install MariaDB 10.6/MySQL 8.0 </b>
+
+
+- An open-source relational database management system(RDBMS) can be chosen among the MariaDB and MySQL.
+
+- [MariaDB documentation](/docs/installation/providers/enterprise/mariadb-windows)
+- [MySQL documentation](/docs/installation/providers/enterprise/mysql-windows)
+
+<a id="4Install-Ioncube-Loader" 
+name="4Install-Ioncube-Loader"></a>
 
 ### <b>7. Setting up the Database</b>
 
@@ -551,7 +555,7 @@ name="8Configure-Task-Scheduler"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
 
-- Under <code><b>Task Trigger</b></code>, section select <code><b>Daily</b></code> and click <code><b>Next</b></code> and leave the default values in <b>Daily<b> section tick the <code><b>Synchronize across time zones</b></code> and proceed <code><b>Next</b></code>.
+- Under <code><b>Task Trigger</b></code>, section select <code><b>Daily</b></code> and click <code><b>Next</b></code> and leave the default values in <code><b>Daily</b></code> section tick the <code><b>Synchronize across time zones</b></code> and proceed <code><b>Next</b></code>.
 
 - Now under the <code><b>Action</b></code> section select <code><b>Start a program</b></code> and click <code><b>Next</b></code>. 
 
@@ -586,20 +590,20 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 - Database (this will use the database used by the application to act as a queue)
 - Redis
 
-- <b>Sync<b>, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
+- <b>Sync</b>, or synchronous, is the default queue driver which runs a queued job within your existing process. With this driver enabled, you effectively have no queue as the queued job runs immediately. When a small number of incoming and outgoing mail functionalities are operated by the system, this sync method can be used. 
 
-- <b>Database<b> driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in a completed state and is removed from the queue.
+- <b>Database</b> driver stores queued jobs in the database. In Database queue multiple users need to work on a pool of records in a queue to process them. The records in the queue are in an unprocessed state. After the user worked on any record, that record is in a completed state and is removed from the queue.
 - Database Queue option lets the emails queue to execute using First in First out (FIFO) method and sends emails to the clients one by one.
 - In Database, Read and Write operations are slow because of storing data in secondary memory.
 
 - [Database Configuring documentation](/docs/installation/providers/enterprise/database) 
 
-- <b>Redis<b> is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
+- <b>Redis</b> is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. This  will improve system performance and is highly recommended.
 - In Redis, Read and Write operations are extremely fast because of storing data in primary memory.
 
 - [Redis Installation documentation](/docs/installation/providers/enterprise/redis-windows)
 
-<b>Note:<b> Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
+<b>Note:</b> Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
 <a id="9SSL-Installation" 
 name="9SSL-Installation"></a>
@@ -628,6 +632,5 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 <a id="12-faveo-backup" name="12-faveo-backup"></a>
 
 ### <b>11. Faveo Backup</b>
-
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.

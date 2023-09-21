@@ -4,14 +4,14 @@ type: docs
 permalink: /docs/installation/providers/enterprise/openlitespeed-ubuntu/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-07-14
+last_modified_at: 2023-09-20
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Openlitespeed Web Server
 ---
 
 
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/openlitespeed_logo_grey_bold.png" height="120" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/openlitespeed_logo_grey_bold.png?raw=true" width="200px" />
 
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/).
 
@@ -76,7 +76,7 @@ Next, install the openlitespeed package:
 ```
 sudo apt install openlitespeed lsphp81 lsphp81-curl lsphp81-imap lsphp81-mysql lsphp81-ldap lsphp81-redis lsphp81-ioncube 
 ```
-If prompted, enter your password, then confirm the installation with Y.
+If prompted, enter your password, then confirm the installation with <code><b>Y</b></code>.
 
 
 This command installs the Openlitespeed server package and LSPHP 8.1. [LiteSpeed PHP (LSPHP)](https://docs.litespeedtech.com/lsws/extapp/php/configuration/options/) is a PHP interpreter integrated with the [LiteSpeed Server Application Programming Interface (LSAPI)](https://www.litespeedtech.com/open-source/litespeed-sapi/php).
@@ -91,7 +91,7 @@ Before testing the server, you will set a new administrative password for OpenLi
 sudo /usr/local/lsws/admin/misc/admpass.sh
 ```
 
-You will be asked to provide a username for the administrative user. If you press ENTER without choosing a new username, the default username admin will be used. You can use whatever administrative username you prefer. Then you will be prompted to create and confirm a new password for the account. Put in the administrative password you prefer, then press ENTER again. The script will confirm a successful update:
+You will be asked to provide a username for the administrative user. If you press <code><b>ENTER</b></code> without choosing a new username, the default username admin will be used. You can use whatever administrative username you prefer. Then you will be prompted to create and confirm a new password for the account. Put in the administrative password you prefer, then press <code><b>ENTER</b></code> again. The script will confirm a successful update:
 
 **Output**
 ```
@@ -103,7 +103,7 @@ You have now secured the admin account. Next, you will test the server to ensure
 
 In this step, you will connect to your server.
 
-OpenLiteSpeed should have started automatically after it was installed. You can verify if it started with the <code>systemctl status</code> command:
+OpenLiteSpeed should have started automatically after it was installed. You can verify if it started with the <code><b>systemctl status</b></code> command:
 
 ```
 sudo systemctl status lsws
@@ -125,7 +125,7 @@ You will receive the following output:
 ```
 The active (running) message indicates that OpenLiteSpeed is running.
 
-The server should now be running. Press <code>CTRL+C</code> to exit the service output.
+The server should now be running. Press <code><b>CTRL+C</b></code> to exit the service output.
 
 If your server is not running, you can start the server using systemctl:
 
@@ -148,63 +148,63 @@ http://server_domain_or_IP:8088
 ```
 Your browser will load the default OpenLiteSpeed web page, which will match the following image:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-8088.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-8088.png?raw=true" />
 
 You can look around the example website to explore the features offered by the web server.
 
-To see the GUI-based Admin Panel, access port <code>7080</code>:
+To see the GUI-based Admin Panel, access port <code><b>7080</b></code>:
 
 
 ```
 http://your_server_ip:7080
 ```
-You will likely see a page warning you that the SSL certificate from the server cannot be validated. Because this is a self-signed certificate, this message is expected. Click through the available options to proceed to the site. In Chrome, you must click <code>Advanced</code> and then <code>Proceed to…</code> .
+You will likely see a page warning you that the SSL certificate from the server cannot be validated. Because this is a self-signed certificate, this message is expected. Click through the available options to proceed to the site. In Chrome, you must click <code><b>Advanced</b></code> and then <code><b>Proceed to…</b></code> .
 
 You will be prompted to enter the administrative username and password that you selected with the admpass.sh script in the previous step:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-7080.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-7080.png?raw=true" />
 
 Once authenticated, you will be presented with the OpenLiteSpeed administration interface:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-admin-page.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-admin-page.png?raw=true" />
 
 The majority of your configuration for the web server will take place via this dashboard.
 
 
 
 ### 1.e. Changing the Port for the Default Page
-To demonstrate how to configure options through the web interface, you will change the port that the default site uses from <code>8088</code> to the conventional HTTP port (<code>80</code>).
+To demonstrate how to configure options through the web interface, you will change the port that the default site uses from <code><b>8088</b></code> to the conventional HTTP port (<code><b>80</b></code>).
 
 Start by pressing **Listeners** in the list of options on side navigation bar. A list of all available listeners will load.
 
 From this list, click the magnifying glass, which is the **View** button, for the **Default listener**:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-default-listener.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-default-listener.png?raw=true" />
 
 This action will load a page with more details about the **Default listener**. Click the edit button (the pen and paper symbol) in the top-right corner of the **Address Settings** table to modify its values:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-default-listener-2.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-default-listener-2.png?raw=true" />
 
-This button will open a new screen. Change port <code>8088</code> to port <code>80</code>, then click the **Save** button (the floppy disk symbol):
+This button will open a new screen. Change port <code><b>8088</b></code> to port <code><b>80</b></code>, then click the **Save** button (the floppy disk symbol):
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-default-listener-3.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-default-listener-3.png?raw=true" />
 
-Next, view the <code>Example</code> listener to configure the **Virtual host mapping**.
+Next, view the <code><b>Example</b></code> listener to configure the **Virtual host mapping**.
 
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-listener-mapping.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-listener-mapping.png?raw=true" />
 
-Choose the virtual host and type in your domain name. Save the settings from the save button on the top right corner.
+Choose the virtual host and type in your domain name. Save the settings from the <code><b>save</b></code> button on the top right corner.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-listener-mapping-domain.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-listener-mapping-domain.png?raw=true" />
 
 After saving the modification, you will need to restart the server. Click the arrow icon for the Graceful Restart action that will restart OpenLiteSpeed:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-default-listener-4.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-default-listener-4.png?raw=true" />
 
 If you are prompted to restart LiteSpeed, press the Go button.
 
-The default web page should now be accessible in your browser on port <code>80</code> instead of port <code>8088</code>. Visiting your server’s domain name or IP address without providing a port number will now display the site.
+The default web page should now be accessible in your browser on port <code><b>80</b></code> instead of port <code><b>8088</b></code>. Visiting your server’s domain name or IP address without providing a port number will now display the site.
 
 
 <a id="s3" name="steps-2"></a>
@@ -238,7 +238,7 @@ apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
 tar xvfz ioncube_loaders_lin_x86-64.tar.gz 
 ```
-Copy the ion-cube loader to Directory. Replace your yourpath below with actual path that was shown with the output of first command below, and restart the both nginx and php.
+Copy the ion-cube loader to Directory. Replace your yourpath below with actual path that was shown with the first command below..
 
 ```
 php -i | grep extension_dir
@@ -377,14 +377,14 @@ Via **http://your_server_ip:7080**, log in to the Admin Panel (using the credent
 
 You will see the following screen:
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-external-app.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-external-app.png?raw=true" />
 
 Here, you can configure your server to use any specific PHP processor. For this tutorial, we will use lsphp81.
 
 
-- Replace <code>lsphp</code> with <code>lsphp81</code>
-- Replace <code>uds://tmp/lshttpd/lsphp.sock</code> with <code>uds://tmp/lshttpd/lsphp81.sock</code>
-- Replace <code>lsphp74/bin/lsphp</code> with <code>$SERVER_ROOT/lsphp81/bin/lsphp</code>
+- Replace <code><b>lsphp</b></code> with <code><b>lsphp81</b></code>
+- Replace <code></b>uds://tmp/lshttpd/lsphp.sock</b></code> with <code><b>uds://tmp/lshttpd/lsphp81.sock</b></code>
+- Replace <code><b>lsphp74/bin/lsphp</b></code> with <code><b>$SERVER_ROOT/lsphp81/bin/lsphp</b></code>
 
 <img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-configure-php.png" />
 
@@ -393,7 +393,7 @@ Use the **Graceful Restart** button in the top right to restart the web server. 
 
 <img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-gracefull-restart.png" />
 
-Verify that your server is now using the specified PHP version by visiting the informational page at port <code>8088</code>:
+Verify that your server is now using the specified PHP version by visiting the informational page at port <code><b>8088</b></code>:
 
 ```
 http://your_server_ip/phpinfo.php
@@ -421,17 +421,17 @@ max_execution_time = 360
 
 Moving next to configure the rewrite module which is an essential requirement for the WordPress features. Go to the Virtual Hosts and click on the view icon.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-edit-virtual-host.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-edit-virtual-host.png?raw=true" />
 
 Click on the **General** tab and edit the *General options* with the edit icon at the top right corner.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-edit-virtual-host-general.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-edit-virtual-host-general.png?raw=true" />
 
 In the **Document Root** field, type <code>$VH_ROOT/html/faveo</code>
 
 In the **Domain Name** field, type <code>example.com</code> and click the save button at the top right corner.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-virtual-host-general.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-virtual-host-general.png?raw=true" />
 
 Then again on the **General** tab of *Virtual Hosts* configuration, click the edit icon next to the *Index Files* section.
 
@@ -439,11 +439,11 @@ Then again on the **General** tab of *Virtual Hosts* configuration, click the ed
 
 In the **Index Files** field, add *index.php* at the beginning of the section. Then click the save button at the top right corner.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-virtual-host-index.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-virtual-host-general-1.png?raw=true" />
 
 Next, go to the **Rewrite tab** of the *Virtual Hosts* configuration view and edit the *Rewrite Control* options.
 
-<img alt="Openlitespeed-Ubuntu" src="/Images/openlitespeed-images/op-virtual-host-rewrites.png" />
+<img alt="Openlitespeed-Ubuntu" src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/openlitespeed-images/op-virtual-host-rewrites.png?raw=true" />
 
 Set **Enable Rewrite** and Auto Load from *.htaccess* to Yes and click the save icon at the top right corner.
 
