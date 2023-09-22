@@ -43,6 +43,8 @@ docs:
 #        url: /docs/installation/providers/enterprise/plesk-panel-windows
       #- title: CentOS Web Panel
       #  url: /docs/installation/providers/enterprise/centos-web-panel/
+      - title: Network Discovery
+        url: /docs/installation/providers/enterprise/network-discovery
 
   - title: How To's
     children:
