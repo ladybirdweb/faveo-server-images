@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: faveo-apache
-        image: ladybird/faveo-k8s-apache2-v2
+        image: ladybird/faveo-k8s-apache2
         resources:
           limits:
             memory: 700Mi
@@ -394,7 +394,7 @@ spec:
     spec:
       containers:
       - name: faveo-apache
-        image: ladybird/faveo-k8s-apache2-v2
+        image: ladybird/faveo-k8s-apache2
         resources:
           limits:
             memory: 700Mi
@@ -474,7 +474,7 @@ spec:
     spec:
       containers:
       - name: faveo-supervisor
-        image: ladybird/faveo-k8s-supervisor-v2
+        image: ladybird/faveo-k8s-supervisor
         resources:
           limits:
             memory: 1024Mi
