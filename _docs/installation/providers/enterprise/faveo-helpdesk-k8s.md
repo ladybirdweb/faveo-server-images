@@ -110,7 +110,7 @@ Save and close the file.
 
 Next, apply your new deployment with the following command:
 ```sh
-kubetctl apply -f deploy-faveo.yml
+kubectl apply -f deploy-faveo.yml
 ```
 This will create a service and deployment for Faveo helpdesk pods.You can confirm by executing below commands.
 ```sh
