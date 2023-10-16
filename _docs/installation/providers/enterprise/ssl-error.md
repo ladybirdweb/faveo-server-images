@@ -14,7 +14,8 @@ title: Resolve SSL Certficates error for Faveo Probe Page.
 
 This document provides instructions on how to resolve the SSL certificate Issue for Faveo Helpdesk.
 
----INSERT IMAGE---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/ssl-error/faveo-probe.png" alt="" style=" width:500px ; height:250px ">
+
 
 Faveo Helpdesk validates SSL certificates at the CLI level using the PHP cURL extension. 
 
@@ -29,11 +30,11 @@ This can be resolved by manually adding the **root** and **Intermediate** certif
 ## For Linux Operating Systems
 Open the URL in your browser, click on the Padlock 🔒, a ropdown will open, click on *Connection is Secure > Certificate is valid > Details*.
 
----INSERT IMAGE ssl-error1---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/ssl-error/ssl-error1.gif" alt="" style=" width:500px">
 
 Export the First and Second Certificates and name them *root.txt* and *inter.txt* respectively.
 
----INSERT IMAGE ssl-error1---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/ssl-error/ssll-error2.gif" alt="" style=" width:500px">
 
 Open the two files by any text editor and copy them to the OS Trusted CA library with .crt extensions and update the CA store. 
 
