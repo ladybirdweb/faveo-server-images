@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2023-10-16
 last_modified_by: Mohammad_Asif
 toc: true
-title: Resolve SSL Certficates error for Faveo Probe Page.
+title: Resolve SSL Certificates Error for Faveo Probe Page.
 ---
 
 [<strong>Introduction :</strong>](#introduction:)
@@ -28,7 +28,7 @@ In some cases, the **root** and **Intermediate** certificates will not be availa
 This can be resolved by manually adding the **root** and **Intermediate** certificates of the CA to the OS and updating the Trusted CA library.
 
 ## For Linux Operating Systems
-Open the URL in your browser, click on the Padlock 🔒, a ropdown will open, click on *Connection is Secure > Certificate is valid > Details*.
+Open the URL in your browser, click on the Padlock 🔒, a dropdown will open, click on *Connection is Secure > Certificate is valid > Details*.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/ssl-error/ssl-error1.gif" alt="" style=" width:800px">
 
@@ -40,7 +40,7 @@ Open the two files by any text editor and copy them to the OS Trusted CA library
 
 ---
 
-### For Debian Based Syetems
+### For Debian Based Systems
 Copy the **root** and **Intermediate** certificates to **/usr/local/share/ca-certificates/** location.
 
 Make a file root.crt and save the contents of root.txt to it that was saved on the local desktop.
@@ -60,7 +60,7 @@ Update CA Store
 sudo update-ca-certificates
 ```
 
-### For RedHat Based Syetems
+### For RedHat Based Systems
 Install the ca-certificates package.
 
 ```
