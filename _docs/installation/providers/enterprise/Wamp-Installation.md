@@ -10,6 +10,7 @@ toc: true
 title: Faveo Installation on Windows with Wamp Server
 ---
 
+<style>p>code, a>code, li>code, figcaption>code, td>code {background: #dedede;}</style>
 
 <img alt="Wamp" src="https://i.pinimg.com/originals/69/78/47/697847ca00eef7069db9aef07c602389.png" width="200"  /> 
 
@@ -38,7 +39,7 @@ title: Faveo Installation on Windows with Wamp Server
 Hover your mouse over "PHP," and you should see a list of available PHP versions.
 Select PHP 8.1 (if available) from the list.
 
-----Images php version----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/php-version.png" alt="" style=" width:500px">
 
 
 <a id="2" name="2"></a>
@@ -62,7 +63,7 @@ C:\wamp64\www
 
 - Click the "Create" button.
 
-----images-phpmyadmin-----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/phpmyadmin.png" alt="" style=" width:500px">
 
 - Your new database should now be created.
 
@@ -130,8 +131,6 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 - Left-click on the WampServer icon in the system tray to open the menu.
 - PHP -> PHP extensions -> ... several extensions to be checked or uncheched
 
-----Images Extension----
-
 Default Extensions
 
 ```
@@ -151,10 +150,9 @@ extension=soap
 extension=sockets
 extension=sodium
 ```
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/Extension.png" alt="" style=" width:500px">
 
 - PHP -> PHP settings -> ... several options to be modified
-
------Images Setting----
 
 ```
 max_execution_time = 360
@@ -164,6 +162,7 @@ memory_limit = 256M
 post_max_size = 1024M
 short_open_tag = On
 ```
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/PHP%20Setting.png" alt="" style=" width:500px">
 
 
 <a id="7" name="7"></a>
@@ -208,7 +207,7 @@ Include conf/extra/httpd-ssl.conf
 LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 ```
 
-----Images httpd----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/httpd.png" alt="" style=" width:500px">
 
 
 ### Step 1: Install Chocolatey
@@ -221,7 +220,7 @@ LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
-----images choco install----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/chocol.png" alt="" style=" width:500px">
 
 - You may be prompted to confirm the execution of scripts. Enter <code><b>"A"</b></code> and press Enter to allow the script to run.
 
@@ -233,7 +232,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco --version
 ```
 
-----images choco-v-----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/choco-v.png" alt="" style=" width:500px">
 
 ### Step 2: Install OpenSSL
 
@@ -251,14 +250,14 @@ choco install openssl
 
 - Wait for the installation to complete. Chocolatey will download and install OpenSSL and its dependencies.
 
----image openssl---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/openssl.png" alt="" style=" width:500px">
 
 - To verify the OpenSSL installation, run: 
 ```
 openssl version
 ```
----image open-v---
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-v.png" alt="" style=" width:500px">
 
 
 #### Generate a private key for the CA
@@ -272,7 +271,8 @@ Create a directory named SSL under C directory like <code><b>C:\SSL</b></code>, 
 ```
 openssl ecparam -out faveoroot.key -name prime256v1 -genkey
 ```
----image openssl-1 ---
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-1.png" alt="" style=" width:500px">
 
 #### Generate a certificate signing request for the CA
 
@@ -281,7 +281,8 @@ From the command prompt run the below command which will create a CSR (certifica
 ```
 openssl req -new -sha256 -key faveoroot.key -out faveoroot.csr
 ```
----image openssl-2 ---
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-2.png" alt="" style=" width:500px">
 
 The above command will ask for the below information if needed you can provide them or you can just hit enter and skip them but it is recommended to give the meaningful details.
 
@@ -300,7 +301,9 @@ The below command will create the Root CA certificate which we will use to sign 
 ```
 openssl x509 -req -sha256 -days 3650 -in faveoroot.csr -signkey faveoroot.key -out faveorootCA.crt
 ```
----image openssl-3 ---
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-3.png" alt="" style=" width:500px">
 
 The above command will create a file and save it as faveorootCA.crt in the SSL directory.
 
@@ -312,7 +315,7 @@ The below command will create a private key file for the server SSL certificate.
 openssl ecparam -out private.key -name prime256v1 -genkey
 ```
 
----image openssl-4 ---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-4.png" alt="" style=" width:500px">
 
 The above command will save a key file with the name private.key for the server SSL certificate.
 
@@ -323,7 +326,8 @@ The below command will create a Certificate Signing Request for the Server SSL.
 ```
 openssl req -new -sha256 -key private.key -out faveolocal.csr
 ```
----image openssl-5 ---
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-5.png" alt="" style=" width:500px">
 
 It will ask for the details below we should give the details as shown below.
 
@@ -342,7 +346,8 @@ The below command will create the server SSL certificate which is signed by the 
 ```
 openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -CAcreateserial -out faveolocal.crt -days 3650 -sha256 
 ```
----image openssl-6 ---
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-6.png" alt="" style=" width:500px">
 
 The above command will create a server SSL file and save it in the name faveolocal.crt, this certificate will be valid for 3650 days which is ten years.
 
@@ -352,7 +357,7 @@ The above command will create a server SSL file and save it in the name faveoloc
 openssl x509 -in faveolocal.crt -text -noout  
 ```
 
----image openssl-7 ---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-7.png" alt="" style=" width:500px">
 
 #### Compiling the created certificate and key file as .pfx file
 
@@ -361,28 +366,31 @@ As windows need the certificate file in .pfx format which will contain the both 
 openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -certfile faveorootCA.crt
 ```
 
----image openssl-8 ---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/ssl-8.png" alt="" style=" width:500px">
 
 The above command will create a .pfx file with the name cert.pfx in the SSL directory.
 
----image openssl-dir ---
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/openssl-dir.png" alt="" style=" width:500px">
 
 #### Installing the SSL certificate
 
 - Navigate inside your SSL directory and double click on faveorootCA.crt
 
----- Images 1 ----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-1.png" alt="" style=" width:300px">
 
 - Click on Install Certificate → Select local machine→ Click on next
 
----- Images 2 ----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-2.png" alt="" style=" width:300px">
 
 - Select “Trusted Root Certification Authorities” directory and click on OK.
 
----- Images 3 ----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-3.png" alt="" style=" width:500px">
 
 - Click Next and Finish. You should get imported successful .
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-4.png" alt="" style=" width:300px">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-5.png" alt="" style=" width:300px">
 
 ### Step 3: Download & Enable cacert.pem File in PHP Configuration File
 
@@ -396,23 +404,24 @@ curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 
 - Edit the faveorootCA.crt and copy the content.
 
-----images faveorootCA ----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/faveorootCA.png" alt="" style=" width:500px">
 
 - Edit the cacert.pem file and append the content copied from faveorootCA.crt in this file.
 
-----images cacert----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cacert.png" alt="" style=" width:500px">
 
 - Save and Close the File.
+
 
 ### Step 4: Edit the “hosts” file on the OS to Map the Custom Domain to Loopback Address.
 
 - Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</code></b>
 
----image hosts -----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/hosts.png" alt="" style=" width:500px">
 
 - Map your custom domain to 127.0.0.1
 
----images host-map-----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/hosts-map.png" alt="" style=" width:500px">
 
 - Save and Close the File.
 
@@ -430,10 +439,12 @@ SSLCertificateFile "C:\SSL\faveolocal.crt"
 SSLCertificateKeyFile "C:\SSL\private.key"
 SSLCACertificateFile "C:\SSL\faveorootCA.crt"
 ```
-----Images httpd-ssl ----
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/httpd-ssl.png" alt="" style=" width:500px">
 
 Update  the “DocumentRoot” to value to “C:\wamp64\www” 
 
-----Images https-ssl-doc----
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/https-ssl-doc.png" alt="" style=" width:500px">
 
 Restart the apache service from WAMP tray and visit https://faveo.localhost from your browser and Self Sign the certificate.
