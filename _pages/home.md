@@ -53,6 +53,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Faveo Backup Script [click here](/docs/installation/providers/enterprise/backup-script/)
 - UrBackup Tool [click here](/docs/installation/providers/enterprise/backup-tool/)
 - Custom Domain for Faveo Cloud [click here](/docs/helper/cname)
+- Resolve SSL Error for Linux [click here](/docs/installation/providers/enterprise/ssl-error/)
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
@@ -98,6 +99,7 @@ The above mentioned prerequisites to be met have to be installed then faveo can 
 * [Debian with NGINX](/docs/installation/providers/enterprise/debian-nginx)
 * [Windows IIS](/docs/installation/providers/enterprise/windows-iis)
 * [Windows Apache](/docs/installation/providers/enterprise/apache-windows)
+* [WAMP](/docs/installation/providers/enterprise/wamp-windows)
 * [Docker](/docs/installation/providers/enterprise/faveo-helpdesk-docker/)
 * [Kubernetes](/docs/installation/providers/enterprise/faveo-helpdesk-k8s/)
 * [Network Discovery](/docs/installation/providers/enterprise/network-discovery/)
