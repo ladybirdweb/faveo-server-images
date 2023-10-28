@@ -27,9 +27,6 @@ toc: true
 Welcome to the Faveo installation documentation.
 This documentation shows how to install Faveo Helpdesk on various platforms(OS)
 
-| :zap:        Exciting News: Faveo SAAS Model Now Available! Try Faveo Cloud FREE for 14 Days <a href="https://support.faveohelpdesk.com/show/release-notes-for-faveo-cloud" target="_blank" rel="noopener">Click Here</a>   |
-|-----------------------------------------|
-
 # About Faveo
 Faveo is a leading open source, self-hosted, on-premise help desk software. 
 
