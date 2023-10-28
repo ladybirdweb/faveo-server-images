@@ -43,6 +43,8 @@ docs:
 #        url: /docs/installation/providers/enterprise/plesk-panel-windows
       #- title: CentOS Web Panel
       #  url: /docs/installation/providers/enterprise/centos-web-panel/
+      - title: Faveo on WAMP
+        url: /docs/installation/providers/enterprise/wamp-windows
 
 
   - title: How To's
@@ -61,6 +63,8 @@ docs:
         url: /docs/helper/cname/
       - title: Install Network Discovery
         url: /docs/installation/providers/enterprise/network-discovery
+      - title: SSL Error Solution (Linux)
+        url: /docs/installation/providers/enterprise/ssl-error
 
   - title: Kubernetes
     children:
