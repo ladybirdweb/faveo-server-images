@@ -60,6 +60,11 @@ Update CA Store
 sudo update-ca-certificates
 ```
 
+Restart Apache Webserver
+```
+systemctl restart apache2
+```
+
 ### For RedHat Based Systems
 Install the ca-certificates package.
 
@@ -84,4 +89,8 @@ nano /etc/pki/ca-trust/source/anchors/inter.crt
 Update CA Store
 ```
 update-ca-trust extract
+```
+Restart Apache Webserver
+```
+systemctl restart httpd.service
 ```
