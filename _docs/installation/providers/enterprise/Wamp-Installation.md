@@ -21,19 +21,22 @@ title: Faveo Installation on Windows with Wamp Server
   - [<strong> 1.Download and Install WampServer </strong>](#1)
   - [<strong> 2. Upload Faveo </strong>](#2)
   - [<strong> 3. Setting up the Database </strong>](#3)
-  - [<strong> 4. Install Ioncube Loader </strong>](#3)
-  - [<strong> 5. Install wkhtmltopdf </strong>](#4)
-  - [<strong> 6. Configure the PHP 8.1 </strong>](#5)
-  - [<strong> 7. Install Redis Extension </strong>](#6)
-  - [<strong> 8. Self-Signed SSL </strong>](#7)
+  - [<strong> 4. Install Ioncube Loader </strong>](#4)
+  - [<strong> 5. Install wkhtmltopdf </strong>](#5)
+  - [<strong> 6. Configure the PHP 8.1 </strong>](#6)
+  - [<strong> 7. Install Redis Extension </strong>](#7)
+  - [<strong> 8. Cron in Task Scheduler </strong>](#8)
+  - [<strong> 9. Self-Signed SSL </strong>](#9)
+  - [<strong> 10. Install Faveo </strong>](#10)
+
   
 <a id="1" name="1"></a>
 ## 1. Download and Install WampServer
 
-- Download and Install WampServer with PHP 8.1: If WampServer has been updated to include PHP 8.1, you can start by downloading and installing the latest version of WampServer from their official website.
+- <b>Download and Install WampServer with PHP 8.1:</b> If WampServer has been updated to include PHP 8.1, you can start by downloading and installing the latest version of WampServer from their official website.
 [Click here](https://sourceforge.net/projects/wampserver/files/WampServer%203/WampServer%203.0.0/wampserver3.3.0_x64.exe/download)
 
-- Switch PHP Versions: After installing WampServer with PHP 8.1, you can switch between different PHP versions using the WampServer icon in your system tray:
+- <b>Switch PHP Versions:</b> After installing WampServer with PHP 8.1, you can switch between different PHP versions using the WampServer icon in your system tray:
 
 - Left-click on the WampServer icon in the system tray to open the menu.
 Hover your mouse over "PHP," and you should see a list of available PHP versions.
@@ -44,7 +47,7 @@ Select PHP 8.1 (if available) from the list.
 
 <a id="2" name="2"></a>
 ## 2. Upload Faveo
-- Download the Faveo Helpdesk from https://billing.faveohelpdesk.com and upload it to the below directory.
+- Download the Faveo Helpdesk from <b>[https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com)</b> and upload it to the below directory.
 
 ```
 C:\wamp64\www
@@ -53,7 +56,7 @@ C:\wamp64\www
 <a id="3" name="3"></a>
 ## 3. Setting up the Database
 
-- visit http://localhost/phpmyadmin/ link from browser to log on the database management panel.
+- Visit <b>[http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)</b> from browser to log on the database management panel.
 
 - Once you are in phpMyAdmin, you can create a new database by following these steps:
 
@@ -123,13 +126,11 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
 
-
-
 <a id="6" name="6"></a>
 ## 6. Configure the PHP 8.1
 
 - Left-click on the WampServer icon in the system tray to open the menu.
-- PHP -> PHP extensions -> ... several extensions to be checked or uncheched
+- PHP > PHP extensions > ... several extensions to be checked or uncheched
 
 Default Extensions
 
@@ -152,7 +153,7 @@ extension=sodium
 ```
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/Extension.png" alt="" style=" width:500px">
 
-- PHP -> PHP settings -> ... several options to be modified
+- PHP > PHP settings > ... several options to be modified
 
 ```
 max_execution_time = 360
@@ -162,13 +163,29 @@ memory_limit = 256M
 post_max_size = 1024M
 short_open_tag = On
 ```
+
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/PHP%20Setting.png" alt="" style=" width:500px">
+
+- Update the Environment Variable for PHP Binary.
+
+- Right click on This PC, go to <code><b>Properties > Advanced System Settings ></b></code> Environment Variables.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env1.png" alt="" style=" width:500px ; height:200px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env2.png" alt="" style=" width:500px ; height:300px ">
+
+- Now click on Path > Edit > New & add copied path <code><b>C:\php</b> </code> here and click OK in all 3 tabs.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/env5.png" alt="" style=" width:500px ; height:300px ">
 
 
 <a id="7" name="7"></a>
+
 ## 7. Install Redis Extension
 
-<a href="https://pecl.php.net/package/redis/5.3.7/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 Thread Safe (TS) x64 zip file.
+<a href="https://pecl.php.net/package/redis/5.3.7/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 Non Thread Safe (TS) x64 zip file.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/PHPredis.png" style=" width:400px ; height:250px ">
 
@@ -179,9 +196,45 @@ short_open_tag = On
 extension=php_redis.dll
 ```
 
+<a id="8" name="8Configure-Task-Scheduler"></a>
+## <b>8. Cron in Task Scheduler</b>
 
-<a id="8" name="8"></a>
-## 8. Self-Signed SSL
+
+- To open Task scheduler press <b>Win+R</b> and type <code><b>taskschd.msc</b></code>.
+- On the Right pane of the Task scheduler select <code><b>Create Basic Task</b></code> enter a <code><b>Name</b></code> for the task and click <code><b>Next</b></code>.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache34.png" alt="" style=" width:500px ; height:250px ">
+
+- Under <code><b>Task Trigger</b></code>, section select <code><b>Daily</b></code> and click <code><b>Next</b></code> and leave the default values in <code><b>Daily</b></code> section tick the <code><b>Synchronize across time zones</b></code> and proceed <code><b>Next</b></code>.
+
+- Now under the <code><b>Action</b></code> section select <code><b>Start a program</b></code> and click <code><b>Next</b></code>. 
+
+
+- In <code><b>Start a program</b></code> copy the below value into the <code><b>program/script field</b></code>.
+```
+C:\Windows\System32\cmd.exe
+```
+- Add the following highlighted values to the Argument :
+
+- This is for faveo incoming mail, esacalation, faveo update check.
+```
+/c php "C:\wamp64\www\faveo\artisan" schedule:run
+```
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache35.png" alt="" style=" width:500px ; height:250px ">
+
+- Finally under the <code><b>Finish</b></code> section select the <code><b>checkbox</b></code> to open the properties window after finish and click the <code><b>Finish</b></code> button.
+
+- In the properties window, select the <code><b>Triggers</b></code> tab, click on <code><b>Edit</b></code> and select the checkbox for <code><b>Repeat task every</b></code> set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache37.png" alt="" style=" width:500px ; height:250px ">
+
+- Similarly add two more triggers <code><b>At log on</b></code> & <code><b>At startup up</b></code>, set values to run every <code><b>5 minutes</b></code>, for a duration of <code><b>indefinitely</b></code> and click on <code><b>OK</b></code>.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/trigger.png" alt="" style=" width:400px ; height:250px ">
+
+
+<a id="9" name="9"></a>
+## 9. Self-Signed SSL
 
 This document will list how to install Self-Signed SSL certificates on Windows servers.
 
@@ -397,7 +450,8 @@ The above command will create a .pfx file with the name cert.pfx in the SSL dire
 
 -   <a href="https://curl.se/docs/caextract.html" target="_blank" rel="noopener">Click Here</a> to download <code><b>cacart.pem</b></code> file. This is required to avoid the “cURL 60 error” which is one of the Probes that Faveo checks.
 - Extract the <code><b>cacert.pem</b></code> file and copy it to <code><b>C:\wamp64\bin\php\php8.1.13</b></code> path.
-- Edit the <code><b>phpForApache.ini</b></code>, Uncomment <b><code>curl.cainfo</b></code> and add the location of <b><code>cacert.pem</b></code> to it as below:
+
+- Edit the <code><b>phpForApache.ini</b></code>, Uncomment <code><b>curl.cainfo</b></code> and add the location of <code><b> cacert.pem </b></code> to it as below:
 ```
 curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 ```
@@ -448,3 +502,10 @@ Update  the “DocumentRoot” to value to “C:\wamp64\www”
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/https-ssl-doc.png" alt="" style=" width:500px">
 
 Restart the apache service from WAMP tray and visit https://faveo.localhost from your browser and Self Sign the certificate.
+
+
+<a id="10" name="10"></a>
+### <b>10. Install Faveo</b>
+
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
