@@ -469,7 +469,7 @@ curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 
 ### Step 4: Edit the “hosts” file on the OS to Map the Custom Domain to Loopback Address.
 
-- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</b></code>
+- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc </b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/hosts.png" alt="" style=" width:500px">
 
@@ -479,7 +479,7 @@ curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 
 - Save and Close the File.
 
-- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</b></code> to <code><b>“openssl.cafile”</code></b> like.
+- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</b></code> to <code><b>“openssl.cafile”</b></code> like.
 ```
 openssl.cafile = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 ```
