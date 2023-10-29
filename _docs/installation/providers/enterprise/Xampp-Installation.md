@@ -84,6 +84,35 @@ zend_extension = "C:\xampp\php\ext\ioncube_loader_win_8.1.dll"
 ```
 http://127.0.0.1\loader-wizard.php
 ```
+<a id="5" name="5"></a>
+## 5. Install wkhtmltopdf
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. It is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+-   <a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">Click Here</a> to download 64-bit wkhtmltopdf-0.12.6-1.exe installer file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf.png" alt="" style=" width:400px ; height:250px ">
+
+- Run the downloaded <code><b>wkhtmltopdf-0.12.6-1.exe installer</b></code>.
+
+- Click <code><b>I Agree</b></code> on the license agreement screen.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf1.png" alt="" style=" width:400px ; height:250px ">
+
+- Specify the installation destination folder or leave it as default location and click <code><b>Install</b></code>
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf2.png" alt="" style=" width:400px ; height:250px ">
+
+- When the installation is complete, click the <code><b>Close</b></code> button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/wkhtmltopdf3.png" alt="" style=" width:400px ; height:250px ">
+
+- Now copy <code><b>wkhtmltox.dll</b></code> located at <code><b>C:\Program Files\wkhtmltopdf\bin</b></code> and paste it in <code><b>C:\xampp\php\ext</b></code>
+
+- Update the Environment variable for <code><b>wkhtmltopdf</b></code>.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envwkhtml.png" alt="" style=" width:400px ; height:250px ">
+
 
 <a id="6" name="6"></a>
 ## 6. Configure the PHP 8.1
@@ -262,6 +291,7 @@ choco install openssl
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/openssl.png" alt="" style=" width:500px">
 
 - To verify the OpenSSL installation, run: 
+
 ```
 openssl version
 ```
@@ -435,12 +465,12 @@ curl.cainfo = "C:\xampp\php\cacert.pem"
 
 - Save and Close the File.
 
-- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</code></b> to <code><b>“openssl.cafile”</code></b> like.
+- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</b></code> to <code><b>“openssl.cafile”</b></code> like.
 ```
 openssl.cafile = "C:\xampp\php\cacert.pem"
 ```
 
-- Edit the <code><b>C:\xampp\apache\conf\extra\httpd-ssl.conf</code></b> file, search for <VirtualHost _default_:443>
+- Edit the <code><b>C:\xampp\apache\conf\extra\httpd-ssl.conf</b></code> file, search for <VirtualHost _default_:443>
 - Turn SSL Engine on & add the certificate paths respectively as shown below:
 
 ```
@@ -452,10 +482,6 @@ SSLCACertificateFile "C:\SSL\faveorootCA.crt"
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/httpd-ssl.png" alt="" style=" width:500px">
 
-Update  the “DocumentRoot” to value to “C:\xampp\htdocs” 
-
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/https-ssl-doc.png" alt="" style=" width:500px">
 
 Restart the apache service from XAMPP tray and visit https://faveo.localhost from your browser and Self Sign the certificate.
 

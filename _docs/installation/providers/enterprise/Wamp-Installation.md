@@ -469,7 +469,7 @@ curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 
 ### Step 4: Edit the “hosts” file on the OS to Map the Custom Domain to Loopback Address.
 
-- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</code></b>
+- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/hosts.png" alt="" style=" width:500px">
 
@@ -479,12 +479,12 @@ curl.cainfo = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 
 - Save and Close the File.
 
-- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</code></b> to <code><b>“openssl.cafile”</code></b> like.
+- if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of <code><b>cacert.pem</b></code> to <code><b>“openssl.cafile”</code></b> like.
 ```
 openssl.cafile = "C:\wamp64\bin\php\php8.1.13\cacert.pem"
 ```
 
-- Edit the <code><b>C:\Apache24\conf\extra\httpd-ssl.conf</code></b> file, search for <VirtualHost _default_:443>
+- Edit the <code><b>C:\Apache24\conf\extra\httpd-ssl.conf</b></code> file, search for <VirtualHost _default_:443>
 - Turn SSL Engine on & add the certificate paths respectively as shown below:
 
 ```
