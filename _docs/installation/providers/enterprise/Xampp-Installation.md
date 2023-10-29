@@ -10,6 +10,8 @@ toc: true
 title: Faveo Installation on Windows with Xampp Server
 ---
 
+<style>p>code, a>code, li>code, figcaption>code, td>code {background: #dedede;}</style>
+
 <img alt="Wamp" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Xampp_logo.svg/2560px-Xampp_logo.svg.png" width="200"  /> 
 
 [<strong>Faveo Installation on Windows with Xampp Server</strong>](#Faveo-Installation-on-Windows-with-Xampp-Server)
