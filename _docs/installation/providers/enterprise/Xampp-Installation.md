@@ -457,7 +457,7 @@ curl.cainfo = "C:\xampp\php\cacert.pem"
 
 ### Step 4: Edit the “hosts” file on the OS to Map the Custom Domain to Loopback Address.
 
-- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</code></b>
+- Open the hosts file from the path <code><b>C:\Windows\System32\drivers\etc</b></code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/hosts.png" alt="" style=" width:500px">
 
