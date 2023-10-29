@@ -13,7 +13,7 @@ title: Faveo Installation on Windows with Xampp Server
 
 <img alt="Wamp" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Xampp_logo.svg/2560px-Xampp_logo.svg.png" width="200"  /> 
 
-[<strong>Faveo Installation on Windows with Xampp Server</strong>](#Faveo-Installation-on-Windows-with-Wamp-Server)
+[<strong>Faveo Installation on Windows with Xampp Server</strong>](#Faveo-Installation-on-Windows-with-Xampp-Server)
 
 - [<strong>Installation steps:</strong>](#installation-steps)
 
@@ -137,7 +137,7 @@ short_open_tag = On
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/envpath.png" alt="" style=" width:500px ; height:300px ">
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/php-env.png" alt="" style=" width:500px ; height:300px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/php-env-xampp.png" alt="" style=" width:500px ; height:300px ">
 
 
 ## 7. Install Redis Extension
