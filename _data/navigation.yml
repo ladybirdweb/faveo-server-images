@@ -45,6 +45,8 @@ docs:
       #  url: /docs/installation/providers/enterprise/centos-web-panel/
       - title: Faveo on WAMP
         url: /docs/installation/providers/enterprise/wamp-windows
+      - title: Faveo on XAMPP
+        url: /docs/installation/providers/enterprise/xampp-windows/
 
 
   - title: How To's
