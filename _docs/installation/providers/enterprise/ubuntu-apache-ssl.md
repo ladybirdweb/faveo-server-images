@@ -19,16 +19,6 @@ PS : Please replace example.com with your valid domain name which is mapped with
 We will install following dependencies in order to make LetsEncrypt SSL work:
 
 - python-certbot-apache
-
-
- <!--- 
-## Downloading the LetsEncrypt client for Ubuntu 18.04.
-
-```sh
-apt install python-certbot-apache
-```
---->
-
 ## Downloading the LetsEncrypt client for Ubuntu 20.04 or 22.04
 
 ```sh
