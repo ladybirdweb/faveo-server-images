@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-09
+last_modified_at: 2023-10-31
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Apache Webserver
 ---
@@ -26,6 +26,11 @@ Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](htt
     - [<strong>9. Install Faveo</strong>](#9-install-faveo)
     - [<strong>10. Faveo Backup</strong>](#10-faveo-backup)
     - [<strong>11. Final step</strong>](#11-final-step)
+
+> [!NOTE] 
+> Ubuntu 22.04 is the recommended version, Ubuntu 20.04 does not support oAuth integration.
+
+
 
 <a id="installation-steps-" name="installation-steps-"></a>
 
@@ -134,21 +139,10 @@ systemctl restart apache2
 
 <b>2.c. Mysql</b>
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
- <b> For Ubuntu 18.04</b>
-
-```sh
-sudo apt update
-sudo apt install software-properties-common -y
-curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-sudo bash mariadb_repo_setup --mariadb-server-version=10.6
-sudo apt update
-sudo apt install mariadb-server mariadb-client
-sudo systemctl enable mariadb
-```
  <b> For Ubuntu 20.04 </b>
 
 ```sh 
@@ -188,7 +182,7 @@ Wkhtmltopdf is an open source simple and much effective command-line shell utili
 
 It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
 
-**For Ubuntu 18.04 and 20.04**
+**For Ubuntu 20.04**
 
 ```sh
 apt-get -y install wkhtmltopdf
