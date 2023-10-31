@@ -18,7 +18,7 @@ title: Install Self-Signed SSL for Faveo on Ubuntu
 This document will guide on how to install Self-Signed SSL certificates on Ubuntu with apache2.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Centos, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
+To Install Self Signed SSL certificates in Ubuntu, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
