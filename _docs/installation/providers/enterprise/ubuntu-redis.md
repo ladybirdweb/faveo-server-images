@@ -4,16 +4,16 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-redis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-10-31
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 18.04, 20.04 and 22.04
+title: Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 20.04 and 22.04
 ---
 
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
 ## Introduction
-This document will list steps on how to install Redis, Supervisor and Worker for faveo.
+This document will list steps on how to install Redis, Supervisor and Worker for Faveo.
 
 We will install following dependencies in order to make Redis work:
 
@@ -56,7 +56,6 @@ autorestart=true
 user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
-
 ```
 ## Restart the Supervisor to reread the new configuration.
 
