@@ -27,7 +27,7 @@ Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](htt
     - [<strong>10. Faveo Backup</strong>](#10-faveo-backup)
     - [<strong>11. Final step</strong>](#11-final-step)
 
-> [!NOTE] 
+> **NOTE** :
 > Ubuntu 22.04 is the recommended version, Ubuntu 20.04 does not support oAuth integration.
 
 
