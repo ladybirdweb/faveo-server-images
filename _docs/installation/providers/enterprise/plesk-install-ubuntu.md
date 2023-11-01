@@ -86,13 +86,15 @@ Once the softwares above are installed:
 
 ## 3. Upload Faveo
 
-### Adding and Removing Domains
+### Adding Domains
 
 - Go to Websites & Domains, click Add Domain and follow on-screen instructions.
 
----- Images ----
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-domain.png" alt="" style=" width:600px">
 
-- Click OK.
+- Click Add Domain.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/new-domain.png" alt="" style=" width:600px">
 
 The new domain name is now shown in the list at the bottom of the screen.
 
@@ -102,14 +104,42 @@ The new domain name is now shown in the list at the bottom of the screen.
 
 Go to Websites & Domains > domain name > Files.
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/upload-Faveo-zip.png" alt="" style=" width:600px">
+
 - Click the httpdocs folder to open it, click Upload Files, select the archive file, and click Open.
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/Extract-zip.png" alt="" style=" width:600px">
+
 - Once the file has been uploaded, click the checkbox next to it and select the Extract Files option.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/Extract-files.png" alt="" style=" width:600px">
 
 
 ## 4. Setup the database
 
+Click Databases from the left-side menu to create a new database
 
+Click the Add Database button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-database.png" alt="" style=" width:600px">
+
+Fill out the details for the new database
+
+- Provide the name of the new database.
+
+- Select the correct server type (MySQL or MariaDB) from the Database server dropdown.
+
+- You may keep the Related site's default value.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-a-database.png" alt="" style=" width:600px">
+
+Once done with the database name, you will need to create the database user. Fill out the details for the Users.
+
+If you want this new user to have access to all databases within your domain, you may want to put a checkmark on User has access to all databases within the selected subscription.
+
+Click OK.
+
+A confirmation will be displayed, and your new database is now added under your domain name.
 
 ## 5. Configure the PHP 8.1
 
@@ -117,7 +147,11 @@ Go to Websites & Domains > domain name > Files.
 
 Step 1: In Plesk, go to Tools & Settings and click Updates (under Plesk).
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/updates.png" alt="" style=" width:600px">
+
 Step 2: On the Updates and Upgrades page, click Add/Remove Components.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-remove-components.png" alt="" style=" width:600px">
 
 Step 3: On the Add/Remove Components page, expand: 
 
@@ -125,8 +159,32 @@ Step 3: On the Add/Remove Components page, expand:
 
 - Select required PHP versions for installation/uninstallation and click Continue.
 
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/install-php8-1.png" alt="" style=" width:600px">
+
+Step 4: Go to Subscriptions > example.com > Websites & Domains > Hosting Settings > PHP version.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/php-version.png" alt="" style=" width:600px">
+
+Step 5: Now select the PHP Version 8.1.X, then scroll down and press OK:
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/change-php-version.png" alt="" style=" width:600px">
+
 ### 5.a. Setting Up ionCube
 
+Go to Tools & Settings > PHP Settings
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/php-settings.png" alt="" style=" width:600px">
+
+Click on the required PHP handler, for example, 8.1.X FPM application
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/fpm-application.png" alt="" style=" width:600px">
+
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/pecl-packages.png" alt="" style=" width:600px">
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/pecl-installer.png" alt="" style=" width:600px">
 
 
 ## 6. Configure cron job
