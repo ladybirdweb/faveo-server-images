@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-nginx-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-01-11
 toc: true
 title: Install Let’s Encrypt SSL for Faveo on Debian Running Nginx Web Server
 ---
@@ -24,7 +24,7 @@ We will install following dependencies in order to make LetsEncrypt SSL work:
 ## Downloading the LetsEncrypt client for Debian 10 (Buster)
 
 ```sh
-apt install -y python-certbot-nginx
+sudo apt install certbot python3-certbot-nginx
 ```
 ## Setting up the SSL certificate
 
