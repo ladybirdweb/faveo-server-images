@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-apache-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-01-11
 toc: true
 title: Install Let’s Encrypt SSL for Faveo on Debian Running Apache Web Server
 ---
@@ -24,7 +24,7 @@ We will install following dependencies in order to make LetsEncrypt SSL work:
 ## Downloading the LetsEncrypt client.
 
 ```sh
-apt install python-certbot-apache
+sudo apt install certbot python3-certbot-apache
 ```
 
 ## Setting up the SSL certificate
