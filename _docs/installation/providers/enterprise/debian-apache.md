@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-01-11
+last_modified_at: 2023-11-01
 toc: true
 title: Installing Faveo Helpdesk on Debian With Apache Webserver
 ---
