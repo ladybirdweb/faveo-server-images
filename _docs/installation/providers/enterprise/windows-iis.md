@@ -167,7 +167,7 @@ name="3Create-FastCGI-Handler-Mapping"></a>
 
 - RequestPath
 ```
-<code><b>.php
+.php
 ```
 - Module
 ```

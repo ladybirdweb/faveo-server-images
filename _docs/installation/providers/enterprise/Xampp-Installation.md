@@ -419,7 +419,7 @@ The above command will create a .pfx file with the name cert.pfx in the SSL dire
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-1.png" alt="" style=" width:300px">
 
-- Click on Install Certificate → Select local machine→ Click on next
+- Click on Install Certificate → Select local machine → Click on next
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/Wamp-Images/cert-2.png" alt="" style=" width:300px">
 
