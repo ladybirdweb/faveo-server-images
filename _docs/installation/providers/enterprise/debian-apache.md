@@ -4,14 +4,14 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-09
+last_modified_at: 2023-01-11
 toc: true
 title: Installing Faveo Helpdesk on Debian With Apache Webserver
 ---
 
 <img alt="debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="96" height="127" />
 
-Faveo can run on Debian 11 (Bullseye).
+Faveo can run on Debian 11 (Bullseye), Debian 12 (Bookworm).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
@@ -72,9 +72,24 @@ systemctl enable apache2
 
 <b>2.c. PHP 8.1+</b>
 
-Note: In Debian upon installing PHP packages apache2 will be automatically installed and started 
+Note: In Debian upon installing PHP packages apache2 will be automatically installed and started.
+
+Before we install PHP 8.1, it’s important to make sure your system is up to date by running the following apt commands.
 
 ```sh
+sudo apt update
+sudo apt install apt-transport-https lsb-release ca-certificates
+```
+
+Add the Ondřej Surý PHP repository.
+
+```sh
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+```
+Now Install PHP 8.1 and extensions.
+```sh
+sudo apt update
 apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
     php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
     php8.1-opcache  php8.1-mbstring php8.1-zip \
@@ -119,9 +134,11 @@ systemctl restart apache2
 
 <b>2.e. MariaDB:</b>
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+<b> For Debian 11 </b>
 
 ```sh
 sudo apt update
@@ -133,11 +150,44 @@ sudo apt-get install mariadb-server mariadb-client
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
 ```
+
+<b> For Debian 12 </b>
+
+```sh
+sudo apt install dirmngr software-properties-common apt-transport-https curl lsb-release ca-certificates -y
+curl -fsSL https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql.gpg > /dev/null
+
+echo "deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/debian $(lsb_release -sc) mysql-8.0" | sudo tee /etc/apt/sources.list.d/mysql.list
+
+sudo apt update
+sudo apt install mysql-community-server
+sudo systemctl start mysql-community-server --now
+sudo systemctl enable mysql-community-server --now
+```
+
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 ```
 sudo mysql_secure_installation 
 ```
 
+<b>2.f. Install wkhtmltopdf</b>
+
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). 
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+**For Debian 11**
+
+```sh
+apt-get -y install wkhtmltopdf
+```
+**For Debian 12**
+
+```sh
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb
+sudo apt install ./wkhtmltox*bookworm_amd64.deb
+```
 
 <a id="3-upload-faveo" name="3-upload-faveo"></a>
 
