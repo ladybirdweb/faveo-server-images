@@ -34,59 +34,8 @@ title: Faveo Installation on Ubuntu with Plesk Panel
 
 - Follow the [instructions here](https://www.plesk.com/blog/various/install-plesk-linux/)
 
-<a id="2" name="2"></a>
-## 2. Install some Utility packages
 
-```
-apt install -y git wget curl unzip nano zip
-```
-
-### 2.a. PHP 8.1+
-
-- First add this PPA repository:
-
-```
-add-apt-repository ppa:ondrej/php
-```
-Then install php 8.1 with these extensions:
-
-```
-apt update
-apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
-    php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
-    php8.1-opcache  php8.1-mbstring php8.1-zip \
-    php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
-    php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis
-```
-
-### 2.b. Install wkhtmltopdf
-
-Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc).
-
-It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
-
-### For Ubuntu 18.04 and 20.04
-
-```
-apt-get -y install wkhtmltopdf
-```
-
-### For Ubuntu 22.04
-
-```
-echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-        apt-get update; apt install libssl1.1 -y
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
-    
-        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
-        apt --fix-broken install -y
-```
-
-Once the softwares above are installed:
-
-## 3. Upload Faveo
-
-### Adding Domains
+## 2. Adding Domains
 
 - Go to Websites & Domains, click Add Domain and follow on-screen instructions.
 
@@ -115,33 +64,7 @@ Go to Websites & Domains > domain name > Files.
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/Extract-files.png" alt="" style=" width:600px">
 
 
-## 4. Setup the database
-
-Click Databases from the left-side menu to create a new database
-
-Click the Add Database button.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-database.png" alt="" style=" width:600px">
-
-Fill out the details for the new database
-
-- Provide the name of the new database.
-
-- Select the correct server type (MySQL or MariaDB) from the Database server dropdown.
-
-- You may keep the Related site's default value.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-a-database.png" alt="" style=" width:600px">
-
-Once done with the database name, you will need to create the database user. Fill out the details for the Users.
-
-If you want this new user to have access to all databases within your domain, you may want to put a checkmark on User has access to all databases within the selected subscription.
-
-Click OK.
-
-A confirmation will be displayed, and your new database is now added under your domain name.
-
-## 5. Configure the PHP 8.1
+## 3.a. Configure the PHP 8.1
 
 ### Switch PHP Versions
 
@@ -169,7 +92,7 @@ Step 5: Now select the PHP Version 8.1.X, then scroll down and press OK:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/change-php-version.png" alt="" style=" width:600px">
 
-### 5.a. Setting Up ionCube
+### 3.b. Setting Up ionCube
 
 Go to Tools & Settings > PHP Settings
 
@@ -179,17 +102,71 @@ Click on the required PHP handler, for example, 8.1.X FPM application
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/fpm-application.png" alt="" style=" width:600px">
 
-
+Go to Manage PECL Packages
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/pecl-packages.png" alt="" style=" width:600px">
 
+Search "ioncube" and click install the ioncube loader
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/pecl-installer.png" alt="" style=" width:600px">
 
 
-## 6. Configure cron job
+### 3.c. Install wkhtmltopdf
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc).
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+```
+apt-get -y install wkhtmltopdf
+```
 
 
+
+## 4. Setup the database
+
+Click Databases from the left-side menu to create a new database
+
+Click the Add Database button.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-database.png" alt="" style=" width:600px">
+
+Fill out the details for the new database
+
+- Provide the name of the new database.
+
+- Select the correct server type (MySQL or MariaDB) from the Database server dropdown.
+
+- You may keep the Related site's default value.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/add-a-database.png" alt="" style=" width:600px">
+
+Once done with the database name, you will need to create the database user. Fill out the details for the Users.
+
+If you want this new user to have access to all databases within your domain, you may want to put a checkmark on User has access to all databases within the selected subscription.
+
+Click OK.
+
+A confirmation will be displayed, and your new database is now added under your domain name.
+
+
+## 6. Scheduling Tasks
+
+go to Tools & Settings > Scheduled Tasks > Add Task. 
+
+Click Add task and set specify Run parameter to Cron style.
+
+Fill in the Run text field with cron-style time syntax
+
+```
+*****
+```
+
+Fill in the Command text field with the cron command
+
+```
+/opt/plesk/php/8.1/bin/php /var/www/vhosts/-- DOMAIN NAME --/httpdocs/artisan schedule:run 2>&1
+```
 
 ## 7. Redis Installation
 
@@ -197,9 +174,25 @@ Click on the required PHP handler, for example, 8.1.X FPM application
 
 ## 8. SSL Installation
 
+- Go to Domains > example.com and click SSL/TLS Certificates:
 
+- At the bottom of the page, click Install in the section More options > Install a free basic certificate provided by Let's Encrypt:
+
+Select the desired options for the certificate to be issued. We recommend enabling the checkboxes:
+
+- Secure the domain name
+- Include a "www" subdomain for the domain and each selected alias
+- Secure webmail on this domain
+- Assign the certificate to mail domain
+
+Note: The specified Email address will be used to receive important notifications and warnings about the certificate sent by Let's Encrypt. Plesk by default takes the email from the owner of the domain to secure.
+
+- Click Get it free
 
 ## 9. Install Faveo
 
+<a id="9Install-Faveo" 
+name="9Install-Faveo"></a>
 
+Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
