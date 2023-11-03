@@ -63,9 +63,9 @@ Go to <b>Websites & Domains > domain name > Files</b>.
 
 
 <a id="3" name="3"></a>
-## 3.a. Configure the PHP 8.1
+## 3. Configure the PHP 8.1
 
-### Switch PHP Versions
+### 3.a. Switch PHP Versions
 
 Step 1: In Plesk, go to <code><b>Tools & Settings</b></code> and click <code><b>Updates</b></code> (under Plesk).
 
