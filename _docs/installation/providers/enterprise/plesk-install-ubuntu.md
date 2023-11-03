@@ -152,7 +152,17 @@ A confirmation will be displayed, and your new database is now added under your 
 
 ## 6. Scheduling Tasks
 
-go to Tools & Settings > Scheduled Tasks > Add Task. 
+go to Tools & Settings > Scheduled Tasks (Cron jobs) > Add Task. 
+
+---- Scheduled Tasks ----
+
+---- Add Task ----
+
+Fill in the Command text field with the cron command
+
+```
+/opt/plesk/php/8.1/bin/php /var/www/vhosts/-- DOMAIN NAME --/httpdocs/artisan schedule:run 2>&1
+```
 
 Click Add task and set specify Run parameter to Cron style.
 
@@ -162,21 +172,28 @@ Fill in the Run text field with cron-style time syntax
 *****
 ```
 
-Fill in the Command text field with the cron command
-
-```
-/opt/plesk/php/8.1/bin/php /var/www/vhosts/-- DOMAIN NAME --/httpdocs/artisan schedule:run 2>&1
-```
+---- schedule-a-task ----
 
 ## 7. Redis Installation
 
+Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+This is an optional step and will improve system performance and is highly recommended.
+
+[Redis installation documentation](/docs/installation/providers/enterprise/plesk-redis)
 
 
 ## 8. SSL Installation
 
-- Go to Domains > example.com and click SSL/TLS Certificates:
+### Let's Encrypt
+
+- Go to Websites & Domains > domain name and click SSL/TLS Certificates:
+
+---- SSLTLS-Certificates ----
 
 - At the bottom of the page, click Install in the section More options > Install a free basic certificate provided by Let's Encrypt:
+
+---- install-ssl ----
 
 Select the desired options for the certificate to be issued. We recommend enabling the checkboxes:
 
@@ -188,6 +205,8 @@ Select the desired options for the certificate to be issued. We recommend enabli
 Note: The specified Email address will be used to receive important notifications and warnings about the certificate sent by Let's Encrypt. Plesk by default takes the email from the owner of the domain to secure.
 
 - Click Get it free
+
+---- install-ssl-1 ----
 
 ## 9. Install Faveo
 
