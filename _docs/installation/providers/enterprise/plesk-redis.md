@@ -1,16 +1,18 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/ubuntu-redis/
+permalink: /docs/installation/providers/enterprise/plesk-redis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-10-31
+last_modified_at: 2023-11-3
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on Ubuntu 20.04 and 22.04
+title: Redis Installation on Ubuntu with Plesk Panel
 ---
 
+<style>p>code, a>code, li>code, figcaption>code, td>code {background: #dedede;}</style>
 
-<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
+<img alt="Wamp" src="https://contabo.com/blog/wp-content/uploads/2019/11/Plesk-OBSIDIAN-logo_positive-1024x341.png" width="200"  /> 
 
 ## Introduction
 This document will list steps on how to install Redis, Supervisor and Worker for Faveo.
@@ -50,12 +52,12 @@ nano /etc/supervisor/conf.d/faveo-worker.conf
 ```
 [program:faveo-Horizon]
 process_name=%(program_name)s
-command=/opt/plesk/php/8.1/bin/php /var/www/vhosts/-- DOMAIN NAME --/httpdocs/artisan horizon
+command=/opt/plesk/php/8.1/bin/php /var/www/vhosts/ -- DOMAIN NAME -- /httpdocs/artisan horizon
 autostart=true
 autorestart=true
 user=root
 redirect_stderr=true
-stdout_logfile=/var/www/faveo/storage/logs/horizon-worker.log
+stdout_logfile=/var/www/vhosts/ -- DOMAIN NAME -- /httpdocs/storage/logs/horizon-worker.log
 ```
 ## Restart the Supervisor to reread the new configuration.
 
@@ -71,3 +73,5 @@ supervisorctl
 
 ## Enable Redis in Faveo
 After Redis installation is complete, follow these [instructions](/docs/helper/enable-redis) to configure Redis with Faveo. 
+
+

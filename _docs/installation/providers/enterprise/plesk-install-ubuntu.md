@@ -83,7 +83,7 @@ Step 3: On the Add/Remove Components page, expand:
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/install-php8-1.png" alt="" style=" width:600px">
 
-Step 4: Go to <b>Subscriptions > example.com > Websites & Domains > Hosting Settings > PHP version</b>.
+Step 4: Go to <b>Websites & Domains > Hosting Settings > PHP version</b>.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/plesk-images/php-version.png" alt="" style=" width:600px">
 
