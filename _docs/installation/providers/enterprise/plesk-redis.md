@@ -49,15 +49,17 @@ apt-get install supervisor
 ```
 nano /etc/supervisor/conf.d/faveo-worker.conf
 ```
-```
+Pick a editor of your choice copy the following and replace <code><b>"–DOMAINNAME–"</b></code> 
+
+```bash
 [program:faveo-Horizon]
 process_name=%(program_name)s
-command=/opt/plesk/php/8.1/bin/php /var/www/vhosts/ -- DOMAIN NAME -- /httpdocs/artisan horizon
+command=/opt/plesk/php/8.1/bin/php /var/www/vhosts/"–DOMAINNAME–"/httpdocs/artisan horizon
 autostart=true
 autorestart=true
 user=root
 redirect_stderr=true
-stdout_logfile=/var/www/vhosts/ -- DOMAIN NAME -- /httpdocs/storage/logs/horizon-worker.log
+stdout_logfile=/var/www/vhosts/–DOMAINNAME–/httpdocs/storage/logs/horizon-worker.log
 ```
 ## Restart the Supervisor to reread the new configuration.
 

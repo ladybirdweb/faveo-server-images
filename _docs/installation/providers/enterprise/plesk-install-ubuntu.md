@@ -159,8 +159,10 @@ go to <b>Tools & Settings > Scheduled Tasks (Cron jobs) > Add Task</b>.
 
 Fill in the Command text field with the cron command
 
-```
-/opt/plesk/php/8.1/bin/php /var/www/vhosts/-- DOMAIN NAME --/httpdocs/artisan schedule:run 2>&1
+Pick a editor of your choice copy the following and replace <code><b>"–DOMAINNAME–"</b></code> 
+
+```bash
+/opt/plesk/php/8.1/bin/php /var/www/vhosts/"–DOMAINNAME"–/httpdocs/artisan schedule:run 2>&1
 ```
 
 Click <code><b>Add task</b></code> and set specify Run parameter to <code><b>Cron style</b></code>.
