@@ -59,7 +59,7 @@ autostart=true
 autorestart=true
 user=root
 redirect_stderr=true
-stdout_logfile=/var/www/vhosts/–DOMAINNAME–/httpdocs/storage/logs/horizon-worker.log
+stdout_logfile=/var/www/vhosts/"–DOMAINNAME–"/httpdocs/storage/logs/horizon-worker.log
 ```
 ## Restart the Supervisor to reread the new configuration.
 
