@@ -47,7 +47,7 @@ sudo ss -plunt
 
 You should receive output like the following:
 
-```
+```sh
 Output
 Netid      State       Recv-Q      Send-Q           Local Address:Port             Peer Address:Port      Process                                         
 . . .
