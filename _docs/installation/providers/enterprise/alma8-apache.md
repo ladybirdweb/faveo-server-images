@@ -63,11 +63,17 @@ yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 
 ```sh
 sudo dnf upgrade --refresh -y
+```
+
+```sh
 sudo dnf install \
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
     https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-8.noarch.rpm
-    
+```
+
+```sh
 sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+
 ```
 Use the dnf module list command to see the options available for php
 
@@ -140,8 +146,10 @@ It uses WebKit rendering layout engine to convert HTML pages to PDF document wit
 
 ```sh
 yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
-wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
-sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux8.x86_64.rpm
+
+sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux8.x86_64.rpm
 ```
 
 
@@ -265,7 +273,6 @@ nano /etc/httpd/conf.d/faveo.conf
 
 
 ```apache
-
 <VirtualHost *:80> 
 ServerName --DOMAINNAME-- 
 ServerAdmin webmaster@localhost 
