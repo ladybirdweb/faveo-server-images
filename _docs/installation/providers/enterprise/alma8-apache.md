@@ -4,14 +4,14 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma8-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-09
+last_modified_at: 2023-10-21
 toc: true
-title: Installing Faveo Helpdesk on Alma Linux 9 
+title: Installing Faveo Helpdesk on Alma Linux 8
 ---
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
-Faveo can run on [Alma Linux 9 ](https://almalinux.org/).
+Faveo can run on [Alma Linux 8 ](https://almalinux.org/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
@@ -81,8 +81,9 @@ sudo dnf module enable php:remi-8.1 -y
 Now install php 8.1 and the required extensions.
 ```sh
 sudo dnf install php -y
-yum -y install php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+yum -y install php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
+
 <b> 2.b. Install and run Apache</b>
 Install and Enable Apache Server
 
@@ -101,7 +102,7 @@ Copy ioncube loader to PHP modules Directory.
 
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules 
+cp ioncube/ioncube_loader_lin_8.1.so /usr/lib64/php/modules
 sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"' /etc/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
