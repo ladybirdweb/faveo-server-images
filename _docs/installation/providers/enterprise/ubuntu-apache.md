@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-10-31
+last_modified_at: 2023-11-26
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Apache Webserver
 ---
@@ -169,12 +169,6 @@ Secure your MySql installation by executing the below command. Set Password for 
 mysql_secure_installation 
 ```
 
-**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
-
-```sh
-apt install phpmyadmin
-```
-
 <b>2.d. Install wkhtmltopdf</b>
 
 
@@ -190,12 +184,9 @@ apt-get -y install wkhtmltopdf
 **For Ubuntu 22.04**
 
 ```
-echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-        apt-get update; apt install libssl1.1 -y
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
-    
-        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
-        apt --fix-broken install -y
+apt install libfontenc1 xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+dpkg -i wkhtmltox_0.12.6.1-3.jammy_amd64.deb
 ```
 
 Once the softwares above are installed:
