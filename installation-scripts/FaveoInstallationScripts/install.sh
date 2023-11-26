@@ -157,10 +157,7 @@ extensions ()
     sed -i '2 a zend_extension = "/usr/lib/php/20210902/ioncube_loader_lin_8.1.so"' /etc/php/8.1/fpm/php.ini
     derivative=$(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f 2 | tr -d '.')
     if [[ $derivative == 2004 ]]; then
-        wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
-        dpkg -i "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
-        rm -f "$PWD"/wkhtmltox_0.12.5-1.bionic_amd64.deb
-        apt install -f -y
+        apt-get install wkhtmltopdf -y
         if [[ $? != 0 ]]; then
             echo -e "\n";
             echo -e "$red Something went wrong. Configuring PDF Plugin. $reset"
@@ -169,11 +166,9 @@ extensions ()
         fi
         rm -f "$PWD"/wkhtmltox_0.12.6-1.focal_amd64.deb
     elif [[ $derivative == 2204 ]]; then
-        echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-        apt-get update; apt install libssl1.1 -y
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb 
-    
-        dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb
+        apt-get install libfontenc1 xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils -y
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb     
+        dpkg -i wkhtmltox_0.12.6.1-3.jammy_amd64.deb
         apt --fix-broken install -y
         if [[ $? != 0 ]]; then
             echo -e "\n";
