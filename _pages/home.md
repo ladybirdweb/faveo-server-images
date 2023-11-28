@@ -87,7 +87,7 @@ For detailed Software requirements list [check here](/docs/system-requirement/re
 The above mentioned prerequisites to be met have to be installed then faveo can be installed in any OS/Distro from the below list:
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, Paid, Enterprise and Community editions
-* [Amla Linux 9 with Apache](/docs/installation/providers/enterprise/amla9-apache)
+* [Alma Linux 9 with Apache](/docs/installation/providers/enterprise/alma9-apache)
 * [Alma Linux 9 with Nginx](/docs/installation/providers/enterprise/alma9-nginx)
 * [Rocky Linux 9 with Apache](/docs/installation/providers/enterprise/rocky9-apache)
 * [Rocky Linux 9 with Nginx](/docs/installation/providers/enterprise/rocky9-nginx)
