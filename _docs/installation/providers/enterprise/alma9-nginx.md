@@ -34,7 +34,7 @@ Faveo depends on the following:
 -   **Web Server**  Nginx/Apache 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
 <a id="-1-update-your-packages-and-install-some-utility-tools" name="-1-update-your-packages-and-install-some-utility-tools"></a>
 
@@ -197,6 +197,8 @@ And finally we apply the changes and exit the database.
 FLUSH PRIVILEGES;
 exit
 ```
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
 
 <a id="4-configure-nginx-webserver-" name="4-configure-nginx-webserver-"></a>
 
@@ -363,7 +365,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 ### <strong>6. Redis Installation</strong>
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-This is an optional step and will improve system performance and is highly recommended.
+This will improve system performance and is highly recommended.
 
 [Redis installation documentation](/docs/installation/providers/enterprise/alma-redis)
 
