@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-02-19
+last_modified_at: 2023-12-02
 toc: true
 title: Installing Faveo Helpdesk on Rocky OS 9 With Nginx Webserver
 ---
@@ -34,7 +34,7 @@ Faveo depends on the following:
 -   **Web Server**  Nginx/Apache 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
 <a id="-1-update-your-packages-and-install-some-utility-tools" name="-1-update-your-packages-and-install-some-utility-tools"></a>
 
@@ -198,6 +198,9 @@ And finally we apply the changes and exit the database.
 FLUSH PRIVILEGES;
 exit
 ```
+
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
 
 <a id="4-configure-nginx-webserver-" name="4-configure-nginx-webserver-"></a>
 
@@ -374,7 +377,7 @@ This is an optional step and will improve system performance and is highly recom
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+This will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rocky-nginx-ssl)
 
