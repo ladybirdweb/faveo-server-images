@@ -34,7 +34,7 @@ Faveo depends on the following:
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
 
 
