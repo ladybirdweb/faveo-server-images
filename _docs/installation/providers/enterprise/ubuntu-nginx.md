@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-11-26
+last_modified_at: 2023-12-02
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Nginx Webserver
 ---
@@ -15,7 +15,7 @@ title: Installing Faveo Helpdesk on Ubuntu With Nginx Webserver
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)]. 
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
-    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>1. Nginx Installation</strong>](#1-nginx-installation)
     - [<strong>2. Install some Utility packages</strong>](#2-install-some-utility-packages)
     - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
     - [<strong>4. Setup the database</strong>](#4-setup-the-database)
@@ -39,13 +39,11 @@ Faveo depends on the following:
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
-<a id="1-lamp-installation" name="1-lamp-installation"></a>
+<a id="1-nginx-installation" name="1-nginx-installation"></a>
 
-### <strong>1. LAMP Installation</strong>
-Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+### <strong>1. Nginx Installation</strong>
 
 Run the following commands as sudoers or Login as root user by typing the command below
 
@@ -248,6 +246,9 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
+
 <a id="-5-configure-nginx-webserver" name="-5-configure-nginx-webserver"></a>
 
 ### <strong> 5. Configure Nginx webserver</strong>
@@ -334,7 +335,7 @@ This is an optional step and will improve system performance and is highly recom
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+This will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-nginx-ssl)
 
