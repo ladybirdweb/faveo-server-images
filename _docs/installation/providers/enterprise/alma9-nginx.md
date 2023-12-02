@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma9-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-09
+last_modified_at: 2023-12-02
 toc: true
 title: Installing Faveo Helpdesk Alma Linux 9 with Nginx Webserver
 ---
