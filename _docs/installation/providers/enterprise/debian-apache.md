@@ -51,7 +51,7 @@ sudo su
 apt update
 ```
 
-<b>2.a. Install some Utility packages</b>
+<b>1.a. Install some Utility packages</b>
 
 ```sh
 apt install -y git wget curl unzip nano zip
