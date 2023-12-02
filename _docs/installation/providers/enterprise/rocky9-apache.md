@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-09
+last_modified_at: 2023-12-02
 toc: true
 title: Installing Faveo Helpdesk on Rocky OS 9
 ---
@@ -14,17 +14,16 @@ title: Installing Faveo Helpdesk on Rocky OS 9
 Faveo can run on [Rocky 9 ](https://rockylinux.org/download/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
-    - [<strong> 1. LAMP Installation</strong>](#-1-lamp-installation)
-    - [<strong> 2. Update your Packages and install some utility tools</strong>](#-2-update-your-packages-and-install-some-utility-tools)
-    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
-    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
-    - [<strong>5. Configure Apache webserver</strong>](#5-configure-apache-webserver)
-    - [<strong>6. Configure cron job</strong>](#6-configure-cron-job)
-    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
-    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
-    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
-    - [<strong>10. Faveo Backup</strong>](#10-faveo-backup)
-    - [<strong>11. Final step</strong>](#11-final-step)
+    - [<strong> 1. Update your Packages and install some utility tools</strong>](#-1-update-your-packages-and-install-some-utility-tools)
+    - [<strong>2. Upload Faveo</strong>](#2-upload-faveo)
+    - [<strong>3. Setup the database</strong>](#3-setup-the-database)
+    - [<strong>4. Configure Apache webserver</strong>](#4-configure-apache-webserver)
+    - [<strong>5. Configure cron job</strong>](#5-configure-cron-job)
+    - [<strong>6. Redis Installation</strong>](#6-redis-installation)
+    - [<strong>7. SSL Installation</strong>](#7-ssl-installation)
+    - [<strong>8. Install Faveo</strong>](#8-install-faveo)
+    - [<strong>9. Faveo Backup</strong>](#9-faveo-backup)
+    - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps-" name="installation-steps-"></a>
 
@@ -37,16 +36,9 @@ Faveo depends on the following:
 -   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
-<a id="-1-lamp-installation" name="-1-lamp-installation"></a>
+<a id="-1-update-your-packages-and-install-some-utility-tools" name="-1-update-your-packages-and-install-some-utility-tools"></a>
 
-### <strong> 1. LAMP Installation</strong>
-
-Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
-
-<a id="-2-update-your-packages-and-install-some-utility-tools" name="-2-update-your-packages-and-install-some-utility-tools"></a>
-
-### <strong> 2. Update your Packages and install some utility tools</strong>
+### <strong> 1. Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
 
@@ -57,7 +49,7 @@ sudo su
 yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
 ```
 
-<b> 2.a. Install php-8.1 Packages </b>
+<b> 1.a. Install php-8.1 Packages </b>
 
 
 
@@ -84,7 +76,7 @@ Now install php 8.1 and the required extensions.
 sudo dnf install php -y
 yum -y install php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
 ```
-<b> 2.b. Install and run Apache</b>
+<b> 1.b. Install and run Apache</b>
 Install and Enable Apache Server
 
 ```sh
@@ -93,7 +85,7 @@ systemctl start httpd
 systemctl enable httpd
 ```
 
-<b> 2.c. Setting Up ionCube</b>
+<b> 1.c. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
@@ -107,7 +99,7 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b> 2.d. Install and run Mysql/MariaDB</b>
+<b> 1.d. Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
@@ -130,7 +122,7 @@ Secure your MySql installation by executing the below command. Set Password for 
 mariadb-secure-installation  
 ```
 
-<b>2.e. Install wkhtmltopdf</b>
+<b>1.e. Install wkhtmltopdf</b>
 
 
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). 
@@ -143,9 +135,9 @@ wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtm
 sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
 ```
 
-<a id="3-upload-faveo" name="3-upload-faveo"></a>
+<a id="2-upload-faveo" name="2-upload-faveo"></a>
 
-### <strong>3. Upload Faveo</strong>
+### <strong>2. Upload Faveo</strong>
 
 **For Faveo Freelancer, Paid and Enterprise Version**
 
@@ -170,9 +162,10 @@ cd /var/www/
 git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
 ```
 You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
-<a id="4-setup-the-database" name="4-setup-the-database"></a>
 
-### <strong>4. Setup the database</strong>
+<a id="3-setup-the-database" name="3-setup-the-database"></a>
+
+### <strong>3. Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -205,11 +198,14 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-<a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
 
-### <strong>5. Configure Apache webserver</strong>
+<a id="4-configure-apache-webserver" name="4-configure-apache-webserver"></a>
 
-**5.a.** <b>Give proper permissions to the project directory by running:</b>
+### <strong>4. Configure Apache webserver</strong>
+
+**4.a.** <b>Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R apache:apache /var/www/faveo
@@ -223,7 +219,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
 
-**5.b.** <b>Enable the rewrite module of the Apache webserver:</b>
+**4.b.** <b>Enable the rewrite module of the Apache webserver:</b>
 
 Check whether the Module exists in Apache modules directory.
 
@@ -253,7 +249,7 @@ Also disable Directory Browsing on Apache, change Options Indexes FollowSymLinks
 ```
 
 
-**5.c.** <b>Configure a new faveo site in apache by doing:</b>
+**4.c.** <b>Configure a new faveo site in apache by doing:</b>
 
 Pick a editor of your choice copy the following and replace '--DOMAINNAME--' with the Domain name mapped to your Server's IP or you can just comment the 'ServerName' directive if Faveo is the only website served by your server.
 ```sh
@@ -276,16 +272,16 @@ CustomLog /var/log/httpd/faveo-access.log combined
 </VirtualHost>
 ```
 
-**5.d.** Apply the new `.conf` file and restart Apache. You can do that by running:
+**4.d.** Apply the new `.conf` file and restart Apache. You can do that by running:
 
 ```sh
 systemctl restart httpd.service
 ```
 
 
-<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+<a id="5-configure-cron-job" name="5-configure-cron-job"></a>
 
-### <strong>6. Configure cron job</strong>
+### <strong>5. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
@@ -297,19 +293,19 @@ To do this, setup a cron that runs every minute that triggers the following comm
 (sudo -u apache crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u apache crontab -
 ```
 
-<a id="7-redis-installation" name="7-redis-installation"></a>
+<a id="6-redis-installation" name="6-redis-installation"></a>
 
-### <strong>7. Redis Installation</strong>
+### <strong>6. Redis Installation</strong>
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-This is an optional step and will improve system performance and is highly recommended.
+This will improve system performance and is highly recommended.
 
 [Redis installation documentation](/docs/installation/providers/enterprise/rocky-redis)
 
-<a id="8-ssl-installation" name="8-ssl-installation"></a>
+<a id="7-ssl-installation" name="7-ssl-installation"></a>
 
-### <strong>8. SSL Installation</strong>
+### <strong>7. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
@@ -319,24 +315,24 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-rocky/)
 
-<a id="9-install-faveo" name="9-install-faveo"></a>
+<a id="8-install-faveo" name="8-install-faveo"></a>
 
-### <strong>9. Install Faveo</strong>
+### <strong>8. Install Faveo</strong>
 
 At this point if the domainname is propagated properly with your server's IP you can open Faveo in browser just by entering your domainname.
 You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli).
 
-<a id="10-faveo-backup" name="10-faveo-backup"></a>
+<a id="9-faveo-backup" name="9-faveo-backup"></a>
 
-### <strong>10. Faveo Backup</strong>
+### <strong>9. Faveo Backup</strong>
 
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
 
-<a id="11-final-step" name="11-final-step"></a>
+<a id="10-final-step" name="10-final-step"></a>
 
-### <strong>11. Final Step</strong>
+### <strong>10. Final Step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
