@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-11-26
+last_modified_at: 2023-12-02
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Apache Webserver
 ---
@@ -15,7 +15,7 @@ title: Installing Faveo Helpdesk on Ubuntu With Apache Webserver
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
-    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>1. Apache Installation</strong>](#1-apache-installation)
     - [<strong>2. Install some Utility packages</strong>](#2-install-some-utility-packages)
     - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
     - [<strong>4. Setup the database</strong>](#4-setup-the-database)
@@ -41,14 +41,12 @@ Faveo depends on the following:
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
 
-<a id="1-lamp-installation" name="1-lamp-installation"></a>
+<a id="1-apache-installation" name="1-apache-installation"></a>
 
-### <strong>1. LAMP Installation</strong>
-Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+### <strong>1. Apache Installation</strong>
 
 Run the following commands as sudoers or Login as root user by typing the command below
 
@@ -263,6 +261,9 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
+
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 
 ### <strong>5. Configure Apache webserver</strong>
@@ -332,7 +333,7 @@ To do this, setup a cron that runs every minute that triggers the following comm
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-This is an optional step and will improve system performance and is highly recommended.
+This will improve system performance and is highly recommended.
 
 [Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis)
 
