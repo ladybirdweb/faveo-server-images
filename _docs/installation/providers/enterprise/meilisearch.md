@@ -92,7 +92,7 @@ chown -R meilisearch:meilisearch /var/lib/meilisearch
 chmod 750 /var/lib/meilisearch
 ```
  
- ## Step 4: Run Meilisearch as a service
+## Step 4: Run Meilisearch as a service
 We will use a very simple service file that will run Meilisearch on port 7700.
 
 Run this command to create a service file:
