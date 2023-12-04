@@ -16,9 +16,9 @@ In this article, we’ll be deploying Faveo Helpdesk app on top of Kubernetes. B
 
 # Prerequisites
 
-* A Managed Kubernetes 1.19+ cluster with your connection configuration set as the kubectl default on the local machine from which you access the cluster. You can read more about installing kubectl in the [official documentation](https://kubernetes.io/docs/tasks/tools/).
+* A Managed Kubernetes 1.28+ cluster with your connection configuration set as the kubectl default on the local machine from which you access the cluster. You can read more about installing kubectl in the [official documentation](https://kubernetes.io/docs/tasks/tools/).
 * The Helm 3 package manager installed on your local machine. You can follow the [official guide here](https://helm.sh/docs/intro/install/) to install Helm 3.
-* A Managed Mysql 5.7 or MariaDB 10.3 database in the same region as of the Cluster.
+* A Managed Mysql 8.0+ or MariaDB 10.6+ database in the same region as of the Cluster.
 * A Managed Redis database in the same region as of the Cluster.
 * Spaces bucket in the same region.
   (We recommend to have all this requirements in the same region as of the cluster for better performance and good connectivity among them)
