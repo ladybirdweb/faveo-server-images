@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2023-12-03
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Meilisearch Driver On Linux Server.
+title: Installing Meilisearch Driver for Faveo.
 ---
 <img alt="Windows" src="https://assets-global.website-files.com/64c7a317aea92912392c0420/64e78fa96ece14d6a2632a57_Meilisearch_logo.webp" width="200"  />
 
@@ -107,7 +107,7 @@ After=systemd-user-sessions.service
 Type=simple
 WorkingDirectory=/var/lib/meilisearch
 ExecStart=/usr/local/bin/meilisearch --config-file-path /etc/meilisearch.toml
-User=meildisearch
+User=meilisearch
 Group=meilisearch
 
 [Install]
