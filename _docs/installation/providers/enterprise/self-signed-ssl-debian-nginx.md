@@ -118,7 +118,7 @@ server {
     listen [::]:80;
     root /var/www/faveo/public;
     index  index.php index.html index.htm;
-    server_name  example.com www.example.com;
+    server_name  ---DomainName or IP---;
 
      client_max_body_size 100M;
 
