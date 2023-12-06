@@ -13,7 +13,7 @@ title: Install Self-Signed SSL for Faveo on Alma Linux 9
 
 
 ## Introduction
-This document will guide on how to install Self-Signed SSL certificates on Alma Linux 9 with apahce.
+This document will guide on how to install Self-Signed SSL certificates on Alma Linux 9 with nginx.
 
 ## Setting up the SSL certificate
 To Install Self Signed SSL certificates in Amla Linux 9, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
@@ -104,12 +104,6 @@ openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -
 
 ## Setting up the Virtual host file for the Self signed SSL certificate's.
 
-- We need to enable some Modules for the ssl as below : 
-```
-dnf install mod_ssl
-systemctl restart httpd
-```
-- The above will install mod_ssl module and restart apache.
 - Before creating the Virtual host file for SSL we need to copy the created SSL certificate's and Key file to the corresponding directory with below command, these commands should be runned from the SSL Directory.
 ```
 cp faveolocal.crt /etc/pki/tls/certs
