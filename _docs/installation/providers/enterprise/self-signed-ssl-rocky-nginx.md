@@ -154,7 +154,7 @@ http {
     include /etc/nginx/conf.d/*.conf;
 
     server {
-        server_name  alma9.thetamilselvan.in;
+        server_name  ---DomainName or IP---;
         root         /var/www/faveo/public/;
         index index.php index.html index.htm;
 
