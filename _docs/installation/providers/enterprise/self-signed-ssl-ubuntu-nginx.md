@@ -157,7 +157,7 @@ nano /etc/hosts
 ```
 - After the above is done then we need to add the the ca-cert file path to the <b>/etc/php/8.1/fpm/php.ini</b> file add the path to the openssl.cafile like this : 
 ```
-openssl.cafile = "/usr/local/share/ca-certificates/faveorootCA.crt"
+openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"
 ```
 ```
 systemctl restart php8.1-fpm
