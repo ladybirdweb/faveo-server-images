@@ -54,6 +54,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - UrBackup Tool [click here](/docs/installation/providers/enterprise/backup-tool/)
 - Custom Domain for Faveo Cloud [click here](/docs/helper/cname)
 - Resolve SSL Error for Linux [click here](/docs/installation/providers/enterprise/ssl-error/)
+- Install Meilisearch for Faveo [click here](/docs/installation/providers/enterprise/meilisearch/)
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
