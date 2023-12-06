@@ -1,22 +1,24 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/self-signed-ssl-alma-nginx/
+permalink: /docs/installation/providers/enterprise/self-signed-ssl-ubuntu-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-11-05
+last_modified_at: 2023-11-06
 toc: true
-title: Install Self-Signed SSL for Faveo on Alma Linux 9
+title: Install Self-Signed SSL for Faveo on Ubuntu
 ---
 
-<img alt="Alma linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
+
+<img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
 
-## Introduction
-This document will guide on how to install Self-Signed SSL certificates on Alma Linux 9 with nginx.
+## <strong>Introduction:</strong>
+
+This document will guide on how to install Self-Signed SSL certificates on Ubuntu with nginx.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Amla Linux 9, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
+To Install Self Signed SSL certificates in Ubuntu, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
@@ -106,126 +108,43 @@ openssl x509 -req -in faveolocal.csr -CA  faveorootCA.crt -CAkey faveoroot.key -
 
 - Before creating the Virtual host file for SSL we need to copy the created SSL certificate's and Key file to the corresponding directory with below command, these commands should be runned from the SSL Directory.
 ```
-cp faveolocal.crt /etc/pki/tls/certs
-cp private.key /etc/pki/tls/private
-cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
+cp faveolocal.crt /etc/ssl/certs
+cp private.key /etc/ssl/private
+cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> nano /etc/nginx/nginx.conf.</b>
-- Add the following lines to your Nginx configuration, modifying the file paths as needed:
-
-```
-    listen 443 ssl;
-    ssl_certificate /etc/ssl/certs/faveolocal.crt; 
-    ssl_certificate_key /etc/pki/tls/private/private.key; 
-```
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> nano /etc/nginx/sites-available/faveo.conf</b>
+- Then need to copy the below configuration inside the faveo.conf file.
 
 ```
-user nginx;
-worker_processes auto;
-error_log /var/log/nginx/error.log;
-pid /run/nginx.pid;
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/faveo/public;
+    index  index.php index.html index.htm;
+    server_name  example.com www.example.com;
 
-# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
-
-events {
-    worker_connections 1024;
-}
-
-http {
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log  /var/log/nginx/access.log  main;
-
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 4096;
-
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
-
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-    include /etc/nginx/conf.d/*.conf;
-
-    server {
-        server_name  alma9.thetamilselvan.in;
-        root         /var/www/faveo/public/;
-        index index.php index.html index.htm;
-
-        # Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
-#This is for user friendly URL 
-    location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
+     client_max_body_size 100M;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-    location ~* \.html$ {
-        expires -1;
+    location ~ \.php$ {
+               include snippets/fastcgi-php.conf;
+               fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+               include fastcgi_params;
     }
-
-    location ~* \.(css|gif|jpe?g|png)$ {
-        expires 1M;
-        add_header Pragma public;
-        add_header Cache-Control "public, must-revalidate, proxy-revalidate";
-    }
-
-     	error_page 404 /404.html;
-        location = /404.html {
-        }
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-        }
-
     listen 443 ssl;
-    ssl_certificate /etc/ssl/certs/faveolocal.crt; 
-    ssl_certificate_key /etc/pki/tls/private/private.key; 
-}
-
-    gzip on;
-    gzip_http_version 1.1;
-    gzip_vary on;
-    gzip_comp_level 6;
-    gzip_proxied any;
-    gzip_types application/atom+xml
-           application/javascript
-           application/json
-           application/vnd.ms-fontobject
-           application/x-font-ttf
-           application/x-web-app-manifest+json
-           application/xhtml+xml
-           application/xml
-           font/opentype
-           image/svg+xml
-           image/x-icon
-           text/css
-           #text/html -- text/html is gzipped by default by nginx
-           text/plain
-           text/xml;
-    gzip_buffers 16 8k;
-    gzip_disable "MSIE [1-6]\.(?!.*SV1)";   
+    ssl_certificate /etc/ssl/certs/faveolocal.crt;
+    ssl_certificate_key /etc/ssl/private/private.key;
 }
 ```
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
-
-- Need to update the CA certificate's run the below command to update the CA certs.
+- Then need to update the CA certificate's to that run the below command.
 ```
-update-ca-trust extract
+sudo update-ca-certificates
 ```
 
 - After adding the SSL certificates and virtual hosts we need to add the domain to the hosts file to the local host as below.
@@ -239,7 +158,7 @@ nano /etc/hosts
 - After the above is done then we need to add the the ca-cert file path to the <b>/etc/php.ini</b> file add the path to the openssl.cafile like this : "<b>openssl.cafile = “/etc/pki/ca-trust/source/anchors/faveorootCA.crt</b>" 
 
 ```
-systemctl restart php-fpm.service
+systemctl restart php8.1-fpm
 systemctl restart nginx
 ```
 
