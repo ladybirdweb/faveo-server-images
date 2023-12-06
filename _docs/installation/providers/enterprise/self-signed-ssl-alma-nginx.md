@@ -236,7 +236,11 @@ nano /etc/hosts
 ```
 127.0.0.1  ---Domain or IP---
 ```
-- After the above is done then we need to add the the ca-cert file path to the <b>/etc/php.ini</b> file add the path to the openssl.cafile like this : "<b>openssl.cafile = “/etc/pki/ca-trust/source/anchors/faveorootCA.crt</b>" 
+- After the above is done then we need to add the the ca-cert file path to the <b>/etc/php.ini</b> file add the path to the openssl.cafile like this :
+
+```
+openssl.cafile = "/etc/pki/ca-trust/source/anchors/faveorootCA.crt"
+```
 
 ```
 systemctl restart php-fpm.service
