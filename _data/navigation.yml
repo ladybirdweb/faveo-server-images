@@ -67,6 +67,8 @@ docs:
         url: /docs/installation/providers/enterprise/network-discovery
       - title: SSL Error Solution (Linux)
         url: /docs/installation/providers/enterprise/ssl-error
+      - title: Install Meilisearch 
+        url: /docs/installation/providers/enterprise/meilisearch
 
   - title: Kubernetes
     children:
