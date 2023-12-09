@@ -25,8 +25,9 @@ Also make sure **curl** is installed on the server.
 For Debian and Derivatives:
 apt update
 apt install curl -y
+```
 
-
+```
 For RHEL and Derivatives:
 yum update -y
 yum install curl -y
