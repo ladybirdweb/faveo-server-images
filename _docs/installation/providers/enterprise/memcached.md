@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2023-12-09
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Memcached
+title: Installing Memcached for Faveo
 ---
 <img alt="Memcached" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/memcached_logo_icon_170963.png" width="200"  />
 
