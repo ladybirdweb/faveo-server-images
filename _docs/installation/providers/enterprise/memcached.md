@@ -14,7 +14,7 @@ title: Installing Memcached
 
 - [<strong>Introduction :</strong>](#introduction-) 
     - [<strong>1. Debian and Derivatives</strong>](#1-debian-and-derivatives)
-    - [<strong>2. Red Hat and Derivatives:</strong>](#2-redhat-and-derivatives)
+    - [<strong>2. Red Hat and Derivatives</strong>](#2-redhat-and-derivatives)
 
 <a id="introduction-" name="introduction-"></a>
 
