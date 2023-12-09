@@ -22,6 +22,8 @@ title: Installing Memcached
 
 Memcached is free & open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load. Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.
 
+---
+
 <a id="1-debian-and-derivatives" name="1-debian-and-derivatives"></a>
 
 ### <strong>Debian and Derivatives</strong>
@@ -107,6 +109,10 @@ Finally, give the memcache user and group ownership over the SASL database with 
 ```
 sudo chown memcache:memcache /etc/sasl2/memcached-sasldb2
 ```
+
+
+---
+
 
 <a id="2-redhat-and-derivatives" name="2-redhat-and-derivatives"></a>
 
