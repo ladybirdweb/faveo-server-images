@@ -28,7 +28,16 @@ Memcached is free & open source, high-performance, distributed memory object cac
 
 ### <strong>Debian and Derivatives</strong>
 
-Debian and Derivates include Debian 11 (Bullseye), Debian 12 (Bookworm),  Ubuntu 20.04 (Focal Fosa) and Ubuntu 22.04 (Jammy Jellyfish).
+Debian and Derivates include:
+ 
+a. Debian 11 (Bullseye) 
+
+b. Debian 12 (Bookworm)  
+
+c. Ubuntu 20.04 (Focal Fosa) 
+
+d. Ubuntu 22.04 (Jammy Jellyfish)
+
 
 #### Installing PHP extension
 
@@ -118,7 +127,20 @@ sudo chown memcache:memcache /etc/sasl2/memcached-sasldb2
 
 ### <strong>2. Red Hat and Derivatives</strong>
 
-Red Hat and Derivatives include Alma 8, Alma 9, Rocky 8, Rocy 9, RHEL 8 and RHEL 9
+Red Hat and Derivatives include: 
+
+a. Alma 8 
+
+b. Alma 9 
+
+c. Rocky 8 
+
+d. Rocky 9 
+
+e. RHEL 8 
+
+f. RHEL 9
+
 
 #### Installing PHP extension
 
