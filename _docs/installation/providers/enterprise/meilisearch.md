@@ -11,12 +11,23 @@ title: Installing Meilisearch Driver for Faveo.
 ---
 <img alt="Windows" src="https://assets-global.website-files.com/64c7a317aea92912392c0420/64e78fa96ece14d6a2632a57_Meilisearch_logo.webp" width="200"  />
 
-## Introduction:
+- [<strong>Introduction :</strong>](#introduction-) 
+    - [<strong>1. For Linux Server</strong>](#1-for-linux-server)
+    - [<strong>2. For Windows Server</strong>](#2-for-windows-server)
+
+<a id="introduction-" name="introduction-"></a>
+
+## <strong>Introduction:</strong>
+
 MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities in your applications.
 
 ---
 
-## Step 1:  Install Meilisearch
+<a id="1-for-linux-server" name="1-for-linux-server"></a>
+
+### <strong>1. For Linux Server</strong>
+
+### Step 1:  Install Meilisearch
 Once you are logged in into your machine via SSH, ensure your system and its dependencies are up-to-date before proceeding with the installation.
 
 Also make sure **curl** is installed on the server.
@@ -50,14 +61,14 @@ Meilisearch is finally installed and ready to use. To make it accessible from ev
 mv ./meilisearch /usr/local/bin/
 ```
 
-## Step 2: Create System User
+### Step 2: Create System User
 Running applications as root can introduce security flaws in your system. To prevent that from happening, create a dedicated system user for running Meilisearch:
 
 ```
 useradd -d /var/lib/meilisearch -b /bin/false -m -r meilisearch
 ```
 
-## Step 3: Create a Configuration File
+### Step 3: Create a Configuration File
 Download default config to */etc*:
 
 ```
@@ -80,8 +91,7 @@ dump_dir = "/var/lib/meilisearch/dumps"
 snapshot_dir = "/var/lib/meilisearch/snapshots"
 ```
 
->**NOTE**:  
-> Remember to choose a safe and random key like *master_key = lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+>**NOTE**:  Remember to choose a safe and random key like *master_key = lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
 
 Finally, create the directories you added to the configuration file and set proper privileges:
 
@@ -93,7 +103,7 @@ chown -R meilisearch:meilisearch /var/lib/meilisearch
 chmod 750 /var/lib/meilisearch
 ```
  
-## Step 4: Run Meilisearch as a service
+### Step 4: Run Meilisearch as a service
 We will use a very simple service file that will run Meilisearch on port 7700.
 
 Run this command to create a service file:
@@ -128,3 +138,45 @@ systemctl status meilisearch
 ```
 
 At this point, Meilisearch is installed and running on your Linux Server.
+
+<a id="2-for-windows-server" name="2-for-windows-server"></a>
+
+### <strong>2. For Windows Server</strong>
+
+<a href="https://github.com/meilisearch/meilisearch/releases/tag/v1.5.0" target="_blank" rel="noopener">Click Here</a> to download Meilisearch executable for windows.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili.png" alt="" style=" width:400px ; height:150px ">
+
+Once the executable is downloaded open the command prompt in Administrative mode and run the below command. with full path of the executable.
+
+```
+meilisearch-windows-amd64.exe --master-key eIYEYxBFiwmb4yKNOAbvila9VDyX74_0IwCEOkfOr5Q^A
+```
+
+>**NOTE**:  Remember to choose a safe and random key like *master_key = lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+
+Example
+```
+C:\Users\admin\Downloads\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+```
+
+Once the above command is run, it will give result like below, at this point Meilisearch is configured on your Windows server.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili2.png" alt="" style=" width:400px ; height:150px ">
+
+You can confirm the same by visiting *http://localhsot:7700*
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili3.png" alt="" style=" width:400px ; height:150px ">
+
+
+
+
+
+
+
+
+
+
+
+
+
