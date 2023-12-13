@@ -132,6 +132,7 @@ cp faveorootCA.crt /usr/local/share/ca-certificates/
 
                 SSLCertificateFile      /etc/ssl/certs/faveolocal.crt
                 SSLCertificateKeyFile /etc/ssl/private/private.key
+                SSLCertificateChainFile /usr/local/share/ca-certificates/faveorootCA.crt
 
                 <FilesMatch "\.(cgi|shtml|phtml|php)$">
                                 SSLOptions +StdEnvVars
