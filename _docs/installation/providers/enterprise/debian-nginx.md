@@ -163,8 +163,8 @@ echo "deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/de
 
 sudo apt update
 sudo apt install mysql-community-server
-sudo systemctl start mysql-community-server --now
-sudo systemctl enable mysql-community-server --now
+sudo systemctl start mysql
+sudo systemctl enable mysql
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
