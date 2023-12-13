@@ -135,6 +135,7 @@ server {
     listen 443 ssl;
     ssl_certificate /etc/ssl/certs/faveolocal.crt;
     ssl_certificate_key /etc/ssl/private/private.key;
+    ssl_trusted_certificate /usr/local/share/ca-certificates/faveorootCA.crt;
 }
 ```
 
