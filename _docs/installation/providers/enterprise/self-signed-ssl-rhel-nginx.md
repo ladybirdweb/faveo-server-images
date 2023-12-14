@@ -109,16 +109,16 @@ cp faveolocal.crt /etc/pki/tls/certs
 cp private.key /etc/pki/tls/private
 cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> nano /etc/nginx/nginx.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b>/etc/nginx/nginx.conf.</b>
 - Add the following lines to your Nginx configuration, modifying the file paths as needed:
 
 ```
-    listen 443 ssl;
-    ssl_certificate /etc/ssl/certs/faveolocal.crt;
-    ssl_certificate_key /etc/pki/tls/private/private.key;
+listen 443 ssl;
+ssl_certificate /etc/ssl/certs/faveolocal.crt; 
+ssl_certificate_key /etc/pki/tls/private/private.key; 
 ```
 
-<img src="https://raw.githubusercontent.com/tamilselvan-lws/Documents/main/INSTALLATION%20GUIDE/Images/ad-configuration/ssl-nginx-config.png" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/ssl-nginx-config.png" style=" width:500px ; height:250px ">
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
 

@@ -120,7 +120,7 @@ ssl_certificate /etc/ssl/certs/faveolocal.crt;
 ssl_certificate_key /etc/pki/tls/private/private.key; 
 ```
 
-<img src="https://raw.githubusercontent.com/tamilselvan-lws/Documents/main/INSTALLATION%20GUIDE/Images/ad-configuration/ssl-nginx-config.png" style=" width:500px ; height:250px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/ssl-nginx-config.png" style=" width:500px ; height:250px ">
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
 
