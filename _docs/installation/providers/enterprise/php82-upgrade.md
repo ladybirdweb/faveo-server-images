@@ -21,7 +21,7 @@ This document will guide you to upgrade PHP version for Faveo Helpdesk from PHP 
 
 ## Introduction
 
-Faveo Helpdesk is now powered by <a href="https://laravel.com/docs/10.x" target="_blank" rel="noopener">Laravel 10</a> with full PHP 8.2 support. To make the most of the latest features, kindly update your PHP version by following the instructions below.
+Faveo Helpdesk is now powered by <a href="https://laravel.com/docs/10.x" target="_blank" rel="noopener">Laravel 10</a> with full <a href="https://www.php.net/releases/8.2/en.php" target="_blank" rel="noopener">PHP 8.2</a> support. To make the most of the latest features, kindly update your PHP version by following the instructions below.
 
 
 <strong>Choose your server OS: </strong>
