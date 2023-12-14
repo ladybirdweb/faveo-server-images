@@ -29,7 +29,7 @@ Faveo Helpdesk is now powered by <a href="https://laravel.com/docs/10.x" target=
   - [<strong>1. Ubuntu and Debian</strong>](#1ubuntu&debian)
    - [<strong>2. Alma, Rocky and RHEL</strong>](#2alma-rocky-and-rhel)
    - [<strong>3. Widows Servers</strong>](#3windows-servers)
-   - [<strong>4. cPanel</strong>](#4cPanel)
+   - [<strong>4. cPanel</strong>](#4cpanel)
 
 
 Before proceeding further check your current PHP version. To find out which version of PHP you are currently using, run this in the Terminal or Windows command prompt. 
