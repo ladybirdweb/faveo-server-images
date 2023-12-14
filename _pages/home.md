@@ -55,6 +55,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Custom Domain for Faveo Cloud [click here](/docs/helper/cname)
 - Resolve SSL Error for Linux [click here](/docs/installation/providers/enterprise/ssl-error/)
 - Install Meilisearch for Faveo [click here](/docs/installation/providers/enterprise/meilisearch/)
+- Install Memcached for Faveo [click here](/docs/installation/providers/enterprise/memcached/)
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
@@ -88,12 +89,12 @@ For detailed Software requirements list [check here](/docs/system-requirement/re
 The above mentioned prerequisites to be met have to be installed then faveo can be installed in any OS/Distro from the below list:
 <a id="markdown-generic-linux-instructions-enterprise" name="generic-linux-instructions-enterprise"></a>
 ### Installation instructions for Freelancer, Paid, Enterprise and Community editions
-* [Alma Linux 9 with Apache](/docs/installation/providers/enterprise/alma9-apache)
-* [Alma Linux 9 with Nginx](/docs/installation/providers/enterprise/alma9-nginx)
-* [Rocky Linux 9 with Apache](/docs/installation/providers/enterprise/rocky9-apache)
-* [Rocky Linux 9 with Nginx](/docs/installation/providers/enterprise/rocky9-nginx)
-* [RHEL 9 with Apache](/docs/installation/providers/enterprise/rhel9-apache)
-* [RHEL 9 with Nginx](/docs/installation/providers/enterprise/rhel9-nginx)
+* [Alma Linux with Apache](/docs/installation/providers/enterprise/alma9-apache)
+* [Alma Linux with Nginx](/docs/installation/providers/enterprise/alma9-nginx)
+* [Rocky Linux with Apache](/docs/installation/providers/enterprise/rocky9-apache)
+* [Rocky Linux with Nginx](/docs/installation/providers/enterprise/rocky9-nginx)
+* [RHEL with Apache](/docs/installation/providers/enterprise/rhel9-apache)
+* [RHEL with Nginx](/docs/installation/providers/enterprise/rhel9-nginx)
 * [Ubuntu with Apache](/docs/installation/providers/enterprise/ubuntu-apache)<button class="button button1"><b>Recommended</b></button>
 * [Ubuntu with NGINX](/docs/installation/providers/enterprise/ubuntu-nginx)
 * [Debian with Apache](/docs/installation/providers/enterprise/debian-apache)
