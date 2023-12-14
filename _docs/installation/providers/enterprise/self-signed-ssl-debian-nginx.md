@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/self-signed-ssl-debian-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-11-06
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
 title: Install Self-Signed SSL for Faveo on Debian 
 ---

@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-02
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Faveo Helpdesk on Debian With Nginx Webserver
 ---
@@ -163,8 +164,8 @@ echo "deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/de
 
 sudo apt update
 sudo apt install mysql-community-server
-sudo systemctl start mysql-community-server --now
-sudo systemctl enable mysql-community-server --now
+sudo systemctl start mysql --now
+sudo systemctl enable mysql --now
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
@@ -353,6 +354,8 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-nginx-ssl)
+
+[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-debian-nginx/)
 
 <a id="8-install-faveo" name="8-install-faveo"></a>
 
