@@ -4,9 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rhel-redis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-11-25
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on RHEL OS 9
+title: Install and configure Redis, Supervisor and Worker for Faveo on RHEL OS
 
 ---
 

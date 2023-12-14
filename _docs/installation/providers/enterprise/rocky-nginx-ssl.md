@@ -4,18 +4,19 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky-nginx-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
 ---
 
-# Install LetsEncrypt SSL for Faveo on Rocky OS 9 Running NGINX Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Rocky OS Running NGINX Web Server <!-- omit in toc -->
 
 
 <img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on Rocky 9 Running Nginx Web Server
+This document will list on how to install Let’s Encrypt SSL on Rocky Running Nginx Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
@@ -31,7 +32,7 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 yum install epel-release mod_ssl
 ```
 
-## Downloading the LetsEncrypt for Rocky-OS 9
+## Downloading the LetsEncrypt for Rocky-OS
 
 ```sh
 yum install python3-certbot-nginx

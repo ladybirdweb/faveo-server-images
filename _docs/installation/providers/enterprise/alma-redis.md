@@ -4,9 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma-redis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-12-18
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on Alma Linux 9
+title: Install and configure Redis, Supervisor and Worker for Faveo on Alma Linux
 ---
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />

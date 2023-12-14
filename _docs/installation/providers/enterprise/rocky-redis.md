@@ -4,9 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky-redis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install and configure Redis, Supervisor and Worker for Faveo on Rocky OS 9
+title: Install and configure Redis, Supervisor and Worker for Faveo on Rocky OS
 ---
 
 

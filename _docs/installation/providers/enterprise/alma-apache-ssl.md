@@ -4,9 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma-apache-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-12-18
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install LetsEncrypt SSL for Faveo on Alma Linux 9 Running Apache Web Server
+title: Install LetsEncrypt SSL for Faveo on Alma Linux Running Apache Web Server
 ---
 
 
@@ -14,7 +15,7 @@ title: Install LetsEncrypt SSL for Faveo on Alma Linux 9 Running Apache Web Serv
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on Alma Linux 9 Running Apache Web Server
+This document will list on how to install Let’s Encrypt SSL on Alma Linux Running Apache Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
@@ -29,7 +30,6 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 ```sh
 yum install -y epel-release mod_ssl
 ```
-
 
 ## Downloading the LetsEncrypt for Amla Linux
 

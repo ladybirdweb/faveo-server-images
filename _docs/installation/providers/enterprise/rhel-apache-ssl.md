@@ -4,9 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rhel-apache-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2022-11-25
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install LetsEncrypt SSL for Faveo on RHEL 9 Running Apache Web Server
+title: Install LetsEncrypt SSL for Faveo on RHEL Running Apache Web Server
 
 ---
 
@@ -15,7 +16,7 @@ title: Install LetsEncrypt SSL for Faveo on RHEL 9 Running Apache Web Server
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on RHEL 9 Running Apache Web Server
+This document will list on how to install Let’s Encrypt SSL on RHEL Running Apache Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 

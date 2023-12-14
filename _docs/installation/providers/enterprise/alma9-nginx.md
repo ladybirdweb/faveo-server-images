@@ -4,14 +4,15 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma9-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-02
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Installing Faveo Helpdesk Alma Linux 9 with Nginx Webserver
+title: Installing Faveo Helpdesk Alma Linux with Nginx Webserver
 ---
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
-Faveo can run on [Alma Linux 9 ](https://almalinux.org/).
+Faveo can run on [Alma Linux](https://almalinux.org/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong> 1. Update your Packages and install some utility tools</strong>](#-1-update-your-packages-and-install-some-utility-tools)
@@ -46,22 +47,45 @@ Login as root user by typing the command below
 sudo su
 ```
 ```sh
-yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
+yum update -y && yum install unzip wget nano yum-utils curl openssl zip git tar -y
 ```
 
 <b> 1.a. Install php-8.1 Packages </b>
 
-
+### Alma 8 
 
 ```sh
 sudo dnf upgrade --refresh -y
-sudo dnf config-manager --set-enabled crb
+```
+
+```sh
+sudo dnf install \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
+    https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-8.noarch.rpm
+```
+
+```sh
+sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+
+```
+---
+
+### Alma 9 
+
+```sh
+sudo dnf upgrade --refresh -y
+```
+```
 sudo dnf install \
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
     https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
-    
+```
+
+```
 sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
 ```
+
+--- 
 Use the dnf module list command to see the options available for php
 
 ```sh
@@ -104,9 +128,11 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only MariaDB-10.6.
+Note: Currently Faveo supports MySQL 8.0 and MariaDB-10.6.
 
-Install MariadDB-10.6 by running the following commands.
+Installby running the following commands.
+
+### MariadDB-10.6 
 
 ```sh
 curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
@@ -117,10 +143,26 @@ sudo systemctl enable --now mariadb
 sudo systemctl start --now mariadb
 ```
 
+
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
 mariadb-secure-installation  
+```
+
+### MySQL 8.0
+
+```sh
+yum update
+dnf install mysql mysql-server
+
+systemctl enable --now mysqld
+systemctl start mysqld
+```
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+
+```sh
+mysql_secure_installation
 ```
 
 <b>1.e. Install wkhtmltopdf</b>
@@ -133,7 +175,7 @@ It uses WebKit rendering layout engine to convert HTML pages to PDF document wit
 ```sh
 yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
-sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm -y
 ```
 
 <a id="2-upload-faveo" name="2-upload-faveo"></a>
@@ -378,6 +420,8 @@ Secure Sockets Layer (SSL) is a standard security technology for establishing an
 This is an optional step and will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/alma-nginx-ssl)
+
+[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-alma-nginx/)
 
 <a id="8-install-faveo" name="8-install-faveo"></a>
 

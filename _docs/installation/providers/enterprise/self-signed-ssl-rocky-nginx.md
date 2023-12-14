@@ -4,19 +4,20 @@ type: docs
 permalink: /docs/installation/providers/enterprise/self-signed-ssl-rocky-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-11-06
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
-title: Install Self-Signed SSL for Faveo on Rocky 9
+title: Install Self-Signed SSL for Faveo on Rocky
 ---
 
 <img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
 
 ## Introduction
-This document will guide on how to install Self-Signed SSL certificates on Rocky 9 Linux with nginx.
+This document will guide on how to install Self-Signed SSL certificates on Rocky Linux with nginx.
 
 ## Setting up the SSL certificate
-To Install Self Signed SSL certificates in Rocky 9 Linux, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
+To Install Self Signed SSL certificates in Rocky Linux, We need to create SSL Cetificates which is signed by the CA certificate, after that we need to add the Virtual host file for the SSL certificate and edit the php.ini file and the hosts file the steps are explained below.
 
 ## <strong>Steps</strong>
 
@@ -114,112 +115,13 @@ cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 - Add the following lines to your Nginx configuration, modifying the file paths as needed:
 
 ```
-    listen 443 ssl;
-    ssl_certificate /etc/ssl/certs/faveolocal.crt; 
-    ssl_certificate_key /etc/pki/tls/private/private.key; 
+listen 443 ssl;
+ssl_certificate /etc/ssl/certs/faveolocal.crt; 
+ssl_certificate_key /etc/pki/tls/private/private.key; 
 ```
 
-```
-user nginx;
-worker_processes auto;
-error_log /var/log/nginx/error.log;
-pid /run/nginx.pid;
+<img src="https://raw.githubusercontent.com/tamilselvan-lws/Documents/main/INSTALLATION%20GUIDE/Images/ad-configuration/ssl-nginx-config.png" style=" width:500px ; height:250px ">
 
-# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
-
-events {
-    worker_connections 1024;
-}
-
-http {
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log  /var/log/nginx/access.log  main;
-
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 4096;
-
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
-
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-    include /etc/nginx/conf.d/*.conf;
-
-    server {
-        server_name  ---DomainName or IP---;
-        root         /var/www/faveo/public/;
-        index index.php index.html index.htm;
-
-        # Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
-#This is for user friendly URL 
-    location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~* \.html$ {
-        expires -1;
-    }
-
-    location ~* \.(css|gif|jpe?g|png)$ {
-        expires 1M;
-        add_header Pragma public;
-        add_header Cache-Control "public, must-revalidate, proxy-revalidate";
-    }
-
-     	error_page 404 /404.html;
-        location = /404.html {
-        }
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-        }
-
-    listen 443 ssl;
-    ssl_certificate /etc/ssl/certs/faveolocal.crt; 
-    ssl_certificate_key /etc/pki/tls/private/private.key; 
-}
-
-    gzip on;
-    gzip_http_version 1.1;
-    gzip_vary on;
-    gzip_comp_level 6;
-    gzip_proxied any;
-    gzip_types application/atom+xml
-           application/javascript
-           application/json
-           application/vnd.ms-fontobject
-           application/x-font-ttf
-           application/x-web-app-manifest+json
-           application/xhtml+xml
-           application/xml
-           font/opentype
-           image/svg+xml
-           image/x-icon
-           text/css
-           #text/html -- text/html is gzipped by default by nginx
-           text/plain
-           text/xml;
-    gzip_buffers 16 8k;
-    gzip_disable "MSIE [1-6]\.(?!.*SV1)";   
-}
-```
 
 ## After Creating the Virtual Host file we need to add the local host for the domain.
 

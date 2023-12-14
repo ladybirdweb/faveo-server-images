@@ -1,30 +1,29 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/rocky-nginx/
+permalink: /docs/installation/providers/enterprise/rocky9-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
+title: Installing Faveo Helpdesk on Rocky OS With Nginx Webserver
 ---
-
-# Installing Faveo Helpdesk Freelancer, paid and Enterprise on Rocky OS <!-- omit in toc -->
-
 
 <img alt="Rocky OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
-Faveo can run on [Rocky 8 ](https://rockylinux.org/download/).
+Faveo can run on [Rocky](https://rockylinux.org/download/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
-    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
-    - [<strong> 2. Update your Packages and install some utility tools</strong>](#-2-update-your-packages-and-install-some-utility-tools)
-    - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
-    - [<strong>4. Setup the database</strong>](#4-setup-the-database)
-    - [<strong>5. Configure Nginx webserver </strong>](#5-configure-nginx-webserver-)
-    - [<strong>6. Configure cron job</strong>](#6-configure-cron-job)
-    - [<strong>7. Redis Installation</strong>](#7-redis-installation)
-    - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
-    - [<strong>9. Install Faveo</strong>](#9-install-faveo)
+    - [<strong> 1. Update your Packages and install some utility tools</strong>](#-1-update-your-packages-and-install-some-utility-tools)
+    - [<strong>2. Upload Faveo</strong>](#2-upload-faveo)
+    - [<strong>3. Setup the database</strong>](#3-setup-the-database)
+    - [<strong>4. Configure Nginx webserver </strong>](#4-configure-nginx-webserver-)
+    - [<strong>5. Configure cron job</strong>](#5-configure-cron-job)
+    - [<strong>6. Redis Installation</strong>](#6-redis-installation)
+    - [<strong>7. SSL Installation</strong>](#7-ssl-installation)
+    - [<strong>8. Install Faveo</strong>](#8-install-faveo)
+    - [<strong>9. Faveo Backup</strong>](#9-faveo-backup)
     - [<strong>10. Final step</strong>](#10-final-step)
 
 <a id="installation-steps-" name="installation-steps-"></a>
@@ -33,21 +32,14 @@ Faveo can run on [Rocky 8 ](https://rockylinux.org/download/).
 
 Faveo depends on the following:
 
--   **Nginx** 
+-   **Web Server**  Nginx/Apache 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
--   **SSL** ,Trusted CA Signed or Slef-Signed SSL
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
-<a id="1-lamp-installation" name="1-lamp-installation"></a>
+<a id="-1-update-your-packages-and-install-some-utility-tools" name="-1-update-your-packages-and-install-some-utility-tools"></a>
 
-### <strong>1. LAMP Installation</strong>
-
-Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
-
-<a id="-2-update-your-packages-and-install-some-utility-tools" name="-2-update-your-packages-and-install-some-utility-tools"></a>
-
-### <strong> 2. Update your Packages and install some utility tools</strong>
+### <strong> 1. Update your Packages and install some utility tools</strong>
 
 Login as root user by typing the command below
 
@@ -55,21 +47,65 @@ Login as root user by typing the command below
 sudo su
 ```
 ```sh
-yum update -y && yum install unzip wget nano yum-utils curl openssl zip git -y
+yum update -y && yum install unzip wget nano yum-utils curl openssl zip git tar -y
 ```
 
-<b> 2.a. Install php-8.1 Packages </b>
+<b> 1.a. Install php-8.1 Packages </b>
 
+### Rocky 8
+```sh
+sudo dnf -y install epel-release
+sudo dnf config-manager --set-enabled powertools
 
+sudo dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+sudo dnf -y makecache
+sudo dnf -y repolist
+```
+
+Use the dnf module list command to see the options available for php
 
 ```sh
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-
-dnf module install php:remi-8.1 -y
-yum -y install php php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+sudo dnf module list php
+sudo dnf -y module reset php
 ```
-<b> 2.b. Install and run Nginx </b>
+Enable PHP 8.1 with the following command.
+```sh
+sudo dnf module install php:remi-8.1
+```
+Now install php 8.1 and the required extensions.
+```sh
+sudo dnf install php -y
+yum -y install php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+```
+
+### Rocky 9
+
+```sh
+sudo dnf upgrade --refresh -y
+sudo dnf config-manager --set-enabled crb
+sudo dnf install \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
+    https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
+    
+sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+```
+Use the dnf module list command to see the options available for php
+
+```sh
+dnf module list php
+```
+Enable PHP 8.1 with the following command.
+```sh
+sudo dnf module enable php:remi-8.1 -y
+```
+Now install php 8.1 and the required extensions.
+```sh
+sudo dnf install php -y
+yum -y install php-cli php-common php-fpm php-gd php-mbstring php-pecl-mcrypt php-mysqlnd php-odbc php-pdo php-xml  php-opcache php-imap php-bcmath php-ldap php-pecl-zip php-soap php-redis
+```
+
+
+<b> 1.b. Install and run Nginx </b>
 
 Use the below steps to install and start Nginx
 
@@ -79,13 +115,12 @@ systemctl start nginx
 systemctl enable nginx
 ```
 
-<b> 2.c. Setting Up ionCube</b>
-
+<b> 1.c. Setting Up ionCube</b>
 ```sh
 wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 tar xfz ioncube_loaders_lin_x86-64.tar.gz
 ```
-Copy ioncube loader to Directory.
+Copy ioncube loader to PHP modules Directory.
 
 ```sh
 php -i | grep extension_dir
@@ -94,58 +129,85 @@ sed -i '2 a zend_extension = "/usr/lib64/php/modules/ioncube_loader_lin_8.1.so"'
 sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 ```
 
-<b> 2.d. Install and run Mysql/MariaDB</b>
+<b> 1.d. Install and run Mysql/MariaDB</b>
 
 The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Note: Currently Faveo supports only MariaDB-10.6.
+Note: Currently Faveo supports MySQL 8.0 and MariaDB-10.6.
 
-Create a new repo file /etc/yum.repos.d/mariadb.repo and add the below code changing the base url according to the operating system version and architecture.
+Installby running the following commands.
+
+### MariadDB-10.6 
 
 ```sh
-sudo nano /etc/yum.repos.d/mariadb.repo
+curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+sudo bash mariadb_repo_setup --mariadb-server-version=10.6
+sudo dnf install boost-program-options -y
+sudo yum install MariaDB-server MariaDB-client MariaDB-backup
+sudo systemctl enable --now mariadb
+sudo systemctl start --now mariadb
 ```
-```
-[mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/10.6/rhel8-amd64
-module_hotfixes=1
-gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgcheck=1
-```
-Note: The below steps only installs the package, but does not setup the database required by Faveo. This is done later in the instructions.
-```
-sudo dnf update
-sudo dnf install mariadb-server mariadb
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
+
+### MySQL 8.0
+
+```sh
+yum update
+dnf install mysql mysql-server
+
+systemctl enable --now mysqld
+systemctl start mysqld
 ```
 
 Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 
 ```sh
-mysql_secure_installation 
+mariadb-secure-installation  
 ```
 
-<a id="3-upload-faveo" name="3-upload-faveo"></a>
+<b>1.e. Install wkhtmltopdf</b>
 
-### <strong>3. Upload Faveo</strong>
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). 
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+```sh
+yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
+sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm -y
+```
+
+
+<a id="2-upload-faveo" name="2-upload-faveo"></a>
+
+### <strong>2. Upload Faveo</strong>
+
+**For Faveo Freelancer, Paid and Enterprise Version**
 
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
-mkdir -p /var/www/faveo
-cd /var/www/faveo
+mkdir -p /var/www/faveo/
+cd /var/www/faveo/
 ```
-**3.a** <b>Extracting the Faveo-Codebase zip file</b>
+<b>Extracting the Faveo-Codebase zip file</b>
 
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
+**For Faveo Community Version**
 
-<a id="4-setup-the-database" name="4-setup-the-database"></a>
+You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
 
-### <strong>4. Setup the database</strong>
+```sh
+mkdir -p /var/www/
+cd /var/www/
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
+```
+You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
+<a id="3-setup-the-database" name="3-setup-the-database"></a>
+
+### <strong>3. Setup the database</strong>
 
 Log in with the root account to configure the database.
 
@@ -178,12 +240,14 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
 
-<a id="5-configure-nginx-webserver-" name="5-configure-nginx-webserver-"></a>
+<a id="4-configure-nginx-webserver-" name="4-configure-nginx-webserver-"></a>
 
-###  <strong>5. Configure Nginx webserver </strong>
+###  <strong>4. Configure Nginx webserver </strong>
 
-**5.a.** <b>Give proper permissions to the project directory by running:</b>
+**4.a.** <b>Give proper permissions to the project directory by running:</b>
 
 ```sh
 chown -R nginx:nginx /var/www/faveo
@@ -196,51 +260,94 @@ By default SELINUX will be in Enforcing mode run the follwing command to switch 
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 reboot -f
 ```
-**5.b.** <b>Edit nginx.conf file and replace the default server block code with the following</b>
+**4.b.** <b>Edit nginx.conf file and replace the default server block code with the following</b>
 
 ```sh
 nano /etc/nginx/nginx.conf
 ```
-Replace the default server block code with the following and you can also replace example.com with your Domain name.
+Replace the default server block code with the following. 
+Also relpace --YOUR DOMAIN NAME-- with your Domain name.
 
-```nginx
-server {
-    listen   80;
-    server_name  example.com www.example.com;
+```
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
 
-# note that these lines are originally from the "location /" block
-root   /var/www/faveo/public;
-index index.php index.html index.htm;
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
 
-
-location ~ \.php$ {
-    try_files $uri =404;
-    fastcgi_pass 127.0.0.1:9000;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include fastcgi_params;
+events {
+    worker_connections 1024;
 }
 
-location / {
-            	try_files $uri $uri/ /index.php?$query_string;
-}
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
 
-location ~* \.html$ {
-    expires -1;
-}
+    access_log  /var/log/nginx/access.log  main;
 
-location ~* \.(css|gif|jpe?g|png)$ {
-    expires 1M;
-    add_header Pragma public;
-    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
-}
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 4096;
 
-gzip on;
-gzip_http_version 1.1;
-gzip_vary on;
-gzip_comp_level 6;
-gzip_proxied any;
-gzip_types application/atom+xml
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        server_name  --YOUR DOMAIN NAME--;
+        root         /var/www/faveo/public/;
+        index index.php index.html index.htm;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+#This is for user friendly URL 
+	location ~ \.php$ {
+	    try_files $uri =404;
+	    fastcgi_pass 127.0.0.1:9000;
+	    fastcgi_index index.php;
+	    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	    include fastcgi_params;
+	}
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location ~* \.html$ {
+	    expires -1;
+	}
+
+	location ~* \.(css|gif|jpe?g|png)$ {
+	    expires 1M;
+	    add_header Pragma public;
+	    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+	}
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
+
+	gzip on;
+	gzip_http_version 1.1;
+	gzip_vary on;
+	gzip_comp_level 6;
+	gzip_proxied any;
+	gzip_types application/atom+xml
            application/javascript
            application/json
            application/vnd.ms-fontobject
@@ -255,13 +362,13 @@ gzip_types application/atom+xml
            #text/html -- text/html is gzipped by default by nginx
            text/plain
            text/xml;
-gzip_buffers 16 8k;
-gzip_disable "MSIE [1-6]\.(?!.*SV1)";
-   }
+	gzip_buffers 16 8k;
+	gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 
+}
 ```
 
-**5.c.** <b>Edit config file for PHP FPM using vim editor</b>
+**4.c.** <b>Edit config file for PHP FPM using vim editor</b>
 
 ```sh
 nano /etc/php-fpm.d/www.conf
@@ -269,17 +376,11 @@ nano /etc/php-fpm.d/www.conf
 You have to replace these lines.
 
 ```
-user = nginx
+user = apache   (to)   user = nginx
+group = apache  (to)   group = nginx
 
-group = nginx
-
-listen.owner = nobody (to) listen.owner = nginx
-
-listen.group = nobody (to) listen.group = nginx
-
-Uncomment listen = 127.0.0.1:9000 by removing (;) 
-In Rocky-OS 8 you will find listen = /run/php-fpm/www.sock replace it (to) listen = 127.0.0.1:9000.
-
+listen.owner = nobody   (to)    listen.owner = nginx
+listen.group = nobody   (to)    listen.group = nginx
 ```
 
 Restart PHP-FPM and NGINX
@@ -288,45 +389,55 @@ systemctl start php-fpm.service
 systemctl enable php-fpm.service
 systemctl restart nginx
 ```
-<a id="6-configure-cron-job" name="6-configure-cron-job"></a>
+<a id="5-configure-cron-job" name="5-configure-cron-job"></a>
 
-### <strong>6. Configure cron job</strong>
+### <strong>5. Configure cron job</strong>
 
 Faveo requires some background processes to continuously run. 
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.
 
-Create a new `/etc/cron.d/faveo` file with:
+[comment]: <Create a new `/etc/cron.d/faveo` file with:>
 
 ```sh
-echo "* * * * * nginx /bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+(sudo -u nginx crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u nginx crontab -
 ```
 
-<a id="7-redis-installation" name="7-redis-installation"></a>
+<a id="6-redis-installation" name="6-redis-installation"></a>
 
-### <strong>7. Redis Installation</strong>
+### <strong>6. Redis Installation</strong>
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
 This is an optional step and will improve system performance and is highly recommended.
 
 [Redis installation documentation](/docs/installation/providers/enterprise/rocky-redis)
 
-<a id="8-ssl-installation" name="8-ssl-installation"></a>
+<a id="7-ssl-installation" name="7-ssl-installation"></a>
 
-### <strong>8. SSL Installation</strong>
+### <strong>7. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+This will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rocky-nginx-ssl)
 
-<a id="9-install-faveo" name="9-install-faveo"></a>
+[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-rocky-nginx/)
 
-### <strong>9. Install Faveo</strong>
+<a id="8-install-faveo" name="8-install-faveo"></a>
+
+### <strong>8. Install Faveo</strong>
 At this point if the domainname is propagated properly with your server’s IP you can open Faveo in browser just by entering your domainname. You can also check the Propagation update by Visiting this site www.whatsmydns.net.
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
+
+<a id="9-faveo-backup" name="9-faveo-backup"></a>
+
+### <strong>9. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+
 
 <a id="10-final-step" name="10-final-step"></a>
 

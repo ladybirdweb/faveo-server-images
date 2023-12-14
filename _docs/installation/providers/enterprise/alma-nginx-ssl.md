@@ -4,18 +4,19 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma-nginx-ssl/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-02-19
+last_modified_at: 2023-12-14
+last_modified_by: TamilSelvan_M
 toc: true
 ---
 
-# Install LetsEncrypt SSL for Faveo on Alma 9 Running NGINX Web Server <!-- omit in toc -->
+# Install LetsEncrypt SSL for Faveo on Alma Running NGINX Web Server <!-- omit in toc -->
 
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
 
 ## Introduction
-This document will list on how to install Let’s Encrypt SSL on Alma 9 Running Nginx Web Server
+This document will list on how to install Let’s Encrypt SSL on Alma Running Nginx Web Server
 
 PS : Please replace example.com with your valid domain name which is mapped with your server
 
@@ -31,7 +32,7 @@ We will install following dependencies in order to make Let’s Encrypt SSL work
 yum install epel-release mod_ssl
 ```
 
-## Downloading the LetsEncrypt for Alma 9
+## Downloading the LetsEncrypt for Alma
 
 ```sh
 yum install python3-certbot-nginx
