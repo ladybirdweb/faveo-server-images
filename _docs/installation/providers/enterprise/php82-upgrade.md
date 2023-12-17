@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/php82-upgrade/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-14
+last_modified_at: 2023-12-17
 toc: true
 title: Upgrade From PHP 8.1.x to PHP 8.2.x for Faveo
 ---
@@ -122,7 +122,7 @@ sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' 
 sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/fpm/php.ini
 ```
 
-### Change php-apache default settings
+### Change php-apache default settings (For Apache Webserver Only)
 
 ```sh
 sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.2/apache2/php.ini
@@ -144,6 +144,19 @@ sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.2/cli/ph
 sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.2/fpm/php.ini
 sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.2/fpm/php.ini
 sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.2/fpm/php.ini 
+```
+
+### If Webserver is Nginx
+If you are using Faveo with nginx webserver, make the following change in faveo.conf file.
+
+```
+nano /etc/nginx/sites-available/faveo.conf
+```
+
+Change this line <code><b>fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;</b></code> to below to use php8.2-fpm.sock.
+
+```
+fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
 ```
 
 ```
@@ -338,7 +351,9 @@ zend_extension = "C:\php8.2\ext\ioncube_loader_win_8.2.dll"
 
 - Click on <code><b>OK</b></code> and restart the IIS server once.
 
-> **NOTE:** php-redis and php-memcached extensions for windows are not available yet for php8.2, Once they are available, the document will be updated
+<p class="notice--warning">
+Unfortunately, <code><b>php-redis</b></code> and <code><b>php-memcached</b></code> extensions for Windows are not available officially yet for php8.2, Once they are available, the document will be updated.
+</p>
 
 ---
 
