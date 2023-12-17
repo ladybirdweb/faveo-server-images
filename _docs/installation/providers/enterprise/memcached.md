@@ -284,7 +284,7 @@ sudo systemctl restart memcached
 
 #### Installing PHP extension
 
-<a href="https://pecl.php.net/package/memcached/3.2.0RC2/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 Non Thread Safe (NTS) x64 extension zip file for Memcached.
+<a href="https://pecl.php.net/package/memcached/3.2.0/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 Non Thread Safe (NTS) x64 extension zip file for Memcached.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/memcached.png" alt="" style=" width:400px ; height:150px ">
 
