@@ -106,6 +106,9 @@ main:
     url: https://community.faveohelpdesk.com/
   - title: "Developer Portal"
     url: https://developers.faveohelpdesk.com/
-    
+  - title: "Server Status"
+    url: https://status.faveotools.com/status/updates/
+  - title: "Demo"
+    url: https://www.faveohelpdesk.com/online-demo/
     
   
