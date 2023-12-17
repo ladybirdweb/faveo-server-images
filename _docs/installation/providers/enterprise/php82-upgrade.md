@@ -159,6 +159,8 @@ Change this line <code><b>fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;</b></c
 fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
 ```
 
+### Enable php-fpm
+
 ```
 a2enconf php8.2-fpm
 service php8.2-fpm restart
