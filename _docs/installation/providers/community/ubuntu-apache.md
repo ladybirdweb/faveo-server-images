@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/community/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-02
+last_modified_at: 2023-12-19
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk Community Edition on Ubuntu With Apache Webserver
