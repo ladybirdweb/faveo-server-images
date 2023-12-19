@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-14
-last_modified_by: TamilSelvan_M
+last_modified_at: 2023-12-19
+last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Debian With Nginx Webserver
 ---
@@ -16,6 +16,8 @@ title: Installing Faveo Helpdesk on Debian With Nginx Webserver
 <img alt="Debian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/109px-Debian-OpenLogo.svg.png" width="120" height="120" />
 
 Faveo can run on Debian 11(Bullseye), Debian 12 (Bookworm).
+
+This document is meant for Faveo Freelancer, Paid and Enterprise Versions.
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong>1. Update your package list</strong>](#1-update-your-package-list)
@@ -205,8 +207,6 @@ Once the softwares above are installed:
 
 ### <strong>2. Upload Faveo</strong>
 
-**For Faveo Freelancer, Paid and Enterprise Version**
-
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
@@ -218,16 +218,6 @@ cd /var/www/faveo/
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
-**For Faveo Community Version**
-
-You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
-
-```sh
-mkdir -p /var/www/
-cd /var/www/
-git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
-```
-You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
 <a id="3-setup-the-database" name="3-setup-the-database"></a>
 
