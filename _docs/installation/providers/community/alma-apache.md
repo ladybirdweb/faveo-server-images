@@ -7,7 +7,7 @@ redirect_from:
 last_modified_at: 2023-12-19
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Faveo Helpdesk on Alma Linux
+title: Installing Faveo Helpdesk Community Edition on Alma Linux
 ---
 
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
