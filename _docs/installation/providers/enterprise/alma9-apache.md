@@ -128,7 +128,7 @@ sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php.ini
 
 <b> 1.d. Install and run Mysql/MariaDB</b>
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Note: Currently Faveo supports MySQL 8.0 and MariaDB-10.6.
 
