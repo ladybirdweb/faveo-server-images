@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/alma-apache/
+permalink: /docs/installation/providers/community/alma-apache/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2023-12-19
