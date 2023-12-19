@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-02
+last_modified_at: 2023-12-19
+last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Nginx Webserver
 ---
@@ -13,6 +14,8 @@ title: Installing Faveo Helpdesk on Ubuntu With Nginx Webserver
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
 
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)]. 
+
+This document is meant for Faveo Freelancer, Paid and Enterprise Versions.
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong>1. Nginx Installation</strong>](#1-nginx-installation)
@@ -187,8 +190,6 @@ Once the softwares above are installed:
 
 ### <strong>3. Upload Faveo</strong>
 
-**For Faveo Freelancer, Paid and Enterprise Version**
-
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
 ```sh
@@ -200,16 +201,7 @@ cd /var/www/faveo/
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
-**For Faveo Community Version**
 
-You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
-
-```sh
-mkdir -p /var/www/
-cd /var/www/
-git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
-```
-You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
 <a id="4-setup-the-database" name="4-setup-the-database"></a>
 
