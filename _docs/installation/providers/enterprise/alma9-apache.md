@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-14
-last_modified_by: TamilSelvan_M
+last_modified_at: 2023-12-19
+last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Alma Linux
 ---
@@ -13,6 +13,8 @@ title: Installing Faveo Helpdesk on Alma Linux
 <img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
 
 Faveo can run on [Alma Linux](https://almalinux.org/).
+
+This document is meant for Faveo Freelancer, Paid and Enterprise Versions.
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
     - [<strong> 1. Update your Packages and install some utility tools</strong>](#-1-update-your-packages-and-install-some-utility-tools)
@@ -176,7 +178,6 @@ sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm -y
 <a id="2-upload-faveo" name="2-upload-faveo"></a>
 
 ### <strong>2. Upload Faveo</strong> 
-**For Faveo Freelancer, Paid and Enterprise Version**
 
 Please download Faveo Helpdesk from [https://billing.faveohelpdesk.com](https://billing.faveohelpdesk.com) and upload it to below directory
 
@@ -189,16 +190,6 @@ cd /var/www/faveo/
 ```sh
 unzip "Filename.zip" -d /var/www/faveo
 ```
-**For Faveo Community Version**
-
-You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
-
-```sh
-mkdir -p /var/www/
-cd /var/www/
-git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
-```
-You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
 <a id="3-setup-the-database" name="3-setup-the-database"></a>
 
