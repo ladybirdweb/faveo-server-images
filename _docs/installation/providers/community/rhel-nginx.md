@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/community/rhel9-nginx/
+permalink: /docs/installation/providers/community/rhel-nginx/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2023-12-19
