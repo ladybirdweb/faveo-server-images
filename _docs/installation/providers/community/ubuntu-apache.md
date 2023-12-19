@@ -1,14 +1,14 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/community/ubuntu-apache
+permalink: /docs/installation/providers/community/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-03-06
+last_modified_at: 2023-12-02
+last_modified_by: Mohammad_Asif
 toc: true
+title: Installing Faveo Helpdesk Community Edition on Ubuntu With Apache Webserver
 ---
-
-# Installing Faveo Helpdesk Community on Ubuntu<!-- omit in toc -->
 
 
 <img alt="Ubuntu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo-ubuntu_cof-orange-hex.svg/120px-Logo-ubuntu_cof-orange-hex.svg.png" width="120" height="120" />
@@ -16,7 +16,7 @@ toc: true
 Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/).
 
 - [<strong>Installation steps :</strong>](#installation-steps-)
-    - [<strong>1. LAMP Installation</strong>](#1-lamp-installation)
+    - [<strong>1. Apache Installation</strong>](#1-apache-installation)
     - [<strong>2. Install some Utility packages</strong>](#2-install-some-utility-packages)
     - [<strong>3. Upload Faveo</strong>](#3-upload-faveo)
     - [<strong>4. Setup the database</strong>](#4-setup-the-database)
@@ -25,7 +25,13 @@ Faveo can run on [Ubuntu 20.04 (Focal Fosa), Ubuntu 22.04 (Jammy Jellyfish)](htt
     - [<strong>7. Redis Installation</strong>](#7-redis-installation)
     - [<strong>8. SSL Installation</strong>](#8-ssl-installation)
     - [<strong>9. Install Faveo</strong>](#9-install-faveo)
-    - [<strong>10. Final step</strong>](#10-final-step)
+    - [<strong>10. Faveo Backup</strong>](#10-faveo-backup)
+    - [<strong>11. Final step</strong>](#11-final-step)
+
+> **NOTE** :
+> Ubuntu 22.04 is the recommended version, Ubuntu 20.04 does not support oAuth integration.
+
+
 
 <a id="installation-steps-" name="installation-steps-"></a>
 
@@ -36,12 +42,12 @@ Faveo depends on the following:
 -   **Apache** (with mod_rewrite enabled) 
 -   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
+-   **SSL** ,Trusted CA Signed or Self-Signed SSL
 
-<a id="1-lamp-installation" name="1-lamp-installation"></a>
 
-### <strong>1. LAMP Installation</strong>
-Follow the [instructions here](https://github.com/teddysun/lamp)
-If you follow this step, no need to install Apache, PHP, MySQL separetely as listed below
+<a id="1-apache-installation" name="1-apache-installation"></a>
+
+### <strong>1. Apache Installation</strong>
 
 Run the following commands as sudoers or Login as root user by typing the command below
 
@@ -132,23 +138,13 @@ systemctl restart apache2
 
 <b>2.c. Mysql</b>
 
-The official Faveo installation uses Mysql as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
+The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
- <b> For Ubuntu 18.04</b>
-
-```sh
-sudo apt update
-sudo apt install software-properties-common -y
-curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-sudo bash mariadb_repo_setup --mariadb-server-version=10.6
-sudo apt update
-sudo apt install mariadb-server mariadb-client
-sudo systemctl enable mariadb
-```
  <b> For Ubuntu 20.04 </b>
- ```sh 
+
+```sh 
 sudo apt install dirmngr ca-certificates software-properties-common gnupg gnupg2 apt-transport-https curl -y
 curl -fsSL http://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql.gpg > /dev/null
 echo 'deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/ubuntu focal mysql-8.0' | sudo tee -a /etc/apt/sources.list.d/mysql.list
@@ -172,13 +168,25 @@ Secure your MySql installation by executing the below command. Set Password for 
 mysql_secure_installation 
 ```
 
+<b>2.d. Install wkhtmltopdf</b>
 
-**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
+
+Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc). 
+
+It uses WebKit rendering layout engine to convert HTML pages to PDF document without losing the quality of the pages. Its is really very useful and trustworthy solution for creating and storing snapshots of web pages in real-time.
+
+**For Ubuntu 20.04**
 
 ```sh
-apt install phpmyadmin
+apt-get -y install wkhtmltopdf
 ```
+**For Ubuntu 22.04**
 
+```
+apt install libfontenc1 xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+dpkg -i wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+```
 
 Once the softwares above are installed:
 
@@ -190,16 +198,12 @@ Once the softwares above are installed:
 You may install Faveo by simply cloning the repository. In order for this to work with Apache, you need to clone the repository in a specific folder:
 
 ```sh
-mkdir -p /var/www/faveo
-cd /var/www/faveo
-git clone https://github.com/ladybirdweb/faveo-helpdesk.git
+mkdir -p /var/www/
+cd /var/www/
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git faveo
 ```
 You should check out a tagged version of Faveo since `master` branch may not always be stable. Find the latest official version on the [release page](https://github.com/ladybirdweb/faveo-helpdesk/releases)
 
-**3.a** <b>Extracting the Faveo-Codebase zip file</b>
-```sh
-unzip "Filename.zip" -d /var/www/faveo
-```
  Give proper permissions to the project directory by running:
 
 ```sh
@@ -243,6 +247,9 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+> **NOTE** :
+> Please refrain from making direct MySQL/MariaDB modifications. Contact our support team for assistance.
+
 <a id="5-configure-apache-webserver" name="5-configure-apache-webserver"></a>
 
 ### <strong>5. Configure Apache webserver</strong>
@@ -261,13 +268,13 @@ nano /etc/apache2/sites-available/faveo.conf
     DocumentRoot /var/www/faveo/public
 
     <Directory /var/www/faveo/public>
-        Options Indexes FollowSymLinks
+        Options -Indexes +FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/faveo-error.log
+    CustomLog ${APACHE_LOG_DIR}/faveo-access.log combined
 # Uncomment the below lines and replace the Server-IP and Domainame to configure IP to Domainname rewrite rule
 #    RewriteEngine on
 #    RewriteCond %{HTTP_HOST} ^--Server-IP--
@@ -275,35 +282,20 @@ nano /etc/apache2/sites-available/faveo.conf
 </VirtualHost>
 ```
 
-**5.b.** <b>Disable Directory Browsing on Apache:</b>
-
-
-Disable Directory Browsing on Apache, edit the apache2.conf and change Options Indexes FollowSymLinks to Options -Indexes +FollowSymLinks & AllowOverride value from none to All under <Directory /var/www/> section.
-
-```sh
-<Directory "/var/www">
-    Options -Indexes +FollowSymLinks
-    AllowOverride All 
-    # Allow open access:
-    Require all granted
-</Directory>
-```
-
-
-**5.c.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
+**5.b.** <b>Enable the rewrite module and disable default site of the Apache webserver:</b>
 
 ```sh
 a2enmod rewrite
 a2dissite 000-default.conf
 a2ensite faveo.conf
-# Enable php7.1 fpm, and restart apache
+# Enable php8.1 fpm, and restart apache
 a2enmod proxy_fcgi setenvif
-a2enconf php7.1-fpm
+a2enconf php8.1-fpm
 ```
- **5.d.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
+ **5.c.** <b>Apply the new `.conf` file and restart Apache and PHP-FPM. You can do that by running:</b>
 
 ```sh
-service php7.1-fpm restart
+service php8.1-fpm restart
 service apache2 restart
 ```
 
@@ -315,10 +307,10 @@ Faveo requires some background processes to continuously run.
 Basically those crons are needed to receive emails
 To do this, setup a cron that runs every minute that triggers the following command `php artisan schedule:run`.Verify your php ececutable location and replace it accordingly in the below command.
 
-Create a new `/etc/cron.d/faveo` file with:
+[comment]: <Create a new `/etc/cron.d/faveo` file with:>
 
 ```sh
-echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" | sudo tee /etc/cron.d/faveo
+(sudo -u www-data crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1") | sudo -u www-data crontab -
 ```
 
 <a id="7-redis-installation" name="7-redis-installation"></a>
@@ -327,7 +319,7 @@ echo "* * * * * www-data /usr/bin/php /var/www/faveo/artisan schedule:run 2>&1" 
 
 Redis is an open-source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-This is an optional step and will improve system performance and is highly recommended.
+This will improve system performance and is highly recommended.
 
 [Redis installation documentation](/docs/installation/providers/enterprise/ubuntu-redis)
 
@@ -337,9 +329,11 @@ This is an optional step and will improve system performance and is highly recom
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let's Encrypt is a free, automated, and open certificate authority.
 
-This is an optional step and will improve system security and is highly recommended.
+Faveo Requires HTTPS so the SSL is a must to work with the latest versions of faveo, so for the internal network and if there is no domain for free you can use the Self-Signed-SSL.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl)
+
+[Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-ubuntu/)
 
 <a id="9-install-faveo" name="9-install-faveo"></a>
 
@@ -351,8 +345,15 @@ You can also check the Propagation update by Visiting this site www.whatsmydns.n
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 
-<a id="10-final-step" name="10-final-step"></a>
+<a id="10-faveo-backup" name="10-faveo-backup"></a>
 
-### <strong>10. Final step</strong>
+### <strong>10. Faveo Backup</strong>
+
+
+At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
+
+<a id="11-final-step" name="11-final-step"></a>
+
+### <strong>11. Final step</strong>
 
 The final step is to have fun with your newly created instance, which should be up and running to `http://localhost` or the domain you have configured Faveo with.
