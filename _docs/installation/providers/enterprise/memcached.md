@@ -288,12 +288,15 @@ sudo systemctl restart memcached
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/memcached.png" alt="" style=" width:400px ; height:150px ">
 
-- Unzip the downloaded zip file *(php_memcached-3.2.0rc2-8.1-nts-vs16-x64.zip file or php_memcached-3.2.0.8.1-ts-vs16-x64.zip file)*, a folder will be created, go inside the folder, copy the *libmemcached.dll* file and paste it in C:\php8.1\ext. (C:\php\ext incase of Apache WebServer).
+- Unzip the downloaded zip file *(php_memcached-3.2.0rc2-8.1-nts-vs16-x64.zip file or php_memcached-3.2.0.8.1-ts-vs16-x64.zip file)*.
+
+- Copy the *libmemcached.dll* file from the extracted zip content and paste it in C:\php8.1\ext. (C:\php\ext incase of Apache WebServer).
 
 - Also copy *php_memcached.dll* and *libhashkit.dll* and paste it in C:\windows.
 
 
 - Now enable php memcached extension in php.ini configuration located in C:\php8.1. (C:\php incase of Apache WebServer).
+
 ```
 extension=php_memcached
 ```
