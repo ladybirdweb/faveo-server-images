@@ -284,18 +284,21 @@ sudo systemctl restart memcached
 
 #### Installing PHP extension
 
-<a href="https://pecl.php.net/package/memcached/3.2.0/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 Non Thread Safe (NTS) x64 extension zip file for Memcached.
+<a href="https://pecl.php.net/package/memcached/3.2.0/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.1 x64 extension zip file (NTS or TS depending on the PHP type) for Memcached.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/memcached.png" alt="" style=" width:400px ; height:150px ">
 
-- Unzip the php_memcached-3.2.0rc2-8.1-nts-vs16-x64.zip file, a folder will be created, go inside the folder, copy the *libmemcached.dll* and *php_memcached.dll* files and paste it in C:\php8.1\ext. (C:\php\ext incase of Apache WebServer).
+- Unzip the downloaded zip file *(php_memcached-3.2.0rc2-8.1-nts-vs16-x64.zip file or php_memcached-3.2.0.8.1-ts-vs16-x64.zip file)*, a folder will be created, go inside the folder, copy the *libmemcached.dll* file and paste it in C:\php8.1\ext. (C:\php\ext incase of Apache WebServer).
+
+- Also copy *php_memcached.dll* and *libhashkit.dll* and paste it in C:\windows.
 
 
-- Now enable php memcached extensions in php.ini configuration located in C:\php8.1. (C:\php incase of Apache WebServer).
+- Now enable php memcached extension in php.ini configuration located in C:\php8.1. (C:\php incase of Apache WebServer).
 ```
-extension=libmemcached.dll
-extension=php_memcached.dll
+extension=php_memcached
 ```
+
+- Now restart the IIS or Apache
 
 #### Installing Memcached
 
@@ -315,9 +318,22 @@ c:\memcached\memcached.exe -d install
 
 For start and stop run following command line
 
+To Start
+
 ```
 c:\memcached\memcached.exe -d start
+```
+
+To Stop
+
+```
 c:\memcached\memcached.exe -d stop
+```
+
+To check Status
+
+```
+tasklist | findstr "memcached.exe"
 ```
 
 
