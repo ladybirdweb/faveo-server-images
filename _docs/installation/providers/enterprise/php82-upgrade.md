@@ -188,6 +188,12 @@ sudo systemctl restart nginx
 
 In Alma, Rocky and RHEL machines, we can simply upgrade from a lower version of PHP to a higher version by switching the Repository. 
 
+
+<p class="notice--warning">
+For RHEL you may come accorss with this error while installing php8.2 <code><b>This system is not registered with an entitlement server. You can use subscription-manager to register.</b></code>. To resolve this error <a href="https://access.redhat.com/solutions/253273" target="_blank" rel="noopener">follow this official documentation</a> of RHEL, if you don't have a Licensed RHEL server, do the following change <code><b>vim /etc/yum/pluginconf.d/subscription-manager.conf</b></code> change <code><b>enabled=0</b></code>
+</p>
+
+
 Run the below commands to disable PHP 8.1 and enable PHP 8.2 Remi repo.
 
 ```
