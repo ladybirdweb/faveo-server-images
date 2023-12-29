@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-19
-last_modified_by: Mohammad_Asif
+last_modified_at: 2023-12-29
+last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Nginx Webserver
 ---
@@ -129,27 +129,50 @@ systemctl restart nginx
 systemctl restart php8.1-fpm
 ```
 
-<b> 2.c. Mysql</b>
+<b>2.c. Installing SQL</b>
 
 The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+you can install either MySQL and MariaDB we have given options for both MySQL and MariaDB below.
 
- <b> For Ubuntu 20.04 </b>
+<b>2.c.1. Installing MySQL</b>
+
+Install Mysql 8.0. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+ <b> For Ubuntu 20.04, 22.04 </b>
 
 ```sh 
-sudo apt install dirmngr ca-certificates software-properties-common gnupg gnupg2 apt-transport-https curl -y
-curl -fsSL http://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql.gpg > /dev/null
-echo 'deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/ubuntu focal mysql-8.0' | sudo tee -a /etc/apt/sources.list.d/mysql.list
-echo 'deb-src [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/ubuntu focal mysql-8.0' | sudo tee -a /etc/apt/sources.list.d/mysql.list
 sudo apt update
-sudo apt install mysql-community-server -y
+sudo apt install mysql-server 
 sudo systemctl start mysql
 sudo systemctl enable mysql
 ```
- <b> For Ubuntu 22.04 </b>
 
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+```sh
+mysql_secure_installation 
 ```
+
+<b>2.c.2. Installing MariaDB</b>
+
+Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+ <b> For Ubuntu 20.04</b>
+
+```sh 
+curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+sudo bash mariadb_repo_setup --mariadb-server-version=10.6
+
+sudo apt update
+sudo apt install mariadb-server mariadb-client
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+```
+
+<b> For Ubuntu 22.04</b>
+
+```sh 
 sudo apt update
 sudo apt install mariadb-server mariadb-client -y
 sudo systemctl start mariadb
