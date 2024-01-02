@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/ubuntu-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-29
+last_modified_at: 2024-01-01
 last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Faveo Helpdesk on Ubuntu With Apache Webserver
@@ -138,13 +138,13 @@ sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_
 systemctl restart apache2 
 ```
 
-<b>2.c. Installing SQL</b>
+<b>2.c.  Install MySQL/MariaDB</b>
 
 The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-you can install either MySQL and MariaDB we have given options for both MySQL and MariaDB below.
+You can install either MySQL or MariaDB. We have given options for both MySQL and MariaDB below.
 
-<b>2.c.1. Installing MySQL</b>
+<b>2.c.1. MySQL 8.0</b>
 
 Install Mysql 8.0. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
@@ -163,7 +163,7 @@ Secure your MySql installation by executing the below command. Set Password for 
 mysql_secure_installation 
 ```
 
-<b>2.c.2. Installing MariaDB</b>
+<b>2.c.2.MariaDB 10.6</b>
 
 Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
 
