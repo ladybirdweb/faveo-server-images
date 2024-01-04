@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/meilisearch/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-12
+last_modified_at: 2023-01-04
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Meilisearch Driver for Faveo.
@@ -147,20 +147,32 @@ At this point, Meilisearch is installed and running on your Linux Server.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili.png" alt="" style=" width:400px ; height:150px ">
 
-Once the executable is downloaded open the command prompt in Administrative mode and run the below command. with full path of the executable.
+Once the executable is downloaded, move it to <code><b>Faveo Root Directory</b></code> *(C:\inetpub\wwwroot - Incase of Windows with IIS & C:\Apache24\htdocs - Incase of Windows with Apache)*. 
 
+Double-click on the executable, a command prompt window will open, copy the <code><b>master-key</b></code> from the command prompt window and use that in the next step.
+
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili1.png" alt="" style=" width:400px ; height:150px ">
+
+
+Open the command prompt in Administrative mode and run the below command with the full path of the executable.
+
+
+Windows with IIS
 ```
-meilisearch-windows-amd64.exe --master-key eIYEYxBFiwmb4yKNOAbvila9VDyX74_0IwCEOkfOr5Q^A
+C:\inetpub\wwwroot\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
 ```
 
->**NOTE**:  Remember to choose a safe and random key like *master_key = lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
-
-Example
+Windows with Apache
 ```
-C:\Users\admin\Downloads\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+C:\Apache24\htdocs\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
 ```
 
-Once the above command is run, it will give result like below, at this point Meilisearch is configured on your Windows server.
+
+>**NOTE**:  Remember to replace the master-key copied in the above step.
+
+
+Once the above command is run, it will give results like below, at this point Meilisearch is configured on your Windows server.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili2.png" alt="" style=" width:400px ; height:150px ">
 
