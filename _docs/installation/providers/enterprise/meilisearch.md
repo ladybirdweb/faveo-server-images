@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/meilisearch/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-01-04
+last_modified_at: 2024-01-04
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Meilisearch Driver for Faveo.
