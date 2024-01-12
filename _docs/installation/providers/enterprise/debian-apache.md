@@ -129,15 +129,41 @@ sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_
 systemctl restart apache2 
 ```
 
-<b>1.e. MariaDB:</b>
+<b>1.e. Install MySQL/MariaDB</b>
 
 The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+You can install either MySQL or MariaDB. We have given options for both MySQL and MariaDB below.
 
-<b> For Debian 11 </b>
+<b>1.e.1. MySQL</b>
+
+Install Mysql 8.0. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+
+<b> For Debian 11, 12</b>
 
 ```sh
+sudo apt update
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
+sudo dpkg -i mysql-apt-config*
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+```
+sudo mysql_secure_installation 
+```
+
+<b>1.e.2. MariaDB 10.6</b>
+
+Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+<b> For Debian 11</b>
+
+```
 sudo apt update
 sudo apt-get install curl software-properties-common dirmngr
 curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
@@ -147,21 +173,6 @@ sudo apt-get install mariadb-server mariadb-client
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
 ```
-
-<b> For Debian 12 </b>
-
-```sh
-sudo apt install dirmngr software-properties-common apt-transport-https curl lsb-release ca-certificates -y
-curl -fsSL https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql.gpg > /dev/null
-
-echo "deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/debian $(lsb_release -sc) mysql-8.0" | sudo tee /etc/apt/sources.list.d/mysql.list
-
-sudo apt update
-sudo apt install mysql-community-server
-sudo systemctl start mysql --now
-sudo systemctl enable mysql --now
-```
-
 Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 ```
 sudo mysql_secure_installation 
