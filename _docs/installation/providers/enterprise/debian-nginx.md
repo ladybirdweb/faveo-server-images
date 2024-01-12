@@ -138,15 +138,58 @@ systemctl restart nginx
 systemctl restart php8.1-fpm
 ```
 
-<b>1.e. Mysql</b>
+<b>1.e. Install MySQL/MariaDB</b>
 
 The official Faveo installation uses Mysql/MariaDB as the database system and **this is the only official system we support**. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Faveo as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
-Install Mysql 8.0 or MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+You can install either MySQL or MariaDB. We have given options for both MySQL and MariaDB below.
 
-<b> For Debian 11 </b>
+<b>1.e.1. MySQL</b>
+
+Install Mysql 8.0. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+
+<b> For Debian 11, 12</b>
 
 ```sh
+sudo apt update
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
+sudo dpkg -i mysql-apt-config*
+```
+A pop-up window displays after you run the above command. Select MySQL Server & Cluster with the Arrow key and hit Enter.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-3.png" alt="" style=" width:400px ; height:250px ">
+
+In this instance, MySQL-8.0 is the version of the server that was available. Select MySQL-8.0 and click  Enter.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-1.png" alt="" style=" width:400px ; height:250px ">
+
+Now, click OK on your screen to finish the configuration.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-2.png" alt="" style=" width:400px ; height:250px ">
+
+```
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
+Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
+```
+sudo mysql_secure_installation 
+```
+
+<b>1.e.2. MariaDB 10.6</b>
+
+Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+> **NOTE** :
+> Debian 12 does not currently support MariaDB version 10.6.
+
+<b> For Debian 11</b>
+
+```
 sudo apt update
 sudo apt-get install curl software-properties-common dirmngr
 curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
@@ -156,29 +199,9 @@ sudo apt-get install mariadb-server mariadb-client
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
 ```
-<b> For Debian 12 </b>
-
-```sh
-sudo apt install dirmngr software-properties-common apt-transport-https curl lsb-release ca-certificates -y
-curl -fsSL https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql.gpg > /dev/null
-
-echo "deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/debian $(lsb_release -sc) mysql-8.0" | sudo tee /etc/apt/sources.list.d/mysql.list
-
-sudo apt update
-sudo apt install mysql-community-server
-sudo systemctl start mysql --now
-sudo systemctl enable mysql --now
+Secure your MySql installation by executing the below command. Set Password for mysql root user by providing a strong password combination of Uppercase, Lowercase, alphanumeric and special symbols, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
 ```
-
-Secure your MySql installation by executing the below command. Set Password for mysql root user, remove anonymous users, disallow remote root login, remove the test databases and finally reload the privilege tables.
-```sh
-mysql_secure_installation 
-```
-
-**phpMyAdmin(Optional):** Install phpMyAdmin. This is optional step. phpMyAdmin gives a GUI to access and work with Database
-
-```sh
-apt install phpmyadmin
+sudo mysql_secure_installation 
 ```
 
 <b>1.f. Install wkhtmltopdf</b>

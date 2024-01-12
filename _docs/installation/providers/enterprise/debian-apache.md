@@ -146,6 +146,20 @@ Install Mysql 8.0. Note that this only installs the package, but does not setup 
 sudo apt update
 wget https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
 sudo dpkg -i mysql-apt-config*
+```
+A pop-up window displays after you run the above command. Select MySQL Server & Cluster with the Arrow key and hit Enter.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-3.png" alt="" style=" width:400px ; height:250px ">
+
+In this instance, MySQL-8.0 is the version of the server that was available. Select MySQL-8.0 and click  Enter.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-1.png" alt="" style=" width:400px ; height:250px ">
+
+Now, click OK on your screen to finish the configuration.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/Debian-images/mysql-debian-2.png" alt="" style=" width:400px ; height:250px ">
+
+```
 sudo apt update
 sudo apt install mysql-server
 sudo systemctl start mysql
@@ -160,6 +174,9 @@ sudo mysql_secure_installation
 <b>1.e.2. MariaDB 10.6</b>
 
 Install MariaDB 10.6. Note that this only installs the package, but does not setup Mysql. This is done later in the instructions:
+
+> **NOTE** :
+> Debian 12 does not currently support MariaDB version 10.6.
 
 <b> For Debian 11</b>
 
