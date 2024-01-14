@@ -417,6 +417,18 @@ name="11Setting-up-Bindings"></a>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/bindingnew.png" alt="" style=" width:400px ; height:250px ">
 
+- After adding the Bindings we need to edit the <code><b>host file</b></code>, which will present be at this location.
+
+```
+C:\Windows\System32\drivers\etc
+```
+
+- Add the below line by replacing the 'yourdomain' with the domain that we used in the above step.
+
+```
+127.0.0.1            yourdomain
+```
+
 - Now you can open the browser and enter the IP or Domain Name to open Faveo.
 
 
