@@ -48,6 +48,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 
 ## How To's <button class="button NEW"><b>NEW</b></button>
 - Upgrade to PHP 8.1 [click here](/docs/installation/providers/enterprise/php-upgrade/)
+- Upgrade to PHP 8.2 [click here](/docs/installation/providers/enterprise/php82-upgrade/)
 - Migrate or Clone Faveo Helpdesk [click here](/docs/installation/providers/enterprise/generic-migration/)
 - Install Wkhtmltopdf [click here](/docs/installation/providers/enterprise/wkhtmltopdf/)
 - Faveo Backup Script [click here](/docs/installation/providers/enterprise/backup-script/)
