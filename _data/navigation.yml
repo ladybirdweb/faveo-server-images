@@ -53,6 +53,8 @@ docs:
     children:
       - title: Upgrade PHP to 8.1
         url: /docs/installation/providers/enterprise/php-upgrade/
+      - title: Upgrade PHP to 8.2
+        url: /docs/installation/providers/enterprise/php82-upgrade/
       - title: Migrate or Clone
         url: /docs/installation/providers/enterprise/generic-migration/
       - title: Install Wkhtmltopdf
