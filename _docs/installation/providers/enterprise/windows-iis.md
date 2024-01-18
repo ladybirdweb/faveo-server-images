@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/windows-iis/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-06-20
+last_modified_at: 2024-01-18
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Windows Server
@@ -30,9 +30,10 @@ Faveo can run on the [Windows Server](https://www.microsoft.com/en-au/windows-se
   - [<strong> 10. Setting up the Database </strong>](#10Setting-up-the-Database)
   - [<strong> 11. Setting up Bindings </strong>](#11Setting-up-Bindings)
   - [<strong> 12. Set Cron & Configure Queue Driver </strong>](#12Configure-Task-Scheduler)
-  - [<strong> 13. SSL Installation </strong>](#13SSL-Installation)
-  - [<strong> 14. Install Faveo </strong>](#14Install-Faveo)
-  - [<strong>15. Faveo Backup</strong>](#15-faveo-backup)
+  - [<strong> 13. Install Meilisearch </strong>](#13Install-Meilisearch)
+  - [<strong> 14. SSL Installation </strong>](#14SSL-Installation)
+  - [<strong> 15. Install Faveo </strong>](#15Install-Faveo)
+  - [<strong>16. Faveo Backup</strong>](#16-faveo-backup)
 
 The Installation steps listed above are to be followed to install Faveo on your Windows-IIS Server.
 
@@ -500,10 +501,19 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 **Note:** Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="13SSL-Installation" 
-name="13SSL-Installation"></a>
+<a id="13Install-Meilisearch" 
+name="13Install-Meilisearch"></a>
 
-### <strong>13. SSL Installation</strong>
+### <strong>13. Install Meilisearch</strong>
+
+MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities Faveo.
+
+[Meilisearch installation documentation](/docs/installation/providers/enterprise/meilisearch)
+
+<a id="14SSL-Installation" 
+name="14SSL-Installation"></a>
+
+### <strong>14. SSL Installation</strong>
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
 
@@ -514,17 +524,17 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 - [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/self-signed-ssl-windows)
 
 
-<a id="14Install-Faveo" 
-name="14Install-Faveo"></a>
+<a id="15Install-Faveo" 
+name="15Install-Faveo"></a>
 
-### <strong>14. Install Faveo</strong>
+### <strong>15. Install Faveo</strong>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
 
-<a id="15-faveo-backup" name="16-faveo-backup"></a>
+<a id="16-faveo-backup" name="16-faveo-backup"></a>
 
-### <strong>15. Faveo Backup</strong>
+### <strong>16. Faveo Backup</strong>
 
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
