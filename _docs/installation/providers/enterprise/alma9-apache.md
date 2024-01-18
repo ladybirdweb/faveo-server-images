@@ -4,13 +4,13 @@ type: docs
 permalink: /docs/installation/providers/enterprise/alma9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-19
+last_modified_at: 2024-01-18
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Faveo Helpdesk on Alma Linux
+title: Installing Faveo Helpdesk on Alma Linux with Apache Webserver
 ---
 
-<img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
+<img alt="Alma Linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="150"  />
 
 Faveo can run on [Alma Linux](https://almalinux.org/).
 
@@ -174,6 +174,11 @@ wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtm
 sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm -y
 ```
 
+<b>1.f. Install Meilisearch</b>
+
+MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities in Faveo.
+
+[Meilisearch installation documentation](/docs/installation/providers/enterprise/meilisearch)
 
 <a id="2-upload-faveo" name="2-upload-faveo"></a>
 
