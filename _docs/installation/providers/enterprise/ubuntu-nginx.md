@@ -208,7 +208,7 @@ dpkg -i wkhtmltox_0.12.6.1-3.jammy_amd64.deb
 
 <b>2.e. Install Meilisearch</b>
 
-MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities Faveo.
+MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities in Faveo.
 
 [Meilisearch installation documentation](/docs/installation/providers/enterprise/meilisearch)
 
