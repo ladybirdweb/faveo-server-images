@@ -4,10 +4,10 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rhel9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-19
+last_modified_at: 2023-01-18
 last_modified_by: Mohammad_Asif
 toc: true
-title: Installing Faveo Helpdesk on RHEL OS
+title: Installing Faveo Helpdesk on RHEL OS with Apache Webserver
 ---
 
 <img alt="Rhel OS Logo" src="https://1000logos.net/wp-content/uploads/2021/04/Red-Hat-logo.png" width="200"  />
@@ -169,6 +169,12 @@ yum install -y xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libpng libjpeg openssl 
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm
 sudo dnf install ./wkhtmltox-0.12.6.1-2.almalinux9.x86_64.rpm -y
 ```
+
+<b>1.f. Install Meilisearch</b>
+
+MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities Faveo.
+
+[Meilisearch installation documentation](/docs/installation/providers/enterprise/meilisearch)
 
 
 <a id="2-upload-faveo" name="2-upload-faveo"></a>
