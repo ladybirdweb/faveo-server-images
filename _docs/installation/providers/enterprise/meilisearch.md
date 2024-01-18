@@ -176,7 +176,7 @@ Once the above command is run, it will give results like below, at this point Me
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili2.png" alt="" style=" width:400px ; height:150px ">
 
-You can confirm the same by visiting *http://localhsot:7700*
+You can confirm the same by visiting *http://localhost:7700*
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili3.png" alt="" style=" width:400px ; height:150px ">
 
