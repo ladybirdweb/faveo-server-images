@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/apache-windows/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-09-20
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-01-18
+last_modified_by: Mohammad_Asif
 toc: true
 title: Faveo Installation on Windows with Apache Web Server
 ---
@@ -25,16 +25,16 @@ title: Faveo Installation on Windows with Apache Web Server
 
   - [<strong>1.Install & Configure Apache for Windows</strong>](#1Install-&-Configure-Apache-for-Windows)
   - [<strong> 2. PHP 8.1 for Apache Web Server </strong>](#2PHP-8.1-for-Apache-Web-Server)
-
   - [<strong> 3. Install Ioncube Loader </strong>](#3Install-Ioncube-Loader)
   - [<strong> 4. Install wkhtmltopdf </strong>](#4Install-wkhtmltopdf)
   - [<strong> 5. Upload Faveo </strong>](#5Upload-Faveo)
   - [<strong> 6. Install MariaDB 10.6/MySQL 8.0  </strong>](#3Install-MariaDB-10.6/MySQL-8.0)
   - [<strong> 7. Setting up the Database </strong>](#7Setting-up-the-Database)
   - [<strong> 8. Set Cron & Configure Queue Driver </strong>](#8Configure-Task-Scheduler)
-  - [<strong> 9. SSL Installation </strong>](#9SSL-Installation)
-  - [<strong> 10. Install Faveo </strong>](#10Install-Faveo)
-  - [<strong> 11. Faveo Backup</strong>](#11-faveo-backup)
+  - [<strong> 9. Install Meilisearch </strong>](#9Install-meilisearch)
+  - [<strong> 10. SSL Installation </strong>](#10SSL-Installation)
+  - [<strong> 11. Install Faveo </strong>](#11Install-Faveo)
+  - [<strong> 12. Faveo Backup</strong>](#12-faveo-backup)
 
 
 
@@ -605,10 +605,21 @@ A queue driver is the handler for managing how to run a queued job, identifying 
 
 <b>Note:</b> Database queue driver must be used only in windows server. C Panel or Linux users should not use database as queue driver.
 
-<a id="9SSL-Installation" 
-name="9SSL-Installation"></a>
 
-### <b>9. SSL Installation</b>
+<a id="9Install-meilisearch" 
+name="9Install-meilisearch"></a>
+
+### <b>9. Install Meilisearch</b>
+
+MeiliSearch is an open-source search engine developed in Rust that delivers flexible search and indexing capabilities. It adeptly handles typos, supports full-text search, synonyms, and comes packed with various features, making it an ideal choice for elevating search functionalities Faveo.
+
+[Meilisearch installation documentation](/docs/installation/providers/enterprise/meilisearch)
+
+
+<a id="10SSL-Installation" 
+name="10SSL-Installation"></a>
+
+### <b>10. SSL Installation</b>
 
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client. Let’s Encrypt is a free, automated, and open certificate authority.
@@ -620,10 +631,10 @@ Apache only supports Paid SSL or the Self Signed SSL, Let’s Encrypt is not sup
 
 
 
-<a id="10Install-Faveo" 
-name="10Install-Faveo"></a>
+<a id="11Install-Faveo" 
+name="11Install-Faveo"></a>
 
-### <b>10. Install Faveo</b>
+### <b>11. Install Faveo</b>
 
 Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or [CLI](/docs/installation/installer/cli)
 
@@ -631,6 +642,6 @@ Now you can install Faveo via [GUI](/docs/installation/installer/gui) Wizard or 
 
 <a id="12-faveo-backup" name="12-faveo-backup"></a>
 
-### <b>11. Faveo Backup</b>
+### <b>12. Faveo Backup</b>
 
 At this stage, Faveo has been installed, it is time to setup the backup for Faveo File System and Database. [Follow this article](/docs/helper/backup) to setup Faveo backup.
