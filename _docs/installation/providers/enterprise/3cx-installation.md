@@ -114,8 +114,6 @@ iface enp6s0 inet static
     address 10.231.58.94
     netmask 255.255.255.252
     gateway 10.231.58.93
-
-
 ```
 
 3. Airtel SIP Network Configuration
