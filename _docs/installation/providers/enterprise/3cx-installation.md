@@ -93,6 +93,9 @@ sudo nano /etc/network/interfaces
 - Airtel SIP Network Interface (enp6s0)
 
 ```
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
 source /etc/network/interfaces.d/*
 
 # The loopback network interface
@@ -111,6 +114,7 @@ iface enp6s0 inet static
     address 10.231.58.94
     netmask 255.255.255.252
     gateway 10.231.58.93
+
 
 ```
 
