@@ -1,4 +1,4 @@
-## Install Debian for 3CX
+## Step 1: Install Debian for 3CX
 
 To install Debian for 3CX:
 
@@ -61,7 +61,9 @@ Domain name: 3cx.in
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/3cx-images/3cx-install13.png?raw=true" style=" width:500px ; height:250px ">
 
-## Step 5: Upload the Configuration File
+
+
+## Step 2: Upload the Configuration File
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/3cx-images/3cx-install14.png?raw=true" style=" width:500px ; height:250px ">
 
@@ -76,3 +78,61 @@ After the 3CX Debian installation finishes and the machine is rebooted, you need
 4. Once your installation is ready, you will be prompted to set your password. Login to the PBX using the email you used to register.
 
 <img src="https://github.com/ladybirdweb/faveo-server-images/blob/master/_docs/installation/providers/enterprise/3cx-images/3cx-install15.png?raw=true" style=" width:500px ; height:250px ">
+
+## Step 3: Network Configuration for 3CX
+
+1. The primary network configuration file on Debian is located at <code><b>/etc/network/interfaces</b></code>.
+
+```
+sudo nano /etc/network/interfaces
+```
+
+2. Add the configuration for the new network interface.
+
+- Primary Network Interface (enp11s0)
+- Airtel SIP Network Interface (enp6s0)
+
+```
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto enp11s0
+iface enp11s0 inet static
+    address 192.168.2.82
+    netmark 255.255.255.255
+    gateway 192.168.2.1
+
+auto enp6s0
+iface enp6s0 inet static
+    address 10.231.58.94
+    netmask 255.255.255.252
+    gateway 10.231.58.93
+
+```
+
+3. Airtel SIP Network Configuration
+
+- Configuration of IP routes for the Airtel SIP network interface. The following routes have been established to direct traffic via the specified gateway (10.231.58.93):
+
+```
+sudo ip route add 10.5.70.3 via 10.231.58.93
+sudo ip route add 10.5.70.19 via 10.231.58.93
+sudo ip route add 10.5.110.130 via 10.231.58.93
+sudo ip route add 10.5.110.131 via 10.231.58.93
+sudo ip route add 10.5.110.146 via 10.231.58.93
+sudo ip route add 10.5.110.147 via 10.231.58.93
+sudo ip route add 10.5.110.194 via 10.231.58.93
+sudo ip route add 10.5.110.195 via 10.231.58.93
+sudo ip route add 10.5.110.210 via 10.231.58.93
+sudo ip route add 10.5.110.211 via 10.231.58.93
+```
+
+4. After making changes to this file, restart the networking service to apply the new configurations.
+
+```
+sudo systemctl restart networking
+```
