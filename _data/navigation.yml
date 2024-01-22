@@ -84,7 +84,7 @@ docs:
         url: /docs/installation/providers/enterprise/faveo-helpdesk-docker/
 
   - title: Community Edition
-   children:
+    children:
       - title: Alma Linux with Apache
         url: /docs/installation/providers/community/alma-apache
       - title: Alma Linux with Nginx
