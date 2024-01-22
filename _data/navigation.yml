@@ -82,14 +82,30 @@ docs:
     children:
       - title: Faveo on Docker
         url: /docs/installation/providers/enterprise/faveo-helpdesk-docker/
-#  - title: Community edition
-#    children:
-#      - title: Ubuntu with Apache
-#        url: /docs/installation/providers/community/ubuntu-apache
-#      - title: CentOS with Apache
-#        url: /docs/installation/providers/community/centos-apache
-#      - title: Debian with Apache
-#        url: /docs/installation/providers/community/debian-apache
+
+  - title: Community Edition
+   children:
+      - title: Alma Linux with Apache
+        url: /docs/installation/providers/community/alma-apache
+      - title: Alma Linux with Nginx
+        url: /docs/installation/providers/community/alma-nginx
+      - title: Rocky Linux with Apache
+        url: /docs/installation/providers/community/rocky-apache
+      - title: Rocky Linux with Nginx
+        url: /docs/installation/providers/community/rocky-nginx
+      - title: RHEL Linux with Apache
+        url: /docs/installation/providers/community/rhel-apache
+      - title: RHEL Linux with Nginx
+        url: /docs/installation/providers/community/rhel-nginx
+      - title: Ubuntu Linux with Apache
+        url: /docs/installation/providers/community/ubuntu-apache
+      - title: Ubuntu Linux with Nginx
+        url: /docs/installation/providers/community/ubuntu-nginx
+      - title: Debian Linux with Apache
+        url: /docs/installation/providers/community/debian-apache
+      - title: Debian Linux with Nginx
+        url: /docs/installation/providers/community/debian-nginx
+
 
 #      - title: MariaDB Version 10.6
 #        url:
