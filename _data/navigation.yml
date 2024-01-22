@@ -93,17 +93,17 @@ docs:
         url: /docs/installation/providers/community/rocky-apache
       - title: Rocky Linux with Nginx
         url: /docs/installation/providers/community/rocky-nginx
-      - title: RHEL Linux with Apache
+      - title: RHEL with Apache
         url: /docs/installation/providers/community/rhel-apache
-      - title: RHEL Linux with Nginx
+      - title: RHEL with Nginx
         url: /docs/installation/providers/community/rhel-nginx
-      - title: Ubuntu Linux with Apache
+      - title: Ubuntu with Apache
         url: /docs/installation/providers/community/ubuntu-apache
-      - title: Ubuntu Linux with Nginx
+      - title: Ubuntu with Nginx
         url: /docs/installation/providers/community/ubuntu-nginx
-      - title: Debian Linux with Apache
+      - title: Debian with Apache
         url: /docs/installation/providers/community/debian-apache
-      - title: Debian Linux with Nginx
+      - title: Debian with Nginx
         url: /docs/installation/providers/community/debian-nginx
 
 
