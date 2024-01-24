@@ -32,6 +32,13 @@ If no caller ID is set then it will default to the trunk's caller ID.
 
 ## 2. Add Call Queues
 
+With 3CX you can create call queues or ring groups and handle incoming calls as a team:
+
+- **Call Queues** - queue calls for when agents are available. If all agents are busy, calls are kept waiting until one becomes available.
+Call queues are used to manage incoming calls efficiently by routing them to a group of agents or extensions.
+
+
+
 1. Select <code>Call Queues</code>
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-4.png" alt="">
@@ -115,7 +122,7 @@ Add SIP Trunk/VoIP Provider
 
 - **Select Provider in your Country:** Callcentric
 
-- **Main Trunk No:** Provided by Callcentric
+- **Main Trunk No:** 16503604607
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-11.png" alt="">
 
@@ -133,11 +140,11 @@ Fill in Authentication with the information provided by Callcentric
 
 - **Type of Authentication:** Register/Account Based
 
-- **Authentication ID (aka SIP User ID):** Provided by Callcentric
+- **Authentication ID (aka SIP User ID):** 17778761681
 
 - **Authentication Password:** Provided by Callcentric
 
-- **Main Trunk No:** Provided by Callcentric
+- **Main Trunk No:** 16503604607
 
 - **Destination for calls during office hours:** Extension (IVR 800 welcome ivr)
 
@@ -165,7 +172,7 @@ Add SIP Trunk/VoIP Provider
 
 - **Select Provider in your Country:** Generic SIP Trunk
 
-- **Main Trunk No:** Provided by Airtel
+- **Main Trunk No:** 8047292860
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-16.png" alt="">
 
@@ -179,17 +186,15 @@ Fill in Authentication with the information provided by Callcentric
 
 - **Number of SIM Calls:** 10
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-17.png" alt="">
-
 - **Type of Authentication:** Register/Account Based
 
-- **Authentication ID (aka SIP User ID):** Provided by Airtel
+- **Authentication ID (aka SIP User ID):** +918047292860
 
 - **Authentication Password:** Provided by Airtel
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-18.png" alt="">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/3cx-images/3cx-gui-17.png" alt="">
 
-- **Main Trunk No:** Provided by Airtel
+- **Main Trunk No:** +918047292860
 
 - **Destination for calls during office hours:** Extension (IVR 800 welcome ivr)
 
