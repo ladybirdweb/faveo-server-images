@@ -59,10 +59,10 @@ docs:
 #        url: /docs/installation/providers/enterprise/php82-upgrade/
       - title:  Faveo Migrate or Clone
         url: /docs/installation/providers/enterprise/generic-migration/
-      - title: Install Wkhtmltopdf
-        url: /docs/installation/providers/enterprise/wkhtmltopdf/
+#      - title: Install Wkhtmltopdf
+#        url: /docs/installation/providers/enterprise/wkhtmltopdf/
       - title: Faveo Automated Backup
-        url: //docs/helpers/choose-backup/
+        url: /docs/helpers/choose-backup/
 #      - title: Faveo Backup Script
 #        url: /docs/installation/providers/enterprise/backup-script/
 #      - title: UrBackup Tool
