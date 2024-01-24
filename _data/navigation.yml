@@ -51,18 +51,22 @@ docs:
 
   - title: How To's
     children:
-      - title: Upgrade PHP to 8.1
-        url: /docs/installation/providers/enterprise/php-upgrade/
-      - title: Upgrade PHP to 8.2
-        url: /docs/installation/providers/enterprise/php82-upgrade/
-      - title: Migrate or Clone
+      - title: Upgrade PHP Version
+        url: /docs/helpers/choose-php/
+#      - title: Upgrade PHP to 8.1
+#        url: /docs/installation/providers/enterprise/php-upgrade/
+#      - title: Upgrade PHP to 8.2
+#        url: /docs/installation/providers/enterprise/php82-upgrade/
+      - title:  Faveo Migrate or Clone
         url: /docs/installation/providers/enterprise/generic-migration/
       - title: Install Wkhtmltopdf
         url: /docs/installation/providers/enterprise/wkhtmltopdf/
-      - title: Faveo Backup Script
-        url: /docs/installation/providers/enterprise/backup-script/
-      - title: UrBackup Tool
-        url: /docs/installation/providers/enterprise/backup-tool/
+      - title: Faveo Automated Backup
+        url: //docs/helpers/choose-backup/
+#      - title: Faveo Backup Script
+#        url: /docs/installation/providers/enterprise/backup-script/
+#      - title: UrBackup Tool
+#        url: /docs/installation/providers/enterprise/backup-tool/
       - title: Custom Domain
         url: /docs/helper/cname/
       - title: Install Network Discovery
@@ -73,8 +77,8 @@ docs:
         url: /docs/installation/providers/enterprise/meilisearch
       - title: Install Memcached 
         url: /docs/installation/providers/enterprise/memcached
-      - title: Install Agora Invoicing
-        url: /docs/installation/providers/community/agora-home
+#      - title: Install Agora Invoicing
+ #       url: /docs/installation/providers/community/agora-home
 
   - title: Kubernetes
     children:

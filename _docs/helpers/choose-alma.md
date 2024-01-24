@@ -33,5 +33,5 @@ Choose the Faveo Plan from the list below:
 
 ---
 
-*Last Modified by: Mohammad Asif*  <img alt="Modifier" src="https://gravatar.com/userimage/218258137/13e77229228f4d8ba5099e472b5b996c.jpeg" width="25"  /> 
+
 
