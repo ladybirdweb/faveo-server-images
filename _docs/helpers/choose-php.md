@@ -16,13 +16,13 @@ title: Upgrade PHP Version for Faveo
 
 ## Introduction
 
-Welcome to the Faveo PHP Upgrade Guide! As part of our commitment to providing a secure and efficient platform, we periodically update our tframework to leverage the latest features and improvements. In this document, you will find step-by-step instructions to upgrade the PHP version for Faveo.
+Welcome to the Faveo PHP Upgrade Guide! As part of our commitment to providing a secure and efficient platform, we periodically update our framework to leverage the latest features and improvements. In this document, you will find step-by-step instructions to upgrade the PHP version for Faveo.
 
 ## Prerequisites
 
-Before you proceed with the PHP upgrade, ensure that:
+Before you proceed with the PHP upgrade, please ensure that:
 
-- You have a backup of your Faveo application and its associated database.
+- You have a backup of your Faveo application File System and its associated Database.
 
 - Your server meets the system requirements for the target PHP version.
 

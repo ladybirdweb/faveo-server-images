@@ -3,38 +3,48 @@
 docs:
   - title: INSTALLATION GUIDE
     children:
-      - title: Alma Linux with Apache
-        url: /docs/installation/providers/enterprise/alma9-apache
-      - title: Alma Linux with Nginx
-        url: /docs/installation/providers/enterprise/alma9-nginx
+     # - title: Alma Linux with Apache
+     #   url: /docs/installation/providers/enterprise/alma9-apache
+     # - title: Alma Linux with Nginx
+     #   url: /docs/installation/providers/enterprise/alma9-nginx
      #- title: Cent OS 8 Stream with Apache
      #   url: /docs/installation/providers/enterprise/centos8s-apache
      #- title: Cent OS 8 Stream with Nginx
      #  url: /docs/installation/providers/enterprise/centos8s-nginx
-      - title: Rocky Linux with Apache
-        url: /docs/installation/providers/enterprise/rocky9-apache
-      - title: Rocky Linux with Nginx
-        url: /docs/installation/providers/enterprise/rocky9-nginx
+     # - title: Rocky Linux with Apache
+     #   url: /docs/installation/providers/enterprise/rocky9-apache
+     # - title: Rocky Linux with Nginx
+     #   url: /docs/installation/providers/enterprise/rocky9-nginx
      # - title: Rocky Linux 8 with Apache
      #  url: /docs/installation/providers/enterprise/rocky-apache
      # - title: Rocky Linux 8 with Nginx
      #   url: /docs/installation/providers/enterprise/rocky-nginx
-      - title: RHEL with Apache
-        url: /docs/installation/providers/enterprise/rhel9-apache
-      - title: RHEL with Nginx
-        url: /docs/installation/providers/enterprise/rhel9-nginx
+     # - title: RHEL with Apache
+     #   url: /docs/installation/providers/enterprise/rhel9-apache
+     # - title: RHEL with Nginx
+     #   url: /docs/installation/providers/enterprise/rhel9-nginx
       #- title: Cent OS with Apache
       #  url: /docs/installation/providers/enterprise/centos-apache
       #- title: Cent OS with NGINX
       #  url: /docs/installation/providers/enterprise/centos-nginx
-      - title: Ubuntu with Apache (Recommended)
-        url: /docs/installation/providers/enterprise/ubuntu-apache
-      - title: Ubuntu with NGINX 
-        url: /docs/installation/providers/enterprise/ubuntu-nginx
-      - title: Debian with Apache
-        url: /docs/installation/providers/enterprise/debian-apache
-      - title: Debian with NGINX
-        url: /docs/installation/providers/enterprise/debian-nginx
+     # - title: Ubuntu with Apache (Recommended)
+     #   url: /docs/installation/providers/enterprise/ubuntu-apache
+     # - title: Ubuntu with NGINX 
+     #   url: /docs/installation/providers/enterprise/ubuntu-nginx
+     # - title: Debian with Apache
+     #   url: /docs/installation/providers/enterprise/debian-apache
+     # - title: Debian with NGINX
+     #   url: /docs/installation/providers/enterprise/debian-nginx
+      - title: Faveo on Alma Linux 
+        url: /docs/installation/providers/community/choose-alma
+      - title: Faveo on Rocky Linux
+        url: /docs/installation/providers/community/choose-rocky
+      - title: Faveo on RHEL 
+        url: /docs/installation/providers/community/choose-rhel
+      - title: Faveo on Ubuntu  (Recommended)
+        url: /docs/installation/providers/community/choose-ubuntu
+      - title: Faveo on Debian
+        url: /docs/installation/providers/community/choose-debian
       - title: Windows IIS Server
         url: /docs/installation/providers/enterprise/windows-iis
       - title: Windows Apache Server
@@ -89,28 +99,28 @@ docs:
       - title: Faveo on Docker
         url: /docs/installation/providers/enterprise/faveo-helpdesk-docker/
 
-  - title: Community Edition
-    children:
-      - title: Alma Linux with Apache
-        url: /docs/installation/providers/community/alma-apache
-      - title: Alma Linux with Nginx
-        url: /docs/installation/providers/community/alma-nginx
-      - title: Rocky Linux with Apache
-        url: /docs/installation/providers/community/rocky-apache
-      - title: Rocky Linux with Nginx
-        url: /docs/installation/providers/community/rocky-nginx
-      - title: RHEL with Apache
-        url: /docs/installation/providers/community/rhel-apache
-      - title: RHEL with Nginx
-        url: /docs/installation/providers/community/rhel-nginx
-      - title: Ubuntu with Apache
-        url: /docs/installation/providers/community/ubuntu-apache
-      - title: Ubuntu with Nginx
-        url: /docs/installation/providers/community/ubuntu-nginx
-      - title: Debian with Apache
-        url: /docs/installation/providers/community/debian-apache
-      - title: Debian with Nginx
-        url: /docs/installation/providers/community/debian-nginx
+  # - title: Community Edition
+  #   children:
+  #     - title: Alma Linux with Apache
+  #       url: /docs/installation/providers/community/alma-apache
+  #     - title: Alma Linux with Nginx
+  #       url: /docs/installation/providers/community/alma-nginx
+  #     - title: Rocky Linux with Apache
+  #       url: /docs/installation/providers/community/rocky-apache
+  #     - title: Rocky Linux with Nginx
+  #       url: /docs/installation/providers/community/rocky-nginx
+  #     - title: RHEL with Apache
+  #       url: /docs/installation/providers/community/rhel-apache
+  #     - title: RHEL with Nginx
+  #       url: /docs/installation/providers/community/rhel-nginx
+  #     - title: Ubuntu with Apache
+  #       url: /docs/installation/providers/community/ubuntu-apache
+  #     - title: Ubuntu with Nginx
+  #       url: /docs/installation/providers/community/ubuntu-nginx
+  #     - title: Debian with Apache
+  #       url: /docs/installation/providers/community/debian-apache
+  #     - title: Debian with Nginx
+  #       url: /docs/installation/providers/community/debian-nginx
 
 
 #      - title: MariaDB Version 10.6
