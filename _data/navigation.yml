@@ -36,15 +36,15 @@ docs:
      # - title: Debian with NGINX
      #   url: /docs/installation/providers/enterprise/debian-nginx
       - title: Faveo on Alma Linux 
-        url: /docs/installation/providers/community/choose-alma
+        url: /docs/helpers/choose-alma
       - title: Faveo on Rocky Linux
-        url: /docs/installation/providers/community/choose-rocky
+        url: /docs/helpers/choose-rocky
       - title: Faveo on RHEL 
-        url: /docs/installation/providers/community/choose-rhel
+        url: /docs/helpers/choose-rhel
       - title: Faveo on Ubuntu  (Recommended)
-        url: /docs/installation/providers/community/choose-ubuntu
+        url: /docs/helpers/choose-ubuntu
       - title: Faveo on Debian
-        url: /docs/installation/providers/community/choose-debian
+        url: /docs/helpers/choose-debian
       - title: Windows IIS Server
         url: /docs/installation/providers/enterprise/windows-iis
       - title: Windows Apache Server
