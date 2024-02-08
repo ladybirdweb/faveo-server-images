@@ -79,22 +79,9 @@ apt install -y php8.2 libapache2-mod-php8.2 php8.2-mysql \
     php8.2-opcache  php8.2-mbstring php8.2-zip \
     php8.2-bcmath php8.2-intl php8.2-xml php8.2-curl  \
     php8.2-imap php8.2-ldap php8.2-gmp php8.2-redis \
-    libapache2-mod-php8.2 php8.2-memcached
+    php8.2-memcached
 ```
 Press Y and ENTER if prompted.
-
-### Restart Webserver
-
-For Apache
-```
-sudo systemctl restart apache2
-```
-
-
-For Nginx
-```
-sudo systemctl restart nginx
-```
 
 ### Install and configure Ioncube 8.2 extension
 
@@ -116,37 +103,44 @@ cp ioncube/ioncube_loader_lin_8.2.so /usr/lib/php/20220829
 
 ### Update the PHP Configuration files
 
+#### For Apache
 ```sh
 sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/apache2/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/cli/php.ini
 sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/fpm/php.ini
 ```
 
-### Change php-apache default settings (For Apache Webserver Only)
+#### For NGINX
 
 ```sh
-sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.2/apache2/php.ini
-sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.2/apache2/php.ini
-sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.2/apache2/php.ini 
-```
-
-### Change php-cli default settings
-
-```sh
-sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.2/cli/php.ini
-sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.2/cli/php.ini
-sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.2/cli/php.ini 
+sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/cli/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/20220829/ioncube_loader_lin_8.2.so"' /etc/php/8.2/fpm/php.ini
 ```
 
 ### Change php-fpm default settings 
 
 ```sh
-sed -i 's/upload_max_filesize =.*/upload_max_filesize = 100M/g' /etc/php/8.2/fpm/php.ini
-sed -i 's/post_max_size =.*/post_max_size = 100M/g' /etc/php/8.2/fpm/php.ini
-sed -i 's/max_execution_time =.*/max_execution_time = 360/g' /etc/php/8.2/fpm/php.ini 
+sudo sed -i -e 's/^file_uploads =.*/file_uploads = On/' \
+           -e 's/^allow_url_fopen =.*/allow_url_fopen = On/' \
+           -e 's/^short_open_tag =.*/short_open_tag = On/' \
+           -e 's/^memory_limit =.*/memory_limit = 256M/' \
+           -e 's/^cgi.fix_pathinfo =.*/cgi.fix_pathinfo = 0/' \
+           -e 's/^upload_max_filesize =.*/upload_max_filesize = 100M/' \
+           -e 's/^post_max_size =.*/post_max_size = 100M/' \
+           -e 's/^max_execution_time =.*/max_execution_time = 360/' \
+           /etc/php/8.2/fpm/php.ini
 ```
 
-### If Webserver is Nginx
+
+### Enable php-fpm 
+
+#### For Apache
+```
+a2enconf php8.2-fpm
+```
+
+#### For Nginx
+
 If you are using Faveo with nginx webserver, make the following change in faveo.conf file.
 
 ```
@@ -159,24 +153,19 @@ Change this line <code><b>fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;</b></c
 fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
 ```
 
-### Enable php-fpm
-
-```
-a2enconf php8.2-fpm
-service php8.2-fpm restart
-```
-
 ### Restart Webserver
 
-For Apache
+#### For Apache
 ```
-sudo systemctl restart apache2
+systemctl restart php8.2-fpm
+systemctl restart apache2
 ```
 
 
-For Nginx
+#### For Nginx
 ```
-sudo systemctl restart nginx
+systemctl restart php8.2-fpm
+systemctl restart nginx
 ```
 
 ---
@@ -411,6 +400,4 @@ To This
 
 
 ---
-     
-
-
+    
