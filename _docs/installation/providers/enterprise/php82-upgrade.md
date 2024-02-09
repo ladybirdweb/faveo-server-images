@@ -132,6 +132,7 @@ sudo sed -i -e 's/^file_uploads =.*/file_uploads = On/' \
 ```
 
 
+
 ### Enable php-fpm 
 
 #### For Apache
