@@ -91,11 +91,11 @@ supervisorctl
 
 Login to the Faveo HelpDesk and go to **Admin Panel >Drivers > Websockets**.
 
-<img src="../enterprise//GUI-images//websockets.png" alt="" style=" width:400px ; height:auto">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/websockets.png" alt="" style=" width:400px ; height:auto">
 
 Select Pusher Settings icon ⚙️ and enter the following details:
 
-<img src="../enterprise//GUI-images//websockets1.png" alt="" style=" width:400px ; height:auto">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/websockets1.png" alt="" style=" width:400px ; height:auto">
 
 **Details:**
 
@@ -103,6 +103,7 @@ Select Pusher Settings icon ⚙️ and enter the following details:
 2. **SSL Certificate Path:**  Add your main SSL certificate path here.
 3. **SSL Private Key:**  Add the Private Key for the helpdesk domain.
 4. **SSL Passphrase:** Add SSL Password if the SSL is password protected, if not leave this field blank.
-<img src="../enterprise//GUI-images//websockets2.png" alt="" style=" width:400px ; height:auto">
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/websockets2.png" alt="" style=" width:400px ; height:auto">
 
 Save the above details. The Websockets is configured on the Helpdek at this stage.
