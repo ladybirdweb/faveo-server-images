@@ -87,6 +87,8 @@ docs:
         url: /docs/installation/providers/enterprise/meilisearch
       - title: Install Memcached 
         url: /docs/installation/providers/enterprise/memcached
+      - title: Enable Websockets
+        url: /docs/installation/providers/enterprise/websockets
 #      - title: Install Agora Invoicing
  #       url: /docs/installation/providers/community/agora-home
 
