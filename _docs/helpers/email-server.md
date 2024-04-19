@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/helper/email-server/
+permalink: /docs/helpers/email-server/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2024-04-19
