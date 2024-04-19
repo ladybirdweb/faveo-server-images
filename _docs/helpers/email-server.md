@@ -7,11 +7,11 @@ redirect_from:
 last_modified_at: 2024-04-19
 last_modified_by: Mohammad_Asif
 toc: true
-title: "Setup Emai; Server for Faveo"
+title: "Setup Email Server for Faveo"
 ---
 <img alt="ftp" src="https://cdn-icons-png.flaticon.com/512/6554/6554774.png" width="200"  />
 
-# Intorduction: 
+# IntROduction: 
 Setting up your own email server on Ubuntu Server allows you to have complete control over your email communication without relying on third-party services. By following these instructions, you can bypass daily email limits and ensure reliable delivery for your business or personal needs.
 
 Setting up your own email server on Ubuntu 22.04 involves several steps including installing and configuring the necessary software, setting up DNS records, and securing your server. Below are the instructions, commands, and DNS records you'll need:
@@ -137,7 +137,7 @@ Access Roundcube via Browser:
 
 Open a web browser and go to http://mail.yourdomain.com/roundcube to complete Roundcube setup.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/helpers/images/Roundcube.png" alt="" style=" width:400px ; height:150px ">
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/helpers/images/Roundcube.png" alt="" style=" width:550px ; height:200px ">
 
 
 
