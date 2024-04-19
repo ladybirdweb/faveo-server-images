@@ -9,7 +9,7 @@ last_modified_by: Mohammad_Asif
 toc: true
 title: "Setup Email Server for Faveo"
 ---
-<img alt="ftp" src="https://cdn-icons-png.flaticon.com/512/6554/6554774.png" width="200"  />
+<img alt="ftp" src="https://www.freeiconspng.com/uploads/mail-server-icon-png-14.png" width="200"  />
 
 # Introduction: 
 Setting up your own email server on Ubuntu Server allows you to have complete control over your email communication without relying on third-party services. By following these instructions, you can bypass daily email limits and ensure reliable delivery for your business or personal needs.
