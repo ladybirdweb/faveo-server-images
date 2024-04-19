@@ -89,7 +89,7 @@ supervisorctl
 
 ## Faveo GUI Changes:
 
-Login to the Faveo HelpDesk and go to **Admin Panel >Drivers > Websockets**.
+Login to the Faveo HelpDesk and go to **Admin Panel > Drivers > Websockets**.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/websockets.png" alt="" style=" width:400px ; height:auto">
 
