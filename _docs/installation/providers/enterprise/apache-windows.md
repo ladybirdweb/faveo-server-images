@@ -492,6 +492,12 @@ name="5Upload-Faveo"></a>
   
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/apache33a.png" alt="" style=" width:500px ; height:250px ">
 
+Give full permissions (same as above) to the Windows Temp folder as well:
+
+```
+C:\Windows\Temp
+```
+
 
 <a id="6Setting-up-the-Database" 
 name="6Setting-up-the-Database"></a>
