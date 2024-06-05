@@ -306,6 +306,12 @@ C:\inetpub\wwwroot\
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/permissioniis.png" alt="" style=" width:400px ; height:250px ">
 
+Give full permissions (same as above) to the Windows Temp folder as well:
+
+```
+C:\Windows\Temp
+```
+
 <a id="8Configure-Faveo-in-IIS-Manager" 
 name="8Configure-Faveo-in-IIS-Manager"></a>
 
