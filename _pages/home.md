@@ -57,6 +57,9 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Resolve SSL Error for Linux [click here](/docs/installation/providers/enterprise/ssl-error/)
 - Install Meilisearch for Faveo [click here](/docs/installation/providers/enterprise/meilisearch/)
 - Install Memcached for Faveo [click here](/docs/installation/providers/enterprise/memcached/)
+- Enable Websockets for Faveo [click here](/docs/installation/providers/enterprise/websockets/)
+
+
 
 <a id="markdown-requirements" name="requirements"></a>
 ## Requirements
