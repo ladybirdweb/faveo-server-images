@@ -88,7 +88,11 @@ docs:
       - title: Install Memcached 
         url: /docs/installation/providers/enterprise/memcached
       - title: Enable Websockets
-        url: /docs/installation/providers/enterprise/websockets        
+        url: /docs/installation/providers/enterprise/websockets 
+      - title: Setup Email Server
+        url: /docs/helpers/email-server   
+      - title: Configure LDAPS
+        url: /docs/helpers/ldaps    
 #      - title: Install Agora Invoicing
  #       url: /docs/installation/providers/community/agora-home
 
