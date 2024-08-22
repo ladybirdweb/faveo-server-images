@@ -574,7 +574,7 @@ Defines which mail servers are authorized to send email on behalf of your domain
 - TTL: 3600 (default or your preferred value)
 
 ```
-domain.com.    IN    TXT    "v=spf1 ip4=203.0.113.1 -all"
+domain.com.    IN    TXT    "v=spf1 ip4:203.0.113.1 -all"
 ```
 
 #### DMARC Record
