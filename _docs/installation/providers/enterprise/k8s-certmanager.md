@@ -41,7 +41,7 @@ kubectl get pods --namespace cert-manager
 You’ll now create one that issues Let’s Encrypt certificates, and you’ll store its configuration in a file named cluster_issuer.yaml. Create it and open it for editing.
 
 Add the following lines:
-```sh
+```yaml
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -74,7 +74,7 @@ Now you’re going to create an Ingress Resource and use it to expose the Faveo 
 
 You’ll store the Ingress in a file named ingress.yml. Create it using your editor. Add the following lines to your file:
 
-```sh
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
