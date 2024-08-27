@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/k8s-paid-ssl
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-08-23
+last_modified_at: 2024-08-27
 toc: true
 title: Install Paid SSL for Faveo on K8s
 ---

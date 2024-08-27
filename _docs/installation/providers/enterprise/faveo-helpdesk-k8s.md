@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2024-08-27
+last_modified_by: TamilSelvan_M
 toc: true
 ---
 # Deploying Faveo Helpdesk on managed Kubernetes Cluster <!-- omit in toc -->
