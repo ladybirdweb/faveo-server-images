@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/installation/providers/enterprise/k8s-paid-ssl
+permalink: /docs/installation/providers/enterprise/k8s-self-signed-ssl
 redirect_from:
   - /theme-setup/
 last_modified_at: 2024-08-27
@@ -175,83 +175,15 @@ kubectl apply -f ingress.yaml
 
 Ensure the CA certificate is included in your deployment configuration:
 
+Open deploy-faveo.yaml and uncomment all the ca-certificates commented lines. It should now look like this.
+
 ```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: faveo-svc
-  namespace: faveo
-spec:
-  type: ClusterIP
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: faveo-pods
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: faveo-deploy
-  namespace: faveo
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: faveo-pods
-  template:
-    metadata:
-      labels:
-        app: faveo-pods
-    spec:
-      containers:
-      - name: faveo-apache
-        image: ladybird/faveo-k8s-apache2
-        resources:
-          limits:
-            memory: 700Mi
-            cpu: 1
-          requests:
-            memory: 600Mi
-            cpu: 800m
-        livenessProbe:
-          httpGet:
-            path: /probe.php
-            port: 80
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
-          periodSeconds: 10
-          failureThreshold: 1
-        readinessProbe:
-          httpGet:
-            path: /probe.php
-            port: 80
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
-          periodSeconds: 10
-          failureThreshold: 1
-        volumeMounts:
-        - name: volume-data
-          mountPath: /var/www/html
-#        - name: cm
-#          mountPath: /var/www/html/.env
-#          subPath: .env
         - name: ca-certificates
           mountPath: /usr/local/share/ca-certificates/faveorootCA.crt
           subPath: faveorootCA.crt
-      initContainers:
-      - name: fetch
-        image: ladybird/faveo-fetcher
-        command: ['sh','-c','apt update;apt install git -y; curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=order-no\&serial_key\=license-key --output faveo.zip; unzip faveo.zip -d html;chown -R www-data:www-data /html']
-        volumeMounts:
-        - name: volume-data
-          mountPath: /html
-      volumes:
-      - name: volume-data
-        emptyDir: {}
-#      - name: cm-
-#        configMap:
-#          name: faveo-env
+
+---
       - name: ca-certificates
         configMap:
           name: faveo-ca-certificates

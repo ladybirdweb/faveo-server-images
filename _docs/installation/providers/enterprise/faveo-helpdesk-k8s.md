@@ -183,7 +183,7 @@ Secure Sockets Layer (SSL) is a standard security technology that creates an enc
 
 - [Paid SSL installation documentation](/docs/installation/providers/enterprise/k8s-paid-ssl)
 
-- [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/k8s-paid-ssl)
+- [Self-Signed SSL installation documentation](/docs/installation/providers/enterprise/k8s-self-signed-ssl)
 
 ## Step 4: Faveo Helpdesk Web UI installtion
 
@@ -232,11 +232,11 @@ metadata:
   namespace: faveo
 data:
   .env: |
-#    ---- Replace you content here ----
+#    ---- Replace your content here ----
     APP_NAME=Faveo:xxxxxxxxxxxxxxxxxxxxxxxx
     APP_DEBUG=false
     APP_BUGSNAG=true
-    APP_URL=https://domainname.com
+    APP_URL=https://your_domain_name
     APP_KEY=base64:xxxxxxxxxxxxxxxxxxxxxxxx
     DB_TYPE=mysql
     DB_WRITE_HOST=
