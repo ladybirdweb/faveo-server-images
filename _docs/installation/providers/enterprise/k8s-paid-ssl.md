@@ -38,7 +38,7 @@ kubectl create secret tls faveo-tls \
 
 #### 2. Create a ConfigMap for the CA Certificate:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -61,7 +61,7 @@ kubectl apply -f ca-configmap.yaml
 
 Update your Ingress resource to use the SSL certificate and configure it to verify upstream SSL connections using the CA certificate:
 
-```
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
