@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-08-27
+last_modified_at: 2024-08-30
 last_modified_by: TamilSelvan_M
 toc: true
 ---
@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
       - name: faveo-apache
-        image: ladybird/faveo-k8s-apache2
+        image: ladybird/faveo-k8s:apache-20240828-1
         resources:
           limits:
             memory: 700Mi
@@ -102,7 +102,7 @@ spec:
 #          subPath: faveorootCA.crt
       initContainers:
       - name: fetch
-        image: ladybird/faveo-fetcher
+        image: ladybird/faveo-k8s:fetcher-20240828-1
         command: ['sh','-c','apt update;apt install git -y; curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=order-no\&serial_key\=license-key --output faveo.zip; unzip faveo.zip -d html;chown -R www-data:www-data /html']
         volumeMounts:
         - name: volume-data
@@ -362,7 +362,7 @@ spec:
     spec:
       containers:
       - name: faveo-supervisor
-        image: ladybird/faveo-k8s-supervisor
+        image: ladybird/faveo-k8s:supervisor-20240828-1
         resources:
           limits:
             memory: 1024Mi
@@ -378,7 +378,7 @@ spec:
           subPath: .env
       initContainers:
       - name: fetch
-        image: ladybird/faveo-fetcher
+        image: ladybird/faveo-k8s:fetcher-20240828-1
        command: ['sh','-c','apt update;apt install git -y; curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=order-no\&serial_key\=license-key --output faveo.zip; unzip faveo.zip -d html;chown -R www-data:www-data /html']
         volumeMounts:
         - name: volume-data
