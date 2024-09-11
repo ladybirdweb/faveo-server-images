@@ -371,6 +371,8 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/debian-nginx-ssl)
 
+[Paid SSL Certificate Documentation](/docs/installation/providers/enterprise/paid-ssl-debian-nginx/)
+
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-debian-nginx/)
 
 <a id="8-install-faveo" name="8-install-faveo"></a>

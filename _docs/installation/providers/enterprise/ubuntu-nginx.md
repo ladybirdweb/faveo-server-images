@@ -358,6 +358,8 @@ This will improve system security and is highly recommended.
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-nginx-ssl)
 
+[Paid SSL Certificate Documentation](/docs/installation/providers/enterprise/paid-ssl-ubuntu-nginx/)
+
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-ubuntu-nginx/)
 
 <a id="-9-install-faveo" name="-9-install-faveo"></a>

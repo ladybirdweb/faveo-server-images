@@ -343,6 +343,8 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/alma-apache-ssl)
 
+[Paid SSL Certificate Documentation](/docs/installation/providers/enterprise/paid-ssl-alma/)
+
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-alma/)
 
 <a id="8-install-faveo" name="8-install-faveo"></a>

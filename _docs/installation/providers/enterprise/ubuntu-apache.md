@@ -366,6 +366,8 @@ Faveo Requires HTTPS so the SSL is a must to work with the latest versions of fa
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/ubuntu-apache-ssl)
 
+[Paid SSL Certificate Documentation](/docs/installation/providers/enterprise/paid-ssl-ubuntu/ )
+
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-ubuntu/)
 
 <a id="9-install-faveo" name="9-install-faveo"></a>

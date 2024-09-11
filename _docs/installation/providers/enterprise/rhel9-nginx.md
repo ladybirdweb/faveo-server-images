@@ -411,6 +411,8 @@ This is an optional step and will improve system security and is highly recommen
 
 [Let’s Encrypt SSL installation documentation](/docs/installation/providers/enterprise/rhel-nginx-ssl)
 
+[Paid SSL Certificate Documentation](/docs/installation/providers/enterprise/paid-ssl-rhel-nginx/)
+
 [Self Signed SSL Certificate Documentation](/docs/installation/providers/enterprise/self-signed-ssl-rhel-nginx/)
 
 <a id="8-install-faveo" name="8-install-faveo"></a>
