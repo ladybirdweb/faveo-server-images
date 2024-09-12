@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/helper/server-hardening/access-control
+permalink: /docs/helpers/server-hardening/access-control
 redirect_from:
   - /theme-setup/
 last_modified_at: 2024-09-12

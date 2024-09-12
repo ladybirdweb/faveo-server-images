@@ -1,7 +1,7 @@
 ---
 layout: single
 type: docs
-permalink: /docs/helpers/server-hardening/node
+permalink: /docs/helpers/node
 redirect_from:
   - /theme-setup/
 last_modified_at: 2024-09-12

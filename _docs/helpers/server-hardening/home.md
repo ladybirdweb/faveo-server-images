@@ -49,12 +49,12 @@ We modify the default SSH port to a non-standard port to reduce the likelihood o
 **d. Enable Two-Factor Authentication (2FA)**
 For added protection, we enable Two-Factor Authentication (2FA) to ensure only authorized personnel can gain access to the server, adding an extra security layer.
 
-- [Click Here Secure SSH Document](/docs/helpers/server-hardening/secure-ssh)
+- [Click Here Secure SSH Document](/docs/helper/server-hardening/secure-ssh)
 
 **f. SSH Access Controls**
 Strict SSH access controls are enforced by limiting access to a whitelist of IP addresses and utilizing SSH key authentication for secure remote access.
 
-- [Click Here Access Control Documentation](/docs/helpers/server-hardening/access-control)
+- [Click Here Access Control Documentation](/docs/helper/server-hardening/access-control)
 
 
 
@@ -64,7 +64,7 @@ Strict SSH access controls are enforced by limiting access to a whitelist of IP 
 
 We deploy ConfigServer Security & Firewall (CSF) for monitoring and controlling incoming and outgoing traffic. CSF is configured through the command line to block malicious traffic and provide robust protection against intrusions.
 
-- [Click Here CSF Installation & Configuration](/docs/helpers/server-hardening/csf)
+- [Click Here CSF Installation & Configuration](/docs/helper/server-hardening/csf)
 
 
 <a id="3-antivirus-and-malware-detection" name="3-antivirus-and-malware-detection"></a>
@@ -73,7 +73,7 @@ We deploy ConfigServer Security & Firewall (CSF) for monitoring and controlling 
 
 We employ ClamAV for virus and malware detection, running regular scans to detect, isolate, and remove harmful files. This proactive approach ensures that the system remains free from threats.
 
-- [Click Here Antivirus Installation Document](/docs/helper/server-hardening/clamav)
+- [Click Here Antivirus Installation Document](/docs/helpers/server-hardening/clamav)
 
 
 <a id="4-webserver-hardening" name="4-webserver-hardening"></a>
