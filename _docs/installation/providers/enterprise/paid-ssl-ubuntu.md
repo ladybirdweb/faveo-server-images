@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-ubuntu/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-11
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-09-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Ubuntu
 ---
@@ -81,6 +81,10 @@ nano /etc/hosts
 ```
 127.0.0.1  ---Domain or IP---
 ```
-- After the above is done then we need to add the the ca-cert file path to the php.ini file add the path to the openssl.cafile like this : "<b>openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"</b> 
+- After the above is done restart the webserver and php-fpm service.
+```
+service php8.1-fpm restart
+service apache2 restart
+```
 
 - Now check the faveo on the Browser it will take you to probe page, if everything is good then you can proceed with the installation in Browser.

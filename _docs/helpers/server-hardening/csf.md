@@ -14,7 +14,7 @@ title: "ConfigServer Security & Firewall (CSF) Installation and Configuration Gu
 
 This guide provides step-by-step instructions for installing and configuring ConfigServer Security & Firewall (CSF) on a server.
 
-<img alt="Windows" src="https://community.time4vps.com/uploads/editor/p2/mxdl93nqqtxy.png" width="500"  />
+<img alt="csf" src="https://community.time4vps.com/uploads/editor/p2/mxdl93nqqtxy.png" width="500"  />
 
 - [<strong>Introduction :</strong>](#introduction-) 
     - [<strong>1. CSF Installation</strong>](#1-csf-installation)

@@ -4,13 +4,13 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-alma/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-11
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-09-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Alma Linux
 ---
 
-<img alt="Alma linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="200"  />
+<img alt="Alma linux Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AlmaLinux_Icon_Logo.svg/1024px-AlmaLinux_Icon_Logo.svg.png?20211201021832" width="100"  />
 
 
 ## Introduction
@@ -37,7 +37,7 @@ cp your_domain.crt /etc/pki/tls/certs
 cp your_domain.key /etc/pki/tls/private
 cp your_domain-CA.crt /etc/pki/ca-trust/source/anchors/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.g/faveo-ssl.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.d/faveo-ssl.conf.</b>
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
 
 ```
@@ -53,7 +53,7 @@ cp your_domain-CA.crt /etc/pki/ca-trust/source/anchors/
                 SSLEngine on
 
                 SSLCertificateFile      /etc/pki/tls/certs/your_domain.crt
-                SSLCertificateKeyFile /etc/pki/tls/private/your_domain.ket
+                SSLCertificateKeyFile /etc/pki/tls/private/your_domain.key
 
                 <FilesMatch "\.(cgi|shtml|phtml|php)$">
                                 SSLOptions +StdEnvVars
@@ -81,6 +81,10 @@ nano /etc/hosts
 ```
 127.0.0.1  ---Domain or IP---
 ```
-- After the above is done then we need to add the the ca-cert file path to the php.ini file add the path to the openssl.cafile like this : "<b>openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"</b> 
+- After the above is done restart the webserver and php-fpm service.
+```
+systemctl restart httpd
+systemctl restart php-fpm.service
+```
 
 - Now check the faveo on the Browser it will take you to probe page, if everything is good then you can proceed with the installation in Browser.

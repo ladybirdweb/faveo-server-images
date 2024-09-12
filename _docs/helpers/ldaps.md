@@ -179,14 +179,34 @@ Use the following command to retrieve the certificate details, run it in command
 openssl s_client -connect ldap.demo.com:636 -showcerts
 ```
 
-Copy the certificate from <code><b>-----BEGIN CERTIFICATE-----</b></code> to <code><b>-----END CERTIFICATE-----</b></code> and save it to a file, e.g., ldap_cert.crt.
+Copy the certificate from <code><b>-----BEGIN CERTIFICATE-----</b></code> to <code><b>-----END CERTIFICATE-----</b></code> and save it to a file, e.g., ldap.crt.
 
-**b. Open Certificate Manager:**
+Save the <code><b>ldap.crt</b></code> file inside php folder <code><b>C:\php8.1</b></code> 
 
-Press *Win + R*, type *certmgr.msc*, and press Enter.
+**b. Install the Certificate:**
 
-**c.Import the Certificate:**
+Double Click on the ldap.crt certificate, It will Open a new Window to install the Certificate.
 
-- Navigate to <code><b>Trusted Root Certification Authorities</b></code> -> <code><b>Certificates</b></code>.
-- Right-click on Certificates, select <code><b>All Tasks</b></code> -> <code><b>Import</b></code>.
-- Follow the wizard to import your ldap_cert.crt.
+Install the Certificate for both <code><b>Current User</b></code>  and <code><b>Local Machine</b></code>  one by one and save it to Trusted Root Certification Authorities.
+
+**c. Create System Environment Variable:**
+Create a file ldap.conf inside php folder i.e, <code><b>C:\php8.1\ldap.conf</b></code>
+
+The Content of ldap.conf file is the path of ldap.crt file as shown below:
+```
+TLS_CACERT C:\php8.1\ldap.crt
+```
+
+Now Create a System Environment Variable <code><b>LDAPCONF</b></code> and pass the value as the path of ldap.crt file
+```
+C:\php8.1\ldap.conf
+``` 
+
+Open Command Prompt and Verify the saved Environment Variable Path by running below command:
+```
+echo %LDAPCONF%
+```
+ 
+<p class="notice--warning">
+Note that LDAPS Works only on Windows with IIS and not with Windows with Apache
+</p>

@@ -1,10 +1,10 @@
 ---
 layout: single
 type: docs
-permalink: /docs/helper/server-hardening/home
+permalink: /docs/helpers/server-hardening/home
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-11
+last_modified_at: 2024-09-12
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Server Hardening Guidelines for Faveo Helpdesk"

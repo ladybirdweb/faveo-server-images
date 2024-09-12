@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-rhel-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-14
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-09-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on RHEL Linux
 ---
@@ -60,9 +60,10 @@ nano /etc/hosts
 - After the above is done then we need to add the the ca-cert file path to the <b>/etc/php.ini</b> file add the path to the openssl.cafile like this :
 
 ```
-openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"
+openssl.cafile = "/etc/pki/ca-trust/source/anchors/your_domain-CA.crt"
 ```
 
+- After adding the above path restart the webserver and php-fpm service.
 ```
 systemctl restart php-fpm.service
 systemctl restart nginx

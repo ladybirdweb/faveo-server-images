@@ -4,13 +4,13 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-rocky-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-11
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-09-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Rocky Linux
 ---
 
-<img alt="Cent OS Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
+<img alt="Rocky Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Rocky_Linux_wordmark.svg/800px-Rocky_Linux_wordmark.svg.png" width="200"  />
 
 ## Introduction
 
@@ -59,9 +59,10 @@ nano /etc/hosts
 - After the above is done then we need to add the the ca-cert file path to the <b>/etc/php.ini</b> file add the path to the openssl.cafile like this :
 
 ```
-openssl.cafile = "/etc/pki/tls/certs/ca-bundle.crt"
+openssl.cafile = "/etc/pki/ca-trust/source/anchors/your_domain-CA.crt"
 ```
 
+- After adding the above path restart the webserver and php-fpm service.
 ```
 systemctl restart php-fpm.service
 systemctl restart nginx
