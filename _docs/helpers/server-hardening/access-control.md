@@ -40,7 +40,7 @@ Add the following line:
 ```
 sshd: 192.168.1.100, 192.168.1.101
 ```
-> **Note:** These IPs can be an Internal (Private) or an External (Public) IPs
+> **Note:** These IPs can be Internal (Private) or External (Public) IPs
 
 #### Allow a Subnet
 
