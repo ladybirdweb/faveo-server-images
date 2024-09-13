@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/helpers/server-hardening/access-control
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-12
+last_modified_at: 2024-09-13
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Configuring SSH Access Controls in Linux Servers"
@@ -40,6 +40,7 @@ Add the following line:
 ```
 sshd: 192.168.1.100, 192.168.1.101
 ```
+> Note: This IP can be an Internal (Privayte) or an External (Public) IP
 
 #### Allow a Subnet
 

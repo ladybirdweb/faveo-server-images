@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/helpers/server-hardening/home
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-12
+last_modified_at: 2024-09-13
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Server Hardening Guidelines for Faveo Helpdesk"
@@ -49,12 +49,12 @@ We modify the default SSH port to a non-standard port to reduce the likelihood o
 **d. Enable Two-Factor Authentication (2FA)**
 For added protection, we enable Two-Factor Authentication (2FA) to ensure only authorized personnel can gain access to the server, adding an extra security layer.
 
-- [Click Here Secure SSH Document](/docs/helper/server-hardening/secure-ssh)
+- [Click Here Secure SSH Documentation](/docs/helper/server-hardening/secure-ssh)
 
 **f. SSH Access Controls**
 Strict SSH access controls are enforced by limiting access to a whitelist of IP addresses and utilizing SSH key authentication for secure remote access.
 
-- [Click Here Access Control Documentation](/docs/helper/server-hardening/access-control)
+- [Click Here Access Control Documentation](/docs/helpers/server-hardening/access-control)
 
 
 
@@ -73,7 +73,7 @@ We deploy ConfigServer Security & Firewall (CSF) for monitoring and controlling 
 
 We employ ClamAV for virus and malware detection, running regular scans to detect, isolate, and remove harmful files. This proactive approach ensures that the system remains free from threats.
 
-- [Click Here Antivirus Installation Document](/docs/helpers/server-hardening/clamav)
+- [Click Here Antivirus Installation Documentation](/docs/helpers/server-hardening/clamav)
 
 
 <a id="4-webserver-hardening" name="4-webserver-hardening"></a>
@@ -83,9 +83,9 @@ We employ ClamAV for virus and malware detection, running regular scans to detec
 **a. Security Headers**
 We configure critical security headers (Content-Security-Policy, X-Frame-Options, etc.) to protect against common vulnerabilities like cross-site scripting (XSS) and clickjacking for both NGINX and Apache.
 
-- [Click Here for Apache Hardening Document](/docs/helpers/server-hardening/apache-hardening)
+- [Click Here for Apache Hardening Documentation](/docs/helpers/server-hardening/apache-hardening)
 
-- [Click Here for Nginx Hardening Document](/docs/helpers/server-hardening/nginx-hardening)
+- [Click Here for Nginx Hardening Documentation](/docs/helpers/server-hardening/nginx-hardening)
 
 **b. ModSecurity with OWASP Rules**
 ModSecurity is implemented alongside the OWASP Core Rule Set (CRS) to provide an extra layer of protection against web application attacks like SQL injection and cross-site scripting.

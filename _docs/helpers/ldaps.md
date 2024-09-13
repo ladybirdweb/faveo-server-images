@@ -190,6 +190,7 @@ Double Click on the ldap.crt certificate, It will Open a new Window to install t
 Install the Certificate for both <code><b>Current User</b></code>  and <code><b>Local Machine</b></code>  one by one and save it to Trusted Root Certification Authorities.
 
 **c. Create System Environment Variable:**
+
 Create a file ldap.conf inside php folder i.e, <code><b>C:\php8.1\ldap.conf</b></code>
 
 The Content of ldap.conf file is the path of ldap.crt file as shown below:
@@ -208,5 +209,5 @@ echo %LDAPCONF%
 ```
  
 <p class="notice--warning">
-Note that LDAPS Works only on Windows with IIS and not with Windows with Apache
+Note that LDAPS Works only on Windows with IIS and not on Windows with Apache
 </p>

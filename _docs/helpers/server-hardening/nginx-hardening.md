@@ -442,7 +442,8 @@ sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
 2. Edit or create the site-specific configuration file:
-```
+
+```nginx
 server {
     root /var/www/faveo/public;
     index index.php index.html index.htm;
@@ -535,7 +536,7 @@ sudo nano /etc/nginx/nginx.conf
 ```
 
 2. Edit or create the site-specific configuration file:
-```
+```sh
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
