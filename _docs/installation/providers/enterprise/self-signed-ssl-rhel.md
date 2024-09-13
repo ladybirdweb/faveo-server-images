@@ -119,7 +119,7 @@ cp faveolocal.crt /etc/pki/tls/certs
 cp private.key /etc/pki/tls/private
 cp faveorootCA.crt /etc/pki/ca-trust/source/anchors/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.g/faveo-ssl.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.d/faveo-ssl.conf.</b>
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
 
 ```
