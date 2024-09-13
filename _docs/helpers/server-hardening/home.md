@@ -10,6 +10,7 @@ toc: true
 title: "Server Hardening Guidelines for Faveo Helpdesk"
 ---
 
+<img alt="ssh" src="https://static.thenounproject.com/png/3190015-200.png" width="150" height="100" />
 
 - [<strong>Introduction :</strong>](#introduction-) 
     - [<strong>1. Secure SSH Configuration</strong>](#1-secure-ssh-configuration)

@@ -536,7 +536,7 @@ sudo nano /etc/nginx/nginx.conf
 ```
 
 2. Edit or create the site-specific configuration file:
-```sh
+```nginx
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
