@@ -36,29 +36,29 @@ By applying numerous configuration tweaks, we can make NGINX more resilient agai
 <strong>1. Hide NGINX Version</strong>
 Hiding the NGINX version number can prevent attackers from using known vulnerabilities specific to your NGINX version. Exposing the Nginx version can provide attackers with useful information for targeting known vulnerabilities. To hide the version:
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 server_tokens off;
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -71,31 +71,31 @@ The `server_tokens off;` directive disables the display of the NGINX version in 
 <strong>2. Disable Unnecessary HTTP Methods</strong>
 Limiting HTTP methods helps to prevent attacks that exploit certain HTTP methods.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 if ($request_method !~ ^(GET|POST|HEAD)$ ) {
     return 444;
 }
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -108,19 +108,19 @@ This configuration will return a `444 No Response` status code for requests usin
 <strong>3. Disable Directory Listing</strong>
 Directory listing should be disabled to prevent exposure of sensitive files and directory contents.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 location / {
     autoindex off;
@@ -133,12 +133,12 @@ location / {
         }
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -151,29 +151,29 @@ The `autoindex off;` directive disables directory listing.
 <strong>4. Clickjacking Defense with X-Frame-Options</strong>
 To prevent your content from being used in a frame, which could be exploited for clickjacking attacks:
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 add_header X-Frame-Options "SAMEORIGIN";
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -186,29 +186,29 @@ The `add_header X-Frame-Options "SAMEORIGIN";` directive ensures that your conte
 <strong>5. Basic XSS Protection</strong>
 Enabling XSS protection in modern browsers helps prevent cross-site scripting attacks.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 add_header X-XSS-Protection "1; mode=block";
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -220,19 +220,19 @@ The `add_header X-XSS-Protection "1; mode=block";` directive enables the XSS fil
 <strong>6. Enable HttpOnly and Secure Flags for Cookies</strong>
 Setting HttpOnly and Secure flags for cookies helps protect them from theft via client-side scripts and ensures they are only sent over HTTPS.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 http {
     ...
@@ -241,12 +241,12 @@ http {
 }
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -259,19 +259,19 @@ The `add_header Set-Cookie "HttpOnly;Secure";` directive ensures that cookies ar
 <strong>7. Disable ETag</strong>
 Disabling ETags helps prevent leaking information about the server. Disabling them can enhance privacy.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 server {
     ...
@@ -280,12 +280,12 @@ server {
 }
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -297,29 +297,29 @@ The `add_header ETag "";` directive disables the generation of ETag headers.
 <strong>8. Enable HTTP/2 Protocol</strong>
 Enabling HTTP/2 can improve performance and security over HTTP/1.1..
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 listen 443 ssl http2;
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -332,29 +332,29 @@ The `listen 443 ssl http2;` directive enables HTTP/2 for improved performance.
 <strong>9. Set Referrer Policy</strong>
 A referrer policy can prevent sensitive information from being leaked in HTTP referrer headers. Setting a strict referrer policy enhances privacy and security.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 add_header Referrer-Policy "strict-origin";
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -367,29 +367,29 @@ The `add_header Referrer-Policy "strict-origin";` directive sets a referrer poli
 <strong>10. Set Permissions Policy</strong>
 Implementing a permissions policy can enhance the security of your site by controlling the use of certain features. Permissions policies (formerly known as Feature Policy) control which features and APIs can be used in your web application.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 add_header Permissions-Policy "geolocation=(), microphone=(), camera=()";
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -401,29 +401,29 @@ The `add_header Permissions-Policy "geolocation=(), microphone=(), camera=()";` 
 <strong>11. Enforce HSTS (HTTP Strict Transport Security)</strong>
 Enforcing HSTS ensures that browsers only connect to your server over HTTPS.
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 
-RHEL Based Servers
+- RHEL Based Servers
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-Debian Based Servers
+- Debian Based Servers
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Find the `http` block and add the following line:
+Find the `http` block and add the following line:
 ```
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 ```
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -436,12 +436,12 @@ Here is the combined configuration for Debian-based systems, summarized from all
 
 ### Enabling and Applying Configuration:
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 ```
 sudo nano /etc/nginx/sites-available/faveo.conf
 ```
 
-2. Edit or create the site-specific configuration file:
+Edit or create the site-specific configuration file:
 
 ```nginx
 server {
@@ -514,12 +514,12 @@ server {
 
 Please make sure that the server name/domain is changed at all locations and ssl paths are correct.
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```
@@ -530,19 +530,21 @@ Here is the combined configuration for Debian-based systems, summarized from all
 
 ### Enabling and Applying Configuration:
 
-1. Edit the NGINX configuration file:
+Edit the NGINX configuration file:
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
 
-2. Edit or create the site-specific configuration file:
-```nginx
+Edit or create the site-specific configuration file:
+
+```
+
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
 pid /run/nginx.pid;
 
-# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+#Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
 include /usr/share/nginx/modules/*.conf;
 
 events {
@@ -683,16 +685,17 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
 
 }}
+
 ```
 
 Please make sure that the server name/domain is changed at all locations and ssl paths are correct.
 
-3. Save and exit the file.
+Save and exit the file.
 ```
 ctrl + x
 ```
 
-4. Restart NGINX:
+Restart NGINX:
 ```
 sudo systemctl restart nginx
 ```

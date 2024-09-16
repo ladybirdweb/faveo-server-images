@@ -40,41 +40,43 @@ The default apache configuration will expose the server version. This informatio
 
 Follow the below steps to hide the server version.
 
-1. Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+Edit your Apache server configuration file using Nano.
+
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
 
-2. Scroll down to the “ServerTokens” section where you’ll probably see multiple lines commented out (beginning with “#”) stating “ServerTokens” and different options. Change the uncommented line, likely “ServerTokens OS”, or comment out the line and create a new line to hide the Apache version and OS from HTTP headers:
+Scroll down to the “ServerTokens” section where you’ll probably see multiple lines commented out (beginning with “#”) stating “ServerTokens” and different options. Change the uncommented line, likely “ServerTokens OS”, or comment out the line and create a new line to hide the Apache version and OS from HTTP headers:
 ```
 ServerTokens Prod
 ```
 
-3. The next section down should be the “ServerSignature” section. Turning this off hides the information from server-generated pages (e.g. Internal Server Error).
+The next section down should be the “ServerSignature” section. Turning this off hides the information from server-generated pages (e.g. Internal Server Error).
 ```
 ServerSignature Off
 ```
 
-4. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
-5. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
 
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -95,34 +97,34 @@ Apache versions newer than 1.3.34 and 2.0.55 (or newer) can use the variable Tra
 
 To disable HTTP TRACE/TRACK methods in Apache follow the below steps:
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Search for TraceEnable On, change this option to off
+Search for TraceEnable On, change this option to off
 ```
 TraceEnable off
 ```
 
-3. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -139,35 +141,37 @@ Directory listing is a web server function that displays the directory contents 
 
 You can add -Indexes to Options directive in Apache's configuration file to fully disable directory listing, or add the same -Indexes option into Directory configuration to disable the feature per-directory.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/apache2.conf
 ```
 
-2. Find the below section:
+Find the below section:
 ```
+
 <Directory /var/www/>
         Options Indexes FollowSymLinks
 </Directory>
+
 ```
 
-3. Change Options Indexes FollowSymLinks to below:
+Change Options Indexes FollowSymLinks to below:
 ```
 Option -Indexes +FollowSymlinks
 ```
 
-4. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
-5. Restart Apache.
+Restart Apache.
 
 For RHEL Based Systems:
 ```
@@ -190,32 +194,32 @@ Clickjacking is an attack that tricks a user into clicking a webpage element whi
 
 X-Frame-Options allows content publishers to prevent their own content from being used in an invisible frame by attackers.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Now add the following entry to file:
+Now add the following entry to file:
 ```
 Header always append X-Frame-Options SAMEORIGIN
 ```
-3. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
-For RHEL Based Systems:
+Restart Apache.
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -230,12 +234,12 @@ Header set X-Frame-Options "SAMEORIGIN": The Header set X-Frame-Options "SAMEORI
 
 The X-XSS-Protection header is designed to enable the cross-site scripting (XSS) filter built into modern web browsers. This is usually enabled by default, but using it will enforce it. It is supported by Internet Explorer 8+, Chrome, Edge, Opera, and Safari. 
 
-1. Edit your Apache server configuration file using Nano.
-For RHEL Based Systems:
+Edit your Apache server configuration file using Nano.
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
@@ -245,18 +249,18 @@ The recommended configuration is to set this header to the following value, whic
 Header set XSS-Protection "1;mode=block"
 ```
 
-3. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -277,7 +281,7 @@ Note that this flag can only be set during an HTTPS connection. If it is set dur
 
 Follow the below steps:
 
-1. Enable the required Apache modules.
+Enable the required Apache modules.
 ```
 a2enmod rewrite
 ```
@@ -285,33 +289,33 @@ a2enmod rewrite
 a2enmod headers
 ```
 
-2. Edit the Apache configuration file for the website.
+Edit the Apache configuration file for the website.
 ```
 nano /etc/apache2/apache2.conf
 ```
 
-3. If your website supports only HTTP, Add the following lines at the end of the file.
+If your website supports only HTTP, Add the following lines at the end of the file.
 ```
 Header edit Set-Cookie ^(.*)$ $1;HttpOnly
 ```
 
-4. If your website supports only HTTPS, Add the following lines at the end of the file.
+If your website supports only HTTPS, Add the following lines at the end of the file.
 ```
 Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
 ```
 
-5. Exit the file and save changes.
+Exit the file and save changes.
 ```
 Ctrl + x
 ```
 
 6. Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -326,34 +330,34 @@ Header edit Set-Cookie ^(.*)$ "$1;HttpOnly;Secure": The Header edit Set-Cookie ^
 
 The FileETag None directive disables the generation of ETag headers, which can expose information about the inode, size, and modification date of files on your server. Disabling ETag improves privacy and security.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Add the following line:
+Add the following line:
 ```
 FileETag None
 ```
 
-3. Save and exit the file:
+Save and exit the file:
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -368,34 +372,34 @@ FileETag None: The FileETag None directive disables ETag headers, which can help
 
 The Protocols h2 http/1.1 directive enables the HTTP/2 protocol, which provides significant performance improvements over HTTP/1.1.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Add the following line:
+Add the following line:
 ```
 Protocols h2 http/1.1
 ```
 
-3. Save and exit the file:
+Save and exit the file:
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -410,34 +414,34 @@ Protocols h2 http/1.1: The Protocols h2 http/1.1 directive enables HTTP/2 for im
 
 The Referrer-Policy header controls how much referrer information should be included with requests. The strict-origin policy ensures that only the origin is sent as the referrer when navigating from HTTPS to HTTP.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Add the following line:
+Add the following line:
 ```
 Header always set Referrer-Policy "strict-origin"
 ```
 
-3. Save and exit the file:
+Save and exit the file:
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -452,34 +456,34 @@ Header always set Referrer-Policy "strict-origin": The Header always set Referre
 
 The Permissions-Policy header allows you to control which browser features can be used within your site. This enhances security by restricting access to potentially harmful features.
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Add the following line:
+Add the following line:
 ```
 Header always set Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), fullscreen=(self), payment=()"
 ```
 
-3. Save and exit the file:
+Save and exit the file:
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -495,37 +499,36 @@ The Header always set Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), 
 HSTS tells browsers to only communicate with your site over HTTPS, preventing protocol downgrade attacks.
 
 
-1. Edit your Apache server configuration file using Nano.
+Edit your Apache server configuration file using Nano.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 nano /etc/httpd/conf/httpd.conf
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 nano /etc/apache2/conf-enabled/security.conf
 ```
 
-2. Add the following line:
+Add the following line:
 
-```sh
-<If "%{HTTPS} == 'on'">
+
+`<If "%{HTTPS} == 'on'">
   Header always set Strict-Transport-Security "max-age=31536000; includeSubdomains"
-</If>
-```
+</If>`
 
-3. Save and exit the file:
+Save and exit the file:
 ```
 Ctrl + x
 ```
 
-4. Restart Apache.
+Restart Apache.
 
-For RHEL Based Systems:
+- For RHEL Based Systems:
 ```
 systemctl restart httpd
 ```
-For Debian Based Systems:
+- For Debian Based Systems:
 ```
 systemctl restart apache2
 ```
@@ -556,7 +559,7 @@ nano /etc/apache2/sites-available/website.conf
 
 ### Add the Configuration (Virtual Host File)
 
-```apache
+
 <IfModule mod_ssl.c>
   FileETag None
   ServerTokens Prod
@@ -564,7 +567,7 @@ nano /etc/apache2/sites-available/website.conf
   TraceEnable Off
   Protocols h2 http/1.1
 
-  # Security Headers
+  #Security Headers
   Header set X-Frame-Options "SAMEORIGIN"
   Header set XSS-Protection "1; mode=block"
   Header always set Referrer-Policy "strict-origin"
@@ -603,7 +606,7 @@ nano /etc/apache2/sites-available/website.conf
     SSLCertificateChainFile /etc/apache2/sites-available/ssl/your-ca-cert.crt
   </VirtualHost>
 </IfModule>
-```
+
 ### Restart Apache.
 
 - For RHEL Based Systems:

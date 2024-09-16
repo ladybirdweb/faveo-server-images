@@ -12,7 +12,7 @@ title: "Installing ClamAV and Setting Up a Cron Job"
 
 This guide provides step-by-step instructions for installing and configuring ConfigServer Security & Firewall (CSF) on a server.
 
-<img alt="Windows" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/logo.png" width="100"  />
+<img alt="clamav" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/logo.png" width="100"  />
 
 
 ### <strong>1.Install ClamAV</strong>

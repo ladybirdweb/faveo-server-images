@@ -50,7 +50,7 @@ We modify the default SSH port to a non-standard port to reduce the likelihood o
 **d. Enable Two-Factor Authentication (2FA)**
 For added protection, we enable Two-Factor Authentication (2FA) to ensure only authorized personnel can gain access to the server, adding an extra security layer.
 
-- [Click Here Secure SSH Documentation](/docs/helper/server-hardening/secure-ssh)
+- [Click Here Secure SSH Documentation](/docs/helpers/server-hardening/secure-ssh)
 
 **f. SSH Access Controls**
 Strict SSH access controls are enforced by limiting access to a whitelist of IP addresses and utilizing SSH key authentication for secure remote access.
