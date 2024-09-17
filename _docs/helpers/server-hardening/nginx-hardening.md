@@ -27,13 +27,14 @@ By applying numerous configuration tweaks, we can make NGINX more resilient agai
  - [<strong>8. Enable HTTP/2 Protocol</strong>](#8Enable-HTTP/2-Protocol)
  - [<strong>9. Set Referrer Policy</strong>](#9Set-Referrer-Policy)
  - [<strong>10. Set Permissions Policy</strong>](#10Set-Permissions-Policy)
- - [<strong>11. Enforce HSTS (HTTP Strict Transport Security)</strong>](#11Enforce-HSTS-(HTTP-Strict-Transport-Security))
+ - [<strong>11. Enforce HSTS (HTTP Strict Transport Security)</strong>](#11Enforce-HSTS-HTTP-Strict-Transport-Security)
 ---
 
 
 <a id="1Hide-NGINX-Version" name="1Hide-NGINX-Version"></a>
 
 <strong>1. Hide NGINX Version</strong>
+
 Hiding the NGINX version number can prevent attackers from using known vulnerabilities specific to your NGINX version. Exposing the Nginx version can provide attackers with useful information for targeting known vulnerabilities. To hide the version:
 
 Edit the NGINX configuration file:
@@ -69,6 +70,7 @@ The `server_tokens off;` directive disables the display of the NGINX version in 
 <a id="2Disable-Unnecessary-HTTP-Methods" name="2Disable-Unnecessary-HTTP-Methods"></a>
 
 <strong>2. Disable Unnecessary HTTP Methods</strong>
+
 Limiting HTTP methods helps to prevent attacks that exploit certain HTTP methods.
 
 Edit the NGINX configuration file:
@@ -106,6 +108,7 @@ This configuration will return a `444 No Response` status code for requests usin
 <a id="3Disable-Directory-Listing" name="3Disable-Directory-Listing"></a>
 
 <strong>3. Disable Directory Listing</strong>
+
 Directory listing should be disabled to prevent exposure of sensitive files and directory contents.
 
 Edit the NGINX configuration file:
@@ -149,6 +152,7 @@ The `autoindex off;` directive disables directory listing.
 <a id="4Clickjacking-Defense-with-X-Frame-Options" name="4Clickjacking-Defense-with-X-Frame-Options"></a>
 
 <strong>4. Clickjacking Defense with X-Frame-Options</strong>
+
 To prevent your content from being used in a frame, which could be exploited for clickjacking attacks:
 
 Edit the NGINX configuration file:
@@ -184,6 +188,7 @@ The `add_header X-Frame-Options "SAMEORIGIN";` directive ensures that your conte
 <a id="5Basic-XSS-Protection" name="5Basic-XSS-Protection"></a>
 
 <strong>5. Basic XSS Protection</strong>
+
 Enabling XSS protection in modern browsers helps prevent cross-site scripting attacks.
 
 Edit the NGINX configuration file:
@@ -218,6 +223,7 @@ The `add_header X-XSS-Protection "1; mode=block";` directive enables the XSS fil
 <a id="6Enable-HttpOnly-and-Secure-Flags-for-Cookies" name="6Enable-HttpOnly-and-Secure-Flags-for-Cookies"></a>
 
 <strong>6. Enable HttpOnly and Secure Flags for Cookies</strong>
+
 Setting HttpOnly and Secure flags for cookies helps protect them from theft via client-side scripts and ensures they are only sent over HTTPS.
 
 Edit the NGINX configuration file:
@@ -257,6 +263,7 @@ The `add_header Set-Cookie "HttpOnly;Secure";` directive ensures that cookies ar
 <a id="7Disable-ETag" name="7Disable-ETag"></a>
 
 <strong>7. Disable ETag</strong>
+
 Disabling ETags helps prevent leaking information about the server. Disabling them can enhance privacy.
 
 Edit the NGINX configuration file:
@@ -295,6 +302,7 @@ The `add_header ETag "";` directive disables the generation of ETag headers.
 <a id="8Enable-HTTP/2-Protocol" name="8Enable-HTTP/2-Protocol"></a>
 
 <strong>8. Enable HTTP/2 Protocol</strong>
+
 Enabling HTTP/2 can improve performance and security over HTTP/1.1..
 
 Edit the NGINX configuration file:
@@ -330,6 +338,7 @@ The `listen 443 ssl http2;` directive enables HTTP/2 for improved performance.
 <a id="9Set-Referrer-Policy" name="9Set-Referrer-Policy"></a>
 
 <strong>9. Set Referrer Policy</strong>
+
 A referrer policy can prevent sensitive information from being leaked in HTTP referrer headers. Setting a strict referrer policy enhances privacy and security.
 
 Edit the NGINX configuration file:
@@ -365,6 +374,7 @@ The `add_header Referrer-Policy "strict-origin";` directive sets a referrer poli
 <a id="10Set-Permissions-Policy" name="10Set-Permissions-Policy"></a>
 
 <strong>10. Set Permissions Policy</strong>
+
 Implementing a permissions policy can enhance the security of your site by controlling the use of certain features. Permissions policies (formerly known as Feature Policy) control which features and APIs can be used in your web application.
 
 Edit the NGINX configuration file:
@@ -396,9 +406,10 @@ sudo systemctl restart nginx
 
 The `add_header Permissions-Policy "geolocation=(), microphone=(), camera=()";` directive restricts access to certain features.
 
-<a id="11Enforce-HSTS-(HTTP-Strict-Transport-Security)" name="11Enforce-HSTS-(HTTP-Strict-Transport-Security)"></a>
+<a id="11Enforce-HSTS-HTTP-Strict-Transport-Security" name="11Enforce-HSTS-HTTP-Strict-Transport-Security"></a>
 
-<strong>11. Enforce HSTS (HTTP Strict Transport Security)</strong>
+<strong>11. Enforce HSTS-HTTP Strict Transport Security</strong>
+
 Enforcing HSTS ensures that browsers only connect to your server over HTTPS.
 
 Edit the NGINX configuration file:

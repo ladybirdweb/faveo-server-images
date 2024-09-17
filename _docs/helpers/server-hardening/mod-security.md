@@ -12,14 +12,14 @@ title: "How to enable MOD-SECURITY for Apache2"
 
 <img alt="ModSecurity" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYw07055f1tNUyhl6voanNZPF-ckTkednD9A&s"/>
 
-This artical describes on how to implement Mod-Security on Apache 2 with OWASp Rules.
+This artical describes on how to implement Mod-Security on Apache2 with OWASP Rules.
 
 
 ## About Mod-Security and OWASP Rules
 
 ### Mod-Security:
 
-ModSecurity is an open-source web-based firewall application (or WAF) supported by different web servers: Apache, Nginx and IIS. The module is configured to protect web applications from various attacks. ModSecurity supports flexible rule engine to perform both simple and complex operations.
+ModSecurity is an open-source web-based firewall application (WAF) supported by different web servers: Apache, Nginx and IIS. The module is configured to protect web applications from various attacks. ModSecurity supports flexible rule engine to perform both simple and complex operations.
 
 ### OWASP Rules:
 
@@ -255,5 +255,5 @@ systemctl restart apache2
 ```
 
 
-> MOD-SECURITY for apache2 is configured successfull and the OWASP rules are effect.
+> MOD-SECURITY for apache2 is configured successfully and the OWASP rules are in effect.
 
