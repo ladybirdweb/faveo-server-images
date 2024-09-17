@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/helper/enable-ssh/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-16
+last_modified_at: 2024-09-17
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Enable SSH on Linux, Mac and Windows Devices"
