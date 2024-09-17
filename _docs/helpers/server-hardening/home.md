@@ -52,6 +52,7 @@ For added protection, we enable Two-Factor Authentication (2FA) to ensure only a
 
 - [Click Here Secure SSH Documentation](/docs/helpers/server-hardening/secure-ssh)
 
+
 **f. SSH Access Controls**
 Strict SSH access controls are enforced by limiting access to a whitelist of IP addresses and utilizing SSH key authentication for secure remote access.
 

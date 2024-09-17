@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/helpers/server-hardening/apache-hardening
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-13
+last_modified_at: 2024-09-17
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Apache Hardening for Security Implications"
@@ -559,6 +559,7 @@ nano /etc/apache2/sites-available/website.conf
 
 ### Add the Configuration (Virtual Host File)
 
+```
 
 <IfModule mod_ssl.c>
   FileETag None
@@ -606,6 +607,9 @@ nano /etc/apache2/sites-available/website.conf
     SSLCertificateChainFile /etc/apache2/sites-available/ssl/your-ca-cert.crt
   </VirtualHost>
 </IfModule>
+
+```
+
 
 ### Restart Apache.
 

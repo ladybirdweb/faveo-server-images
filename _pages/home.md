@@ -60,6 +60,8 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Enable Websockets for Faveo [click here](/docs/installation/providers/enterprise/websockets/)
 - Setup Email Server for Faveo [click here](/docs/helpers/email-server/)
 - Configure LDAPS for Faveo [click here](/docs/helpers/ldaps/)
+- Secure Server for security implications [click here](/docs/helpers/server-hardening/home/)
+- Install Node for Graphical reports [click here](/docs/helpers/node/)
 
 
 <a id="markdown-requirements" name="requirements"></a>
