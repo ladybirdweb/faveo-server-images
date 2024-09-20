@@ -152,7 +152,11 @@ Since Redis is now password-protected, you need to update the Faveo Helpdesk `.e
 
 Open the `.env` file for editing:
 ```
-nano /var/www/faveo/.env
+For IIS:
+C:\inetpub\wwwroot\.env
+
+For Apache:
+C:\Apache24\htdocs\.env
 ```
 
 Add the following entry in the `.env` file:
