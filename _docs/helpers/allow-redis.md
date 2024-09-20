@@ -95,7 +95,8 @@ sudo systemctl restart redis-server
 
 ### <strong>Windows Server</strong>
 
-Let’s locate Redis installation folder. Preferably it will be in C: drive unless you have installed it somewhere else.
+Let’s locate Redis installation folder. Preferably it will be at `C:\Program Files\Redis\`
+ unless you have installed it somewhere else.
 
 You’ll find 2 files there named `redis.windows.conf` and `redis.windows-service.conf`
 
@@ -152,6 +153,9 @@ Since Redis is now password-protected, you need to update the Faveo Helpdesk `.e
 
 Open the `.env` file for editing:
 ```
+For Linux:
+nano /var/www/faveo/.env
+
 For IIS:
 C:\inetpub\wwwroot\.env
 
