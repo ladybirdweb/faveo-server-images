@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/network-discovery/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-09-21
+last_modified_at: 2024-09-28
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Network Discovery Tool on Linux Distributions.
@@ -16,7 +16,7 @@ Faveo Network Discovery is a self-hosted software that can be installed on your 
 
 ---
 
-[<strong>NOTE :</strong>](#note:) *The Installation steps for Faveo Network Discovery Tool  are same as that of **Faveo Helpdesk**. You only need to follow the below instructions in addition to the Faveo Helpdesk documentation.*
+[<strong>NOTE :</strong>](#note:) *The Installation steps for Faveo Network Discovery Tool  are same as that of **Faveo Helpdesk**. You only need to follow the below instructions in addition to the Faveo Helpdesk documentation. The only difference is that Faveo Network Discovery will work on PHP v8.2 only.*
 
 ---
 
@@ -27,8 +27,25 @@ Faveo Network Discovery Tool can run on the Linux Distributions listed below. Ch
     - [<strong>2. Alma Linux 9:</strong>](#2-alma-linix-9)
     - [<strong>3. RHEL 9</strong>](#3-rhel-9)
     - [<strong>4. Ubuntu 20.04 & 22.04</strong>](#4-ubuntu-20.04-&-22.04)
-    - [<strong>5. Debian 11</strong>](#5-debian-11)
+    - [<strong>5. Debian 11 & 12</strong>](#5-debian-11-&-12)
  
+
+ Faveo Network Discovery uses the below protocols to gather the information about the Assets/Devices present on a network.
+
+1. SSH
+2. NMAP
+3. SNMP
+
+Also PING should be enabled on the devices to be scanned.
+
+The below ports should be Open on the Faveo Network Discovery Server:
+
+1. HTTP: 80
+2. HTTPS: 443
+3. Redis: 6379
+4. SMTP: 587
+5. SSH: 22
+6. SNMP: 161, 162
 
 
 ---
@@ -38,7 +55,9 @@ Faveo Network Discovery Tool can run on the Linux Distributions listed below. Ch
 
 ### <strong>1. Rocky Linux 9</strong>
 
-<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/rocky9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk.
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/rocky9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk (Except php8.1 installation).
+
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/php82-upgrade/#2alma-rocky-and-rhel" target="_blank" rel="noopener">Click Here</a> to install php8.2
 
 After following the installation document of Faveo Helpdesk till step 8, you need to follow the below steps for Faveo Network Discovery Tool.
 
@@ -46,6 +65,10 @@ Package Installation:
 
 ```
 dnf install -y nmap arp-scan net-tools
+```
+
+```
+yum -y install php-snmp php-ssh2
 ```
 
 Sudo Configuration:
@@ -70,7 +93,9 @@ Now you can now install Faveo Network Discovery Tool via <a href="https://docs.f
 
 ### <strong>2. Alma Linux 9</strong>
 
-<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/alma9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk.
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/alma9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk(Except php8.1 installation).
+
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/php82-upgrade/#2alma-rocky-and-rhel" target="_blank" rel="noopener">Click Here</a> to install php8.2
 
 After following the installation document of Faveo Helpdesk till step 8, you need to follow the below steps for Faveo Network Discovery Tool.
 
@@ -78,6 +103,10 @@ Package Installation:
 
 ```
 dnf install -y nmap arp-scan net-tools
+```
+
+```
+yum -y install php-snmp php-ssh2
 ```
 
 Sudo Configuration:
@@ -102,7 +131,9 @@ Now you can now install Faveo Network Discovery Tool via <a href="https://docs.f
 
 ### <strong>3. RHEL 9</strong>
 
-<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/rhel9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk.
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/rhel9-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk(Except php8.1 installation).
+
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/php82-upgrade/#2alma-rocky-and-rhel" target="_blank" rel="noopener">Click Here</a> to install php8.2
 
 After following the installation document of Faveo Helpdesk till step 8, you need to follow the below steps for Faveo Network Discovery Tool.
 
@@ -110,6 +141,10 @@ Package Installation:
 
 ```
 dnf install -y nmap arp-scan net-tools
+```
+
+```
+yum -y install php-snmp php-ssh2
 ```
 
 Sudo Configuration:
@@ -134,7 +169,9 @@ Now you can now install Faveo Network Discovery Tool via <a href="https://docs.f
 
 ### <strong>4. Ubuntu 20.04 & 22.04</strong>
 
-<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/ubuntu-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk.
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/ubuntu-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk(Except php8.1 installation).
+
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/php82-upgrade/#1ubuntu&debian" target="_blank" rel="noopener">Click Here</a> to install php8.2
 
 After following the installation document of Faveo Helpdesk till step 8, you need to follow the below steps for Faveo Network Discovery Tool.
 
@@ -142,6 +179,10 @@ Package Installation (for each version):
 
 ```
 apt install -y nmap arp-scan net-tools
+```
+
+```
+apt install -y php8.2-snmp php8.2-ssh2
 ```
 
 Sudo Configuration:
@@ -163,11 +204,13 @@ Now you can now install Faveo Network Discovery Tool via <a href="https://docs.f
 
 
 
-<a id="5-debian-11" name="5-debian-11"></a>
+<a id="5-debian-11-&-12" name="5-debian-11-&-12"></a>
 
-### <strong>5. Debian 11</strong>
+### <strong>5. Debian 11 & 12</strong>
 
-<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/debian-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk.
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/debian-apache/" target="_blank" rel="noopener">Click Here</a> to follow the installation steps of Faveo Helpdesk(Except php8.1 installation).
+
+<a href="https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/php82-upgrade/#1ubuntu&debian" target="_blank" rel="noopener">Click Here</a> to install php8.2
 
 After following the installation document of Faveo Helpdesk till step 8, you need to follow the below steps for Faveo Network Discovery Tool.
 
@@ -175,6 +218,10 @@ Package Installation:
 
 ```
 apt install -y nmap arp-scan net-tools
+```
+
+```
+apt install -y php8.2-snmp php8.2-ssh2
 ```
 
 Sudo Configuration:
@@ -192,4 +239,9 @@ www-data ALL=NOPASSWD: /usr/bin/nmap
 
 Now you can now install Faveo Network Discovery Tool via <a href="https://docs.faveohelpdesk.com/docs/installation/installer/gui/" target="_blank" rel="noopener">GUI</a>
 
+
 ---
+---
+
+
+To import the scanned Assets/Devices to the Faveo ServiceDesk, you need to allow Redis connection from Faveo Network Discovery Server to the ServiceDesk Server. <a href="https://docs.faveohelpdesk.com/docs/helpers/allow-redis/" target="_blank" rel="noopener">Click Here</a> to follow the documentation for the same.
