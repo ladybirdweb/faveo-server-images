@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/helper/enable-ssh/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-17
+last_modified_at: 2024-10-04
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Enable SSH on Linux, Mac and Windows Devices"
@@ -54,6 +54,7 @@ sudo firewall-cmd --reload
 
 3. Check if OpenSSH Server is Installed:
 - To verify if openssh-server is installed and running, use:
+
 ```
 systemctl status sshd
 rpm -qa | grep openssh-server
@@ -108,7 +109,7 @@ ssh your_username@your_mac_ip_address
 
 1. Check if OpenSSH is Installed:
 
-- Open PowerShell with administrative privileges and run:
+Open PowerShell with administrative privileges and run:
 ```
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ```
@@ -120,7 +121,7 @@ Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 
 3. Start the SSH Server:
 
-- To start the SSH server (sshd), run:
+To start the SSH server (sshd), run:
 ```
 Start-Service sshd
 ```
@@ -137,7 +138,7 @@ Set-Service -Name sshd -StartupType 'Automatic'
 
 6. Check Firewall Rules:
 
-- Ensure that the firewall allows SSH traffic:
+Ensure that the firewall allows SSH traffic:
 ```
 Get-NetFirewallRule -Name *ssh*
 ```
