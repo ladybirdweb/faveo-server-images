@@ -143,52 +143,135 @@ At this point, Meilisearch is installed and running on your Linux Server.
 
 ### <strong>2. For Windows Server</strong>
 
-<a href="https://github.com/meilisearch/meilisearch/releases/tag/v1.5.0" target="_blank" rel="noopener">Click Here</a> to download Meilisearch executable for windows.
+### Step 1: Download Meilisearch Executable:
+
+Visit the [Meilisearch Releases](https://github.com/meilisearch/meilisearch/releases/tag/v1.5.0) page.
+
+Download the **Windows executable** for Meilisearch.
+
+Copy the downloaded executable to `C:\MeiliSearch`.
 
 <img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili.png" alt="" style=" width:400px ; height:150px ">
 
-Once the executable is downloaded, move it to <code><b>Faveo Root Directory</b></code> *(C:\inetpub\wwwroot - Incase of Windows with IIS & C:\Apache24\htdocs - Incase of Windows with Apache)*. 
+### Step 2: Download WinSW (Windows Service Wrapper):
 
-Double-click on the executable, a command prompt window will open, copy the <code><b>master-key</b></code> from the command prompt window and use that in the next step.
+Go to the [WinSW Releases](https://github.com/winsw/winsw/releases/tag/v2.12.0) page.
 
+Download the latest WinSW executable and rename it to `MeilisearchService.exe`.
 
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili1.png" alt="" style=" width:400px ; height:150px ">
-
-
-Open the command prompt in Administrative mode and run the below command with the full path of the executable.
+Place `MeilisearchService.exe` in the `C:\MeiliSearch` directory.
 
 
-Windows with IIS
+### Step 3: Create WinSW Configuration File:
+
+In the `C:\MeiliSearch` directory, create a file named `winsw.yml`. Add the following content to `winsw.yml`:
+
+```xml
+<service>
+  <id>Meilisearch</id>
+  <name>Meilisearch</name>
+  <description>This service runs Meilisearch.</description>
+
+  <prestart>
+    <executable>C:\MeiliSearch\script.bat</executable>
+    <logpath>C:\MeiliSearch\logs</logpath>
+    <log mode="roll-by-size">
+      <sizeThreshold>5120</sizeThreshold>
+      <keepFiles>2</keepFiles>
+    </log>
+  </prestart>
+
+  <onfailure action="restart" />
+</service>
 ```
-C:\inetpub\wwwroot\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+
+### Step 4: Create Script to Run Meilisearch:
+
+Create a file named `script.bat` in the `C:\MeiliSearch` directory.
+Add the following content to `script.bat`:
+
+```batch
+@echo off
+setlocal
+
+for /f "tokens=2 delims==" %%a in ('findstr "MASTER_KEY" "C:\MeiliSearch\meili-config.txt"') do (
+    set MASTER_KEY=%%a
+)
+
+if "%MASTER_KEY%"=="" (
+    echo "Error: MASTER_KEY not set in meili-config.txt."
+    exit /b 1
+)
+
+C:\MeiliSearch\meilisearch-windows-amd64.exe --env production --master-key %MASTER_KEY% --db-path "C:\MeiliSearch\data" --dump-dir "C:\MeiliSearch\dumps" --snapshot-dir "C:\MeiliSearch\snapshots"
 ```
 
-Windows with Apache
+### Step 5: Create Configuration File for the Master Key:
+Create a file named `meili-config.txt` in the `C:\MeiliSearch` directory.
+Add the following line, replacing `your-master-key` with a secure master key:
+
 ```
-C:\Apache24\htdocs\meilisearch-windows-amd64.exe --master-key lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
+MASTER_KEY=your-master-key
 ```
 
-
->**NOTE**:  Remember to replace the master-key copied in the above step.
-
-
-Once the above command is run, it will give results like below, at this point Meilisearch is configured on your Windows server.
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili2.png" alt="" style=" width:400px ; height:150px ">
-
-You can confirm the same by visiting *http://localhost:7700*
-
-<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/GUI-images/meili3.png" alt="" style=" width:400px ; height:150px ">
+### Step 6: Install and Manage the Windows Service
 
 
+1. **Open Command Prompt in Administrator Mode:**
+   - Press **Windows Key**, type **cmd**, right-click on **Command Prompt**, and select **Run as administrator**.
+   - Navigate to the directory where `MeilisearchService.exe` is located:
 
+```bash
+cd C:\MeiliSearch
+```
 
+2. **Install the Service:**
+```bash
+MeilisearchService.exe install
+```
 
+3. **Start the Service:**
+```bash
+MeilisearchService.exe start
+```
 
+4. **Stop the Service:**
+```bash
+MeilisearchService.exe stop
+```
 
+5. **Uninstall the Service:**
+```bash
+MeilisearchService.exe uninstall
+```
 
+6. **Check the Service Status:**
+```bash
+MeilisearchService.exe status
+```
 
+### Step 7: Verify Meilisearch is Running
 
+Once the service is started, you can verify that Meilisearch is running by visiting:
 
+```
+http://localhost:7700
+```
 
+If everything is configured correctly, you should see the Meilisearch dashboard.
 
+## Step 8: Changing the Master Key
+
+To change the master key:
+
+1. Update the `meili-config.txt` file with the new master key:
+   ```
+   MASTER_KEY=new-master-key
+   ```
+
+2. Restart the Meilisearch service to apply the changes:
+
+```bash
+MeilisearchService.exe restart
+```
+You have successfully set up Meilisearch as a Windows service with the ability to change the master key using the `meili-config.txt` file. This setup allows for easy management and ensures that Meilisearch runs smoothly on your Windows server.
