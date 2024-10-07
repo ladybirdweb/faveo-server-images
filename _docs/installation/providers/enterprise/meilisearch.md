@@ -164,7 +164,7 @@ Place `MeilisearchService.exe` in the `C:\MeiliSearch` directory.
 
 ### Step 3: Create WinSW Configuration File:
 
-In the `C:\MeiliSearch` directory, create a file named `winsw.yml`. Add the following content to `winsw.yml`:
+In the `C:\MeiliSearch` directory, create a file named `winsw.xml`. Add the following content to `MeilisearchService.xml`:
 
 ```xml
 <service>
