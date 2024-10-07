@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/meilisearch/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-01-04
-last_modified_by: Mohammad_Asif
+last_modified_at: 2024-10-07
+last_modified_by: TamilSelvan_M
 toc: true
 title: Installing Meilisearch Driver for Faveo.
 ---
@@ -213,6 +213,7 @@ Add the following line, replacing `your-master-key` with a secure master key:
 ```
 MASTER_KEY=your-master-key
 ```
+>**NOTE**:  Remember to choose a safe and random key like *MASTER_KEY=lc3CEU9zI6G1ZfPZkW2SMwWXQj_hDwhZh-pa3Nh-qRw*
 
 ### Step 6: Install and Manage the Windows Service
 
