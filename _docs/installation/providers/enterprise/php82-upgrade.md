@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/php82-upgrade/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-17
+last_modified_at: 2024-11-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Upgrade From PHP 8.1.x to PHP 8.2.x for Faveo
 ---
@@ -349,9 +350,20 @@ zend_extension = "C:\php8.2\ext\ioncube_loader_win_8.2.dll"
 
 - Click on <code><b>OK</b></code> and restart the IIS server once.
 
-<p class="notice--warning">
-Unfortunately, <code><b>php-redis</b></code> and <code><b>php-memcached</b></code> extensions for Windows are not available officially yet for php8.2, Once they are available, the document will be updated.
-</p>
+### Install PHP Redis 8.2 Extension
+
+
+<a href="https://pecl.php.net/package/redis/6.1.0/windows" target="_blank" rel="noopener">Click Here</a> to download PHP 8.2 NTS x64 zip file.
+
+<img src="https://raw.githubusercontent.com/ladybirdweb/faveo-server-images/master/_docs/installation/providers/enterprise/windows-images/PHPredis.png" style=" width:400px ; height:250px ">
+
+- Unzip the php-redis zip file, a folder will be created, go inside the folder, copy the *php_redis.dll* file and paste it in *C:\php8.2\ext.* *(C:\php\ext incase of Apache WebServer).* 
+- Now enable php redis extension in *php.ini* configuration located in *C:\php8.2.*  *(C:\php incase of Apache WebServer).*
+
+```
+extension=php_redis.dll
+```
+- Now go to Server Manager, open IIS Server and restart it. *(or restart Apache incase of Apache WebServer)*
 
 ---
 

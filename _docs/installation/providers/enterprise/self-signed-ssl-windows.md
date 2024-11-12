@@ -5,6 +5,7 @@ permalink: /docs/installation/providers/enterprise/self-signed-ssl-windows/
 redirect_from:
   - /theme-setup/
 last_modified_at: 2021-12-12
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Self-Signed SSL for Faveo on Windows
 ---
@@ -155,7 +156,7 @@ openssl pkcs12 -export -out cert.pfx -inkey private.key -in faveolocal.crt -cert
 - Once the Certificate is installed we need to add the faveorootCA.crt file content to the cacert.pem file which will be in the below location:
 
 ```
-C:\php8.1
+C:\php8.2
 ```
 
 - After adding that we need to edit the host file which will be in this location
@@ -173,7 +174,7 @@ C:\php8.1
 - if the above is done we need to edit the php.ini file which is found inside the PHP root directory. Uncomment and add the location of cacert.pem to "openssl.cafile" like.
 
 ```
-openssl.cafile = "C:\php8.1\cacert.pem"
+openssl.cafile = "C:\php8.2\cacert.pem"
 ```
 
 - After updating the above, the last part is to add bindings for the SSL.

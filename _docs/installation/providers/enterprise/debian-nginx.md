@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/debian-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-01-18
+last_modified_at: 2024-11-12
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Debian With Nginx Webserver
@@ -39,7 +39,7 @@ This document is meant for Faveo Freelancer, Paid and Enterprise Versions.
 Faveo depends on the following:
 
 -   **Apache** (with mod_rewrite enabled) 
--   **PHP 8.1+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+-   **PHP 8.2+** with the following extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
 -   **MySQL 8.0+** or **MariaDB 10.6+**
 -   **SSL** ,Trusted CA Signed or Slef-Signed SSL
 
@@ -72,11 +72,11 @@ systemctl enable nginx
 apt install -y git wget curl unzip nano zip
 ```
 
-<b>1.c. PHP 8.1+</b>
+<b>1.c. PHP 8.2+</b>
 
-Note: In Debian upon installing PHP packages apache2 will be automatically installed and started. It needs to be removed after installing PHP8.1
+Note: In Debian upon installing PHP packages apache2 will be automatically installed and started. It needs to be removed after installing PHP8.2
 
-Before we install PHP 8.1, it’s important to make sure your system is up to date by running the following apt commands.
+Before we install PHP 8.2, it’s important to make sure your system is up to date by running the following apt commands.
 
 ```sh
 sudo apt update
@@ -89,24 +89,24 @@ Add the Ondřej Surý PHP repository.
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 ```
-Now Install PHP 8.1 and extensions.
+Now Install PHP 8.2 and extensions.
 
 ```sh
 sudo apt update
-apt install -y php8.1 libapache2-mod-php8.1 php8.1-mysql \
-    php8.1-cli php8.1-common php8.1-fpm php8.1-soap php8.1-gd \
-    php8.1-opcache  php8.1-mbstring php8.1-zip \
-    php8.1-bcmath php8.1-intl php8.1-xml php8.1-curl  \
-    php8.1-imap php8.1-ldap php8.1-gmp php8.1-redis
+apt install -y php8.2 libapache2-mod-php8.2 php8.2-mysql \
+    php8.2-cli php8.2-common php8.2-fpm php8.2-soap php8.2-gd \
+    php8.2-opcache  php8.2-mbstring php8.2-zip \
+    php8.2-bcmath php8.2-intl php8.2-xml php8.2-curl  \
+    php8.2-imap php8.2-ldap php8.2-gmp php8.2-redis php8.2-memcached
 ```
 Now remove the apache2 package
 ```sh
 apt remove apache2
 ```
-After installing PHP 8.1, run the commands below to open PHP default config file for Nginx…
+After installing PHP 8.2, run the commands below to open PHP default config file for Nginx…
 
 ```sh
-nano /etc/php/8.1/fpm/php.ini
+nano /etc/php/8.2/fpm/php.ini
 ```
 
 Then make the changes on the following lines below in the file and save. The value below are great settings to apply in your environments.
@@ -131,11 +131,11 @@ Make the note of path and directory from the above command.
 Copy ion cube loader to Directory. Replace your *yourpath* below with actual path that was shown with the first command below.
 ```sh
 php -i | grep extension_dir
-cp ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/'replaceyourpath'
-sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_8.1.so"' /etc/php/8.1/fpm/php.ini
-sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_8.1.so"' /etc/php/8.1/cli/php.ini
+cp ioncube/ioncube_loader_lin_8.2.so /usr/lib/php/'replaceyourpath'
+sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_8.2.so"' /etc/php/8.2/fpm/php.ini
+sed -i '2 a zend_extension = "/usr/lib/php/'replaceyourpath'/ioncube_loader_lin_8.2.so"' /etc/php/8.2/cli/php.ini
 systemctl restart nginx 
-systemctl restart php8.1-fpm
+systemctl restart php8.2-fpm
 ```
 
 <b>1.e. Install MySQL/MariaDB</b>
@@ -319,7 +319,7 @@ server {
 
     location ~ \.php$ {
                include snippets/fastcgi-php.conf;
-               fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+               fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                include fastcgi_params;
     }
@@ -334,7 +334,7 @@ After configuring the VirtualHost above delete the deafult Virtualhost and  enab
 rm -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/faveo /etc/nginx/sites-enabled/
 systemctl restart nginx
-systemctl restart php8.1-fpm
+systemctl restart php8.2-fpm
 ```
 
 <a id="5-configure-cron-job" name="5-configure-cron-job"></a>
