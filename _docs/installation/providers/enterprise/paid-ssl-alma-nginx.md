@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-alma-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2023-12-15
+last_modified_at: 2024-11-20
 last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Alma Linux
@@ -32,6 +32,11 @@ cp your_domain.key /etc/pki/tls/private
 cp your_domain-CA.crt /etc/pki/ca-trust/source/anchors/
 ```
 - Then adding the Virtual host file, for that we need to create a file in webserver directory as <b>/etc/nginx/nginx.conf.</b>
+
+```
+nano /etc/nginx/nginx.conf
+```
+
 - Add the following lines to your Nginx configuration, modifying the file paths as needed:
 
 ```

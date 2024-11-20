@@ -4,7 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/self-signed-ssl-debian/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2024-11-20
+last_modified_by: Mohammad_Asif
 toc: true
 title: Install Self-Signed SSL for Faveo on Debian 
 ---
@@ -115,7 +116,12 @@ cp faveolocal.crt /etc/ssl/certs
 cp private.key /etc/ssl/private
 cp faveorootCA.crt /usr/local/share/ca-certificates/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/apache2/sites-availabe/faveo-ssl.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/apache2/sites-available/faveo-ssl.conf.</b>
+
+```
+nano /etc/apache2/sites-available/faveo-ssl.conf
+```
+
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
 
 ```

@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-alma/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-12
+last_modified_at: 2024-11-20
 last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Alma Linux
@@ -37,7 +37,12 @@ cp your_domain.crt /etc/pki/tls/certs
 cp your_domain.key /etc/pki/tls/private
 cp your_domain-CA.crt /etc/pki/ca-trust/source/anchors/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.d/faveo-ssl.conf.</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/httpd/conf.d/faveo-ssl.conf</b>
+
+```
+nano /etc/httpd/conf.d/faveo-ssl.conf
+```
+
 - Then need to copy the below configuration inside the faveo-ssl.conf file.
 
 ```
@@ -47,8 +52,8 @@ cp your_domain-CA.crt /etc/pki/ca-trust/source/anchors/
 
                 DocumentRoot /var/www/faveo/public
 
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-                CustomLog ${APACHE_LOG_DIR}/access.log combined
+                ErrorLog /var/log/httpd/faveo-error.log 
+                CustomLog /var/log/httpd/faveo-access.log combined
 
                 SSLEngine on
 

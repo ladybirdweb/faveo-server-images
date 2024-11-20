@@ -4,8 +4,8 @@ type: docs
 permalink: /docs/installation/providers/enterprise/faveo-helpdesk-k8s/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-08-30
-last_modified_by: TamilSelvan_M
+last_modified_at: 2024-11-20
+last_modified_by: Mohammad_Asif
 toc: true
 ---
 # Deploying Faveo Helpdesk on managed Kubernetes Cluster <!-- omit in toc -->
@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
       - name: faveo-apache
-        image: ladybird/faveo-k8s:apache-v9.2.2
+        image: ladybird/faveo-k8s:apache-8.2.25
         resources:
           limits:
             memory: 700Mi
@@ -220,7 +220,7 @@ nano .env
 ```
 Copy those values and save it somewhere on you machine to be used later.
 
-Now, create a file named configmap.yaml. Add the following lines and place all the content of .env you copied previously under ".env: |" section.
+Now, create a file named configmap.yaml. Add the following lines and place all the content of .env you copied previously under ".env
 
 We need to add the details of redis cluster, space keys like the below.
 
@@ -362,7 +362,7 @@ spec:
     spec:
       containers:
       - name: faveo-supervisor
-        image: supervisor-v9.2.2
+        image: ladybird/faveo-k8s:supervisor-8.2.25
         resources:
           limits:
             memory: 1024Mi

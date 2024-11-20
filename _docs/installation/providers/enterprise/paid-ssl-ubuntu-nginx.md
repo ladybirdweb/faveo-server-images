@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/paid-ssl-ubuntu-nginx/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-09-12
+last_modified_at: 2024-11-20
 last_modified_by: Mohammad_Asif
 toc: true
 title: Install Paid SSL for Faveo on Ubuntu
@@ -30,7 +30,12 @@ cp your_domain.crt /etc/ssl/certs
 cp your_domain.key /etc/ssl/private
 cp your_domain-CA.crt /usr/local/share/ca-certificates/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> nano /etc/nginx/sites-available/faveo.conf</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/nginx/sites-available/faveo.conf</b>
+
+```
+nano /etc/nginx/sites-available/faveo.conf
+```
+
 - Then need to copy the below configuration inside the faveo.conf file.
 
 ```
@@ -49,7 +54,7 @@ server {
 
     location ~ \.php$ {
                include snippets/fastcgi-php.conf;
-               fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+               fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                include fastcgi_params;
     }

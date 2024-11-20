@@ -30,7 +30,12 @@ cp your_domain.crt /etc/ssl/certs
 cp your_domain.key /etc/ssl/private
 cp your_domain-CA.crt /usr/local/share/ca-certificates/
 ```
-- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> nano /etc/nginx/sites-available/faveo.conf</b>
+- Then adding the Virtual host file, for that we need to create a file in webserver directory as <b> /etc/nginx/sites-available/faveo.conf</b>
+
+```
+nano /etc/nginx/sites-available/faveo.conf
+```
+
 - Then need to copy the below configuration inside the faveo.conf file.
 
 ```
@@ -80,7 +85,7 @@ openssl.cafile = "/usr/local/share/ca-certificates/your_domain-CA.crt"
 ```
 - After adding the above path restart the webserver and php-fpm service.
 ```
-systemctl restart php8.1-fpm
+systemctl restart php8.2-fpm
 systemctl restart nginx
 ```
 
