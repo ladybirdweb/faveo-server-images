@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/rocky9-apache/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-11-12
+last_modified_at: 2024-11-22
 last_modified_by: Mohammad_Asif
 toc: true
 title: Installing Faveo Helpdesk on Rocky OS with Apache Webserver
@@ -273,7 +273,13 @@ Check if the module is loaded
 ```sh
 grep -i LoadModule /etc/httpd/conf/httpd.conf | grep rewrite
 ```
-If the output af the above command is blank then add the below line in **/etc/httpd/conf/httpd.conf**
+If the output af the above command is blank then add the below line in **/etc/httpd/conf/httpd.conf**  i.e,
+
+```
+nano /etc/httpd/conf/httpd.conf
+```
+
+Add the below Line at the end of the file
 
 ```sh
 LoadModule rewrite_module modules/mod_rewrite.so
