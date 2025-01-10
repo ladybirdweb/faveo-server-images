@@ -26,7 +26,7 @@ Extract the downloaded file and place the binary in a system-wide path:
 
 ```
 unzip nats-server.zip -d nats-server
-sudo cp nats-server/nats-server-v2.10.24-linux-amd64/nats-server /usr/bin/
+sudo cp nats-server/nats-server-v2.10.24-linux-amd64/nats-server /usr/local/bin/
 ```
 
 > NOTE: Replace <code><b>2.10.24</b></code> with the downloaded version.
