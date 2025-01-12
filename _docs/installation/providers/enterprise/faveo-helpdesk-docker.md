@@ -4,7 +4,7 @@ type: docs
 permalink: /docs/installation/providers/enterprise/faveo-helpdesk-docker/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2020-06-09
+last_modified_at: 2024-01-12
 toc: true
 ---
 # <b>Deploying Faveo Helpdesk on Docker</b>   <!-- omit in toc -->
@@ -89,5 +89,24 @@ There is one final step that needs to be done to complete the installation. You 
 ```sh
   docker compose down && docker compose up -d
 ```
-  
+
+---
+
+<p class="notice--warning">
+Note: At this point, the helpdesk interface will not load in the browser. To finalize the installation, you need to remove specific entries from the database.
+1. Access your MariaDB container using the following command:
+```
+docker exec -it YourDomain-mariadb /bin/bash
+```
+2. Enter the database by executing:
+```
+use faveo;
+```
+3. Remove the necessary entry from the plugins table:
+```
+DELETE FROM plugins WHERE name = '';
+```
+Once the entry is removed, you can access the helpdesk via the browser and continue using it.
+</p>
+
 
