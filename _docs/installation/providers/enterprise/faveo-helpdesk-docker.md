@@ -101,7 +101,7 @@ Note: At this point, the helpdesk interface will not load in the browser. To fin
 ```
 docker exec -it YourDomain-mariadb /bin/bash
 ```
-Replace n<code><b>YourDomai</b></code> by the actual domain name.
+Replace n<code><b>YourDomain</b></code> by the actual domain name.
 
 - Enter the database by executing:
 
