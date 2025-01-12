@@ -106,6 +106,7 @@ Replace n<code><b>YourDomai</b></code> by the actual domain name.
 - Enter the database by executing:
 
 ```
+mysql -u root -pYourPassword
 use faveo;
 ```
 
