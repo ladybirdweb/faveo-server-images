@@ -96,19 +96,20 @@ There is one final step that needs to be done to complete the installation. You 
 Note: At this point, the helpdesk interface will not load in the browser. To finalize the installation, you need to remove specific entries from the database.
 </p>
 
-1. Access your MariaDB container using the following command:
+- Access your MariaDB container using the following command:
 
 ```
 docker exec -it YourDomain-mariadb /bin/bash
 ```
+Replace n<code><b>YourDomai</b></code> by the actual domain name.
 
-2. Enter the database by executing:
+- Enter the database by executing:
 
 ```
 use faveo;
 ```
 
-3. Remove the necessary entry from the plugins table:
+- Remove the necessary entry from the plugins table:
 
 ```
 DELETE FROM plugins WHERE name = '';
