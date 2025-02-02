@@ -62,6 +62,7 @@ Faveo can be installed on a variety of platforms. The choice of the platform is 
 - Configure LDAPS for Faveo [click here](/docs/helpers/ldaps/)
 - Secure Server for security implications [click here](/docs/helpers/server-hardening/home)
 - Install Node for Graphical reports [click here](/docs/helpers/node)
+- Install NATS Server for Agent Software [click here](/docs/helpers/nats)
 
 
 <a id="markdown-requirements" name="requirements"></a>

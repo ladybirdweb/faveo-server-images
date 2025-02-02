@@ -97,6 +97,8 @@ docs:
         url: /docs/helpers/server-hardening/home
       - title: Install Node
         url: /docs/helpers/node      
+      - title: Install NATS Server
+        url: /docs/helpers/nats 
 #      - title: Install Agora Invoicing
  #       url: /docs/installation/providers/community/agora-home
 

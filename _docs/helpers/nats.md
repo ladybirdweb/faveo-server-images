@@ -4,13 +4,13 @@ type: docs
 permalink: /docs/helpers/nats/
 redirect_from:
   - /theme-setup/
-last_modified_at: 2024-12-29
+last_modified_at: 2025-02-02
 last_modified_by: Mohammad_Asif
 toc: true
 title: "Install NATS Server on Faveo Helpdesk Server"
 ---
 
-This guide outlines the steps to install and configure the NATS server on a Faveo Helpdesk server.
+This document is for clients using the Agent Software. NATS Server needs to be installed on the Faveo Server to ensure the Agents (Assets) data is received/listened to by the Faveo Server. This guide outlines the steps to install and configure the NATS server on a Faveo Helpdesk server.
 
 ## Installing the NATS Server
 
@@ -142,7 +142,7 @@ supervisorctl
 ```
 
 
-### For Debian Based Systems
+### For RHEL Based Systems
 Open the file with nano editor.
 
 ```
@@ -165,7 +165,7 @@ stdout_logfile=/var/www/faveo/storage/logs/nats-worker.log
 Restart Supervisor
 
 ```
-systemctl restart supervisor
+systemctl restart supervisord
 ```
 
 Check the service status.
