@@ -68,7 +68,7 @@ Run the script <code><b>faveo-run.sh</b></code> by passing the necessary argumen
 
 - Option B: Self-Signed SSL
 
-- Option C: Paid SSL (
+- Option C: Paid SSL 
   
   Incase of Paid SSL, please ensure your SSL files are ready in your system. If you choose Option C (Paid SSL), you must specify the paths of the SSL certificate files.
 
@@ -101,7 +101,7 @@ Run the script <code><b>faveo-communtiy-run.sh</b></code>  by passing the necess
 
 - Option B: Self-Signed SSL
 
-- Option C: Paid SSL (
+- Option C: Paid SSL 
   
   Incase of Paid SSL, please ensure your SSL files are ready in your system. If you choose Option C (Paid SSL), you must specify the paths of the SSL certificate files.
 
@@ -146,7 +146,7 @@ Only For Self-Signed SSL
 
 ```sh
 chmod +x composedownup.sh
-./composedownup.sh*
+./composedownup.sh
 ```
 ---
 ---
